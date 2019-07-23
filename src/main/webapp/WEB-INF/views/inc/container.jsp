@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 반응형 이미지 -->
-
+<div id="main_banner">
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -49,12 +49,16 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+</div>
+<!-- main -->
+<div class="main_">
+	<div class="ticket_open">
+		<div class="ticket_header">
+			<strong>티켓오픈</strong> <a href="#"><img src="./resources/images/home/plus.png" style="width: 25px; height: auto"></a>
+		</div>
 
-<div class="ticket_open">
-	<div class="ticket_header">
-		<strong>티켓오픈</strong>
-		<a href="#"><img src="./resources/images/home/plus.png" style="width: 25px; height: auto"></a>
+		<div>
+		
+		</div>
 	</div>
-
-
 </div>
