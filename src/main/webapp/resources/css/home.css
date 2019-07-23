@@ -191,7 +191,8 @@ ul{
 }
 
 .f_inner{
-	
+	width: 600px;
+	margin: 0 auto;
 }
 .nav{
 	font-size: 20px;
