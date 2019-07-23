@@ -20,33 +20,32 @@ public class NoticeServiceImpl implements BoardService {
 
 	@Override
 	public int setWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
-		files=null;
-		noticeDAOImpl.setWrite(boardDTO);
-		return 0;
+		return noticeDAOImpl.setWrite(boardDTO);
 	}
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		boardDTO = noticeDAOImpl.getSelect(boardDTO.getNum());
+		return noticeDAOImpl.setUpdate(boardDTO);
 	}
 
 	@Override
 	public int setDelete(int num, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAOImpl.setDelete(num);
 	}
 
 	@Override
 	public BoardDTO getSelect(int num, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return noticeDAOImpl.getSelect(num);
 	}
 
 	@Override
 	public List<BoardDTO> getList(PageMaker pageMaker, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		int totalCount = noticeDAOImpl.getTotalCount();
+		pageMaker.makeRow();
+		pageMaker.makePage(totalCount);
+		List<BoardDTO> lists = noticeDAOImpl.getList(pageMaker);
+		return lists;
 	}
 
 }
