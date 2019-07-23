@@ -25,8 +25,8 @@
 				<a href="#"><img alt="" src="./resources/images/home/logo.JPG"></a>
 			</div>
 			<div class="search_wrap">
-				<input type="text" placeholder="검색어 입력" id="search"> <a
-					href="#" class="btn_search" id="">검색</a>
+				<input type="text" placeholder="검색어 입력" id="search">
+				<a href="#" class="btn_search"><img src="./resources/images/home/h_search.png" style="width: 20px;"></a>
 			</div>
 			<!-- <div class="search">
 		</div> -->
@@ -46,7 +46,7 @@
 		</ul>
 	</div> -->
 	<!-- <hr class="a"> -->
-	<div id="menulist">
+	<div id="menulist" class="h_menu">
 		<div class="collapse navbar-collapse">
 			<div class="nav_wrap">
 				<ul class="nav navbar-nav">
