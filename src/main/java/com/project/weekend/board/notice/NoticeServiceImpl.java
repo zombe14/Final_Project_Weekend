@@ -20,7 +20,8 @@ public class NoticeServiceImpl implements BoardService {
 
 	@Override
 	public int setWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
+		files=null;
+		noticeDAOImpl.setWrite(boardDTO);
 		return 0;
 	}
 
