@@ -1,0 +1,190 @@
+body, input, textarea, select button, table, p, div{
+	fibt-family: '돋움',dotum,sans-serif;
+	font-size: 12px;
+}
+
+body{
+	height: 100%;
+}
+
+.inner{
+	color: #757575;
+}
+
+a {
+	text-decoration: none;
+	color: #999;
+}
+
+a:hover {
+	
+	text-decoration: none;
+}
+
+ul{
+	list-style: none;
+}
+
+strong{
+	font-size: 25px;
+}
+
+#container{
+	height: 100%;
+}
+
+#header{
+	z-index: 200;
+	position: relative;
+}
+
+#footer{
+	margin-top: 0px;
+	height: 190px;
+	background: #333;
+	padding-top: 50px;
+	position: relative;
+}
+
+/* ----------------------------Header Css---------------- */
+
+.h_wrap{
+	width: 74%;
+}
+
+.user_menu{
+	float: right;
+	
+}
+
+.h_top{
+	background: #fafafa;
+	border-bottom: 1px solid #f0f0f0;
+	height: 35px;
+	padding-top: 11px;
+	position: relative;
+	margin:0 auto;
+}
+
+.h_search {
+	
+	margin: 32px auto;
+	text-align: center;
+}
+
+.h_search img {
+	
+	vertical-align: middle;
+}
+
+.h_middle{
+	width: 1100px;
+	margin: 0 auto;
+}
+
+.logo{
+	float: left;
+	margin-top: -15px;
+}
+
+#search {
+	
+	width: 334px;
+    height: 40px;
+	border: 1px solid #41b40a;
+	padding-left: 10px;
+	
+}
+
+.search_wrap{
+	margin-left: 15px;
+	width: 900px;
+}
+
+.btn_search {
+	
+	background-color: #41b40a;
+	padding: 13px 13px;
+	margin-left: -5px;
+	vertical-align: middle;
+	color: white;
+}
+
+.h_menu{
+	min-height: 58px;
+	background: url(http://tketlink.dn.toastoven.net/markup_resources/2019071801/web/img/bg_head_menu.gif) repeat-x 0 0;
+}
+
+.h_inner {
+    width: 990px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.menu_list{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.h_menu li{
+	float: left;
+	box-sizing: border-box;
+}
+
+.nav{
+	font-size: 20px;
+}
+
+.nav_wrap{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.navp{
+	padding: 0 30px;
+}
+
+#menulist{
+	border: 1px solid #f0f0f0;
+}
+
+.log{
+	padding: 0 3px;
+}
+
+/*  -----------------------container Css----------------------- */
+
+
+
+/*  ------------------------Footer Css-------------------- */
+
+#f_container{
+	
+	width: 1100px;
+	color: #757575;
+	margin: 0 auto;
+}
+
+.f_menu{
+	font-weight: bold;
+    height: 11px;
+    line-height: 12px;
+    color: #999;
+    margin-bottom: 23px;
+}
+
+.f_menu a {
+      color: #999;
+      text-decoration: none;
+      font-weight: bold;
+   }
+   
+.f_logo{
+	float: left;
+}
+
+.f_inner{
+	width: 600px;
+	margin: 0 auto;
+}
+

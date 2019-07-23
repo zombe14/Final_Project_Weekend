@@ -1,0 +1,48 @@
+#checkAll{
+	font-size: 25px;
+}
+.check{
+	width: 25px;
+	height: 25px;
+}
+#checkAllfont{
+	font-size: 25px;
+}
+.custom-checkbox .custom-control-label::before {
+    border-radius: .25rem;
+    height: 20px;
+    width: 20px;
+}
+.custom-control-label::after {
+    position: absolute;
+    top: .15rem;
+    left: -1.5rem;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    content: "";
+    background: no-repeat 50%/50% 50%;
+}
+.checkAllfont_sub{
+	margin-left: 10px;
+}
+.iCheckbox  i{
+	color: red;
+}
+.custom-control i{
+	color: red;
+}
+#checkAllfont1{
+	font-size: 15px;
+}
+.terms_box{
+	position: relative;
+    overflow: auto;
+    height: 88px;
+    margin-top: 8px;
+    padding: 12px;
+    border: 1px solid #dadada;
+    background: #fff;
+}
+
+
