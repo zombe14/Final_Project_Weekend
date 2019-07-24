@@ -1,4 +1,4 @@
-package com.project.member;
+package com.project.weekend.member;
 
 public class MemberVO {
 	private String id;
