@@ -109,6 +109,29 @@ $(function() {
 			$("#memNamecheck").val('0');
 		}
 	});
+	$(".certifyButtonWrap_final").click(function() {
+		var pw = document.getElementById("pw").value;
+		var pwCheck = document.getElementById("pwCheck").value;
+		var pww = $("#pww").val();
+		var pwwcheck = $("#pwwcheck").val();
+		var memNamecheck = $("#memNamecheck").val();
+		
+		var finalpw = true;
+		if(pw==pwCheck){
+			finalpw = true;
+			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&finalpw){
+				alert("회원가입성공");
+			}else{
+				alert("비밀번호나 이름을 확인해주세요");
+			}
+		}else{
+			alert("비밀번호가 일치하지 않습니다.");
+			finalpw = false;
+		}
+		
+		
+	});
+	
 	
 });
 	

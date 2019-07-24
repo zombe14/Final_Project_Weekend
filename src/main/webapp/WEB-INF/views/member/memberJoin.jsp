@@ -118,7 +118,7 @@
 								<th scope="row">
 									<span class="essential">*</span>아이디 </th>
 								<td>
-									<input type="text" name="memId" maxlength="20" class="iText" title="이름" id="idCheck" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자" onchange="javascript:idChange(MemberJoinForm);" onblur="javascript:checkViewMemId()" onclick="javascript:chkAuth();changeText('id',this);">
+									<input type="text" name="memId" maxlength="20" class="iText" title="이름" id="idCheck" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자">
 									<input type="hidden" name="chkMemId" value="" id="memidCheck">
 									<div class="infoLayerBox" style="display:none;top:46px;">
 										<div class="infoContent">아이디를 정확히 입력하여 주십시오.
