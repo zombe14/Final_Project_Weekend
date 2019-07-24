@@ -6,6 +6,6 @@
 	
 	<bean class="com.project.weekend.board.notice.NoticeDTO" id="noticeDTO" />
 	<bean class="com.project.weekend.board.notice.NoticeDAOImpl" id="noticeDAO" />
-	<bean class="com.project.weekend.board.notice.NoticeServiceImpl" id="noticeService" />
+	<bean class="com.project.weekend.board.notice.NoticeServiceImpl" id="noticeServiceImpl" />
 	
 </beans>
