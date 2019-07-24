@@ -5,8 +5,8 @@
 	<typeAliases>
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Integer" alias="Integer"/>
-		<typeAlias type="com.iu.board.BoardDTO" alias="BoardDTO"/>
-		<typeAlias type="com.iu.file.FileDTO" alias="FileDTO"/>
-		<typeAlias type="com.iu.util.PageMaker" alias="PageMaker"/>
+		<typeAlias type="com.project.weekend.board.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.project.weekend.file.FileVO" alias="FileVO"/>
+		<typeAlias type="com.project.weekend.util.PageMaker" alias="PageMaker"/>
 	</typeAliases>
 </configuration>
