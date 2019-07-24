@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import org.junit.Test;
 
 import com.project.weekend.AbstractTest;
+import com.project.weekend.board.BoardDTO;
 import com.project.weekend.util.PageMaker;
 
 public class NoticeDAOImplTest extends AbstractTest {
@@ -53,9 +54,13 @@ public class NoticeDAOImplTest extends AbstractTest {
 		assertEquals(res, 1);
 	}
 	
+	@Test
 	public void getList() throws Exception{
 		PageMaker pageMaker = new PageMaker();
-		List<NoticeDTO> lists = noticeDAOImpl.getList(pageMaker);
+		pageMaker.setSearch("");
+		List<BoardDTO> lists = noticeDAOImpl.getList(pageMaker);
+		assertNotEquals(lists.size(), 0);
 	}
+	
 
 }
