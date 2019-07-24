@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NoticeMapper">
+	<insert id="setWrite" parameterType="NoticeDTO">
+		INSERT INTO NOTICE(NUM,TITLE,WRITER,CONTENTS,HIT,REG_DATE,TOP) 
+		VALUES(NOTICE_SEQ.NEXTVAL, #{title},#{writer},#{contents},#{hit},SYSDATE,#{top})
+	</insert>
+	<update id="setUpdate" parameterType="NoticeDTO">
+		UPDATE NOTICE SET TITLE = #{title}, CONTENTS = #{contents}, TOP = #{top} WHERE NUM = #{num}
+	</update>
+	<delete id="setDelete" parameterType="Integer">
+		DELETE NOTICE WHERE NUM = #{num}
+	</delete>
+	<select id="getSelect" parameterType="Integer" resultType="NoticeDTO">
+		SELECT * FROM NOTICE WHERE NUM = #{num}
+	</select>
+	<select id="getList" resultType="NoticeDTO" parameterType="PageMaker">
+		SELECT * FROM 
+		(SELECT ROWNUM R, N.* FROM 
+		(SELECT NUM, TITLE, WRITER, HIT, REG_DATE FROM NOTICE WHERE 
+		<choose>
+			<when test="kind == 1">
+				TITLE LIKE '%'||#{search}||'%'
+			</when>
+			<when test="kind == 2">
+				CONTENTS LIKE '%'||#{search}||'%'
+			</when>
+			<otherwise>
+				TITLE LIKE '%'||#{search}||'%' OR
+				CONTENTS LIKE '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+		ORDER BY R DESC) N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	<!-- NOTICE 페이지 상단에 강조할 공지글 배치. SEARCH에 영향 x -->
+	<select id="getTopList" resultType="NoticeDTO" parameterType="Integer">
+		SELECT * FROM NOTICE WHERE TOP = '1'
+	</select>
+	<select id="getTotalCount" resultType="Integer">
+		SELECT COUNT(NUM) FROM NOTICE
+	</select>
+</mapper>

@@ -3,21 +3,39 @@ package com.project.weekend.util;
 public class PageMaker {
 	private int perPage=10;
 	private Integer curPage;
-	private String kind;
+	private String kind;//title, writer, contents
 	private String search;
-	// rownum
+	
+	//rownum
 	private int startRow;
 	private int lastRow;
-	// page
+	
+	//page
 	private int totalBlock;
 	private int curBlock;
 	private int startNum;
+	private int lastNum;
 	
-	public int getPerPage() {
-		return perPage;
-	}
 	public void setPerPage(int perPage) {
 		this.perPage = perPage;
+	}
+	public int getTotalBlock() {
+		return totalBlock;
+	}
+	public int getCurBlock() {
+		return curBlock;
+	}
+	public int getStartNum() {
+		return startNum;
+	}
+	public int getLastNum() {
+		return lastNum;
+	}
+	public int getStartRow() {
+		return startRow;
+	}
+	public int getLastRow() {
+		return lastRow;
 	}
 	public Integer getCurPage() {
 		if(curPage == null) {
@@ -27,6 +45,9 @@ public class PageMaker {
 	}
 	public void setCurPage(Integer curPage) {
 		this.curPage = curPage;
+		if(curPage == null) {
+			this.curPage=1;
+		}
 	}
 	public String getKind() {
 		return kind;
@@ -44,71 +65,37 @@ public class PageMaker {
 		this.search = search;
 	}
 	
-	public int getStartRow() {
-		return startRow;
-	}
-	public void setStartRow(int startRow) {
-		this.startRow = startRow;
-	}
-	public int getLastRow() {
-		return lastRow;
-	}
-	public void setLastRow(int lastRow) {
-		this.lastRow = lastRow;
-	}
-	public int getTotalBlock() {
-		return totalBlock;
-	}
-	public void setTotalBlock(int totalBlock) {
-		this.totalBlock = totalBlock;
-	}
-	public int getCurBlock() {
-		return curBlock;
-	}
-	public void setCurBlock(int curBlock) {
-		this.curBlock = curBlock;
-	}
-	public int getStartNum() {
-		return startNum;
-	}
-	public void setStartNum(int startNum) {
-		this.startNum = startNum;
-	}
-	public int getLastNum() {
-		return lastNum;
-	}
-	public void setLastNum(int lastNum) {
-		this.lastNum = lastNum;
-	}
-	private int lastNum;
-	
-	// startRow, last Row
+	//startRow, lastRow
 	public void makeRow() {
 		this.startRow = (this.getCurPage()-1)*this.perPage+1;
 		this.lastRow = this.curPage*perPage;
 	}
 	public void makePage(int totalCount) {
-		// 1. 전체 글의 개수;
-		// 2. totalPage 구하기;
-		int totalPage = totalCount/perPage;
+		//1. 전체 글의 갯수
+		//2. totalPage 구하기
+		int totalPage=totalCount/perPage;
 		if(totalCount%perPage !=0) {
 			totalPage++;
 		}
-		// 3. totalBlock;
+		
+		//3. totalBlock
 		int perBlock=5;
 		this.totalBlock=totalPage/perBlock;
 		if(totalPage%perBlock !=0) {
 			this.totalBlock++;
 		}
-		// 4. curPage를 이용해서 curBlock;
+		
+		//4. curPage를 이용해서 curBlock
 		this.curBlock=curPage/perBlock;
 		if(this.curPage%perBlock !=0) {
 			curBlock++;
 		}
-		// 5. startNum, lastNum;
+		
+		//5. startNum, lastNum
 		this.startNum=(this.curBlock-1)*perBlock+1;
 		this.lastNum=this.curBlock*perBlock;
-		// 6. curBlock이 totalBlock일때;
+		
+		//6. curBlock이 totalBlock일때
 		if(this.curBlock==totalBlock) {
 			this.lastNum=totalPage;
 		}
