@@ -14,12 +14,15 @@ body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fi
 	min-width: 1200px;
 }
 
-body{
+html, body{
 	height: 100%;
 }
 
 .inner{
 	color: #757575;
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
 }
 
 a {
@@ -49,12 +52,17 @@ strong{
 	position: relative;
 }
 
+#container{
+	margin: 0;
+	overflow: hidden;
+}
 #footer{
-	margin-top: 0px;
+	
 	height: 190px;
 	background: #333;
 	padding-top: 50px;
 	position: relative;
+	overflow: hidden;
 }
 
 /* ----------------------------Header Css---------------- */
@@ -166,24 +174,19 @@ strong{
 /*  -----------------------container Css----------------------- */
 
 .section_top{
-	positive: relative;
+	position: relative;
 	padding: 50px 0 0;
 }
 
 .section_rank{
-	positive: relative;
+	position: relative;
 	padding: 50px 0 0;	
 }
 
 .section_best{
-	padding: 42px 0 0;
+	padding: 42px 0 60px;
 }
 
-.inner{
-	width: 1200px;
-	margin: 0 auto;
-	position: relative;
-}
 
 .ticket_main{
 	width: 1200px;
@@ -230,10 +233,6 @@ strong{
 	line-height: 36px;
 }
 
-#wingright{
-	margin-left: 513px;
-}
-
 .ticket_header{
 	height: 50px;
 	overflow: hidden;
@@ -242,13 +241,71 @@ strong{
 .tickettitle{
 	margin-left:8px;
 }
+#wingright{
+	margin-left: 513px;
+}
+
 
 
 .first{
 	float: left;
 }
 
+/* rank */
 
+.rank_main{
+	width: 1200px;
+	position: relative;
+	margin-top: 30px;
+}
+
+.rank_left{
+	float: left;
+	width: 802px;
+	}
+
+.rank_right{
+	overflow: hidden;
+	width: 398px;
+}
+.rank_cont{
+	border: 1px solid #e6e6e6;
+    border-radius: 2px 0 0 2px;
+	width: 800px;
+    height: 218px;
+    overflow: hidden;
+}
+
+.rank_left .rank_cont ul{
+	padding-top: 20px;
+}
+
+.rank_cont li.first{
+	position: relative;
+    top: -20px;
+    left: 0;
+    width: 179px;
+    height: 218px;
+    border-right: 1px solid #e6e6e6;
+    padding: 0;
+}
+
+.rank_cont li{
+	padding-left: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	height: 36px;
+	line-height: 36px;
+}
+
+.rank_header{
+	height: 50px;
+	overflow: hidden;
+}
+
+.ranktitle{
+	margin-left:8px;
+}
 
 /*  ------------------------Footer Css-------------------- */
 
