@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.BoardDTO;
@@ -25,12 +26,20 @@ public class NoticeController {
 	/*공지 글쓰기*/
 	// 글쓰기 폼으로 이동 - admin
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
-	public void noticeWrite() throws Exception{}
+	public ModelAndView noticeWrite(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("board", "notice");
+		mv.addObject("boardTitle", "Notice");
+		mv.setViewName("board/boardWrite");
+		return mv;
+	}
 	
 	// 글쓰기 프로세스 진행 - admin
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
-	public void noticeWrite(NoticeDTO noticeDTO, HttpSession session) throws Exception{
-		int result = noticeSerivceImpl.setWrite(noticeDTO, null, session);
+	public ModelAndView noticeWrite(NoticeDTO noticeDTO, List<MultipartFile> files, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeSerivceImpl.setWrite(noticeDTO, files, session);
+		return mv;
 	}
 	
 	/*공지 업데이트*/
@@ -68,6 +77,7 @@ public class NoticeController {
 		mv.addObject("boardTitle", "Notice");
 		mv.addObject("list", list);
 		mv.addObject("top", top);
+		mv.addObject("pager",pageMaker);
 		mv.setViewName("board/boardList");
 		return mv;
 	}

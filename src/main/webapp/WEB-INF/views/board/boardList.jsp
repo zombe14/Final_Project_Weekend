@@ -9,6 +9,19 @@
 </head>
 <body>
 	<h3>${boardTitle} List</h3>
+	
+	<!-- 검색창 -->
+	<form action="./${board}List">
+		<select name="kind">
+			<option value="0">전체</option>
+			<option value="1">제목</option>
+			<option value="2">내용</option>
+		</select>
+		<input type="text" placeholder="검색어를 입력하세요" name="search">
+		<button id="search">검색</button>
+	</form>
+	
+	<!-- notice list 테이블 -->
 	<table>
 		<thead>
 			<th>NUM</th>
@@ -16,7 +29,9 @@
 			<th>WRITER</th>
 			<th>DATE</th>
 			<th>HIT</th>
+			<th><a>선택삭제</a></th>
 		</thead>
+		<!-- 관리자가 상단에 배치할 공지. pageMaker의 perPage에 영향 X. 밑에 중복. -->
 		<c:forEach items="${top}" var="top">
 			<tr>
 				<td>중요</td>
@@ -24,8 +39,10 @@
 				<td>${top.writer}</td>
 				<td>${top.reg_date}</td>
 				<td>${top.hit}</td>
+				<td> </td>
 			</tr>
 		</c:forEach>
+		<!-- 일반 공지 리스트 -->
 		<c:forEach items="${list}" var="list">
 			<tr>
 				<td>${list.num}</td>
@@ -33,12 +50,36 @@
 				<td>${list.writer}</td>
 				<td>${list.reg_date}</td>
 				<td>${list.hit}</td>
+				<th><input type="checkbox"></th>
 			</tr>
 		</c:forEach>
 	</table>
 	
-	
-	
+	<ul>
+		<c:choose>
+			<c:when test="${pager.curBlock>1}">
+				<li><a href="${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
+			</c:when>
+			<c:otherwise>
+				<li><a>이전</a></li>
+			</c:otherwise>
+		</c:choose>
+		
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			<li><a href="${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+		</c:forEach>
+		
+		<c:choose>
+			<c:when test="${pager.curBlock < pager.totalBlock}">
+				<li><a href="${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a></li>
+			</c:when>
+			<c:otherwise>
+				<li>다음</li>
+			</c:otherwise>
+		</c:choose>
+		
+	</ul>
+
 	<a href = "./${board}Write">${board}Write</a>
 </body>
 </html>
