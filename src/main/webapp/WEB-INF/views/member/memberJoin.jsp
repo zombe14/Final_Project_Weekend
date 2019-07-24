@@ -135,8 +135,8 @@
 								</th>
 								<td>
 									<div class="passwordWrap">
-										<input type="password" name="pw" value="" class="iText" title="비밀번호" id="pw" >
-										<div class="pww">
+										<input type="password" name="pw" value="" class="iText" title="pw" id="pw" >
+										<div id="pww">
 											
 										</div>
 										<div class="infoLayerBox" style="display:none;top:46px;">
@@ -156,8 +156,8 @@
 									<span class="essential">*</span>비밀번호 확인 </th>
 								<td>
 									<div class="passwordWrap">
-										<input type="password" name="pwCheck" class="iText" title="비밀번호" id="pwCheck">
-										<div class="pwwcheck">
+										<input type="password" name="pwCheck" class="iText" title="pwCheck" id="pwCheck">
+										<div id="pwwcheck">
 											
 										</div>
 										<div id="result_pwpw" class="result_font">
@@ -172,7 +172,16 @@
 								<th scope="row">
 									<span class="essential">*</span>이름 </th>
 								<td>
-									<input type="text" name="memName" class="iText" title="memName" id="memName" minlength="4" maxlength="20"> </td>
+									<input type="text" name="memName" class="iText" title="memName" id="memName" minlength="4" maxlength="20"> 
+									<div id="memNamecheck">
+										
+									</div>
+									<div id="result_memNamecheck">
+											
+									</div>
+									</td>
+									
+									
 							</tr>
 							<tr>
 								<th scope="row">
