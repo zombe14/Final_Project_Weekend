@@ -5,7 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../temp/boot.jsp"/>
-<script src="../resources/js/board/noticeWrite.js"></script>
+<c:import url="../temp/summernote.jsp"/>
+<script src="../resources/js/board/boardWrite.js"></script>
+
+
 <title>${boardTitle} Write</title>
 </head>
 <body>
@@ -13,16 +16,16 @@
 	<form action="./${board}Write" method="post" enctype="multipart/form-data">
 	
 		<div>
-			<label for="title">제목</label>
+			<label for="title">제목<span>*</span></label>
 			<input type="text" name="title">
 		</div>
 		<div>
-			<label for="writer">작성자</label>
-			<input type="text" name="writer" value="세션에서 아이디(ADMIN) 받기 + readOnly추가">
+			<label for="writer">작성자<span>*</span></label>
+			<input type="text" name="writer" value="세션에서 아이디나 닉네임으로 'ADMIN' 받기 + readOnly추가">
 		</div>
 		<div>
-			<label for="contents">내용</label>
-			<textarea rows="" cols="" name="contents"></textarea>
+			<label for="contents">내용<span>*</span></label>
+			<textarea rows="" cols="" name="contents" id="contents"></textarea>
 		</div>
 		<div>
 			<label for="files">첨부파일</label>
@@ -34,8 +37,10 @@
 				</div>
 			</div>
 		</div>
-		<input type="button" value="등록">
+		<input type="button" id="write" value="등록">
 	</form>
 	
+<!-- script import section -->
+<script src="../resources/js/summernote.js"></script>
 </body>
 </html>

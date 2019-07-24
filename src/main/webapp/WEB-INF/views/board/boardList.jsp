@@ -33,7 +33,7 @@
 		</thead>
 		<!-- 관리자가 상단에 배치할 공지. pageMaker의 perPage에 영향 X. 밑에 중복. -->
 		<c:forEach items="${top}" var="top">
-			<tr>
+			<tr title="${top.num}" class="select">
 				<td>중요</td>
 				<td>${top.title}</td>
 				<td>${top.writer}</td>
@@ -44,7 +44,8 @@
 		</c:forEach>
 		<!-- 일반 공지 리스트 -->
 		<c:forEach items="${list}" var="list">
-			<tr>
+			
+			<tr title="${list.num}" class="select">
 				<td>${list.num}</td>
 				<td>${list.title}</td>
 				<td>${list.writer}</td>
@@ -52,10 +53,11 @@
 				<td>${list.hit}</td>
 				<th><input type="checkbox"></th>
 			</tr>
+			
 		</c:forEach>
 	</table>
 	
-	<ul>
+	<ul class="pagination">
 		<c:choose>
 			<c:when test="${pager.curBlock>1}">
 				<li><a href="${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
@@ -81,5 +83,10 @@
 	</ul>
 
 	<a href = "./${board}Write">${board}Write</a>
+	<script type="text/javascript">
+		$('.select').click(function() {
+			location.href="./${board}Select?num="+$(this).attr('title');
+		});
+	</script>
 </body>
 </html>

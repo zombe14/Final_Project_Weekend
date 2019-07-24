@@ -63,8 +63,16 @@ public class NoticeController {
 	
 	// 공지글보기 - all
 	@RequestMapping(value = "noticeSelect", method = RequestMethod.GET)
-	public void noticeSelect(int num) throws Exception{
+	public ModelAndView noticeSelect(int num, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+
+		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
+		mv.addObject("dto", boardDTO);
+		mv.addObject("board", "notice");
+		mv.addObject("boardTitle", "Notice");
+		mv.setViewName("board/boardSelect");
 		
+		return mv;
 	}
 	
 	// 공지리스트 - all
