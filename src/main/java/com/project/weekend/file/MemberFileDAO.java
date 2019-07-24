@@ -2,7 +2,7 @@ package com.project.weekend.file;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.project.weekend.member.MemberVO;
+import com.project.weekend.member.MemberDTO;
 
 public class MemberFileDAO {
 	
@@ -12,7 +12,7 @@ public class MemberFileDAO {
 	public int setWrite(MemberFileVO memberFileVO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setWrite", memberFileVO);
 	}
-	public MemberFileVO getSelect(MemberVO memberVO) throws Exception{
+	public MemberFileVO getSelect(MemberDTO memberVO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelect", memberVO);
 	}
 }
