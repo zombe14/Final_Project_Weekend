@@ -1,4 +1,4 @@
-package co.project.member;
+package com.project.member;
 
 public class MemberVO {
 	private String id;
