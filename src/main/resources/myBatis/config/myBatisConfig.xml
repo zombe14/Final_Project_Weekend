@@ -3,7 +3,10 @@
 
 <configuration>
 	<typeAliases>
+		<!-- 난슬 -->
 		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
+		
+		<!-- 공통 -->
 		<typeAlias type="java.lang.Integer" alias="Integer"/>
 		<typeAlias type="com.project.weekend.util.PageMaker" alias="PageMaker"/>
 	</typeAliases>

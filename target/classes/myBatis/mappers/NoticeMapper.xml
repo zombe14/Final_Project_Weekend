@@ -6,7 +6,7 @@
 <mapper namespace="NoticeMapper">
 	<insert id="setWrite" parameterType="NoticeDTO">
 		INSERT INTO NOTICE(NUM,TITLE,WRITER,CONTENTS,HIT,REG_DATE,TOP) 
-		VALUES(NOTICE_SEQ.NEXTVAL, #{title},#{writer},#{contents},#{hit},SYSDATE,#{top})
+		VALUES(NOTICE_SEQ.NEXTVAL, #{title},#{writer},#{contents},0,SYSDATE,#{top})
 	</insert>
 	<update id="setUpdate" parameterType="NoticeDTO">
 		UPDATE NOTICE SET TITLE = #{title}, CONTENTS = #{contents}, TOP = #{top} WHERE NUM = #{num}

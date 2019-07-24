@@ -1,7 +1,7 @@
 package com.project.weekend.util;
 
 public class PageMaker {
-	private int perPage=20;
+	private int perPage=10;
 	private Integer curPage;
 	private String kind;//title, writer, contents
 	private String search;

@@ -1,3 +1,3 @@
-select * from notice where num = 87
+select * from notice order by num desc
 
 delete notice
