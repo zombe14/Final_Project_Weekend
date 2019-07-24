@@ -9,8 +9,8 @@ public class FileDAO {
 	private SqlSession sqlSession;
 	private static final String NAMESPACE="FileMapper";
 	
-	public int setWrite(List<FileVO> files) throws Exception{
-		for(FileVO f:files) {
+	public int setWrite(List<FileDTO> files) throws Exception{
+		for(FileDTO f:files) {
 			System.out.println(f.getNum());
 			System.out.println(f.getFname());
 			System.out.println(f.getOname());
@@ -18,7 +18,7 @@ public class FileDAO {
 		int res = sqlSession.insert(NAMESPACE+"setWrite", files);
 		return res;
 	}
-	public int setUpdate(FileVO fileVO) throws Exception{
+	public int setUpdate(FileDTO fileVO) throws Exception{
 		int res = sqlSession.update(NAMESPACE+"setUpdate", fileVO);
 		return res;
 	}
@@ -31,11 +31,11 @@ public class FileDAO {
 		return sqlSession.delete(NAMESPACE+"selectDeleteAll", num);
 	}
 	
-	public FileVO getSelect(int fnum) throws Exception{
+	public FileDTO getSelect(int fnum) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelect", fnum);
 	}
 	
-	public List<FileVO> getList(int num) throws Exception{
+	public List<FileDTO> getList(int num) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", num);
 	}
 

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
-import com.project.weekend.file.FileVO;
+import com.project.weekend.file.FileDTO;
 
 public class FileDown extends AbstractView{
 
@@ -20,7 +20,7 @@ public class FileDown extends AbstractView{
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		FileVO fileVO = (FileVO)model.get("file");
+		FileDTO fileVO = (FileDTO)model.get("file");
 		String board = (String)model.get("board");
 		String realPath = request.getSession().getServletContext().getRealPath("/resources/"+board);
 		

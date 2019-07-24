@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.project.member.MemberVO;
+import com.project.member.MemberDTO;
 
 @Controller
 @RequestMapping("/member/")
 public class MemberController {
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
-	public void setWrite(@ModelAttribute MemberVO memberVO)throws Exception{}
+	public void setWrite(@ModelAttribute MemberDTO memberVO)throws Exception{}
 	
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.GET)

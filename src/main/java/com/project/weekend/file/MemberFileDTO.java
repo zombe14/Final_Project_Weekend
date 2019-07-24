@@ -1,28 +1,23 @@
 package com.project.weekend.file;
 
-public class FileVO {
-	private int fnum;
-	private int num;
-	private String fname;
-	private String oname;
+public class MemberFileDTO {
 	
-	public int getFnum() {
-		return fnum;
-	}
-	public void setFnum(int fnum) {
-		this.fnum = fnum;
-	}
+	private int num;
+	private String id;
+	private String oname;
+	private String fname;
+	
 	public int getNum() {
 		return num;
 	}
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getFname() {
-		return fname;
+	public String getId() {
+		return id;
 	}
-	public void setFname(String fname) {
-		this.fname = fname;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getOname() {
 		return oname;
@@ -30,4 +25,12 @@ public class FileVO {
 	public void setOname(String oname) {
 		this.oname = oname;
 	}
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	
+
 }
