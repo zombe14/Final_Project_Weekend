@@ -1,9 +1,7 @@
 package com.project.weekend.file;
 
 import org.apache.ibatis.session.SqlSession;
-
-import com.project.member.MemberDTO;
-
+import com.project.weekend.member.MemberDTO;
 
 public class MemberFileDAO {
 	
