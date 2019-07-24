@@ -13,22 +13,25 @@ import com.project.weekend.AbstractTest;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.util.PageMaker;
 
+import oracle.net.aso.p;
+
 public class NoticeDAOImplTest extends AbstractTest {
 
 	@Inject
 	private NoticeDAOImpl noticeDAOImpl;
 	
-	//@Test
+	@Test
 	public void setWrite() throws Exception {
-		for(int i=0;i<5;i++) {
+		
 			NoticeDTO noticeDTO = new NoticeDTO();
-			noticeDTO.setContents("TestContentsTop"+i);
-			noticeDTO.setHit(1);
-			noticeDTO.setTitle("TestTitleTop"+i);
-			noticeDTO.setTop(0);
+			noticeDTO.setContents("TestContentsFile2");
+			noticeDTO.setTitle("TestTitleFile2");
+			noticeDTO.setTop(1);
 			noticeDTO.setWriter("ADMIN");
-			noticeDAOImpl.setWrite(noticeDTO);
-		}
+			int res = noticeDAOImpl.setWrite(noticeDTO);
+			System.out.println(noticeDTO.getTitle());
+			System.out.println(noticeDTO.getNum());
+			assertEquals(res, 1);
 	}
 	
 	//@Test
@@ -54,13 +57,23 @@ public class NoticeDAOImplTest extends AbstractTest {
 		assertEquals(res, 1);
 	}
 	
-	@Test
+	//@Test
 	public void getList() throws Exception{
-		/*
 		PageMaker pageMaker = new PageMaker();
+		int totalCount = noticeDAOImpl.getTotalCount();
 		pageMaker.setSearch("");
-		List<NoticeDTO> lists = new ArrayList<NoticeDTO>();
-		*/
+		pageMaker.makeRow();
+		pageMaker.makePage(totalCount);
+		List<BoardDTO> list = noticeDAOImpl.getList(pageMaker);
+		System.out.println(list.size());
+		assertNotEquals(list.size(), 0);
+	}
+	
+	//@Test
+	public void getTopList() throws Exception{
+		List<BoardDTO> list = noticeDAOImpl.getTopList();
+		System.out.println(list.size());
+		assertNotEquals(list.size(), 0);
 	}
 	
 

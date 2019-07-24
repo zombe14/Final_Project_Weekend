@@ -23,49 +23,51 @@ public class NoticeController {
 	private NoticeServiceImpl noticeSerivceImpl;
 	
 	/*공지 글쓰기*/
-	// 글쓰기 폼으로 이동
+	// 글쓰기 폼으로 이동 - admin
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
 	public void noticeWrite() throws Exception{}
 	
-	// 글쓰기 프로세스 진행
+	// 글쓰기 프로세스 진행 - admin
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public void noticeWrite(NoticeDTO noticeDTO, HttpSession session) throws Exception{
 		int result = noticeSerivceImpl.setWrite(noticeDTO, null, session);
 	}
 	
 	/*공지 업데이트*/
-	// 업데이트 폼으로 이동
+	// 업데이트 폼으로 이동 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.GET)
 	public void noticeUpdate() throws Exception{
 		
 	}
 	
-	// 업데이트 프로세스 진행
+	// 업데이트 프로세스 진행 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
 	public void noticeUpdate(NoticeDTO noticeDTO) throws Exception{
 		
 	}
 	
-	// 공지 삭제
+	// 공지 삭제 - admin
 	@RequestMapping(value = "noticeDelete", method = RequestMethod.GET)
 	public void noticeDelete(int num) throws Exception{
 		
 	}
 	
-	// 공지글보기
+	// 공지글보기 - all
 	@RequestMapping(value = "noticeSelect", method = RequestMethod.GET)
 	public void noticeSelect(int num) throws Exception{
 		
 	}
 	
-	// 공지리스트
+	// 공지리스트 - all
 	@RequestMapping(value = "noticeList", method = RequestMethod.GET)
 	public ModelAndView noticeList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<BoardDTO> lists = noticeSerivceImpl.getList(pageMaker, session);
+		List<BoardDTO> list = noticeSerivceImpl.getList(pageMaker, session);
+		List<BoardDTO> top = noticeSerivceImpl.getTopList();
 		mv.addObject("board", "notice");
 		mv.addObject("boardTitle", "Notice");
-		mv.addObject("lists", lists);
+		mv.addObject("list", list);
+		mv.addObject("top", top);
 		mv.setViewName("board/boardList");
 		return mv;
 	}

@@ -5,9 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../temp/boot.jsp"/>
-<title>${boardTitle} List</title>
+<title>${boardTitle} Write</title>
 </head>
 <body>
-	<a href = "./${board}Write" class="btn btn-default">Write</a>
+	<h3>${boardTitle} Write</h3>
+	<form action="./${board}Write" method="post" enctype="multipart/form-data">
+	
+	</form>
+	
+	
 </body>
 </html>

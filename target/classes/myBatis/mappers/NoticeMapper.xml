@@ -5,8 +5,11 @@
 
 <mapper namespace="NoticeMapper">
 	<insert id="setWrite" parameterType="NoticeDTO">
+		<selectKey keyProperty="num" order="BEFORE" resultType="Integer">
+			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO NOTICE(NUM,TITLE,WRITER,CONTENTS,HIT,REG_DATE,TOP) 
-		VALUES(NOTICE_SEQ.NEXTVAL, #{title},#{writer},#{contents},0,SYSDATE,#{top})
+		VALUES(#{num}, #{title}, #{writer}, #{contents}, 0, SYSDATE, #{top})
 	</insert>
 	<update id="setUpdate" parameterType="NoticeDTO">
 		UPDATE NOTICE SET TITLE = #{title}, CONTENTS = #{contents}, TOP = #{top} WHERE NUM = #{num}
@@ -17,7 +20,7 @@
 	<select id="getSelect" parameterType="Integer" resultType="NoticeDTO">
 		SELECT * FROM NOTICE WHERE NUM = #{num}
 	</select>
-	<select id="getList" resultType="NoticeDTO" parameterType="PageMaker">
+	<select id="getList" parameterType="PageMaker" resultType="NoticeDTO">
 		SELECT * FROM 
 		(SELECT ROWNUM R, N.* FROM 
 		(SELECT NUM, TITLE, WRITER, HIT, REG_DATE FROM NOTICE WHERE 
@@ -29,11 +32,11 @@
 				CONTENTS LIKE '%'||#{search}||'%'
 			</when>
 			<otherwise>
-				TITLE LIKE '%'||#{search}||'%' OR
+				<!-- TITLE LIKE '%'||#{search}||'%' OR -->
 				CONTENTS LIKE '%'||#{search}||'%'
 			</otherwise>
 		</choose>
-		ORDER BY R DESC) N)
+		ORDER BY NUM DESC) N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<!-- NOTICE 페이지 상단에 강조할 공지글 배치. SEARCH에 영향 x -->
