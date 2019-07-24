@@ -184,7 +184,7 @@ strong{
 }
 
 .section_best{
-	padding: 42px 0 60px;
+	padding: 60px 0;
 }
 
 
@@ -238,8 +238,12 @@ strong{
 	overflow: hidden;
 }
 
-.tickettitle{
+.title{
 	margin-left:8px;
+}
+
+.title img{
+	margin-top: -10px;
 }
 #wingright{
 	margin-left: 513px;
@@ -257,22 +261,26 @@ strong{
 	width: 1200px;
 	position: relative;
 	margin-top: 30px;
-	float: left;
+
+	overflow: hidden;
 }
 
 .rank_left{
 	float: left;
 	width: 600px;
+	overflow: hidden;
 	}
 
 .rank_right{
-	overflow: hidden;
+	float:left;
 	width: 600px;
+	overflow: hidden;
 }
 
 .rank_cont{
 	border: 1px solid #e6e6e6;
     border-radius: 2px 0 0 2px;
+    width: 598px;
     height: 218px;
     overflow: hidden;
 }
@@ -297,6 +305,8 @@ strong{
 	font-weight: bold;
 	height: 36px;
 	line-height: 36px;
+	letter-spacing: 2;
+	float: left;
 }
 
 .rank_header{
@@ -304,9 +314,32 @@ strong{
 	overflow: hidden;
 }
 
-.ranktitle{
-	margin-left:8px;
+.best_header{
+	height: 50px;
+	overflow: hidden;
 }
+
+.best_list{
+	margin-left:-18px;
+	overflow: hidden;
+}
+
+.section_best .best_list li{
+	overflow: hidden;
+	margin: 0 0 18px 18px;
+	height: 480px;
+	width: 286.5px;
+	position: relative;
+}
+
+.list_info{
+	padding: 10px 5px;
+	height: 60px;
+	border: 1px solid white;
+}
+
+
+
 
 /*  ------------------------Footer Css-------------------- */
 
