@@ -76,13 +76,15 @@
 				<li><a href="${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a></li>
 			</c:when>
 			<c:otherwise>
-				<li>다음</li>
+				<li><a>다음</a></li>
 			</c:otherwise>
 		</c:choose>
 		
 	</ul>
 
 	<a href = "./${board}Write">${board}Write</a>
+	
+<!-- ------script---------- -->
 	<script type="text/javascript">
 		$('.select').click(function() {
 			location.href="./${board}Select?num="+$(this).attr('title');
