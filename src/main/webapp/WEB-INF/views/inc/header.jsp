@@ -82,8 +82,8 @@
 							class="fa fa-home fa-fw"></i>빈칸</a></li>
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>빈칸</a></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>빈칸</a></li>
+					<li id="navbar-page" class="navp"><a href="./admin/adminBoard"><i
+							class="fa fa-home fa-fw"></i>adminPage</a></li>
 				</ul>
 			</div>
 		</div>
