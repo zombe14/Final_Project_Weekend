@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../temp/boot.jsp"/>
+<script src="../resources/js/board/noticeWrite.js"></script>
 <title>${boardTitle} Write</title>
 </head>
 <body>
@@ -27,10 +28,13 @@
 			<label for="files">첨부파일</label>
 			<a id="addFiles">파일추가</a>
 			<div id="files">
-			
+				<div>
+					<input type="file" class="files" name="files" style="display: inline-block">
+					<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
+				</div>
 			</div>
 		</div>
-	
+		<input type="button" value="등록">
 	</form>
 	
 </body>
