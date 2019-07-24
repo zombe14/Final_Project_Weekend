@@ -135,12 +135,16 @@
 								</th>
 								<td>
 									<div class="passwordWrap">
-										<input type="password" name="pw" value="" class="iText" title="비밀번호" id="pw" ">
-										<!-- 안내문구 레이어팝업 -->	
+										<input type="password" name="pw" value="" class="iText" title="비밀번호" id="pw" >
+										<div class="pww">
+											
+										</div>
 										<div class="infoLayerBox" style="display:none;top:46px;">
 											<div class="infoContent">영문, 숫자, 특수문자를 조합하여 8~12자까지 설정해 주세요.</div>
 										</div>
-										<div id="result_pw" class="result_font"></div>
+										<div id="result_pw" class="result_font">
+										
+										</div>
 	
 										<!-- // 안내문구 레이어팝업 -->
 										<span class="alertMessage">영문, 숫자, 특수문자를 조합하여 8~12자까지 설정해 주세요.</span>
@@ -153,7 +157,12 @@
 								<td>
 									<div class="passwordWrap">
 										<input type="password" name="pwCheck" class="iText" title="비밀번호" id="pwCheck">
-										<div id="result_pwpw" class="result_font"></div>
+										<div class="pwwcheck">
+											
+										</div>
+										<div id="result_pwpw" class="result_font">
+										
+										</div>
 										<!-- // 안내문구 레이어팝업 -->
 										<span class="alertMessage">비밀번호 재입력</span>
 									</div>
