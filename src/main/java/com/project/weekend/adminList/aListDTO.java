@@ -1,5 +1,7 @@
 package com.project.weekend.adminList;
 
-public class aListDTO {
+import com.project.weekend.board.BoardDTO;
+
+public class aListDTO extends BoardDTO{
 
 }
