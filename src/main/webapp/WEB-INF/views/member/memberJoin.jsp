@@ -118,14 +118,19 @@
 								<th scope="row">
 									<span class="essential">*</span>아이디 </th>
 								<td>
-									<input type="text" name="memId" maxlength="20" class="iText" title="이름" id="idCheck" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자">
+									<input type="text" name="memId" maxlength="20" class="iText" title="idCheck" id="idCheck" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자">
 									<input type="hidden" name="chkMemId" value="" id="memidCheck">
 									<div class="infoLayerBox" style="display:none;top:46px;">
 										<div class="infoContent">아이디를 정확히 입력하여 주십시오.
 											<br>띄어쓰기 없는 영문, 숫자로만 6~20자.</div>
 									</div>
 									<a href="javascript:searchMemId();" class="btnblackCheck layerOpenButton">중복확인</a>
-									
+									<div id="result_memid">
+										
+									</div>
+									<div id="memid">
+										
+									</div>
 								</td>
 							</tr>
 							<tr>

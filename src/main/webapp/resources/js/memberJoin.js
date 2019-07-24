@@ -65,6 +65,19 @@ $(function() {
 			alert("필수 항목을 입력하세요");
 		}
 	});
+	
+	$("#idCheck").blur(function() {
+		var idCheck = document.getElementById("idCheck").value;
+		if(idCheck.length==0){
+			result_memid.innerHTML = "아이디를 입력해 주세요.";
+			$("#memid").val('');
+		}else{
+			result_memid.innerHTML = "";
+			$("#memid").val('0');
+		}
+		
+	});
+	
 	$('#pw').blur(function() {
 		var pw = document.getElementById("pw").value;
 		var pwCheck = document.getElementById("pwCheck").value;
