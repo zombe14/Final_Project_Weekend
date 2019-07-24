@@ -38,27 +38,44 @@ public class NoticeController {
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public ModelAndView noticeWrite(NoticeDTO noticeDTO, List<MultipartFile> files, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
+		
 		int result = noticeSerivceImpl.setWrite(noticeDTO, files, session);
+		
 		return mv;
 	}
 	
 	/*공지 업데이트*/
 	// 업데이트 폼으로 이동 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.GET)
-	public void noticeUpdate() throws Exception{
-		
+	public ModelAndView noticeUpdate(int num, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
+		mv.addObject("dto", boardDTO);
+		mv.addObject("board", "notice");
+		mv.addObject("boardTitle", "Notice");
+		mv.setViewName("board/boardUpdate");
+		return mv;
 	}
 	
 	// 업데이트 프로세스 진행 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
-	public void noticeUpdate(NoticeDTO noticeDTO) throws Exception{
-		
+	public void noticeUpdate(NoticeDTO noticeDTO, List<MultipartFile> files, HttpSession session) throws Exception{
+		noticeSerivceImpl.setUpdate(noticeDTO, files, session);
 	}
 	
 	// 공지 삭제 - admin
 	@RequestMapping(value = "noticeDelete", method = RequestMethod.GET)
-	public void noticeDelete(int num) throws Exception{
-		
+	public String noticeDelete(int num, HttpSession session) throws Exception{
+		String path = "./boardSelect?num="+num;
+		String message = "실패";
+		int res = noticeSerivceImpl.setDelete(num, session);
+		if(res>0) {
+			path = "redirect:./noticeList";
+			message="성공";
+		}
+		System.out.println(message);
+		return path;
 	}
 	
 	// 공지글보기 - all

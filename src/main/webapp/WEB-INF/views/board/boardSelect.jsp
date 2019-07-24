@@ -12,14 +12,24 @@
 
 	${dto.title}
 	<hr>
-	${dto.writer}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	${dto.writer}
 	${dto.reg_date}
 	<hr>
 	${dto.contents}
 	<hr>
-	${dto.hit}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	${dto.hit}
 	${dto.top}
 	
-	<a href="./${board}List">뒤로가기</a>
+	<a href="./${board}List">목록</a>
+	<a href="./${board}Update?num=${dto.num}">수정</a>
+	<a id = "delete">삭제</a>
+<script type="text/javascript">
+	$('#delete').click(function() {
+		var check = confirm('삭제하시겠습니까?');
+		if(check){
+			location.href="./${board}Delete?num=${dto.num}";
+		}
+	});
+</script>
 </body>
 </html>

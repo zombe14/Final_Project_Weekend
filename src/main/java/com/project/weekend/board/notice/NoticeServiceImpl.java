@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.BoardService;
+import com.project.weekend.board.files.FilesDAO;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.util.PageMaker;
 
@@ -17,6 +18,8 @@ public class NoticeServiceImpl implements BoardService {
 	
 	@Inject
 	private NoticeDAOImpl noticeDAOImpl;
+	@Inject
+	private FilesDAO filesDAO;
 
 	@Override
 	public int setWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
@@ -25,7 +28,6 @@ public class NoticeServiceImpl implements BoardService {
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
-		boardDTO = noticeDAOImpl.getSelect(boardDTO.getNum());
 		return noticeDAOImpl.setUpdate(boardDTO);
 	}
 
