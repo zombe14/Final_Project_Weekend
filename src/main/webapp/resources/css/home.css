@@ -184,9 +184,13 @@ strong{
 }
 
 .section_best{
-	padding: 42px 0 60px;
+	padding: 60px 0;
 }
 
+/* #main_banner{
+	width: 1200px;
+	margin: 0 auto;
+} */
 
 .ticket_main{
 	width: 1200px;
@@ -314,6 +318,11 @@ strong{
 	overflow: hidden;
 }
 
+.best_header{
+	height: 50px;
+	overflow: hidden;
+}
+
 .best_list{
 	margin-left:-18px;
 	overflow: hidden;
@@ -322,7 +331,7 @@ strong{
 .section_best .best_list li{
 	overflow: hidden;
 	margin: 0 0 18px 18px;
-	height: 400px;
+	height: 480px;
 	width: 286.5px;
 	position: relative;
 }
@@ -332,6 +341,7 @@ strong{
 	height: 60px;
 	border: 1px solid white;
 }
+
 
 
 
@@ -367,5 +377,3 @@ strong{
 	margin: 0 auto;
 	
 }
-
-
