@@ -18,14 +18,14 @@
 	
 	<insert id="setWrite" parameterType="java.util.List">
 		<selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
-			select notice_seq.nextval as id from dual
+			select files_seq.nextval as id from dual
 		</selectKey>
 		insert all
 		
 		<foreach collection="list" item="item" index="i" separator=" ">
 			into files values
 			(
-			notice_seq.nextval +#{i},
+			files_seq.nextval +#{i},
 			#{item.num},
 			#{item.fname},
 			#{item.oname}
