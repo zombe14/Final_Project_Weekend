@@ -257,26 +257,27 @@ strong{
 	width: 1200px;
 	position: relative;
 	margin-top: 30px;
+	float: left;
 }
 
 .rank_left{
 	float: left;
-	width: 802px;
+	width: 600px;
 	}
 
 .rank_right{
 	overflow: hidden;
-	width: 398px;
+	width: 600px;
 }
+
 .rank_cont{
 	border: 1px solid #e6e6e6;
     border-radius: 2px 0 0 2px;
-	width: 800px;
     height: 218px;
     overflow: hidden;
 }
 
-.rank_left .rank_cont ul{
+.rank_cont ul{
 	padding-top: 20px;
 }
 
