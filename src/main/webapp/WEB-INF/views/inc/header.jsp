@@ -22,7 +22,7 @@
 		<div class="h_middle">
 			<div class="logo">
 				<!-- <h1>로고 자리</h1> -->
-				<a href="#"><img alt="" src="./resources/images/home/logo.JPG"></a>
+				<a href="#"><img alt="" src="./resources/images/logo/logo2_2.png"></a>
 			</div>
 			<div class="search_wrap">
 				<input type="text" placeholder="검색어 입력" id="search">
@@ -80,10 +80,10 @@
 							class="fa fa-home fa-fw"></i>랭킹</a></li>
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>빈칸</a></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>빈칸</a></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>빈칸</a></li>
+					<li id="navbar-page" class="navp"><a href="./Mypage/MyPageBoard"><i
+							class="fa fa-home fa-fw"></i>MyPage</a></li>
+					<li id="navbar-page" class="navp"><a href="./admin/adminBoard"><i
+							class="fa fa-home fa-fw"></i>adminPage</a></li>
 				</ul>
 			</div>
 		</div>
