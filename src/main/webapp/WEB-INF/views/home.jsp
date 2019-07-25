@@ -20,7 +20,6 @@
 	<div id="footer">
 		<%@ include file="./inc/footer.jsp" %>
 	</div>
-
 </div>
 </body>
 </html>

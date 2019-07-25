@@ -1,0 +1,249 @@
+.joinWrap{
+	margin-top: 30px;
+    position: relative;
+}
+.joinWrap h2 {
+    padding-left: 10px;
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 500;
+    border-bottom: 2px solid #000;
+}
+.joinWrap .conTitle {
+    font-size: 20px;
+    padding-left: 10px;
+    margin-bottom: 13px;
+    font-weight: 500;
+    letter-spacing: -1px;
+}
+.joinWrap .conTitle i {
+    color: #ef3f43;
+    font-style: normal;
+}
+.joinWrap .tableBox table {
+    width: 100%;
+    position: relative;
+    table-layout: fixed;
+    border-top: 1px solid #b6bdc7;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.joinWrap .tableBox table caption {
+    display: none;
+}
+element.style {
+    width: 240px;
+}
+.joinWrap .tableBox table th {
+    padding: 20px 20px;
+    vertical-align: top;
+    background: #f4f6f9;
+    font-weight: 500;
+}	
+.joinWrap .tableBox table th, .joinWrap .tableBox table td {
+    text-align: left;
+    line-height: 1.4;
+    border-bottom: 1px solid #dfe5ed;
+    word-break: break-word;
+    font-size: 14px;
+    font-family: "Noto Sans KR", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 500;
+}
+.joinWrap .tableBox table td {
+    vertical-align: middle;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.joinWrap .tableBox table td {
+    text-align: left;
+    line-height: 1.4;
+    border-bottom: 1px solid #dfe5ed;
+    word-break: break-word;
+    font-size: 14px;
+    font-family: "Noto Sans KR", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 500;
+}
+.joinWrap .tableBox table td .phoneNumber .customSelect {
+    width: 80px;
+}
+
+.joinWrap .customSelect {
+    position: relative;
+    z-index: 4;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.joinWrap .tableBox table td select {
+    height: 33px;
+    line-height: 33px;
+    width: 168px;
+    border: 1px solid #dfe5ed;
+    font-family: "Noto Sans KR", "NanumGothic", "Nanum Gothic", "Malgun Gothic", "Apple SD Gothic Neo", dotum, sans-serif;
+}
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+.joinWrap .customSelect .newSelect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 33px;
+    width: 100%;
+    line-height: 30px;
+    border: 1px solid #b6bdc7;
+    background: url(../img/arrow_select.png) no-repeat right center;
+    padding: 0 34px 0 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    letter-spacing: 0;
+    color: #202020;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "Noto Sans KR", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
+}
+.joinWrap .customSelect .options {
+    display: none;
+    position: absolute;
+    top: 32px;
+    left: 0;
+    width: 100%;
+    max-height: 250px;
+    overflow: hidden;
+    overflow-y: auto;
+    border: 1px solid #333;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    letter-spacing: 0;
+    background-color: #fff;
+}
+.joinWrap .customSelect .options li:first-child {
+    border-top: none;
+}
+select {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: black;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-appearance: menulist;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    background-color: white;
+    cursor: default;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    border-radius: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(169, 169, 169);
+    border-image: initial;
+}
+#num_select{
+	width: 100px;
+	height: 28px;
+}
+.joinWrap .tableBox table td .phoneNumber .iText {
+    width: 70px;
+}
+#hypen_first{
+	margin-left: 24px;
+}
+.joinWrap .tableBox table th .essential {
+    color: #ef3f43;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.joinWrap .tableBox table td .mailArea .iText {
+    width: 150px;
+}
+.iCheckbox input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    margin-top: -3px;
+    margin-left: -3px;
+}
+.joinWrap .certifyButtonWrap {
+    text-align: center;
+    margin: 20px 0 30px;
+}
+.joinWrap .certifyButtonWrap button {
+    background: #ef3f43;
+    color: #fff;
+    font-size: 18px;
+    padding: 7px 20px 8px;
+}
+button {
+    margin: 0;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: "Noto Sans KR", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
+}
+.joinWrap  .iText {
+    width: 340px;
+}
+.iText {
+    padding: 0 8px;
+    height: 31px;
+    font-size: 14px;
+    border: 1px solid #dfe5ed;
+    vertical-align: middle;
+    font-family: "Noto Sans KR", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
+}
+.joinWrap .tableBox .btnblackCheck {
+    display: inline-block;
+    padding: 0 15px;
+    height: 33px;
+    margin-left: 5px;
+    line-height: 33px;
+    font-weight: 300;
+    background: #333;
+    color: #fff;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+.joinWrap .tableBox .alertMessage {
+    color: #ef3f43;
+    font-size: 12px;
+    margin-left: 5px;
+    font-weight: 300;
+}
+.joinWrap .tableBox table td label i {
+    font-size: 12px;
+    font-weight: 300;
+    color: #666;
+    font-style: normal;
+}
+.joinWrap .certifyButtonWrap_final button {
+    background: #ef3f43;
+    color: #fff;
+    font-size: 25px;
+    padding: 7px 20px 8px;
+}
+
+
+
+
+
+
+
+
+
+

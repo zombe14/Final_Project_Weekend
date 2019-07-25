@@ -8,8 +8,8 @@
 		<div class="h_wrap">
 			<div class="user_menu">
 				<div id="login">
-					<a href="#">로그인</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-					<a href="#">회원가입</a> <span class="log">|</span> <a href="#">고객센터</a>
+					<a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+					<a href="${pageContext.request.contextPath}/member/memberAgree">회원가입</a> <span class="log">|</span> <a href="#">고객센터</a>
 				</div>
 				<div id="logout" style="display: none">
 					<a href="#"></a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
@@ -80,10 +80,10 @@
 							class="fa fa-home fa-fw"></i>랭킹</a></li>
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>빈칸</a></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>빈칸</a></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>빈칸</a></li>
+					<li id="navbar-page" class="navp"><a href="./Mypage/MyPageBoard"><i
+							class="fa fa-home fa-fw"></i>MyPage</a></li>
+					<li id="navbar-page" class="navp"><a href="./admin/adminBoard"><i
+							class="fa fa-home fa-fw"></i>adminPage</a></li>
 				</ul>
 			</div>
 		</div>
