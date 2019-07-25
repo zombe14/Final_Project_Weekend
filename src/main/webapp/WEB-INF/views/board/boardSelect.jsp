@@ -19,10 +19,13 @@
 	<hr>
 	${dto.hit}
 	${dto.top}
+	<hr>
+	
 	
 	<a href="./${board}List">목록</a>
 	<a href="./${board}Update?num=${dto.num}">수정</a>
 	<a id = "delete">삭제</a>
+	
 <script type="text/javascript">
 	$('#delete').click(function() {
 		var check = confirm('삭제하시겠습니까?');

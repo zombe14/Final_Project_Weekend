@@ -1,5 +1,7 @@
 package com.project.weekend.board.notice;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,7 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.BoardService;
 import com.project.weekend.board.files.FilesDAO;
+import com.project.weekend.board.files.FilesDTO;
 import com.project.weekend.board.BoardDTO;
+import com.project.weekend.util.FileSaver;
 import com.project.weekend.util.PageMaker;
 
 @Service
@@ -20,10 +24,40 @@ public class NoticeServiceImpl implements BoardService {
 	private NoticeDAOImpl noticeDAOImpl;
 	@Inject
 	private FilesDAO filesDAO;
+	@Inject
+	private FileSaver fileSaver;
 
 	@Override
 	public int setWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
-		return noticeDAOImpl.setWrite(boardDTO);
+		// 글
+		int result = noticeDAOImpl.setWrite(boardDTO);
+		
+		// 첨부파일
+		String realPath = session.getServletContext().getRealPath("/resources/images/board");
+		
+		List<FilesDTO> list = new ArrayList<FilesDTO>();
+		
+		for(MultipartFile f : files) {
+			if(f.getOriginalFilename().length()>0) {
+				FilesDTO filesDTO = new FilesDTO();
+				
+				int num = boardDTO.getNum();
+				filesDTO.setNum(num);
+				String fname = fileSaver.saveFile(realPath, f);
+				filesDTO.setFname(fname);
+				String oname = f.getOriginalFilename();
+				filesDTO.setOname(oname);
+				
+				list.add(filesDTO);
+			}
+		}
+		
+		for(FilesDTO filesDTO : list) {
+			result = filesDAO.setWrite(filesDTO);
+		}
+		
+		System.out.println(realPath);
+		return result;
 	}
 
 	@Override
@@ -38,7 +72,8 @@ public class NoticeServiceImpl implements BoardService {
 
 	@Override
 	public BoardDTO getSelect(int num, HttpSession session) throws Exception {
-		return noticeDAOImpl.getSelect(num);
+		BoardDTO boardDTO = noticeDAOImpl.getSelect(num); 
+		return boardDTO;
 	}
 
 	@Override

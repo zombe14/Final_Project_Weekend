@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h3>${boardTitle} Write</h3>
-	<form action="./${board}Write" method="post" enctype="multipart/form-data">
+	<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
 	
 		<div>
 			<label for="title">제목<span>*</span></label>
@@ -37,6 +37,7 @@
 				</div>
 			</div>
 		</div>
+		<button>임시</button>
 		<input type="button" id="write" value="등록">
 	</form>
 	
