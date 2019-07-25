@@ -249,11 +249,6 @@ strong{
 .title img{
 	margin-top: -10px;
 }
-#wingright{
-	margin-left: 513px;
-}
-
-
 
 .first{
 	float: left;
@@ -340,9 +335,26 @@ strong{
 	padding: 10px 5px;
 	height: 60px;
 	border: 1px solid white;
+	
 }
 
+.main_right{
+	margin-left: 650px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	overflow: hidden;
+	width: 105px;
+}
 
+.main_right li{
+	border: 2px solid #e6e6e6;
+}
+
+.conta{
+	width:1250px;
+	margin: 0 auto;
+}
 
 
 /*  ------------------------Footer Css-------------------- */
