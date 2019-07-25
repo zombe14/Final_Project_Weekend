@@ -16,11 +16,13 @@
 </head>
 <body>
 	<div class="container">
+	<form action="./memberJoin" method="POST">
 		<div class="joinWrap">
 			<h2>회원가입</h2>
 			<div class="essentiaDataWrap">
 				<h3 class="conTitle">
 					<i>필수</i> 정보입력</h3>
+				
 				<div class="tableBox">
 					<table>
 						<caption>필수 정보입력</caption>
@@ -209,6 +211,7 @@
 					</button>
 				</div>
 		</div>
+		</form>
 	</div>
 
 </body>
