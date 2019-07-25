@@ -1,4 +1,4 @@
-package com.project.weekend.adminList;
+package com.project.weekend.adminBoard;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.project.weekend.board.BoardDTO;
 import com.project.weekend.board.BoardService;
 import com.project.weekend.util.PageMaker;
 
-public class aListServiceImpl implements BoardService{
+public class aBoardServiceImpl implements BoardService{
 
 	@Override
 	public int setWrite(BoardDTO boardVO, List<MultipartFile> files, HttpSession session) throws Exception {

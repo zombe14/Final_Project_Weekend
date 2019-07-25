@@ -1,4 +1,4 @@
-package com.project.weekend.adminList;
+package com.project.weekend.adminBoard;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import com.project.weekend.board.BoardDAO;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.util.PageMaker;
 
-public class aListDAO implements BoardDAO{
+public class aBoardDAO implements BoardDAO{
 
 	@Override
 	public int setWrite(BoardDTO boardVO) throws Exception {
