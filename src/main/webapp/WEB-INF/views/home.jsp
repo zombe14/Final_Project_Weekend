@@ -23,11 +23,7 @@ jQuery(document).ready(function() {
 <body>
 <div id="wrap">
 	<div id="header">
-<<<<<<< HEAD
-		<%@ include file="./inc/header.jsp" %> 
-=======
 		<c:import url="./inc/header.jsp"></c:import>
->>>>>>> master
 	</div>
 	<div id="container">
 		<c:import url="./inc/container.jsp"></c:import>
