@@ -4,11 +4,47 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="FilesMapper">
+
 	<insert id="setWrite" parameterType="FilesDTO">
-		<selectKey keyProperty="num" order="BEFORE" resultType="Integer">
-			SELECT NOTICE_SEQ.CURRVAL FROM DUAL
-		</selectKey>
-			INSERT INTO FILES(FNUM, NUM, FNAME, ONAME)
-			VALUES (FILES_SEQ.NEXVAL, #{num}, #{FNAME}, #{ONAME})		
+		INSERT INTO FILES(FNUM, NUM, FNAME, ONAME) VALUES(files_seq.nextval, #{num}, #{fname}, #{oname})
 	</insert>
+	
+	<update id="setUpdate" parameterType="FilesDTO">
+		UPDATE FILES SET FNAME = #{fname}, ONAME = #{oname} WHERE FNUM = #{fnum}
+	</update>
+	
+	<select id="getList" parameterType="Integer" resultType="FilesDTO">
+		SELECT * FROM FILES WHERE NUM=#{num}
+	</select>
+	
+	<delete id="setDelete" parameterType="Integer">
+		DELETE FILES WHERE FNUM=#{fnum}
+	</delete>
+	
+	<delete id="setDeleteAll" parameterType="Integer">
+		DELETE FILES WHERE NUM=#{num}
+	</delete>
+
+<!-- 	<insert id="setWrite" parameterType="java.util.list">
+		<selectKey keyProperty="fnum" order="BEFORE" resultType="Integer">
+			SELECT FILES_SEQ.NEXTVAL AS fnum FROM DUAL
+		</selectKey>
+		INSERT ALL
+		
+		<foreach collection="list" item="item" index="i" separator=" ">
+			INTO FILES VALUES
+			(
+				FILES_SEQ.NEXTVAL + #{i},
+				#{item.num},
+				#{item.fname},
+				#{item.oname}
+			)
+		</foreach>
+			SELECT * FROM DUAL
+	</insert> -->
+	
+<!-- 	
+	
+	 -->
+	
 </mapper>

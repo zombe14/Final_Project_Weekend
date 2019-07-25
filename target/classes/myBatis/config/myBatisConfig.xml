@@ -14,8 +14,7 @@
 		<typeAlias type="com.project.weekend.file.FileDTO" alias="FileDTO"/>
 		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.project.weekend.util.PageMaker" alias="PageMaker"/>
-		<typeAlias type="java.lang.String" alias="String"/>
-		
+		<typeAlias type="java.lang.String" alias="String"/>		
 		
 	</typeAliases>
 </configuration>
