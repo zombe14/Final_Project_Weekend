@@ -13,6 +13,15 @@
 	<select id="getId" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
 		select id from member where id=#{id} 
 	</select>
-	
+	<resultMap type="com.project.weekend.member.MemberDTO" id="member">
+		<id property="id" column="id"/>
+		<result property="pw" column="pw"/>
+		<result property="name" column="name"/>
+		<result property="nickname" column="nickname"/>
+		<result property="email" column="email"/>
+		<result property="age" column="age"/>
+		<result property="phone" column="phone"/>
+		<result property="grade" column="grade"/>	
+	</resultMap>
 	
 </mapper>
