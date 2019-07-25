@@ -15,31 +15,31 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="./resources/images/home/festival1.jpg"
+				<img src="./resources/images/home/닭갈비축제.png"
 					style="height: 50%;" class="img-responsive center-block"
 					alt="festival1">
 				<div class="carousel-caption">
-					<h3>Los Angeles</h3>
+					<h3>닭갈비 축제</h3>
 					<p>LA is always so much fun!</p>
 				</div>
 			</div>
 
 			<div class="item">
-				<img src="./resources/images/home/festival2.jpeg"
+				<img src="./resources/images/home/신촌물총축제.jpg"
 					style="height: 50%;" class="img-responsive center-block"
 					alt="festival2">
 				<div class="carousel-caption">
-					<h3>Chicago</h3>
+					<h3>신촌 물총 축제</h3>
 					<p>Thank you, Chicago!</p>
 				</div>
 			</div>
 
 			<div class="item">
-				<img src="./resources/images/home/festival3.jpeg"
+				<img src="./resources/images/home/냉이축제.jpg"
 					style="height: 50%;" class="img-responsive center-block"
 					alt="festival3">
 				<div class="carousel-caption">
-					<h3>New York</h3>
+					<h3>냉이 축제</h3>
 					<p>We love the Big Apple!</p>
 				</div>
 			</div>

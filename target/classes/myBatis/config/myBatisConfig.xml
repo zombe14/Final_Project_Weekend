@@ -7,6 +7,7 @@
 		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.project.weekend.board.files.FilesDTO" alias="FilesDTO"/>
 		
+
 		<!-- 공통 -->
 		<typeAlias type="java.lang.Integer" alias="Integer"/>
 		<typeAlias type="com.project.weekend.board.BoardDTO" alias="BoardDTO"/>
@@ -14,6 +15,7 @@
 		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.project.weekend.util.PageMaker" alias="PageMaker"/>
 		<typeAlias type="java.lang.String" alias="String"/>
-
+		
+		
 	</typeAliases>
 </configuration>
