@@ -1,29 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:import url="../temp/boot.jsp"></c:import>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<c:import url="../temp/boot.jsp"/>
 <title>[${boardTitle}]${dto.title}</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="shortcut icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 </head>
 <body>
-
-	${dto.title}
-	<hr>
-	${dto.writer}
-	${dto.reg_date}
-	<hr>
-	${dto.contents}
-	<hr>
-	${dto.hit}
-	${dto.top}
+	<div id="wrap">
+		<div id="header">
+			<c:import url="../inc/header.jsp"></c:import>
+		</div>
+		<div id="container">
+			<div class="inner">
+				num : ${dto.num} 
+				<br> 
+				title : ${dto.title} 
+				<br> 
+				writer : ${dto.writer} 
+				<br> 
+				reg_Date : ${dto.reg_date} 
+				<br>
+				contents : ${dto.contents} 
+				<br> hit : ${dto.hit} 
+				<br> top : ${dto.top}
+				<br> 
+				<a href="./${board}List">목록</a> 
+				<a href="./${board}Update?num=${dto.num}">수정</a> 
+				<a id="delete">삭제</a>
+			</div>
+		</div>
+		<div id="footer">
+			<c:import url="../inc/footer.jsp"></c:import>
+		</div>
+	</div>
 	
-	<a href="./${board}List">목록</a>
-	<a href="./${board}Update?num=${dto.num}">수정</a>
-	<a id = "delete">삭제</a>
-<script type="text/javascript">
+	<!-- script -->
+	<script type="text/javascript">
 	$('#delete').click(function() {
 		var check = confirm('삭제하시겠습니까?');
 		if(check){

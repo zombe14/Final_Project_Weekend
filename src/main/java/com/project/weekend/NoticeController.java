@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.board.notice.NoticeServiceImpl;
+import com.project.weekend.file.FileDTO;
 import com.project.weekend.util.PageMaker;
 
 @Controller
@@ -35,12 +36,18 @@ public class NoticeController {
 	}
 	
 	// 글쓰기 프로세스 진행 - admin
+	// ** messageMove 만들어서 alert, path 수정하기
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public ModelAndView noticeWrite(NoticeDTO noticeDTO, List<MultipartFile> files, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
-		
+		String path = "redirect:./noticeList";
 		int result = noticeSerivceImpl.setWrite(noticeDTO, files, session);
+		
+		if(result>0) {
+			mv.setViewName(path);
+		} else {
+			mv.setViewName(path);
+		}
 		
 		return mv;
 	}

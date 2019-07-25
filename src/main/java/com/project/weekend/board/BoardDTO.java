@@ -1,6 +1,9 @@
 package com.project.weekend.board;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.project.weekend.file.FileDTO;
 
 public class BoardDTO {
 	private int num;
@@ -9,6 +12,7 @@ public class BoardDTO {
 	private String contents;
 	private Date reg_date;
 	private int hit;
+	
 	public int getNum() {
 		return num;
 	}
@@ -45,4 +49,5 @@ public class BoardDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	
 }
