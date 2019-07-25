@@ -7,6 +7,7 @@
 <head>
 	<title>Home</title>
 	<link rel="stylesheet" href="css/home.css">
+	<link rel="shortcut icon" type="image/x-icon" href="./resources/images/logo/logo.png" />
 </head>
 <body>
 <div id="wrap">
@@ -19,7 +20,6 @@
 	<div id="footer">
 		<%@ include file="./inc/footer.jsp" %>
 	</div>
-
 </div>
 </body>
 </html>

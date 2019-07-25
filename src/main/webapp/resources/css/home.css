@@ -3,12 +3,26 @@ body, input, textarea, select button, table, p, div{
 	font-size: 12px;
 }
 
-body{
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
+    margin: 0;
+    padding: 0;
+    
+}
+#wrap{
+	overflow: hidden;
+	min-height:100%;
+	min-width: 1200px;
+}
+
+html, body{
 	height: 100%;
 }
 
 .inner{
 	color: #757575;
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
 }
 
 a {
@@ -25,12 +39,12 @@ ul{
 	list-style: none;
 }
 
-strong{
-	font-size: 25px;
+li{
+	float: left;
 }
 
-#container{
-	height: 100%;
+strong{
+	font-size: 25px;
 }
 
 #header{
@@ -38,18 +52,23 @@ strong{
 	position: relative;
 }
 
+#container{
+	margin: 0;
+	overflow: hidden;
+}
 #footer{
-	margin-top: 0px;
+	
 	height: 190px;
 	background: #333;
 	padding-top: 50px;
 	position: relative;
+	overflow: hidden;
 }
 
 /* ----------------------------Header Css---------------- */
 
 .h_wrap{
-	width: 74%;
+	width: 78%;
 }
 
 .user_menu{
@@ -154,6 +173,176 @@ strong{
 
 /*  -----------------------container Css----------------------- */
 
+.section_top{
+	position: relative;
+	padding: 50px 0 0;
+}
+
+.section_rank{
+	position: relative;
+	padding: 50px 0 0;	
+}
+
+.section_best{
+	padding: 60px 0;
+}
+
+/* #main_banner{
+	width: 1200px;
+	margin: 0 auto;
+} */
+
+.ticket_main{
+	width: 1200px;
+	position: relative;
+	margin-top: 30px;
+}
+
+.ticket_left{
+	float: left;
+	width: 802px;
+	}
+
+.ticket_right{
+	overflow: hidden;
+	width: 398px;
+}
+.ticket_cont{
+	border: 1px solid #e6e6e6;
+    border-radius: 2px 0 0 2px;
+	width: 800px;
+    height: 218px;
+    overflow: hidden;
+}
+
+.ticket_left .ticket_cont ul{
+	padding-top: 20px;
+}
+
+.ticket_cont li.first{
+	position: relative;
+    top: -20px;
+    left: 0;
+    width: 179px;
+    height: 218px;
+    border-right: 1px solid #e6e6e6;
+    padding: 0;
+}
+
+.ticket_cont li{
+	padding-left: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	height: 36px;
+	line-height: 36px;
+}
+
+.ticket_header{
+	height: 50px;
+	overflow: hidden;
+}
+
+.title{
+	margin-left:8px;
+}
+
+.title img{
+	margin-top: -10px;
+}
+#wingright{
+	margin-left: 513px;
+}
+
+
+
+.first{
+	float: left;
+}
+
+/* rank */
+
+.rank_main{
+	width: 1200px;
+	position: relative;
+	margin-top: 30px;
+
+	overflow: hidden;
+}
+
+.rank_left{
+	float: left;
+	width: 600px;
+	overflow: hidden;
+	}
+
+.rank_right{
+	float:left;
+	width: 600px;
+	overflow: hidden;
+}
+
+.rank_cont{
+	border: 1px solid #e6e6e6;
+    border-radius: 2px 0 0 2px;
+    width: 598px;
+    height: 218px;
+    overflow: hidden;
+}
+
+.rank_cont ul{
+	padding-top: 20px;
+}
+
+.rank_cont li.first{
+	position: relative;
+    top: -20px;
+    left: 0;
+    width: 179px;
+    height: 218px;
+    border-right: 1px solid #e6e6e6;
+    padding: 0;
+}
+
+.rank_cont li{
+	padding-left: 30px;
+	font-size: 15px;
+	font-weight: bold;
+	height: 36px;
+	line-height: 36px;
+	letter-spacing: 2;
+	float: left;
+}
+
+.rank_header{
+	height: 50px;
+	overflow: hidden;
+}
+
+.best_header{
+	height: 50px;
+	overflow: hidden;
+}
+
+.best_list{
+	margin-left:-18px;
+	overflow: hidden;
+}
+
+.section_best .best_list li{
+	overflow: hidden;
+	margin: 0 0 18px 18px;
+	height: 480px;
+	width: 286.5px;
+	position: relative;
+}
+
+.list_info{
+	padding: 10px 5px;
+	height: 60px;
+	border: 1px solid white;
+}
+
+
 
 
 /*  ------------------------Footer Css-------------------- */
@@ -186,5 +375,5 @@ strong{
 .f_inner{
 	width: 600px;
 	margin: 0 auto;
+	
 }
-

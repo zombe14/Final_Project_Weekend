@@ -118,16 +118,19 @@
 								<th scope="row">
 									<span class="essential">*</span>아이디 </th>
 								<td>
-									<input type="text" name="memId" maxlength="20" class="iText" title="이름" id="idChk" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자" onchange="javascript:idChange(MemberJoinForm);" onblur="javascript:checkViewMemId()" onclick="javascript:chkAuth();changeText('id',this);">
-									<input type="hidden" name="chkMemId" value="">
-									<!-- 안내문구 레이어팝업 -->
+									<input type="text" name="memId" maxlength="20" class="iText" title="idCheck" id="idCheck" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자">
+									<input type="hidden" name="chkMemId" value="" id="memidCheck">
 									<div class="infoLayerBox" style="display:none;top:46px;">
 										<div class="infoContent">아이디를 정확히 입력하여 주십시오.
 											<br>띄어쓰기 없는 영문, 숫자로만 6~20자.</div>
 									</div>
-									<!-- // 안내문구 레이어팝업 -->
 									<a href="javascript:searchMemId();" class="btnblackCheck layerOpenButton">중복확인</a>
-									
+									<div id="result_memid">
+										
+									</div>
+									<div id="memid">
+										
+									</div>
 								</td>
 							</tr>
 							<tr>
@@ -137,11 +140,17 @@
 								</th>
 								<td>
 									<div class="passwordWrap">
-										<input type="password" name="pwd" value="" class="iText" title="비밀번호" id="passWord" onblur="javascript:pwdBlur(MemberJoinForm);" onclick="javascript:chkAuth();">
-										<!-- 안내문구 레이어팝업 -->
+										<input type="password" name="pw" value="" class="iText" title="pw" id="pw" >
+										<div id="pww">
+											
+										</div>
 										<div class="infoLayerBox" style="display:none;top:46px;">
 											<div class="infoContent">영문, 숫자, 특수문자를 조합하여 8~12자까지 설정해 주세요.</div>
 										</div>
+										<div id="result_pw" class="result_font">
+										
+										</div>
+	
 										<!-- // 안내문구 레이어팝업 -->
 										<span class="alertMessage">영문, 숫자, 특수문자를 조합하여 8~12자까지 설정해 주세요.</span>
 									</div>
@@ -152,11 +161,12 @@
 									<span class="essential">*</span>비밀번호 확인 </th>
 								<td>
 									<div class="passwordWrap">
-										<input type="password" name="pwdChk" class="iText" title="비밀번호" id="passwdChk" onblur="javascript:chkMemPwd();" onclick="javascript:chkAuth();">
-										<!-- 안내문구 레이어팝업 -->
-										<div class="infoLayerBox" style="display:none;top:46px;">
-											<div class="infoContent">입력하신 비밀번호와 다릅니다.
-												<br>동일한 비밀번호를 정확하게 다시 입력해 주세요.</div>
+										<input type="password" name="pwCheck" class="iText" title="pwCheck" id="pwCheck">
+										<div id="pwwcheck">
+											
+										</div>
+										<div id="result_pwpw" class="result_font">
+										
 										</div>
 										<!-- // 안내문구 레이어팝업 -->
 										<span class="alertMessage">비밀번호 재입력</span>
@@ -167,7 +177,16 @@
 								<th scope="row">
 									<span class="essential">*</span>이름 </th>
 								<td>
-									<input type="text" name="memNm" class="iText" title="이름" id="nameChk" minlength="4" maxlength="20" onchange="javascript:authChange(MemberJoinForm);" onclick="javascript:chkAuth();"> </td>
+									<input type="text" name="memName" class="iText" title="memName" id="memName" minlength="4" maxlength="20"> 
+									<div id="memNamecheck">
+										
+									</div>
+									<div id="result_memNamecheck">
+											
+									</div>
+									</td>
+									
+									
 							</tr>
 							<tr>
 								<th scope="row">

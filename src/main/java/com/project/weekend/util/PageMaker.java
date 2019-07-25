@@ -15,8 +15,10 @@ public class PageMaker {
 	private int curBlock;
 	private int startNum;
 	private int lastNum;
-
 	
+	public void setPerPage(int perPage) {
+		this.perPage = perPage;
+	}
 	public int getTotalBlock() {
 		return totalBlock;
 	}
@@ -68,7 +70,6 @@ public class PageMaker {
 		this.startRow = (this.getCurPage()-1)*this.perPage+1;
 		this.lastRow = this.curPage*perPage;
 	}
-	
 	public void makePage(int totalCount) {
 		//1. 전체 글의 갯수
 		//2. totalPage 구하기

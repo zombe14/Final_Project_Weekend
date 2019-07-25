@@ -1,7 +1,17 @@
 package com.project.weekend;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping(value = "/admin/")
 public class AdminController {
 	
+	//////////////admin board; //////////////
+	@RequestMapping(value = "adminBoard")
+	public String adminBoard() throws Exception{
+		return "./admin/adminBoard";
+	}
 	//////////////user 관리; //////////////
 	// user list;
 	public void userList() throws Exception{}
