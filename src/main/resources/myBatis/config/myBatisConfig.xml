@@ -6,13 +6,21 @@
 		<!-- 난슬 -->
 		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
 
+		<typeAlias type="com.project.weekend.board.files.FilesDTO" alias="FilesDTO"/>
+		<!-- 상혁 -->
+		<!-- 임시용/ 택수씨 선언하면 지울 예정 -->
+		<typeAlias type="com.project.weekend.member.MemberDTO" alias="MemberDTO"/>
+
+
 		<!-- 공통 -->
 		<typeAlias type="java.lang.Integer" alias="Integer"/>
 		<typeAlias type="com.project.weekend.board.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.project.weekend.file.FileDTO" alias="FileDTO"/>
 		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.project.weekend.util.PageMaker" alias="PageMaker"/>
-		<typeAlias type="java.lang.String" alias="String"/>		
+
+		<typeAlias type="java.lang.String" alias="String"/>
+
 		
 	</typeAliases>
 </configuration>

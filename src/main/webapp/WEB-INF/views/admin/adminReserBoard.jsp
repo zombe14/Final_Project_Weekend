@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>게시판 관리</title>
+  <title>예약 관리</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <c:import url="../temp/adminBoot.jsp"/>
 <c:import url="../../../resources/css/adminBoard.css"/>
@@ -15,13 +15,9 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="#">공지사항</a></p>
-      <p><a href="#">페스티벌</a></p>
-      <p><a href="#">공연</a></p>
-      <p><a href="#">페스티벌 후기</a></p>
-      <p><a href="#">공연 후기</a></p>
-      <p><a href="#">관리자 추천</a></p>
-      <p><a href="#">QnA</a></p>
+      <p><a href="#">예약 현황</a></p>
+      <p><a href="#">몰라</a></p>
+      <p><a href="#">뭐넣지</a></p>
     </div>
 <!-- left bar 끝 -->
 <!-- body 시작 -->
