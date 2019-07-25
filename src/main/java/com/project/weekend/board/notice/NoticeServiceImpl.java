@@ -31,7 +31,10 @@ public class NoticeServiceImpl implements BoardService {
 	public int setWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
 		// 글
 		int result = noticeDAOImpl.setWrite(boardDTO);
-		System.out.println(result);
+		
+		System.out.println(boardDTO.getContents());
+		System.out.println(boardDTO.getNum());
+		
 		// 첨부파일
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 		
@@ -39,23 +42,27 @@ public class NoticeServiceImpl implements BoardService {
 		
 		for(MultipartFile f : files) {
 			if(f.getOriginalFilename().length()>0) {
-				FileDTO filesDTO = new FileDTO();
+				FileDTO fileDTO = new FileDTO();
 				
 				int num = boardDTO.getNum();
+				
 				System.out.println(num);
-				filesDTO.setNum(num);
+				
+				fileDTO.setNum(num);
 				
 				String fname = fileSaver.saveFile(realPath, f);
-				filesDTO.setFname(fname);
+				fileDTO.setFname(fname);
 				String oname = f.getOriginalFilename();
-				filesDTO.setOname(oname);
+				fileDTO.setOname(oname);
 				
-				list.add(filesDTO);
+				list.add(fileDTO);
 			}
 		}
 		
-		result = fileDAO.setWrite(list);
-		System.out.println(result);
+		if(files.size()>0) {			
+			result = fileDAO.setWrite(list);
+		}
+
 		return result;
 	}
 

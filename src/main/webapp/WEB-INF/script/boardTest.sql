@@ -20,3 +20,5 @@ WHERE NUM = 96
 select * from files order by fnum desc
 
 -- notice/file 따로 받아서 셀렉트 할때 조인으로 받아서 boardDTO? 로 넘기기
+
+-- noticeServiceImpl.serWrite.fileDTO.setNum. boardDTO의 num 가져오는법 ?

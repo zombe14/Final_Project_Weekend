@@ -43,6 +43,7 @@
 				</div>
 			</div>
 		</div>
+		<button>임시</button>
 		<input type="button" id="write" value="등록">
 	</form>
       	</div>
