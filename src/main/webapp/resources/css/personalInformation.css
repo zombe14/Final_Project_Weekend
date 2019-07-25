@@ -1,0 +1,55 @@
+.inner{
+	padding: 100px 0;	
+}
+
+.front_tab{
+	overflow: hidden;
+}
+
+.front_tab li{
+	/* float: left; */
+	border: 1px solid #999999;
+    width: 400;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    height: 50;
+    padding: 8;
+}
+
+.front_tab li a.tab1{
+	width: 247px;
+}
+
+.tit{
+	margin: 50px 0;
+}
+
+.front_tit {
+    float: left;
+    width: 200px;
+    height: 21px;
+    margin: 0 11px 0 3px;
+    color: black;
+    font-weight: bold;
+}
+
+.front_area{
+	margin-top: 30px;
+    padding: 40px 40px;
+    border: 1px solid #dedede;
+    border-radius: 2px;
+    background: #fff;
+    line-height: 18px;
+}
+
+.front_area h4{
+	font-size: 20px;
+	color: #000;
+	margin: 20px 0;
+}
+
+.front_area p{
+	margin-top: 19px;
+	color: #767676;
+}
