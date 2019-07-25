@@ -11,9 +11,9 @@
 					<span>|</span>
 					<a href="${pageContext.request.contextPath}/footer/personalInformation">개인정보처리방침</a>
 					<span>|</span>
-					<a href="${pageContext.request.contextPath}/footer/use">이용약관</a>
-					<span>|</span>
 					<a href="${pageContext.request.contextPath}/footer/youth">청소년보호정책</a>
+					<span>|</span>
+					<a href="${pageContext.request.contextPath}/footer/use">이용약관</a>
 					<span>|</span>
 					<a href="#">티켓판매안내</a>
 					<span>|</span>
