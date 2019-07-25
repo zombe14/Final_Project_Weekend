@@ -9,7 +9,7 @@
   <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
-  <script type="text/javascript" src="../resources/js/memberJoin.js?ver=2"></script>
+  <script type="text/javascript" src="../resources/js/memberJoin.js"></script>
 <title>Insert title here</title>  
 </head>
 <body>
