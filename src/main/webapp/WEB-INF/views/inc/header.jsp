@@ -22,11 +22,11 @@
 		<div class="h_middle">
 			<div class="logo">
 				<!-- <h1>로고 자리</h1> -->
-				<a href="./"><img alt="" src="./resources/images/logo/logo2_2.png"></a>
+				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo2_2.png"></a>
 			</div>
 			<div class="search_wrap">
 				<input type="text" placeholder="검색어 입력" id="search">
-				<a href="#" class="btn_search"><img src="./resources/images/home/h_search.png" style="width: 20px;"></a>
+				<a href="#" class="btn_search"><img src="${pageContext.request.contextPath}/resources/images/home/h_search.png" style="width: 20px;"></a>
 			</div>
 			<!-- <div class="search">
 		</div> -->
