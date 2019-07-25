@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="utf-8">
+  <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
-	<c:import url="../temp/boot.jsp"></c:import>
-  <script type="text/javascript" src="../resources/js/memberJoin.js"></script>
-<title>Insert title here</title>
+  <script type="text/javascript" src="../resources/js/memberJoin.js?ver=1"></script>
+<title>Insert title here</title>  
 </head>
 <body>
 	<div class="container">
@@ -44,11 +44,15 @@
 											</select>
 										</div>
 										<span class="hypen" id="hypen_first">-</span>
-										<input type="text" class="iText" id="hp2" name="hp2" title="앞번호4자리" onkeyup="moveFocus(4,this,this.form.hp3);" maxlength="4" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" style="IME-MODE:disabled;">
+										<input type="text" class="iText" id="hp2" name="hp2" title="앞번호4자리" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="4"  style="IME-MODE:disabled;">
 										<span class="hypen">-</span>
-										<input type="text" class="iText" id="hp3" name="hp3" title="뒷번호4자리" maxlength="4" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" style="IME-MODE:disabled;"> </div>
-										<input type="hidden" name="hp" value="">
+										<input type="text" class="iText" id="hp3" name="hp3" title="뒷번호4자리" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" style="IME-MODE:disabled;"> </div>
+								 		<input type="hidden" name="hp" value="">
+								<div id="phone" title="phone">
+									
+								</div>
 								</td>
+								
 							</tr>
 							<tr>
 								<th scope="row">

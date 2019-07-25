@@ -18,9 +18,6 @@ public class MemberDAO {
 	}
 	
 	
-
-	
-	
 	public int setWrite(MemberDTO memberDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setWrite", memberDTO);
 	}

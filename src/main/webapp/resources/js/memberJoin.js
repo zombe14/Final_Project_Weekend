@@ -1,4 +1,8 @@
+
+
+
 $(function() {
+	
 	$("#memEmail_select").blur(function() {
 		var t = true;
 		var f = true;
@@ -45,6 +49,9 @@ $(function() {
 		}
 	});
 	$('.certifyButtonWrap').click(function() {
+		
+		
+		
 		var a = $('#num_select').val();
 		var b = $('#hp2').val();
 		var c = $('#hp3').val();
@@ -113,6 +120,11 @@ $(function() {
 	});
 	
 	$("#memName").blur(function() {
+		var num_select = $("#num_select").val();
+		var hp2 = $("#hp2").val();
+		var hp3 = $("#hp3").val();
+		var phone = num_select + hp2 + hp3;
+		alert(phone);
 		var memName = $(this).val();
 		if(memName.length==0){
 			result_memNamecheck.innerHTML = "이름을 입력하세요";
@@ -123,6 +135,11 @@ $(function() {
 		}
 	});
 	$(".certifyButtonWrap_final").click(function() {
+		var num_select = $("#num_select").val();
+		var hp2 = $("#hp2").val();
+		var hp3 = $("#hp3").val();
+		var phone = num_select + hp2 + hp3;
+		
 		var pw = document.getElementById("pw").value;
 		var pwCheck = document.getElementById("pwCheck").value;
 		var pww = $("#pww").val();

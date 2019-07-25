@@ -6,6 +6,12 @@
 <mapper namespace="MemberMapper">
 	
 	
+	
+	
+	<delete id="setDelete" parameterType="java.util.List">
+		delete member where id=#{id}
+	</delete>
+	
 	<insert id="setWrite" parameterType="com.project.weekend.member.MemberDTO">
 		insert into member values(#{id}, #{pw}, #{name}, #{nickname}, #{email}, #{age}, #{phone}, 1)
 	</insert>
@@ -13,6 +19,8 @@
 	<select id="getId" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
 		select id from member where id=#{id} 
 	</select>
+	
+	
 	<resultMap type="com.project.weekend.member.MemberDTO" id="member">
 		<id property="id" column="id"/>
 		<result property="pw" column="pw"/>
@@ -23,5 +31,4 @@
 		<result property="phone" column="phone"/>
 		<result property="grade" column="grade"/>	
 	</resultMap>
-	
 </mapper>
