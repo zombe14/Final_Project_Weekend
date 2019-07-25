@@ -9,12 +9,12 @@
   <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
-  <script type="text/javascript" src="../resources/js/memberJoin.js?ver=1"></script>
+  <script type="text/javascript" src="../resources/js/memberJoin.js?ver=2"></script>
 <title>Insert title here</title>  
 </head>
 <body>
 	<div class="container">
-	<form action="./memberJoin" method="POST">
+	<form action="./memberJoin"  id="frm">
 		<div class="joinWrap">
 			<h2>회원가입</h2>
 			<div class="essentiaDataWrap">
@@ -91,6 +91,9 @@
 												
 											</select>
 										</div>
+										<div id="email">
+											
+										</div>
 									</div>
 									<div class="mailAreaMessage">
 										<span class="alertMessage" style="display:none; margin-bottom:6px;"></span>
@@ -122,7 +125,7 @@
 								<th scope="row">
 									<span class="essential">*</span>아이디 </th>
 								<td>
-									<input type="text" name="memId" maxlength="20" class="iText" title="idCheck" id="idCheck" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자">
+									<input type="text" name="id" maxlength="20" class="iText" title="id" id="id" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자">
 									<input type="hidden" name="chkMemId" value="" id="memidCheck">
 									<div class="infoLayerBox" style="display:none;top:46px;">
 										<div class="infoContent">아이디를 정확히 입력하여 주십시오.
@@ -181,7 +184,7 @@
 								<th scope="row">
 									<span class="essential">*</span>이름 </th>
 								<td>
-									<input type="text" name="memName" class="iText" title="memName" id="memName" minlength="4" maxlength="20"> 
+									<input type="text" name="name" class="iText" title="name" id="name" minlength="4" maxlength="20"> 
 									<div id="memNamecheck">
 										
 									</div>
@@ -208,6 +211,7 @@
 					</table>
 				</div>
 				<div class="certifyButtonWrap_final certifyButtonWrap">
+				<input type="submit" value="가입하기">
 					<button>
 						회원가입
 					</button>

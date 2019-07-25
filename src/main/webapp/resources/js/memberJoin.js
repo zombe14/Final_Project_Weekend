@@ -1,6 +1,4 @@
 
-
-
 $(function() {
 	
 	$("#memEmail_select").blur(function() {
@@ -9,7 +7,8 @@ $(function() {
 		var email_last = $(this).val();
 		$('#email_adress').val(email_last);
 		var email_first = $("#emailFirst").val();
-		var email= 'email_last' +'@'+'email_first';
+		var email= email_first+'@'+email_last;
+		$('#email').val(email);
 		if(email_last==''){
 			t =false;
 		}else{
@@ -31,7 +30,8 @@ $(function() {
 		var f = true;
 		var email_last=$('#memEmail_select').val();
 		var email_first = $("#emailFirst").val();
-		var email= 'email_last' +'@'+'email_first';
+		var email= email_first+'@'+email_last;
+		$('#email').val(email);
 		if(email_last==''){
 			t =false;
 		}else{
@@ -73,9 +73,9 @@ $(function() {
 		}
 	});
 	
-	$("#idCheck").blur(function() {
-		var idCheck = document.getElementById("idCheck").value;
-		if(idCheck.length==0){
+	$("#id").blur(function() {
+		var id = document.getElementById("id").value;
+		if(id.length==0){
 			result_memid.innerHTML = "아이디를 입력해 주세요.";
 			$("#memid").val('');
 		}else{
@@ -119,12 +119,11 @@ $(function() {
 		}
 	});
 	
-	$("#memName").blur(function() {
+	$("#name").blur(function() {
 		var num_select = $("#num_select").val();
 		var hp2 = $("#hp2").val();
 		var hp3 = $("#hp3").val();
 		var phone = num_select + hp2 + hp3;
-		alert(phone);
 		var memName = $(this).val();
 		if(memName.length==0){
 			result_memNamecheck.innerHTML = "이름을 입력하세요";
@@ -151,6 +150,9 @@ $(function() {
 			finalpw = true;
 			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&finalpw){
 				alert("회원가입성공");
+				$("frm").submit();
+				location.href="./memberJoin";
+
 			}else{
 				alert("비밀번호나 이름을 확인해주세요");
 			}

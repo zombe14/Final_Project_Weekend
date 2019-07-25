@@ -12,7 +12,7 @@
 <body>
 <div id="wrap">
 	<div id="header">
-		<%@ include file="./inc/header.jsp" %>
+		<%@ include file="./inc/header.jsp" %> 
 	</div>
 	<div id="container">
 		<%@ include file="./inc/container.jsp" %>
