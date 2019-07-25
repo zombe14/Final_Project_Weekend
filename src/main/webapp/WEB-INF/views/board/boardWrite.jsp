@@ -1,19 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:import url="../temp/boot.jsp"></c:import>
+<c:import url="../temp/summernote.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<c:import url="../temp/boot.jsp"/>
-<c:import url="../temp/summernote.jsp"/>
 <script src="../resources/js/board/boardWrite.js"></script>
-
-
-<title>${boardTitle} Write</title>
+<title>${boardTitle} Update</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 </head>
 <body>
-	<h3>${boardTitle} Write</h3>
-	<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+   <div id="wrap">
+      <div id="header">
+      <c:import url="../inc/header.jsp"></c:import>
+      </div>
+      <div id="container">
+      	<div class="inner">
+      		<form action="./${board}Write" method="post" enctype="multipart/form-data">
 	
 		<div>
 			<label for="title">제목<span>*</span></label>
@@ -21,7 +27,7 @@
 		</div>
 		<div>
 			<label for="writer">작성자<span>*</span></label>
-			<input type="text" name="writer" value="세션에서 아이디나 닉네임으로 'ADMIN' 받기 + readOnly추가">
+			<input type="text" name="writer" placeholder="session nickname (Admin) + readonly">
 		</div>
 		<div>
 			<label for="contents">내용<span>*</span></label>
@@ -37,11 +43,15 @@
 				</div>
 			</div>
 		</div>
-		<button>임시</button>
 		<input type="button" id="write" value="등록">
 	</form>
-	
-<!-- script import section -->
+      	</div>
+      </div>
+      <div id="footer">
+      <c:import url="../inc/footer.jsp"></c:import>
+      </div>
+   </div>
+<!-- script -->
 <script src="../resources/js/summernote.js"></script>
 </body>
 </html>

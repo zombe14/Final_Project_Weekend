@@ -3,7 +3,7 @@
 <!-- Footer -->
 	<div id="f_container">
 		<div class="f_logo">
-			<img alt="" src="./resources/images/logo/logo2_3.png">
+			<img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo2_3.png">
 		</div>
 		<div class="f_inner">
 			<div class="f_menu">
