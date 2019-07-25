@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container">
-	<form action="./memberJoin"  id="frm">
+	<form action="./memberJoin"  id="frm" method="POST">
 		<div class="joinWrap">
 			<h2>회원가입</h2>
 			<div class="essentiaDataWrap">
@@ -211,8 +211,7 @@
 					</table>
 				</div>
 				<div class="certifyButtonWrap_final certifyButtonWrap">
-				<input type="submit" value="가입하기">
-					<button>
+					<button type="submit">
 						회원가입
 					</button>
 				</div>

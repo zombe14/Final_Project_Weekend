@@ -150,8 +150,6 @@ $(function() {
 			finalpw = true;
 			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&finalpw){
 				alert("회원가입성공");
-				$("frm").submit();
-				location.href="./memberJoin";
 
 			}else{
 				alert("비밀번호나 이름을 확인해주세요");
