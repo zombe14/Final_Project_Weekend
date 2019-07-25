@@ -9,17 +9,21 @@
 <title>[${boardTitle}]${dto.title}</title>
 </head>
 <body>
-
-	${dto.title}
-	<hr>
-	${dto.writer}
-	${dto.reg_date}
-	<hr>
-	${dto.contents}
-	<hr>
-	${dto.hit}
-	${dto.top}
-	<hr>
+	num : ${dto.num}
+	<br>
+	title : ${dto.title}
+	<br>
+	writer : ${dto.writer}
+	<br>
+	reg_Date : ${dto.reg_date}
+	<br>
+	contents : ${dto.contents}
+	<br>
+	hit : ${dto.hit}
+	<br>
+	top : ${dto.top}
+	<br>
+	
 	
 	
 	<a href="./${board}List">목록</a>

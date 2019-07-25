@@ -21,7 +21,7 @@
 		</div>
 		<div>
 			<label for="writer">작성자<span>*</span></label>
-			<input type="text" name="writer" value="세션에서 아이디나 닉네임으로 'ADMIN' 받기 + readOnly추가">
+			<input type="text" name="writer" value="${dto.writer}" readonly="readonly">
 		</div>
 		<div>
 			<label for="contents">내용<span>*</span></label>

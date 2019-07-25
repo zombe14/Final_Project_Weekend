@@ -29,7 +29,6 @@
 			<th>WRITER</th>
 			<th>DATE</th>
 			<th>HIT</th>
-			<th><a>선택삭제</a></th>
 		</thead>
 		<!-- 관리자가 상단에 배치할 공지. pageMaker의 perPage에 영향 X. 밑에 중복. -->
 		<c:forEach items="${top}" var="top">
@@ -39,7 +38,6 @@
 				<td>${top.writer}</td>
 				<td>${top.reg_date}</td>
 				<td>${top.hit}</td>
-				<td> </td>
 			</tr>
 		</c:forEach>
 		<!-- 일반 공지 리스트 -->
@@ -51,7 +49,6 @@
 				<td>${list.writer}</td>
 				<td>${list.reg_date}</td>
 				<td>${list.hit}</td>
-				<th><input type="checkbox"></th>
 			</tr>
 			
 		</c:forEach>

@@ -5,8 +5,6 @@
 	<typeAliases>
 		<!-- 난슬 -->
 		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
-		<typeAlias type="com.project.weekend.board.files.FilesDTO" alias="FilesDTO"/>
-		
 
 		<!-- 공통 -->
 		<typeAlias type="java.lang.Integer" alias="Integer"/>
