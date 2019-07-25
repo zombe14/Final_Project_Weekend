@@ -56,7 +56,8 @@
 		</a>
 	</div>
 </div>
-
+<div>
+<div class="conta">
 <div class="section_top">
 	<div class="inner">
 		<%@ include file="./container/ticket_open.jsp"%>
@@ -72,15 +73,16 @@
 		<%@ include file="./container/ticket_best.jsp"%>
 	</div>
 </div>
-
-
-
-<!-- <div class="main_right" id="wingright">
-	<ul>
-		<li><a href="#"><img alt="포스터  작게" src="./resources/images/home/wing/c_wing.jpeg" width="98" height="125"></a></li>
-		
+</div>
+<div class="main_right" id="wingright">
+	<ul class="push">
+		<li><a href="#"><img alt="포스터  작게" src="./resources/images/home/wing/임시날씨.JPG" width="98" height="125"></a></li>
+		<li><a href="#"><img alt="포스터  작게" src="./resources/images/home/wing/8월달력.jpeg" width="98" height="125"></a></li>
 	</ul>
-</div> -->
+</div>
+</div>
+
+
 
 
 
