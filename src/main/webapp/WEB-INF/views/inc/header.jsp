@@ -22,7 +22,7 @@
 		<div class="h_middle">
 			<div class="logo">
 				<!-- <h1>로고 자리</h1> -->
-				<a href="#"><img alt="" src="./resources/images/logo/logo2_2.png"></a>
+				<a href="./"><img alt="" src="./resources/images/logo/logo2_2.png"></a>
 			</div>
 			<div class="search_wrap">
 				<input type="text" placeholder="검색어 입력" id="search">
