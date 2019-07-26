@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>개인정보처리방침</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/personalInformation.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/personalInformation.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 </head>
 <body>
@@ -19,9 +19,9 @@
 		<div id="container">
 			<div class="inner">
 				<ul class="front_tab">
-					<li class="on"><a href="#" class="tab1">개인정보처리방침</a></li>
-					<li><a href="#" class="tab2">청소년보호정책</a></li>
-					<li><a href="#" class="tab3">이용약관</a></li>
+					<li class="on"><a href="${pageContext.request.contextPath}/footer/personalInformation" class="tab1">개인정보처리방침</a></li>
+					<li><a href="${pageContext.request.contextPath}/footer/youth" class="tab2">청소년보호정책</a></li>
+					<li><a href="${pageContext.request.contextPath}/footer/use" class="tab3">이용약관</a></li>
 				</ul>
 				<div class="tit">
 					<h3 class="front_tit">개인정보 처리방침</h3>

@@ -1,5 +1,5 @@
 body, input, textarea, select button, table, p, div{
-	fibt-family: '돋움',dotum,sans-serif;
+	font-family: '돋움',dotum,sans-serif;
 	font-size: 12px;
 }
 
@@ -27,7 +27,7 @@ html, body{
 
 a {
 	text-decoration: none;
-	color: #999;
+	color: #444;
 }
 
 a:hover {
