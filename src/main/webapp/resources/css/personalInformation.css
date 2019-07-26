@@ -27,7 +27,7 @@
 
 .front_tit {
     float: left;
-    width: 200px;
+    width: 205px;
     height: 21px;
     margin: 0 11px 0 3px;
     color: black;
@@ -43,13 +43,55 @@
     line-height: 18px;
 }
 
+.front_area h4:first-child{
+	margin-top: 0px;
+}
+
 .front_area h4{
 	font-size: 20px;
 	color: #000;
-	margin: 20px 0;
+	margin-top: 60px;
+	font-weight: bold;
 }
 
 .front_area p{
 	margin-top: 19px;
 	color: #767676;
+}
+
+table {
+    table-layout: fixed;
+    padding: 0;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+.front_area table{
+	width: 100%;
+	margin-top: 20px;
+	border: 1px solid #000;
+}
+
+.front_area table th{
+	padding: 2px 5px;
+	border: 1px solid #dedede;
+	color: #767676;
+	height: 50;
+}
+
+.front_area table td{
+	padding: 2px 5px;
+	border: 1px solid #dedede;
+	color: #767676;
+	height: 50;
+}
+
+caption{
+	    visibility: hidden;
+}
+
+.front_area h5{
+	margin-top: 40px;
+	font-size: 16px;
+    color: #767676;
 }
