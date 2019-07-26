@@ -40,7 +40,6 @@ public class NoticeController {
 	// ** messageMove 만들어서 alert, path 수정하기
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public ModelAndView noticeWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception{
-		System.out.println(boardDTO.getTop());
 
 		ModelAndView mv = new ModelAndView();
 		String path = "redirect:./noticeList";

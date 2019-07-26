@@ -50,7 +50,6 @@
 					상단에 등록 하기 <input type="checkbox" id="top" name="top" value="0">
 				<%-- </c:if> --%>
 				</div>
-				<button>임시</button>
 				<input type="button" id="write" value="등록">
 			</form> 
 			

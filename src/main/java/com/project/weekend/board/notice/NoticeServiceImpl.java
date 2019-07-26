@@ -1,6 +1,5 @@
 package com.project.weekend.board.notice;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,7 @@ import oracle.net.aso.b;
 
 @Service
 public class NoticeServiceImpl implements BoardService {
-	
+
 	@Inject
 	private NoticeDAOImpl noticeDAOImpl;
 	@Inject
@@ -36,31 +35,26 @@ public class NoticeServiceImpl implements BoardService {
 		int num = noticeDAOImpl.getNum();
 		boardDTO.setNum(num);
 		result = noticeDAOImpl.setWrite(boardDTO);
-		System.out.println(boardDTO.getNum());
-		
+
 		// 첨부파일
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
-		
-		ArrayList<FileDTO> list = new ArrayList<FileDTO>();
-		
-		for(MultipartFile f : files) {
-			if(f.getOriginalFilename().length()>0) {
+
+		for (MultipartFile f : files) {
+			if (f.getOriginalFilename().length() > 0) {
 				FileDTO fileDTO = new FileDTO();
-				
+
 				fileDTO.setNum(num);
-				
+
 				String fname = fileSaver.saveFile(realPath, f);
 				fileDTO.setFname(fname);
 				String oname = f.getOriginalFilename();
 				fileDTO.setOname(oname);
-				
-				list.add(fileDTO);
+				result = fileDAO.setWrite(fileDTO);
 			}
 		}
-		
-		if(files.size()>0) {			
-			result = fileDAO.setWrite(list);
-		}		
+
+		if (files.size() > 0) {
+		}
 
 		return result;
 	}
@@ -78,7 +72,8 @@ public class NoticeServiceImpl implements BoardService {
 	@Override
 	public BoardDTO getSelect(int num, HttpSession session) throws Exception {
 		BoardDTO boardDTO = noticeDAOImpl.getSelect(num);
-		
+		/* List<FileDTO> list = fileDAO.getList(num); */
+		/* System.out.println(list.size()); */
 		return boardDTO;
 	}
 
@@ -90,8 +85,8 @@ public class NoticeServiceImpl implements BoardService {
 		pageMaker.makePage(totalCount);
 		return list;
 	}
-	
-	public List<BoardDTO> getTopList() throws Exception{
+
+	public List<BoardDTO> getTopList() throws Exception {
 		return noticeDAOImpl.getTopList();
 	}
 

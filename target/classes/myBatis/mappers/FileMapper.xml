@@ -5,7 +5,7 @@
 
 <mapper namespace="FileMapper">
 
-	 
+	 <!-- 
 	<insert id="setWrite" parameterType="java.util.List">
 		<selectKey order="BEFORE" resultType="Integer" keyProperty="fnum">
 			SELECT FILES_SEQ.NEXTVAL AS FNUM FROM DUAL
@@ -17,12 +17,12 @@
 		</foreach>
 		SELECT * FROM DUAL
 	</insert>
+	 -->
 	
-	<!--
  	<insert id="setWrite" parameterType="FileDTO">
 		INSERT INTO FILES(FNUM, NUM, FNAME, ONAME) VALUES(files_seq.nextval, #{num}, #{fname}, #{oname})
 	</insert>
-	-->
+	
 	
 	<update id="setUpdate" parameterType="FileDTO">
 		UPDATE FILES SET FNAME = #{fname}, ONAME = #{oname} WHERE FNUM = #{fnum}

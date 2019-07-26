@@ -32,7 +32,7 @@ public class FilesDAOTest extends AbstractTest {
 		f2.setOname("vvvv.jpg");
 		files.add(f2);
 		System.out.println(files.size());
-		int res = fileDAO.setWrite(files);
+		int res = fileDAO.setWrite(f);
 		assertNotEquals(res, 0);
 	}
 	

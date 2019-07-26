@@ -22,4 +22,14 @@ public class NoticeDTO extends BoardDTO {
 		this.top = top;
 	}
 	*/
+	/*
+	private List<FileDTO> fileDTOs;
+	public List<FileDTO> getFiles() {
+		return fileDTOs;
+	}
+	public void setFiles(List<FileDTO> fileDTOs) {
+		this.fileDTOs = fileDTOs;
+	}
+		*/
+	
 }

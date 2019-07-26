@@ -16,14 +16,7 @@ public class BoardDTO {
 	
 	// 추가 테스트
 	
-	private List<FileDTO> fileDTOs;
-	public List<FileDTO> getFiles() {
-		return fileDTOs;
-	}
-	public void setFiles(List<FileDTO> fileDTOs) {
-		this.fileDTOs = fileDTOs;
-	}
-
+	
 	
 	private int top;
 	public int getTop() {

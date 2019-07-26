@@ -23,7 +23,7 @@
 		<result column="hit" property="hit"/>
 		<result column="reg_date" property="reg_date"/>
 		<result column="top" property="top"/>
-		<collection property="files" javaType="List" ofType="FileDTO">
+		<collection property="fileDTOs" javaType="List" ofType="FileDTO">
 			<id column="fnum" property="fnum"/>
 			<result column="num" property="num"/>
 			<result column="fname" property="fname"/>
@@ -34,6 +34,7 @@
 	<select id="getSelect" parameterType="Integer" resultMap="noticeResult">
 		SELECT * FROM NOTICE FULL JOIN FILES USING(NUM) WHERE NUM = #{num}
 	</select>
+	
 	<select id="getList" parameterType="PageMaker" resultType="NoticeDTO">
 		SELECT * FROM 
 		(SELECT ROWNUM R, N.* FROM 
