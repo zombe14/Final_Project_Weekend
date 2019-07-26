@@ -7,7 +7,7 @@
 		</div>
 		<div class="f_inner">
 			<div class="f_menu">
-					<a href="${pageContext.request.contextPath}/footer/introduction">회사소개</a>
+					<a href="#" onclick="window.open('${pageContext.request.contextPath}/footer/introduction','회사소개','width=1000, height=800, scrollbars=yes')">회사소개</a>
 					<span>|</span>
 					<a href="${pageContext.request.contextPath}/footer/personalInformation">개인정보처리방침</a>
 					<span>|</span>
