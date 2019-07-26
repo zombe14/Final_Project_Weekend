@@ -14,14 +14,28 @@ public class BoardDTO {
 	private Date reg_date;
 	private int hit;
 	
+	// 추가 테스트
 	
-	private ArrayList<FileDTO> files;
-	public ArrayList<FileDTO> getFiles() {
-		return files;
+	private List<FileDTO> fileDTOs;
+	public List<FileDTO> getFiles() {
+		return fileDTOs;
 	}
-	public void setFiles(ArrayList<FileDTO> files) {
-		this.files = files;
+	public void setFiles(List<FileDTO> fileDTOs) {
+		this.fileDTOs = fileDTOs;
 	}
+
+	
+	private int top;
+	public int getTop() {
+		return top;
+	}
+	public void setTop(int top) {
+		this.top = top;
+	}
+	
+	//	
+	
+	
 	
 	public int getNum() {
 		return num;
@@ -59,5 +73,5 @@ public class BoardDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	
+
 }

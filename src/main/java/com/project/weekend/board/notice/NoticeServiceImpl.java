@@ -17,6 +17,8 @@ import com.project.weekend.board.BoardDTO;
 import com.project.weekend.util.FileSaver;
 import com.project.weekend.util.PageMaker;
 
+import oracle.net.aso.b;
+
 @Service
 public class NoticeServiceImpl implements BoardService {
 	
@@ -29,9 +31,12 @@ public class NoticeServiceImpl implements BoardService {
 
 	@Override
 	public int setWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
+		int result = 0;
 		// 글
 		int num = noticeDAOImpl.getNum();
 		boardDTO.setNum(num);
+		result = noticeDAOImpl.setWrite(boardDTO);
+		System.out.println(boardDTO.getNum());
 		
 		// 첨부파일
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
@@ -53,18 +58,9 @@ public class NoticeServiceImpl implements BoardService {
 			}
 		}
 		
-		
-		int result = 0;
-		
 		if(files.size()>0) {			
 			result = fileDAO.setWrite(list);
-		}
-		
-		if(result>0) {			
-			boardDTO.setFiles(list);
-			result = noticeDAOImpl.setWrite(boardDTO);
-		}
-		
+		}		
 
 		return result;
 	}

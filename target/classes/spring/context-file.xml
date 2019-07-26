@@ -8,6 +8,7 @@
 	
 	<!-- 공용 -->
 	<bean class="com.project.weekend.file.FileDAO" id="fileDAO"/>
+	<bean class="com.project.weekend.file.FileService" id="fileService"/>
 	
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

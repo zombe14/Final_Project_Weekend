@@ -47,7 +47,7 @@
 			</when>
 			<otherwise>
 				<!-- TITLE LIKE '%'||#{search}||'%' OR -->
-				CONTENTS LIKE '%'||#{search}||'%'
+				CONTENTS|TITLE LIKE '%'||#{search}||'%'
 			</otherwise>
 		</choose>
 		ORDER BY NUM DESC) N)
@@ -68,7 +68,7 @@
 			</when>
 			<otherwise>
 				<!-- TITLE LIKE '%'||#{search}||'%' OR -->
-				CONTENTS LIKE '%'||#{search}||'%'
+				CONTENTS|TTITLE LIKE '%'||#{search}||'%'
 			</otherwise>
 		</choose>
 	</select>
