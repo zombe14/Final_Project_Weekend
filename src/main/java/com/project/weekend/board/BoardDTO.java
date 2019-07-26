@@ -15,9 +15,7 @@ public class BoardDTO {
 	private int hit;
 	
 	// 추가 테스트
-	
-	
-	
+
 	private int top;
 	public int getTop() {
 		return top;
@@ -27,7 +25,6 @@ public class BoardDTO {
 	}
 	
 	//	
-	
 	
 	
 	public int getNum() {

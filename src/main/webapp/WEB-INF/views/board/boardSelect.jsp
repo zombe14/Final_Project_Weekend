@@ -32,7 +32,7 @@
 				<br> top : ${dto.top}
 				<br> 
 				
-				<c:forEach items="${dto.fileDTOs}" var="f">
+				<c:forEach items="${dto.fileList}" var="f">
 					<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
 				</c:forEach>
 				
@@ -57,6 +57,7 @@
 	
 	<!-- script -->
 	<script type="text/javascript">
+	/* 첨부파일 삭제 */
 	$('#delete').click(function() {
 		var check = confirm('삭제하시겠습니까?');
 		if(check){
@@ -64,6 +65,7 @@
 		}
 	});
 	
+	/* 첨부파일 다운로드 */
 	$('.down').click(function() {
 		var fname=$(this).attr('title');
 		var oname=$(this).val();

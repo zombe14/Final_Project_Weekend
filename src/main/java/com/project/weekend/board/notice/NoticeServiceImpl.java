@@ -72,8 +72,15 @@ public class NoticeServiceImpl implements BoardService {
 	@Override
 	public BoardDTO getSelect(int num, HttpSession session) throws Exception {
 		BoardDTO boardDTO = noticeDAOImpl.getSelect(num);
-		/* List<FileDTO> list = fileDAO.getList(num); */
-		/* System.out.println(list.size()); */
+		/*
+		// null 들어가서 업데이트할때 'X'표시 계속 뜨는거 해결
+		NoticeDTO noticeDTO = (NoticeDTO)boardDTO;
+		if(noticeDTO.getFiles().size() == 1) {
+			if(noticeDTO.getFiles().get(0).getFname()==null) {
+				noticeDTO.setFiles(new ArrayList<FileDTO>());
+			}
+		}
+		*/
 		return boardDTO;
 	}
 
