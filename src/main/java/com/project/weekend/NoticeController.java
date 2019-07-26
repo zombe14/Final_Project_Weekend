@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.BoardDTO;
+import com.project.weekend.board.notice.NoticeDAOImpl;
 import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.board.notice.NoticeServiceImpl;
 import com.project.weekend.file.FileDTO;
@@ -38,11 +39,11 @@ public class NoticeController {
 	// 글쓰기 프로세스 진행 - admin
 	// ** messageMove 만들어서 alert, path 수정하기
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
-	public ModelAndView noticeWrite(NoticeDTO noticeDTO, List<MultipartFile> files, HttpSession session) throws Exception{
+	public ModelAndView noticeWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception{
+
 		ModelAndView mv = new ModelAndView();
 		String path = "redirect:./noticeList";
-		int result = noticeSerivceImpl.setWrite(noticeDTO, files, session);
-		
+		int result = noticeSerivceImpl.setWrite(boardDTO, files, session);
 		if(result>0) {
 			mv.setViewName(path);
 		} else {
@@ -67,8 +68,8 @@ public class NoticeController {
 	
 	// 업데이트 프로세스 진행 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
-	public void noticeUpdate(NoticeDTO noticeDTO, List<MultipartFile> files, HttpSession session) throws Exception{
-		noticeSerivceImpl.setUpdate(noticeDTO, files, session);
+	public void noticeUpdate(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception{
+		noticeSerivceImpl.setUpdate(boardDTO, files, session);
 	}
 	
 	// 공지 삭제 - admin
@@ -91,6 +92,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 
 		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
+		
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
 		mv.addObject("boardTitle", "Notice");

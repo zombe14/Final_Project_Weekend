@@ -7,24 +7,29 @@ import com.project.weekend.board.BoardDTO;
 import com.project.weekend.file.FileDTO;
 
 
-// num/title/writer/contents/reg_date/hit/List<FileDTO> + top
+// num/title/writer/contents/reg_date/hit/List<FileDTO>/top
 
 public class NoticeDTO extends BoardDTO {
+	
+	/*
 	private int top;
+
 	public int getTop() {
 		return top;
 	}
+
 	public void setTop(int top) {
 		this.top = top;
 	}
+	*/
 	
-	/*
-	private ArrayList<FileDTO> files;
+	private ArrayList<FileDTO> fileList;
 	public ArrayList<FileDTO> getFiles() {
-		return files;
+		return fileList;
 	}
-	public void setFiles(ArrayList<FileDTO> files) {
-		this.files = files;
+	public void setFiles(ArrayList<FileDTO> fileList) {
+		this.fileList = fileList;
 	}
-	*/	
+	
+	
 }

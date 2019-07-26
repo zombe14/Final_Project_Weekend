@@ -1,5 +1,6 @@
 package com.project.weekend.file;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -9,6 +10,7 @@ import com.project.weekend.util.FileSaver;
 public class FileService {
 	
 	private FileDTO fileDTO;
+	@Inject
 	private FileSaver fileSaver;
 	
 	public String summernoteFileUpload(MultipartFile file, HttpSession session) throws Exception{
@@ -24,10 +26,10 @@ public class FileService {
 		return result;
 	}
 
-	public int setDelte(FileDAO fileDAO, String board, HttpSession session) throws Exception{
+	public int setDelete(FileDAO fileDAO, String board, HttpSession session) throws Exception{
 		int result = fileDAO.setDelete(fileDTO.getFnum());
 		if(result>0) {
-			String realPath = session.getServletContext().getRealPath("/resources/"+board);
+			String realPath = session.getServletContext().getRealPath("/resources/images"+board);
 			result = fileSaver.deleteFile(realPath, fileDTO.getFname());
 		}
 		return result;
