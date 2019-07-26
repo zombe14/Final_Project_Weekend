@@ -53,7 +53,7 @@
 			<div class="nav_wrap">
 				<ul class="nav navbar-nav">
 					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>내가 추천</a></li>
+							class="fa fa-home fa-fw"></i>오늘의 추천</a></li>
 					<li class="dropdown navp"><a href="#"
 						class="dropdown-caategory" id="dropdownCategoryMenu"
 						data-toggle="dropdown"><i class="fa fa-folder-open"></i>공연<i
