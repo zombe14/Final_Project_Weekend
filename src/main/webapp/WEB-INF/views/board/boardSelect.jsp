@@ -31,6 +31,19 @@
 				<br> hit : ${dto.hit} 
 				<br> top : ${dto.top}
 				<br> 
+				
+				<c:forEach items="${dto.files}" var="f">
+					<input type="button" title="${f.fname}" class="btn btn-default down" value="${f.oname}"> 
+				</c:forEach>
+				
+				<div style="display:none;">
+					<form action="../ajax/fileDownload" method="post" id="downForm">
+						<input type="text" name="fname" id="fname">
+						<input type="text" name="oname" id="oname">
+					</form>
+				</div>
+				
+				
 				<a href="./${board}List">목록</a> 
 				<a href="./${board}Update?num=${dto.num}">수정</a> 
 				<a id="delete">삭제</a>
@@ -49,6 +62,15 @@
 			location.href="./${board}Delete?num=${dto.num}";
 		}
 	});
+	
+	$('.down').click(function() {
+		var fname=$(this).attr('title');
+		var oname=$(this).val();
+		$('#fname').val(fname);
+		$('#oname').val(oname);
+		$('#downForm').submit();
+	});
+	
 </script>
 </body>
 </html>

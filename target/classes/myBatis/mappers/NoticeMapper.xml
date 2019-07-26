@@ -6,7 +6,7 @@
 <mapper namespace="NoticeMapper">
 	<insert id="setWrite" parameterType="NoticeDTO">
 		INSERT INTO NOTICE(NUM,TITLE,WRITER,CONTENTS,HIT,REG_DATE,TOP) 
-		VALUES(NOTICE_SEQ.NEXTVAL, #{title}, #{writer}, #{contents}, 0, SYSDATE, #{top})
+		VALUES(#{num}, #{title}, #{writer}, #{contents}, 0, SYSDATE, #{top})
 	</insert>
 	<update id="setUpdate" parameterType="NoticeDTO">
 		UPDATE NOTICE SET TITLE = #{title}, CONTENTS = #{contents}, TOP = #{top} WHERE NUM = #{num}
@@ -14,8 +14,25 @@
 	<delete id="setDelete" parameterType="Integer">
 		DELETE NOTICE WHERE NUM = #{num}
 	</delete>
-	<select id="getSelect" parameterType="Integer" resultType="NoticeDTO">
-		SELECT * FROM NOTICE WHERE NUM = #{num}
+	
+	<resultMap type="NoticeDTO" id="noticeResult">
+		<id column="num" property="num"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="contents" property="contents"/>
+		<result column="hit" property="hit"/>
+		<result column="reg_date" property="reg_date"/>
+		<result column="top" property="top"/>
+		<collection property="files" javaType="List" ofType="FileDTO">
+			<id column="fnum" property="fnum"/>
+			<result column="num" property="num"/>
+			<result column="fname" property="fname"/>
+			<result column="oname" property="oname"/>
+		</collection>
+	</resultMap>
+	
+	<select id="getSelect" parameterType="Integer" resultMap="noticeResult">
+		SELECT * FROM NOTICE FULL JOIN FILES USING(NUM) WHERE NUM = #{num}
 	</select>
 	<select id="getList" parameterType="PageMaker" resultType="NoticeDTO">
 		SELECT * FROM 
@@ -55,5 +72,7 @@
 			</otherwise>
 		</choose>
 	</select>
-
+	<select id="getNum" resultType="Integer">
+			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL 
+	</select>
 </mapper>

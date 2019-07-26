@@ -12,6 +12,7 @@
 
 		<!-- 공통 -->
 		<typeAlias type="java.lang.Integer" alias="Integer"/>
+		<typeAlias type="java.util.List" alias="List"/>
 		<typeAlias type="com.project.weekend.board.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.project.weekend.file.FileDTO" alias="FileDTO"/>
 		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>

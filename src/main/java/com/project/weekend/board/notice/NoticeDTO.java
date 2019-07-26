@@ -17,14 +17,6 @@ public class NoticeDTO extends BoardDTO {
 	public void setTop(int top) {
 		this.top = top;
 	}
+
 	
-	/*
-	private ArrayList<FileDTO> files;
-	public ArrayList<FileDTO> getFiles() {
-		return files;
-	}
-	public void setFiles(ArrayList<FileDTO> files) {
-		this.files = files;
-	}
-	*/	
 }

@@ -43,6 +43,12 @@
 				</div>
 			</div>
 		</div>
+		<%-- <c:if test="${member.grade eq 3}"> --%>
+			상단에 등록 <input type="checkbox">
+		<%-- </c:if> --%>
+		<div>
+		
+		</div>
 		<button>임시</button>
 		<input type="button" id="write" value="등록">
 	</form>

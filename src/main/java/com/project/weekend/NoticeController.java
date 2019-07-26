@@ -91,6 +91,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 
 		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
+		
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
 		mv.addObject("boardTitle", "Notice");

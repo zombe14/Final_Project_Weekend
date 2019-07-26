@@ -1,6 +1,7 @@
 package com.project.weekend.board;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.project.weekend.file.FileDTO;
@@ -12,6 +13,15 @@ public class BoardDTO {
 	private String contents;
 	private Date reg_date;
 	private int hit;
+	
+	
+	private ArrayList<FileDTO> files;
+	public ArrayList<FileDTO> getFiles() {
+		return files;
+	}
+	public void setFiles(ArrayList<FileDTO> files) {
+		this.files = files;
+	}
 	
 	public int getNum() {
 		return num;
