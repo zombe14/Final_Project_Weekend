@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 	<script type="text/javascript">
-		alert(${board});
 	</script>
 </html>
 <c:choose>
@@ -32,7 +31,5 @@
 			</p>
 		</div>
 	</c:when>
-	<c:when test="${param.setViewName eq 'admin/adminMain'}">
 
-	</c:when>
 </c:choose>
