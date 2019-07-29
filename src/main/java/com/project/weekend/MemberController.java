@@ -38,12 +38,9 @@ public class MemberController {
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("post");
 		int result = memberService.setWrite(memberDTO, session);
-		System.out.println("post1");
 		String message="Join Fail";
 		if(result>0) {
-			System.out.println("post2");
 			message="Join Success";
 		}
 		mv.setViewName("common/messageMove");
@@ -59,19 +56,36 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
 	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session)throws Exception{
-		memberDTO = memberService.getSelect(memberDTO);
-		String message="Login Fail";
+		
+		MemberDTO getIdd = memberService.getIdd(memberDTO);
 		ModelAndView mv = new ModelAndView();
-		if(memberDTO != null) {
-			session.setAttribute("member", memberDTO);
-			message = "Login Success";	
-			mv.setViewName("common/messageMove");
-			mv.addObject("message", message);
-			mv.addObject("path", "../");
-		}else {
+		int result = memberService.setUpdate(memberDTO);
+		
+		String message="존재 하지 않는 아이디 입니다.";
+		if(getIdd==null) {
 			mv.setViewName("common/messageMove");
 			mv.addObject("message", message);
 			mv.addObject("path", "./memberLogin");
+		}else {
+			memberDTO = memberService.getSelect(memberDTO);
+			message="Login Fail";
+			if(result==1) {
+				if(memberDTO != null) {
+					session.setAttribute("member", memberDTO);
+					int updatezero = memberService.setUpdatezero(memberDTO);
+					message = "Login Success";	
+					mv.setViewName("common/messageMove");
+					mv.addObject("message", message);
+					mv.addObject("path", "../");
+				}else {
+					mv.setViewName("common/messageMove");
+					mv.addObject("message", message);
+					mv.addObject("path", "./memberLogin");
+					
+				}
+			}else {
+				
+			}
 		}
 		return mv;
 	}
