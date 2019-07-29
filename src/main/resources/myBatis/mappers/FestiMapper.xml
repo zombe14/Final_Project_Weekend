@@ -2,11 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="FestiMapper">
+	
+	<select id="getNum" resultType="Integer">
+		SELECT FESTI_SEQ.NEXTVAL FROM DUAL;
+	</select>
 
 	<insert id="setWrite" parameterType="FestiDTO">
 		INSERT INTO FESTI(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, CATEGORY, PRICE, TOTAL, STARTDATE, ENDDATE, LOCAL, TOP)
-		VALUES(#{num},#{title},#{writer},#{contents},sysdate,#{hit},#{category},#{price},#{total},sysdate,sysdate,#{local},#{top})
+		VALUES(#{num},#{title},#{writer},#{contents},sysdate,#{hit},#{category},#{price},#{total},#{startDate},#{endDate},#{local},#{top})
 	</insert>
-	<!-- #{startDate},#{endDate} -->
+	
 	
 </mapper>

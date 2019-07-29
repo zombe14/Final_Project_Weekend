@@ -1,12 +1,17 @@
 package com.project.weekend;
 
+import java.util.List;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiServiceImpl;
 
 @Controller
@@ -24,6 +29,14 @@ public class FestivalController {
 		mv.addObject("board", "festival");
 		mv.addObject("boardTitle", "Festival");
 		mv.setViewName("board/boardWrite");
+		return mv;
+	}
+	
+	//write process - post
+	@RequestMapping(value = "festivalWrite", method = RequestMethod.POST)
+	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
 		return mv;
 	}
 	

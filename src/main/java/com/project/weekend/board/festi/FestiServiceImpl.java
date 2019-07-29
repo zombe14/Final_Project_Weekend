@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.board.BoardService;
+import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.util.PageMaker;
 
 @Service
@@ -20,6 +21,9 @@ public class FestiServiceImpl implements BoardService {
 
 	@Override
 	public int setWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
+		int num = festiDAOImpl.getNum();
+		boardDTO.setNum(num);
+		
 		int res = festiDAOImpl.setWrite(boardDTO);
 		return 0;
 	}

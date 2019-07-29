@@ -17,6 +17,10 @@ public class FestiDAOImpl implements BoardDAO {
 	@Inject
 	private SqlSession SqlSession;
 	private static final String NAMESPACE = "FestiMapper.";
+	
+	public int getNum() throws Exception{
+		return SqlSession.selectOne(NAMESPACE+"getNum");
+	}
 
 	@Override
 	public int setWrite(BoardDTO boardDTO) throws Exception {
