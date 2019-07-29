@@ -32,4 +32,7 @@ public class MemberDAO {
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelect", memberDTO);
 	}
+	public MemberDTO getSelectCount(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSelctCount", memberDTO);
+	}
 }

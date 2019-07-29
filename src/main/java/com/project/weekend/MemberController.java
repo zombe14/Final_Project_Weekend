@@ -56,7 +56,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
 	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session)throws Exception{
-		
+		System.out.println("start");
 		MemberDTO getIdd = memberService.getIdd(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
@@ -71,6 +71,7 @@ public class MemberController {
 			message="Login Fail";
 			if(result==1) {
 				if(memberDTO != null) {
+					
 					session.setAttribute("member", memberDTO);
 					int updatezero = memberService.setUpdatezero(memberDTO);
 					message = "Login Success";	
