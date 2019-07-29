@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,43 +12,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberAgree.js"></script>
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
 
-<script  type="text/javascript">
-$(function() {
-	$("#checkAll").click(function() {
-		var c = $("#customCheck").prop('checked');
-		$('.custom-control-input').prop('checked',c);
-	});
-	$('.check_sub').click(function() {
-		var c = true;
-		$('.check_sub_sub').each(function() {
-			if (!$(this).prop('checked')) {
-				c = false;
-			}
-		});
-		$('#customCheck').prop('checked', c);
-	});
-	$('#checkAllfont1').click(function() {
-		var c = true;
-	});
-	$("#join").click(function() {
-		var c1 = $("#customCheck1").prop('checked');
-		var c2 = $("#customCheck2").prop('checked');
-		var c3 = $("#customCheck3").prop('checked');
-		if(c1&&c2&&c3){
-			location.href="./memberJoin";
-		}else{
-			alert("필수 약관에 동의 하세요");
-		}
-	});
-});
-</script>
 
 <title>Insert title here</title>
 </head>
 <body>
 <div>
-	<div class="container">
+	<div id="container">
+	<div class="inner">
 		<h1>약관동의</h1>
 		<div class="essentialTermsWrap">
 					<div>
@@ -134,6 +108,7 @@ $(function() {
             회원가입하기
         </button>
 
+	</div>
 	</div>
 </div>
 
