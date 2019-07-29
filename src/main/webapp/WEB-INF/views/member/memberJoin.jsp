@@ -1,26 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
+  <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../resources/js/memberJoin.js"></script>
-<title>Insert title here</title>
+  <script type="text/javascript" src="../resources/js/memberJoin.js?ver=1"></script>
+<title>Insert title here</title>  
 </head>
 <body>
 	<div class="container">
+	<form action="./memberJoin"  id="frm" method="POST">
 		<div class="joinWrap">
 			<h2>회원가입</h2>
 			<div class="essentiaDataWrap">
 				<h3 class="conTitle">
 					<i>필수</i> 정보입력</h3>
+				
 				<div class="tableBox">
 					<table>
 						<caption>필수 정보입력</caption>
@@ -44,11 +44,13 @@
 											</select>
 										</div>
 										<span class="hypen" id="hypen_first">-</span>
-										<input type="text" class="iText" id="hp2" name="hp2" title="앞번호4자리" onkeyup="moveFocus(4,this,this.form.hp3);" maxlength="4" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" style="IME-MODE:disabled;">
+										<input type="text" class="iText" id="hp2" name="hp2" title="앞번호4자리" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="4"  style="IME-MODE:disabled;">
 										<span class="hypen">-</span>
-										<input type="text" class="iText" id="hp3" name="hp3" title="뒷번호4자리" maxlength="4" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" style="IME-MODE:disabled;"> </div>
-										<input type="hidden" name="hp" value="">
+										<input type="text" class="iText" id="hp3" name="hp3" title="뒷번호4자리" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" style="IME-MODE:disabled;"> </div>
+								 		<input type="hidden" name="hp" value="">
+								<input type="hidden" id="phone" name="phone" title="phone"> 
 								</td>
+								
 							</tr>
 							<tr>
 								<th scope="row">
@@ -87,6 +89,7 @@
 												
 											</select>
 										</div>
+										<input type="hidden" id="email" name="email" title="email">
 									</div>
 									<div class="mailAreaMessage">
 										<span class="alertMessage" style="display:none; margin-bottom:6px;"></span>
@@ -118,7 +121,7 @@
 								<th scope="row">
 									<span class="essential">*</span>아이디 </th>
 								<td>
-									<input type="text" name="memId" maxlength="20" class="iText" title="idCheck" id="idCheck" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자">
+									<input type="text" name="id" maxlength="20" class="iText" title="id" id="id" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자">
 									<input type="hidden" name="chkMemId" value="" id="memidCheck">
 									<div class="infoLayerBox" style="display:none;top:46px;">
 										<div class="infoContent">아이디를 정확히 입력하여 주십시오.
@@ -177,7 +180,7 @@
 								<th scope="row">
 									<span class="essential">*</span>이름 </th>
 								<td>
-									<input type="text" name="memName" class="iText" title="memName" id="memName" minlength="4" maxlength="20"> 
+									<input type="text" name="name" class="iText" title="name" id="name" minlength="4" maxlength="20"> 
 									<div id="memNamecheck">
 										
 									</div>
@@ -187,6 +190,12 @@
 									</td>
 									
 									
+							</tr>
+							<tr>
+								<th scope="row">
+									<span class="essential">*</span>활동명 </th>
+								<td>
+								<input type="text" name="nickname" class="iText" title="nickname" id="nickname" minlength="4" maxlength="20">
 							</tr>
 							<tr>
 								<th scope="row">
@@ -204,11 +213,13 @@
 					</table>
 				</div>
 				<div class="certifyButtonWrap_final certifyButtonWrap">
-					<button>
+					<button type="button">
 						회원가입
 					</button>
+					 
 				</div>
 		</div>
+		</form>
 	</div>
 
 </body>
