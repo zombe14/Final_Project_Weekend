@@ -1,25 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="../temp/boot.jsp"></c:import>
-<!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>${boardTitle} List</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/home.css">
-<link rel="shortcut icon" type="image/x-icon"
-	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
+   <title> 자신이 작성할 JSP 명을 입력하세요 </title>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+   <link rel="shortcut icon" type="image/x-icon" href="../resources/images/logo/logo.png" />
 </head>
 <body>
-
-	<div id="wrap">
-		<div id="header">
-			<c:import url="../inc/header.jsp"></c:import>
-		</div>
-		<div id="container">
-			<div class="inner">
+<div id="wrap">
+   <div id="header">
+      <c:import url="../inc/header.jsp"></c:import>
+   </div>
+   <div id="container">
+      <div class="inner">
 			<!-- 검색창 -->
 			<form action="./${board}List">
 				<select name="kind">
@@ -49,9 +44,10 @@
 						<td>${top.hit}</td>
 					</tr>
 				</c:forEach>
+
+
 				<!-- 일반 공지 리스트 -->
 				<c:forEach items="${list}" var="list">
-
 					<tr title="${list.num}" class="select">
 						<td>${list.num}</td>
 						<td>${list.title}</td>
@@ -59,10 +55,16 @@
 						<td>${list.reg_date}</td>
 						<td>${list.hit}</td>
 					</tr>
-
 				</c:forEach>
-			</table>
 
+			</table>			
+
+			<c:if test="${list[0].num eq null}">
+				<ul class="pagination">
+					<li><a href="${board}List">검색결과가 없습니다</a></li>
+				</ul>
+			</c:if>
+			<c:if test="${list[0].num ne null}">
 			<ul class="pagination">
 				<c:choose>
 					<c:when test="${pager.curBlock>1}">
@@ -85,17 +87,17 @@
 						<li><a>다음</a></li>
 					</c:otherwise>
 				</c:choose>
-
 			</ul>
-
+			</c:if>
 			<a href="./${board}Write">${board}Write</a>
+			
+		   </div>
+   </div>
+   <div id="footer">
+      <c:import url="../inc/footer.jsp"></c:import>
+   </div>
+</div>
 
-		</div>
-		</div>
-		<div id="footer">
-			<c:import url="../inc/footer.jsp"></c:import>
-		</div>
-	</div>
 	<!-- ------script---------- -->
 	<script type="text/javascript">
 		$('.select').click(function() {

@@ -29,7 +29,7 @@ public class NoticeServiceImpl implements BoardService {
 	private FileSaver fileSaver;
 
 	@Override
-	public int setWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
+	public int setWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int result = 0;
 		// 글
 		int num = noticeDAOImpl.getNum();
@@ -39,7 +39,7 @@ public class NoticeServiceImpl implements BoardService {
 		// 첨부파일
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 
-		for (MultipartFile f : files) {
+		for (MultipartFile f : filelist) {
 			if (f.getOriginalFilename().length() > 0) {
 				FileDTO fileDTO = new FileDTO();
 
@@ -53,15 +53,36 @@ public class NoticeServiceImpl implements BoardService {
 			}
 		}
 
-		if (files.size() > 0) {
-		}
-
 		return result;
 	}
 
 	@Override
-	public int setUpdate(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
-		return noticeDAOImpl.setUpdate(boardDTO);
+	public int setUpdate(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
+		System.out.println("service");
+		System.out.println(boardDTO.getNum());
+		int result = 0;
+		// 글
+
+		result = noticeDAOImpl.setUpdate(boardDTO);
+		
+		int i = fileDAO.setDeleteAll(boardDTO.getNum());
+		String realPath = session.getServletContext().getRealPath("/resources/images/board");
+
+		for (MultipartFile f : filelist) {
+			if (f.getOriginalFilename().length() > 0) {
+				FileDTO fileDTO = new FileDTO();
+
+				fileDTO.setNum(boardDTO.getNum());
+
+				String fname = fileSaver.saveFile(realPath, f);
+				fileDTO.setFname(fname);
+				String oname = f.getOriginalFilename();
+				fileDTO.setOname(oname);
+				result = fileDAO.setWrite(fileDTO);
+			}
+		}
+
+		return result;
 	}
 
 	@Override
@@ -72,15 +93,6 @@ public class NoticeServiceImpl implements BoardService {
 	@Override
 	public BoardDTO getSelect(int num, HttpSession session) throws Exception {
 		BoardDTO boardDTO = noticeDAOImpl.getSelect(num);
-		/*
-		// null 들어가서 업데이트할때 'X'표시 계속 뜨는거 해결
-		NoticeDTO noticeDTO = (NoticeDTO)boardDTO;
-		if(noticeDTO.getFiles().size() == 1) {
-			if(noticeDTO.getFiles().get(0).getFname()==null) {
-				noticeDTO.setFiles(new ArrayList<FileDTO>());
-			}
-		}
-		*/
 		return boardDTO;
 	}
 

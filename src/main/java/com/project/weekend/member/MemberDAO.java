@@ -25,7 +25,6 @@ public class MemberDAO {
 	}
 	
 	public int setWrite(MemberDTO memberDTO)throws Exception{
-		System.out.println("MEMBERDAO");
 		return sqlSession.insert(NAMESPACE+"setWrite", memberDTO);
 	}
 	

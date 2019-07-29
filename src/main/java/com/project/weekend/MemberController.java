@@ -54,11 +54,41 @@ public class MemberController {
 	}
 	
 	
-	
-	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.GET)
 	public void getSelect()throws Exception{}
+	
+	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
+	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session)throws Exception{
+		memberDTO = memberService.getSelect(memberDTO);
+		String message="Login Fail";
+		ModelAndView mv = new ModelAndView();
+		if(memberDTO != null) {
+			session.setAttribute("member", memberDTO);
+			message = "Login Success";	
+			mv.setViewName("common/messageMove");
+			mv.addObject("message", message);
+			mv.addObject("path", "../");
+		}else {
+			mv.setViewName("common/messageMove");
+			mv.addObject("message", message);
+			mv.addObject("path", "./memberLogin");
+		}
+		return mv;
+	}
+	
 	@RequestMapping(value = "memberAgree", method = RequestMethod.GET)
 	public void getAgree()throws Exception{}
+	
+	@RequestMapping(value = "memberLogout")
+	public String logout(HttpSession session)throws Exception{
+		session.invalidate();
+		return "redirect:../";
+	}
+	
+	
+	
+	
+	
+	
 	
 }
