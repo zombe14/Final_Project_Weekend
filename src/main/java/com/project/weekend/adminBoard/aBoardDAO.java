@@ -9,14 +9,14 @@ import com.project.weekend.util.PageMaker;
 public class aBoardDAO implements BoardDAO{
 
 	@Override
-	public int setWrite(BoardDTO boardVO) throws Exception {
+	public int setWrite(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int setUpdate(BoardDTO boardVO) throws Exception {
-		// TODO Auto-generated method stub
+	public int setUpdate(BoardDTO boardDTO) throws Exception {
+		
 		return 0;
 	}
 

@@ -2,7 +2,6 @@ package com.project.weekend.board.notice;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,8 +12,6 @@ import com.project.weekend.AbstractTest;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.util.PageMaker;
 
-import oracle.net.aso.p;
-
 public class NoticeDAOImplTest extends AbstractTest {
 
 	@Inject
@@ -24,8 +21,8 @@ public class NoticeDAOImplTest extends AbstractTest {
 	public void setWrite() throws Exception {
 		
 			NoticeDTO noticeDTO = new NoticeDTO();
-			noticeDTO.setContents("TestContentsFile2");
-			noticeDTO.setTitle("TestTitleFile2");
+			noticeDTO.setContents("secondTest");
+			noticeDTO.setTitle("secondTest");
 			noticeDTO.setTop(1);
 			noticeDTO.setWriter("ADMIN");
 			int res = noticeDAOImpl.setWrite(noticeDTO);
@@ -60,7 +57,7 @@ public class NoticeDAOImplTest extends AbstractTest {
 	//@Test
 	public void getList() throws Exception{
 		PageMaker pageMaker = new PageMaker();
-		int totalCount = noticeDAOImpl.getTotalCount();
+		int totalCount = noticeDAOImpl.getTotalCount(pageMaker);
 		pageMaker.setSearch("");
 		pageMaker.makeRow();
 		pageMaker.makePage(totalCount);

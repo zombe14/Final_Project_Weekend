@@ -5,9 +5,6 @@
 
 <mapper namespace="NoticeMapper">
 	<insert id="setWrite" parameterType="NoticeDTO">
-		<selectKey keyProperty="num" order="BEFORE" resultType="Integer">
-			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
-		</selectKey>
 		INSERT INTO NOTICE(NUM,TITLE,WRITER,CONTENTS,HIT,REG_DATE,TOP) 
 		VALUES(#{num}, #{title}, #{writer}, #{contents}, 0, SYSDATE, #{top})
 	</insert>
@@ -17,23 +14,42 @@
 	<delete id="setDelete" parameterType="Integer">
 		DELETE NOTICE WHERE NUM = #{num}
 	</delete>
-	<select id="getSelect" parameterType="Integer" resultType="NoticeDTO">
-		SELECT * FROM NOTICE WHERE NUM = #{num}
+
+	
+	<select id="getSelect" parameterType="Integer" resultMap="noticeResult">
+		SELECT * FROM NOTICE FULL JOIN FILES USING(NUM) WHERE NUM = #{num}
 	</select>
+	
+	<resultMap type="NoticeDTO" id="noticeResult">
+		<id column="num" property="num"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="contents" property="contents"/>
+		<result column="hit" property="hit"/>
+		<result column="reg_date" property="reg_date"/>
+		<result column="top" property="top"/>
+		<collection property="fileList" javaType="List" ofType="FileDTO">
+			<id column="fnum" property="fnum"/>
+			<result column="num" property="num"/>
+			<result column="fname" property="fname"/>
+			<result column="oname" property="oname"/>
+		</collection>
+	</resultMap>
+	
 	<select id="getList" parameterType="PageMaker" resultType="NoticeDTO">
 		SELECT * FROM 
 		(SELECT ROWNUM R, N.* FROM 
 		(SELECT NUM, TITLE, WRITER, HIT, REG_DATE FROM NOTICE WHERE 
 		<choose>
-			<when test="kind == 1">
+			<when test="kind = 1">
 				TITLE LIKE '%'||#{search}||'%'
 			</when>
-			<when test="kind == 2">
+			<when test="kind = 2">
 				CONTENTS LIKE '%'||#{search}||'%'
 			</when>
 			<otherwise>
 				<!-- TITLE LIKE '%'||#{search}||'%' OR -->
-				CONTENTS LIKE '%'||#{search}||'%'
+				CONTENTS|TITLE LIKE '%'||#{search}||'%'
 			</otherwise>
 		</choose>
 		ORDER BY NUM DESC) N)
@@ -41,9 +57,24 @@
 	</select>
 	<!-- NOTICE 페이지 상단에 강조할 공지글 배치. SEARCH에 영향 x -->
 	<select id="getTopList" resultType="NoticeDTO" parameterType="Integer">
-		SELECT * FROM NOTICE WHERE TOP = '1'
+		SELECT * FROM NOTICE WHERE TOP = '1' ORDER BY REG_DATE
 	</select>
-	<select id="getTotalCount" resultType="Integer">
-		SELECT COUNT(NUM) FROM NOTICE
+	<select id="getTotalCount" resultType="Integer" parameterType="PageMaker">
+		SELECT COUNT(NUM) FROM NOTICE WHERE
+		<choose>
+			<when test="kind = 1">
+				TITLE LIKE '%'||#{search}||'%'
+			</when>
+			<when test="kind = 2">
+				CONTENTS LIKE '%'||#{search}||'%'
+			</when>
+			<otherwise>
+				<!-- TITLE LIKE '%'||#{search}||'%' OR -->
+				CONTENTS|TTITLE LIKE '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+	</select>
+	<select id="getNum" resultType="Integer">
+			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL 
 	</select>
 </mapper>

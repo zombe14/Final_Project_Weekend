@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -22,7 +22,9 @@
 		<div class="h_middle">
 			<div class="logo">
 				<!-- <h1>로고 자리</h1> -->
+
 				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo2_2.png"></a>
+
 			</div>
 			<div class="search_wrap">
 				<input type="text" placeholder="검색어 입력" id="search">
@@ -51,7 +53,7 @@
 			<div class="nav_wrap">
 				<ul class="nav navbar-nav">
 					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>내가 추천</a></li>
+							class="fa fa-home fa-fw"></i>오늘의 추천</a></li>
 					<li class="dropdown navp"><a href="#"
 						class="dropdown-caategory" id="dropdownCategoryMenu"
 						data-toggle="dropdown"><i class="fa fa-folder-open"></i>공연<i
@@ -80,10 +82,10 @@
 							class="fa fa-home fa-fw"></i>랭킹</a></li>
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>빈칸</a></li>
-					<li id="navbar-page" class="navp"><a href="./Mypage/MyPageBoard"><i
+					<li id="navbar-page" class="navp"><a href="./MyPage/MyPageBoard"><i
 							class="fa fa-home fa-fw"></i>MyPage</a></li>
-					<li id="navbar-page" class="navp"><a href="./admin/adminBoard"><i
-							class="fa fa-home fa-fw"></i>adminPage</a></li>
+					<li id="navbar-page" class="navp"><a href="./admin/adminMain"><i
+							class="fa fa-home fa-fw"></i>AdminPage</a></li>
 				</ul>
 			</div>
 		</div>

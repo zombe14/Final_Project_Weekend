@@ -47,8 +47,14 @@ public class NoticeDAOImpl implements BoardDAO {
 		return sqlSession.selectList(NAMESPACE+"getTopList");
 	}
 	
-	public int getTotalCount() throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getTotalCount");
+	public int getTotalCount(PageMaker pageMaker) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pageMaker);
 	}
+	
+	public int getNum() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getNum");
+	}
+	
+
 
 }

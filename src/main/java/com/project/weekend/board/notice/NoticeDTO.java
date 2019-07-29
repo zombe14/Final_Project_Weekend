@@ -1,8 +1,17 @@
 package com.project.weekend.board.notice;
 
-import com.project.weekend.board.BoardDTO;
+import java.util.ArrayList;
+import java.util.List;
 
-public class NoticeDTO extends BoardDTO{
+import com.project.weekend.board.BoardDTO;
+import com.project.weekend.file.FileDTO;
+
+
+// num/title/writer/contents/reg_date/hit/List<FileDTO>/top
+
+public class NoticeDTO extends BoardDTO {
+	
+	/*
 	private int top;
 
 	public int getTop() {
@@ -12,4 +21,15 @@ public class NoticeDTO extends BoardDTO{
 	public void setTop(int top) {
 		this.top = top;
 	}
+	*/
+	
+	private ArrayList<FileDTO> fileList;
+	public ArrayList<FileDTO> getFiles() {
+		return fileList;
+	}
+	public void setFiles(ArrayList<FileDTO> fileList) {
+		this.fileList = fileList;
+	}
+	
+	
 }

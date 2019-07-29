@@ -22,7 +22,7 @@ public class FileDown extends AbstractView{
 		// TODO Auto-generated method stub
 		FileDTO fileVO = (FileDTO)model.get("file");
 		String board = (String)model.get("board");
-		String realPath = request.getSession().getServletContext().getRealPath("/resources/"+board);
+		String realPath = request.getSession().getServletContext().getRealPath("/resources/images/"+board);
 		
 		File file = new File(realPath, fileVO.getFname());
 		
