@@ -13,7 +13,7 @@
 </head>
 <body>
 	<!-- header.jsp -->
-	<c:import url="../adminInc/header.jsp" />
+	<c:import url="../inc/admin_header.jsp" />
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<!-- left_bar -->

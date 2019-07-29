@@ -10,12 +10,12 @@
 <c:import url="../../../../resources/css/adminBoard.css" />
 </head>
 <body>
-	<c:import url="../../adminInc/header.jsp" />
+	<c:import url="../../inc/admin_header.jsp" />
 	<!-- left bar 시작 -->
 	<div class="container-fluid">
 		<div class="row content">
 			<!-- side bar -->
-			<c:import url="../../adminInc/left_bar.jsp" />
+			<c:import url="../../inc/admin_left_bar.jsp" />
 			<div class="col-sm-9">
 				<h4>
 					<small>${board} 관리</small>

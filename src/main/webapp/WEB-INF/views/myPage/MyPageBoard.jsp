@@ -1,49 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="../temp/boot.jsp"></c:import>
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/home.css">
+<title>Home</title>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="shortcut icon" type="image/x-icon"
+	href="./resources/images/logo/logo.png" />
 </head>
 <body>
-	<h1>My Page</h1>
-<div>
-	<div>
-		<a href="../">Go Main</a>
+	<div id="wrap">
+		<div id="header">
+			<c:import url="../inc/header.jsp"></c:import>
+		</div>
+		<div id="conta">
+			<div id="cotainer">
+				<div class="col-sm-3 sidenav">
+					<ul class="nav nav-pills nav-stacked">
+						<h3>내 정보</h3>
+						<li><a href="#">내 정보</a></li>
+						<h3>내 글</h3>
+						<li><a href="#">Notice</a></li>
+						<li><a href="#">Show</a></li>
+						<li><a href="#">Festi</a></li>
+						<li><a href="#">After Show</a></li>
+						<li><a href="#">After Festi</a></li>
+						<li><a href="#">Admin Recommend</a></li>
+						<li><a href="#">Rank</a></li>
+						<li><a href="#">QnA</a></li>
+						<h3>예약</h3>
+						<li><a href="#">예약 현황</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="container">
+				<table class="table table-hover">
+					<tr>
+						<td>ID</td>
+						<td>NAME</td>
+						<td>AGE</td>
+						<td>EMAIL</td>
+						<td>PHONE</td>
+						<td>GRADE</td>
+						<td>NICKNAME</td>
+					</tr>
+					<tr>
+						<td>test</td>
+						<td>test</td>
+						<td>test</td>
+						<td>test</td>
+						<td>test</td>
+						<td>test</td>
+						<td>test</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="footer">
+			<c:import url="../inc/footer.jsp"></c:import>
+		</div>
 	</div>
-	<div>
-		<h3>내 정보</h3>
-			<a href="#">정보 확인 / 수정</a>
-			<br>
-	</div>
-	<div>
-		<h3>내가 쓴 글</h3>
-			<a href="#">Notice</a>
-			<br>
-			<a href="#">Show</a>
-			<br>
-			<a href="#">Festi</a>
-			<br>
-			<a href="#">After Show</a>
-			<br>
-			<a href="#">After Festi</a>
-			<br>
-			<a href="#">Admin Recommend</a>
-			<br>
-			<a href="#">Rank</a>
-			<br>
-			<a href="#">QnA</a>
-	</div>
-	<div>
-		<h3>Reservation</h3>
-			<a href="#">예약 현황</a>
-			<br>
-			<a href="#">뭔가 넣을게 있을텐데?</a>
-	</div>
-</div>
 </body>
 </html>
