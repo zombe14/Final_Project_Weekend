@@ -13,7 +13,7 @@
 	</delete>
 	
 	<insert id="setWrite" parameterType="com.project.weekend.member.MemberDTO">
-		insert into member values(#{id}, #{pw}, #{name}, 0, #{email}, #{phone}, 1, #{nickname})
+		insert into member  values(#{id}, #{pw}, #{name}, 0, #{email}, #{phone}, 1, #{nickname})
 	</insert>
 
 	<select id="getId" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">

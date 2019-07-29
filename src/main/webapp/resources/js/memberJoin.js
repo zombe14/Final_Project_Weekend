@@ -58,6 +58,7 @@ $(function() {
 		var s = $('#email_store').val();
 		var v = true;
 		var phone = a+b+c;
+		$('#phone').val(phone);
 		if(a==''||b==''||c==''){
 			alert("휴대폰 번호를 입력하세요");
 			v = false;
@@ -150,7 +151,7 @@ $(function() {
 			finalpw = true;
 			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&finalpw){
 				alert("회원가입성공");
-
+				$("#frm").submit();
 			}else{
 				alert("비밀번호나 이름을 확인해주세요");
 			}

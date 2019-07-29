@@ -37,11 +37,13 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, HttpSession session,BindingResult bindingResult)throws Exception{
-		System.out.println("post");
 		ModelAndView mv = new ModelAndView();
+		System.out.println("post");
 		int result = memberService.setWrite(memberDTO, session);
+		System.out.println("post1");
 		String message="Join Fail";
 		if(result>0) {
+			System.out.println("post2");
 			message="Join Success";
 		}
 		mv.setViewName("common/messageMove");

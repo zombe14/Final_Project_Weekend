@@ -13,6 +13,7 @@ public class MemberService {
 	
 	
 	public int setWrite(MemberDTO memberDTO, HttpSession session)throws Exception{
+		System.out.println("result");
 		int result = memberDAO.setWrite(memberDTO);
 		return result;
 	}

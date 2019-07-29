@@ -9,7 +9,7 @@
   <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
-  <script type="text/javascript" src="../resources/js/memberJoin.js"></script>
+  <script type="text/javascript" src="../resources/js/memberJoin.js?ver=1"></script>
 <title>Insert title here</title>  
 </head>
 <body>
@@ -48,9 +48,7 @@
 										<span class="hypen">-</span>
 										<input type="text" class="iText" id="hp3" name="hp3" title="뒷번호4자리" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" style="IME-MODE:disabled;"> </div>
 								 		<input type="hidden" name="hp" value="">
-								<div id="phone" title="phone">
-									
-								</div>
+								<input type="hidden" id="phone" name="phone" title="phone"> 
 								</td>
 								
 							</tr>
@@ -91,9 +89,7 @@
 												
 											</select>
 										</div>
-										<div id="email">
-											
-										</div>
+										<input type="hidden" id="email" name="email" title="email">
 									</div>
 									<div class="mailAreaMessage">
 										<span class="alertMessage" style="display:none; margin-bottom:6px;"></span>
@@ -197,6 +193,12 @@
 							</tr>
 							<tr>
 								<th scope="row">
+									<span class="essential">*</span>활동명 </th>
+								<td>
+								<input type="text" name="nickname" class="iText" title="nickname" id="nickname" minlength="4" maxlength="20">
+							</tr>
+							<tr>
+								<th scope="row">
 									<span class="essential">*</span>어린이회원 </th>
 								<td>
 									<div class="iCheckbox minorChkWrap">
@@ -211,9 +213,10 @@
 					</table>
 				</div>
 				<div class="certifyButtonWrap_final certifyButtonWrap">
-					<button type="submit">
+					<button type="button">
 						회원가입
 					</button>
+					 
 				</div>
 		</div>
 		</form>
