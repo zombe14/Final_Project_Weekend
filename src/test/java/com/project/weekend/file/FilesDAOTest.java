@@ -36,15 +36,7 @@ public class FilesDAOTest extends AbstractTest {
 		assertNotEquals(res, 0);
 	}
 	
-	//@Test
-	public void setUpdate() throws Exception{
-		FileDTO f = new FileDTO();
-		f.setFnum(35);
-		f.setOname("bbbb.jpg");
-		f.setFname("cccc.jpg");
-		int res = fileDAO.setUpdate(f);
-		assertEquals(res, 1);
-	}
+	
 	
 	//@Test
 	public void getList() throws Exception{

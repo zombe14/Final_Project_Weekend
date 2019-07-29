@@ -1,3 +1,13 @@
+select * from files order by fnum desc
+SELECT * FROM 
+		(SELECT ROWNUM R, N.* FROM 
+		(SELECT NUM, TITLE, WRITER, HIT, REG_DATE FROM NOTICE WHERE 
+
+				CONTENTS LIKE '%search%'
+
+		ORDER BY NUM DESC) N)
+		WHERE R BETWEEN 1 and 10
+
 select * from notice order by num desc
 select notice_seq.nextval from dual
 

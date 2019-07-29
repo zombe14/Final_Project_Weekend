@@ -68,8 +68,20 @@ public class NoticeController {
 	
 	// 업데이트 프로세스 진행 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
-	public void noticeUpdate(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception{
-		noticeSerivceImpl.setUpdate(boardDTO, files, session);
+	public ModelAndView noticeUpdate(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String path = "redirect:./noticeList";
+	
+		int result = noticeSerivceImpl.setUpdate(boardDTO, filelist, session);
+		if(result>0) {
+			System.out.println("ok");
+			mv.setViewName(path);
+		} else {
+			//mv.setViewName("redirect:./noticeSelect?num="+boardDTO.getNum());
+			System.out.println("nope");
+			mv.setViewName(path);
+		}
+		return mv;
 	}
 	
 	// 공지 삭제 - admin
