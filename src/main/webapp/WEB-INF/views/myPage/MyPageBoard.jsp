@@ -15,27 +15,26 @@
 		<div id="header">
 			<c:import url="../inc/header.jsp"></c:import>
 		</div>
-		<div id="conta">
-			<div id="cotainer">
-				<div class="col-sm-3 sidenav">
-					<ul class="nav nav-pills nav-stacked">
-						<h3>내 정보</h3>
-						<li><a href="#">내 정보</a></li>
-						<h3>내 글</h3>
-						<li><a href="#">Notice</a></li>
-						<li><a href="#">Show</a></li>
-						<li><a href="#">Festi</a></li>
-						<li><a href="#">After Show</a></li>
-						<li><a href="#">After Festi</a></li>
-						<li><a href="#">Admin Recommend</a></li>
-						<li><a href="#">Rank</a></li>
-						<li><a href="#">QnA</a></li>
-						<h3>예약</h3>
-						<li><a href="#">예약 현황</a></li>
-					</ul>
-				</div>
+		<!-- body 전부를 감쌈  -->
+		<div class="container">
+			<div class="col-sm-2">
+				<ul class="nav nav-pills nav-stacked">
+					<h3>내 정보</h4>
+					<li><a href="#">내 정보</a></li>
+					<h3>내 글</h3>
+					<li><a href="#">Notice</a></li>
+					<li><a href="#">Show</a></li>
+					<li><a href="#">Festi</a></li>
+					<li><a href="#">After Show</a></li>
+					<li><a href="#">After Festi</a></li>
+					<li><a href="#">Admin Recommend</a></li>
+					<li><a href="#">Rank</a></li>
+					<li><a href="#">QnA</a></li>
+					<h3>예약</h3>
+					<li><a href="#">예약 현황</a></li>
+				</ul>
 			</div>
-			<div class="container">
+			<div class="col-sm-10">
 				<table class="table table-hover">
 					<tr>
 						<td>ID</td>
@@ -43,12 +42,8 @@
 						<td>AGE</td>
 						<td>EMAIL</td>
 						<td>PHONE</td>
-						<td>GRADE</td>
-						<td>NICKNAME</td>
 					</tr>
 					<tr>
-						<td>test</td>
-						<td>test</td>
 						<td>test</td>
 						<td>test</td>
 						<td>test</td>
