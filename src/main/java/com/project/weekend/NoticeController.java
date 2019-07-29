@@ -39,11 +39,11 @@ public class NoticeController {
 	// 글쓰기 프로세스 진행 - admin
 	// ** messageMove 만들어서 alert, path 수정하기
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
-	public ModelAndView noticeWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception{
+	public ModelAndView noticeWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 
 		ModelAndView mv = new ModelAndView();
 		String path = "redirect:./noticeList";
-		int result = noticeSerivceImpl.setWrite(boardDTO, files, session);
+		int result = noticeSerivceImpl.setWrite(boardDTO, filelist, session);
 		if(result>0) {
 			mv.setViewName(path);
 		} else {

@@ -28,7 +28,7 @@
 		<result column="hit" property="hit"/>
 		<result column="reg_date" property="reg_date"/>
 		<result column="top" property="top"/>
-		<collection property="fileList" javaType="List" ofType="FileDTO">
+		<collection property="fileDTOs" javaType="List" ofType="FileDTO">
 			<id column="fnum" property="fnum"/>
 			<result column="num" property="num"/>
 			<result column="fname" property="fname"/>

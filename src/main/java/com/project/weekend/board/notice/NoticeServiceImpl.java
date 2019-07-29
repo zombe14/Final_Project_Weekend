@@ -29,7 +29,7 @@ public class NoticeServiceImpl implements BoardService {
 	private FileSaver fileSaver;
 
 	@Override
-	public int setWrite(BoardDTO boardDTO, List<MultipartFile> files, HttpSession session) throws Exception {
+	public int setWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int result = 0;
 		// 글
 		int num = noticeDAOImpl.getNum();
@@ -39,7 +39,7 @@ public class NoticeServiceImpl implements BoardService {
 		// 첨부파일
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 
-		for (MultipartFile f : files) {
+		for (MultipartFile f : filelist) {
 			if (f.getOriginalFilename().length() > 0) {
 				FileDTO fileDTO = new FileDTO();
 
@@ -51,9 +51,6 @@ public class NoticeServiceImpl implements BoardService {
 				fileDTO.setOname(oname);
 				result = fileDAO.setWrite(fileDTO);
 			}
-		}
-
-		if (files.size() > 0) {
 		}
 
 		return result;

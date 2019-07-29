@@ -49,9 +49,10 @@
 						<td>${top.hit}</td>
 					</tr>
 				</c:forEach>
+
+
 				<!-- 일반 공지 리스트 -->
 				<c:forEach items="${list}" var="list">
-
 					<tr title="${list.num}" class="select">
 						<td>${list.num}</td>
 						<td>${list.title}</td>
@@ -59,10 +60,16 @@
 						<td>${list.reg_date}</td>
 						<td>${list.hit}</td>
 					</tr>
-
 				</c:forEach>
-			</table>
 
+			</table>			
+
+			<c:if test="${list[0].num eq null}">
+				<ul class="pagination">
+					<li><a href="${board}List">검색결과가 없습니다</a></li>
+				</ul>
+			</c:if>
+			<c:if test="${list[0].num ne null}">
 			<ul class="pagination">
 				<c:choose>
 					<c:when test="${pager.curBlock>1}">
@@ -85,11 +92,10 @@
 						<li><a>다음</a></li>
 					</c:otherwise>
 				</c:choose>
-
 			</ul>
-
+			</c:if>
 			<a href="./${board}Write">${board}Write</a>
-
+			
 		</div>
 		</div>
 		<div id="footer">

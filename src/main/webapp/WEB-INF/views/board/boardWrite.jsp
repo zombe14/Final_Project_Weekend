@@ -39,7 +39,7 @@
 					<a id="addFiles">파일추가</a>
 					<div id="files">
 						<div>
-							<input type="file" class="files" name="files" style="display: inline-block">
+							<input type="file" class="files" name="filelist" style="display: inline-block">
 							<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
 						</div>
 					</div>
