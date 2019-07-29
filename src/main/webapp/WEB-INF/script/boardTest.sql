@@ -1,3 +1,9 @@
+ SELECT COLUMN_NAME, DATA_TYPE FROM all_tab_columns where table_name='FESTI';
+
+
+select * from tab
+alter table festi add top number(1)
+
 select * from files order by fnum desc
 SELECT * FROM 
 		(SELECT ROWNUM R, N.* FROM 
