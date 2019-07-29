@@ -5,7 +5,9 @@
 
 <mapper namespace="MemberMapper">
 	
-	
+	<select id="getSelect" resultMap="member" parameterType="com.project.weekend.member.MemberDTO">
+		select * from member where id=#{id} and pw=#{pw}
+	</select>
 	
 	
 	<delete id="setDelete" parameterType="java.util.List">

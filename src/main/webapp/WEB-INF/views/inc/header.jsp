@@ -7,14 +7,21 @@
 	<div class="h_top">
 		<div class="h_wrap">
 			<div class="user_menu">
-				<div id="login">
-					<a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-					<a href="${pageContext.request.contextPath}/member/memberAgree">회원가입</a> <span class="log">|</span> <a href="#">고객센터</a>
-				</div>
-				<div id="logout" style="display: none">
-					<a href="#"></a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-					<a href="#">회원가입</a> <span class="log">|</span> <a href="#">고객센터</a>
-				</div>
+				<c:choose>
+					<c:when test="${not empty member}">
+							<div id="logout">
+								<a href="#">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="#">고객센터</a>
+							</div>
+					</c:when>
+					<c:otherwise>
+						<div id="login">
+							<a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+							<a href="${pageContext.request.contextPath}/member/memberAgree">회원가입</a> <span class="log">|</span> <a href="#">고객센터</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				
 			</div>
 		</div>
 	</div>

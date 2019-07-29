@@ -5,7 +5,7 @@
 <html>
 <head>
 	<title>Home</title>
-	<link rel="stylesheet" href="css/home.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
 	<link rel="shortcut icon" type="image/x-icon" href="./resources/images/logo/logo.png" />
 <script>
 jQuery(document).ready(function() {

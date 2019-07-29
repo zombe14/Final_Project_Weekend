@@ -9,11 +9,13 @@
   <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
-  <script type="text/javascript" src="../resources/js/memberJoin.js?ver=1"></script>
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
+  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=1"></script>
 <title>Insert title here</title>  
 </head>
 <body>
-	<div class="container">
+	<div id="container">
+	<div class="inner">
 	<form action="./memberJoin"  id="frm" method="POST">
 		<div class="joinWrap">
 			<h2>회원가입</h2>
@@ -220,6 +222,7 @@
 				</div>
 		</div>
 		</form>
+		</div>
 	</div>
 
 </body>
