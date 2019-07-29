@@ -26,7 +26,7 @@ public class AdminController {
 	@RequestMapping(value = "adminMain", method = RequestMethod.GET)
 	public ModelAndView adminBoard() throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("board", "관리자 메인");
+		mv.addObject("boardTitle", "관리자 메인");
 		mv.setViewName("admin/adminMain");
 		return mv;
 	}
@@ -35,6 +35,7 @@ public class AdminController {
 	@RequestMapping(value = "adminUserBoard", method = RequestMethod.GET)
 	public ModelAndView adminUserBoard() throws Exception {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("board", "User");
 		mv.setViewName("admin/User/adminUserBoard");
 		return mv;
 	}
@@ -61,15 +62,14 @@ public class AdminController {
 	}
 	////////////// board 관리; //////////////
 	////////////// notice board; //////////////
-	@RequestMapping(value = "adminBoard", method = RequestMethod.GET) 
+	@RequestMapping(value = "adminBoardNoticeList", method = RequestMethod.GET) 
 	public ModelAndView adminNoticeList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView(); 
 		List<BoardDTO> list = noticeServiceImpl.getList(pageMaker, session); 
-		mv.addObject("board", "notice"); 
-		mv.addObject("boardTitle", "관리자모드"); 
+		mv.addObject("board", "Notice"); 
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
-		mv.setViewName("admin/Board/adminBoard");
+		mv.setViewName("admin/Board/adminBoardList");
 	return mv;
 	}
 	// notice;
@@ -83,6 +83,7 @@ public class AdminController {
 	@RequestMapping(value = "adminReserBoard", method = RequestMethod.GET)
 	public ModelAndView adminReserList() throws Exception{
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("board", "Reser");
 		mv.setViewName("admin/Reser/adminReserBoard");
 		return mv;
 	}
