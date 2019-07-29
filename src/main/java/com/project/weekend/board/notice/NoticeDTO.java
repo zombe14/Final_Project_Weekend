@@ -23,13 +23,14 @@ public class NoticeDTO extends BoardDTO {
 	}
 	*/
 	
-	private ArrayList<FileDTO> fileList;
-	public ArrayList<FileDTO> getFiles() {
-		return fileList;
+	private ArrayList<FileDTO> fileDTOs;
+
+	public ArrayList<FileDTO> getFileList() {
+		return fileDTOs;
 	}
-	public void setFiles(ArrayList<FileDTO> fileList) {
-		this.fileList = fileList;
+
+	public void setFileList(ArrayList<FileDTO> fileList) {
+		this.fileDTOs = fileList;
 	}
-	
 	
 }

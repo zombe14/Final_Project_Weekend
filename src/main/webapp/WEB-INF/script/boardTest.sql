@@ -1,3 +1,13 @@
+select * from files order by fnum desc
+SELECT * FROM 
+		(SELECT ROWNUM R, N.* FROM 
+		(SELECT NUM, TITLE, WRITER, HIT, REG_DATE FROM NOTICE WHERE 
+
+				CONTENTS LIKE '%search%'
+
+		ORDER BY NUM DESC) N)
+		WHERE R BETWEEN 1 and 10
+
 select * from notice order by num desc
 select notice_seq.nextval from dual
 
@@ -6,7 +16,7 @@ update notice set top=1 where num=42
 
 SELECT * FROM NOTICE WHERE TOP = '1'
 
-SELECT * FROM FILES
+SELECT * FROM FILES order by fnum desc
 
 SELECT * FROM USER_SEQUENCES;
 
@@ -36,3 +46,6 @@ SELECT * FROM
 (SELECT NUM, TITLE, contents FROM NOTICE WHERE
 CONTENTSLIKE '%'||'20'||'%' || TITLE LIKE '%'||'20'||'%'
 ORDER BY NUM DESC) N)
+
+SELECT * FROM NOTICE FULL JOIN FILES USING(NUM) WHERE NUM = 129
+

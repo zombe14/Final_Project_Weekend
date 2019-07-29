@@ -16,11 +16,6 @@ public class FileDAO {
 		return sqlSession.insert(NAMESPACE+"setWrite", fileDTO);
 	}
 	
-	public int setUpdate(FileDTO fileDTO) throws Exception{
-		int res = sqlSession.update(NAMESPACE+"setUpdate", fileDTO);
-		return res;
-	}
-	
 	public int setDelete(int fnum) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDelete", fnum);
 	}

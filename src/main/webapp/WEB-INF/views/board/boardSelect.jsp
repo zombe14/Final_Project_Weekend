@@ -49,11 +49,11 @@
 				<a href="./${board}Update?num=${dto.num}">수정</a> 
 				<a id="delete">삭제</a>
 			</div>
-		</div>
-		<div id="footer">
-			<c:import url="../inc/footer.jsp"></c:import>
-		</div>
-	</div>
+   </div>
+   <div id="footer">
+      <c:import url="../inc/footer.jsp"></c:import>
+   </div>
+</div>
 	
 	<!-- script -->
 	<script type="text/javascript">

@@ -37,8 +37,9 @@ public class AjaxController {
 		ModelAndView mv = new ModelAndView();
 		
 		String fileName = session.getServletContext().getContextPath();
-		fileName=fileName + "/resources/summer/"; //File.separator = '/'
+		fileName=fileName + "/resources/summernote/"; //File.separator = '/'
 		fileName = fileName + fileService.summernoteFileUpload(file, session);
+		
 		mv.addObject("result", fileName);
 		mv.setViewName("common/message");
 		return mv;

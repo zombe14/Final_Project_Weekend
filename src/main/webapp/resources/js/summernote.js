@@ -10,6 +10,7 @@
 
 	// summernote -------------
 	$('#contents').summernote({
+		height:500,
 		callbacks:{
 			onImageUpload:function(files){
 				var formData = new FormData();
