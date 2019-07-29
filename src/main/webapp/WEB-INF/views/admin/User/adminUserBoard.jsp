@@ -24,19 +24,23 @@
 				<div class="container">
 					<table class="table table-hover">
 						<tr>
-							<td>NUM</td>
-							<td>TITLE</td>
-							<td>WRITER</td>
-							<td>DATE</td>
-							<td>HIT</td>
+							<td>ID</td>
+							<td>NAME</td>
+							<td>AGE</td>
+							<td>EMAIL</td>
+							<td>PHONE</td>
+							<td>GRADE</td>
+							<td>NICKNAME</td>
 						</tr>
 						<c:forEach items="${list}" var="dto">
 							<tr>
-								<td>${dto.num}</td>
-								<td>${dto.title}</td>
-								<td>${dto.writer}</td>
-								<td>${dto.reg_date}</td>
-								<td>${dto.hit}</td>
+								<td>${dto.id}</td>
+								<td>${dto.name}</td>
+								<td>${dto.age}</td>
+								<td>${dto.email}</td>
+								<td>${dto.phone}</td>
+								<td>${dto.grade}</td>
+								<td>${dto.nickname}</td>
 							</tr>
 						</c:forEach>
 					</table>

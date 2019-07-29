@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.board.notice.NoticeServiceImpl;
+import com.project.weekend.member.MemberDTO;
+import com.project.weekend.member.MemberService;
 import com.project.weekend.util.PageMaker;
 
 @Controller
@@ -20,6 +22,8 @@ import com.project.weekend.util.PageMaker;
 public class AdminController {
 	@Inject
 	private NoticeServiceImpl noticeServiceImpl;
+	@Inject
+	private MemberService memberService;
 
 	////////////// admin Main; //////////////
 	// 여기에 전반적인 뭔가를 뿌려야됨;
@@ -33,9 +37,11 @@ public class AdminController {
 	////////////// admin User; //////////////
 	// userList
 	@RequestMapping(value = "adminUserBoard", method = RequestMethod.GET)
-	public ModelAndView adminUserBoard() throws Exception {
+	public ModelAndView adminUserBoard(HttpSession session, MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		List<MemberDTO> list = memberService.getList(session, memberDTO);
 		mv.addObject("board", "User");
+		mv.addObject("list", list);
 		mv.setViewName("admin/User/adminUserBoard");
 		return mv;
 	}

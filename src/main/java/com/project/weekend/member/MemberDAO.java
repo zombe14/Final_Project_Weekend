@@ -1,5 +1,7 @@
 package com.project.weekend.member;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.xml.stream.events.Namespace;
 
@@ -13,10 +15,14 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private static final String NAMESPACE="MemberMapper.";
 	
+	// 상혁 test용;
+	public List<MemberDTO> getList(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList", memberDTO);
+	}
+	
 	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getId", memberDTO);
 	}
-	
 	
 	public int setWrite(MemberDTO memberDTO)throws Exception{
 		System.out.println("MEMBERDAO");
