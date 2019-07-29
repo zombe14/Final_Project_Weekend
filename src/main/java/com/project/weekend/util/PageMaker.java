@@ -3,8 +3,9 @@ package com.project.weekend.util;
 public class PageMaker {
 	private int perPage=10;
 	private Integer curPage;
-	private String kind;//title, writer, contents
+	private String kind;//title, writer, contents, all
 	private String search;
+	private int category;	// festi/show 분류 때문에 추가
 	
 	//rownum
 	private int startRow;
@@ -65,6 +66,13 @@ public class PageMaker {
 		this.search = search;
 	}
 	
+	public int getCategory() {
+		return category;
+	}
+	public void setCategory(int category) {
+		this.category = category;
+	}
+	
 	//startRow, lastRow
 	public void makeRow() {
 		this.startRow = (this.getCurPage()-1)*this.perPage+1;
@@ -100,4 +108,5 @@ public class PageMaker {
 			this.lastNum=totalPage;
 		}
 	}
+
 }

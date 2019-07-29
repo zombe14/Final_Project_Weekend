@@ -16,6 +16,7 @@ public class FestivalController {
 	@Inject
 	private FestiServiceImpl festiServiceImpl;
 	
+	//write form - get
 	@RequestMapping(value = "festivalWrite", method = RequestMethod.GET)
 	public ModelAndView setWrite() throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -27,7 +28,7 @@ public class FestivalController {
 	}
 	
 	// list
-	@RequestMapping(value = "festivalList")
+	@RequestMapping(value = "festivalList", method = RequestMethod.GET)
 	public ModelAndView getList() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("sort", "festi");
