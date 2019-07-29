@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FestiMapper">
+
+	<insert id="setWrite" parameterType="FestiDTO">
+		INSERT INTO FESTI(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, CATEGORY, PRICE, TOTAL, STARTDATE, ENDDATE, LOCAL, TOP)
+		VALUES(#{num},#{title},#{writer},#{contents},sysdate,#{hit},#{category},#{price},#{total},sysdate,sysdate,#{local},#{top})
+	</insert>
+	<!-- #{startDate},#{endDate} -->
+	
+</mapper>

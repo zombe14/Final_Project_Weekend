@@ -50,6 +50,56 @@
 					상단에 등록 하기 <input type="checkbox" id="top" name="top" value="0">
 				<%-- </c:if> --%>
 				</div>
+				
+				<c:if test="${sort eq 'festi'}">
+					<div>
+						<div>
+							<label for="category">대분류</label>
+							<c:choose>
+								<c:when test="${board eq 'festival'}">
+									<input type="radio" checked="checked"> 축제
+									<div>
+										<label for="writer">소분류<span>*</span></label>
+										<input type="radio" name="category" value="1" checked="checked"> 전시
+										<input type="radio" name="category" value="2"> 행사	
+										<input type="radio" name="category" value="3"> 레저
+									</div>
+								</c:when>
+								<c:when test="${board eq 'show'}">
+									<input type="radio" checked="checked"> 공연
+									<div>
+										<label for="writer">소분류<span>*</span></label>
+										<input type="radio" name="category" value="4" checked="checked"> 지방 연극
+										<input type="radio" name="category" value="5"> 대학로 연극
+										<input type="radio" name="category" value="6"> 콘서트
+									</div>
+								</c:when>
+							</c:choose>
+						</div>
+						<div>
+							<label for="startDate">시작일<span>*</span></label>
+							<input type="date" name="startDate">
+						</div>
+						<div>
+							<label for="endDate">종료일<span>*</span></label>
+							<input type="date" name="endDate">
+						</div>
+						<div>
+							<label for="price">가격</label>
+							<input type="number" name="price" value="0"><span>원</span>
+						</div>
+						<div>
+							<label for="total">좌석 </label>
+							<input type="number" name="total" value="0"><span>개</span>
+						</div>
+						<div>
+							<label for="local">지역<span>*</span></label>
+							<input type="text" name="local">
+						</div>
+					</div>
+				</c:if>
+				
+				
 				<input type="button" id="write" value="등록">
 			</form> 
 			

@@ -4,8 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
+	<!-- notice -->
 	<bean class="com.project.weekend.board.notice.NoticeDTO" id="noticeDTO" />
 	<bean class="com.project.weekend.board.notice.NoticeDAOImpl" id="noticeDAO" />
 	<bean class="com.project.weekend.board.notice.NoticeServiceImpl" id="noticeServiceImpl" />
+	
+	<!-- festi -->
+	<bean class="com.project.weekend.board.festi.FestiDTO" id="festiDTO" />
+	<bean class="com.project.weekend.board.festi.FestiDAOImpl" id="festiDAOImpl" />
+	<bean class="com.project.weekend.board.festi.FestiServiceImpl" id="festiServiceImpl" />
 	
 </beans>

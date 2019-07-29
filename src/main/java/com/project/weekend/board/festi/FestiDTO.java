@@ -10,7 +10,7 @@ import com.project.weekend.file.FileDTO;
 // category, price, total, startDate, endDate, local,	+ fileDTOs
 // top
 public class FestiDTO extends BoardDTO{
-	private int category;	// 1-축제, 2-공연
+	private int category;	// 1-전시, 2-행사, 3-레저
 	private int price;	// 가격
 	private int total; // 전체좌석
 	private Date startDate;	// 시작일
