@@ -1,4 +1,77 @@
- SELECT COLUMN_NAME, DATA_TYPE FROM all_tab_columns where table_name='FESTI';
+select * from files
+drop table files
+create table files(
+	fnum number(8) not null,
+	num varchar2(400) null,
+	fname varchar2(400) null,
+	oname varchar2(400) null,
+	constraint files_fnum_pk primary key(fnum)
+)
+select * from NOTICE
+select * from files order by fnum desc
+select * from FESTI
+delete festi where num=1
+
+select * from user_sequences
+
+SELECT * FROM    ALL_CONSTRAINTS
+WHERE    TABLE_NAME = 'CART'
+
+
+-- 1. 시퀀스 삭제
+files_seq
+
+-- 2. 각각 테이블 pk 타입 변경
+
+alter table cart drop constraint cart_num_fk
+
+select * from festiqna
+drop table festi
+delete FESTI
+alter table festi modify (num varchar2(400))
+CREATE TABLE festi
+(
+    num          varchar2(400)        NOT NULL, 
+    title        VARCHAR2(400)    NULL, 
+    writer       VARCHAR2(400)    NULL, 
+    contents     CLOB             NULL, 
+    reg_date     DATE             NULL, 
+    hit          NUMBER(8)        NULL,
+    top			number(1)		null,
+    category     NUMBER(1)        NULL, 
+    price        NUMBER(8)        NULL, 
+    total        NUMBER(8)        NULL, 
+    startDate    DATE             NULL, 
+    endDate      DATE             NULL,
+    local	varchar2(400)	null,
+    CONSTRAINT FESTI_PK PRIMARY KEY (num)
+)
+
+drop table notice
+CREATE TABLE notice
+(
+    num         varchar2(400)        NOT NULL, 
+    title       VARCHAR2(400)    NULL, 
+    writer      VARCHAR2(400)    NULL, 
+    contents    CLOB             NULL, 
+    hit         NUMBER(8)        NULL, 
+    reg_date    DATE             NULL, 
+    top         NUMBER(1)        NULL, 
+    CONSTRAINT NOTICE_PK PRIMARY KEY (num)
+)
+
+
+
+-- 3. 테이블 varchar2로 다시 만들기
+
+-- 4. getNum후 setNum 할 때 앞에 구분 붙이기, mapper변경
+
+-- 5. 테이블 다 지우고 테스트용 만들기
+
+
+
+SELECT COLUMN_NAME, DATA_TYPE FROM all_tab_columns where table_name='FESTI';
+select * from after
 
  select * from festi
  select * from member

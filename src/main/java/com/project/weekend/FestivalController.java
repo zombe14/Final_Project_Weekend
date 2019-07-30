@@ -12,14 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.festi.FestiDTO;
-import com.project.weekend.board.festi.FestiServiceImpl;
+import com.project.weekend.board.festi.FestiService;
 
 @Controller
 @RequestMapping(value = "/festival/")
 public class FestivalController {
 	
 	@Inject
-	private FestiServiceImpl festiServiceImpl;
+	private FestiService festiService;
 	
 	//write form - get
 	@RequestMapping(value = "festivalWrite", method = RequestMethod.GET)
@@ -36,7 +36,13 @@ public class FestivalController {
 	@RequestMapping(value = "festivalWrite", method = RequestMethod.POST)
 	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
+		String path = "board/boardTile";
+		int res = festiService.setWrite(festiDTO, filelist, session);
+		if(res>0) {
+			mv.setViewName(path);
+		} else {
+			mv.setViewName(path);
+		}
 		return mv;
 	}
 	

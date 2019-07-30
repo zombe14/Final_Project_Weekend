@@ -33,13 +33,13 @@ public class aBoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int setDelete(int num, HttpSession session) throws Exception {
+	public int setDelete(String num, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public BoardDTO getSelect(int num, HttpSession session) throws Exception {
+	public BoardDTO getSelect(String num, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

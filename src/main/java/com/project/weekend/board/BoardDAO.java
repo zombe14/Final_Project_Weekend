@@ -13,10 +13,10 @@ public interface BoardDAO {
 	public int setUpdate(BoardDTO boardVO) throws Exception;
 	
 	// 글삭제
-	public int setDelete(int num) throws Exception;
+	public int setDelete(String num) throws Exception;
 	
 	// 글선택
-	public BoardDTO getSelect(int num) throws Exception;
+	public BoardDTO getSelect(String num) throws Exception;
 	
 	// 글리스트
 	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception;

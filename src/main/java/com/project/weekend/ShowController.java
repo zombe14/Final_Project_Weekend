@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.weekend.board.festi.FestiServiceImpl;
+import com.project.weekend.board.festi.FestiService;
 
 @Controller
 @RequestMapping(value = "/show/")	// 공연
 public class ShowController {
 	
 	@Inject
-	private FestiServiceImpl festiServiceImpl;
+	private FestiService festiServiceImpl;
 	
 	// write - get
 	@RequestMapping(value = "showWrite", method = RequestMethod.GET)

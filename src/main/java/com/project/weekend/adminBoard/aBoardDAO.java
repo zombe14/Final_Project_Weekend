@@ -21,13 +21,13 @@ public class aBoardDAO implements BoardDAO{
 	}
 
 	@Override
-	public int setDelete(int num) throws Exception {
+	public int setDelete(String num) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public BoardDTO getSelect(int num) throws Exception {
+	public BoardDTO getSelect(String num) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

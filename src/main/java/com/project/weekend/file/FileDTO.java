@@ -2,7 +2,7 @@ package com.project.weekend.file;
 
 public class FileDTO {
 	private int fnum;
-	private int num;
+	private String num;
 	private String fname;
 	private String oname;
 	
@@ -12,10 +12,10 @@ public class FileDTO {
 	public void setFnum(int fnum) {
 		this.fnum = fnum;
 	}
-	public int getNum() {
+	public String getNum() {
 		return num;
 	}
-	public void setNum(int num) {
+	public void setNum(String num) {
 		this.num = num;
 	}
 	public String getFname() {
