@@ -7,18 +7,7 @@
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
 	<link rel="shortcut icon" type="image/x-icon" href="./resources/images/logo/logo.png" />
-<script>
-jQuery(document).ready(function() {
-	var bodyOffset = jQuery('body').offset();
-	jQuery(window).scroll(function() {
-		if (jQuery(document).scrollTop() > bodyOffset.top) {
-			jQuery('#wingright').addClass('right_suv');
-		} else {
-			jQuery('#wingright').removeClass('right_suv');
-		}
-	});
-});
-</script>
+	<script type="text/javascript" src="./resources/js/weather.js"></script>
 </head>
 <body>
 <div id="wrap">
