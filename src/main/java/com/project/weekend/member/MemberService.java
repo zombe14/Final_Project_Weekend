@@ -29,8 +29,8 @@ public class MemberService {
 		return list;
 	}
 
-	public MemberDTO getIdd(MemberDTO memberDTO)throws Exception{
-		return memberDAO.getIdd(memberDTO);
+	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getId(memberDTO);
 	}
 	
 	public int setUpdate(MemberDTO memberDTO)throws Exception{
@@ -52,9 +52,7 @@ public class MemberService {
 		memberFileDTO.setOname(photo.getOriginalFilename());
 		
 		int result = memberDAO.setWrite(memberDTO);
-		System.out.println("22");
 		result = memberFileDAO.setWrite(memberFileDTO);
-		System.out.println("33");
 		return result;
 	}
 	

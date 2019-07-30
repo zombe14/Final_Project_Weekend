@@ -22,9 +22,7 @@ public class MemberDAO {
 	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getId", memberDTO);
 	}
-	public MemberDTO getIdd(MemberDTO memberDTO)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getIdd", memberDTO);
-	}
+
 	public int setWrite(MemberDTO memberDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setWrite", memberDTO);
 	}
