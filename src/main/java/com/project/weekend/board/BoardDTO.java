@@ -1,20 +1,31 @@
 package com.project.weekend.board;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.project.weekend.file.FileDTO;
 
 public class BoardDTO {
-	private int num;
+	private String num;
 	private String title;
 	private String writer;
 	private String contents;
 	private Date reg_date;
 	private int hit;
-	public int getNum() {
-		return num;
+	
+	// 추가 테스트
+
+	private int top;
+	public int getTop() {
+		return top;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setTop(int top) {
+		this.top = top;
 	}
+	
+	//	
+
 	public String getTitle() {
 		return title;
 	}
@@ -45,4 +56,11 @@ public class BoardDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
+
 }

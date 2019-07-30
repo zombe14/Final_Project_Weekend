@@ -9,14 +9,23 @@ public class MemberDTO {
 	private String email;
 	private int age;
 	private String phone;
-	private String grade;
+	private int grade;
+	private int count;
 	
 	
 	
-	public String getGrade() {
+	
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public int getGrade() {
 		return grade;
 	}
-	public void setGrade(String grade) {
+	public void setGrade(int grade) {
 		this.grade = grade;
 	}
 	public String getPwCheck() {

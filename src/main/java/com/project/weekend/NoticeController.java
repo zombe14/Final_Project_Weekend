@@ -12,8 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.BoardDTO;
+import com.project.weekend.board.notice.NoticeDAOImpl;
 import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.board.notice.NoticeServiceImpl;
+import com.project.weekend.file.FileDTO;
 import com.project.weekend.util.PageMaker;
 
 @Controller
@@ -35,12 +37,18 @@ public class NoticeController {
 	}
 	
 	// 글쓰기 프로세스 진행 - admin
+	// ** messageMove 만들어서 alert, path 수정하기
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
-	public ModelAndView noticeWrite(NoticeDTO noticeDTO, List<MultipartFile> files, HttpSession session) throws Exception{
+	public ModelAndView noticeWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+
 		ModelAndView mv = new ModelAndView();
-		
-		
-		int result = noticeSerivceImpl.setWrite(noticeDTO, files, session);
+		String path = "redirect:./noticeList";
+		int result = noticeSerivceImpl.setWrite(boardDTO, filelist, session);
+		if(result>0) {
+			mv.setViewName(path);
+		} else {
+			mv.setViewName(path);
+		}
 		
 		return mv;
 	}
@@ -48,7 +56,7 @@ public class NoticeController {
 	/*공지 업데이트*/
 	// 업데이트 폼으로 이동 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.GET)
-	public ModelAndView noticeUpdate(int num, HttpSession session) throws Exception{
+	public ModelAndView noticeUpdate(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
 		mv.addObject("dto", boardDTO);
@@ -60,13 +68,25 @@ public class NoticeController {
 	
 	// 업데이트 프로세스 진행 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
-	public void noticeUpdate(NoticeDTO noticeDTO, List<MultipartFile> files, HttpSession session) throws Exception{
-		noticeSerivceImpl.setUpdate(noticeDTO, files, session);
+	public ModelAndView noticeUpdate(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String path = "redirect:./noticeList";
+	
+		int result = noticeSerivceImpl.setUpdate(boardDTO, filelist, session);
+		if(result>0) {
+			System.out.println("ok");
+			mv.setViewName(path);
+		} else {
+			//mv.setViewName("redirect:./noticeSelect?num="+boardDTO.getNum());
+			System.out.println("nope");
+			mv.setViewName(path);
+		}
+		return mv;
 	}
 	
 	// 공지 삭제 - admin
 	@RequestMapping(value = "noticeDelete", method = RequestMethod.GET)
-	public String noticeDelete(int num, HttpSession session) throws Exception{
+	public String noticeDelete(String num, HttpSession session) throws Exception{
 		String path = "./boardSelect?num="+num;
 		String message = "실패";
 		int res = noticeSerivceImpl.setDelete(num, session);
@@ -80,10 +100,11 @@ public class NoticeController {
 	
 	// 공지글보기 - all
 	@RequestMapping(value = "noticeSelect", method = RequestMethod.GET)
-	public ModelAndView noticeSelect(int num, HttpSession session) throws Exception{
+	public ModelAndView noticeSelect(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 
 		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
+		
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
 		mv.addObject("boardTitle", "Notice");

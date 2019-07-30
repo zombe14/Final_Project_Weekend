@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -7,14 +7,28 @@
 	<div class="h_top">
 		<div class="h_wrap">
 			<div class="user_menu">
-				<div id="login">
-					<a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-					<a href="${pageContext.request.contextPath}/member/memberAgree">회원가입</a> <span class="log">|</span> <a href="#">고객센터</a>
-				</div>
-				<div id="logout" style="display: none">
-					<a href="#"></a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-					<a href="#">회원가입</a> <span class="log">|</span> <a href="#">고객센터</a>
-				</div>
+				<c:choose>
+<%-- 					<c:when test="${id eq admin}">
+							<div>
+								<a href="${pageContext.request.contextPath}/admin/adminMain">관리자 페이지</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a>
+							</div>
+					</c:when> --%>
+					<c:when test="${not empty member}">
+							<div id="logout">
+								<a href="${pageContext.request.contextPath}/myPage/myPage">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="#">고객센터</a>
+							</div>
+					</c:when>
+					<c:otherwise>
+						<div id="login">
+							<a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+							<a href="${pageContext.request.contextPath}/member/memberAgree">회원가입</a> <span class="log">|</span> <a href="#">고객센터</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				
+				
 			</div>
 		</div>
 	</div>
@@ -22,7 +36,9 @@
 		<div class="h_middle">
 			<div class="logo">
 				<!-- <h1>로고 자리</h1> -->
+
 				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo2_2.png"></a>
+
 			</div>
 			<div class="search_wrap">
 				<input type="text" placeholder="검색어 입력" id="search">
@@ -80,10 +96,10 @@
 							class="fa fa-home fa-fw"></i>랭킹</a></li>
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>빈칸</a></li>
-					<li id="navbar-page" class="navp"><a href="./Mypage/MyPageBoard"><i
-							class="fa fa-home fa-fw"></i>MyPage</a></li>
-					<li id="navbar-page" class="navp"><a href="./admin/adminBoard"><i
-							class="fa fa-home fa-fw"></i>adminPage</a></li>
+					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/myPage/myPage"><i
+							class="fa fa-home fa-fw"></i>빈칸</a></li>
+					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/admin/adminMain"><i
+							class="fa fa-home fa-fw"></i>관리자 페이지</a></li>
 				</ul>
 			</div>
 		</div>

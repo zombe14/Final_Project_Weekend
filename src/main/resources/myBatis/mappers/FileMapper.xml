@@ -4,35 +4,40 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="FileMapper">
+
+	 <!-- 
+	<insert id="setWrite" parameterType="java.util.List">
+		<selectKey order="BEFORE" resultType="Integer" keyProperty="fnum">
+			SELECT FILES_SEQ.NEXTVAL AS FNUM FROM DUAL
+		</selectKey>
+		INSERT ALL
+		<foreach index="i" separator=" " item="item" collection="list">
+			INTO FILES VALUES 
+			(FILES_SEQ.NEXTVAL+#{i}, #{item.num}, #{item.fname},#{item.oname})
+		</foreach>
+		SELECT * FROM DUAL
+	</insert>
+	 -->
 	
-	<select id="getList" parameterType="Integer" resultType="FileDTO">
-		select * from files where num=#{num}
+ 	<insert id="setWrite" parameterType="FileDTO">
+		INSERT INTO FILES(FNUM, NUM, FNAME, ONAME) VALUES(files_seq.nextval, #{num}, #{fname}, #{oname})
+	</insert>
+
+	
+	<select id="getList" parameterType="String" resultType="FileDTO">
+		SELECT * FROM FILES WHERE NUM=#{num}
 	</select>
 	
 	<delete id="setDelete" parameterType="Integer">
-		delete files where fnum=#{fnum}
-	</delete>
-	<delete id="setDeleteAll" parameterType="Integer">
-		delete files where num=#{num}
+		DELETE FILES WHERE FNUM=#{fnum}
 	</delete>
 	
-	<insert id="setWrite" parameterType="java.util.List">
-		<selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
-			select files_seq.nextval as id from dual
-		</selectKey>
-		insert all
+	<delete id="setDeleteAll" parameterType="String">
+		DELETE FILES WHERE NUM=#{num}
+	</delete>
+	
+	<select id="getSelect" resultType="FileDTO" parameterType="Integer">
+		SELECT * FROM FILES WHERE FNUM=#{fnum}
+	</select>
 		
-		<foreach collection="list" item="item" index="i" separator=" ">
-			into files values
-			(
-			files_seq.nextval +#{i},
-			#{item.num},
-			#{item.fname},
-			#{item.oname}
-			)
-		</foreach>
-			select * from dual
-	</insert>
-	
-	
 </mapper>
