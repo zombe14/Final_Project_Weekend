@@ -20,7 +20,7 @@ public class FileDAO {
 		return sqlSession.delete(NAMESPACE+"setDelete", fnum);
 	}
 	
-	public int setDeleteAll(int num) throws Exception{
+	public int setDeleteAll(String num) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDeleteAll", num);
 	}
 	

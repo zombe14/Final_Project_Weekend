@@ -15,6 +15,7 @@
 			</c:when>
 			<c:when test="${board eq 'Notice'}">
 				<li><a href="./adminBoardNoticeList">공지사항</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/adminBoardNoticeList">공지사항</a></li>
 				<li><a href="./adminBoardFestiList">페스티벌</a></li>
 				<li><a href="./adminBoardShowList">공연</a></li>
 				<li><a href="./adminBoardFestiAfterList">페스티벌 후기</a></li>

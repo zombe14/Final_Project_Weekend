@@ -24,7 +24,7 @@
 	</insert>
 
 	
-	<select id="getList" parameterType="Integer" resultType="FileDTO">
+	<select id="getList" parameterType="String" resultType="FileDTO">
 		SELECT * FROM FILES WHERE NUM=#{num}
 	</select>
 	
@@ -32,7 +32,7 @@
 		DELETE FILES WHERE FNUM=#{fnum}
 	</delete>
 	
-	<delete id="setDeleteAll" parameterType="Integer">
+	<delete id="setDeleteAll" parameterType="String">
 		DELETE FILES WHERE NUM=#{num}
 	</delete>
 	

@@ -11,7 +11,7 @@
 	
 	<!-- festi -->
 	<bean class="com.project.weekend.board.festi.FestiDTO" id="festiDTO" />
-	<bean class="com.project.weekend.board.festi.FestiDAOImpl" id="festiDAOImpl" />
-	<bean class="com.project.weekend.board.festi.FestiServiceImpl" id="festiServiceImpl" />
+	<bean class="com.project.weekend.board.festi.FestiDAO" id="festiDAOImpl" />
+	<bean class="com.project.weekend.board.festi.FestiService" id="festiServiceImpl" />
 	
 </beans>

@@ -358,7 +358,7 @@ strong{
 	width: 105px;
 }
 
-.main_right li{
+.main_right li:nth-child(4){
 	border: 2px solid #e6e6e6;
 }
 
@@ -370,6 +370,16 @@ strong{
 .right_suv{
 	position: fixed;
 	top: 50%;
+}
+
+.a{
+	border:0 solid black;
+	width:60px;
+}
+
+.b{
+	border:0 solid black;
+	width: 60px;
 }
 
 /*  ------------------------Footer Css-------------------- */

@@ -56,7 +56,7 @@ public class NoticeController {
 	/*공지 업데이트*/
 	// 업데이트 폼으로 이동 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.GET)
-	public ModelAndView noticeUpdate(int num, HttpSession session) throws Exception{
+	public ModelAndView noticeUpdate(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
 		mv.addObject("dto", boardDTO);
@@ -86,7 +86,7 @@ public class NoticeController {
 	
 	// 공지 삭제 - admin
 	@RequestMapping(value = "noticeDelete", method = RequestMethod.GET)
-	public String noticeDelete(int num, HttpSession session) throws Exception{
+	public String noticeDelete(String num, HttpSession session) throws Exception{
 		String path = "./boardSelect?num="+num;
 		String message = "실패";
 		int res = noticeSerivceImpl.setDelete(num, session);
@@ -100,7 +100,7 @@ public class NoticeController {
 	
 	// 공지글보기 - all
 	@RequestMapping(value = "noticeSelect", method = RequestMethod.GET)
-	public ModelAndView noticeSelect(int num, HttpSession session) throws Exception{
+	public ModelAndView noticeSelect(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 
 		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);

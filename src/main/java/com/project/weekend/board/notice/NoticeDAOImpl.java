@@ -29,12 +29,12 @@ public class NoticeDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public int setDelete(int num) throws Exception {
+	public int setDelete(String num) throws Exception {
 		return sqlSession.delete(NAMESPACE+"setDelete", num);
 	}
 
 	@Override
-	public BoardDTO getSelect(int num) throws Exception {
+	public BoardDTO getSelect(String num) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", num);
 	}
 

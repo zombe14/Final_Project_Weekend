@@ -32,7 +32,7 @@
 				<br> top : ${dto.top}
 				<br> 
 				
-				<c:forEach items="${dto.fileList}" var="f">
+				<c:forEach items="${dto.fileDTOs}" var="f">
 					<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
 				</c:forEach>
 				
