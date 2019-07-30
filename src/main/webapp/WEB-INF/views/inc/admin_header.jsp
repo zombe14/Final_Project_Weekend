@@ -9,13 +9,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="../">Main</a>
+      <a class="navbar-brand" href="../">홈페이지로 이동</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav" class="active">
-        <li><a href="./adminUserBoard">유저관리</a></li>
-        <li><a href="./adminBoardNoticeList">게시판 관리</a></li>
-        <li><a href="./adminReserBoard">예약 관리</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/aUserList">유저관리</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/adminBoardNoticeList">게시판 관리</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/adminReserBoard">예약 관리</a></li>
         <li><a href="#">이건 뭐야 무서워</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

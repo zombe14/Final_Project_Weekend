@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "/myPage/")
 public class MyPageController {
-	@RequestMapping(value = "MyPageBoard")
-	public void MyPageBoard() throws Exception{}
+	@RequestMapping(value = "myPageBoard")
+	public void MyPageBoard() throws Exception{
+	}
 }
 	

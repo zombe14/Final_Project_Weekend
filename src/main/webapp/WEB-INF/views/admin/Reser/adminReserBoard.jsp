@@ -15,7 +15,7 @@
 	<!-- header.jsp -->
 	<c:import url="../../inc/admin_header.jsp" />
 	<div class="container-fluid">
-		<div class="row content">
+		<div class="row content text-center">
 			<!-- side bar -->
 			<c:import url="../../inc/admin_left_bar.jsp"/>
 			<div class="col-sm-9">
