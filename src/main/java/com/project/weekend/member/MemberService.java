@@ -43,8 +43,6 @@ public class MemberService {
 	public int setUpdatezero(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setUpdatezero(memberDTO);
 	}
-	public int setWrite(MemberDTO memberDTO, HttpSession session)throws Exception{
-	}
 	public int setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session)throws Exception{
 		String realPath = session.getServletContext().getRealPath("resources/member");
 		System.out.println(realPath);
