@@ -21,9 +21,7 @@
 						</div>
 					</c:otherwise>
 				</c:choose>
-				<div>
-					<h1>${member.count }</h1>
-				</div>
+				
 				
 			</div>
 		</div>
