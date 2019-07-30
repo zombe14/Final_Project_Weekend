@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.member.MemberDTO;
@@ -32,13 +33,16 @@ public class MemberController {
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
 	public void setWrite(@ModelAttribute MemberDTO memberVO)throws Exception{
 		
-		System.out.println("get");
+
 	}
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
-	public ModelAndView setWrite(MemberDTO memberDTO, HttpSession session,BindingResult bindingResult)throws Exception{
+	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = memberService.setWrite(memberDTO, session);
+		
+		
+		
+		int result = memberService.setWrite(memberDTO, photo, session);
 		String message="Join Fail";
 		if(result>0) {
 			message="Join Success";
