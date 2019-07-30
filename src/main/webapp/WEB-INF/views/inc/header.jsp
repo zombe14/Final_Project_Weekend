@@ -10,7 +10,7 @@
 				<c:choose>
 					<c:when test="${not empty member}">
 							<div id="logout">
-								<a href="#">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+								<a href="${pageContext.request.contextPath}/myPage/MyPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
 								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="#">고객센터</a>
 							</div>
 					</c:when>
@@ -21,6 +21,9 @@
 						</div>
 					</c:otherwise>
 				</c:choose>
+				<div>
+					<h1>${member.count }</h1>
+				</div>
 				
 			</div>
 		</div>

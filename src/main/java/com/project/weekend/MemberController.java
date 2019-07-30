@@ -61,23 +61,30 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
 		String message="존재 하지 않는 아이디 입니다.";
-
+		
 		if(getIdd==null) {
 			mv.setViewName("common/messageMove");
 			mv.addObject("message", message);
 			mv.addObject("path", "./memberLogin");
 		}else {
 			memberDTO = memberService.getSelect(memberDTO);
-			
 			message="Login Fail";
 			if(result==1) {
 				if(memberDTO != null) {
-					session.setAttribute("member", memberDTO);
-					memberService.setUpdatezero(memberDTO);
-					message = "Login Success";	
-					mv.setViewName("common/messageMove");
-					mv.addObject("message", message);
-					mv.addObject("path", "../");
+					if(memberDTO.getCount()>6) {
+						session.setAttribute("member", memberDTO);
+						message = "로그인 횟수 제한";	
+						mv.setViewName("common/messageMove");
+						mv.addObject("message", message);
+						mv.addObject("path", "./memberLogin");
+					}else {
+						session.setAttribute("member", memberDTO);
+						memberService.setUpdatezero(memberDTO);
+						message = "Login Success";	
+						mv.setViewName("common/messageMove");
+						mv.addObject("message", message);
+						mv.addObject("path", "../");
+					}
 				}else {
 					mv.setViewName("common/messageMove");
 					mv.addObject("message", message);
