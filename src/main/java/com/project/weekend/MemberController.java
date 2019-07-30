@@ -75,7 +75,7 @@ public class MemberController {
 						message = "로그인 횟수 제한";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
-						mv.addObject("path", "./memberLogin");
+						mv.addObject("path", "../");
 					}else {
 						session.setAttribute("member", memberDTO);
 						memberService.setUpdatezero(memberDTO);
