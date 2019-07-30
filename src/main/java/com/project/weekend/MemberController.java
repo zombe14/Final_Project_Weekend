@@ -72,7 +72,6 @@ public class MemberController {
 			if(result==1) {
 				if(memberDTO != null) {
 					if(memberDTO.getCount()>6) {
-						session.setAttribute("member", memberDTO);
 						message = "로그인 횟수 제한";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
