@@ -1,4 +1,4 @@
-package com.project.weekend.member;
+﻿package com.project.weekend.member;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private static final String NAMESPACE="MemberMapper.";
 	
+
 	// 상혁 test용;
 	public List<MemberDTO> getList(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", memberDTO);
@@ -22,10 +23,21 @@ public class MemberDAO {
 	
 	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getId", memberDTO);
+
+	public MemberDTO getIdd(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getIdd", memberDTO);
+
 	}
 	
 	public int setWrite(MemberDTO memberDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setWrite", memberDTO);
+	}
+	
+	public int setUpdate(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", memberDTO);
+	}
+	public int setUpdatezero(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdatezero", memberDTO);
 	}
 	
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{

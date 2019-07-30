@@ -23,7 +23,7 @@
 		<beans:property name="order" value="1"/> 		
 	</beans:bean>
 	
-	<!-- 파일 다운로드 용  -->
+	<!-- 파일 다운로드 용. ajax. 순서 첫번째.  -->
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver"> 
 		<beans:property name="order" value="0"/> 
 	</beans:bean>

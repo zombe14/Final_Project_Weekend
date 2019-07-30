@@ -5,6 +5,7 @@
 	<typeAliases>
 		<!-- 난슬 -->
 		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.project.weekend.board.festi.FestiDTO" alias="FestiDTO"/>
 		<!-- 상혁 -->
 		<!-- 임시용/ 택수씨 선언하면 지울 예정 -->
 		<typeAlias type="com.project.weekend.member.MemberDTO" alias="MemberDTO"/>

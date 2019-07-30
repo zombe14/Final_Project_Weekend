@@ -1,4 +1,4 @@
-package com.project.weekend.member;
+﻿package com.project.weekend.member;
 
 import java.util.List;
 
@@ -13,14 +13,27 @@ public class MemberService {
 	@Inject
 	private MemberDAO memberDAO;
 	
+
 	// 상혁 test용
 	public List<MemberDTO> getList(HttpSession session, MemberDTO memberDTO) throws Exception{
 		List<MemberDTO> list = memberDAO.getList(memberDTO);
 		return list;
 	}
+
+	public MemberDTO getIdd(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getIdd(memberDTO);
+	}
+	
+	public int setUpdate(MemberDTO memberDTO)throws Exception{
+		return memberDAO.setUpdate(memberDTO);
+	}
+	public int setUpdatezero(MemberDTO memberDTO)throws Exception{
+		return memberDAO.setUpdatezero(memberDTO);
+	}
+	
+
 	
 	public int setWrite(MemberDTO memberDTO, HttpSession session)throws Exception{
-		System.out.println("result");
 		int result = memberDAO.setWrite(memberDTO);
 		return result;
 	}
@@ -28,5 +41,6 @@ public class MemberService {
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelect(memberDTO);
 	}
+	
 	
 }

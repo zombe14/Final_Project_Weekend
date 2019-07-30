@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -9,22 +9,39 @@
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
 
+
+
+	
+	<select id="getIdd" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
+		select * from member where id=#{id} 
+	</select>
+	
+
 	<delete id="setDelete" parameterType="java.util.List">
 		delete member where id=#{id}
 	</delete>
 	
 	<insert id="setWrite" parameterType="com.project.weekend.member.MemberDTO">
-		insert into member  values(#{id}, #{pw}, #{name}, 0, #{email}, #{phone}, 1, #{nickname})
+		insert into member  values(#{id}, #{pw}, #{name}, 0, #{email}, #{phone}, 1, #{nickname},0)
 	</insert>
 
 	<select id="getId" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
 		select id from member where id=#{id} 
 	</select>
 	
+
 	<!-- 상혁 test용 -->
 	<select id="getList" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
 		select * from member
 	</select>
+
+	<update id="setUpdate" parameterType="com.project.weekend.member.MemberDTO">
+		update member set count=count+1 where id =#{id}
+	</update>
+	<update id="setUpdatezero" parameterType="com.project.weekend.member.MemberDTO">
+		update member set count=0 where id=#{id}
+	</update>
+
 	
 	<resultMap type="com.project.weekend.member.MemberDTO" id="member">
 		<id property="id" column="id"/>
@@ -35,5 +52,6 @@
 		<result property="age" column="age"/>
 		<result property="phone" column="phone"/>
 		<result property="grade" column="grade"/>	
+		<result property="count" column="count"/>
 	</resultMap>
 </mapper>
