@@ -75,5 +75,9 @@ public class FestiService {
 	public int setDelete(String num) throws Exception{
 		return festiDAO.setDelete(num);
 	}
+	
+	public int getNum() throws Exception{
+		return festiDAO.getNum();
+	}
 
 }

@@ -4,7 +4,7 @@
 <c:import url="../temp/boot.jsp"></c:import>
 <html>
 <head>
-   <title> 자신이 작성할 JSP 명을 입력하세요 </title>
+   <title> ${boardTitle} </title>
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
    <link rel="shortcut icon" type="image/x-icon" href="../resources/images/logo/logo.png" />
 </head>
@@ -26,17 +26,17 @@
 			</form>
 
 			<!-- notice list 테이블 -->
-			<table>
+			<table class="table table-hover">
 				<thead>
-					<th>NUM</th>
-					<th>TITLE</th>
-					<th>WRITER</th>
-					<th>DATE</th>
-					<th>HIT</th>
+					<th style="width: 10%;">NUM</th>
+					<th style="width: 60%;">TITLE</th>
+					<th style="width: 10%;">WRITER</th>
+					<th style="width: 10%;">DATE</th>
+					<th style="width: 10%;">HIT</th>
 				</thead>
 				<!-- 관리자가 상단에 배치할 공지. pageMaker의 perPage에 영향 X. 밑에 중복. -->
 				<c:forEach items="${top}" var="top">
-					<tr title="${top.num}" class="select">
+					<tr title="${top.num}" class="select" style="background-color: #41b40a17;">
 						<td>중요</td>
 						<td>${top.title}</td>
 						<td>${top.writer}</td>
