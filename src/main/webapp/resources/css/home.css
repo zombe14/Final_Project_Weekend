@@ -382,6 +382,14 @@ strong{
 	width: 60px;
 }
 
+#back_to_top{
+	position: fixed;
+	top: 50%;
+	right: 0;
+	width: 44px;
+	height: 44px;
+}
+
 /*  ------------------------Footer Css-------------------- */
 
 #f_container{

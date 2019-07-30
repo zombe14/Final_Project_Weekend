@@ -84,3 +84,4 @@
 	</ul>
 </div>
 </div>
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="./resources/images/home/위로.JPG"></a>
