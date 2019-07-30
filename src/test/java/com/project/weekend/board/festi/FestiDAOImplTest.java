@@ -24,7 +24,7 @@ public class FestiDAOImplTest extends AbstractTest{
 		f.setTitle("Festi");
 		f.setWriter("FestiDAOImpl");
 		f.setPrice(0);
-		f.setFileList(null);
+		
 		f.setHit(0);
 		f.setLocal("서울");
 		f.setTop(0);
