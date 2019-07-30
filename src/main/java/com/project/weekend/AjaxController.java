@@ -59,9 +59,9 @@ public class AjaxController {
 	
 	// update file delete ajax 
 	@RequestMapping(value = "/ajax/fileDelete", method = RequestMethod.POST)
-	public ModelAndView fileDelete(FileDAO fileDAO, String board, HttpSession session) throws Exception{
+	public ModelAndView fileDelete(FileDTO fileDTO, String board, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int res = fileService.setDelete(fileDAO, board, session);
+		int res = fileService.setDelete(fileDTO, board, session);
 		mv.addObject("result", res);
 		mv.setViewName("common/message");
 		return mv;
