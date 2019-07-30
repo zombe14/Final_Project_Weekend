@@ -4,6 +4,15 @@
 <div class="col-sm-3 sidenav">
 	<ul class="nav nav-pills nav-stacked">
 		<c:choose>
+			<c:when test="${board eq 'adminMain'}">
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">페스티벌</a></li>
+				<li><a href="#">공연</a></li>
+				<li><a href="#">페스티벌 후기</a></li>
+				<li><a href="#">공연 후기</a></li>
+				<li><a href="#">관리자 추천</a></li>
+				<li><a href="#">QnA</a></li>
+			</c:when>
 			<c:when test="${board eq 'Notice'}">
 				<li><a href="./adminBoardNoticeList">공지사항</a></li>
 				<li><a href="./adminBoardFestiList">페스티벌</a></li>

@@ -30,7 +30,7 @@ public class AdminController {
 	@RequestMapping(value = "adminMain", method = RequestMethod.GET)
 	public ModelAndView adminBoard() throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("boardTitle", "관리자 메인");
+		mv.addObject("board", "adminMain");
 		mv.setViewName("admin/adminMain");
 		return mv;
 	}

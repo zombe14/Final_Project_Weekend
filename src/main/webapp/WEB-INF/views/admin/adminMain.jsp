@@ -9,42 +9,36 @@
 <!-- 관리자용 bootstrap -->
 <c:import url="../temp/adminBoot.jsp" />
 <!-- 관리자용 css -->
-<c:import url="../../../resources/css/adminBoard.css" />
+<c:import url="../../../resources/css/adminBoard.css" /> 
 </head>
 <body>
 	<!-- header.jsp -->
 	<c:import url="../inc/admin_header.jsp" />
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<!-- left_bar -->
-			<div class="col-sm-2 sidenav">
-				<p>
-					<a href="#">공지사항</a>
-				</p>
-				<p>
-					<a href="#">페스티벌</a>
-				</p>
-				<p>
-					<a href="#">공연</a>
-				</p>
-				<p>
-					<a href="#">페스티벌 후기</a>
-				</p>
-				<p>
-					<a href="#">공연 후기</a>
-				</p>
-				<p>
-					<a href="#">관리자 추천</a>
-				</p>
-				<p>
-					<a href="#">QnA</a>
-				</p>
-			</div>
-			<!-- left bar 끝 -->
+			<!-- side bar -->
+			<c:import url="../inc/admin_left_bar.jsp" />
 			<!-- body 시작 -->
-			<div class="mainBody">
-				<h1>Table form이 들어갈 곳</h1>
-			</div>
+				<div class="container">
+					<table class="table table-hover">
+						<tr>
+							<td>NUM</td>
+							<td>TITLE</td>
+							<td>WRITER</td>
+							<td>DATE</td>
+							<td>HIT</td>
+						</tr>
+						<c:forEach items="${list}" var="dto">
+							<tr>
+								<td>${dto.num}</td>
+								<td>${dto.title}</td>
+								<td>${dto.writer}</td>
+								<td>${dto.reg_date}</td>
+								<td>${dto.hit}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
 			<!-- body 끝 -->
 		</div>
 	</div>
