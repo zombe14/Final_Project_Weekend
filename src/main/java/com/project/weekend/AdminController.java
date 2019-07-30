@@ -61,10 +61,9 @@ public class AdminController {
 	}
 	// user delete;
 	@RequestMapping(value = "adminUserDelete", method = RequestMethod.GET)
-	public ModelAndView adminUserDelete() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/User/adminUserDelete");
-		return mv;
+	public String adminUserDelete(String [] id) throws Exception{
+		memberService.setDelete(id);
+		return "redirect:./aUserList";
 	}
 	////////////// board 관리; //////////////
 	////////////// notice board; //////////////

@@ -1,5 +1,6 @@
 ﻿package com.project.weekend.member;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,12 +15,16 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	
 
-	// 상혁 test용 시작
+	// 상혁 시작;
 	public List<MemberDTO> getList(HttpSession session, MemberDTO memberDTO) throws Exception{
 		List<MemberDTO> list = memberDAO.getList(memberDTO);
 		return list;
 	}
-	// 상혁 test 끝
+	public int setDelete(String [] id) throws Exception{
+		List<String> list = Arrays.asList(id);
+		return memberDAO.setDelete(list);
+	}
+	// 상혁 끝;
 	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getId(memberDTO);
 	}

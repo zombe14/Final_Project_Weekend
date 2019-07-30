@@ -43,11 +43,29 @@
 								<td>${dto.email}</td>
 								<td>${dto.phone}</td>
 								<td>${dto.grade}</td>
-								<td><button>Update</button></td>
-								<td><button>Delete</button></td>
+								<td><input id="uBtn" type="button" value="권한수정"></td>
+								<td><input id="dBtn" type="button" value="유저삭제"></td>
 							</tr>
 						</c:forEach>
 					</table>
+					<!-- Pageing -->
+					<ul class="pagination">
+						<c:if test="${pager.curBlock>1}">
+							<li><a
+								href="./memberAdmin?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">BACK</a></li>
+						</c:if>
+
+						<c:forEach begin="${pager.startNum}" end="${pager.lastNum}"
+							var="i">
+							<li><a
+								href="./memberAdmin?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+						</c:forEach>
+
+						<c:if test="${pager.curBlock<pager.totalBlock}">
+							<li><a
+								href="./memberAdmin?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">NEXT</a></li>
+						</c:if>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -55,6 +73,15 @@
 	<footer class="container-fluid">
 		<p>Footer Text</p>
 	</footer>
-
+	<script type="text/javascript">
+		$("#dBtn").click(function() {
+			var ids = [];
+			$(".click").each(function() {
+				if ($(this).prop("check")) {
+					ids.push($(this).val)
+				}
+			});
+		});
+	</script>
 </body>
 </html>
