@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.util.FileSaver;
+import com.project.weekend.util.PageMaker;
 
 @Service
 public class FestiService {
@@ -38,6 +39,20 @@ public class FestiService {
 			}
 		}
 		return res;
+	}
+	
+	public List<FestiDTO> getList(PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getList(pageMaker);
+		System.out.println(list.size());
+		int totalCount = festiDAO.getCount();
+		pageMaker.makePage(totalCount);
+		for(FestiDTO f : list) {
+			String test = f.getFileDTOs().get(0).getOname();
+			System.out.println("test : " + test);
+		}
+		
+		return list;
 	}
 
 }

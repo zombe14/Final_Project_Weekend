@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
+import com.project.weekend.util.PageMaker;
 
 @Controller
 @RequestMapping(value = "/festival/")
@@ -48,11 +49,14 @@ public class FestivalController {
 	
 	// list
 	@RequestMapping(value = "festivalList", method = RequestMethod.GET)
-	public ModelAndView getList() throws Exception{
+	public ModelAndView getList(PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<FestiDTO> list = festiService.getList(pageMaker);
+		mv.addObject("list", list);
 		mv.addObject("sort", "festi");
 		mv.addObject("board", "festival");
 		mv.addObject("boardTitle", "Festival");
+		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/boardTile");
 		return mv;
 	}

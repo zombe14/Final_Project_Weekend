@@ -33,14 +33,13 @@ public class FestiDTO{
 
 	//------------
 	private ArrayList<FileDTO> fileDTOs;
-
-	public ArrayList<FileDTO> getFileList() {
+	public ArrayList<FileDTO> getFileDTOs() {
 		return fileDTOs;
 	}
-
-	public void setFileList(ArrayList<FileDTO> fileList) {
-		this.fileDTOs = fileList;
+	public void setFileDTOs(ArrayList<FileDTO> fileDTOs) {
+		this.fileDTOs = fileDTOs;
 	}
+	
 	//------------
 	
 	
@@ -118,4 +117,5 @@ public class FestiDTO{
 	public void setLocal(String local) {
 		this.local = local;
 	}
+
 }
