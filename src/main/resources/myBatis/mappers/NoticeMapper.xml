@@ -11,12 +11,12 @@
 	<update id="setUpdate" parameterType="NoticeDTO">
 		UPDATE NOTICE SET TITLE = #{title}, CONTENTS = #{contents}, TOP = #{top} WHERE NUM = #{num}
 	</update>
-	<delete id="setDelete" parameterType="Integer">
+	<delete id="setDelete" parameterType="String">
 		DELETE NOTICE WHERE NUM = #{num}
 	</delete>
 
 	
-	<select id="getSelect" parameterType="Integer" resultMap="noticeResult">
+	<select id="getSelect" parameterType="String" resultMap="noticeResult">
 		SELECT * FROM NOTICE FULL JOIN FILES USING(NUM) WHERE NUM = #{num}
 	</select>
 	
@@ -55,7 +55,7 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<!-- NOTICE 페이지 상단에 강조할 공지글 배치. SEARCH에 영향 x -->
-	<select id="getTopList" resultType="NoticeDTO" parameterType="Integer">
+	<select id="getTopList" resultType="NoticeDTO">
 		SELECT * FROM NOTICE WHERE TOP = '1' ORDER BY REG_DATE
 	</select>
 	<select id="getTotalCount" resultType="Integer" parameterType="PageMaker">

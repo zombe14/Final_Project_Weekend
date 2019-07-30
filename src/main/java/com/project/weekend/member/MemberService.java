@@ -41,6 +41,9 @@ public class MemberService {
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelect(memberDTO);
 	}
+	public MemberDTO getSelectCount(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getSelectCount(memberDTO);
+	}
 	
 	
 }

@@ -17,10 +17,29 @@
 		</div>
 		<div id="container">
 			<div class="inner">
+				<!-- 검색창 -->
+				<div>
+					<form action="./${board}List">
+						<select name="kind">
+							<option value="0">전체</option>
+							<option value="1">제목</option>
+							<option value="2">내용</option>
+							<option value="3">지역</option>
+						</select> 
+						<input type="text" placeholder="검색어를 입력하세요" name="search">
+						<button id="search">검색</button>
+					</form>
+				</div>
 				<div class="col-12">
-					<c:forEach begin="1" end="16" step="1" var="i">
+					<c:forEach items="${list}" var="i">
 						<div class="col-sm-3">
-							<div style="height: 400px; border: 1px solid black;margin: 10px; padding: 0">${i}</div>
+							<div style="height: 300px; border: 1px solid black;margin: 10px; padding: 0">
+								<img alt="${i.fileDTOs[0].oname}" src="/resources/images/board/${i.fileDTOs[0].fname}">
+								<p>${i.title}</p>
+								<p>${i.startDate}</p>
+								<p>${i.endDate}</p>
+								<p>${i.local}</p>
+							</div>
 						</div>
 					</c:forEach>
 				</div>

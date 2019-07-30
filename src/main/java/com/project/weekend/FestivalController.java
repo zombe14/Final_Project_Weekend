@@ -12,14 +12,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.festi.FestiDTO;
-import com.project.weekend.board.festi.FestiServiceImpl;
+import com.project.weekend.board.festi.FestiService;
+import com.project.weekend.util.PageMaker;
 
 @Controller
 @RequestMapping(value = "/festival/")
 public class FestivalController {
 	
 	@Inject
-	private FestiServiceImpl festiServiceImpl;
+	private FestiService festiService;
 	
 	//write form - get
 	@RequestMapping(value = "festivalWrite", method = RequestMethod.GET)
@@ -36,17 +37,26 @@ public class FestivalController {
 	@RequestMapping(value = "festivalWrite", method = RequestMethod.POST)
 	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
+		String path = "board/boardTile";
+		int res = festiService.setWrite(festiDTO, filelist, session);
+		if(res>0) {
+			mv.setViewName(path);
+		} else {
+			mv.setViewName(path);
+		}
 		return mv;
 	}
 	
 	// list
 	@RequestMapping(value = "festivalList", method = RequestMethod.GET)
-	public ModelAndView getList() throws Exception{
+	public ModelAndView getList(PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<FestiDTO> list = festiService.getList(pageMaker);
+		mv.addObject("list", list);
 		mv.addObject("sort", "festi");
 		mv.addObject("board", "festival");
 		mv.addObject("boardTitle", "Festival");
+		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/boardTile");
 		return mv;
 	}

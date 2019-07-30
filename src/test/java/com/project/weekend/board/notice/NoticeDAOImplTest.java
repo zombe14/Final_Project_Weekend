@@ -34,24 +34,24 @@ public class NoticeDAOImplTest extends AbstractTest {
 	//@Test
 	public void setDelete() throws Exception{
 		int num = 88;
-		int res = noticeDAOImpl.setDelete(num);
-		assertEquals(res, 1);
+		//int res = noticeDAOImpl.setDelete(num);
+		//assertEquals(res, 1);
 	}
 	
 	//@Test
 	public void getSelect() throws Exception{
 		int num = 87;
-		NoticeDTO noticeDTO = (NoticeDTO)noticeDAOImpl.getSelect(num);
-		assertNotNull(noticeDTO);	
+		//NoticeDTO noticeDTO = (NoticeDTO)noticeDAOImpl.getSelect(num);
+		//assertNotNull(noticeDTO);	
 	}
 	
 	//@Test
 	public void setUpdate() throws Exception{
-		NoticeDTO noticeDTO = (NoticeDTO)noticeDAOImpl.getSelect(87);
-		noticeDTO.setTop(1);
-		int res = noticeDAOImpl.setUpdate(noticeDTO);
-		System.out.println(noticeDTO.getTop());
-		assertEquals(res, 1);
+		//NoticeDTO noticeDTO = (NoticeDTO)noticeDAOImpl.getSelect(87);
+		//noticeDTO.setTop(1);
+		//int res = noticeDAOImpl.setUpdate(noticeDTO);
+		//System.out.println(noticeDTO.getTop());
+	//	assertEquals(res, 1);
 	}
 	
 	//@Test

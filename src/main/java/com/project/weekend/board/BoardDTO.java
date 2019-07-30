@@ -7,7 +7,7 @@ import java.util.List;
 import com.project.weekend.file.FileDTO;
 
 public class BoardDTO {
-	private int num;
+	private String num;
 	private String title;
 	private String writer;
 	private String contents;
@@ -25,14 +25,7 @@ public class BoardDTO {
 	}
 	
 	//	
-	
-	
-	public int getNum() {
-		return num;
-	}
-	public void setNum(int num) {
-		this.num = num;
-	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -62,6 +55,12 @@ public class BoardDTO {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
+	}
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
 	}
 
 }

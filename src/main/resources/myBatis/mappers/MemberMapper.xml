@@ -42,6 +42,10 @@
 		update member set count=0 where id=#{id}
 	</update>
 
+	<select id="getSelectCount" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
+		select * from member where id=#{id} and count>5
+	</select>
+
 	
 	<resultMap type="com.project.weekend.member.MemberDTO" id="member">
 		<id property="id" column="id"/>

@@ -33,7 +33,7 @@ public class NoticeServiceImpl implements BoardService {
 		int result = 0;
 		// 글
 		int num = noticeDAOImpl.getNum();
-		boardDTO.setNum(num);
+		boardDTO.setNum("n"+num);
 		result = noticeDAOImpl.setWrite(boardDTO);
 
 		// 첨부파일
@@ -43,7 +43,7 @@ public class NoticeServiceImpl implements BoardService {
 			if (f.getOriginalFilename().length() > 0) {
 				FileDTO fileDTO = new FileDTO();
 
-				fileDTO.setNum(num);
+				fileDTO.setNum("n"+num);
 
 				String fname = fileSaver.saveFile(realPath, f);
 				fileDTO.setFname(fname);
@@ -86,12 +86,12 @@ public class NoticeServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int setDelete(int num, HttpSession session) throws Exception {
+	public int setDelete(String num, HttpSession session) throws Exception {
 		return noticeDAOImpl.setDelete(num);
 	}
 
 	@Override
-	public BoardDTO getSelect(int num, HttpSession session) throws Exception {
+	public BoardDTO getSelect(String num, HttpSession session) throws Exception {
 		BoardDTO boardDTO = noticeDAOImpl.getSelect(num);
 		return boardDTO;
 	}

@@ -10,3 +10,4 @@ public class MyPageController {
 	public void MyPageBoard() throws Exception{
 	}
 }
+	
