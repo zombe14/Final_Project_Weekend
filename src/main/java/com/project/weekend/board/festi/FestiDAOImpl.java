@@ -1,21 +1,35 @@
-package com.project.weekend.adminReser;
+package com.project.weekend.board.festi;
 
 import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.project.weekend.board.BoardDAO;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.util.PageMaker;
 
-public class aReserDAO implements BoardDAO{
-
-	@Override
-	public int setWrite(BoardDTO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+@Repository
+public class FestiDAOImpl implements BoardDAO {
+	
+	@Inject
+	private SqlSession SqlSession;
+	private static final String NAMESPACE = "FestiMapper.";
+	
+	public int getNum() throws Exception{
+		return SqlSession.selectOne(NAMESPACE+"getNum");
 	}
 
 	@Override
-	public int setUpdate(BoardDTO boardVO) throws Exception {
+	public int setWrite(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return SqlSession.insert(NAMESPACE+"setWrite", boardDTO);
+	}
+
+	@Override
+	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}

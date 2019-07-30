@@ -1,4 +1,4 @@
-package com.project.weekend.adminBoard;
+package com.project.weekend.board.festi;
 
 import java.util.List;
 
@@ -10,24 +10,26 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.board.BoardService;
-import com.project.weekend.board.notice.NoticeDAOImpl;
-import com.project.weekend.file.FileDAO;
-import com.project.weekend.util.FileSaver;
+import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.util.PageMaker;
 
-public class aBoardServiceImpl implements BoardService{
-	private NoticeDAOImpl noticeDAOImpl;
-	private FileDAO fileDAO;
-	private FileSaver fileSaver;
+@Service
+public class FestiServiceImpl implements BoardService {
 	
-	//Notice board
+	@Inject
+	private FestiDAOImpl festiDAOImpl;
+
 	@Override
-	public int setWrite(BoardDTO boardVO, List<MultipartFile> files, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
+	public int setWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
+		int num = festiDAOImpl.getNum();
+		boardDTO.setNum(num);
+		
+		int res = festiDAOImpl.setWrite(boardDTO);
 		return 0;
 	}
+
 	@Override
-	public int setUpdate(BoardDTO boardVO, List<MultipartFile> files, HttpSession session) throws Exception {
+	public int setUpdate(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}

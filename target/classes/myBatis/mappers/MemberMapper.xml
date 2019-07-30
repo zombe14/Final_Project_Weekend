@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -8,11 +8,15 @@
 	<select id="getSelect" resultMap="member" parameterType="com.project.weekend.member.MemberDTO">
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
+
+
+
 	
 	<select id="getIdd" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
 		select * from member where id=#{id} 
 	</select>
 	
+
 	<delete id="setDelete" parameterType="java.util.List">
 		delete member where id=#{id}
 	</delete>
@@ -25,15 +29,25 @@
 		select id from member where id=#{id} 
 	</select>
 	
+
+	<!-- 상혁 test용 -->
+	<select id="getList" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
+		select * from member
+	</select>
+
 	<update id="setUpdate" parameterType="com.project.weekend.member.MemberDTO">
 		update member set count=count+1 where id =#{id}
 	</update>
 	<update id="setUpdatezero" parameterType="com.project.weekend.member.MemberDTO">
 		update member set count=0 where id=#{id}
 	</update>
+<<<<<<< HEAD
 	<select id="getSelectCount" resultMap="member" parameterType="com.project.weekend.member.MemberDTO">
 		select * from member where id=#{id} and count>5
 	</select>
+=======
+
+>>>>>>> master
 	
 	<resultMap type="com.project.weekend.member.MemberDTO" id="member">
 		<id property="id" column="id"/>
