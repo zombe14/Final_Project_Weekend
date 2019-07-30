@@ -31,10 +31,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
 	public void setWrite(@ModelAttribute MemberDTO memberVO)throws Exception{
-		
-		System.out.println("get");
 	}
-	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -46,23 +43,19 @@ public class MemberController {
 		mv.setViewName("common/messageMove");
 		mv.addObject("message", message);
 		mv.addObject("path", "../");
-		
 		return mv;
 	}
-	
-	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.GET)
 	public void getSelect()throws Exception{}
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
 	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session)throws Exception{
 		System.out.println("start");
-		MemberDTO getIdd = memberService.getIdd(memberDTO);
+		MemberDTO getId = memberService.getId(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
 		String message="존재 하지 않는 아이디 입니다.";
-		
-		if(getIdd==null) {
+		if(getId==null) {
 			mv.setViewName("common/messageMove");
 			mv.addObject("message", message);
 			mv.addObject("path", "./memberLogin");
@@ -88,28 +81,17 @@ public class MemberController {
 					mv.setViewName("common/messageMove");
 					mv.addObject("message", message);
 					mv.addObject("path", "./memberLogin");
-					
 				}
 			}else {
-				
 			}
 		}
 		return mv;
 	}
-	
 	@RequestMapping(value = "memberAgree", method = RequestMethod.GET)
 	public void getAgree()throws Exception{}
-	
 	@RequestMapping(value = "memberLogout")
 	public String logout(HttpSession session)throws Exception{
 		session.invalidate();
 		return "redirect:../";
 	}
-	
-	
-	
-	
-	
-	
-	
 }

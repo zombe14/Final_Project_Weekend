@@ -4,20 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>${board}관리</title>
+<title>유저 관리</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 관리자용 bootstrap -->
 <c:import url="../../temp/adminBoot.jsp" />
-<!-- 관리자용 css -->
 <c:import url="../../../../resources/css/adminBoard.css" />
 </head>
 <body>
-	<!-- header.jsp -->
 	<c:import url="../../inc/admin_header.jsp" />
-	<div class="container-fluid">
-		<div class="row content text-center">
+	<!-- left bar 시작 -->
+	<div class="container-fluid text-center">
+		<div class="row content">
 			<!-- side bar -->
-			<c:import url="../../inc/admin_left_bar.jsp"/>
+			<c:import url="../../inc/admin_left_bar.jsp" />
 			<div class="col-sm-9">
 				<h4>
 					<small>${board} 관리</small>
@@ -26,19 +24,27 @@
 				<div class="container">
 					<table class="table table-hover">
 						<tr>
-							<td>NUM</td>
-							<td>TITLE</td>
-							<td>WRITER</td>
-							<td>DATE</td>
-							<td>HIT</td>
+							<td>ID</td>
+							<td>NICKNAME</td>
+							<td>NAME</td>
+							<td>AGE</td>
+							<td>EMAIL</td>
+							<td>PHONE</td>
+							<td>GRADE</td>
+							<td>권한 수정</td>
+							<td>유저 삭제</td>
 						</tr>
 						<c:forEach items="${list}" var="dto">
 							<tr>
-								<td>${dto.num}</td>
-								<td>${dto.title}</td>
-								<td>${dto.writer}</td>
-								<td>${dto.reg_date}</td>
-								<td>${dto.hit}</td>
+								<td>${dto.id}</td>
+								<td>${dto.nickname}</td>
+								<td>${dto.name}</td>
+								<td>${dto.age}</td>
+								<td>${dto.email}</td>
+								<td>${dto.phone}</td>
+								<td>${dto.grade}</td>
+								<td><button>Update</button></td>
+								<td><button>Delete</button></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -49,5 +55,6 @@
 	<footer class="container-fluid">
 		<p>Footer Text</p>
 	</footer>
+
 </body>
 </html>

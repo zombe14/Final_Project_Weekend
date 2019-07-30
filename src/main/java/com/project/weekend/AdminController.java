@@ -36,13 +36,13 @@ public class AdminController {
 	}
 	////////////// admin User; //////////////
 	// userList
-	@RequestMapping(value = "adminUserBoard", method = RequestMethod.GET)
-	public ModelAndView adminUserBoard(HttpSession session, MemberDTO memberDTO) throws Exception {
+	@RequestMapping(value = "aUserList", method = RequestMethod.GET)
+	public ModelAndView aUserList(HttpSession session, MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<MemberDTO> list = memberService.getList(session, memberDTO);
 		mv.addObject("board", "User");
 		mv.addObject("list", list);
-		mv.setViewName("admin/User/adminUserBoard");
+		mv.setViewName("admin/User/aUserList");
 		return mv;
 	}
 	// user info;
