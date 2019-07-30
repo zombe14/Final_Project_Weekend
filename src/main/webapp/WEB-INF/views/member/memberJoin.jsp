@@ -16,7 +16,7 @@
 <body>
 	<div id="container">
 	<div class="inner">
-	<form action="./memberJoin"  id="frm" method="POST">
+	<form action="./memberJoin"  id="frm" method="POST" enctype="multipart/form-data">
 		<div class="joinWrap">
 			<h2>회원가입</h2>
 			<div class="essentiaDataWrap">
@@ -209,6 +209,14 @@
 											<i>14세 미만 가입 시 보호자 동의 후 가입 가능합니다. 14세 미만 가입시 꼭 체크해주세요.</i>
 										</label>
 									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									프로필사진
+								</th>
+								<td>
+									<input type="file" name="photo">
 								</td>
 							</tr>
 						</tbody>

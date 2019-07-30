@@ -1,4 +1,4 @@
-package com.project.weekend;
+﻿package com.project.weekend;
 
 import java.text.DateFormat;
 
@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.member.MemberDTO;
@@ -33,9 +34,12 @@ public class MemberController {
 	public void setWrite(@ModelAttribute MemberDTO memberVO)throws Exception{
 	}
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
-	public ModelAndView setWrite(MemberDTO memberDTO, HttpSession session,BindingResult bindingResult)throws Exception{
+	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = memberService.setWrite(memberDTO, session);
+		
+		
+		
+		int result = memberService.setWrite(memberDTO, photo, session);
 		String message="Join Fail";
 		if(result>0) {
 			message="Join Success";
@@ -62,13 +66,13 @@ public class MemberController {
 		}else {
 			memberDTO = memberService.getSelect(memberDTO);
 			message="Login Fail";
-			if(result==1) {
+			if(result==1) {	
 				if(memberDTO != null) {
 					if(memberDTO.getCount()>6) {
 						message = "로그인 횟수 제한";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
-						mv.addObject("path", "./memberLogin");
+						mv.addObject("path", "../");
 					}else {
 						session.setAttribute("member", memberDTO);
 						memberService.setUpdatezero(memberDTO);
