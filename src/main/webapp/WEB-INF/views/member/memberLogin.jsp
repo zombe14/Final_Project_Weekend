@@ -46,9 +46,9 @@
       	</div>
       		
       		
-      </div>
       <div id="footer" style="margin-top: 500px;">
       <c:import url="../inc/footer.jsp"></c:import>
-      </div>
+	  </div>
+</div>
 </body>
 </html>
