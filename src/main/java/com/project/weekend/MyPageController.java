@@ -4,10 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/MyPage/")
+@RequestMapping(value = "/myPage/")
 public class MyPageController {
-	@RequestMapping(value = "MyPageBoard")
-	public String MyPageBoard() throws Exception{
-		return "./myPage/MyPageBoard";
+	@RequestMapping(value = "myPage")
+	public void MyPageBoard() throws Exception{
 	}
 }

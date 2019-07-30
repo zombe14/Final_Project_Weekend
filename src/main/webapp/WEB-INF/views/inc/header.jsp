@@ -8,9 +8,15 @@
 		<div class="h_wrap">
 			<div class="user_menu">
 				<c:choose>
+<%-- 					<c:when test="${id eq admin}">
+							<div>
+								<a href="${pageContext.request.contextPath}/admin/adminMain">관리자 페이지</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a>
+							</div>
+					</c:when> --%>
 					<c:when test="${not empty member}">
 							<div id="logout">
-								<a href="#">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+								<a href="${pageContext.request.contextPath}/myPage/myPage">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
 								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="#">고객센터</a>
 							</div>
 					</c:when>
@@ -89,10 +95,10 @@
 							class="fa fa-home fa-fw"></i>랭킹</a></li>
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>빈칸</a></li>
-					<li id="navbar-page" class="navp"><a href="./MyPage/MyPageBoard"><i
-							class="fa fa-home fa-fw"></i>MyPage</a></li>
-					<li id="navbar-page" class="navp"><a href="./admin/adminMain"><i
-							class="fa fa-home fa-fw"></i>AdminPage</a></li>
+					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/myPage/myPage"><i
+							class="fa fa-home fa-fw"></i>빈칸</a></li>
+					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/admin/adminMain"><i
+							class="fa fa-home fa-fw"></i>관리자 페이지</a></li>
 				</ul>
 			</div>
 		</div>
