@@ -112,8 +112,8 @@ strong{
 #search {
 	
 	width: 334px;
-    height: 40px;
-	border: 1px solid #41b40a;
+    height: 39px;
+	border: 2px solid #41b40a;
 	padding-left: 10px;
 	
 }
@@ -126,9 +126,9 @@ strong{
 .btn_search {
 	
 	background-color: #41b40a;
-	padding: 13px 13px;
+	padding: 11px 12px;
 	margin-left: -5px;
-	vertical-align: middle;
+	/* vertical-align: middle; */
 	color: white;
 }
 

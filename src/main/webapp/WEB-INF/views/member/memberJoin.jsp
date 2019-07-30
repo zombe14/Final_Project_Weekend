@@ -9,11 +9,16 @@
   <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
-     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
+     <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" /> 
   <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=1"></script>
 <title>Insert title here</title>  
 </head>
 <body>
+<div id="wrap">
+	<div id="header">
+		<c:import url="../inc/header.jsp"></c:import>
+	</div>
 	<div id="container">
 	<div class="inner">
 	<form action="./memberJoin"  id="frm" method="POST" enctype="multipart/form-data">
@@ -232,6 +237,9 @@
 		</form>
 		</div>
 	</div>
-
+	<div id="footer" style="margin-top: 500px;">
+		<c:import url="../inc/footer.jsp"></c:import>
+	</div>
+</div>
 </body>
 </html>
