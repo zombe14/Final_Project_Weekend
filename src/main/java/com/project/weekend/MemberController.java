@@ -39,18 +39,22 @@ public class MemberController {
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
-		
-		
-		int result = memberService.setWrite(memberDTO, photo, session);
+		MemberDTO getId = memberService.getId(memberDTO);
 		String message="Join Fail";
-		if(result>0) {
-			message="Join Success";
-		}
-		mv.setViewName("common/messageMove");
-		mv.addObject("message", message);
-		mv.addObject("path", "../");
-		
+		if(getId!=null) {
+			message="이미 존재하는 아이디입니다.";
+			mv.setViewName("common/messageMove");
+			mv.addObject("message", message);
+			mv.addObject("path", "./memberJoin");
+		}else {
+			int result = memberService.setWrite(memberDTO, photo, session);
+			if(result>0) {
+				message="Join Success";
+			}
+			mv.setViewName("common/messageMove");
+			mv.addObject("message", message);
+			mv.addObject("path", "../");
+			}
 		return mv;
 	}
 	

@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
-  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=1"></script>
+  <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>
 <title>Insert title here</title>  
 </head>
 <body>
@@ -106,7 +106,7 @@
 					</table>
 				</div>
 				<div class="certifyButtonWrap">
-					<button>
+					<button class="certifyButtonWrapButton">
 						본인확인
 					</button>
 				</div>
@@ -129,7 +129,7 @@
 										<div class="infoContent">아이디를 정확히 입력하여 주십시오.
 											<br>띄어쓰기 없는 영문, 숫자로만 6~20자.</div>
 									</div>
-									<a href="javascript:searchMemId();" class="btnblackCheck layerOpenButton">중복확인</a>
+									<a href="../member/memberIdCheck" class="btnblackCheck layerOpenButton">중복확인</a>
 									<div id="result_memid">
 										
 									</div>
@@ -223,7 +223,7 @@
 					</table>
 				</div>
 				<div class="certifyButtonWrap_final certifyButtonWrap">
-					<button type="button">
+					<button type="button"  class="certifyButtonWrapButton">
 						회원가입
 					</button>
 					 

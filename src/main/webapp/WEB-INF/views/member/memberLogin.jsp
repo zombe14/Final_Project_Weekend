@@ -30,7 +30,7 @@
 				</button>
       		</form>
       		<div>
-      			<a href="./memberJoin">회원가입</a><span class="log">|</span>
+      			<a href="./memberAgree">회원가입</a><span class="log">|</span>
       		</div>
       		
       		

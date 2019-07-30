@@ -48,10 +48,7 @@ $(function() {
 			$('#email_store').val("false");
 		}
 	});
-	$('.certifyButtonWrap').click(function() {
-		
-		
-		
+	$('.certifyButtonWrapButton').click(function() {		
 		var a = $('#num_select').val();
 		var b = $('#hp2').val();
 		var c = $('#hp3').val();
@@ -150,7 +147,7 @@ $(function() {
 		if(pw==pwCheck){
 			finalpw = true;
 			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&finalpw){
-				alert("회원가입성공");
+				
 				$("#frm").submit();
 			}else{
 				alert("비밀번호나 이름을 확인해주세요");
