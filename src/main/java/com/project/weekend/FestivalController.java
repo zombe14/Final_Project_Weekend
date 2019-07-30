@@ -40,10 +40,11 @@ public class FestivalController {
 		String path = "board/boardTile";
 		int res = festiService.setWrite(festiDTO, filelist, session);
 		if(res>0) {
-			mv.setViewName(path);
+			path = "redirect:./festivalList";
 		} else {
-			mv.setViewName(path);
+			path = "redirect:./festivalList";
 		}
+		mv.setViewName(path);
 		return mv;
 	}
 	
@@ -59,5 +60,52 @@ public class FestivalController {
 		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/boardTile");
 		return mv;
+	}
+	
+	// select
+	@RequestMapping(value = "festivalSelect", method = RequestMethod.GET)
+	public ModelAndView getSelect(String num) throws Exception{
+
+		ModelAndView mv = new ModelAndView();
+		FestiDTO festiDTO = festiService.getSelect(num);
+
+		mv.addObject("dto", festiDTO);
+		mv.addObject("board", "festival");
+		mv.addObject("boardTitle", "Festival");
+		mv.setViewName("board/festiSelect");
+
+		return mv;
+	}
+	
+	// update-form
+	@RequestMapping(value = "festivalUpdate", method = RequestMethod.GET)
+	public ModelAndView setUpdate(String num) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		FestiDTO festiDTO = festiService.getSelect(num);
+		mv.addObject("dto", festiDTO);
+		mv.addObject("sort", "festi");
+		mv.addObject("board", "festival");
+		mv.addObject("boardTitle", "Festival");
+		mv.setViewName("board/boardUpdate");
+		return mv;
+	}
+	
+	//update-process
+	@RequestMapping(value = "festivalUpdate", method = RequestMethod.POST)
+	public ModelAndView setUpdate(FestiDTO festiDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int res = festiService.setUpdate(festiDTO);
+		mv.setViewName("redirect:./festivalSelect?num="+festiDTO.getNum());
+		return mv;
+	}
+	
+	@RequestMapping(value = "festivalDelete", method = RequestMethod.GET)
+	public String setDelete(String num) throws Exception{
+		int res = festiService.setDelete(num);
+		String path = "redirect:./festivalSelect?num="+num;
+		if (res>0) {
+			path = "redirect:./festivalList";
+		}
+		return path;
 	}
 }

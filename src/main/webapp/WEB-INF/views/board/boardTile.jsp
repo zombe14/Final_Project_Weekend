@@ -33,15 +33,22 @@
 				<div class="col-12">
 					<c:forEach items="${list}" var="i">
 						<div class="col-sm-3">
-							<div style="height: 300px; border: 1px solid black;margin: 10px; padding: 0">
-								<img alt="${i.fileDTOs[0].oname}" src="/resources/images/board/${i.fileDTOs[0].fname}">
+						<a href="./festivalSelect?num=${i.num}">
+							<div style="height: 450px; border: 1px solid black;margin: 10px; padding: 0">
+								<div>
+									<img alt="${i.fileDTOs[0].oname}" src="../resources/images/board/${i.fileDTOs[0].fname}"  style="width: 100%; height: auto;">
+								</div>
 								<p>${i.title}</p>
 								<p>${i.startDate}</p>
 								<p>${i.endDate}</p>
 								<p>${i.local}</p>
 							</div>
+						</a>
 						</div>
 					</c:forEach>
+				</div>
+				<div>
+					<a href="./${board}Write">${boardTitle} WRITE</a>
 				</div>
 			</div>
 		</div>

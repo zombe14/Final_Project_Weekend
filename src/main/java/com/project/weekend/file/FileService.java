@@ -9,7 +9,8 @@ import com.project.weekend.util.FileSaver;
 
 public class FileService {
 	
-	private FileDTO fileDTO;
+	@Inject
+	private FileDAO fileDAO;
 	@Inject
 	private FileSaver fileSaver;
 	
@@ -26,7 +27,7 @@ public class FileService {
 		return result;
 	}
 
-	public int setDelete(FileDAO fileDAO, String board, HttpSession session) throws Exception{
+	public int setDelete(FileDTO fileDTO, String board, HttpSession session) throws Exception{
 		int result = fileDAO.setDelete(fileDTO.getFnum());
 		if(result>0) {
 			String realPath = session.getServletContext().getRealPath("/resources/images"+board);

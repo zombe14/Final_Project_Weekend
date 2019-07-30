@@ -19,23 +19,18 @@
 		</div>
 		<div id="container">
 			<div class="inner">
-				num : ${dto.num} 
-				<br> 
-				title : ${dto.title} 
-				<br> 
-				writer : ${dto.writer} 
-				<br> 
-				reg_Date : ${dto.reg_date} 
-				<br>
-				contents : ${dto.contents} 
-				<br> hit : ${dto.hit} 
-				<br> top : ${dto.top}
-				<br> 
-				
-				<c:forEach items="${dto.fileDTOs}" var="f">
-					<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
-				</c:forEach>
-				
+			
+				<!-- 내용 -->
+				<div>
+					<p>${dto.title}</p>
+					<p>${dto.contents}</p>
+					<p>${dto.category}</p>
+					<c:forEach items="${dto.fileDTOs}" var="i">
+						<img alt="${i.oname}" src="../resources/images/board/${i.fname}">
+					</c:forEach>
+				</div>
+				<!-- 내용 끝 -->
+				<!-- ajax 파일 다운로드 -->
 				<div style="display:none;">
 					<form action="../ajax/fileDownload" method="post" id="downForm">
 						<input type="text" name="fname" id="fname">
@@ -43,13 +38,13 @@
 						<input type="text" name="board" value="board">
 					</form>
 				</div>
-				
+				<!-- ajax 파일 다운로드 끝 -->
 				
 				<a href="./${board}List">목록</a> 
 				<a href="./${board}Update?num=${dto.num}">수정</a> 
 				<a id="delete">삭제</a>
 			</div>
-   </div>
+   		</div>
    <div id="footer">
       <c:import url="../inc/footer.jsp"></c:import>
    </div>
@@ -61,6 +56,7 @@
 	$('#delete').click(function() {
 		var check = confirm('삭제하시겠습니까?');
 		if(check){
+			
 			location.href="./${board}Delete?num=${dto.num}";
 		}
 	});

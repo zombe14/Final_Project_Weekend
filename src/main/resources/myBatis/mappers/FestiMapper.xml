@@ -15,6 +15,14 @@
 	<resultMap type="FestiDTO" id="festiResult">
 		<id column="num" property="num"/>
 		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="contents" property="contents"/>
+		<result column="reg_date" property="reg_date"/>
+		<result column="hit" property="hit"/>
+		<result column="top" property="top"/>
+		<result column="category" property="category"/>
+		<result column="price" property="price"/>
+		<result column="total" property="total"/>
 		<result column="startDate" property="startDate"/>
 		<result column="endDate" property="endDate"/>
 		<result column="local" property="local"/>
@@ -52,5 +60,22 @@
 	<select id="getCount" resultType="Integer">
 		SELECT COUNT(NUM) FROM FESTI
 	</select>
+	
+	<select id="getSelect" resultMap="festiResult" parameterType="String">
+		SELECT * FROM FESTI WHERE NUM = #{num}
+	</select>
+	
+	<select id="getTop" resultMap="festiResult">
+		SELECT * FROM FESTI WHERE TOP = '1'
+	</select>
+	
+	<update id="setUpdate" parameterType="FestiDTO">
+		UPDATE FESTI SET TITLE = #{title}, CONTENTS = #{contents}, TOP = #{top}, CATEGORY = #{category}, PRICE = #{price}, 
+		TOTAL = #{total}, STARTDATE = #{startDate}, ENDDATE = #{endDate}, LOCAL = #{local} WHERE NUM = #{num}
+	</update>
+	
+	<delete id="setDelete" parameterType="String">
+		DELETE FESTI WHERE NUM = #{num}
+	</delete>
 	
 </mapper>

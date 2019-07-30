@@ -28,7 +28,7 @@ public class FileDAO {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", fnum);
 	}
 	
-	public List<FileDTO> getList(int num) throws Exception{
+	public List<FileDTO> getList(String num) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", num);
 	}
 

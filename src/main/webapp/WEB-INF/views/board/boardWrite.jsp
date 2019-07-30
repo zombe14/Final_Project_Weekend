@@ -152,6 +152,17 @@ $('#files').on('click','.deleteFile',function(){
 	$(this).parent().remove();
 	limit--
 });
+
+
+//상단 배치 체크박스에 값 주기 ( 1: 등록하기 / 0: 등록안함)
+$('#top').click(function(){
+	if($(this).is(':checked')){
+		$(this).val(1);
+	} else {
+		$(this).val(0);
+	}
+});
+
 /* 첨부 파일 관리 끝 */
 
 
@@ -210,15 +221,7 @@ $('#files').on('click','.deleteFile',function(){
     
  
 // 주소API 끝-----------------
-    
-//상단 배치 체크박스에 값 주기 ( 1: 등록하기 / 0: 등록안함)
-$('#top').click(function(){
-	if($(this).is(':checked')){
-		$(this).val(1);
-	} else {
-		$(this).val(0);
-	}
-});
+
 
 
 </script>
