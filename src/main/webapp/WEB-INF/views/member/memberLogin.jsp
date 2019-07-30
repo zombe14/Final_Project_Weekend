@@ -32,7 +32,8 @@
       		<div>
       			<a href="./memberJoin">회원가입</a>
       		</div>
-      		<input type="hidden" value="${member.count}" id="cc">
+      		
+      		
       </div>
       <div id="footer" style="margin-top: 500px;">
       <c:import url="../inc/footer.jsp"></c:import>
