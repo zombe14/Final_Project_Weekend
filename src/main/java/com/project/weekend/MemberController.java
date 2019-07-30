@@ -56,12 +56,12 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
 	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session)throws Exception{
-		
+		System.out.println("start");
 		MemberDTO getIdd = memberService.getIdd(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
-		
 		String message="존재 하지 않는 아이디 입니다.";
+		
 		if(getIdd==null) {
 			mv.setViewName("common/messageMove");
 			mv.addObject("message", message);
@@ -71,12 +71,19 @@ public class MemberController {
 			message="Login Fail";
 			if(result==1) {
 				if(memberDTO != null) {
-					session.setAttribute("member", memberDTO);
-					int updatezero = memberService.setUpdatezero(memberDTO);
-					message = "Login Success";	
-					mv.setViewName("common/messageMove");
-					mv.addObject("message", message);
-					mv.addObject("path", "../");
+					if(memberDTO.getCount()>6) {
+						message = "로그인 횟수 제한";	
+						mv.setViewName("common/messageMove");
+						mv.addObject("message", message);
+						mv.addObject("path", "./memberLogin");
+					}else {
+						session.setAttribute("member", memberDTO);
+						memberService.setUpdatezero(memberDTO);
+						message = "Login Success";	
+						mv.setViewName("common/messageMove");
+						mv.addObject("message", message);
+						mv.addObject("path", "../");
+					}
 				}else {
 					mv.setViewName("common/messageMove");
 					mv.addObject("message", message);

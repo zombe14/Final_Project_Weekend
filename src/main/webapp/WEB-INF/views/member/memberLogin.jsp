@@ -9,7 +9,7 @@
 <title> memberJoin </title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-<script type="text/javascript" src="../resources/js/member/memberLogin.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberLogin.js?ver=2"></script>
 </head>
 <body>
    <div id="wrap">
@@ -32,6 +32,8 @@
       		<div>
       			<a href="./memberJoin">회원가입</a>
       		</div>
+      		
+      		
       </div>
       <div id="footer" style="margin-top: 500px;">
       <c:import url="../inc/footer.jsp"></c:import>

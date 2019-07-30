@@ -1,4 +1,6 @@
-package com.project.weekend.member;
+﻿package com.project.weekend.member;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.xml.stream.events.Namespace;
@@ -13,10 +15,19 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private static final String NAMESPACE="MemberMapper.";
 	
-	public MemberDTO getIdd(MemberDTO memberDTO)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getIdd", memberDTO);
+
+	// 상혁 test용;
+	public List<MemberDTO> getList(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList", memberDTO);
 	}
 	
+	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getId", memberDTO);
+	}
+	public MemberDTO getIdd(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getIdd", memberDTO);
+
+	}
 	
 	public int setWrite(MemberDTO memberDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setWrite", memberDTO);
@@ -31,5 +42,8 @@ public class MemberDAO {
 	
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelect", memberDTO);
+	}
+	public MemberDTO getSelectCount(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSelctCount", memberDTO);
 	}
 }
