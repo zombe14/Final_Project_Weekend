@@ -56,8 +56,7 @@
 		</a>
 	</div>
 </div>
-<div>
-<div class="conta">
+<div class="homeconta">
 <div class="section_top">
 	<div class="inner">
 		<%@ include file="./container/ticket_open.jsp"%>
@@ -73,7 +72,6 @@
 		<%@ include file="./container/ticket_best.jsp"%>
 	</div>
 </div>
-</div>
 <div class="main_right" id="wingright">
 	<ul class="push">
 		<!-- <li><a href="#"><img alt="포스터  작게" src="./resources/images/home/wing/임시날씨.JPG" width="98" height="125"></a></li> -->
@@ -84,3 +82,4 @@
 	</ul>
 </div>
 </div>
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="./resources/images/home/위로.JPG"></a>
