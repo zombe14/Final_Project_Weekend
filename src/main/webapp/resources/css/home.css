@@ -223,6 +223,7 @@ strong{
 	width: 800px;
     height: 218px;
     overflow: hidden;
+    background-color: #F5FFFA;
 }
 
 .ticket_left .ticket_cont ul{
@@ -291,6 +292,7 @@ strong{
     width: 598px;
     height: 218px;
     overflow: hidden;
+    background-color: #F5FFFA;    
 }
 
 .rank_cont ul{

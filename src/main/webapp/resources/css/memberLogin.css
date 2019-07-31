@@ -2,6 +2,10 @@
 	margin-top: 60px;
 }
 
+#container{
+	background-color: #F5FFFA;
+}
+
 .login_wrap{
 	width:400px;
 	margin: 0 auto;
