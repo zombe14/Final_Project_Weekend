@@ -34,7 +34,7 @@ a {
 }
 
 a:hover {
-	
+	color: #41b40a;
 	text-decoration: none;
 }
 
@@ -223,6 +223,7 @@ strong{
 	width: 800px;
     height: 218px;
     overflow: hidden;
+    background-color: #f8f8f8;
 }
 
 .ticket_left .ticket_cont ul{
@@ -291,6 +292,7 @@ strong{
     width: 598px;
     height: 218px;
     overflow: hidden;
+    background-color: #f8f8f8;    
 }
 
 .rank_cont ul{
@@ -363,6 +365,11 @@ strong{
 }
 
 .conta{
+	width:1000px;
+	margin: 0 auto;
+	padding: 50px 0;
+}
+.homeconta{
 	width:1250px;
 	margin: 0 auto;
 }
@@ -380,6 +387,14 @@ strong{
 .b{
 	border:0 solid black;
 	width: 60px;
+}
+
+#back_to_top{
+	position: fixed;
+	top: 50%;
+	right: 0;
+	width: 44px;
+	height: 44px;
 }
 
 /*  ------------------------Footer Css-------------------- */

@@ -6,7 +6,7 @@
 		<div class="ticket_header">
 			<strong class="tickettitle">티켓오픈</strong> 
 			<a href="#" class="title"><img src="./resources/images/home/plus.png" 
-			style="width: 25px; height: auto"></a>
+			style="width: 20px; height: auto"></a>
 		</div>
 		<div class="ticket_cont">
 		<ul>
