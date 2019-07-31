@@ -1,5 +1,8 @@
 package com.project.weekend.util;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PageMaker {
 	private int perPage=10;
 	private Integer curPage;

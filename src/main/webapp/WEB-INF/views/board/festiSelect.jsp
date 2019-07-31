@@ -40,9 +40,13 @@
 				</div>
 				<!-- ajax 파일 다운로드 끝 -->
 				
-				<a href="./${board}List?category=${dto.category}">목록</a> 
+				
+				<a href="./${board}List?category=${dto.category}">목록</a>
+				<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
+				<%-- <c:if test="${member.grade > 1}"> --%> 
 				<a href="./${board}Update?num=${dto.num}">수정</a> 
 				<a id="delete">삭제</a>
+				<%-- </c:if> --%>
 			</div>
    		</div>
    <div id="footer">
