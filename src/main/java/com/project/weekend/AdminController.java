@@ -36,13 +36,13 @@ public class AdminController {
 	}
 	////////////// admin User; //////////////
 	// userList
-	@RequestMapping(value = "adminUserBoard", method = RequestMethod.GET)
-	public ModelAndView adminUserBoard(HttpSession session, MemberDTO memberDTO) throws Exception {
+	@RequestMapping(value = "aUserList", method = RequestMethod.GET)
+	public ModelAndView aUserList(HttpSession session, MemberDTO memberDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<MemberDTO> list = memberService.getList(session, memberDTO);
 		mv.addObject("board", "User");
 		mv.addObject("list", list);
-		mv.setViewName("admin/User/adminUserBoard");
+		mv.setViewName("admin/User/aUserList");
 		return mv;
 	}
 	// user info;
@@ -61,10 +61,9 @@ public class AdminController {
 	}
 	// user delete;
 	@RequestMapping(value = "adminUserDelete", method = RequestMethod.GET)
-	public ModelAndView adminUserDelete() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/User/adminUserDelete");
-		return mv;
+	public String adminUserDelete(String [] id) throws Exception{
+		memberService.setDelete(id);
+		return "redirect:./aUserList";
 	}
 	////////////// board 관리; //////////////
 	////////////// notice board; //////////////

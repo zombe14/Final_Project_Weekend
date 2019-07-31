@@ -1,5 +1,6 @@
 ﻿package com.project.weekend.member;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,25 +24,25 @@ public class MemberService {
 	private MemberFileDAO memberFileDAO;
 	
 
-	// 상혁 test용
+	// 상혁 시작;
 	public List<MemberDTO> getList(HttpSession session, MemberDTO memberDTO) throws Exception{
 		List<MemberDTO> list = memberDAO.getList(memberDTO);
 		return list;
 	}
-
+	public int setDelete(String [] id) throws Exception{
+		List<String> list = Arrays.asList(id);
+		return memberDAO.setDelete(list);
+	}
+	// 상혁 끝;
 	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getId(memberDTO);
 	}
-	
 	public int setUpdate(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setUpdate(memberDTO);
 	}
 	public int setUpdatezero(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setUpdatezero(memberDTO);
 	}
-	
-
-	
 	public int setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session)throws Exception{
 		String realPath = session.getServletContext().getRealPath("resources/member");
 		System.out.println(realPath);
@@ -50,18 +51,14 @@ public class MemberService {
 		memberFileDTO.setId(memberDTO.getId());
 		memberFileDTO.setFname(fname);
 		memberFileDTO.setOname(photo.getOriginalFilename());
-		
 		int result = memberDAO.setWrite(memberDTO);
 		result = memberFileDAO.setWrite(memberFileDTO);
 		return result;
 	}
-	
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelect(memberDTO);
 	}
 	public MemberDTO getSelectCount(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelectCount(memberDTO);
 	}
-	
-	
 }

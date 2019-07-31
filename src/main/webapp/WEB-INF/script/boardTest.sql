@@ -9,7 +9,7 @@ create table files(
 )
 select * from NOTICE
 select * from files order by fnum desc
-select * from FESTI
+select * from FESTI join files using(num)
 delete festi where num=1
 
 select * from user_sequences

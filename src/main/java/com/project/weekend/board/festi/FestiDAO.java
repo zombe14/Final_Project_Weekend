@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -31,6 +32,25 @@ public class FestiDAO{
 	
 	public int getCount() throws Exception{
 		return SqlSession.selectOne(NAMESPACE+"getCount");
+	}
+	
+	public FestiDTO getSelect(String num) throws Exception{
+
+		FestiDTO festiDTO = SqlSession.selectOne(NAMESPACE+"getSelect", num);
+
+		return festiDTO;
+	}
+	
+	public List<FestiDTO> getTop() throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getTop");
+	}
+	
+	public int setUpdate(FestiDTO festiDTO) throws Exception{
+		return SqlSession.update(NAMESPACE+"setUpdate", festiDTO);
+	}
+	
+	public int setDelete(String num) throws Exception{
+		return SqlSession.delete(NAMESPACE+"setDelete", num);
 	}
 
 }

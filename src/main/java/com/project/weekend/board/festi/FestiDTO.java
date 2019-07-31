@@ -22,14 +22,8 @@ public class FestiDTO{
 	private String contents;
 	private Date reg_date;
 	private int hit;
-
 	private int top;
-	public int getTop() {
-		return top;
-	}
-	public void setTop(int top) {
-		this.top = top;
-	}
+	
 
 	//------------
 	private ArrayList<FileDTO> fileDTOs;
@@ -116,6 +110,13 @@ public class FestiDTO{
 	}
 	public void setLocal(String local) {
 		this.local = local;
+	}
+	
+	public int getTop() {
+		return top;
+	}
+	public void setTop(int top) {
+		this.top = top;
 	}
 
 }

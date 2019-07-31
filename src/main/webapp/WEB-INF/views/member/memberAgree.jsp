@@ -13,6 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberAgree.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
 
 
@@ -20,6 +21,10 @@
 </head>
 <body>
 <div>
+<div id="wrap">
+	<div id="header">
+		<c:import url="../inc/header.jsp"></c:import>
+	</div>
 	<div id="container">
 	<div class="inner">
 		<h1>약관동의</h1>
@@ -111,6 +116,9 @@
 	</div>
 	</div>
 </div>
-
+<div id="footer" style="margin-top: 500px;">
+		<c:import url="../inc/footer.jsp"></c:import>
+	</div>
+</div>
 </body>
 </html>

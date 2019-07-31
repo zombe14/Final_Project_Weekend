@@ -40,9 +40,9 @@ public class FilesDAOTest extends AbstractTest {
 	
 	//@Test
 	public void getList() throws Exception{
-		List<FileDTO> list = fileDAO.getList(111);
-		System.out.println(list.size());
-		assertNotEquals(list.size(), 0);
+		//List<FileDTO> list = fileDAO.getList(111);
+	//	System.out.println(list.size());
+		//assertNotEquals(list.size(), 0);
 	}
 	
 	//@Test

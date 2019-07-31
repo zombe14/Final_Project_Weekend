@@ -1,4 +1,4 @@
-package com.project.weekend;
+﻿package com.project.weekend;
 
 import java.text.DateFormat;
 
@@ -32,15 +32,13 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
 	public void setWrite(@ModelAttribute MemberDTO memberVO)throws Exception{
-		
-
 	}
-	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MemberDTO getId = memberService.getId(memberDTO);
 		String message="Join Fail";
+<<<<<<< HEAD
 		if(getId!=null) {
 			message="이미 존재하는 아이디입니다.";
 			mv.setViewName("common/messageMove");
@@ -55,10 +53,16 @@ public class MemberController {
 			mv.addObject("message", message);
 			mv.addObject("path", "../");
 			}
+=======
+		if(result>0) {
+			message="Join Success";
+		}
+		mv.setViewName("common/messageMove");
+		mv.addObject("message", message);
+		mv.addObject("path", "../");
+>>>>>>> master
 		return mv;
 	}
-	
-	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.GET)
 	public void getSelect()throws Exception{}
 	
@@ -69,7 +73,6 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
 		String message="존재 하지 않는 아이디 입니다.";
-		
 		if(getId==null) {
 			mv.setViewName("common/messageMove");
 			mv.addObject("message", message);
@@ -96,28 +99,17 @@ public class MemberController {
 					mv.setViewName("common/messageMove");
 					mv.addObject("message", message);
 					mv.addObject("path", "./memberLogin");
-					
 				}
 			}else {
-				
 			}
 		}
 		return mv;
 	}
-	
 	@RequestMapping(value = "memberAgree", method = RequestMethod.GET)
 	public void getAgree()throws Exception{}
-	
 	@RequestMapping(value = "memberLogout")
 	public String logout(HttpSession session)throws Exception{
 		session.invalidate();
 		return "redirect:../";
 	}
-	
-	
-	
-	
-	
-	
-	
 }

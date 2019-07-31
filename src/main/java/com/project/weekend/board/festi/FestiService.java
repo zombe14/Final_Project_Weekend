@@ -1,10 +1,12 @@
 package com.project.weekend.board.festi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,15 +46,34 @@ public class FestiService {
 	public List<FestiDTO> getList(PageMaker pageMaker) throws Exception{
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getList(pageMaker);
-		System.out.println(list.size());
 		int totalCount = festiDAO.getCount();
 		pageMaker.makePage(totalCount);
+		
 		for(FestiDTO f : list) {
-			String test = f.getFileDTOs().get(0).getOname();
-			System.out.println("test : " + test);
+			String num = f.getNum();
+			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);
+			f.setFileDTOs(fileList);
 		}
 		
 		return list;
+	}
+	
+	public FestiDTO getSelect(String num) throws Exception{
+
+		FestiDTO festiDTO = festiDAO.getSelect(num);
+		ArrayList<FileDTO> fileDTOs = (ArrayList<FileDTO>)fileDAO.getList(num);
+		festiDTO.setFileDTOs(fileDTOs);
+
+		return festiDTO;
+	}
+	
+	public int setUpdate(FestiDTO festiDTO) throws Exception{
+		int res = festiDAO.setUpdate(festiDTO);
+		return res;
+	}
+	
+	public int setDelete(String num) throws Exception{
+		return festiDAO.setDelete(num);
 	}
 
 }
