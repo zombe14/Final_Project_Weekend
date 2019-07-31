@@ -8,16 +8,20 @@ import javax.xml.stream.events.Namespace;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.project.weekend.util.PageMaker;
+
 @Repository
 public class MemberDAO {
 	
 	@Inject
 	private SqlSession sqlSession;
 	private static final String NAMESPACE="MemberMapper.";
-
 	// 상혁;
-	public List<MemberDTO> getList(MemberDTO memberDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList", memberDTO);
+	public List<MemberDTO> getList(PageMaker pageMaker) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList", pageMaker);
+	}
+	public int getTotalCount(PageMaker pageMaker) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pageMaker);
 	}
 	public int setDelete(List<String> list)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDelete", list);
