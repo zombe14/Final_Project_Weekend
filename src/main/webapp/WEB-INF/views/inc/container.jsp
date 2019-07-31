@@ -56,8 +56,7 @@
 		</a>
 	</div>
 </div>
-<div>
-<div class="conta">
+<div class="homeconta">
 <div class="section_top">
 	<div class="inner">
 		<%@ include file="./container/ticket_open.jsp"%>
@@ -72,7 +71,6 @@
 	<div class="inner">
 		<%@ include file="./container/ticket_best.jsp"%>
 	</div>
-</div>
 </div>
 <div class="main_right" id="wingright">
 	<ul class="push">
