@@ -43,9 +43,8 @@ public class AfterController {
 	public ModelAndView setWrite(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int res = 0;
-
+		
 		res = afterService.setWrite(afterDTO, filelist, session);
-
 		String path = "redirect:./afterList?num="+afterDTO.getNum();
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
@@ -68,7 +67,7 @@ public class AfterController {
 		ModelAndView mv = new ModelAndView();
 		int res = 0;
 		res = afterService.setUpdate(afterDTO, filelist, session);
-		String path = "redirect:./boardSelect?anum="+afterDTO.getAnum();
+		String path = "redirect:./afterSelect?anum="+afterDTO.getAnum();
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.setViewName(path);
@@ -78,7 +77,7 @@ public class AfterController {
 	public ModelAndView setDelete(String anum, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int res = afterService.setDelete(anum, session);
-		String path = "redirect:./boardList";
+		String path = "redirect:./afterList";
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.setViewName(path);
@@ -103,10 +102,10 @@ public class AfterController {
 	@RequestMapping(value = "afterList",method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker, String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		System.out.println("con list num : "+num);
 		String path = "board/boardList";
 		
 		List<AfterDTO> list = afterService.getList(pageMaker, num);
-		
 		mv.addObject("list", list);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);

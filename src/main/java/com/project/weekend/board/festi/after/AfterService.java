@@ -28,6 +28,7 @@ public class AfterService {
 	
 	public int setWrite(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		int res = 0;
+		System.out.println("ser write : "+afterDTO.getNum());
 		String anum = "a"+afterDAO.getNum();
 		afterDTO.setAnum(anum);
 		
@@ -107,6 +108,7 @@ public class AfterService {
 		pageMaker.makePage(totalCount);	
 		
 		List<AfterDTO> list = afterDAO.getList(map);
+		System.out.println("ser list : "+list.size());
 				
 		return list;
 	}

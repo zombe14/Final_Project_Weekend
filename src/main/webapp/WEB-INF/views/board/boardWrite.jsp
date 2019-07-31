@@ -119,8 +119,8 @@
 					</div>
 				</c:if>
       		 	<c:if test="${board eq 'after'}">
-					<div>
-	      		 		<input type="hidden" name="num" value="${num}">
+					<div>num = ${originNum}
+	      		 		<input type="hidden" name="num" value="${originNum}">
 					</div>
 					<div>
 						<label for="point">별점</label>
