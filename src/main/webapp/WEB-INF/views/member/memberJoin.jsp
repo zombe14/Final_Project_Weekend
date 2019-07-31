@@ -11,14 +11,9 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
      <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" /> 
-<<<<<<< HEAD
   <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>
-
-<title>Insert title here</title>  
-=======
-  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=1"></script>
 <title>Weekend - 회원가입</title>  
->>>>>>> master
+
 </head>
 <body>
 <div id="wrap">

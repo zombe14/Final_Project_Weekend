@@ -16,35 +16,6 @@
    <div id="wrap">
       <div id="container">
       	<div class="conta">
-<<<<<<< HEAD
-      		<div class="login_wrap">
-      		<form action="./memberLogin" id="frm" method="POST">
-	      		<div class="ps_box">
-	      			<input id="id" class="idbtn" name="id" type="text" placeholder="아이디를 입력하세요" value="">
-	      		</div>
-	      		<div class="ps_box">
-	      			<input id="pw" class="pwbtn" name="pw" type="password" placeholder="비밀번호를 입력하세요" value="">
-	      		</div>
-	      		<button type="submit" id="Login" class="lgbtn">
-						로그인
-				</button>
-      		</form>
-
-      		<div>
-      		<div class="login_bot">
-      			<a href="./memberJoin" class="lob">회원가입</a>
-      			<span class="log lob">|</span>
-      			<a href="#" class="lob">비밀번호 찾기</a>
-      			<span class="log lob">|</span>
-      			<a href="#" class="lob">아이디 찾기</a>
-      			
-      			
-      			
-
-      		</div>
-      		</div>
-      	</div>
-=======
 				<div class="login_wrap">
 					<div class="login_logo">
 						<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo3.png"></a>
@@ -75,10 +46,11 @@
 			</div>
 				</div>
 			</div>
->>>>>>> master
+
       	</div>
       		
       		
+</div>
 </div>
 </body>
 </html>
