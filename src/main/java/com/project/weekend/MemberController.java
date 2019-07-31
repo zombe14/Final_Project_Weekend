@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,6 +31,20 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
+	@RequestMapping(value = "getId", method = RequestMethod.POST)
+	@ResponseBody
+	public int getId(MemberDTO memberDTO)throws Exception{
+		memberDTO = memberService.getId(memberDTO);
+		int result = 0;
+		if(memberDTO==null) {
+			return result;
+		}else {
+			result = 1;
+		}
+		return result;
+	}
+
+	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
 	public void setWrite(@ModelAttribute MemberDTO memberVO)throws Exception{
 	}
@@ -38,7 +53,7 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		MemberDTO getId = memberService.getId(memberDTO);
 		String message="Join Fail";
-<<<<<<< HEAD
+
 		if(getId!=null) {
 			message="이미 존재하는 아이디입니다.";
 			mv.setViewName("common/messageMove");
@@ -53,14 +68,7 @@ public class MemberController {
 			mv.addObject("message", message);
 			mv.addObject("path", "../");
 			}
-=======
-		if(result>0) {
-			message="Join Success";
-		}
-		mv.setViewName("common/messageMove");
-		mv.addObject("message", message);
-		mv.addObject("path", "../");
->>>>>>> master
+
 		return mv;
 	}
 	@RequestMapping(value = "memberLogin", method = RequestMethod.GET)

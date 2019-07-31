@@ -37,6 +37,7 @@ public class MemberService {
 	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getId(memberDTO);
 	}
+
 	public int setUpdate(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setUpdate(memberDTO);
 	}

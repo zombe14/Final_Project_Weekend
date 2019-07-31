@@ -9,14 +9,10 @@
   <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
-<<<<<<< HEAD
-     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
-  <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>
-=======
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
      <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" /> 
-  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=1"></script>
->>>>>>> master
+  <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>
+
 <title>Insert title here</title>  
 </head>
 <body>
@@ -139,7 +135,7 @@
 										<div class="infoContent">아이디를 정확히 입력하여 주십시오.
 											<br>띄어쓰기 없는 영문, 숫자로만 6~20자.</div>
 									</div>
-									<a href="../member/memberIdCheck" class="btnblackCheck layerOpenButton">중복확인</a>
+										<input type="button" id="memberidCheck" value="중복확인">
 									<div id="result_memid">
 										
 									</div>
@@ -208,6 +204,9 @@
 									<span class="essential">*</span>활동명 </th>
 								<td>
 								<input type="text" name="nickname" class="iText" title="nickname" id="nickname" minlength="4" maxlength="20">
+								<div id="nicknameCheck">
+											
+								</div>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -233,10 +232,7 @@
 					</table>
 				</div>
 				<div class="certifyButtonWrap_final certifyButtonWrap">
-					<button type="button"  class="certifyButtonWrapButton">
 						회원가입
-					</button>
-					 
 				</div>
 		</div>
 		</form>

@@ -31,10 +31,8 @@
 						로그인
 				</button>
       		</form>
-<<<<<<< HEAD
+
       		<div>
-      			<a href="./memberAgree">회원가입</a><span class="log">|</span>
-=======
       		<div class="login_bot">
       			<a href="./memberJoin" class="lob">회원가입</a>
       			<span class="log lob">|</span>
@@ -44,7 +42,7 @@
       			
       			
       			
->>>>>>> master
+
       		</div>
       		</div>
       	</div>
