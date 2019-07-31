@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> memberLogin </title>
+<title> Weekend - 로그인 </title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberLogin.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
@@ -42,12 +42,12 @@
 							<span>|</span>
 							<a href="${pageContext.request.contextPath}/footer/use">이용약관</a>
 							<span>|</span>
-							<a href="#">고객센터</a>
+							<a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 			</div>
 				</div>
 			</div>
       	</div>
-      		
+    </div>	
       		
 </div>
 </body>
