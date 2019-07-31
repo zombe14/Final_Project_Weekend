@@ -67,6 +67,9 @@ public class PageMaker {
 	}
 	
 	public int getCategory() {
+		if(category>6 || category<1) {
+			this.category = 1;
+		}
 		return category;
 	}
 	public void setCategory(int category) {

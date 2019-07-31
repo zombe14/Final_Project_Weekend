@@ -33,6 +33,15 @@
 					<label for="writer">작성자<span>*</span></label>
 					<input type="text" name="writer" placeholder="session nickname (Admin) + readonly">
 				</div>
+				<c:if test="${board eq 'festi'}">
+					<label for="files">썸네일</label>
+						<div id="thumbnail">
+							<div>
+								<input type="file" class="filelist" name="filelist" style="display: inline-block">
+								<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
+							</div>
+						</div>
+				</c:if>
 				<div>
 					<label for="contents">내용<span>*</span></label>
 					<textarea rows="" cols="" name="contents" id="contents"></textarea>
@@ -55,30 +64,25 @@
 				</div>
 				
 				<!-- 축제/공연 작성시에만 보이게 -->
-				<c:if test="${sort eq 'festi'}">
+				<c:if test="${board eq 'festi'}">
 					<div>
 						<div>
-							<label for="category">대분류</label>
-							<c:choose>
-								<c:when test="${board eq 'festival'}">
-									<input type="radio" checked="checked"> 축제
-									<div>
+							<label for="category">대분류<span>*</span></label>
+								<input type="radio" name="firstCategory"> 축제							
+								<input type="radio" name="firstCategory"> 공연
+									<div id="">
 										<label for="writer">소분류<span>*</span></label>
 										<input type="radio" name="category" value="1" checked="checked"> 전시
 										<input type="radio" name="category" value="2"> 행사	
 										<input type="radio" name="category" value="3"> 레저
 									</div>
-								</c:when>
-								<c:when test="${board eq 'show'}">
-									<input type="radio" checked="checked"> 공연
+
 									<div>
 										<label for="writer">소분류<span>*</span></label>
 										<input type="radio" name="category" value="4" checked="checked"> 지방 연극
 										<input type="radio" name="category" value="5"> 대학로 연극
 										<input type="radio" name="category" value="6"> 콘서트
 									</div>
-								</c:when>
-							</c:choose>
 						</div>
 						<div>
 							<label for="startDate">시작일<span>*</span></label>

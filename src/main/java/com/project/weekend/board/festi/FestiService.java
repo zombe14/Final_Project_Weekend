@@ -43,11 +43,12 @@ public class FestiService {
 		return res;
 	}
 	
-	public List<FestiDTO> getList(PageMaker pageMaker) throws Exception{
+	public List<FestiDTO> getList(PageMaker pageMaker, int category) throws Exception{
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getList(pageMaker);
 		int totalCount = festiDAO.getCount();
 		pageMaker.makePage(totalCount);
+		pageMaker.setCategory(category);
 		
 		for(FestiDTO f : list) {
 			String num = f.getNum();

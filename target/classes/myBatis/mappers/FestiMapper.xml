@@ -37,7 +37,7 @@
 		SELECT * FROM 
 		(SELECT ROWNUM R, F.* FROM 
 		(SELECT NUM, TITLE, STARTDATE, ENDDATE, LOCAL FROM FESTI
-		WHERE <!-- CATEGORY = #{category} AND -->
+		WHERE CATEGORY = #{category} AND
 		<choose>
 			<when test="kind = 1">
 				TITLE
