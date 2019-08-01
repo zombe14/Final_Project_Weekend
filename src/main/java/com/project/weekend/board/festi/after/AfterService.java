@@ -52,13 +52,17 @@ public class AfterService {
 	
 	public int setDelete(String anum, HttpSession session) throws Exception{
 		int res = 0;
+		System.out.println("ser 1 : "+res);
+		System.out.println(anum);
 		res = afterDAO.setDelete(anum);
+		System.out.println("ser 2 : "+res);
 		res = fileDAO.setDeleteAll(anum);
+		System.out.println("ser 3 : "+res);
 		List<FileDTO> files = fileDAO.getList(anum);
 		
 		// db에서 글 삭제
 		res = afterDAO.setDelete(anum);
-		
+		System.out.println("ser 4 : "+res);
 		// files db에서 삭제
 		fileDAO.setDeleteAll(anum);
 

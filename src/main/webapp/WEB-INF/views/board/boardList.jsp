@@ -53,12 +53,12 @@
 
 				<!-- 일반 공지 리스트 -->
 				<c:forEach items="${list}" var="list">
-					<tr title="${list.num}" class="select">
+					<tr class="select">
 						<c:if test="${board eq 'notice'}">
-							<td>${list.num}</td>						
+							<td class="selectRow" id="${list.num}">${list.num}</td>						
 						</c:if>
 						<c:if test="${board eq 'after' or board eq 'afterAll'}">
-							<td>${list.anum}</td>						
+							<td class="selectRow" id="${list.anum}">${list.anum}</td>						
 						</c:if>
 						<td>${list.title}</td>
 						<td>${list.writer}</td>
@@ -111,7 +111,7 @@
 	<!-- ------script---------- -->
 	<script type="text/javascript">
 		$('.select').click(function() {
-			var num = $(this).attr('title');
+			var num = $(this).children('.selectRow').attr('id');
 			location.href = "./${board}Select?num=" + num;
 		});
 	</script>
