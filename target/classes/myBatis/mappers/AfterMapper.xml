@@ -20,50 +20,92 @@
 	</select>
 	
 	<!-- ================================================================= -->
-	<select id="getCount" resultType="Integer" parameterType="map">
+	<select id="getCount" resultType="Integer" parameterType="PageMaker">
 		SELECT COUNT(ANUM) FROM AFTER WHERE 
 		<choose>
-			<when test="pageMaker.kind = 1">
+			<when test="kind = 1">
 				TITLE
 			</when>
-			<when test="pageMaker.kind = 2">
+			<when test="kind = 2">
 				CONTENTS
 			</when>
-			<when test="pageMaker.kind = 3">
+			<when test="kind = 3">
 				WRITER
 			</when>
 			<otherwise>
 				TITLE
 			</otherwise>
 		</choose>
-		LIKE '%'||#{pageMaker.search}||'%' 
+		LIKE '%'||#{search}||'%' 
 		AND NUM = #{num}
 	</select>
 	
+		<select id="getCountAll" resultType="Integer" parameterType="PageMaker">
+		SELECT COUNT(ANUM) FROM AFTER WHERE 
+		<choose>
+			<when test="kind = 1">
+				TITLE
+			</when>
+			<when test="kind = 2">
+				CONTENTS
+			</when>
+			<when test="kind = 3">
+				WRITER
+			</when>
+			<otherwise>
+				TITLE
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
+	</select>
 	
-	<select id="getList" parameterType="map" resultMap="afterResult">
+	
+	<select id="getList" parameterType="PageMaker" resultMap="afterResult">
 		SELECT * FROM
 		(SELECT ROWNUM R, A.* FROM 
 		(SELECT * FROM AFTER WHERE 
 		<choose>
-			<when test="pageMaker.kind = 1">
+			<when test="kind = 1">
 				TITLE
 			</when>
-			<when test="pageMaker.kind = 2">
+			<when test="kind = 2">
 				CONTENTS
 			</when>
-			<when test="pageMaker.kind = 3">
+			<when test="kind = 3">
 				WRITER
 			</when>
 			<otherwise>
 				TITLE
 			</otherwise>
 		</choose>
-		LIKE '%'||#{pageMaker.search}||'%' 
-		AND NUM = #{num} 
-		ORDER BY ANUM DESC) A)
-		WHERE R BETWEEN #{pageMaker.startRow} AND #{pageMaker.lastRow}
-	</select> 
+		LIKE '%'||#{search}||'%'
+		 AND NUM = #{num}
+		ORDER BY REG_DATE DESC) A)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<select id="getAllList" parameterType="PageMaker" resultMap="afterResult">
+		SELECT * FROM
+		(SELECT ROWNUM R, A.* FROM 
+		(SELECT * FROM AFTER WHERE 
+		<choose>
+			<when test="kind = 1">
+				TITLE
+			</when>
+			<when test="kind = 2">
+				CONTENTS
+			</when>
+			<when test="kind = 3">
+				WRITER
+			</when>
+			<otherwise>
+				TITLE
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
+		ORDER BY REG_DATE DESC) A)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
 	
 	
 	

@@ -29,7 +29,6 @@
 				<br>
 				contents : ${dto.contents} 
 				<br> hit : ${dto.hit} 
-				<br> top : ${dto.top}
 				<br> 
 				
 				<c:forEach items="${dto.fileDTOs}" var="f">
@@ -45,7 +44,7 @@
 				</div>
 				
 				
-				<a href="./${board}List">목록</a> 
+				<a id="list" title="${board}" class="${dto.num}">목록</a>
 				<a href="./${board}Update?num=${dto.num}">수정</a> 
 				<a id="delete">삭제</a>
 			</div>
@@ -72,6 +71,19 @@
 		$('#fname').val(fname);
 		$('#oname').val(oname);
 		$('#downForm').submit();
+	});
+	
+	/* 목록 */
+	$('#list').click(function() {
+		var list = "";
+		var board = $(this).attr('title');
+		var num = $(this).attr('class');
+		if(board == 'after'){
+			list = "../festi/festiSelect?num="+num;		
+		} else if (board == 'notice'){
+			list = "./noticeList";
+		}
+		location.href = list;
 	});
 	
 </script>

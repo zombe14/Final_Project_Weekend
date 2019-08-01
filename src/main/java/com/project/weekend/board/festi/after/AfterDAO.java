@@ -38,11 +38,19 @@ public class AfterDAO {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", anum);
 	}
 	
-	public int getCount(Map<String,Object> map) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getCount", map);
+	public int getCount(PageMaker pageMaker) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCount", pageMaker);
+	}
+	
+	public int getCountAll(PageMaker pageMaker) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCountAll", pageMaker);
 	}
 
-	public List<AfterDTO> getList(Map<String,Object> map) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList", map);
+	public List<AfterDTO> getList(PageMaker pageMaker) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList", pageMaker);
+	}
+	
+	public List<AfterDTO> getAllList(PageMaker pagerMaker) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getAllList", pagerMaker);
 	}
 }

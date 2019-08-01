@@ -199,6 +199,9 @@ button {
 }
 .joinWrap  .iText {
     width: 340px;
+    -webkit-transition: 0.5s;
+  	transition: 0.5s;
+  	outline: none;
 }
 .iText {
     padding: 0 8px;
@@ -239,9 +242,15 @@ button {
     padding: 7px 20px 8px;
 }
 
+input[type=text]:focus{
+	border: 1px solid #41b40a;
+	
+}
 
-
-
+input[type=password]:focus{
+	border: 1px solid #41b40a;
+	
+}
 
 
 

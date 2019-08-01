@@ -21,6 +21,9 @@
 					<option value="0">전체</option>
 					<option value="1">제목</option>
 					<option value="2">내용</option>
+					<c:if test="${board eq 'after'}">
+						<option value="3">작성자</option>
+					</c:if>
 				</select> <input type="text" placeholder="검색어를 입력하세요" name="search">
 				<button id="search">검색</button>
 			</form>
@@ -35,21 +38,28 @@
 					<th style="width: 10%;">HIT</th>
 				</thead>
 				<!-- 관리자가 상단에 배치할 공지. pageMaker의 perPage에 영향 X. 밑에 중복. -->
-				<c:forEach items="${top}" var="top">
-					<tr title="${top.num}" class="select" style="background-color: #41b40a17;">
-						<td>중요</td>
-						<td>${top.title}</td>
-						<td>${top.writer}</td>
-						<td>${top.reg_date}</td>
-						<td>${top.hit}</td>
-					</tr>
-				</c:forEach>
+				<c:if test="${board eq 'notice'}">
+					<c:forEach items="${top}" var="top">
+						<tr title="${top.num}" class="select" style="background-color: #41b40a17;">
+							<td>중요</td>
+							<td>${top.title}</td>
+							<td>${top.writer}</td>
+							<td>${top.reg_date}</td>
+							<td>${top.hit}</td>
+						</tr>
+					</c:forEach>
+				</c:if>
 
 
 				<!-- 일반 공지 리스트 -->
 				<c:forEach items="${list}" var="list">
 					<tr title="${list.num}" class="select">
-						<td>${list.num}</td>
+						<c:if test="${board eq 'notice'}">
+							<td>${list.num}</td>						
+						</c:if>
+						<c:if test="${board eq 'after' or board eq 'afterAll'}">
+							<td>${list.anum}</td>						
+						</c:if>
 						<td>${list.title}</td>
 						<td>${list.writer}</td>
 						<td>${list.reg_date}</td>
@@ -59,12 +69,12 @@
 
 			</table>			
 
-			<c:if test="${list[0].num eq null}">
+			<c:if test="${list[0].reg_date eq null}">
 				<ul class="pagination">
 					<li><a href="${board}List">검색결과가 없습니다</a></li>
 				</ul>
 			</c:if>
-			<c:if test="${list[0].num ne null}">
+			<c:if test="${list[0].reg_date ne null}">
 			<ul class="pagination">
 				<c:choose>
 					<c:when test="${pager.curBlock>1}">
@@ -101,7 +111,8 @@
 	<!-- ------script---------- -->
 	<script type="text/javascript">
 		$('.select').click(function() {
-			location.href = "./${board}Select?num=" + $(this).attr('title');
+			var num = $(this).attr('title');
+			location.href = "./${board}Select?num=" + num;
 		});
 	</script>
 </body>

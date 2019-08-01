@@ -47,6 +47,26 @@
 				<a href="./${board}Update?num=${dto.num}">수정</a> 
 				<a id="delete">삭제</a>
 				<%-- </c:if> --%>
+				
+				<!--  후기 -->
+				<table>
+					<thead>
+						<th>NUM</th>
+						<th>TITLE</th>
+						<th>Writer</th>
+						<th>DATE</th>
+						<th>hit</th>
+					</thead>
+					<c:forEach items="${after}" var="i">
+						<tr title="${i.anum}" class="afterSel">
+							<td>${i.anum}</td>
+							<td>${i.title}</td>
+							<td>${i.writer}</td>
+							<td>${i.reg_date}</td>
+							<td>${i.hit}</td>
+						</tr>					
+					</c:forEach>
+				</table>
 			</div>
    		</div>
    <div id="footer">
@@ -72,6 +92,11 @@
 		$('#fname').val(fname);
 		$('#oname').val(oname);
 		$('#downForm').submit();
+	});
+	
+	/* 후기 보기 */
+	$('.afterSel').click(function() {
+		location.href="../after/afterSelect?num="+$(this).attr('title');
 	});
 	
 </script>
