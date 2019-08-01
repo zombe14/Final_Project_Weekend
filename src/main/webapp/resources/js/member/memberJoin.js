@@ -189,6 +189,8 @@ $(function() {
 			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw){
 				alert('성공');
 				$("#frm").submit();
+			}else if(nicknameCheck!='0'){
+				alert("활동명을 입력하세요");
 			}else{
 				alert("비밀번호나 이름을 확인해주세요");
 			}
@@ -220,6 +222,33 @@ $(function() {
 						$('#id').attr('readonly', true);
 						$("#memberidCheck").attr('type', 'hidden');
 						$("#result_memid").val('0');
+					}
+				}
+				
+			});
+		}
+	});
+	$("#nicknameCheck").click(function() {
+		var nickname = $("#nickname").val();
+		var nicknametrim = nickname.trim();
+		if(nicknametrim==''){
+			alert('활동명을 입력하세요');
+		}else{
+			$.ajax({
+				data:{
+					nickname : nickname
+				},
+				type: "POST",
+				url: "../member/getNickname",
+				success:function(data){
+					if(data==1){
+						alert("이미 존재하는 활동명입니다");
+						$("#result_nicknameCheck").val('');
+					}else{
+						alert("사용가능한 활동명 입니다")
+						$('#nickname').attr('readonly', true);
+						$("#nicknameCheck").attr('type', 'hidden');
+						$("#result_nicknameCheck").val('0');
 					}
 				}
 				

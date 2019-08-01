@@ -115,7 +115,7 @@ strong{
     height: 39px;
 	border: 2px solid #41b40a;
 	padding-left: 10px;
-	
+	outline: none;
 }
 
 .search_wrap{

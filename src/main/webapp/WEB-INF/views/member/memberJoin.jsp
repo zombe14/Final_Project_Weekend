@@ -204,6 +204,7 @@
 									<span class="essential">*</span>활동명 </th>
 								<td>
 								<input type="text" name="nickname" class="iText" title="nickname" id="nickname" minlength="4" maxlength="20">
+								<input type="button" id="nicknameCheck" value="중복확인">
 								<div id="nicknameCheck">
 											
 								</div>
