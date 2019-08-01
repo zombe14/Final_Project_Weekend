@@ -2,17 +2,63 @@
 	background: #f0f0f0;
     border-radius: 2px;
     text-align: center;
-    margin-top: 58px;
+    margin-top: 30px;
     height: 300px;
+    border-radius: 5px;
+}
+
+.salecont{
+	margin-top: 30px;
+}
+
+.call_cont h4{
+	margin-top: 40px;
 }
 
 .partner_effect li{
 	float: left;
-	width: 247px;
+	width: 249px;
 	text-align: left;
+	border-right: 1px solid grey;
+	margin: 40px 0;
+	padding: 20px 20px;
 }
 
 .partner_effect li h4{
 	width: 220px;
 	letter-spacing: -1px;
+}
+
+.partner_effect img{
+	width:100px;
+	margin-left: 50px;
+}
+
+.partner_effect li:last-child {
+	border-right: none;
+}
+
+.partner_effect h4{
+	margin-top: 30px;
+}
+
+.partner_effect p{
+	margin-top: 10px;
+}
+
+.salesdetail_lst h5{
+	float: left;
+	width: 114px;
+}
+
+.salesdetail_lst span{
+	width: 99px;
+	margin-top: 1px;
+}
+
+.salesdetail_lst p{
+	border-left: 1px solid #f0f0f0;
+	overflow: hidden;
+	padding-left: 20px;
+    margin-bottom: 20px;
 }
