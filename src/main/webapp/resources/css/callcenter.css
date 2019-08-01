@@ -35,6 +35,10 @@
 	border-right: 1px solid #efefef;
 }
 
+.mypage_quick li{
+	width: 205px;
+}
+
 .call_quick li:last-child{
 	border: none;
 }
