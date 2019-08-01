@@ -11,7 +11,7 @@
 		INSERT INTO FESTI(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, CATEGORY, PRICE, TOTAL, STARTDATE, ENDDATE, LOCAL, TOP)
 		VALUES(#{num},#{title},#{writer},#{contents},sysdate,#{hit},#{category},#{price},#{total},#{startDate},#{endDate},#{local},#{top})
 	</insert>
-	
+
 	<resultMap type="FestiDTO" id="festiResult">
 		<id column="num" property="num"/>
 		<result column="title" property="title"/>
@@ -61,7 +61,6 @@
 		SELECT COUNT(NUM) FROM FESTI
 	</select>
 
-	
 	<select id="getSelect" resultMap="festiResult" parameterType="String">
 		SELECT * FROM FESTI WHERE NUM = #{num}
 	</select>
