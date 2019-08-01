@@ -47,8 +47,8 @@
 
 			</div>
 			<div class="search_wrap">
-				<input type="text" placeholder="검색어 입력" id="search">
-				<a href="#" class="btn_search"><img src="${pageContext.request.contextPath}/resources/images/home/h_search.png" style="width: 20px;"></a>
+				<input type="text" placeholder="" id="search">
+				<a href="#" class="btn_search"><img src="${pageContext.request.contextPath}/resources/images/home/h_search.png" style="width: 15px;"></a>
 			</div>
 			<!-- <div class="search">
 		</div> -->
@@ -73,7 +73,7 @@
 			<div class="nav_wrap">
 				<ul class="nav navbar-nav">
 					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>오늘의 추천</a></li>
+							class="fa fa-home fa-fw"></i>W 추천</a></li>
 					<li class="dropdown navp"><a href="#"
 						class="dropdown-caategory" id="dropdownCategoryMenu"
 						data-toggle="dropdown"><i class="fa fa-folder-open"></i>공연<i
