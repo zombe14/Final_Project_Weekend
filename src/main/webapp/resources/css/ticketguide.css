@@ -1,0 +1,18 @@
+.partner_effect{
+	background: #f0f0f0;
+    border-radius: 2px;
+    text-align: center;
+    margin-top: 58px;
+    height: 300px;
+}
+
+.partner_effect li{
+	float: left;
+	width: 247px;
+	text-align: left;
+}
+
+.partner_effect li h4{
+	width: 220px;
+	letter-spacing: -1px;
+}

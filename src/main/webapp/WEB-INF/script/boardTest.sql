@@ -1,3 +1,9 @@
+INSERT INTO AFTER(ANUM, NUM, WRITER, TITLE, CONTENTS, REG_DATE, HIT, POINT, CATEGORY, REF, STEP, DEPTH)
+		VALUES('a0', 'f11', 'afterW0', 'afterT1', 'afterC1', sysdate, 0, 3, 1, 0, 0, 0)
+
+
+
+
 select * from files
 drop table files
 create table files(
@@ -69,10 +75,18 @@ CREATE TABLE notice
 -- 5. 테이블 다 지우고 테스트용 만들기
 
 
+SELECT COUNT(ANUM) FROM AFTER WHERE 
+		
+				TITLE
+			
+		LIKE '%'||'%' 
+		AND NUM = 'f11'
 
-SELECT COLUMN_NAME, DATA_TYPE FROM all_tab_columns where table_name='FESTI';
+delete after where num = 'f12'
+SELECT COLUMN_NAME, DATA_TYPE FROM all_tab_columns where table_name='AFTER';
 select * from after
-
+alter table after modify(num varchar2(400))
+alter table after drop column category
  select * from festi
  select * from member
  select * from user_sequences
@@ -122,7 +136,7 @@ select notice_seq.nextval, notice_seq.currval from dual
 select * from notice FULL join files using(num) where num = 40
 SELECT * FROM NOTICE FULL JOIN FILES USING(NUM) WHERE NUM = 118
 
-
+select * from festi
 
 SELECT * FROM 
 (SELECT N.* FROM 

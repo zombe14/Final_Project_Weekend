@@ -10,6 +10,7 @@ import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.weekend.board.festi.after.AfterService;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.util.FileSaver;
@@ -43,11 +44,12 @@ public class FestiService {
 		return res;
 	}
 	
-	public List<FestiDTO> getList(PageMaker pageMaker) throws Exception{
+	public List<FestiDTO> getList(PageMaker pageMaker, int category) throws Exception{
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getList(pageMaker);
 		int totalCount = festiDAO.getCount();
 		pageMaker.makePage(totalCount);
+		pageMaker.setCategory(category);
 		
 		for(FestiDTO f : list) {
 			String num = f.getNum();
@@ -69,11 +71,19 @@ public class FestiService {
 	
 	public int setUpdate(FestiDTO festiDTO) throws Exception{
 		int res = festiDAO.setUpdate(festiDTO);
+		
 		return res;
 	}
 	
 	public int setDelete(String num) throws Exception{
-		return festiDAO.setDelete(num);
+		int res = 0;
+		res = festiDAO.setDelete(num);
+		res = fileDAO.setDeleteAll(num);
+		return res;
+	}
+	
+	public int getNum() throws Exception{
+		return festiDAO.getNum();
 	}
 
 }

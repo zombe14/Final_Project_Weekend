@@ -24,7 +24,11 @@
       	<div class="inner">
   	      	
       		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
-	
+				<c:if test="${board eq 'after'}">
+					<div>
+						<p>${originTitle} 후기</p>
+					</div>
+      		 	</c:if>
 				<div>
 					<label for="title">제목<span>*</span></label>
 					<input type="text" name="title">
@@ -33,6 +37,19 @@
 					<label for="writer">작성자<span>*</span></label>
 					<input type="text" name="writer" placeholder="session nickname (Admin) + readonly">
 				</div>
+				<c:if test="${board eq 'festi'}">
+					<label for="files">썸네일</label>
+						<div id="thumbnailDiv">
+							<div>
+								<input type="file" class="filelist" id="thumbnail" name="filelist" style="display: inline-block" accept=".jpg, .png, .gif, .jpeg">
+								<p> &nbsp; &nbsp; ※  jpg, png, gif, jpeg 확장자만 업로드 가능합니다.</p>
+							</div>
+							<!-- 이미지 미리보기 -->
+							<div id="preview">
+								<img id="preview-img" src="#">
+							</div>
+						</div>
+				</c:if>
 				<div>
 					<label for="contents">내용<span>*</span></label>
 					<textarea rows="" cols="" name="contents" id="contents"></textarea>
@@ -48,37 +65,33 @@
 					</div>
 				</div>
 				
-				<div>
-				<%-- <c:if test="${member.grade eq 3}"> --%>
-					상단에 등록 하기 <input type="checkbox" id="top" name="top" value="0">
-				<%-- </c:if> --%>
-				</div>
+				<c:if test="${board eq 'notice' or member.grade eq 3}">
+					<div>
+						<label for="top">상단에 등록 하기</label>
+						<input type="checkbox" id="top" name="top" value="0">
+					</div>
+				</c:if>
 				
 				<!-- 축제/공연 작성시에만 보이게 -->
-				<c:if test="${sort eq 'festi'}">
+				<c:if test="${board eq 'festi'}">
 					<div>
 						<div>
-							<label for="category">대분류</label>
-							<c:choose>
-								<c:when test="${board eq 'festival'}">
-									<input type="radio" checked="checked"> 축제
-									<div>
+							<label for="category">대분류<span>*</span></label>
+								<input type="radio" name="firstCategory"> 축제							
+								<input type="radio" name="firstCategory"> 공연
+									<div id="">
 										<label for="writer">소분류<span>*</span></label>
 										<input type="radio" name="category" value="1" checked="checked"> 전시
 										<input type="radio" name="category" value="2"> 행사	
 										<input type="radio" name="category" value="3"> 레저
 									</div>
-								</c:when>
-								<c:when test="${board eq 'show'}">
-									<input type="radio" checked="checked"> 공연
+
 									<div>
 										<label for="writer">소분류<span>*</span></label>
 										<input type="radio" name="category" value="4" checked="checked"> 지방 연극
 										<input type="radio" name="category" value="5"> 대학로 연극
 										<input type="radio" name="category" value="6"> 콘서트
 									</div>
-								</c:when>
-							</c:choose>
 						</div>
 						<div>
 							<label for="startDate">시작일<span>*</span></label>
@@ -105,6 +118,19 @@
 						</div>
 					</div>
 				</c:if>
+      		 	<c:if test="${board eq 'after'}">
+					<div>num = ${originNum}
+	      		 		<input type="hidden" name="num" value="${originNum}">
+					</div>
+					<div>
+						<label for="point">별점</label>
+						<input type="radio" name="point" value="1"> 1점
+						<input type="radio" name="point" value="2"> 2점
+						<input type="radio" name="point" value="3"> 3점
+						<input type="radio" name="point" value="4"> 4점
+						<input type="radio" name="point" value="5"> 5점
+					</div>
+      		 	</c:if>
 			
 				<input type="button" id="write" value="등록">
 			</form> 
@@ -165,6 +191,27 @@ $('#top').click(function(){
 
 /* 첨부 파일 관리 끝 */
 
+
+//썸네일
+	$("#preview").hide();
+	function readURL(input) {
+		 
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+	 
+	        reader.onload = function (e) {
+	            $('#preview-img').attr('src', e.target.result);
+	        }
+	 
+	        reader.readAsDataURL(input.files[0]);
+	    }
+	}
+	 
+	$("#thumbnail").change(function(){
+		$("#preview").show();
+	    readURL(this);
+	});
+// 썸네일 끝
 
 // date picker
 
