@@ -35,7 +35,7 @@ public class AfterController {
 		mv.addObject("originTitle", title);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
-		mv.setViewName("board/boardWrite");
+		mv.setViewName("board/afterWrite");
 		return mv;
 	}
 

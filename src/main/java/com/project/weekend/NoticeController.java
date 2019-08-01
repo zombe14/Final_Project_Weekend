@@ -32,7 +32,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board", "notice");
 		mv.addObject("boardTitle", "Notice");
-		mv.setViewName("board/boardWrite");
+		mv.setViewName("board/noticeWrite");
 		return mv;
 	}
 	

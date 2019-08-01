@@ -29,7 +29,7 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board", b1);
 		mv.addObject("boardTitle", b2);
-		mv.setViewName("board/boardWrite");
+		mv.setViewName("board/qnaWrite");
 		return mv;
 	}
 	

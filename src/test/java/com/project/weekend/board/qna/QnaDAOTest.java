@@ -18,7 +18,7 @@ public class QnaDAOTest extends AbstractTest{
 	@Inject
 	private PageMaker pageMaker;
 	
-	@Test
+	//@Test
 	public void writeFor() throws Exception{
 		for(int i = 0 ; i<30;i++) {		
 			QnaDTO q = new QnaDTO();
