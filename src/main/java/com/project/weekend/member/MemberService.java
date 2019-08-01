@@ -34,6 +34,11 @@ public class MemberService {
 		return memberDAO.setDelete(list);
 	}
 	// 상혁 끝;
+	
+	public MemberDTO getNickname(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getNickname(memberDTO);
+	}
+	
 	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getId(memberDTO);
 	}
