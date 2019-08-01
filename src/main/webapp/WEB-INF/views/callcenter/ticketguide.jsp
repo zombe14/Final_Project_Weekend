@@ -35,13 +35,13 @@
 				<ul class="call_menu">
 					<li class="cmenu1"><a href="${pageContext.request.contextPath}/callcenter/main">고객센터 홈</a></li>
 					<li class="cmenu2"><a href="">공지사항</a></li>
-					<li class="cmenu3"><a href="">질문과 답변</a></li>
+					<li class="cmenu3"><a href="">FAQ</a></li>
 					<li class="cmenu4"><a href="">예매안내</a></li>
 					<li class="cmenu5"><a href="">결제수단안내</a></li>
 					<li class="cmenu6"><a href="">회원정보안내</a></li>
-					<li class="cmenu7"><a href="">환불안내</a></li>
+					<li class="cmenu7"><a href="${pageContext.request.contextPath}/callcenter/cancel">환불안내</a></li>
 					<li class="cmenu8"><a href="">부정이용 규제안내</a></li>
-					<li class="cmenu9"><a href="">티켓판매안내</a></li>
+					<li class="cmenu9"><a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
 				</ul>
 				<div class="call_cont">
 					<div class="partner_effect">
@@ -63,8 +63,9 @@
 							</li>
 						</ul>
 					</div>
-					<h4>판매 서비스 절차</h4>
 					<div class="salecont">
+						<h3>판매 서비스 절차</h3>
+						<div class="salcont_wrap">
 						<ul class="salesdetail_lst">
                             <li class="sd1">
                                 <h5><span>판매상담 및 계약</span></h5>
@@ -96,6 +97,7 @@
                                 </p>
                             </li>
                         </ul>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -15,33 +15,21 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="./resources/images/home/닭갈비축제.png"
-					style="height: 50%;" class="img-responsive center-block"
+				<img src="./resources/images/home/banner1.jpg"
+					class="img-responsive center-block"
 					alt="festival1">
-				<div class="carousel-caption">
-					<h3>닭갈비 축제</h3>
-					<p>LA is always so much fun!</p>
-				</div>
 			</div>
 
 			<div class="item">
-				<img src="./resources/images/home/신촌물총축제.jpg"
-					style="height: 50%;" class="img-responsive center-block"
+				<img src="./resources/images/home/banner2.jpg"
+					class="img-responsive center-block"
 					alt="festival2">
-				<div class="carousel-caption">
-					<h3>신촌 물총 축제</h3>
-					<p>Thank you, Chicago!</p>
-				</div>
 			</div>
 
 			<div class="item">
-				<img src="./resources/images/home/냉이축제.jpg"
-					style="height: 50%;" class="img-responsive center-block"
+				<img src="./resources/images/home/banner3.jpg"
+					class="img-responsive center-block"
 					alt="festival3">
-				<div class="carousel-caption">
-					<h3>냉이 축제</h3>
-					<p>We love the Big Apple!</p>
-				</div>
 			</div>
 		</div>
 
@@ -82,4 +70,20 @@
 	</ul>
 </div>
 </div>
+<!-- Tocplus 15.1 -->
+<script type="text/javascript">
+tocplusTop=1150;
+tocplusLeft=100;
+tocplusMinimizedImage='http://kr03.tocplus007.com/img/minimized_ko.gif';
+tocplusHAlign='left';
+tocplusWidth=180;
+tocplusHeight=220;
+tocplusUserName='손님';
+tocplusFrameColor='#41b40a';
+tocplusFloatingWindow=true;
+var tocplusHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+document.write(unescape("%"+"3Cscript src='" + tocplusHost + "kr03.tocplus007.com/chatLoader.do?userId=kws332' type='text/javascript'"+"%"+"3E"+"%"+"3C/script"+"%"+"3E"));
+</script>
+<!-- End of Tocplus -->
+
 <a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="./resources/images/home/위로.JPG"></a>

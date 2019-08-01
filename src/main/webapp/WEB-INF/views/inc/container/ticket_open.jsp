@@ -51,7 +51,7 @@
 	</div>
 	<div class="ticket_right">
 		<div class="ticket_header">
-			<strong class="ticketitle">관리자 추천</strong>
+			<strong class="ticketitle">Today 추천</strong>
 		</div>
 		<div class="admin_recom">
 			<a href="#"><img alt="" src="./resources/images/home/admin_recom1.png" width="398" height="220"></a>
