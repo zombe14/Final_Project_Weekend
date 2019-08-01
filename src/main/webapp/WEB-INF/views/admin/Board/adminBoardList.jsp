@@ -12,18 +12,19 @@
 <c:import url="../../../../resources/css/adminBoard.css" />
 </head>
 <body>
+<div class="totalBody">
 	<!-- header.jsp -->
 	<c:import url="../../inc/admin_header.jsp" />
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<!-- side bar -->
 			<c:import url="../../inc/admin_left_bar.jsp"/>
-			<div class="col-sm-9">
+			<div class="col-sm-10">
 				<h4>
 					<small>${board} 관리</small>
 				</h4>
 				<hr>
-				<div class="container">
+				<div class="container col-sm-12">
 					<table class="table table-hover">
 						<tr>
 							<td>NUM</td>
@@ -47,7 +48,8 @@
 		</div>
 	</div>
 	<footer class="container-fluid">
-		<p>Footer Text</p>
+		<p>이곳엔 무엇을 넣어야 할 것인가?</p>
 	</footer>
+</div>
 </body>
 </html>

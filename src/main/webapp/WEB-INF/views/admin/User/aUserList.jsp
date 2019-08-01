@@ -10,13 +10,14 @@
 <c:import url="../../../../resources/css/adminBoard.css" />
 </head>
 <body>
+<div class="totalBody">
 	<c:import url="../../inc/admin_header.jsp" />
 	<!-- left bar 시작 -->
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<!-- side bar -->
 			<c:import url="../../inc/admin_left_bar.jsp" />
-			<div class="col-sm-9">
+			<div class="col-sm-10">
 				<h4>
 					<small>${board} 관리</small>
 				</h4>
@@ -42,7 +43,7 @@
 
 					</form>
 				</div>
-				<div class="container">
+				<div class="container col-sm-12">
 					<table class="table table-hover">
 						<tr>
 							<td>ID</td>
@@ -118,5 +119,6 @@
 	<footer class="container-fluid">
 		<p>Footer Text</p>
 	</footer>
+</div>
 </body>
 </html>
