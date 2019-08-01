@@ -6,7 +6,7 @@
 		<div class="rank_header">
 			<strong class="ranktitle">축제 랭킹</strong> 
 			<a href="#" class="title"><img src="./resources/images/home/plus.png" 
-			style="width: 25px; height: auto"></a>
+			style="width: 20px; height: auto"></a>
 		</div>
 		<div class="rank_cont">
 		<ul>
@@ -49,7 +49,7 @@
 		<div class="rank_header">
 			<strong class="ranktitle">공연 랭킹</strong> 
 			<a href="#" class="title"><img src="./resources/images/home/plus.png" 
-			style="width: 25px; height: auto"></a>
+			style="width: 20px; height: auto"></a>
 		</div>
 		<div class="rank_cont">
 		<ul>

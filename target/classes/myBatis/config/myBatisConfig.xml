@@ -6,6 +6,7 @@
 		<!-- 난슬 -->
 		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.project.weekend.board.festi.FestiDTO" alias="FestiDTO"/>
+		<typeAlias type="com.project.weekend.board.festi.after.AfterDTO" alias="AfterDTO"/>
 		<!-- 상혁 -->
 		<typeAlias type="com.project.weekend.member.MemberDTO" alias="MemberDTO"/>
 

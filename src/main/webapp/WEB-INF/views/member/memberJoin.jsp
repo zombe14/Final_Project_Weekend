@@ -11,8 +11,9 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
      <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" /> 
-  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=1"></script>
-<title>Insert title here</title>  
+  <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>
+<title>Weekend - 회원가입</title>  
+
 </head>
 <body>
 <div id="wrap">
@@ -111,7 +112,7 @@
 					</table>
 				</div>
 				<div class="certifyButtonWrap">
-					<button>
+					<button class="certifyButtonWrapButton">
 						본인확인
 					</button>
 				</div>
@@ -134,7 +135,7 @@
 										<div class="infoContent">아이디를 정확히 입력하여 주십시오.
 											<br>띄어쓰기 없는 영문, 숫자로만 6~20자.</div>
 									</div>
-									<a href="javascript:searchMemId();" class="btnblackCheck layerOpenButton">중복확인</a>
+										<input type="button" id="memberidCheck" value="중복확인">
 									<div id="result_memid">
 										
 									</div>
@@ -203,6 +204,10 @@
 									<span class="essential">*</span>활동명 </th>
 								<td>
 								<input type="text" name="nickname" class="iText" title="nickname" id="nickname" minlength="4" maxlength="20">
+								<input type="button" id="nicknameCheck" value="중복확인">
+								<div id="nicknameCheck">
+											
+								</div>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -228,16 +233,13 @@
 					</table>
 				</div>
 				<div class="certifyButtonWrap_final certifyButtonWrap">
-					<button type="button">
 						회원가입
-					</button>
-					 
 				</div>
 		</div>
 		</form>
 		</div>
 	</div>
-	<div id="footer" style="margin-top: 500px;">
+	<div id="footer">
 		<c:import url="../inc/footer.jsp"></c:import>
 	</div>
 </div>

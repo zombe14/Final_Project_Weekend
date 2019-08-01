@@ -27,9 +27,15 @@ public class MemberDAO {
 		return sqlSession.delete(NAMESPACE+"setDelete", list);
 	}
 	// 상혁 끝;
+	
+	public MemberDTO getNickname(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getNickname", memberDTO);
+	}
+	
 	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getId", memberDTO);
 	}
+
 	public int setWrite(MemberDTO memberDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setWrite", memberDTO);
 	}

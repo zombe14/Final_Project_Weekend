@@ -15,9 +15,9 @@
 					<span>|</span>
 					<a href="${pageContext.request.contextPath}/footer/use">이용약관</a>
 					<span>|</span>
-					<a href="#">티켓판매안내</a>
+					<a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a>
 					<span>|</span>
-					<a href="#">고객센터</a>
+					<a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 			</div>
 			<div class="f_address">
 					<a>주소: 서울특별시 마포구 월드컵북로 21 풍성빌딩 2,3,4층 ---회사</a>

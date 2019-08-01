@@ -11,25 +11,25 @@
 					<c:when test="${member.grade eq '3'}">
 							<div id="admin">
 								<a href="${pageContext.request.contextPath}/admin/adminMain">관리자 페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="#">고객센터</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:when test="${member.grade eq '2'}">
 							<div id="logout">
 								<a href="${pageContext.request.contextPath}/myPage/myPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="#">고객센터</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:when test="${member.grade eq '1'}">
 							<div id="logout">
 								<a href="${pageContext.request.contextPath}/myPage/myPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="#">고객센터</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:otherwise>
 						<div id="login">
 							<a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-							<a href="${pageContext.request.contextPath}/member/memberAgree">회원가입</a> <span class="log">|</span> <a href="#">고객센터</a>
+							<a href="${pageContext.request.contextPath}/member/memberAgree">회원가입</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 						</div>
 					</c:otherwise>
 				</c:choose>
@@ -81,9 +81,9 @@
 						<ul class="dropdown-menu" role="menu"
 							aria-labelledby="dropdownCategoryMenu">
 							<li class="divider"></li>
-							<li><a href="#"><i class="fa fa-folder"></i>지역별 콘서트</a></li>
-							<li><a href="#"><i class="fa fa-folder"></i>소규모 연극</a></li>
-							<li><a href="#"><i class="fa fa-folder"></i>대학로 연극</a></li>
+							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=6"><i class="fa fa-folder"></i>지역별 콘서트</a></li>
+							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=4"><i class="fa fa-folder"></i>소규모 연극</a></li>
+							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=5"><i class="fa fa-folder"></i>대학로 연극</a></li>
 						</ul></li>
 					<li class="dropdown" class="navp"><a href="#"
 						class="dropdown-caategory" id="dropdownCategoryMenu"
@@ -92,16 +92,16 @@
 						<ul class="dropdown-menu" role="menu"
 							aria-labelledby="dropdownCategoryMenu">
 							<li class="divider"></li>
-							<li><a href="#"><i class="fa fa-folder"></i>전시</a></li>
-							<li><a href="#"><i class="fa fa-folder"></i>행사</a></li>
-							<li><a href="#"><i class="fa fa-folder"></i>레저</a></li>
+							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=1"><i class="fa fa-folder"></i>전시</a></li>
+							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=2"><i class="fa fa-folder"></i>행사</a></li>
+							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=3"><i class="fa fa-folder"></i>레저</a></li>
 						</ul></li>
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>아동/가족</a></li>
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>랭킹</a></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>빈칸</a></li>
+					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/notice/noticeList"><i
+							class="fa fa-home fa-fw"></i>공지사항(임시)</a></li>
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>빈칸</a></li>
 					<li id="navbar-page" class="navp"><a href="#"><i

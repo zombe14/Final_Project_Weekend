@@ -70,9 +70,13 @@
 	<select id="getSelect" resultMap="member" parameterType="MemberDTO">
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
-	<select id="getId" resultType="MemberDTO" parameterType="MemberDTO">
-		select id from member where id=#{id} 
+	<select id="getId" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
+		select id from member where id=#{id}
 	</select>
+	<select id="getNickname" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
+		select nickname from member where nickname=#{nickname}
+	</select>
+
 	<delete id="setDelete" parameterType="java.util.List">
 		delete member where id=#{id}
 	</delete>
