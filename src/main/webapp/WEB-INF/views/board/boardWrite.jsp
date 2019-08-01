@@ -220,6 +220,20 @@ $('#top').click(function(){
 	});
 // 썸네일 끝
 
+
+/* 비밀글 */
+$('#pw').hide();
+$('.pwSel').click(function() {
+	var secret = $('#secret').prop('checked');
+	console.log(secret);
+	if($('#secret').prop('checked')){
+		$('#pw').show();
+	} else {
+		$('#pw').hide();
+	}	
+});
+
+
 // date picker
 
 /* date picker 끝 */
@@ -275,12 +289,6 @@ $('#top').click(function(){
     
  
 // 주소API 끝-----------------
-
-/* 비밀글 */
- $('#pw').hide();
-if($('#secret').prop('checked')){
-	$('#pw').show();
-}
 
 
 
