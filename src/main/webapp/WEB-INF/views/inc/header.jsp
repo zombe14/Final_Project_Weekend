@@ -101,9 +101,9 @@
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>랭킹</a></li>
 					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/notice/noticeList"><i
-							class="fa fa-home fa-fw"></i>공지사항(임시)</a></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>빈칸</a></li>
+							class="fa fa-home fa-fw"></i>(공지사항)</a></li>
+					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/after/afterAllList"><i
+							class="fa fa-home fa-fw"></i>(후기)</a></li>
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>빈칸</a></li>
 				</ul>

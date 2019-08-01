@@ -28,9 +28,10 @@ public class AfterService {
 	
 	public int setWrite(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		int res = 0;
-		System.out.println("ser write : "+afterDTO.getNum());
+		
 		String anum = "a"+afterDAO.getNum();
 		afterDTO.setAnum(anum);
+	
 		
 		// num : jsp에서 넘기면 afterDTO에 넣을 수 있는 지 아니면 파라미터로 바로 넘기는 지 확인해보기 //
 		/* afterDTO.setNum(num); */
@@ -45,7 +46,7 @@ public class AfterService {
 				res = fileDAO.setWrite(fileDTO);				
 			}
 		}
-			
+		
 		return res;
 	}
 	
@@ -87,29 +88,46 @@ public class AfterService {
 		return res;
 	}
 	
-	public AfterDTO getSelect(String anum, HttpSession session) throws Exception{
+	public AfterDTO getSelect(String num, HttpSession session) throws Exception{
 		AfterDTO afterDTO = new AfterDTO();
-		afterDTO = afterDAO.getSelect(anum);
+		afterDTO = afterDAO.getSelect(num);
 		return afterDTO;
 	}
 	
 	
 	////////////////////////////////////////////////////////////////////////////////////////
 	
-	public List<AfterDTO> getList(PageMaker pageMaker, String num) throws Exception{
+	public List<AfterDTO> getList(PageMaker pageMaker) throws Exception{
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("pagerMaker", pageMaker);
-		map.put("num", num);
+		/*
+		 * Map<String, Object> map = new HashMap<String, Object>();
+		 * map.put("pagerMaker", pageMaker); map.put("num", num);
+		 * System.out.println("ser list pm kind   : "+ pageMaker.getKind());
+		 * System.out.println("ser list pm search : "+ pageMaker.getSearch());
+		 * 
+		 * System.out.println("ser list map : "+map.size());
+		 */
+		int totalCount = afterDAO.getCount(pageMaker);
 		
-		int totalCount = afterDAO.getCount(map);
-
+	
 		pageMaker.makeRow();
 		pageMaker.makePage(totalCount);	
 		
-		List<AfterDTO> list = afterDAO.getList(map);
-		System.out.println("ser list : "+list.size());
+		List<AfterDTO> list = afterDAO.getList(pageMaker);
+		
 				
+		return list;
+	}
+	
+	public List<AfterDTO> getAllList(PageMaker pageMaker) throws Exception{
+		int totalCount = afterDAO.getCountAll(pageMaker);
+		
+		
+		pageMaker.makeRow();
+		pageMaker.makePage(totalCount);	
+		
+		List<AfterDTO> list = afterDAO.getAllList(pageMaker);
+		
 		return list;
 	}
 	

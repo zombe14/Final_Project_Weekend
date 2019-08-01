@@ -1,7 +1,9 @@
+SELECT * FROM AFTER WHERE ANUM = 'a'
+
 INSERT INTO AFTER(ANUM, NUM, WRITER, TITLE, CONTENTS, REG_DATE, HIT, POINT, CATEGORY, REF, STEP, DEPTH)
 		VALUES('a0', 'f11', 'afterW0', 'afterT1', 'afterC1', sysdate, 0, 3, 1, 0, 0, 0)
 
-
+select * from AFTER
 
 
 select * from files

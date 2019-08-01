@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
+import com.project.weekend.board.festi.after.AfterDTO;
+import com.project.weekend.board.festi.after.AfterService;
 import com.project.weekend.util.PageMaker;
 
 @Controller
@@ -21,6 +23,8 @@ public class FestiController {
 	
 	@Inject
 	private FestiService festiService;
+	@Inject
+	private AfterService afterService;
 	
 	//write form - get
 	@RequestMapping(value = "festiWrite", method = RequestMethod.GET)
@@ -62,10 +66,14 @@ public class FestiController {
 	
 	// select
 	@RequestMapping(value = "festiSelect", method = RequestMethod.GET)
-	public ModelAndView getSelect(String num) throws Exception{
+	public ModelAndView getSelect(String num, PageMaker pageMaker) throws Exception{
 
 		ModelAndView mv = new ModelAndView();
 		FestiDTO festiDTO = festiService.getSelect(num);
+		pageMaker.setNum(num);
+		List<AfterDTO> list = afterService.getList(pageMaker);
+
+		mv.addObject("after", list);
 
 		mv.addObject("dto", festiDTO);
 		mv.addObject("board", "festi");
