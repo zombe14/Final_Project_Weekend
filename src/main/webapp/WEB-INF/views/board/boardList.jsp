@@ -54,7 +54,12 @@
 				<!-- 일반 공지 리스트 -->
 				<c:forEach items="${list}" var="list">
 					<tr title="${list.num}" class="select">
-						<td>${list.anum}</td>
+						<c:if test="${board eq 'notice'}">
+							<td>${list.num}</td>						
+						</c:if>
+						<c:if test="${board eq 'after' or board eq 'afterAll'}">
+							<td>${list.anum}</td>						
+						</c:if>
 						<td>${list.title}</td>
 						<td>${list.writer}</td>
 						<td>${list.reg_date}</td>
