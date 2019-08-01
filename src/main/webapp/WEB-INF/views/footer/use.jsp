@@ -17,7 +17,7 @@
 		<c:import url="../inc/header.jsp"></c:import>
 	</div>
 	<div id="container">
-		<div class="inner">
+		<div class="conta">
 				<ul class="front_tab">
 					<li class="on"><a href="${pageContext.request.contextPath}/footer/personalInformation" class="tab1">개인정보처리방침</a></li>
 					<li><a href="${pageContext.request.contextPath}/footer/youth" class="tab2">청소년보호정책</a></li>

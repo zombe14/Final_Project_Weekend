@@ -1,5 +1,26 @@
 
 $(function() {
+	$("#pw").focus(function () {
+		var memid = $("#memid").val();
+		var result_memid = $("#result_memid").val();
+		if(memid==''||result_memid==''){
+			alert('아이디 중복을 확인해주세요');
+			$('#id').focus();
+		}else{
+			
+		}
+	});
+	$("#pwCheck").focus(function() {
+		var memid = $("#memid").val();
+		var result_memid = $("#result_memid").val();
+		if(memid==''||result_memid==''){
+			alert('아이디 중복을 확인해주세요');
+			$('#id').focus();
+		}else{
+			
+		}
+	});
+	
 	
 	$("#memEmail_select").blur(function() {
 		var t = true;
@@ -48,10 +69,7 @@ $(function() {
 			$('#email_store').val("false");
 		}
 	});
-	$('.certifyButtonWrap').click(function() {
-		
-		
-		
+	$('.certifyButtonWrapButton').click(function() {		
 		var a = $('#num_select').val();
 		var b = $('#hp2').val();
 		var c = $('#hp3').val();
@@ -92,7 +110,11 @@ $(function() {
 		var pattern1 = /[0-9]/;
 		var pattern2 = /[a-zA-Z]/;
 		var pattern3 = /[~!@\#$%<>^&*()_+-]/;
-			if (pw.length == 0) {
+		var memid = $("#memid").val();
+		if(memid==''){
+			$('#id').focus();
+		}else{
+		if (pw.length == 0) {
 			result_pw.innerHTML = "비밀번호를 입력해 주세요.";
 			$("#pww").val('');
 		} else if (!pattern1.test(pw) || !pattern2.test(pw)	|| !pattern3.test(pw)) {
@@ -106,11 +128,16 @@ $(function() {
 			result_pw.innerHTML = "8~12자까지 설정해 주세요";
 			$("#pww").val('');
 		}
+		}
 	});
 	
 	$("#pwCheck").blur(function() {
 		var pw = document.getElementById("pw").value;
 		var pwCheck = document.getElementById("pwCheck").value;
+		var memid = $("#memid").val();
+		if(memid==''){
+			$('#id').focus();
+		}else{
 		if(pw==pwCheck){
 			result_pwpw.innerHTML = "";
 			$("#pwwcheck").val('0');
@@ -118,6 +145,7 @@ $(function() {
 			result_pwpw.innerHTML = "비밀번호가 일치하지 않습니다";
 			$("#pwwcheck").val('');
 		}
+	}
 	});
 	
 	$("#name").blur(function() {
@@ -134,23 +162,32 @@ $(function() {
 			$("#memNamecheck").val('0');
 		}
 	});
+	$("#nickname").blur(function() {
+		var nickname = $(this).val();
+		if(nickname.length==0){
+			$("#nicknameCheck").val('');
+		}else{
+			$("#nicknameCheck").val('0');
+		}
+	});
+	
 	$(".certifyButtonWrap_final").click(function() {
 		var num_select = $("#num_select").val();
 		var hp2 = $("#hp2").val();
 		var hp3 = $("#hp3").val();
 		var phone = num_select + hp2 + hp3;
-		
+		var nicknameCheck = document.getElementById("nicknameCheck").value;
 		var pw = document.getElementById("pw").value;
 		var pwCheck = document.getElementById("pwCheck").value;
 		var pww = $("#pww").val();
 		var pwwcheck = $("#pwwcheck").val();
 		var memNamecheck = $("#memNamecheck").val();
 		
-		var finalpw = true;
+		var finalpw = false;
 		if(pw==pwCheck){
 			finalpw = true;
-			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&finalpw){
-				alert("회원가입성공");
+			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw){
+				alert('성공');
 				$("#frm").submit();
 			}else{
 				alert("비밀번호나 이름을 확인해주세요");
@@ -163,7 +200,32 @@ $(function() {
 		
 	});
 	
-	
+	$("#memberidCheck").click(function() {
+		var id = $("#id").val();
+		idd = id.trim();
+		if(idd==''){
+			alert('아이디를 입력하세요');
+		}else{
+			$.ajax({
+				data:{
+					id : id
+				},
+				type: "POST",
+				url: "../member/getId",
+				success:function(data){
+					if(data==1){
+						alert("이미 아이디가 존재합니다");
+					}else{
+						alert("사용가능한 아이디 입니다")
+						$('#id').attr('readonly', true);
+						$("#memberidCheck").attr('type', 'hidden');
+						$("#result_memid").val('0');
+					}
+				}
+				
+			});
+		}
+	});
 });
 	
 
