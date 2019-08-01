@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> Weekend - 고객센터 </title>
+<title> Weekend - 티켓판매안내 </title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/callcenter.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/ticketguide.css">
@@ -101,6 +101,7 @@
 			</div>
 		</div>
 	</div>
+	<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.JPG"></a>
 	<div id="footer">
 		<c:import url="../inc/footer.jsp"></c:import>
 	</div>
