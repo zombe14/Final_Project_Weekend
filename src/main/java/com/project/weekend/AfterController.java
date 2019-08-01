@@ -105,6 +105,7 @@ public class AfterController {
 		System.out.println("con list num : "+num);
 		String path = "board/boardList";
 		
+		
 		List<AfterDTO> list = afterService.getList(pageMaker, num);
 		mv.addObject("list", list);
 		mv.addObject("board", "after");
