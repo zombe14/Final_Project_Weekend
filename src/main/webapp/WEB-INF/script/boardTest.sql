@@ -1,4 +1,4 @@
-select * from qna
+select * from files order by fnum desc
 
 SELECT * FROM AFTER WHERE ANUM = 'a'
 

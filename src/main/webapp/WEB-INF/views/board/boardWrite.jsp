@@ -134,9 +134,9 @@
 				<c:if test="${board eq 'qna'}">
 					<div>
 						<label for="pw">비밀번호</label>
-						<input type="radio" class="pwSel" id="nonSecret" checked="checked"> 오픈글
-						<input type="radio" class="pwSel" id="secret"> 비밀글
-						<input type="password" name="pw" id="pw" placeholder="글 열람 시 사용할 비밀번호를 입력해주세요" r>
+						<input type="radio" class="pwSel" name="secret" id="nonSecret" checked="checked"> 오픈글
+						<input type="radio" class="pwSel" name="secret" id="secret"> 비밀글
+						<input type="password" name="pw" id="pw" placeholder="글 열람 시 사용할 비밀번호를 입력해주세요" >
 					</div>
 				</c:if>
 				<input type="button" id="write" value="등록">
@@ -277,8 +277,9 @@ $('#top').click(function(){
 // 주소API 끝-----------------
 
 /* 비밀글 */
-if($('#nonSecret').prop('checked')){
-	$('#pw').attr('readonly','readonly');
+ $('#pw').hide();
+if($('#secret').prop('checked')){
+	$('#pw').show();
 }
 
 
