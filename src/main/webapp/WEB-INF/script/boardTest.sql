@@ -1,3 +1,5 @@
+select * from qna
+
 SELECT * FROM AFTER WHERE ANUM = 'a'
 
 INSERT INTO AFTER(ANUM, NUM, WRITER, TITLE, CONTENTS, REG_DATE, HIT, POINT, CATEGORY, REF, STEP, DEPTH)
@@ -75,7 +77,11 @@ CREATE TABLE notice
 -- 4. getNum후 setNum 할 때 앞에 구분 붙이기, mapper변경
 
 -- 5. 테이블 다 지우고 테스트용 만들기
+SELECT * FROM ALL_CONSTRAINTS WHERE TABLE_NAME = 'QNA'
 
+ALTER TABLE QNA DROP CONSTRAINT QNA_WRITER_FK
+
+ ZUMAL QNA_WRITER_FK   R               QNA        NULL              ZUMAL   MEMBER_ID_PK      NO ACTION   ENABLED NOT DEFERRABLE IMMEDIATE VALIDATED USER NAME      NULL NULL 2019-07-23 09:59:56.0 NULL        NULL       NULL    NULL
 
 SELECT COUNT(ANUM) FROM AFTER WHERE 
 		
@@ -85,7 +91,9 @@ SELECT COUNT(ANUM) FROM AFTER WHERE
 		AND NUM = 'f11'
 
 delete after where num = 'f12'
-SELECT COLUMN_NAME, DATA_TYPE FROM all_tab_columns where table_name='AFTER';
+SELECT COLUMN_NAME, DATA_TYPE FROM all_tab_columns where table_name='QNA';
+alter table qna modify(ref varchar2(400))
+alter table qna add hit number(8)
 select * from after
 alter table after modify(num varchar2(400))
 alter table after drop column category

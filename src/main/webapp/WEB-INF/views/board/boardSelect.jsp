@@ -46,7 +46,7 @@
 				<a id="list" title="${board}" class="${dto.num}">목록</a>
 				<a id="update" class="${board}">수정</a> 
 				<a id="delete" class="${board}">삭제</a>
-				<c:if test="${board eq 'notice'}">
+				<c:if test="${board eq 'notice' or board eq 'qna'}">
 					<input type="hidden" class="num" id="${dto.num}">
 				</c:if>
 				<c:if test="${board eq 'after'}">
@@ -67,7 +67,7 @@
 		var board = $(this).attr('class');
 		var num = 0;
 		if(check){
-			if(board == 'notice'){
+			if(board == 'notice' || 'qna'){
 				num = $('.num').attr('id');
 				location.href="./${board}Delete?num="+num;
 			} else if (board == 'after') {
@@ -108,8 +108,8 @@
 		var num = $(this).attr('class');
 		if(board == 'after'){
 			list = "../festi/festiSelect?num="+num;		
-		} else if (board == 'notice'){
-			list = "./noticeList";
+		} else if (board == 'notice'||'qna'){
+			list = "./"+board+"List";
 		}
 		location.href = list;
 	});

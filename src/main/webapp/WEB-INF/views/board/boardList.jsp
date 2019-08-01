@@ -21,7 +21,7 @@
 					<option value="0">전체</option>
 					<option value="1">제목</option>
 					<option value="2">내용</option>
-					<c:if test="${board eq 'after'}">
+					<c:if test="${board eq 'after' or board eq 'qna'}">
 						<option value="3">작성자</option>
 					</c:if>
 				</select> <input type="text" placeholder="검색어를 입력하세요" name="search">
@@ -54,7 +54,7 @@
 				<!-- 일반 공지 리스트 -->
 				<c:forEach items="${list}" var="list">
 					<tr class="select">
-						<c:if test="${board eq 'notice'}">
+						<c:if test="${board eq 'notice' or board eq 'qna'}">
 							<td class="selectRow" id="${list.num}">${list.num}</td>						
 						</c:if>
 						<c:if test="${board eq 'after' or board eq 'afterAll'}">

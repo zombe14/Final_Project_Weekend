@@ -131,7 +131,14 @@
 						<input type="radio" name="point" value="5"> 5점
 					</div>
       		 	</c:if>
-			
+				<c:if test="${board eq 'qna'}">
+					<div>
+						<label for="pw">비밀번호</label>
+						<input type="radio" class="pwSel" id="nonSecret" checked="checked"> 오픈글
+						<input type="radio" class="pwSel" id="secret"> 비밀글
+						<input type="password" name="pw" id="pw" placeholder="글 열람 시 사용할 비밀번호를 입력해주세요" r>
+					</div>
+				</c:if>
 				<input type="button" id="write" value="등록">
 			</form> 
 			
@@ -268,6 +275,11 @@ $('#top').click(function(){
     
  
 // 주소API 끝-----------------
+
+/* 비밀글 */
+if($('#nonSecret').prop('checked')){
+	$('#pw').attr('readonly','readonly');
+}
 
 
 
