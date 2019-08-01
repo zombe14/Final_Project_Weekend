@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.weekend.file.MemberFileDAO;
 import com.project.weekend.file.MemberFileDTO;
 import com.project.weekend.util.FileSaver;
+import com.project.weekend.util.PageMaker;
 
 @Service
 public class MemberService {
@@ -22,11 +23,13 @@ public class MemberService {
 	private FileSaver fileSaver;
 	@Inject
 	private MemberFileDAO memberFileDAO;
-	
 
 	// 상혁 시작;
-	public List<MemberDTO> getList(HttpSession session, MemberDTO memberDTO) throws Exception{
-		List<MemberDTO> list = memberDAO.getList(memberDTO);
+	public List<MemberDTO> getList(HttpSession session, PageMaker pageMaker) throws Exception{
+		List<MemberDTO> list = memberDAO.getList(pageMaker);
+		int totalCount = memberDAO.getTotalCount(pageMaker);
+		pageMaker.makeRow();
+		pageMaker.makePage(totalCount);
 		return list;
 	}
 	public int setDelete(String [] id) throws Exception{
@@ -34,6 +37,11 @@ public class MemberService {
 		return memberDAO.setDelete(list);
 	}
 	// 상혁 끝;
+	
+	public MemberDTO getNickname(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getNickname(memberDTO);
+	}
+	
 	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getId(memberDTO);
 	}

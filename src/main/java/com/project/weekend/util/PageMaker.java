@@ -103,24 +103,21 @@ public class PageMaker {
 		if(totalCount%perPage !=0) {
 			totalPage++;
 		}
-		
 		//3. totalBlock
+		
 		int perBlock=5;
 		this.totalBlock=totalPage/perBlock;
 		if(totalPage%perBlock !=0) {
 			this.totalBlock++;
 		}
-		
 		//4. curPage를 이용해서 curBlock
 		this.curBlock=curPage/perBlock;
 		if(this.curPage%perBlock !=0) {
 			curBlock++;
 		}
-		
 		//5. startNum, lastNum
 		this.startNum=(this.curBlock-1)*perBlock+1;
 		this.lastNum=this.curBlock*perBlock;
-		
 		//6. curBlock이 totalBlock일때
 		if(this.curBlock==totalBlock) {
 			this.lastNum=totalPage;

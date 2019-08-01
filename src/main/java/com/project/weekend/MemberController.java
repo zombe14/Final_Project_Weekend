@@ -43,6 +43,19 @@ public class MemberController {
 		}
 		return result;
 	}
+	
+	@RequestMapping(value = "getNickname", method = RequestMethod.POST)
+	@ResponseBody
+	public int getNickname(MemberDTO memberDTO)throws Exception{
+		memberDTO = memberService.getNickname(memberDTO);
+		int result =0;
+		if(memberDTO==null) {
+			return result;
+		}else {
+			result =1 ;
+		}
+		return result;
+	}
 
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)

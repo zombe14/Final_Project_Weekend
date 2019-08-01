@@ -35,6 +35,10 @@
 	border-right: 1px solid #efefef;
 }
 
+.mypage_quick li{
+	width: 205px;
+}
+
 .call_quick li:last-child{
 	border: none;
 }
@@ -51,7 +55,6 @@
 	width: 164px;
 	/* padding-top: 22px; */
 	text-align: center;
-	border-right: 1px solid #efefef;
 	margin-left: 5px;
 }
 
@@ -80,4 +83,6 @@
     width: 829px;
     min-height: 550px;
     padding: 39px 39px 100px 40px;
+    border-left: 1px solid #efefef;
 }
+

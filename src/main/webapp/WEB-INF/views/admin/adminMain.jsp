@@ -4,22 +4,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>${boardTitle}</title>
+<title>${board}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 관리자용 bootstrap -->
 <c:import url="../temp/adminBoot.jsp" />
 <!-- 관리자용 css -->
-<c:import url="../../../resources/css/adminBoard.css" /> 
+<c:import url="../../../resources/css/adminBoard.css" />
 </head>
 <body>
-	<!-- header.jsp -->
-	<c:import url="../inc/admin_header.jsp" />
-	<div class="container-fluid text-center">
-		<div class="row content">
-			<!-- side bar -->
-			<c:import url="../inc/admin_left_bar.jsp" />
-			<!-- body 시작 -->
-				<div class="container">
+	<div class="totalBody">
+		<!-- header.jsp -->
+		<c:import url="../inc/admin_header.jsp" />
+		<div class="container-fluid text-center">
+			<div class="row content">
+				<!-- side bar -->
+				<c:import url="../inc/admin_left_bar.jsp" />
+				<!-- body 시작 -->
+				<div class="container col-sm-10">
 					<table class="table table-hover">
 						<tr>
 							<td>NUM</td>
@@ -39,14 +40,13 @@
 						</c:forEach>
 					</table>
 				</div>
-			<!-- body 끝 -->
+				<!-- body 끝 -->
+			</div>
 		</div>
+		<footer class="container-fluid text-center">
+			<p>이곳엔 무엇을 넣어야 할 것인가?</p>
+		</footer>
 	</div>
-
-
-	<footer class="container-fluid text-center">
-		<p>Footer</p>
-	</footer>
 
 </body>
 </html>
