@@ -16,6 +16,7 @@ import com.project.weekend.board.notice.NoticeDAOImpl;
 import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.board.notice.NoticeServiceImpl;
 import com.project.weekend.file.FileDTO;
+import com.project.weekend.file.FileService;
 import com.project.weekend.util.PageMaker;
 
 @Controller
@@ -63,9 +64,10 @@ public class NoticeController {
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.GET)
 	public ModelAndView noticeUpdate(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
-		List<BoardDTO> top = noticeSerivceImpl.getTopList();
-		mv.addObject("topCount", top.size());
+		int topCount = noticeSerivceImpl.getTopList().size();
+		mv.addObject("topCount", topCount);
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
 		mv.addObject("boardTitle", boardTitle);
@@ -77,7 +79,7 @@ public class NoticeController {
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
 	public ModelAndView noticeUpdate(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		String path = "redirect:./noticeList";
+		String path = "redirect:./noticeSelect?num="+boardDTO.getNum();
 	
 		int result = noticeSerivceImpl.setUpdate(boardDTO, filelist, session);
 		if(result>0) {

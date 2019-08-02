@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>${boardTitle} 글쓰기</title>
+<title>${boardTitle} 글 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <style type="text/css">
@@ -17,6 +17,7 @@
 	.r{
 		color: red;
 	}
+
 </style>
 </head>
 <body>
@@ -49,20 +50,33 @@
 								</td>
 							</tr>
 							<tr>
-								<td><label for="files">첨부파일</label></td>
 								<td>
-									<input type="button" id="addFiles" value="파일 추가">
-									<div id="filesDiv">
+									<label for="files">첨부파일</label>
+								</td>
+								<td>
+									<div id="filed">
+										<input type="hidden" id="fileCount" value="${dto.fileDTOs.size()}">
+										<c:forEach items="${dto.fileDTOs}" var="f">
+											<div class="fileDTOsDiv">
+												<p class="filelist" style="display: inline-block;">${f.oname}</p>
+												<span class="glyphicon glyphicon-remove deleteFile" id="${f.fnum}" title="${f.fname}" style="display: inline-block;"></span>
+											</div> 
+										</c:forEach>
+									</div>
+									<hr>
+									<div class="filesDiv">
 										<div>
-											<input type="file" class="filelist" name="filelist" style="display: inline-block"> 
-											<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
+											<input type="file" class="filelist" style="display: inline-block;" name="filelist" > 
+											<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block;"></span>
 										</div>
 									</div>
+									<input type="button" id="addFiles" value="파일 추가">
 								</td>
 							</tr>
 					</table>
 					
-					<button  class="btn" id="write" >등록</button>
+					<input type="hidden" name="num" value="${dto.num}">
+					<input type="button" class="btn" id="write" value="등록">
 					<!-- <input type="button"value="등록"> -->
 				</form>
 
@@ -83,30 +97,63 @@
 	<script type="text/javascript">
 		/* 첨부 파일 관리 */
 		// 개수 제한. 최대 5개까지.
-		var limit = 1;
+		var fileCount = $('#fileCount').val();
+		fileCount *= 1;		
+		var limit = fileCount+1;
+		
 		// 파일 추가
 		$('#addFiles').click(function() {
 			var addFiles = '<div>'
 							+ '<input type="file" class="filelist" name="filelist" style="display: inline-block"> '
 							+ '<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>'
-						+ '</div>';
+				 		 + '</div>';
 			if (limit < 5) {
-				$('#filesDiv').append(addFiles);
+				$('.filesDiv').append(addFiles);
 				limit++
+				
 			} else {
 				alert("최대 5개까지 첨부가능합니다.");
 			}
 		});
+		
+		
 		/* 첨부 파일 관리 끝 */
 
 		// 정적인 input 파일 제거
 		$('.deleteFile').click(function() {
 			$(this).parent().remove();
-			limit--
+			limit--;
+			/* // db, 폴더에서 삭제
+			var id=$(this).attr('id');
+			var title=$(this).attr('title');
+			var selector = $(this);
+			console.log(id);
+			console.log(title);
+			$.ajax({
+				url:"../../ajax/fileDelete",
+				type:"post",
+				data:{	// 파라미터
+					fnum:id,
+					fname:title,
+					board:'${board}'
+				},
+				success:function(data){	//결과로 받아온 데이터
+					data=data.trim();
+					if(data=='1'){
+						selector.parent().remove();
+						selector.remove();
+						limit--
+						alert('삭제');
+					} else {
+						alet("delete fail");
+					}
+				}
+			}); */
+			
 		});
 
 		// 동적으로 그려진 input file 제거
-		$('#filesDiv').on('click', '.deleteFile', function() {
+		$('.filesDiv','.fileDTOsDiv').on('click', '.deleteFile', function() {
 			$(this).parent().remove();
 			limit--
 		});

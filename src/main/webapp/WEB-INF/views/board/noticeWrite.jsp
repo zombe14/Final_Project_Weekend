@@ -54,13 +54,14 @@
 									<input type="button" id="addFiles" value="파일 추가">
 									<div id="filesDiv">
 										<div>
-											<input type="file" class="filelist" name="filelist" style="display: inline-block"> 
-											<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
+											<input type="file" class="filelist" name="filelist" style="display: inline-block;"> 
+											<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block;"></span>
 										</div>
 									</div>
 								</td>
 							</tr>
 					</table>
+					
 					
 					<button  class="btn" id="write" >등록</button>
 					<!-- <input type="button"value="등록"> -->

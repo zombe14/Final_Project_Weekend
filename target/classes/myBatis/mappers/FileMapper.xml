@@ -28,7 +28,7 @@
 		SELECT * FROM FILES WHERE NUM=#{num}
 	</select>
 	
-	<delete id="setDelete" parameterType="String">
+	<delete id="setDelete" parameterType="Integer">
 		DELETE FILES WHERE FNUM=#{fnum}
 	</delete>
 	
