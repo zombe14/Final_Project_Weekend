@@ -21,7 +21,7 @@
 		<c:import url="../inc/header.jsp"></c:import>
 	</div>
 	<div id="container">
-	<div class="inner">
+	<div class="conta">
 	<form action="./memberJoin"  id="frm" method="POST" enctype="multipart/form-data">
 		<div class="joinWrap">
 			<h2>회원가입</h2>
@@ -239,6 +239,7 @@
 		</form>
 		</div>
 	</div>
+	<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.JPG"></a>
 	<div id="footer">
 		<c:import url="../inc/footer.jsp"></c:import>
 	</div>
