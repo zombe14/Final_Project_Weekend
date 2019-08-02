@@ -21,7 +21,7 @@
 		<c:import url="../inc/header.jsp"></c:import>
 	</div>
 	<div id="container">
-	<div class="inner">
+	<div class="conta">
 	<form action="./memberJoin"  id="frm" method="POST" enctype="multipart/form-data">
 		<div class="joinWrap">
 			<h2>회원가입</h2>
