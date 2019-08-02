@@ -24,30 +24,35 @@ public class NoticeController {
 	
 	@Inject
 	private NoticeServiceImpl noticeSerivceImpl;
+	private static final String boardTitle = "공지";
 	
 	/*공지 글쓰기*/
 	// 글쓰기 폼으로 이동 - admin
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
 	public ModelAndView noticeWrite(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<BoardDTO> top = noticeSerivceImpl.getTopList();
+		mv.addObject("topCount", top.size());
 		mv.addObject("board", "notice");
-		mv.addObject("boardTitle", "Notice");
+		mv.addObject("boardTitle", boardTitle);
 		mv.setViewName("board/noticeWrite");
 		return mv;
 	}
 	
 	// 글쓰기 프로세스 진행 - admin
-	// ** messageMove 만들어서 alert, path 수정하기
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public ModelAndView noticeWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 
 		ModelAndView mv = new ModelAndView();
-		String path = "redirect:./noticeList";
+		String path = "./noticeList";
+		String message = "글 작성에 실패했어요";
 		int result = noticeSerivceImpl.setWrite(boardDTO, filelist, session);
 		if(result>0) {
-			mv.setViewName(path);
+			mv.setViewName("redirect:./noticeList");
 		} else {
-			mv.setViewName(path);
+			mv.addObject("message", message);
+			mv.addObject("path", path);
+			mv.setViewName("common/messageMove");			
 		}
 		
 		return mv;
@@ -59,10 +64,12 @@ public class NoticeController {
 	public ModelAndView noticeUpdate(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
+		List<BoardDTO> top = noticeSerivceImpl.getTopList();
+		mv.addObject("topCount", top.size());
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
-		mv.addObject("boardTitle", "Notice");
-		mv.setViewName("board/boardUpdate");
+		mv.addObject("boardTitle", boardTitle);
+		mv.setViewName("board/noticeUpdate");
 		return mv;
 	}
 	
@@ -74,11 +81,11 @@ public class NoticeController {
 	
 		int result = noticeSerivceImpl.setUpdate(boardDTO, filelist, session);
 		if(result>0) {
-			System.out.println("ok");
+			
 			mv.setViewName(path);
 		} else {
 			//mv.setViewName("redirect:./noticeSelect?num="+boardDTO.getNum());
-			System.out.println("nope");
+			
 			mv.setViewName(path);
 		}
 		return mv;
@@ -107,7 +114,7 @@ public class NoticeController {
 		
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
-		mv.addObject("boardTitle", "Notice");
+		mv.addObject("boardTitle", boardTitle);
 		mv.setViewName("board/boardSelect");
 		
 		return mv;
@@ -120,7 +127,7 @@ public class NoticeController {
 		List<BoardDTO> list = noticeSerivceImpl.getList(pageMaker, session);
 		List<BoardDTO> top = noticeSerivceImpl.getTopList();
 		mv.addObject("board", "notice");
-		mv.addObject("boardTitle", "Notice");
+		mv.addObject("boardTitle", boardTitle);
 		mv.addObject("list", list);
 		mv.addObject("top", top);
 		mv.addObject("pager",pageMaker);

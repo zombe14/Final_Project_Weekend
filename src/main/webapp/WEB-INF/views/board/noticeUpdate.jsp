@@ -26,25 +26,25 @@
 		</div>
 		<div id="container">
 			<div class="inner">
-				<strong>${boardTitle} 글쓰기</strong>
-				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+				<strong>${boardTitle} 글 수정</strong>
+				<form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
 					<table class="table table-bordered">
 							<tr>
 								<td><label for="title">제목 <span class="r"> *</span></label></td>
-								<td><input type="text" name="title" class="required" id="title"></td>
+								<td><input type="text" name="title" class="required" id="title" value="${dto.title}"></td>
 							</tr>
 							<tr>
 								<td><label for="writer">작성자 <span class="r"> *</span></label></td>
-								<td><input type="text" name="writer" value="${member.nickname}-" readonly="readonly" class="required" id="writer"></td>
+								<td><input type="text" name="writer" value="${dto.writer}" readonly="readonly" class="required" id="writer"></td>
 							</tr>
 							<tr>
 								<td><label for="contents">내용 <span class="r"> *</span></label></td>
-								<td><textarea rows="" cols="" name="contents" id="contents" class="required"></textarea></td>
+								<td><textarea rows="" cols="" name="contents" id="contents" class="required">${dto.contents}</textarea></td>
 							</tr>
 							<tr>
 								<td><label for="top">상단에 등록 하기</label></td>
 								<td>
-									<input type="checkbox" id="top" name="top" value="0">
+									<input type="checkbox" id="top" name="top" value="${dto.top}">
 									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </span><span id="topCount" title="${topCount}">${topCount} / 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
 								</td>
 							</tr>
@@ -132,10 +132,15 @@
 		});
 		
 		// 상단 배치 개수 제한
-		var topC = $('#topCount').attr('title');
-		$('#top').hide();
-		if(topC < 7){
+		if($('#top').val() == 1){
 			$('#top').show();
+			$('#top').attr('checked',true);
+		} else {
+			var topC = $('#topCount').attr('title');
+			$('#top').hide();
+			if(topC < 7){
+				$('#top').show();
+			}
 		}
 
 	</script>
