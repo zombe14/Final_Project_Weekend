@@ -35,7 +35,7 @@ public class AfterController {
 		mv.addObject("originTitle", title);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
-		mv.setViewName("board/boardWrite");
+		mv.setViewName("board/afterWrite");
 		return mv;
 	}
 
@@ -55,10 +55,12 @@ public class AfterController {
 		return mv;
 	}
 
-	@RequestMapping(value = { "afterUpdate", "afterAllUpdate" }, method = RequestMethod.GET)
-	public ModelAndView setUpdate(String num, HttpSession session) throws Exception {
+	@RequestMapping(value = "afterUpdate", method = RequestMethod.GET)
+	public ModelAndView setUpdate(String anum, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		AfterDTO afterDTO = afterService.getSelect(num, session);
+		AfterDTO afterDTO = afterService.getSelect(anum, session);
+		mv.addObject("originNum", anum);
+		mv.addObject("originTitle", afterDTO.getTitle());
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
@@ -78,21 +80,23 @@ public class AfterController {
 		return mv;
 	}
 
-	@RequestMapping(value = { "afterDelete", "afterAllDelete" }, method = RequestMethod.GET)
+	@RequestMapping(value = "afterDelete", method = RequestMethod.GET)
 	public ModelAndView setDelete(String anum, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int res = afterService.setDelete(anum, session);
-		String path = "redirect:./afterList";
+		String path = "redirect:./afterAllList";
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.setViewName(path);
 		return mv;
 	}
 
-	@RequestMapping(value = { "afterSelect", "afterAllSelect" }, method = RequestMethod.GET)
+	@RequestMapping(value = "afterSelect", method = RequestMethod.GET)
 	public ModelAndView getSelect(String num, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+
 		AfterDTO afterDTO = afterService.getSelect(num, session);
+		
 		String path = "board/boardSelect";
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
@@ -128,7 +132,7 @@ public class AfterController {
 		List<AfterDTO> list = afterService.getAllList(pageMaker);
 
 		mv.addObject("list", list);
-		mv.addObject("board", "afterAll");
+		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.addObject("pager", pageMaker);
 		mv.setViewName(path);

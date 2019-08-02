@@ -9,8 +9,14 @@ body, input, textarea, select button, table, p, div{
 body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
     margin: 0;
     padding: 0;
-    
 }
+
+h1, h2, h3, h4{
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+}
+
 #wrap{
 	overflow: hidden;
 	min-height:100%;
@@ -22,10 +28,9 @@ html, body{
 }
 
 .inner{
-	color: #757575;
-	width: 1200px;
 	margin: 0 auto;
-	position: relative;
+	width: 1050px;
+	padding: 50px 0;
 }
 
 a {
@@ -40,6 +45,7 @@ a:hover {
 
 ul{
 	list-style: none;
+	overflow: hidden;
 }
 
 li{
@@ -119,21 +125,20 @@ strong{
 }
 
 .search_wrap{
-	margin-left: 15px;
+	margin-left: 100px;
 	width: 900px;
 }
 
 .btn_search {
-	
 	background-color: #41b40a;
-	padding: 11px 12px;
+	padding: 10.5px 12px;
 	margin-left: -5px;
 	/* vertical-align: middle; */
 	color: white;
 }
 
 .h_menu{
-	min-height: 58px;
+	min-height: 60px;
 	background: url(http://tketlink.dn.toastoven.net/markup_resources/2019071801/web/img/bg_head_menu.gif) repeat-x 0 0;
 }
 
@@ -185,16 +190,16 @@ strong{
 
 .section_top{
 	position: relative;
-	padding: 50px 0 0;
 }
 
 .section_rank{
 	position: relative;
-	padding: 50px 0 0;	
+	padding: 30px 0;	
 }
 
 .section_best{
-	padding: 60px 0;
+	padding: 30px 0;
+	width: 1068px;
 }
 
 /* #main_banner{
@@ -203,24 +208,21 @@ strong{
 } */
 
 .ticket_main{
-	width: 1200px;
 	position: relative;
-	margin-top: 30px;
 }
 
 .ticket_left{
 	float: left;
-	width: 802px;
+	width: 730px;
 	}
 
 .ticket_right{
 	overflow: hidden;
-	width: 398px;
+	width: 320px;
 }
 .ticket_cont{
 	border: 1px solid #e6e6e6;
     border-radius: 2px 0 0 2px;
-	width: 800px;
     height: 218px;
     overflow: hidden;
     background-color: #f8f8f8;
@@ -276,20 +278,19 @@ strong{
 
 .rank_left{
 	float: left;
-	width: 600px;
+	width: 525px;
 	overflow: hidden;
 	}
 
 .rank_right{
 	float:left;
-	width: 600px;
+	width: 525px;
 	overflow: hidden;
 }
 
 .rank_cont{
 	border: 1px solid #e6e6e6;
     border-radius: 2px 0 0 2px;
-    width: 598px;
     height: 218px;
     overflow: hidden;
     background-color: #f8f8f8;    
@@ -336,10 +337,15 @@ strong{
 
 .section_best .best_list li{
 	overflow: hidden;
-	margin: 0 0 18px 18px;
-	height: 480px;
-	width: 286.5px;
+	margin: 0 0 19px 19px;
+	height: 430px;
+	width: 247px;
 	position: relative;
+}
+
+.best_cont img{
+	width: 247px;
+	height: 320px;
 }
 
 .list_info{
@@ -352,10 +358,9 @@ strong{
 .main_right{
 	margin-left: 650px;
  	position: fixed;
-	top: 30%;
  	position: absolute;
 	top: 700px; 
-	left: 50%;
+	left: 45%;
 	overflow: hidden;
 	width: 105px;
 }
@@ -376,17 +381,19 @@ strong{
 
 .right_suv{
 	position: fixed;
-	top: 50%;
+	top: 30%;
 }
 
 .a{
 	border:0 solid black;
 	width:60px;
+	background-color: rgba(255, 0, 0, 0.0);
 }
 
 .b{
 	border:0 solid black;
 	width: 60px;
+	background-color: rgba(255, 0, 0, 0.0);
 }
 
 #back_to_top{
@@ -397,6 +404,9 @@ strong{
 	height: 44px;
 }
 
+#back_to_top img{
+	margin-left: 5px;
+}
 /*  ------------------------Footer Css-------------------- */
 
 #f_container{

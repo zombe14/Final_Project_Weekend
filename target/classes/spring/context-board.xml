@@ -20,6 +20,9 @@
 	<bean class="com.project.weekend.board.festi.after.AfterService" id="afterService"/>
 	
 	<!-- qna -->
+	<bean class="com.project.weekend.board.qna.QnaDTO" id="qnaDTO" />
+	<bean class="com.project.weekend.board.qna.QnaDAO" id="qnaDAO" />
+	<bean class="com.project.weekend.board.qna.QnaService" id="qnaService" />
 	
 	<!-- festiQna -->
 </beans>

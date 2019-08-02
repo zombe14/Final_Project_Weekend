@@ -32,7 +32,7 @@ public class FestiController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
-		mv.setViewName("board/boardWrite");
+		mv.setViewName("board/festiWrite");
 		return mv;
 	}
 	

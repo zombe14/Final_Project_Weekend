@@ -10,7 +10,7 @@
 		</div>
 		<div class="rank_cont">
 		<ul>
-			<li class="first"><a href="#" ><img alt="" src="./resources/images/home/rank1.jpg" width="180" height="218"></a></li>
+			<li class="first"><a href="#" ><img alt="" src="./resources/images/home/신촌물총축제.jpg" width="180" height="218"></a></li>
 			<li class="rankingItem1">
 				<a href="#" >
 					<span class="num1">1</span>
@@ -53,7 +53,7 @@
 		</div>
 		<div class="rank_cont">
 		<ul>
-			<li class="first"><a href="#" ><img alt="" src="./resources/images/home/rank1.jpg" width="180" height="218"></a></li>
+			<li class="first"><a href="#" ><img alt="" src="./resources/images/home/아시아뮤직페스티벌.jpg" width="180" height="218"></a></li>
 			<li class="rankingItem2">
 				<a href="#" >
 					<span class="num1">1</span>
