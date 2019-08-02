@@ -123,32 +123,6 @@
 		$('.deleteFile').click(function() {
 			$(this).parent().remove();
 			limit--;
-			/* // db, 폴더에서 삭제
-			var id=$(this).attr('id');
-			var title=$(this).attr('title');
-			var selector = $(this);
-			console.log(id);
-			console.log(title);
-			$.ajax({
-				url:"../../ajax/fileDelete",
-				type:"post",
-				data:{	// 파라미터
-					fnum:id,
-					fname:title,
-					board:'${board}'
-				},
-				success:function(data){	//결과로 받아온 데이터
-					data=data.trim();
-					if(data=='1'){
-						selector.parent().remove();
-						selector.remove();
-						limit--
-						alert('삭제');
-					} else {
-						alet("delete fail");
-					}
-				}
-			}); */
 			
 		});
 
