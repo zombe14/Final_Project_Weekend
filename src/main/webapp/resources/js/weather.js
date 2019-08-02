@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
 	var bodyOffset = jQuery('body').offset();
 	jQuery(window).scroll(function() {
-		if (jQuery(document).scrollTop() > bodyOffset.top) {
+		if (jQuery(document).scrollTop() > bodyOffset.top+400) {
 			jQuery('#wingright').addClass('right_suv');
 		} else {
 			jQuery('#wingright').removeClass('right_suv');

@@ -44,21 +44,15 @@
 		</a>
 	</div>
 </div>
-<div class="homeconta">
+<div class="inner">
 <div class="section_top">
-	<div class="inner">
-		<%@ include file="./container/ticket_open.jsp"%>
-	</div>
+	<%@ include file="./container/ticket_open.jsp"%>
 </div>
 <div class="section_rank">
-	<div class="inner">
-		<%@ include file="./container/ticket_rank.jsp"%>
-	</div>
+	<%@ include file="./container/ticket_rank.jsp"%>
 </div>
 <div class="section_best">
-	<div class="inner">
-		<%@ include file="./container/ticket_best.jsp"%>
-	</div>
+	<%@ include file="./container/ticket_best.jsp"%>
 </div>
 <div class="main_right" id="wingright">
 	<ul class="push">
@@ -70,20 +64,4 @@
 	</ul>
 </div>
 </div>
-<!-- Tocplus 15.1 -->
-<script type="text/javascript">
-tocplusTop=1150;
-tocplusLeft=100;
-tocplusMinimizedImage='http://kr03.tocplus007.com/img/minimized_ko.gif';
-tocplusHAlign='left';
-tocplusWidth=180;
-tocplusHeight=220;
-tocplusUserName='손님';
-tocplusFrameColor='#41b40a';
-tocplusFloatingWindow=true;
-var tocplusHost = (("https:" == document.location.protocol) ? "https://" : "http://");
-document.write(unescape("%"+"3Cscript src='" + tocplusHost + "kr03.tocplus007.com/chatLoader.do?userId=kws332' type='text/javascript'"+"%"+"3E"+"%"+"3C/script"+"%"+"3E"));
-</script>
-<!-- End of Tocplus -->
-
 <a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="./resources/images/home/위로.JPG"></a>
