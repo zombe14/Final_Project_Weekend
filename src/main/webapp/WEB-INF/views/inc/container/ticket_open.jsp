@@ -18,28 +18,28 @@
 					" 강릉 2019 커피 축제 공모전 티켓 오픈 안내"
 				</a>
 			</li>
-			<li class="tm1">
+			<li class="tm2">
 				<a href="#" >
 					<b><font color="#339e00">[09/01(월) 20시]</font></b>
 					<b>[단독판매]</b>
 					" 강릉 2019 커피 축제 공모전 티켓 오픈 안내"
 				</a>
 			</li>
-			<li class="tm1">
+			<li class="tm3">
 				<a href="#" >
 					<b><font color="#339e00">[09/01(월) 20시]</font></b>
 					<b>[단독판매]</b>
 					" 강릉 2019 커피 축제 공모전 티켓 오픈 안내"
 				</a>
 			</li>
-			<li class="tm1">
+			<li class="tm4">
 				<a href="#" >
 					<b><font color="#339e00">[09/01(월) 20시]</font></b>
 					<b>[단독판매]</b>
 					" 강릉 2019 커피 축제 공모전 티켓 오픈 안내"
 				</a>
 			</li>
-			<li class="tm1">
+			<li class="tm5">
 				<a href="#" >
 					<b><font color="#339e00">[09/01(월) 20시]</font></b>
 					<b>[단독판매]</b>

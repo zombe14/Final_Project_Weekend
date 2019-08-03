@@ -1,3 +1,4 @@
+/* 오른쪽 작은 컨테이너 움직임 조절*/
 jQuery(document).ready(function() {
 	var bodyOffset = jQuery('body').offset();
 	jQuery(window).scroll(function() {
@@ -7,8 +8,16 @@ jQuery(document).ready(function() {
 			jQuery('#wingright').removeClass('right_suv');
 		}
 	});
+	
 });
 
+/*$(document).ready(function(){
+	$('.tm1').mouseover(function(){
+		$('.first').attr('src', $(this).attr("src").replace())
+	});
+});*/
+
+/* 날씨API */
 var apiURI = "http://api.openweathermap.org/data/2.5/weather?q=Seoul+&appid=e06624cd1f1a4c3231e492d1970e4aed";
 $.ajax({
     url: apiURI,
