@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>${boardTitle} 글쓰기</title>
+<title>${boardTitle} 글 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <style type="text/css">
@@ -17,6 +17,7 @@
 	.r{
 		color: red;
 	}
+
 </style>
 </head>
 <body>
@@ -26,44 +27,56 @@
 		</div>
 		<div id="container">
 			<div class="inner">
-				<strong>${boardTitle} 글쓰기</strong>
-				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+				<strong>${boardTitle} 글 수정</strong>
+				<form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
 					<table class="table table-bordered">
 							<tr>
 								<td><label for="title">제목 <span class="r"> *</span></label></td>
-								<td><input type="text" name="title" class="required" id="title"></td>
+								<td><input type="text" name="title" class="required" id="title" value="${dto.title}"></td>
 							</tr>
 							<tr>
 								<td><label for="writer">작성자 <span class="r"> *</span></label></td>
-								<td><input type="text" name="writer" value="${member.nickname}-" readonly="readonly" class="required" id="writer"></td>
+								<td><input type="text" name="writer" value="${dto.writer}" readonly="readonly" class="required" id="writer"></td>
 							</tr>
 							<tr>
 								<td><label for="contents">내용 <span class="r"> *</span></label></td>
-								<td><textarea rows="" cols="" name="contents" id="contents" class="required"></textarea></td>
+								<td><textarea rows="" cols="" name="contents" id="contents" class="required">${dto.contents}</textarea></td>
 							</tr>
 							<tr>
 								<td><label for="top">상단에 등록 하기</label></td>
 								<td>
-									<input type="checkbox" id="top" name="top" value="0">
+									<input type="checkbox" id="top" name="top" value="${dto.top}">
 									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </span><span id="topCount" title="${topCount}">${topCount} / 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
 								</td>
 							</tr>
 							<tr>
-								<td><label for="files">첨부파일</label></td>
 								<td>
-									<input type="button" id="addFiles" value="파일 추가">
-									<div id="filesDiv">
+									<label for="files">첨부파일</label>
+								</td>
+								<td>
+									<div id="filed">
+										<input type="hidden" id="fileCount" value="${dto.fileDTOs.size()}">
+										<c:forEach items="${dto.fileDTOs}" var="f">
+											<div class="fileDTOsDiv">
+												<p class="filelist" style="display: inline-block;">${f.oname}</p>
+												<span class="glyphicon glyphicon-remove deleteFile" id="${f.fnum}" title="${f.fname}" style="display: inline-block;"></span>
+											</div> 
+										</c:forEach>
+									</div>
+									<hr>
+									<div class="filesDiv">
 										<div>
-											<input type="file" class="filelist" name="filelist" style="display: inline-block;"> 
+											<input type="file" class="filelist" style="display: inline-block;" name="filelist" > 
 											<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block;"></span>
 										</div>
 									</div>
+									<input type="button" id="addFiles" value="파일 추가">
 								</td>
 							</tr>
 					</table>
 					
-					
-					<button  class="btn" id="write" >등록</button>
+					<input type="hidden" name="num" value="${dto.num}">
+					<input type="button" class="btn" id="write" value="등록">
 					<!-- <input type="button"value="등록"> -->
 				</form>
 
@@ -84,30 +97,37 @@
 	<script type="text/javascript">
 		/* 첨부 파일 관리 */
 		// 개수 제한. 최대 5개까지.
-		var limit = 1;
+		var fileCount = $('#fileCount').val();
+		fileCount *= 1;		
+		var limit = fileCount+1;
+		
 		// 파일 추가
 		$('#addFiles').click(function() {
 			var addFiles = '<div>'
 							+ '<input type="file" class="filelist" name="filelist" style="display: inline-block"> '
 							+ '<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>'
-						+ '</div>';
+				 		 + '</div>';
 			if (limit < 5) {
-				$('#filesDiv').append(addFiles);
+				$('.filesDiv').append(addFiles);
 				limit++
+				
 			} else {
 				alert("최대 5개까지 첨부가능합니다.");
 			}
 		});
+		
+		
 		/* 첨부 파일 관리 끝 */
 
 		// 정적인 input 파일 제거
 		$('.deleteFile').click(function() {
 			$(this).parent().remove();
-			limit--
+			limit--;
+			
 		});
 
 		// 동적으로 그려진 input file 제거
-		$('#filesDiv').on('click', '.deleteFile', function() {
+		$('.filesDiv','.fileDTOsDiv').on('click', '.deleteFile', function() {
 			$(this).parent().remove();
 			limit--
 		});
@@ -133,10 +153,15 @@
 		});
 		
 		// 상단 배치 개수 제한
-		var topC = $('#topCount').attr('title');
-		$('#top').hide();
-		if(topC < 7){
+		if($('#top').val() == 1){
 			$('#top').show();
+			$('#top').attr('checked',true);
+		} else {
+			var topC = $('#topCount').attr('title');
+			$('#top').hide();
+			if(topC < 7){
+				$('#top').show();
+			}
 		}
 
 	</script>

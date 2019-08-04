@@ -47,5 +47,9 @@ public class QnaDAO{
 	public List<QnaDTO> getList(PageMaker pageMaker) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getList", pageMaker);
 	}
+	
+	public int setReplyWrite(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setReplyWrite", qnaDTO);
+	}
 
 }

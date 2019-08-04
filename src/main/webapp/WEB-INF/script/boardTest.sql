@@ -1,3 +1,5 @@
+select * from member
+select * from festiqna
 select * from files order by fnum desc
 
 SELECT * FROM AFTER WHERE ANUM = 'a'

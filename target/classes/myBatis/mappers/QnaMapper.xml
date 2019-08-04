@@ -9,7 +9,7 @@
 
 	<insert id="setWrite" parameterType="QnaDTO">
 		INSERT INTO QNA(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH)
-		VALUES(QNA_SEQ.NEXTVAL,#{title},#{writer},#{contents},sysdate,0,#{pw},0,0,0)
+		VALUES(#{num},#{title},#{writer},#{contents},sysdate,0,#{pw},0,0,0)
 	</insert>
 
 	<resultMap type="QnaDTO" id="qnaResult">
@@ -89,5 +89,12 @@
 	<delete id="setDelete" parameterType="String">
 		DELETE QNA WHERE NUM = #{num}
 	</delete>
+	
+	<insert id="setReplyWrite" parameterType="QnaDTO">
+		INSERT INTO QNA(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH) 
+		VALUES(${num}, #{writer}, #{contents}, sysdate, 0, #{pw}, #{ref}, #{step}, #{depth})
+	</insert>
+	
+	
 	
 </mapper>
