@@ -439,6 +439,10 @@ strong{
 #back_to_top img{
 	margin-left: 5px;
 }
+
+.weathericon{
+	margin-top: -8px;
+}
 /*  ------------------------Footer Css-------------------- */
 
 #f_container{
