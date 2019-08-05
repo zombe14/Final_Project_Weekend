@@ -46,18 +46,14 @@ public class AdminController {
 		mv.setViewName("admin/User/aUserList");
 		return mv;
 	}
-	// user info;
-	@RequestMapping(value = "adminUserSelect", method = RequestMethod.GET)
-	public ModelAndView adminUserSelect() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/User/adminUserSelect");
-		return mv;
-	}
 	// user up/down grade;
-	@RequestMapping(value = "adminUserUpdate")
-	public ModelAndView adminUserUpdate() throws Exception{
+	@RequestMapping(value = "aUserUpdateP", method = RequestMethod.POST)
+	public ModelAndView adminUserUpdateP(int grade) throws Exception{
+		System.out.println("controller 실행됨");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/User/adminUserUpdate"); 
+		int result = memberService.setUpdateP(grade);
+		mv.addObject("result", result);
+		mv.setViewName("admin/User/aUserList"); 
 		return mv;
 	}
 	// user delete;

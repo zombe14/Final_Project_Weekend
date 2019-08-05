@@ -25,13 +25,24 @@ public class MemberService {
 	private MemberFileDAO memberFileDAO;
 
 	// 상혁 시작;
+	// 리스트
 	public List<MemberDTO> getList(HttpSession session, PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
 		List<MemberDTO> list = memberDAO.getList(pageMaker);
 		int totalCount = memberDAO.getTotalCount(pageMaker);
-		pageMaker.makeRow();
 		pageMaker.makePage(totalCount);
 		return list;
 	}
+	// 회원 등급 조정
+	public int setUpdateP(int grade) throws Exception{
+		int result = 0;
+		return result;
+	}
+	public int setUpdateM(int grade) throws Exception{
+		int result = 0;
+		return result;
+	}
+	// 회원 삭제
 	public int setDelete(String [] id) throws Exception{
 		List<String> list = Arrays.asList(id);
 		return memberDAO.setDelete(list);

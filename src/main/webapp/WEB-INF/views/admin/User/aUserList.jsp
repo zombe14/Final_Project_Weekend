@@ -26,9 +26,10 @@
 					<form class="form-inline" action="./${board}List">
 						<div class="form-group col-xs-2">
 							<select class="form-control" name="kind">
-								<option class="k" value="1">Title</option>
-								<option class="k" value="2">Writer</option>
-								<option class="k" value="3">Contents</option>
+								<option class="k" value="1">ID</option>
+								<option class="k" value="2">NAME</option>
+								<option class="k" value="3">GRADE</option>
+								<option class="k" value="4">가입일</option>
 							</select>
 						</div>
 
@@ -51,9 +52,9 @@
 							<td>NAME</td>
 							<td>AGE</td>
 							<td>EMAIL</td>
-							<td>PHONE</td>
 							<td>GRADE</td>
-							<td>권한 수정</td>
+							<td>등급</td>
+							<td></td>
 							<td>유저 삭제</td>
 						</tr>
 						<c:forEach items="${list}" var="dto">
@@ -63,9 +64,9 @@
 								<td>${dto.name}</td>
 								<td>${dto.age}</td>
 								<td>${dto.email}</td>
-								<td>${dto.phone}</td>
 								<td>${dto.grade}</td>
-								<td><input id="uBtn" type="button" value="권한수정"></td>
+								<td><input id="pBtn" type="button" value="U  P" title='${dto.grade}'></td>
+								<td><input id="mBtn" type="button" value="DOWN"></td>
 								<td><input id="dBtn" type="button" value="유저삭제"></td>
 							</tr>
 						</c:forEach>
@@ -85,33 +86,6 @@
 							<li><a href="./a${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">NEXT</a></li>
 						</c:if>
 					</ul>
-					<%-- 					<ul class="pagination">
-						<c:choose>
-							<c:when test="${pager.curBlock>1}">
-								<li><a
-									href="a${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
-							</c:when>
-							<c:otherwise>
-								<li><a>이전</a></li>
-							</c:otherwise>
-						</c:choose>
-
-						<c:forEach begin="${pager.startNum}" end="${pager.lastNum}"
-							var="i">
-							<li><a
-								href="a${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
-						</c:forEach>
-
-						<c:choose>
-							<c:when test="${pager.curBlock < pager.totalBlock}">
-								<li><a
-									href="a${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a></li>
-							</c:when>
-							<c:otherwise>
-								<li><a>다음</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul> --%>
 				</div>
 			</div>
 		</div>
@@ -120,5 +94,28 @@
 		<p>Footer Text</p>
 	</footer>
 </div>
+<script type="text/javascript">
+	$("#pBtn").click(function(){
+		var check = confirm("등급을 올리시겠습니까?");
+		if(check){
+			var grade = $(this).attr("title");
+			alert(grade);
+			grade = 2;
+			alert(grade);
+			$.ajax({
+				url:"../../../admin/aUserUpdateP",
+				type:"POST",
+				success:function(data){
+					data=data.trim();
+					if(data=='1'){
+						alert("성공");
+					}else{
+						alert("실패");
+					}
+				}
+			});
+		}
+	});
+</script>
 </body>
 </html>
