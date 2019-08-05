@@ -35,12 +35,13 @@
 							</tr>
 							<tr>
 								<td><label for="writer">작성자 <span class="r"> *</span></label></td>
-								<td><input type="text" name="writer" value="${member.nickname}-" readonly="readonly" class="required" id="writer"></td>
+								<td><input type="text" name="writer" value="${member.nickname}memberNickname" readonly="readonly" class="required" id="writer"></td>
 							</tr>
 							<tr>
 								<td><label for="contents">내용 <span class="r"> *</span></label></td>
 								<td><textarea rows="" cols="" name="contents" id="contents" class="required"></textarea></td>
 							</tr>
+							<c:if test="${board eq 'notice'}">
 							<tr>
 								<td><label for="top">상단에 등록 하기</label></td>
 								<td>
@@ -48,6 +49,7 @@
 									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </span><span id="topCount" title="${topCount}">${topCount} / 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
 								</td>
 							</tr>
+							</c:if>
 							<tr>
 								<td><label for="files">첨부파일</label></td>
 								<td>
@@ -60,9 +62,20 @@
 									</div>
 								</td>
 							</tr>
+							<c:if test="${board eq 'qna'}">
+							<tr>
+								<td>비밀번호</td>
+								<td><div>
+										<input type="radio" class="pwSel" name="secret" id="nonSecret" checked="checked"> 오픈글 
+										<input type="radio" class="pwSel" name="secret" id="secret"> 비밀글 
+										<input type="password" name="pw" id="pw" placeholder="글 열람 시 사용할 비밀번호를 입력해주세요" value="${dto.pw}">
+									</div>
+								</td>
+							</tr>
+							</c:if>
 					</table>
 					
-					
+					<input type="hidden" id="board" name="${board}">
 					<a id="write" class="btn btn-default">등록하기</a>
 				</form>
 
@@ -134,10 +147,28 @@
 		});
 		
 		// 상단 배치 개수 제한
-		var topC = $('#topCount').attr('title');
-		$('#top').hide();
-		if(topC < 7){
-			$('#top').show();
+		if('${board}' == 'notice'){
+			var topC = $('#topCount').attr('title');
+			$('#top').hide();
+			if(topC < 7){
+				$('#top').show();
+			}
+		}
+		if('${board}'== 'qna'){
+			if($('#nonSecret').prop('checked',true)){
+				$('#pw').val('');
+				$('#pw').hide();
+			}
+			$('.pwSel').click(function(){
+				if($('#nonSecret').prop('checked')==true){
+					$('#pw').val('');
+					$('#pw').hide();
+				} 
+				if($('#secret').prop('checked')==true){
+					$('#pw').removeAttr('readonly');
+					$('#pw').show();
+				}
+			});
 		}
 
 	</script>

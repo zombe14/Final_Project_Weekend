@@ -49,10 +49,10 @@
 
 				<form action="./${board}Delete" id="deleteFrm" method="post">
 					<c:if test="${board eq 'notice' or board eq 'qna'}">
-						<input type="hidden" name="num" value="${dto.num}">
+						<input type="hidden" class="num" id = "${dto.num}" name="num" value="${dto.num}">
 					</c:if>
 					<c:if test="${board eq 'after'}">
-						<input type="hidden" name="anum" value="${dto.anum}">
+						<input type="hidden" class="anum" id = "${dto.anum}" name="anum" value="${dto.anum}">
 					</c:if>					
 				</form>
 			</div>
@@ -77,7 +77,7 @@
 		var board = $(this).attr('class');
 		var num = 0;
 		
-		if(board == 'notice'){
+		if(board == 'notice' || board == 'qna'){
 			num = $('.num').attr('id');
 			location.href="./${board}Update?num="+num;
 		} else if (board == 'after') {

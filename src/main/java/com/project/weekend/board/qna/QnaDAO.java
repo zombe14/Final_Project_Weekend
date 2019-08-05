@@ -51,5 +51,9 @@ public class QnaDAO{
 	public int setReplyWrite(QnaDTO qnaDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setReplyWrite", qnaDTO);
 	}
+	
+	public int setHitUpdate(String num) throws Exception{
+		return sqlSession.update(NAMESPACE+"setHitUpdate", num);
+	}
 
 }

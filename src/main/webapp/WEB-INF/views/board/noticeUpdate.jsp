@@ -40,6 +40,7 @@
 								<td><label for="contents">내용 <span class="r"> *</span></label></td>
 								<td><textarea rows="" cols="" name="contents" id="contents" class="required">${dto.contents}</textarea></td>
 							</tr>
+							<c:if test="${board eq 'notice'}">
 							<tr>
 								<td><label for="top">상단에 등록 하기</label></td>
 								<td>
@@ -47,6 +48,7 @@
 									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </span><span id="topCount" title="${topCount}">${topCount} / 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
 								</td>
 							</tr>
+							</c:if>
 							<tr>
 								<td>
 									<label for="files">첨부파일</label>
@@ -71,6 +73,19 @@
 									<input type="button" id="addFiles" value="파일 추가">
 								</td>
 							</tr>
+							<c:if test="${board eq 'qna'}">
+							<tr>
+								<td>비밀번호</td>
+								<td><div>
+										<input type="radio" class="pwSel" name="secret" id="nonSecret"> 오픈글 
+										<input type="radio" class="pwSel" name="secret" id="secret"> 비밀글
+										<div id="pwDiv">
+											<input type="password" name="pw" id="pw" placeholder="글 열람 시 사용할 비밀번호를 입력해주세요" value="${dto.pw}">
+										</div>
+									</div>
+								</td>
+							</tr>
+							</c:if>
 					</table>
 					
 					<input type="hidden" name="num" value="${dto.num}">
@@ -177,16 +192,34 @@
 		});
 		
 		// 상단 배치 개수 제한
-		if($('#top').val() == 1){
-			$('#top').show();
-			$('#top').attr('checked',true);
-		} else {
+		if('${board}' == 'notice'){
 			var topC = $('#topCount').attr('title');
 			$('#top').hide();
 			if(topC < 7){
 				$('#top').show();
 			}
 		}
+		if('${board}'== 'qna'){
+			if($('#pw').val() == ""){
+				$('#nonSecret').prop('checked',true);
+				$('#pw').val('');
+				$('#pw').hide();
+			} else {
+				$('#secret').prop('checked',true);
+			}
+			
+			$('.pwSel').click(function(){
+				if($('#nonSecret').prop('checked')==true){
+					$('#pw').val('');
+					$('#pw').hide();
+				} 
+				if($('#secret').prop('checked')==true){
+					$('#pw').removeAttr('readonly');
+					$('#pw').show();
+				}
+			});
+		}
+		
 		
 		
 
