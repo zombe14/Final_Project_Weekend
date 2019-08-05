@@ -35,17 +35,19 @@ public class MemberService {
 	}
 	// 회원 등급 조정
 	public int setUpdateP(int grade) throws Exception{
-		int result = 0;
+		int result = memberDAO.setUpdateP(grade);
 		return result;
 	}
 	public int setUpdateM(int grade) throws Exception{
-		int result = 0;
+		int result = memberDAO.setUpdateM(grade);
 		return result;
 	}
 	// 회원 삭제
-	public int setDelete(String [] id) throws Exception{
-		List<String> list = Arrays.asList(id);
-		return memberDAO.setDelete(list);
+	public int setDelete(String id) throws Exception{
+		System.out.println("서비스 온");
+		int result = memberDAO.setDelete(id);
+		System.out.println(result);
+		return result;
 	}
 	// 상혁 끝;
 	

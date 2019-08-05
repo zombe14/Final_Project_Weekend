@@ -65,9 +65,9 @@
 								<td>${dto.age}</td>
 								<td>${dto.email}</td>
 								<td>${dto.grade}</td>
-								<td><input id="pBtn" type="button" value="U  P" title='${dto.grade}'></td>
+								<td><input id="pBtn" type="button" value="U  P" title='${dto.grade}' name='${dto.id}'></td>
 								<td><input id="mBtn" type="button" value="DOWN"></td>
-								<td><input id="dBtn" type="button" value="유저삭제"></td>
+								<td><input id="dBtn" type="button" value="유저삭제" name='${dto.id}'></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -95,17 +95,13 @@
 	</footer>
 </div>
 <script type="text/javascript">
-	$("#pBtn").click(function(){
+/* 	$("#pBtn").click(function(){
 		var check = confirm("등급을 올리시겠습니까?");
 		if(check){
-			var grade = $(this).attr("title");
-			alert(grade);
-			grade = 2;
-			alert(grade);
-			$.ajax({
-				url:"../../../admin/aUserUpdateP",
-				type:"POST",
+			var id = $(this).attr("name");
+				alert(id);
 				success:function(data){
+					location.href="../admin/aUserUpdateP="+id
 					data=data.trim();
 					if(data=='1'){
 						alert("성공");
@@ -113,8 +109,16 @@
 						alert("실패");
 					}
 				}
-			});
 		}
+	}); */
+	$("#dBtn").click(function () {
+		var id = $(this).attr('name');
+		alert(id)
+		var check = confirm("해당 유저를 정말 삭제하시겠습니까?");
+			if(check){
+				alert("if 온")
+				location.href="../admin/aUserDelete";
+				}
 	});
 </script>
 </body>

@@ -33,8 +33,9 @@ public class MemberDAO {
 		return sqlSession.update(NAMESPACE+"setUpdateM", grade);
 	}
 	// 회원 삭제;
-	public int setDelete(List<String> list)throws Exception{
-		return sqlSession.delete(NAMESPACE+"setDelete", list);
+	public int setDelete(String id)throws Exception{
+		System.out.println("DAO 온");
+		return sqlSession.delete(NAMESPACE+"setDeleteA", id);
 	}
 	// 상혁 끝;
 	
