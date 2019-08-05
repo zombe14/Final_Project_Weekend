@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.weekend.file.MemberFileDAO;
 import com.project.weekend.file.MemberFileDTO;
 import com.project.weekend.util.FileSaver;
+import com.project.weekend.util.PageMaker;
 
 @Service
 public class MemberService {
@@ -22,21 +23,42 @@ public class MemberService {
 	private FileSaver fileSaver;
 	@Inject
 	private MemberFileDAO memberFileDAO;
-	
 
 	// 상혁 시작;
-	public List<MemberDTO> getList(HttpSession session, MemberDTO memberDTO) throws Exception{
-		List<MemberDTO> list = memberDAO.getList(memberDTO);
+	// 리스트
+	public List<MemberDTO> getList(HttpSession session, PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
+		List<MemberDTO> list = memberDAO.getList(pageMaker);
+		int totalCount = memberDAO.getTotalCount(pageMaker);
+		pageMaker.makePage(totalCount);
 		return list;
 	}
-	public int setDelete(String [] id) throws Exception{
-		List<String> list = Arrays.asList(id);
-		return memberDAO.setDelete(list);
+	// 회원 등급 조정
+	public int setUpdateP(int grade) throws Exception{
+		int result = memberDAO.setUpdateP(grade);
+		return result;
+	}
+	public int setUpdateM(int grade) throws Exception{
+		int result = memberDAO.setUpdateM(grade);
+		return result;
+	}
+	// 회원 삭제
+	public int setDelete(String id) throws Exception{
+		System.out.println("서비스 온");
+		int result = memberDAO.setDelete(id);
+		System.out.println(result);
+		return result;
 	}
 	// 상혁 끝;
+	
+	public MemberDTO getNickname(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getNickname(memberDTO);
+	}
+	
 	public MemberDTO getId(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getId(memberDTO);
 	}
+
 	public int setUpdate(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setUpdate(memberDTO);
 	}

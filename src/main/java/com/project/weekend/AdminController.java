@@ -35,46 +35,41 @@ public class AdminController {
 		return mv;
 	}
 	////////////// admin User; //////////////
-	// userList
+	// userList(완성)
 	@RequestMapping(value = "aUserList", method = RequestMethod.GET)
-	public ModelAndView aUserList(HttpSession session, MemberDTO memberDTO) throws Exception {
+	public ModelAndView aUserList(PageMaker pageMaker, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<MemberDTO> list = memberService.getList(session, memberDTO);
+		List<MemberDTO> list = memberService.getList(session, pageMaker);
 		mv.addObject("board", "User");
 		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
 		mv.setViewName("admin/User/aUserList");
 		return mv;
 	}
-	// user info;
-	@RequestMapping(value = "adminUserSelect", method = RequestMethod.GET)
-	public ModelAndView adminUserSelect() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/User/adminUserSelect");
-		return mv;
-	}
-	// user up/down grade;
-	@RequestMapping(value = "adminUserUpdate")
-	public ModelAndView adminUserUpdate() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/User/adminUserUpdate"); 
-		return mv;
+	// user up grade;
+	@RequestMapping(value = "aUserUpdateP", method = RequestMethod.GET)
+	public String adminUserUpdateP(int grade) throws Exception{
+		System.out.println("Plus controller 실행됨");
+		memberService.setUpdateP(grade);
+		return "redirect:./aUserList";
 	}
 	// user delete;
-	@RequestMapping(value = "adminUserDelete", method = RequestMethod.GET)
-	public String adminUserDelete(String [] id) throws Exception{
+	@RequestMapping(value = "aUserDelete", method = RequestMethod.GET)
+	public String adminUserDelete(String id) throws Exception{
+		System.out.println("컨트롤러 온");
 		memberService.setDelete(id);
 		return "redirect:./aUserList";
 	}
 	////////////// board 관리; //////////////
 	////////////// notice board; //////////////
-	@RequestMapping(value = "adminBoardNoticeList", method = RequestMethod.GET) 
+	@RequestMapping(value = "aBoardNoticeList", method = RequestMethod.GET) 
 	public ModelAndView adminNoticeList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView(); 
 		List<BoardDTO> list = noticeServiceImpl.getList(pageMaker, session); 
 		mv.addObject("board", "Notice"); 
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
-		mv.setViewName("admin/Board/adminBoardList");
+		mv.setViewName("admin/Board/aBoardList");
 	return mv;
 	}
 	// notice;

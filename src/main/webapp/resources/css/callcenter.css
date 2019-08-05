@@ -1,0 +1,154 @@
+.call_quick{
+	border: 1px solid #00d344;
+	height: 140px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+}
+
+i{
+	font-family: "Noto Sans KR", sans-serif;
+}
+.call_quick .title{
+	width: 170px;
+	height: 138px;
+	float: left;
+	background: #00d344;
+	text-align: center;
+	padding-top: 53px;
+	margin-left: 0px;
+}
+
+.call_quick h2{
+	color: white;
+}
+
+.call_quick ul{
+	overflow: hidden;
+	float: left;
+	width: 828px;
+	margin: 27px 0;
+}
+
+.call_quick li{
+	width: 165px;
+	height: 90px;
+	float: left;
+	text-align: center;
+	border-right: 1px solid #efefef;
+}
+
+.mypage_quick li{
+	width: 205px;
+}
+
+.call_quick li:last-child{
+	border: none;
+}
+
+.call_container{
+	border: 1px solid #dedede;
+    border-radius: 2px;
+    width: 1000px;
+    overflow: hidden;
+}
+
+.call_menu{
+	float: left;
+	width: 164px;
+	/* padding-top: 22px; */
+	text-align: center;
+	margin-left: 5px;
+}
+
+.call_menu li{
+	width: 155px;
+	padding: 20px 20px;
+	border-bottom: 1px solid #efefef;
+}
+
+.call_container{
+	font-size: 15px;
+}
+
+.cmenu1 a{
+	font-weight: bold;
+}
+
+.qmenu a img{
+	margin: 0 auto;
+	display: block;
+	width: 50px;
+}
+
+.call_cont{
+	float: left;
+    width: 829px;
+    min-height: 550px;
+    padding: 39px 39px 100px 40px;
+    border-left: 1px solid #efefef;
+}
+
+/* main */
+
+.help_link{
+	overflow: hidden;
+}
+
+.help_link li{
+	padding: 30px;
+	background-color: #f4f4f4;
+	margin: 0 5px 5px 0;
+	width: 244px;
+	height: 200px;
+}
+
+.help_link img{
+	width:60px;
+	float: right;
+	position: relative;
+	bottom: -20px;
+	left: 10px;
+}
+
+.help_link p{
+	margin-top: 20px;
+	float: left;
+}
+
+.help_link i{
+	color: #41b40a;
+}
+
+.helpmain_list{
+	overflow: hidden;
+	margin-top: 40px;
+}
+
+.helpmain_question{
+	float: left;
+    width: 351px;
+    margin-right: 40px;
+}
+
+.helpmain_list ul{
+	border-top: 2px solid #999;
+}
+
+.helpmain_list li{
+	width: 100%;
+	height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #ececec;
+}
+
+.h1 img{
+	top:-20px;
+}
+
+.help_link li.h1{
+	background-color: #d4f7d4;
+}
+
+.helpmain_notice{
+	overflow: hidden;
+}

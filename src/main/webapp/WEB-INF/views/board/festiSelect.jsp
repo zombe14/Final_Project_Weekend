@@ -24,9 +24,9 @@
 				<div>
 					<p>${dto.title}</p>
 					<p>${dto.contents}</p>
-					<p>${dto.category}</p>
-					<c:forEach items="${dto.fileDTOs}" var="i">
-						<img alt="${i.oname}" src="../resources/images/board/${i.fname}">
+					
+					<c:forEach items="${dto.fileDTOs}" var="f">
+						<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
 					</c:forEach>
 				</div>
 				<!-- 내용 끝 -->
@@ -40,9 +40,33 @@
 				</div>
 				<!-- ajax 파일 다운로드 끝 -->
 				
-				<a href="./${board}List">목록</a> 
+				
+				<a href="./${board}List?category=${dto.category}">목록</a>
+				<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
+				<%-- <c:if test="${member.grade > 1}"> --%> 
 				<a href="./${board}Update?num=${dto.num}">수정</a> 
 				<a id="delete">삭제</a>
+				<%-- </c:if> --%>
+				
+				<!--  후기 -->
+				<table>
+					<thead>
+						<th>NUM</th>
+						<th>TITLE</th>
+						<th>Writer</th>
+						<th>DATE</th>
+						<th>hit</th>
+					</thead>
+					<c:forEach items="${after}" var="i">
+						<tr title="${i.anum}" class="afterSel">
+							<td>${i.anum}</td>
+							<td>${i.title}</td>
+							<td>${i.writer}</td>
+							<td>${i.reg_date}</td>
+							<td>${i.hit}</td>
+						</tr>					
+					</c:forEach>
+				</table>
 			</div>
    		</div>
    <div id="footer">
@@ -68,6 +92,11 @@
 		$('#fname').val(fname);
 		$('#oname').val(oname);
 		$('#downForm').submit();
+	});
+	
+	/* 후기 보기 */
+	$('.afterSel').click(function() {
+		location.href="../after/afterSelect?num="+$(this).attr('title');
 	});
 	
 </script>

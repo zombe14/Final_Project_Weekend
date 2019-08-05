@@ -4,6 +4,7 @@
 }
 .joinWrap h2 {
     padding-left: 10px;
+    padding-bottom: 10px;
     margin-bottom: 24px;
     font-size: 32px;
     font-weight: 500;
@@ -17,7 +18,7 @@
     letter-spacing: -1px;
 }
 .joinWrap .conTitle i {
-    color: #ef3f43;
+    color: #41b40a;
     font-style: normal;
 }
 .joinWrap .tableBox table {
@@ -175,7 +176,7 @@ select {
 .iCheckbox input[type="checkbox"] {
     width: 22px;
     height: 22px;
-    margin-top: -3px;
+    margin-top: 10px;
     margin-left: -3px;
 }
 .joinWrap .certifyButtonWrap {
@@ -183,7 +184,7 @@ select {
     margin: 20px 0 30px;
 }
 .joinWrap .certifyButtonWrap button {
-    background: #ef3f43;
+    background: #41b40a;
     color: #fff;
     font-size: 18px;
     padding: 7px 20px 8px;
@@ -198,6 +199,9 @@ button {
 }
 .joinWrap  .iText {
     width: 340px;
+    -webkit-transition: 0.5s;
+  	transition: 0.5s;
+  	outline: none;
 }
 .iText {
     padding: 0 8px;
@@ -232,15 +236,21 @@ button {
     font-style: normal;
 }
 .joinWrap .certifyButtonWrap_final button {
-    background: #ef3f43;
+    background: #41b40a;
     color: #fff;
-    font-size: 25px;
+    font-size: 18px;
     padding: 7px 20px 8px;
 }
 
+input[type=text]:focus{
+	border: 1px solid #41b40a;
+	
+}
 
-
-
+input[type=password]:focus{
+	border: 1px solid #41b40a;
+	
+}
 
 
 

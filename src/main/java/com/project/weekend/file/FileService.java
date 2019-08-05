@@ -31,11 +31,14 @@ public class FileService {
 
 	public int setDelete(FileDTO fileDTO, String board, HttpSession session) throws Exception{
 
-		int result = fileDAO.setDelete(fileDTO.getFnum());
-		if(result>0) {
-			String realPath = session.getServletContext().getRealPath("/resources/images"+board);
-			result = fileSaver.deleteFile(realPath, fileDTO.getFname());
+		// db
+		int res = fileDAO.setDelete(fileDTO.getFnum());
+		
+		// folder
+		if(res>0) {
+			String realPath=session.getServletContext().getRealPath("/resources/images/"+board);
+			res = fileSaver.deleteFile(realPath, fileDTO.getFname());			
 		}
-		return result;
+		return res;
 	}
 }

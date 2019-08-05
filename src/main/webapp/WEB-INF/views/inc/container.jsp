@@ -15,33 +15,21 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="./resources/images/home/닭갈비축제.png"
-					style="height: 50%;" class="img-responsive center-block"
+				<img src="./resources/images/home/banner1.jpg"
+					class="img-responsive center-block"
 					alt="festival1">
-				<div class="carousel-caption">
-					<h3>닭갈비 축제</h3>
-					<p>LA is always so much fun!</p>
-				</div>
 			</div>
 
 			<div class="item">
-				<img src="./resources/images/home/신촌물총축제.jpg"
-					style="height: 50%;" class="img-responsive center-block"
+				<img src="./resources/images/home/banner2.jpg"
+					class="img-responsive center-block"
 					alt="festival2">
-				<div class="carousel-caption">
-					<h3>신촌 물총 축제</h3>
-					<p>Thank you, Chicago!</p>
-				</div>
 			</div>
 
 			<div class="item">
-				<img src="./resources/images/home/냉이축제.jpg"
-					style="height: 50%;" class="img-responsive center-block"
+				<img src="./resources/images/home/banner3.jpg"
+					class="img-responsive center-block"
 					alt="festival3">
-				<div class="carousel-caption">
-					<h3>냉이 축제</h3>
-					<p>We love the Big Apple!</p>
-				</div>
 			</div>
 		</div>
 
@@ -56,23 +44,15 @@
 		</a>
 	</div>
 </div>
-<div>
-<div class="conta">
+<div class="inner">
 <div class="section_top">
-	<div class="inner">
-		<%@ include file="./container/ticket_open.jsp"%>
-	</div>
+	<%@ include file="./container/ticket_open.jsp"%>
 </div>
 <div class="section_rank">
-	<div class="inner">
-		<%@ include file="./container/ticket_rank.jsp"%>
-	</div>
+	<%@ include file="./container/ticket_rank.jsp"%>
 </div>
 <div class="section_best">
-	<div class="inner">
-		<%@ include file="./container/ticket_best.jsp"%>
-	</div>
-</div>
+	<%@ include file="./container/ticket_best.jsp"%>
 </div>
 <div class="main_right" id="wingright">
 	<ul class="push">
@@ -84,3 +64,4 @@
 	</ul>
 </div>
 </div>
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="./resources/images/home/위로.png"></a>

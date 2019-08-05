@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.weekend.board.BoardService;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
+import com.project.weekend.file.FileService;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.util.FileSaver;
 import com.project.weekend.util.PageMaker;
@@ -27,6 +28,8 @@ public class NoticeServiceImpl implements BoardService {
 	private FileDAO fileDAO;
 	@Inject
 	private FileSaver fileSaver;
+	@Inject
+	private FileService fileService;
 
 	@Override
 	public int setWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
@@ -58,14 +61,16 @@ public class NoticeServiceImpl implements BoardService {
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
-		System.out.println("service");
-		System.out.println(boardDTO.getNum());
 		int result = 0;
 		// 글
-
+		List<FileDTO> list = fileDAO.getList(boardDTO.getNum());
+		for(FileDTO fileDTO : list) {
+			// db, 디렉토리
+			result = fileService.setDelete(fileDTO, "board", session);
+		}
+		
 		result = noticeDAOImpl.setUpdate(boardDTO);
 		
-		int i = fileDAO.setDeleteAll(boardDTO.getNum());
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 
 		for (MultipartFile f : filelist) {
@@ -79,6 +84,7 @@ public class NoticeServiceImpl implements BoardService {
 				String oname = f.getOriginalFilename();
 				fileDTO.setOname(oname);
 				result = fileDAO.setWrite(fileDTO);
+				System.out.println(result);
 			}
 		}
 

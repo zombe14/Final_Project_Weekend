@@ -11,7 +11,21 @@
 	
 	<!-- festi -->
 	<bean class="com.project.weekend.board.festi.FestiDTO" id="festiDTO" />
-	<bean class="com.project.weekend.board.festi.FestiDAO" id="festiDAOImpl" />
-	<bean class="com.project.weekend.board.festi.FestiService" id="festiServiceImpl" />
+	<bean class="com.project.weekend.board.festi.FestiDAO" id="festiDAO" />
+	<bean class="com.project.weekend.board.festi.FestiService" id="festiService" />
 	
+	<!-- after -->
+	<bean class="com.project.weekend.board.festi.after.AfterDTO" id="afterDTO"/>
+	<bean class="com.project.weekend.board.festi.after.AfterDAO" id="afterDAO"/>
+	<bean class="com.project.weekend.board.festi.after.AfterService" id="afterService"/>
+	
+	<!-- qna -->
+	<bean class="com.project.weekend.board.qna.QnaDTO" id="qnaDTO" />
+	<bean class="com.project.weekend.board.qna.QnaDAO" id="qnaDAO" />
+	<bean class="com.project.weekend.board.qna.QnaService" id="qnaService" />
+	
+	<!-- festiQna -->
+	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaDTO" id="festiQnaDTO"/>
+	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaDAO" id="festiQnaDAO"/>
+	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaService" id="festiQnaService"/>
 </beans>
