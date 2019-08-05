@@ -96,11 +96,17 @@ public class NoticeServiceImpl implements BoardService {
 	@Override
 	public BoardDTO getSelect(String num, HttpSession session) throws Exception {
 		BoardDTO boardDTO = noticeDAOImpl.getSelect(num);
+		//update 시 파일 없는데 X만 뜨는거 방지. 새로운 리스트로 세팅
 		NoticeDTO noticeDTO = (NoticeDTO)boardDTO;
 		if(noticeDTO.getFileDTOs().size()==1) {
 			if(noticeDTO.getFileDTOs().get(0).getFname()==null) {
 				noticeDTO.setFileDTOs(new ArrayList<FileDTO>());
 			}
+		}
+		// hit update
+		int res = noticeDAOImpl.setHitUpdate(num);
+		if(res>0) {
+			boardDTO.setHit(boardDTO.getHit()+1);
 		}
 		return boardDTO;
 	}
