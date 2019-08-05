@@ -27,8 +27,10 @@
 				<br> 
 				reg_Date : ${dto.reg_date} 
 				<br>
+				hit : ${dto.hit} 
+				<br>
 				contents : ${dto.contents} 
-				<br> hit : ${dto.hit} 
+				<br> 
 				<br> 
 				
 				<c:forEach items="${dto.fileDTOs}" var="f">

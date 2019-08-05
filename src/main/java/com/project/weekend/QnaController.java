@@ -94,7 +94,7 @@ public class QnaController {
 		return mv;
 	}
 
-	@RequestMapping(value = "qnaDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "qnaDelete", method = RequestMethod.POST)
 	public ModelAndView setDelete(String num, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int res = qnaService.setDelete(num, session);
