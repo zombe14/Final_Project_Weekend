@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- 난슬 -->
+	<aop:config>
+		<aop:aspect id="cardAspect" ref="cardCheck">
+			<aop:pointcut expression="execution(* com.iu.transfer.Bus.*())" id="bus"/>
+			<aop:before method="cardIn" pointcut-ref="bus"/>
+			<aop:after-returning method="cardOut" pointcut-ref="bus"/>
+		</aop:aspect>
+		<aop:aspect id="cardAspect2" ref="cardCheck">
+			<aop:pointcut expression="execution(* com.iu.transfer.Subway.subway())" id="subway"/>
+			<aop:before method="cardIn" pointcut-ref="subway"/>
+			<aop:after-throwing method="cardOut" pointcut-ref="subway"/>
+		</aop:aspect>
+	</aop:config>
+
+</beans>
