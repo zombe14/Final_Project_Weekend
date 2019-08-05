@@ -46,12 +46,15 @@
 				<a id="list" title="${board}" class="${dto.num}">목록</a>
 				<a id="update" class="${board}">수정</a> 
 				<a id="delete" class="${board}">삭제</a>
-				<c:if test="${board eq 'notice' or board eq 'qna'}">
-					<input type="hidden" class="num" id="${dto.num}">
-				</c:if>
-				<c:if test="${board eq 'after'}">
-					<input type="hidden" class="anum" id="${dto.anum}">
-				</c:if>
+
+				<form action="./${board}Delete" id="deleteFrm" method="post">
+					<c:if test="${board eq 'notice' or board eq 'qna'}">
+						<input type="hidden" name="num" value="${dto.num}">
+					</c:if>
+					<c:if test="${board eq 'after'}">
+						<input type="hidden" name="anum" value="${dto.anum}">
+					</c:if>					
+				</form>
 			</div>
    </div>
    <div id="footer">
@@ -63,17 +66,9 @@
 	<script type="text/javascript">
 	/* 글 삭제 */
 	$('#delete').click(function() {
-		var check = confirm('삭제하시겠습니까?');
-		var board = $(this).attr('class');
-		var num = 0;
+		var check = confirm('삭제하시겠습니까?');		
 		if(check){
-			if(board == 'notice' || 'qna'){
-				num = $('.num').attr('id');
-				location.href="./${board}Delete?num="+num;
-			} else if (board == 'after') {
-				num = $('.anum').attr('id');
-				location.href="./${board}Delete?anum="+num;
-			}
+			$('#deleteFrm').submit();
 		}
 	});
 	

@@ -4,21 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Response;
 
+import org.omg.CORBA.Request;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.BoardService;
-import com.project.weekend.board.qna.QnaDTO;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.file.FileService;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.util.FileSaver;
 import com.project.weekend.util.PageMaker;
-
-import oracle.net.aso.b;
 
 @Service
 public class NoticeServiceImpl implements BoardService {
@@ -56,7 +58,6 @@ public class NoticeServiceImpl implements BoardService {
 				result = fileDAO.setWrite(fileDTO);
 			}
 		}
-
 		return result;
 	}
 
@@ -67,7 +68,6 @@ public class NoticeServiceImpl implements BoardService {
 		result = noticeDAOImpl.setUpdate(boardDTO);
 		
 		// 파일
-		List<FileDTO> list = fileDAO.getList(boardDTO.getNum());
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 
 		for (MultipartFile f : filelist) {
@@ -81,7 +81,6 @@ public class NoticeServiceImpl implements BoardService {
 				String oname = f.getOriginalFilename();
 				fileDTO.setOname(oname);
 				result = fileDAO.setWrite(fileDTO);
-				System.out.println(result);
 			}
 		}
 
@@ -90,12 +89,25 @@ public class NoticeServiceImpl implements BoardService {
 
 	@Override
 	public int setDelete(String num, HttpSession session) throws Exception {
-		return noticeDAOImpl.setDelete(num);
+		int res = noticeDAOImpl.setDelete(num);
+		
+		List<FileDTO> list = fileDAO.getList(num);
+		if(list != null) {
+			for(FileDTO fileDTO : list) {
+				res = fileService.setDelete(fileDTO, "board", session);
+			}
+		}
+		return res;
 	}
 
 	@Override
-	public BoardDTO getSelect(String num, HttpSession session) throws Exception {
+	public BoardDTO getSelect(String num, HttpSession sesion) throws Exception{
+		return null;
+	}
+	
+	public BoardDTO getSelect(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		BoardDTO boardDTO = noticeDAOImpl.getSelect(num);
+		
 		//update 시 파일 없는데 X만 뜨는거 방지. 새로운 리스트로 세팅
 		NoticeDTO noticeDTO = (NoticeDTO)boardDTO;
 		if(noticeDTO.getFileDTOs().size()==1) {
@@ -103,10 +115,22 @@ public class NoticeServiceImpl implements BoardService {
 				noticeDTO.setFileDTOs(new ArrayList<FileDTO>());
 			}
 		}
-		// hit update
-		int res = noticeDAOImpl.setHitUpdate(num);
-		if(res>0) {
-			boardDTO.setHit(boardDTO.getHit()+1);
+		
+		// 쿠키를 이용해서 ajax, 새로고침 시 조회수 증가 방지
+		boolean isGet = false;
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null) {
+			for(Cookie c:cookies) {
+				if(c.getName().equals(num)) {
+					isGet=true;
+				}
+			}
+		}
+		if(!isGet) {
+			noticeDAOImpl.setHitUpdate(num);
+			Cookie c = new Cookie(num, num);
+			c.setMaxAge(30*60); // 30분
+			response.addCookie(c);
 		}
 		return boardDTO;
 	}
@@ -123,5 +147,6 @@ public class NoticeServiceImpl implements BoardService {
 	public List<BoardDTO> getTopList() throws Exception {
 		return noticeDAOImpl.getTopList();
 	}
+	
 
 }

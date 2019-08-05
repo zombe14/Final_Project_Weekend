@@ -63,8 +63,7 @@
 					</table>
 					
 					
-					<button  class="btn" id="write" >등록</button>
-					<!-- <input type="button"value="등록"> -->
+					<a id="write" class="btn btn-default">등록하기</a>
 				</form>
 
 			</div>
@@ -123,12 +122,14 @@
 		
 		// 조건
 		$('#write').click(function() {
-			if( 
-				$('#title').val() != "" &&
-				$('#writer').val() != "" &&
-				$('#contents') != ""
-			){
+			if(
+					$('#contents').val() != "" && 
+					$('#title').val()!="" &&
+					$('#writer').val()!=""
+			  ){
 				$('#frm').submit();
+			} else {
+				alert('필수(*)가 비었어요');
 			}
 		});
 		

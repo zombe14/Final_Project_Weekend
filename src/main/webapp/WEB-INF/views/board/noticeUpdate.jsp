@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:import url="../temp/boot.jsp"></c:import>
-<c:import url="../temp/summernote.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
+<c:import url="../temp/boot.jsp" />
+<c:import url="../temp/summernote.jsp" />
 <title>${boardTitle} 글 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <style type="text/css">
-	/* 1. readonly 배경색 */
 	/* 2. * 빨간색 */
 	.r{
 		color: red;
@@ -76,8 +74,7 @@
 					</table>
 					
 					<input type="hidden" name="num" value="${dto.num}">
-					<input type="button" class="btn" id="write" value="등록">
-					<!-- <input type="button"value="등록"> -->
+					<a id="write" class="btn btn-default">등록하기</a>
 				</form>
 
 			</div>
@@ -95,6 +92,7 @@
 	<script src="../resources/js/summernote.js"></script>
 	<!-- script -->
 	<script type="text/javascript">
+		
 		/* 첨부 파일 관리 */
 		// 개수 제한. 최대 5개까지.
 		var fileCount = $('#fileCount').val();
@@ -116,7 +114,6 @@
 			}
 		});
 		
-		
 		/* 첨부 파일 관리 끝 */
 
 		// 정적인 input 파일 제거
@@ -125,7 +122,7 @@
 			if(con){
 				var fnum = $(this).attr('id');
 				var fname = $(this).attr('title');
-				
+				var selector = $(this);
 				$.ajax({
 					url:"../ajax/fileDelete",
 					type:'post',
@@ -137,7 +134,9 @@
 					success:function(data){
 						data = data.trim();
 						if(data == '1'){
-							$(this).parent().remove();
+							selector.parent().remove();
+							selector.prev().remove();
+							selector.remove();
 							limit--;
 						} else {
 							alert('삭제 할 수 없습니다.');
@@ -162,14 +161,18 @@
 			}
 		});
 		
+		
+		
 		// 조건
 		$('#write').click(function() {
-			if( 
-				$('#title').val() != "" &&
-				$('#writer').val() != "" &&
-				$('#contents') != ""
-			){
+			if(
+					$('#contents').val() != "" && 
+					$('#title').val()!="" &&
+					$('#writer').val()!=""
+			  ){
 				$('#frm').submit();
+			} else {
+				alert('필수(*)가 비었어요');
 			}
 		});
 		

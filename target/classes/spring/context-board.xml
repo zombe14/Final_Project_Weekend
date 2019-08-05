@@ -4,9 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
-	<!-- aop -->
+	<!-- transaction, aop -->
 	<aop:aspectj-autoproxy />
-	<bean class="com.project.weekend.board.BoardHitUpdate" id="boardHitUpdate"></bean>
 	
 	<!-- notice -->
 	<bean class="com.project.weekend.board.notice.NoticeDTO" id="noticeDTO" />
