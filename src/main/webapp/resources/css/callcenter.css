@@ -1,15 +1,23 @@
+#container{
+    background-color: #f5f6f7;
+}
+
 .call_quick{
-	border: 1px solid #41b40a;
+	border: 1px solid #00d344;
 	height: 140px;
 	margin-bottom: 10px;
 	border-radius: 2px;
+    background-color: white;
 }
 
+i{
+	font-family: "Noto Sans KR", sans-serif;
+}
 .call_quick .title{
 	width: 170px;
 	height: 138px;
 	float: left;
-	background: #41b40a;
+	background: #00d344;
 	text-align: center;
 	padding-top: 53px;
 	margin-left: 0px;
@@ -47,6 +55,7 @@
     border-radius: 2px;
     width: 1000px;
     overflow: hidden;
+    background-color: white;
 }
 
 .call_menu{
@@ -112,6 +121,9 @@
 	float: left;
 }
 
+.help_link i{
+	color: #41b40a;
+}
 
 .helpmain_list{
 	overflow: hidden;
@@ -137,4 +149,12 @@
 
 .h1 img{
 	top:-20px;
+}
+
+.help_link li.h1{
+	background-color: #d4f7d4;
+}
+
+.helpmain_notice{
+	overflow: hidden;
 }

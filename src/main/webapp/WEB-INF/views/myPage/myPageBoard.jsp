@@ -15,7 +15,7 @@
 			<c:import url="../inc/header.jsp"></c:import>
 		</div>
 		<!-- body 전부를 감쌈  -->
-		<div class="container">
+		<div id="container">
 			<div class="conta">
 			<div class="call_quick mypage_quick">
 				<div class="title">

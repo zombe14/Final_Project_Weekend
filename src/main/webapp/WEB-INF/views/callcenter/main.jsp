@@ -46,35 +46,35 @@
 					<ul class="help_link">
 						<li class="first">
 							<a href="">
-								<h4>예매 도움 받기</h4>
+								<h4><i>예매 도움</i> 받기</h4>
 								<p>예매 안내를 통해서<br>편리한 예매방법을<br>알아보세요.</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help1.png">
 							</a>
 						</li>
 						<li>
 							<a href="">
-								<h4>1:1 상담 받기</h4>
+								<h4><i>1:1 상담</i> 받기</h4>
 								<p>빠르고 간편한<br>온라인 1:1문의를<br>이용해보세요.</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help2.png">
 							</a>
 						</li>
 						<li>
 							<a href="">
-								<h4>FAQ 보기</h4>
+								<h4><i>FAQ</i> 보기</h4>
 								<p>궁금한 질문들을<br>쉽고 편하게<br>한번에 알아보세요.</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help3.png">
 							</a>
 						</li>
 						<li>
 							<a href="">
-								<h4>티켓 소식 알아보기</h4>
+								<h4><i>티켓 소식</i> 알아보기</h4>
 								<p>티켓링크의<br>새로운 소식들을<br>빠르게 접해보세요.</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help4.png">
 							</a>
 						</li>
 						<li class="h1">
 							<a href="">
-								<h4>예매 상담 하기</h4>
+								<h4><i>예매 상담</i> 하기</h4>
 								<p>1588-0000</p>
 								<br>
 								<p>09:00 ~ 18:00(월-금)</p>
@@ -83,7 +83,7 @@
 						</li>
 						<li class="h1">
 							<a href="">
-								<h4>문의 하기</h4>
+								<h4><i>문의</i> 하기</h4>
 								<p>1588-0001</p>
 								<br>
 								<p>09:00 ~ 18:00(월-금)</p>
