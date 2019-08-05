@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.BoardService;
+import com.project.weekend.board.qna.QnaDTO;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.file.FileService;
@@ -62,15 +63,11 @@ public class NoticeServiceImpl implements BoardService {
 	@Override
 	public int setUpdate(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int result = 0;
-		// 글
-		List<FileDTO> list = fileDAO.getList(boardDTO.getNum());
-		for(FileDTO fileDTO : list) {
-			// db, 디렉토리
-			result = fileService.setDelete(fileDTO, "board", session);
-		}
-		
+		// 글		
 		result = noticeDAOImpl.setUpdate(boardDTO);
 		
+		// 파일
+		List<FileDTO> list = fileDAO.getList(boardDTO.getNum());
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 
 		for (MultipartFile f : filelist) {
@@ -99,6 +96,12 @@ public class NoticeServiceImpl implements BoardService {
 	@Override
 	public BoardDTO getSelect(String num, HttpSession session) throws Exception {
 		BoardDTO boardDTO = noticeDAOImpl.getSelect(num);
+		NoticeDTO noticeDTO = (NoticeDTO)boardDTO;
+		if(noticeDTO.getFileDTOs().size()==1) {
+			if(noticeDTO.getFileDTOs().get(0).getFname()==null) {
+				noticeDTO.setFileDTOs(new ArrayList<FileDTO>());
+			}
+		}
 		return boardDTO;
 	}
 

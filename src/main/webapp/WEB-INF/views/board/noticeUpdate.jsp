@@ -54,21 +54,21 @@
 									<label for="files">첨부파일</label>
 								</td>
 								<td>
+									<!-- 이미 있는 파일들 -->
 									<div id="filed">
 										<input type="hidden" id="fileCount" value="${dto.fileDTOs.size()}">
 										<c:forEach items="${dto.fileDTOs}" var="f">
-											<div class="fileDTOsDiv">
-												<p class="filelist" style="display: inline-block;">${f.oname}</p>
-												<span class="glyphicon glyphicon-remove deleteFile" id="${f.fnum}" title="${f.fname}" style="display: inline-block;"></span>
-											</div> 
+											<c:if test="${f.oname ne null}">
+												<div class="fileDTOsDiv">
+													<p style="display: inline-block;">${f.oname}</p>
+													<span class="glyphicon glyphicon-remove deleteFile" id="${f.fnum}" title="${f.fname}" style="display: inline-block;"></span>
+												</div> 
+											</c:if>
 										</c:forEach>
 									</div>
 									<hr>
+									<!-- 추가 할 파일들 -->
 									<div class="filesDiv">
-										<div>
-											<input type="file" class="filelist" style="display: inline-block;" name="filelist" > 
-											<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block;"></span>
-										</div>
 									</div>
 									<input type="button" id="addFiles" value="파일 추가">
 								</td>
@@ -99,7 +99,7 @@
 		// 개수 제한. 최대 5개까지.
 		var fileCount = $('#fileCount').val();
 		fileCount *= 1;		
-		var limit = fileCount+1;
+		var limit = fileCount;
 		
 		// 파일 추가
 		$('#addFiles').click(function() {
@@ -121,13 +121,34 @@
 
 		// 정적인 input 파일 제거
 		$('.deleteFile').click(function() {
-			$(this).parent().remove();
-			limit--;
-			
+			var con = confirm('삭제하시겠습니까? 복구가 불가능합니다.');
+			if(con){
+				var fnum = $(this).attr('id');
+				var fname = $(this).attr('title');
+				
+				$.ajax({
+					url:"../ajax/fileDelete",
+					type:'post',
+					data:{
+						fnum:fnum,
+						fname:fname,
+						board:'board'
+					},
+					success:function(data){
+						data = data.trim();
+						if(data == '1'){
+							$(this).parent().remove();
+							limit--;
+						} else {
+							alert('삭제 할 수 없습니다.');
+						}
+					}
+				});		
+			}
 		});
 
 		// 동적으로 그려진 input file 제거
-		$('.filesDiv','.fileDTOsDiv').on('click', '.deleteFile', function() {
+		$('.filesDiv').on('click', '.deleteFile', function() {
 			$(this).parent().remove();
 			limit--
 		});
@@ -163,6 +184,8 @@
 				$('#top').show();
 			}
 		}
+		
+		
 
 	</script>
 </body>
