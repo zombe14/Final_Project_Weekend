@@ -43,7 +43,7 @@
 			<div class="logo">
 				<!-- <h1>로고 자리</h1> -->
 
-				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo2_2.png"></a>
+				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo1.png"></a>
 
 			</div>
 			<div class="search_wrap">

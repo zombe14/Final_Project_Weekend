@@ -18,14 +18,14 @@
       	<div class="conta">
 				<div class="login_wrap">
 					<div class="login_logo">
-						<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo3.png"></a>
+						<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
 					</div>
 					<form action="./memberLogin" id="frm" method="POST">
 						<div class="ps_box">
-							<input id="id" class="idbtn" name="id" type="text" placeholder="아이디를 입력하세요" value="">
+							<input id="id" class="idbtn" name="id" type="text" placeholder="아이디" value="">
 						</div>
 						<div class="ps_box">
-							<input id="pw" class="pwbtn" name="pw" type="password" placeholder="비밀번호를 입력하세요" value="">
+							<input id="pw" class="pwbtn" name="pw" type="password" placeholder="비밀번호" value="">
 						</div>
 						<button type="submit" id="Login" class="lgbtn">로그인</button>
 					</form>
@@ -43,7 +43,7 @@
 							<a href="${pageContext.request.contextPath}/footer/use">이용약관</a>
 							<span>|</span>
 							<a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
-			</div>
+					</div>
 				</div>
 			</div>
       	</div>

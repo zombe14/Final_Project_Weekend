@@ -1,5 +1,5 @@
 .call_quick{
-	border: 1px solid #41b40a;
+	border: 1px solid #00d344;
 	height: 140px;
 	margin-bottom: 10px;
 	border-radius: 2px;
@@ -12,7 +12,7 @@ i{
 	width: 170px;
 	height: 138px;
 	float: left;
-	background: #41b40a;
+	background: #00d344;
 	text-align: center;
 	padding-top: 53px;
 	margin-left: 0px;

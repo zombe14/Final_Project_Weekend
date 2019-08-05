@@ -31,7 +31,7 @@ tocplusHAlign='right';
 tocplusWidth=180;
 tocplusHeight=220;
 tocplusUserName='손님';
-tocplusFrameColor='#41b40a';
+tocplusFrameColor='#00d344';
 tocplusFloatingWindow=true;
 var tocplusHost = (("https:" == document.location.protocol) ? "https://" : "http://");
 document.write(unescape("%"+"3Cscript src='" + tocplusHost + "kr03.tocplus007.com/chatLoader.do?userId=kws332' type='text/javascript'"+"%"+"3E"+"%"+"3C/script"+"%"+"3E"));
