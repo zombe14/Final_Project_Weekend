@@ -40,7 +40,7 @@
 					<li class="cmenu5"><a href="">결제수단안내</a></li>
 					<li class="cmenu6"><a href="">회원정보안내</a></li>
 					<li class="cmenu7"><a href="${pageContext.request.contextPath}/callcenter/cancel">환불안내</a></li>
-					<li class="cmenu8"><a href="">부정이용 규제안내</a></li>
+					<li class="cmenu8"><a href="${pageContext.request.contextPath}/callcenter/legalguide">부정이용 규제안내</a></li>
 					<li class="cmenu9"><a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
 				</ul>
 				<div class="call_cont">

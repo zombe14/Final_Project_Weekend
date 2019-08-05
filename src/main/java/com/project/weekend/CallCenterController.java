@@ -13,4 +13,6 @@ public class CallCenterController {
 	public void ticketguideSelect() {}
 	@RequestMapping(value = "cancel")
 	public void cancel() {}
+	@RequestMapping(value = "legalguide")
+	public void legalguide() {}
 }

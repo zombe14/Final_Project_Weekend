@@ -106,6 +106,7 @@ i{
 	margin: 0 5px 5px 0;
 	width: 244px;
 	height: 200px;
+	float: left;
 }
 
 .help_link img{
@@ -128,6 +129,10 @@ i{
 .helpmain_list{
 	overflow: hidden;
 	margin-top: 40px;
+}
+
+.helpmain_list strong{
+	font-size: 20px;
 }
 
 .helpmain_question{
