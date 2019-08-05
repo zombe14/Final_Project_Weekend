@@ -45,7 +45,7 @@ a:hover {
 
 ul{
 	list-style: none;
-	overflow: hidden;
+/* 	overflow: hidden; */
 }
 
 li{
@@ -112,14 +112,14 @@ strong{
 
 .logo{
 	float: left;
-	margin-top: -15px;
+	margin-top: -32px;
 }
 
 #search {
 	
 	width: 334px;
     height: 39px;
-	border: 2px solid #41b40a;
+	border: 2px solid #00d344;
 	padding-left: 10px;
 	outline: none;
 }
@@ -130,7 +130,7 @@ strong{
 }
 
 .btn_search {
-	background-color: #41b40a;
+	background-color: #00d344;
 	padding: 10.5px 12px;
 	margin-left: -5px;
 	/* vertical-align: middle; */
@@ -138,8 +138,8 @@ strong{
 }
 
 .h_menu{
-	min-height: 60px;
-	background: url(http://tketlink.dn.toastoven.net/markup_resources/2019071801/web/img/bg_head_menu.gif) repeat-x 0 0;
+	min-height: 59px;
+	background: url(../images/home/bg_head_menu.gif) repeat-x 0 0;
 }
 
 .h_inner {
@@ -162,17 +162,32 @@ strong{
 	font-size: 20px;
 }
 
+.open > a{
+	background-color: #d4f7d4;
+	color: #41b40a;
+}
+
+.open a:focus{
+	background-color: #d4f7d4;
+}
+
+.nav li a{
+	padding: 17px 50px;
+}
+
+.nav li a:hover{
+	background-color: #d4f7d4;
+}
+
 .nav_wrap{
-	width: 1200px;
-	margin: 0 auto;
+	margin-left: 380px;
 }
 
-.navp{
-	padding: 0 30px;
+.dropdown-menu{
+	padding: 0;
 }
-
 #menulist{
-	border: 1px solid #f0f0f0;
+	border-top: 1px solid #f0f0f0;
 }
 
 .log{
@@ -184,7 +199,14 @@ strong{
 }
 
 .dropdown-menu li a{
-	padding: 20px 20px;
+	padding: 15px 40px;
+    font-size: 15px;
+    width: 158px;
+    text-align: center;
+}
+
+.dropdown-menu li a:hover{
+	background-color: #d4f7d4;
 }
 /*  -----------------------container Css----------------------- */
 
@@ -229,12 +251,12 @@ strong{
 }
 
 .ticket_left .ticket_cont ul{
-	padding-top: 20px;
+	padding-top: 19px;
 }
 
 .ticket_cont li.first{
 	position: relative;
-    top: -20px;
+    top: -19px;
     left: 0;
     width: 179px;
     height: 218px;
@@ -243,10 +265,11 @@ strong{
 }
 
 .ticket_cont li{
-	padding-left: 30px;
-	font-size: 15px;
+	padding-left: 20px;
+	font-size: 14px;
 	height: 36px;
 	line-height: 36px;
+	letter-spacing: 1;
 }
 
 .ticket_header{
@@ -259,7 +282,7 @@ strong{
 }
 
 .title img{
-	margin-top: -10px;
+	margin-top: -13px;
 }
 
 .first{
@@ -297,12 +320,12 @@ strong{
 }
 
 .rank_cont ul{
-	padding-top: 20px;
+	padding-top: 19px;
 }
 
 .rank_cont li.first{
 	position: relative;
-    top: -20px;
+    top: -19px;
     left: 0;
     width: 179px;
     height: 218px;
@@ -311,18 +334,27 @@ strong{
 }
 
 .rank_cont li{
-	padding-left: 30px;
-	font-size: 15px;
+	padding-left: 20px;
+	font-size: 14px;
 /* 	font-weight: bold; */
 	height: 36px;
+	width: 340px;
 	line-height: 36px;
-	letter-spacing: 2;
+	letter-spacing: 1;
 	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .rank_header{
 	height: 50px;
 	overflow: hidden;
+}
+
+.rank_cont li span{
+	margin-right: 10px;
+	font-weight: bold;
 }
 
 .best_header{
