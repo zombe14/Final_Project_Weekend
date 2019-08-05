@@ -39,8 +39,44 @@
             </div>
 
             <div class="map" id="mapContainer">
-                <img src="${pageContext.request.contextPath}/resources/images/home/지도.JPG" alt="" style="width: 1000px;">
-            </div>
+                <%-- <img src="${pageContext.request.contextPath}/resources/images/home/지도.JPG" alt="" style="width: 1000px;"> --%>
+				<!-- 구글 맵 api -->
+				<div id="map_ma"></div>
+				<script type="text/javascript">
+					$(document).ready(function() {
+						var myLatlng = new google.maps.LatLng(37.556806,126.919570); // 위치값 위도 경도
+						var Y_point			= 37.556806;		// Y 좌표
+						var X_point			= 126.919570;		// X 좌표
+						var zoomLevel		= 18;				// 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
+						var markerTitle		= "주말뭐해";		// 현재 위치 마커에 마우스를 오버을때 나타나는 정보
+						var markerMaxWidth	= 300;				// 마커를 클릭했을때 나타나는 말풍선의 최대 크기
 
+						// 말풍선 내용
+						var contentString	= '<div>' + '<h3>주말뭐해</h3>'+ '<br>' +'<p> 전국 소규모 축제를 알리기 위해 앞장서는 사람들이 모인 곳</p>' + '</div>';
+						var myLatlng = new google.maps.LatLng(Y_point, X_point);
+						var mapOptions = {
+								zoom: zoomLevel,
+								center: myLatlng,
+								mapTypeId: google.maps.MapTypeId.ROADMAP
+							}
+						var map = new google.maps.Map(document.getElementById('map_ma'), mapOptions);
+						var marker = new google.maps.Marker({
+											position: myLatlng,
+											map: map,
+											title: markerTitle
+						});
+						var infowindow = new google.maps.InfoWindow(
+												{
+													content: contentString,
+													maxWizzzdth: markerMaxWidth
+												}
+						);
+						google.maps.event.addListener(marker, 'click', function() {
+							infowindow.open(map, marker);
+						});
+					});
+		</script>                
+            </div>
+			
         </div>
 
