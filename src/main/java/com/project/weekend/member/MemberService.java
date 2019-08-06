@@ -34,22 +34,23 @@ public class MemberService {
 		return list;
 	}
 	// 회원 등급 조정
-	public int setUpdateP(int grade) throws Exception{
-		int result = memberDAO.setUpdateP(grade);
+	// 등급 UP
+	public int setUpdateP(String id) throws Exception{
+		int result = memberDAO.setUpdateP(id);
 		return result;
 	}
-	public int setUpdateM(int grade) throws Exception{
-		int result = memberDAO.setUpdateM(grade);
+	// 등급 DOWN
+	public int setUpdateM(String id) throws Exception{
+		int result = memberDAO.setUpdateM(id);
 		return result;
 	}
 	// 회원 삭제
 	public int setDelete(String id) throws Exception{
-		System.out.println("서비스 온");
 		int result = memberDAO.setDelete(id);
-		System.out.println(result);
 		return result;
 	}
 	// 상혁 끝;
+	
 	
 	public MemberDTO getNickname(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getNickname(memberDTO);
@@ -64,6 +65,9 @@ public class MemberService {
 	}
 	public int setUpdatezero(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setUpdatezero(memberDTO);
+	}
+	public int setUpdateoverlap(MemberDTO memberDTO)throws Exception{
+		return memberDAO.setUpdateoverlap(memberDTO);
 	}
 	public int setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session)throws Exception{
 		String realPath = session.getServletContext().getRealPath("resources/member");

@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
      <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" /> 
-  <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>
+  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=2"></script>
 <title>Weekend - 회원가입</title>  
 
 </head>
@@ -98,6 +98,9 @@
 											</select>
 										</div>
 										<input type="hidden" id="email" name="email" title="email">
+										<div id="result_mememail">
+										
+									</div>
 									</div>
 									<div class="mailAreaMessage">
 										<span class="alertMessage" style="display:none; margin-bottom:6px;"></span>

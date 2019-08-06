@@ -25,16 +25,15 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pageMaker);
 	}
 	// 등급 업;
-	public int setUpdateP(int grade) throws Exception{
-		return sqlSession.update(NAMESPACE+"setUpdateP", grade);
+	public int setUpdateP(String id) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdateP", id);
 	}
 	// 등급 다운;
-	public int setUpdateM(int grade) throws Exception{
-		return sqlSession.update(NAMESPACE+"setUpdateM", grade);
+	public int setUpdateM(String id) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdateM", id);
 	}
 	// 회원 삭제;
 	public int setDelete(String id)throws Exception{
-		System.out.println("DAO 온");
 		return sqlSession.delete(NAMESPACE+"setDeleteA", id);
 	}
 	// 상혁 끝;
@@ -55,6 +54,9 @@ public class MemberDAO {
 	}
 	public int setUpdatezero(MemberDTO memberDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setUpdatezero", memberDTO);
+	}
+	public int setUpdateoverlap(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdateoverlap", memberDTO);
 	}
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelect", memberDTO);

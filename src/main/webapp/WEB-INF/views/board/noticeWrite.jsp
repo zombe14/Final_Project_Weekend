@@ -25,7 +25,7 @@
 			<c:import url="../inc/header.jsp"></c:import>
 		</div>
 		<div id="container">
-			<div class="inner">
+			<div class="conta">
 				<strong>${boardTitle} 글쓰기</strong>
 				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
 					<table class="table table-bordered">
@@ -35,12 +35,13 @@
 							</tr>
 							<tr>
 								<td><label for="writer">작성자 <span class="r"> *</span></label></td>
-								<td><input type="text" name="writer" value="${member.nickname}-" readonly="readonly" class="required" id="writer"></td>
+								<td><input type="text" name="writer" value="${member.nickname}memberNickname" readonly="readonly" class="required" id="writer"></td>
 							</tr>
 							<tr>
 								<td><label for="contents">내용 <span class="r"> *</span></label></td>
 								<td><textarea rows="" cols="" name="contents" id="contents" class="required"></textarea></td>
 							</tr>
+							<c:if test="${board eq 'notice'}">
 							<tr>
 								<td><label for="top">상단에 등록 하기</label></td>
 								<td>
@@ -48,6 +49,7 @@
 									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </span><span id="topCount" title="${topCount}">${topCount} / 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
 								</td>
 							</tr>
+							</c:if>
 							<tr>
 								<td><label for="files">첨부파일</label></td>
 								<td>
@@ -60,11 +62,11 @@
 									</div>
 								</td>
 							</tr>
+							
 					</table>
 					
-					
-					<button  class="btn" id="write" >등록</button>
-					<!-- <input type="button"value="등록"> -->
+					<input type="hidden" id="board" name="${board}">
+					<a id="write" class="btn btn-default">등록하기</a>
 				</form>
 
 			</div>
@@ -123,21 +125,28 @@
 		
 		// 조건
 		$('#write').click(function() {
-			if( 
-				$('#title').val() != "" &&
-				$('#writer').val() != "" &&
-				$('#contents') != ""
-			){
+			if(
+					$('#contents').val() != "" && 
+					$('#title').val()!="" &&
+					$('#writer').val()!=""
+			  ){
 				$('#frm').submit();
+			} else {
+				alert('필수(*)가 비었어요');
 			}
 		});
 		
 		// 상단 배치 개수 제한
-		var topC = $('#topCount').attr('title');
-		$('#top').hide();
-		if(topC < 7){
-			$('#top').show();
-		}
+		
+			var topC = $('#topCount').attr('title');
+			$('#top').hide();
+			if(topC < 7){
+				$('#top').show();
+			}
+		
+		
+		
+		
 
 	</script>
 </body>

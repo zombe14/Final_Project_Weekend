@@ -12,6 +12,20 @@
 <c:import url="../../../../resources/css/adminBoard.css" />
 </head>
 <body>
+<script type="text/javascript">
+	$(function () {
+		$(".dBtn").on("click",function(){
+			var id = $(this).attr("id");
+			var check = confirm("이 글을 삭제하시겠습니까?");
+			if(check){
+				location.href="../admin/aNoticeDelete?num="+id;
+				alert("삭제되었습니다.");
+			}else{
+				alert("삭제 실패하였습니다.");
+			}
+		});
+	});
+</script>
 	<div class="totalBody">
 		<!-- header.jsp -->
 		<c:import url="../../inc/admin_header.jsp" />
@@ -25,7 +39,7 @@
 					</h4>
 					<hr>
 					<div>
-						<form class="form-inline" action="./${board}List">
+						<form class="form-inline" action="./a${board}List">
 							<div class="form-group col-xs-2">
 								<select class="form-control" name="kind">
 									<option class="k" value="1">제목</option>
@@ -61,22 +75,22 @@
 									<td>${dto.writer}</td>
 									<td>${dto.reg_date}</td>
 									<td>${dto.hit}</td>
-									<td><input type="button" value="삭제"/>
+									<td><input type="button" value="삭제" class="dBtn" id="${dto.num}"/>
 								</tr>
 							</c:forEach>
 						</table>
 						<ul class="pagination">
 							<c:if test="${pager.curBlock>1}">
-								<li><a href="./aBoard${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">BACK</a></li>
+								<li><a href="./a${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">BACK</a></li>
 							</c:if>
 
 							<c:forEach begin="${pager.startNum}" end="${pager.lastNum}"
 								var="i">
-								<li><a href="./aBoard${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+								<li><a href="./a${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 							</c:forEach>
 
 							<c:if test="${pager.curBlock<pager.totalBlock}">
-								<li><a href="./aBoard${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">NEXT</a></li>
+								<li><a href="./a${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">NEXT</a></li>
 							</c:if>
 						</ul>
 					</div>

@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.weekend.board.BoardDTO;
+import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
+import com.project.weekend.file.FileService;
 import com.project.weekend.util.FileSaver;
 import com.project.weekend.util.PageMaker;
 
@@ -23,6 +29,8 @@ public class QnaService {
 	private FileDAO fileDAO;
 	@Inject
 	private FileSaver fileSaver;
+	@Inject
+	private FileService fileService;
 
 	public int setWrite(QnaDTO qnaDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		String num = "q" + qnaDAO.getNum();
@@ -45,28 +53,18 @@ public class QnaService {
 		int res = 0;
 		res = qnaDAO.setUpdate(qnaDTO);
 
-		// db에서 지우기
-		if (fileDAO.getList(qnaDTO.getNum()).size() > 0) {
-			res = fileDAO.setDeleteAll(qnaDTO.getNum());
-		}
-
-		// 실제 디렉토리에서 지우기
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
-		if (qnaDAO.getSelect(qnaDTO.getNum()).getFileDTOs().size() > 0) {
-			for (int i = 0; i < qnaDAO.getSelect(qnaDTO.getNum()).getFileDTOs().size(); i++) {
-				int fnum = qnaDAO.getSelect(qnaDTO.getNum()).getFileDTOs().get(i).getFnum();
-				String fname = fileDAO.getSelect(fnum).getFname();
-				res = fileSaver.deleteFile(realPath, fname);
-			}
-		}
 
-		// 파일 다시 넣기
 		for (MultipartFile f : filelist) {
 			if (f.getOriginalFilename().length() > 0) {
 				FileDTO fileDTO = new FileDTO();
-				fileDTO.setFname(fileSaver.saveFile(realPath, f));
+
 				fileDTO.setNum(qnaDTO.getNum());
-				fileDTO.setOname(f.getOriginalFilename());
+
+				String fname = fileSaver.saveFile(realPath, f);
+				fileDTO.setFname(fname);
+				String oname = f.getOriginalFilename();
+				fileDTO.setOname(oname);
 				res = fileDAO.setWrite(fileDTO);
 			}
 		}
@@ -75,38 +73,50 @@ public class QnaService {
 	}
 
 	public int setDelete(String num, HttpSession session) throws Exception {
-		int res = 0;
-		/* 파일 */
-		// 실제 디렉토리에서 지우기
-		String realPath = session.getServletContext().getRealPath("/resources/images/board");
-		if (qnaDAO.getSelect(num).getFileDTOs().size() > 0) {
-			for (int i = 0; i < qnaDAO.getSelect(num).getFileDTOs().size(); i++) {
-				int fnum = qnaDAO.getSelect(num).getFileDTOs().get(i).getFnum();
-				String fname = fileDAO.getSelect(fnum).getFname();
-				res = fileSaver.deleteFile(realPath, fname);
-				System.out.println(i + 1 + " : " + res);
+		int res = qnaDAO.setDelete(num);
+		List<FileDTO> list = fileDAO.getList(num);
+		if(list != null) {
+			for(FileDTO fileDTO : list) {
+				res = fileService.setDelete(fileDTO, "board", session);
 			}
-		} // db에서 지우기
-		res = fileDAO.setDeleteAll(num);
-		System.out.println("0 : " + res);
-
-		// 글 지우기
-		res = qnaDAO.setDelete(num);
+		}
 		return res;
 	}
 
-	public QnaDTO getSelect(String num, HttpSession session) throws Exception {
-		QnaDTO qnaDTO = new QnaDTO();
-		qnaDTO = qnaDAO.getSelect(num);
+	public QnaDTO getSelect(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		QnaDTO qnaDTO = qnaDAO.getSelect(num);
+		
+		//update 시 파일 없는데 X만 뜨는거 방지. 새로운 리스트로 세팅
+		if(qnaDTO.getFileDTOs().size()==1) {
+			if(qnaDTO.getFileDTOs().get(0).getFname()==null) {
+				qnaDTO.setFileDTOs(new ArrayList<FileDTO>());
+			}
+		}
+		
+		// 쿠키를 이용해서 ajax, 새로고침 시 조회수 증가 방지
+		boolean isGet = false;
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null) {
+			for(Cookie c:cookies) {
+				if(c.getName().equals(num)) {
+					isGet=true;
+				}
+			}
+		}
+		if(!isGet) {
+			qnaDAO.setHitUpdate(num);
+			Cookie c = new Cookie(num, num);
+			c.setMaxAge(30*60); // 30분
+			response.addCookie(c);
+		}
 		return qnaDTO;
 	}
 
 	public List<QnaDTO> getList(PageMaker pageMaker, HttpSession session) throws Exception {
-		int totalCount = qnaDAO.getCount(pageMaker);
 		pageMaker.makeRow();
+		List<QnaDTO> list = qnaDAO.getList(pageMaker);
+		int totalCount = qnaDAO.getCount(pageMaker);
 		pageMaker.makePage(totalCount);
-		List<QnaDTO> list = new ArrayList<QnaDTO>();
-		list = qnaDAO.getList(pageMaker);
 		return list;
 	}
 

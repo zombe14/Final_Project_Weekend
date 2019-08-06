@@ -11,7 +11,7 @@ body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fi
     padding: 0;
 }
 
-h1, h2, h3, h4{
+.list_info h4{
 	overflow: hidden; 
 	text-overflow: ellipsis;
 	white-space: nowrap; 
@@ -48,11 +48,15 @@ ul{
 /* 	overflow: hidden; */
 }
 
-li{
-	float: left;
+.ticket_header strong{
+	font-size: 25px;
 }
 
-strong{
+.best_header strong{
+	font-size: 25px;
+}
+
+.rank_header strong{
 	font-size: 25px;
 }
 
@@ -270,6 +274,7 @@ strong{
 	height: 36px;
 	line-height: 36px;
 	letter-spacing: 1;
+	float: left;
 }
 
 .ticket_header{
@@ -373,6 +378,7 @@ strong{
 	height: 430px;
 	width: 247px;
 	position: relative;
+	float: left;
 }
 
 .best_cont img{
@@ -397,6 +403,9 @@ strong{
 	width: 105px;
 }
 
+.main_right li{
+	float: left;
+}
 .main_right li:nth-child(4){
 	border: 2px solid #e6e6e6;
 }
@@ -439,10 +448,14 @@ strong{
 #back_to_top img{
 	margin-left: 5px;
 }
+
+.weathericon{
+	margin-top: -8px;
+}
+
 /*  ------------------------Footer Css-------------------- */
 
 #f_container{
-	
 	width: 1100px;
 	color: #757575;
 	margin: 0 auto;
@@ -470,7 +483,11 @@ strong{
 .f_inner{
 	width: 600px;
 	margin: 0 auto;
-	
+	overflow: hidden;
+}
+
+.f_info{
+	color: #757575;
 }
 
 .f_menu a:first-child{
@@ -478,6 +495,6 @@ strong{
 }
 
 .f_address a{
-	color: #999;
+	color: #757575;
 	padding: 0 3px;
 }
