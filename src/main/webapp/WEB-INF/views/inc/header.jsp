@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header -->
+ <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberLogout.js?ver=2"></script>
 <div id="h_container">
 	<div class="h_top">
 		<div class="h_wrap">
 			<div class="user_menu">
-			<input type="hidden" value="${member.id }" id="memberId">
-				
+			<input type="hidden" value="${member.id }" id="memberId" name="id">
+
 			
 				<c:choose>
 					<c:when test="${member.grade eq '3'}">

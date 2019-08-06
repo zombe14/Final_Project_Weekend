@@ -136,30 +136,12 @@ public class MemberController {
 	@RequestMapping(value = "memberAgree", method = RequestMethod.GET)
 	public void getAgree()throws Exception{}
 	
-	@RequestMapping(value = "memberLogout", method =RequestMethod.GET)
+	@RequestMapping(value = "memberLogout")
 	public String logout(HttpServletRequest request,HttpSession session, MemberDTO memberDTO)throws Exception{
-
 		session.invalidate();
 		return "redirect:../";
 	}
 	
 	
-	
-	
-																								// Iterator<HttpSession>
-																								// iterator =
-																								// sessionMap.keySet().iterator();
-																								// while
-																								// (iterator.hasNext())
-																								// { HttpSession key =
-																								// (HttpSession)
-																								// iterator.next();
-																								// dataMap.clear(); //이미
-																								// 접속한 사용자(세션)
-																								// dataMap.put("userId",
-																								// sessionMap.get(key));
-																								// this.duplicationRoleCheck(Session,
-																								// dataMap , sessionMap,
-																								// srpCodeList); }
 
 }

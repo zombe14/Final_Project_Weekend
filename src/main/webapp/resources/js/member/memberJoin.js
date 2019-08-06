@@ -276,7 +276,7 @@ $(function() {
 						alert("이미 존재하는 활동명입니다");
 						$("#result_nicknameCheck").val('');
 					}else{
-						alert("사용가능한 활동명 입니다")
+						alert("사용가능한 활동명 입니다");
 						$('#nickname').attr('readonly', true);
 						$("#nicknameCheck").attr('type', 'hidden');
 						$("#result_nicknameCheck").val('0');
