@@ -1,8 +1,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- transaction, aop -->
+	<aop:aspectj-autoproxy />
 	
 	<!-- notice -->
 	<bean class="com.project.weekend.board.notice.NoticeDTO" id="noticeDTO" />
@@ -27,5 +30,6 @@
 	<!-- festiQna -->
 	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaDTO" id="festiQnaDTO"/>
 	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaDAO" id="festiQnaDAO"/>
-	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaService" id="festiQnaService"/>
+	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaService" id="festiQnaService"/>	
+	
 </beans>

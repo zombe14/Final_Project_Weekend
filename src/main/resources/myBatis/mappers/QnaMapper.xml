@@ -75,7 +75,7 @@
 	</select>
 
 	<select id="getSelect" resultMap="qnaResult" parameterType="String">
-		SELECT * FROM QNA WHERE NUM = #{num}
+		SELECT * FROM QNA FULL JOIN FILES USING(NUM) WHERE NUM = #{num}
 	</select>
 	
 	<select id="getTop" resultMap="qnaResult">
@@ -94,7 +94,9 @@
 		INSERT INTO QNA(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH) 
 		VALUES(${num}, #{writer}, #{contents}, sysdate, 0, #{pw}, #{ref}, #{step}, #{depth})
 	</insert>
-	
+	<update id="setHitUpdate" parameterType="String">
+		UPDATE QNA SET HIT = HIT + 1 WHERE NUM = #{num}
+	</update>
 	
 	
 </mapper>

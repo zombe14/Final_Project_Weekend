@@ -1,5 +1,15 @@
+----------------------
+
+select * from files order by fnum desc
+
+----------------------
+UPDATE NOTICE SET HIT = HIT + 1 WHERE NUM = 'n188'
+
 select * from member
-select * from festiqna
+select * from notice order by reg_date desc
+
+delete notice where num in ('n193','n192')
+
 select * from files order by fnum desc
 
 SELECT * FROM AFTER WHERE ANUM = 'a'

@@ -7,11 +7,8 @@
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberAgree.css"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberAgree.css?ver=1">
+  <c:import url="../temp/boot.jsp"></c:import> 
   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberAgree.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
@@ -30,9 +27,9 @@
 		<h1>약관동의</h1>
 		<div class="essentialTermsWrap">
 					<div>
-						<div class="custom-control custom-checkbox mb-3" id="checkAll">
+						<div class="custom-control custom-checkbox mb-3 checks" id="checkAll">
 					      <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-					      <label class="custom-control-label" id="checkAllfont" for="customCheck"><p class="checkAllfont_sub">약관 전체동의</p>	</label>
+					      <label class="custom-control-label" id="checkAllfont" for="customCheck"><p class="checkAllfont_sub" id="checkAll_sub_sub">약관 전체동의</p>	</label>
 					    </div>
 					</div>
 					<div>
@@ -109,14 +106,14 @@
 					    </div>
 					</div>
 				</div>
-            <button id="join" class="btn btn-danger" style="border-radius: 0px;	width: 20%; margin-left: 40%;" type="submit" form="new_normal_user">
+            <button id="join" class="btn btn-danger" style="border-radius: 0px;	margin-top: 20px; width: 20%; margin-left: 40%;" type="submit" form="new_normal_user">
             회원가입하기
         </button>
 
 	</div>
 	</div>
 </div>
-<div id="footer" style="margin-top: 500px;">
+<div id="footer" style="margin-top: 300px;">
 		<c:import url="../inc/footer.jsp"></c:import>
 	</div>
 </div>
