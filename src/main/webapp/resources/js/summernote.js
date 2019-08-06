@@ -1,12 +1,5 @@
 
-	$('#write').click(function() {
-		// 다른 input도 검증.
-		if($('#contents').summernote('isEmpty')){
-			alert('내용을 입력해주세요');
-		} else {
-			$('#frm').submit();
-		}
-	});
+
 
 	// summernote -------------
 	$('#contents').summernote({

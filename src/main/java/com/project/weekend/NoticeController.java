@@ -3,7 +3,10 @@ package com.project.weekend;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Response;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,7 @@ import com.project.weekend.board.notice.NoticeDAOImpl;
 import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.board.notice.NoticeServiceImpl;
 import com.project.weekend.file.FileDTO;
+import com.project.weekend.file.FileService;
 import com.project.weekend.util.PageMaker;
 
 @Controller
@@ -23,46 +27,58 @@ import com.project.weekend.util.PageMaker;
 public class NoticeController {
 	
 	@Inject
+	private NoticeDAOImpl noticeDAOImpl;
+	@Inject
 	private NoticeServiceImpl noticeSerivceImpl;
+	private static final String boardTitle = "공지";
 	
 	/*공지 글쓰기*/
 	// 글쓰기 폼으로 이동 - admin
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
 	public ModelAndView noticeWrite(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<BoardDTO> top = noticeSerivceImpl.getTopList();
+		
+		mv.addObject("topCount", top.size());
 		mv.addObject("board", "notice");
-		mv.addObject("boardTitle", "Notice");
-		mv.setViewName("board/boardWrite");
+		mv.addObject("boardTitle", boardTitle);
+		mv.setViewName("board/noticeWrite");
+		
 		return mv;
 	}
 	
 	// 글쓰기 프로세스 진행 - admin
-	// ** messageMove 만들어서 alert, path 수정하기
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public ModelAndView noticeWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 
 		ModelAndView mv = new ModelAndView();
-		String path = "redirect:./noticeList";
+		String path = "./noticeList";
+		String message = "글 작성에 실패했어요";
 		int result = noticeSerivceImpl.setWrite(boardDTO, filelist, session);
 		if(result>0) {
-			mv.setViewName(path);
+			mv.setViewName("redirect:./noticeList");
 		} else {
-			mv.setViewName(path);
+			mv.addObject("message", message);
+			mv.addObject("path", path);
+			mv.setViewName("common/messageMove");			
 		}
-		
+
 		return mv;
 	}
 	
 	/*공지 업데이트*/
 	// 업데이트 폼으로 이동 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.GET)
-	public ModelAndView noticeUpdate(String num, HttpSession session) throws Exception{
+	public ModelAndView noticeUpdate(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
+		
+		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session,request, response);
+		int topCount = noticeSerivceImpl.getTopList().size();
+		mv.addObject("topCount", topCount);
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
-		mv.addObject("boardTitle", "Notice");
-		mv.setViewName("board/boardUpdate");
+		mv.addObject("boardTitle", boardTitle);
+		mv.setViewName("board/noticeUpdate");
 		return mv;
 	}
 	
@@ -70,44 +86,46 @@ public class NoticeController {
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
 	public ModelAndView noticeUpdate(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		String path = "redirect:./noticeList";
+		String path = "redirect:./noticeSelect?num="+boardDTO.getNum();
 	
 		int result = noticeSerivceImpl.setUpdate(boardDTO, filelist, session);
 		if(result>0) {
-			System.out.println("ok");
+			
 			mv.setViewName(path);
 		} else {
 			//mv.setViewName("redirect:./noticeSelect?num="+boardDTO.getNum());
-			System.out.println("nope");
+			
 			mv.setViewName(path);
 		}
 		return mv;
 	}
 	
 	// 공지 삭제 - admin
-	@RequestMapping(value = "noticeDelete", method = RequestMethod.GET)
-	public String noticeDelete(String num, HttpSession session) throws Exception{
+	@RequestMapping(value = "noticeDelete", method = RequestMethod.POST)
+	public ModelAndView noticeDelete(String num, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		String path = "./boardSelect?num="+num;
-		String message = "실패";
+		String message = "삭제가 실패했습니다.";
 		int res = noticeSerivceImpl.setDelete(num, session);
 		if(res>0) {
-			path = "redirect:./noticeList";
-			message="성공";
+			path = "../notice/noticeList";
+			message="삭제가 완료됐습니다.";
 		}
-		System.out.println(message);
-		return path;
+		mv.addObject("message", message);
+		mv.addObject("path", path);
+		mv.setViewName("common/messageMove");
+		return mv;
 	}
 	
 	// 공지글보기 - all
 	@RequestMapping(value = "noticeSelect", method = RequestMethod.GET)
-	public ModelAndView noticeSelect(String num, HttpSession session) throws Exception{
+	public ModelAndView noticeSelect(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
 
-		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session);
-		
+		BoardDTO boardDTO = noticeSerivceImpl.getSelect(num, session, request, response);
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
-		mv.addObject("boardTitle", "Notice");
+		mv.addObject("boardTitle", boardTitle);
 		mv.setViewName("board/boardSelect");
 		
 		return mv;
@@ -120,7 +138,7 @@ public class NoticeController {
 		List<BoardDTO> list = noticeSerivceImpl.getList(pageMaker, session);
 		List<BoardDTO> top = noticeSerivceImpl.getTopList();
 		mv.addObject("board", "notice");
-		mv.addObject("boardTitle", "Notice");
+		mv.addObject("boardTitle", boardTitle);
 		mv.addObject("list", list);
 		mv.addObject("top", top);
 		mv.addObject("pager",pageMaker);

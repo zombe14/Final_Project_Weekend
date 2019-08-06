@@ -70,7 +70,7 @@ public class AfterDAOTest extends AbstractTest {
 
 		map.put("pageMaker", pageMaker);
 		map.put("num", num);
-		int t = afterDAO.getCount(map);
+		int t = afterDAO.getCount(pageMaker);
 		assertNotEquals(t, 0);
 	}
 
@@ -81,10 +81,10 @@ public class AfterDAOTest extends AbstractTest {
 		
 		map.put("pageMaker", pageMaker);
 		map.put("num", num);
-		int totalCount = afterDAO.getCount(map);
+		int totalCount = afterDAO.getCount(pageMaker);
 		pageMaker.makeRow();
 		pageMaker.makePage(totalCount);
-		List<AfterDTO> list = afterDAO.getList(map);
+		List<AfterDTO> list = afterDAO.getList(pageMaker);
 		System.out.println(list.size());
 		assertNotEquals(0, list.size());
 	}

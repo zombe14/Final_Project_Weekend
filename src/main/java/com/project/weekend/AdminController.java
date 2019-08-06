@@ -37,11 +37,12 @@ public class AdminController {
 	////////////// admin User; //////////////
 	// userList
 	@RequestMapping(value = "aUserList", method = RequestMethod.GET)
-	public ModelAndView aUserList(HttpSession session, MemberDTO memberDTO) throws Exception {
+	public ModelAndView aUserList(PageMaker pageMaker, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<MemberDTO> list = memberService.getList(session, memberDTO);
+		List<MemberDTO> list = memberService.getList(session, pageMaker);
 		mv.addObject("board", "User");
 		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
 		mv.setViewName("admin/User/aUserList");
 		return mv;
 	}

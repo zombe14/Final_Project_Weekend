@@ -19,75 +19,84 @@ import com.project.weekend.util.PageMaker;
 @Controller
 @RequestMapping(value = "/after/")
 public class AfterController {
-	
+
 	private String after = "After";
 
 	@Inject
 	private AfterService afterService;
 	@Inject
 	private FestiService festiService;
-	
-	@RequestMapping(value = "afterWrite",method = RequestMethod.GET)
-	public ModelAndView setWrite(String num, HttpSession session) throws Exception{
+
+	@RequestMapping(value = "afterWrite", method = RequestMethod.GET)
+	public ModelAndView setWrite(String num, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		String title = festiService.getSelect(num).getTitle();
 		mv.addObject("originNum", num);
 		mv.addObject("originTitle", title);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
-		mv.setViewName("board/boardWrite");
+		mv.setViewName("board/afterWrite");
 		return mv;
 	}
-	
-	@RequestMapping(value = "afterWrite",method = RequestMethod.POST)
-	public ModelAndView setWrite(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+
+	@RequestMapping(value = "afterWrite", method = RequestMethod.POST)
+	public ModelAndView setWrite(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int res = 0;
-		
+
+		String path = "redirect:./afterList?num=" + afterDTO.getNum();
 		res = afterService.setWrite(afterDTO, filelist, session);
-		String path = "redirect:./afterList?num="+afterDTO.getNum();
+		if (res > 0) {
+			path = "redirect:./afterSelect?num=" + afterDTO.getAnum();
+		}
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.setViewName(path);
 		return mv;
 	}
-	
-	@RequestMapping(value = "afterUpdate",method = RequestMethod.GET)
-	public ModelAndView setUpdate(String num, HttpSession session) throws Exception{
+
+	@RequestMapping(value = "afterUpdate", method = RequestMethod.GET)
+	public ModelAndView setUpdate(String anum, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		AfterDTO afterDTO = afterService.getSelect(num, session);
+		AfterDTO afterDTO = afterService.getSelect(anum, session);
+		mv.addObject("originNum", anum);
+		mv.addObject("originTitle", afterDTO.getTitle());
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.setViewName("board/boardUpdate");
 		return mv;
 	}
-	@RequestMapping(value = "afterUpdate",method = RequestMethod.POST)
-	public ModelAndView setUpdate(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+
+	@RequestMapping(value = "afterUpdate", method = RequestMethod.POST)
+	public ModelAndView setUpdate(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int res = 0;
 		res = afterService.setUpdate(afterDTO, filelist, session);
-		String path = "redirect:./afterSelect?anum="+afterDTO.getAnum();
+		String path = "redirect:./afterSelect?anum=" + afterDTO.getAnum();
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.setViewName(path);
 		return mv;
 	}
-	@RequestMapping(value = "afterDelete",method = RequestMethod.GET)
-	public ModelAndView setDelete(String anum, HttpSession session) throws Exception{
+
+	@RequestMapping(value = "afterDelete", method = RequestMethod.GET)
+	public ModelAndView setDelete(String anum, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int res = afterService.setDelete(anum, session);
-		String path = "redirect:./afterList";
+		String path = "redirect:./afterAllList";
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.setViewName(path);
 		return mv;
 	}
-	
-	@RequestMapping(value = "afterSelect",method = RequestMethod.GET)
-	public ModelAndView getSelect(String anum, HttpSession session) throws Exception{
+
+	@RequestMapping(value = "afterSelect", method = RequestMethod.GET)
+	public ModelAndView getSelect(String num, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		AfterDTO afterDTO = afterService.getSelect(anum, session);
+
+		AfterDTO afterDTO = afterService.getSelect(num, session);
+		
 		String path = "board/boardSelect";
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
@@ -96,22 +105,37 @@ public class AfterController {
 		return mv;
 	}
 
-	
 	//////////////////////////////////////////////////////////////////////////////////////
-	
-	@RequestMapping(value = "afterList",method = RequestMethod.GET)
-	public ModelAndView getList(PageMaker pageMaker, String num) throws Exception{
+
+	@RequestMapping(value = "afterList", method = RequestMethod.GET)
+	public ModelAndView getList(PageMaker pageMaker, String num) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("con list num : "+num);
+
 		String path = "board/boardList";
-		
-		
-		List<AfterDTO> list = afterService.getList(pageMaker, num);
+
+		List<AfterDTO> list = afterService.getList(pageMaker);
+
 		mv.addObject("list", list);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
-		mv.setViewName(path);		
+		mv.addObject("pager", pageMaker);
+		mv.setViewName(path);
 		return mv;
 	}
-	
+
+	@RequestMapping(value = "afterAllList", method = RequestMethod.GET)
+	public ModelAndView getAllList(PageMaker pageMaker) throws Exception {
+		ModelAndView mv = new ModelAndView();
+
+		String path = "board/boardList";
+
+		List<AfterDTO> list = afterService.getAllList(pageMaker);
+
+		mv.addObject("list", list);
+		mv.addObject("board", "after");
+		mv.addObject("boardTitle", after);
+		mv.addObject("pager", pageMaker);
+		mv.setViewName(path);
+		return mv;
+	}
 }

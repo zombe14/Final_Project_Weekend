@@ -4,39 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="MemberMapper">
-	
-	<!-- 상혁 -->
-	<select id="getList" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
-		select * from member where grade = 1 or grade = 2
-	</select>
-	<!-- 상혁 끝 -->
-	
-	<select id="getSelect" resultMap="member" parameterType="com.project.weekend.member.MemberDTO">
-		select * from member where id=#{id} and pw=#{pw}
-	</select>
-	<select id="getId" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
-		select id from member where id=#{id}
-	</select>
-	<select id="getNickname" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
-		select nickname from member where nickname=#{nickname}
-	</select>
-
-	<delete id="setDelete" parameterType="java.util.List">
-		delete member where id=#{id}
-	</delete>
-	<insert id="setWrite" parameterType="com.project.weekend.member.MemberDTO">
-		insert into member  values(#{id}, #{pw}, #{name}, 0, #{email}, #{phone}, 1, #{nickname},0)
-	</insert>
-	<update id="setUpdate" parameterType="com.project.weekend.member.MemberDTO">
-		update member set count=count+1 where id =#{id}
-	</update>
-	<update id="setUpdatezero" parameterType="com.project.weekend.member.MemberDTO">
-		update member set count=0 where id=#{id}
-	</update>
-	<select id="getSelectCount" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
-		select * from member where id=#{id} and count>5
-	</select>
-	<resultMap type="com.project.weekend.member.MemberDTO" id="member">
+	<resultMap type="MemberDTO" id="member">
 		<id property="id" column="id"/>
 		<result property="pw" column="pw"/>
 		<result property="name" column="name"/>
@@ -47,4 +15,81 @@
 		<result property="grade" column="grade"/>	
 		<result property="count" column="count"/>
 	</resultMap>
+	<!-- 상혁 -->
+		<!-- 유저 리스트 -->
+<!-- 	<select id="getList" resultType="MemberDTO" parameterType="PageMaker">
+		SELECT * FROM 
+			(SELECT ROWNUM R, M.* FROM 
+			(SELECT ID, NICKNAME, NAME, AGE, EMAIL, PHONE, GRADE FROM MEMBER WHERE 
+			<choose>
+				<when test="kind = 1">
+					NICKNAME LIKE '%'||#{search}||'%'
+				</when>
+				<when test="kind = 2">
+					NAME LIKE '%'||#{search}||'%'
+				</when>
+				<when test="kind = 3">
+					GRADE LIKE '%'||#{search}||'%'
+				</when>
+				<otherwise>
+					ID LIKE '%'||#{search}||'%'
+				</otherwise>
+			</choose>
+				ORDER BY ID ASC) M)
+				WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select> -->
+		<select id="getList" resultType="MemberDTO" parameterType="MemberDTO">
+			select * from 
+			(select rownum r, m.* from
+			(select id, nickname, name, age, email, phone, grade from member where
+			grade = 1 or grade = 2
+			order by id asc) m)
+			where r between #{startRow} and #{lastRow}
+	</select>
+	<!-- pageing 처리를 위한 -->
+	<select id="getTotalCount" resultType="Integer" parameterType="PageMaker">
+		SELECT COUNT(ID) FROM MEMBER WHERE
+		<choose>
+			<when test="kind = 1">
+				NICKNAME LIKE '%'||#{search}||'%'
+			</when>
+			<when test="kind = 2">
+				NAME LIKE '%'||#{search}||'%'
+			</when>
+			<when test="kind = 3">
+				GRADE LIKE '%'||#{search}||'%'
+			</when>
+			<otherwise>
+				<!-- TITLE LIKE '%'||#{search}||'%' OR -->
+				NICKNAME|NAME|GRADE LIKE '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+	</select>
+	<!-- 상혁끝 -->
+	
+	<select id="getSelect" resultMap="member" parameterType="MemberDTO">
+		select * from member where id=#{id} and pw=#{pw}
+	</select>
+	<select id="getId" resultType="MemberDTO" parameterType="MemberDTO">
+		select id from member where id=#{id} 
+	</select>
+	<select id="getNickname" resultType="com.project.weekend.member.MemberDTO" parameterType="com.project.weekend.member.MemberDTO">
+		select nickname from member where nickname=#{nickname}
+	</select>
+
+	<delete id="setDelete" parameterType="java.util.List">
+		delete member where id=#{id}
+	</delete>
+	<insert id="setWrite" parameterType="MemberDTO">
+		insert into member  values(#{id}, #{pw}, #{name}, 0, #{email}, #{phone}, 1, #{nickname},0)
+	</insert>
+	<update id="setUpdate" parameterType="MemberDTO">
+		update member set count=count+1 where id =#{id}
+	</update>
+	<update id="setUpdatezero" parameterType="MemberDTO">
+		update member set count=0 where id=#{id}
+	</update>
+	<select id="getSelectCount" resultType="MemberDTO" parameterType="MemberDTO">
+		select * from member where id=#{id} and count>5
+	</select>
 </mapper>

@@ -4,10 +4,10 @@
 <c:import url="./temp/boot.jsp"></c:import>
 <html>
 <head>
-	<title>Home</title>
+	<title>Weekend뭐해</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
 	<link rel="shortcut icon" type="image/x-icon" href="./resources/images/logo/logo.png" />
-	<script type="text/javascript" src="./resources/js/weather.js"></script>
+	<script type="text/javascript" src="./resources/js/home.js"></script>
 </head>
 <body>
 <div id="wrap">
@@ -16,10 +16,30 @@
 	</div>
 	<div id="container">
 		<c:import url="./inc/container.jsp"></c:import>
+<<<<<<< HEAD
 	</div> 
+=======
+	</div>
+	
+>>>>>>> master
 	<div id="footer">
 		<c:import url="./inc/footer.jsp"></c:import>
 	</div>
 </div>
+<!-- Tocplus 15.1 -->
+<script type="text/javascript">
+tocplusTop=1150;
+tocplusLeft=50;
+tocplusMinimizedImage='http://kr03.tocplus007.com/img/minimized_ko.gif';
+tocplusHAlign='right';
+tocplusWidth=180;
+tocplusHeight=220;
+tocplusUserName='손님';
+tocplusFrameColor='#00d344';
+tocplusFloatingWindow=true;
+var tocplusHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+document.write(unescape("%"+"3Cscript src='" + tocplusHost + "kr03.tocplus007.com/chatLoader.do?userId=kws332' type='text/javascript'"+"%"+"3E"+"%"+"3C/script"+"%"+"3E"));
+</script>
+<!-- End of Tocplus -->
 </body>
 </html>

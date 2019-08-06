@@ -11,4 +11,6 @@ public class CallCenterController {
 	public void mainSelect(){}
 	@RequestMapping(value = "ticketguide")
 	public void ticketguideSelect() {}
+	@RequestMapping(value = "cancel")
+	public void cancel() {}
 }
