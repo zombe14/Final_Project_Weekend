@@ -26,7 +26,7 @@
 			<c:import url="../inc/header.jsp"></c:import>
 		</div>
 		<div id="container">
-			<div class="inner">
+			<div class="conta">
 				<strong>${boardTitle} 글 수정</strong>
 				<form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
 					<table class="table table-bordered">
