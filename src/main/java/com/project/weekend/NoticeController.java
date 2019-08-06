@@ -138,6 +138,7 @@ public class NoticeController {
 		List<BoardDTO> list = noticeSerivceImpl.getList(pageMaker, session);
 		List<BoardDTO> top = noticeSerivceImpl.getTopList();
 		List<BoardDTO> news = noticeSerivceImpl.getNewList();
+		System.out.println(news.size());
 		mv.addObject("board", "notice");
 		mv.addObject("boardTitle", boardTitle);
 		mv.addObject("list", list);

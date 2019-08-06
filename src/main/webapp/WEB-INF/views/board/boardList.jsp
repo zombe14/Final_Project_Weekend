@@ -89,9 +89,11 @@
 					</div>
 				<%-- </c:if> --%>
 				
-				<c:forEach items="${news.title}" var="t">
-					<p>${t}</p>
+			<c:if test="${board eq 'notice' }">
+				<c:forEach items="${news}" var="t">
+					<p>${t.title}</p>
 				</c:forEach>
+			</c:if>
 				
 				<div id="tableDiv">
 					<!-- notice list 테이블 -->
