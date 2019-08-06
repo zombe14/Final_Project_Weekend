@@ -49,10 +49,6 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 
 
 </web-app>

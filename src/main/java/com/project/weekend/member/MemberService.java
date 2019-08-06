@@ -87,4 +87,12 @@ public class MemberService {
 	public MemberDTO getSelectCount(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelectCount(memberDTO);
 	}
+	public MemberDTO getSelectOverlap(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getSelectOverlap(memberDTO);
+	}
+	
+	
+	
+	
+	
 }

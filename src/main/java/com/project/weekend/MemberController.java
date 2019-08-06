@@ -98,12 +98,21 @@ public class MemberController {
 		MemberDTO getId = memberService.getId(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
+		MemberDTO getOverlap = memberService.getSelectOverlap(memberDTO);
 		String message="존재 하지 않는 아이디 입니다.";
 		if(getId==null) {
 			mv.setViewName("common/messageMove");
 			mv.addObject("message", message);
 			mv.addObject("path", "./memberLogin");
 		}else {
+			if(getOverlap!=null) {
+				message = "현재 로그인 상태인 아이디입니다.";
+				mv.setViewName("common/messageMove");
+				mv.addObject("message", message);
+				mv.addObject("path", "./memberLogin");
+			}else {
+			
+			
 			memberDTO = memberService.getSelect(memberDTO);
 			message="Login Fail";
 			if(result==1) {	
@@ -130,15 +139,15 @@ public class MemberController {
 				
 			}
 		}
+		}
 		return mv;
 	}
 	@RequestMapping(value = "memberAgree", method = RequestMethod.GET)
 	public void getAgree()throws Exception{}
 	
-	@RequestMapping(value = "memberLogout", method = RequestMethod.POST)
-	public String logout(MemberDTO memberDTO, HttpSession session, HttpServletRequest request)throws Exception{
-		String id = request.getParameter("id");
-		System.out.println(id);
+	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
+	public String logout(String id, HttpSession session, MemberDTO memberDTO)throws Exception{
+		memberService.setUpdateoverlap(memberDTO);
 		session.invalidate();
 		return "redirect:../";
 	}
