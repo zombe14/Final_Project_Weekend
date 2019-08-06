@@ -88,6 +88,11 @@
 						<button id="boardWrite" value="${board}">${boardTitle} 글쓰기</button>
 					</div>
 				<%-- </c:if> --%>
+				
+				<c:forEach items="${news.title}" var="t">
+					<p>${t}</p>
+				</c:forEach>
+				
 				<div id="tableDiv">
 					<!-- notice list 테이블 -->
 					<table class="table">
