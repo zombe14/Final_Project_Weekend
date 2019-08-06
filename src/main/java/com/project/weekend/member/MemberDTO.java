@@ -1,5 +1,7 @@
 package com.project.weekend.member;
 
+import java.sql.Date;
+
 public class MemberDTO {
 	private String id;
 	private String pw;
@@ -11,11 +13,25 @@ public class MemberDTO {
 	private String phone;
 	private int grade;
 	private int count;
+	private int overlap;
+	private Date reg_date;
 	
 	
 	
 	
 	
+	public Date getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
+	public int getOverlap() {
+		return overlap;
+	}
+	public void setOverlap(int overlap) {
+		this.overlap = overlap;
+	}
 	public int getCount() {
 		return count;
 	}

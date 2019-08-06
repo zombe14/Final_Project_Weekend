@@ -41,9 +41,9 @@ $(function() {
 			f = true;
 		}
 		if(t&&f){
-			$('#email_store').val("true");
+			$('#email_store').val("0");
 		}else{
-			$('#email_store').val("false");
+			$('#email_store').val('');
 		}
 	});
 	$("#emailFirst").keyup(function(e) { 
@@ -51,6 +51,8 @@ $(function() {
 			var v = $(this).val();
 			$(this).val(v.replace(/[^a-z0-9]/gi,''));
 			result_mememail.innerHTML = "영문과 숫자로 입력해주세요.";
+		}else{
+			
 		}
 	});
 	$("#emailFirst").blur(function() {
@@ -203,6 +205,7 @@ $(function() {
 			v = true;
 		}else if(s==''){
 			alert("이메일을 입력하세요");
+			v= false;
 		}else{
 			v = false;
 		}
@@ -221,8 +224,7 @@ $(function() {
 				$("#frm").submit();
 			}else if(nicknameCheck!='0'){
 				alert("활동명을 입력하세요");
-			}else{
-			
+			}else{	
 				alert("비밀번호나 이름을 확인해주세요");
 			}
 		}else{

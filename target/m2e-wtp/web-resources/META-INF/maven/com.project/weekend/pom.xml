@@ -52,6 +52,8 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		<!-- ojdbc6 -->
+		
+
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
@@ -202,13 +204,13 @@
 		    <artifactId>aspectjweaver</artifactId>
 		    <version>${org.aspectj-version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-aop</artifactId>
-		    <version>${org.springframework-version}</version>
-		</dependency>
+
+
+
+
 	</dependencies>
+
+   		
     <build>
         <plugins>
             <plugin>

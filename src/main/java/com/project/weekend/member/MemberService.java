@@ -38,6 +38,7 @@ public class MemberService {
 	}
 	// 상혁 끝;
 	
+	
 	public MemberDTO getNickname(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getNickname(memberDTO);
 	}
@@ -51,6 +52,9 @@ public class MemberService {
 	}
 	public int setUpdatezero(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setUpdatezero(memberDTO);
+	}
+	public int setUpdateoverlap(MemberDTO memberDTO)throws Exception{
+		return memberDAO.setUpdateoverlap(memberDTO);
 	}
 	public int setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session)throws Exception{
 		String realPath = session.getServletContext().getRealPath("resources/member");
