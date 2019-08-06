@@ -1,6 +1,6 @@
 ----------------------
 
-select * from files order by fnum desc
+select * from qna order by reg_date
 
 ----------------------
 UPDATE NOTICE SET HIT = HIT + 1 WHERE NUM = 'n188'

@@ -148,5 +148,8 @@ public class NoticeServiceImpl implements BoardService {
 		return noticeDAOImpl.getTopList();
 	}
 	
+	public List<BoardDTO> getNewList() throws Exception{
+		return noticeDAOImpl.getNewList();
+	}
 
 }

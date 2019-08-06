@@ -18,17 +18,23 @@ public class NoticeDAOImplTest extends AbstractTest {
 	private NoticeDAOImpl noticeDAOImpl;
 	
 	@Test
+	public void getNewList() throws Exception{
+		List<BoardDTO> list = noticeDAOImpl.getNewList();
+		System.out.println(list.size());
+	}
+	
+	//@Test
 	public void setWrite() throws Exception {
-		
+		for(int i = 0; i<20;i++) {
 			NoticeDTO noticeDTO = new NoticeDTO();
-			noticeDTO.setContents("secondTest");
-			noticeDTO.setTitle("secondTest");
-			noticeDTO.setTop(1);
+			noticeDTO.setContents("noticeContents"+i);
+			noticeDTO.setTitle("noticeTitle"+i);
+			noticeDTO.setTop(0);
+			noticeDTO.setNum("test"+i);
 			noticeDTO.setWriter("ADMIN");
 			int res = noticeDAOImpl.setWrite(noticeDTO);
-			System.out.println(noticeDTO.getTitle());
-			System.out.println(noticeDTO.getNum());
 			assertEquals(res, 1);
+		}
 	}
 	
 	//@Test

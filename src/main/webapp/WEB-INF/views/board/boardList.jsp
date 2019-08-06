@@ -191,6 +191,7 @@
 			num = num.substring(1);
 			$(this).children('p').append(num);
 		});
+		
 	</script>
 
 </body>

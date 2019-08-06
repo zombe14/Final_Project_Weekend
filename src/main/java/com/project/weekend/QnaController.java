@@ -45,6 +45,13 @@ public class QnaController {
 		mv.setViewName(path);
 		return mv;
 	}
+	
+	@RequestMapping(value = "qnaReplyWrite", method = RequestMethod.POST)
+	public ModelAndView setReplyWrite(QnaDTO qnaDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
+	}
 
 	@RequestMapping(value = "qnaList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker, HttpSession session) throws Exception {
