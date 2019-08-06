@@ -1,0 +1,74 @@
+.call_cont h3.legal_guide{
+    display: block;
+    width: 175px;
+    height: 24px;
+    margin-bottom: 16px;	
+}
+
+.call_cont h3{
+	font-weight: bold;
+}
+
+.reserve_guide{
+    border-top: 2px solid #999;
+    padding: 30px 0;
+    margin-top: 36px;
+}
+
+.p_reative{
+	position: relative;
+}
+
+.p_reative em{
+    color: #40b409;
+}
+
+.reserve_guide h4.illegal{
+    display: block;
+    width: 262px;
+    height: 113px;
+    margin-bottom: 27px;
+    font-size: 20px;
+}
+
+.ill_p{
+	font-size: 20px;
+}
+
+.guide_dsc{
+	line-height: 20px;
+}
+
+.illegal_img{
+	position: absolute;
+    top: 0;
+    right: 73px;
+    width: 162px;
+    height: 161px;
+    background: url("../images/callcenter/부정이용.JPG");
+}
+
+.btn_terms{
+	width: 153px;
+    height: 34px;
+    margin-top: 30px;
+}
+
+.btn_terms a{
+    background-color: #00d344;
+    color: white;
+    padding: 11px 25px;
+}
+
+.illegal_tit{
+	display: inline-block;
+    margin: 2px 0 9px;
+    font-weight: bold;
+    color: #40b409;
+    font-size: 20px;
+}
+
+.guide_dsc em{
+    font-weight: bold;
+    color: #40b409;
+}
