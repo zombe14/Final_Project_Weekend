@@ -26,8 +26,12 @@
 		<div id="container">
 			<div class="conta">
 
-				<form action="./${board}Write" method="post"
-					enctype="multipart/form-data" id="frm">
+				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+				<c:if test="${board eq 'qnaReply'}">
+					<p>원글 제목 : ${qnaOrigin.title}</p>
+					<p>원글 글쓴이 : ${qnaOrigin.writer}</p>
+					<input type="hidden" name ="ref" value="${qnaOrigin.num}">
+				</c:if>
 
 					<div>
 						<label for="title">제목<span>*</span></label> <input type="text"
@@ -53,9 +57,7 @@
 							</div>
 						</div>
 					</div>
-
-
-
+					
 					<div>
 						<label for="pw">비밀번호</label> <input type="radio" class="pwSel"
 							name="secret" id="nonSecret" checked="checked"> 오픈글 <input
@@ -64,7 +66,7 @@
 							placeholder="글 열람 시 사용할 비밀번호를 입력해주세요">
 					</div>
 
-					<input type="button" id="write" value="등록">
+					<a class="btn btn-default" id="write">등록</a>
 				</form>
 
 			</div>
@@ -123,9 +125,6 @@
 			}
 		});
 
-		// date picker
-
-		/* date picker 끝 */
 
 		if ($('#nonSecret').prop('checked', true)) {
 			$('#pw').val('');
@@ -141,6 +140,11 @@
 				$('#pw').show();
 			}
 		});
+		
+		$('#write').click(function() {
+			$('#frm').submit();				
+		});
+		
 	</script>
 </body>
 </html>

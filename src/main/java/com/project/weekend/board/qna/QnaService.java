@@ -119,5 +119,14 @@ public class QnaService {
 		pageMaker.makePage(totalCount);
 		return list;
 	}
+	
+	public int setReplyWrite(QnaDTO qnaDTO) throws Exception{
+		int res = 0;
+		// 1. 사전작업 - update
+		res = qnaDAO.setReplyUpdate(qnaDTO);
+		// 2. insert
+		res = qnaDAO.setReplyWrite(qnaDTO);
+		return res;
+	}
 
 }

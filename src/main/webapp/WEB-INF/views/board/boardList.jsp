@@ -82,6 +82,9 @@
 						<c:forEach items="${list}" var="list">
 							<tr class="select">
 								<c:if test="${board eq 'notice' or board eq 'qna'}">
+									<c:if test="${board eq 'qna'}">
+										<c:forEach begin="1" end="${dto.depth}">&nbsp;&nbsp;&nbsp;</c:forEach>
+									</c:if>	
 									<td class="selectRow td10" id="${list.num}"><p></p></td>
 								</c:if>
 								<c:if test="${board eq 'after' or board eq 'afterAll'}">
