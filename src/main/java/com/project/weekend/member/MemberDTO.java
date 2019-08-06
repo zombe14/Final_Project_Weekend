@@ -15,7 +15,6 @@ public class MemberDTO {
 	
 	
 	
-	
 	public int getCount() {
 		return count;
 	}

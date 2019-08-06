@@ -14,13 +14,14 @@
 		<result property="phone" column="phone"/>
 		<result property="grade" column="grade"/>	
 		<result property="count" column="count"/>
+		<result property="reg_date" column="reg_date"/>
 	</resultMap>
 	<!-- 상혁 -->
 	<!-- 유저 리스트 -->
 	<select id="getList" resultType="MemberDTO" parameterType="PageMaker">
 		SELECT * FROM 
 			(SELECT ROWNUM R, M.* FROM 
-			(SELECT ID, NICKNAME, NAME, AGE, EMAIL, PHONE, GRADE FROM MEMBER WHERE 
+			(SELECT * FROM MEMBER WHERE 
 			<choose>
 				<when test="kind = 1">
 					ID LIKE '%'||#{search}||'%'
@@ -32,7 +33,7 @@
 					GRADE LIKE '%'||#{search}||'%'
 				</when>
 				<otherwise>
-					REG_DATE LIKE '%'||#{search}||'%'
+					NICKNAME|NAME|GRADE LIKE '%'||#{search}||'%'
 				</otherwise>
 			</choose>
 				ORDER BY grade ASC) M)
@@ -43,7 +44,7 @@
 		SELECT COUNT(ID) FROM MEMBER WHERE
 		<choose>
 			<when test="kind = 1">
-				NICKNAME LIKE '%'||#{search}||'%'
+				ID LIKE '%'||#{search}||'%'
 			</when>
 			<when test="kind = 2">
 				NAME LIKE '%'||#{search}||'%'
@@ -56,11 +57,13 @@
 			</otherwise>
 		</choose>
 	</select>
-	<!-- 회원 권한 조정 -->
-	<update id="setUpdateP" parameterType="Integer">
+	<!-- 회원 등급 조정 -->
+	<!-- 등급 업 -->
+	<update id="setUpdateP" parameterType="java.lang.String">
 		update member set grade = grade + 1 where id = #{id}
 	</update>
-	<update id="setUpdateM" parameterType="Integer">
+	<!-- 등급 다운 -->
+	<update id="setUpdateM" parameterType="java.lang.String">
 		update member set grade = grade - 1 where id = #{id}
 	</update>
 	<delete id="setDeleteA" parameterType="java.lang.String">
