@@ -2,30 +2,30 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header -->
+
+ 
 <div id="h_container">
 	<div class="h_top">
 		<div class="h_wrap">
 			<div class="user_menu">
-			<input type="hidden" value="${member.id }" id="memberId">
-				
-			
+			<input type="hidden" value="${member.id}" id="id" name="id">
 				<c:choose>
 					<c:when test="${member.grade eq '3'}">
 							<div id="admin">
 								<a href="${pageContext.request.contextPath}/admin/adminMain">관리자 페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-								<a href="${pageContext.request.contextPath}/member/memberLogout" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout?id=${member.id}" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:when test="${member.grade eq '2'}">
 							<div id="logout">
 								<a href="${pageContext.request.contextPath}/myPage/myPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-								<a href="${pageContext.request.contextPath}/member/memberLogout" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout?id=${member.id}" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:when test="${member.grade eq '1'}">
 							<div id="logout">
 								<a href="${pageContext.request.contextPath}/myPage/myPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-								<a href="${pageContext.request.contextPath}/member/memberLogout" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout?id=${member.id}" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:otherwise>
@@ -35,8 +35,7 @@
 						</div>
 					</c:otherwise>
 				</c:choose>
-				
-				
+		
 			</div>
 		</div>
 	</div>

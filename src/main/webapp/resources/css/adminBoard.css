@@ -29,4 +29,8 @@
       }
       .row.content {height: auto;} 
     }
+    .pBtn, .mBtn, .dBtn{
+    width: 45px;
+    font-size: 5px;
+    }
   </style>

@@ -35,7 +35,7 @@ public class AdminController {
 		return mv;
 	}
 	////////////// admin User; //////////////
-	// userList
+	// userList(완성)
 	@RequestMapping(value = "aUserList", method = RequestMethod.GET)
 	public ModelAndView aUserList(PageMaker pageMaker, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -46,39 +46,42 @@ public class AdminController {
 		mv.setViewName("admin/User/aUserList");
 		return mv;
 	}
-	// user info;
-	@RequestMapping(value = "adminUserSelect", method = RequestMethod.GET)
-	public ModelAndView adminUserSelect() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/User/adminUserSelect");
-		return mv;
+	// user up grade;(완성)
+	@RequestMapping(value = "aUserUpdateP", method = RequestMethod.GET)
+	public String adminUserUpdateP(String id) throws Exception{
+		memberService.setUpdateP(id);
+		return "redirect:./aUserList";
 	}
-	// user up/down grade;
-	@RequestMapping(value = "adminUserUpdate")
-	public ModelAndView adminUserUpdate() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/User/adminUserUpdate"); 
-		return mv;
+	// user down grade;(완성)
+	@RequestMapping(value = "aUserUpdateM", method = RequestMethod.GET)
+	public String adminUserUpdateM(String id) throws Exception{
+		memberService.setUpdateM(id);
+		return "redirect:./aUserList";
 	}
-	// user delete;
-	@RequestMapping(value = "adminUserDelete", method = RequestMethod.GET)
-	public String adminUserDelete(String [] id) throws Exception{
+	// user delete;(완성)
+	@RequestMapping(value = "aUserDelete", method = RequestMethod.GET)
+	public String adminUserDelete(String id) throws Exception{
 		memberService.setDelete(id);
 		return "redirect:./aUserList";
 	}
 	////////////// board 관리; //////////////
 	////////////// notice board; //////////////
-	@RequestMapping(value = "adminBoardNoticeList", method = RequestMethod.GET) 
+	@RequestMapping(value = "aNoticeList", method = RequestMethod.GET) 
 	public ModelAndView adminNoticeList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView(); 
 		List<BoardDTO> list = noticeServiceImpl.getList(pageMaker, session); 
 		mv.addObject("board", "Notice"); 
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
-		mv.setViewName("admin/Board/adminBoardList");
+		mv.setViewName("admin/Board/aBoardList");
 	return mv;
 	}
-	// notice;
+	@RequestMapping(value = "aNoticeDelete", method = RequestMethod.GET)
+	public String adminNoticeDelete(HttpSession session, String num) throws Exception{
+		System.out.println(num);
+		noticeServiceImpl.setDelete(num, session);
+		return "redirect:./aNoticeList";
+	}
 	// show;
 	// festival
 	// after;
