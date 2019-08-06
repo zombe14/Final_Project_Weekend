@@ -18,6 +18,19 @@ public class QnaDAOTest extends AbstractTest{
 	@Inject
 	private PageMaker pageMaker;
 	
+	@Test
+	public void setReplyWrite() throws Exception{
+		QnaDTO qnaDTO = new QnaDTO();
+		qnaDTO.setContents("reply");
+		qnaDTO.setNum("q1");
+		qnaDTO.setRef("q36");
+		qnaDTO.setTitle("Reply");
+		qnaDTO.setWriter("re");
+		qnaDTO.setPw("111");
+		int res = da.setReplyWrite(qnaDTO);
+		assertEquals(1, res);
+	}
+	
 	//@Test
 	public void writeFor() throws Exception{
 		for(int i = 0 ; i<30;i++) {		

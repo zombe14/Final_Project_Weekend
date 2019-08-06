@@ -9,7 +9,7 @@
 
 	<insert id="setWrite" parameterType="QnaDTO">
 		INSERT INTO QNA(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH)
-		VALUES(#{num},#{title},#{writer},#{contents},sysdate,0,#{pw},0,0,0)
+		VALUES(#{num},#{title},#{writer},#{contents},sysdate,0,#{pw},#{num},0,0)
 	</insert>
 
 	<resultMap type="QnaDTO" id="qnaResult">
@@ -33,7 +33,7 @@
 	<select id="getList" parameterType="PageMaker" resultMap="qnaResult">
 		SELECT * FROM 
 		(SELECT ROWNUM R, Q.* FROM 
-		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW
+		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW 
 		FROM QNA WHERE
 		<choose>
 			<when test="kind = 1">
@@ -50,7 +50,7 @@
 			</otherwise>
 		</choose>
 		LIKE '%'||#{search}||'%'
-		ORDER BY REG_DATE DESC) Q) 
+		ORDER BY  (SUBSTR(ref, 2)*1) DESC, STEP ASC) Q) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
@@ -92,16 +92,15 @@
 	
 	<!-- reply -->
 	<insert id="setReplyWrite" parameterType="QnaDTO">
-		INSERT INTO QNA(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH) 
-		VALUES(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{pw}, 
-				(SELECT REF FROM QNA WHERE NUM=#{num}), (SELECT STEP FROM QNA WHERE NUM=#{num})+1, (SELECT DEPTH FROM QNA WHERE NUM=#{num})+1)
+		INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH) 
+		VALUES (#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{pw}, #{ref}, 1, 1)
 	</insert>
 	
-	<update id="setReplyUpdate" parameterType="QnaDTO">
+<!-- 	<update id="setReplyUpdate" parameterType="QnaDTO">
 		UPDATE QNA SET STEP=STEP+1 
 		WHERE REF=(SELECT REF FROM QNA WHERE NUM=#{num})
 		AND STEP>(SELECT STEP FROM QNA WHERE NUM=#{num})
-	</update>
+	</update> -->
 	
 	<!-- hit -->
 

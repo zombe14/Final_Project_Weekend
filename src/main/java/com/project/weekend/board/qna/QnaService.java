@@ -120,12 +120,21 @@ public class QnaService {
 		return list;
 	}
 	
-	public int setReplyWrite(QnaDTO qnaDTO) throws Exception{
+	public int setReplyWrite(QnaDTO qnaDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		int res = 0;
-		// 1. 사전작업 - update
-		res = qnaDAO.setReplyUpdate(qnaDTO);
-		// 2. insert
+		String num = "q" + qnaDAO.getNum();
+		qnaDTO.setNum(num);
 		res = qnaDAO.setReplyWrite(qnaDTO);
+		String realPath = session.getServletContext().getRealPath("/resources/images/board");
+		for (MultipartFile f : filelist) {
+			if (f.getOriginalFilename().length() > 0) {
+				FileDTO fileDTO = new FileDTO();
+				fileDTO.setFname(fileSaver.saveFile(realPath, f));
+				fileDTO.setNum(num);
+				fileDTO.setOname(f.getOriginalFilename());
+				res = fileDAO.setWrite(fileDTO);
+			}
+		}
 		return res;
 	}
 

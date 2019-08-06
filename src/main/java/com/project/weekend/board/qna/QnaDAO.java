@@ -56,8 +56,9 @@ public class QnaDAO{
 		return sqlSession.insert(NAMESPACE+"setReplyWrite", qnaDTO);
 	}
 	
-	public int setReplyUpdate(QnaDTO qnaDTO) throws Exception{
-		return sqlSession.update(NAMESPACE+"setReplyUpdate", qnaDTO);
-	}
+	/*
+	 * public int setReplyUpdate(QnaDTO qnaDTO) throws Exception{ return
+	 * sqlSession.update(NAMESPACE+"setReplyUpdate", qnaDTO); }
+	 */
 
 }
