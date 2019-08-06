@@ -18,8 +18,9 @@ import com.project.weekend.util.PageMaker;
 @RequestMapping("/callcenter/")
 public class CallCenterController {
 
-	@Inject
-	private NoticeServiceImpl noticeServiceImpl;
+	/*
+	 * @Inject private NoticeServiceImpl noticeServiceImpl;
+	 */
 
 	@RequestMapping(value = "main")
 	public void mainSelect() {
