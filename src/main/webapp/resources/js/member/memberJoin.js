@@ -46,6 +46,13 @@ $(function() {
 			$('#email_store').val("false");
 		}
 	});
+	$("#emailFirst").keyup(function(e) { 
+		if (!(e.keyCode >=37 && e.keyCode<=40)) {
+			var v = $(this).val();
+			$(this).val(v.replace(/[^a-z0-9]/gi,''));
+			result_mememail.innerHTML = "영문과 숫자로 입력해주세요.";
+		}
+	});
 	$("#emailFirst").blur(function() {
 		var t = true;
 		var f = true;
@@ -64,9 +71,9 @@ $(function() {
 			f = true;
 		}
 		if(t&&f){
-			$('#email_store').val("true");
+			$('#email_store').val('0');
 		}else{
-			$('#email_store').val("false");
+			$('#email_store').val('');
 		}
 	});
 	$('.certifyButtonWrapButton').click(function() {		
@@ -92,6 +99,17 @@ $(function() {
 		}
 	});
 	
+	$("#id").keyup(function(e) { 
+		if (!(e.keyCode >=37 && e.keyCode<=40)) {
+			var v = $(this).val();
+			$(this).val(v.replace(/[^a-z0-9]/gi,''));
+			result_memid.innerHTML = "영문과 숫자로 입력해주세요.";
+		}else{
+			result_memid.innerHTML = "";
+		}
+	});
+
+
 	$("#id").blur(function() {
 		var id = document.getElementById("id").value;
 		if(id.length==0){
@@ -176,6 +194,18 @@ $(function() {
 		var hp2 = $("#hp2").val();
 		var hp3 = $("#hp3").val();
 		var phone = num_select + hp2 + hp3;
+		var s = $('#email_store').val();
+		var v = true;
+		if(num_select==''||hp2==''||hp3==''){
+			alert("휴대폰 번호를 입력하세요");
+			v = false;
+		}else if(hp3!=''&&hp2!=''&&num_select!=''&&s=='0'){
+			v = true;
+		}else if(s==''){
+			alert("이메일을 입력하세요");
+		}else{
+			v = false;
+		}
 		var nicknameCheck = document.getElementById("nicknameCheck").value;
 		var pw = document.getElementById("pw").value;
 		var pwCheck = document.getElementById("pwCheck").value;
@@ -186,20 +216,19 @@ $(function() {
 		var finalpw = false;
 		if(pw==pwCheck){
 			finalpw = true;
-			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw){
+			if(v&&pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw){
 				alert('성공');
 				$("#frm").submit();
 			}else if(nicknameCheck!='0'){
 				alert("활동명을 입력하세요");
 			}else{
+			
 				alert("비밀번호나 이름을 확인해주세요");
 			}
 		}else{
 			alert("비밀번호가 일치하지 않습니다.");
 			finalpw = false;
 		}
-		
-		
 	});
 	
 	$("#memberidCheck").click(function() {
