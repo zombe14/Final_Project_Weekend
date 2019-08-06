@@ -36,7 +36,7 @@
 					NICKNAME|NAME|GRADE LIKE '%'||#{search}||'%'
 				</otherwise>
 			</choose>
-				ORDER BY grade ASC) M)
+				ORDER BY reg_date ASC) M)
 				WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<!-- pageing 처리를 위한 -->

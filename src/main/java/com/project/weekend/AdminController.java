@@ -52,12 +52,13 @@ public class AdminController {
 		memberService.setUpdateP(id);
 		return "redirect:./aUserList";
 	}
+	// user down grade;(완성)
 	@RequestMapping(value = "aUserUpdateM", method = RequestMethod.GET)
 	public String adminUserUpdateM(String id) throws Exception{
 		memberService.setUpdateM(id);
 		return "redirect:./aUserList";
 	}
-	// user delete;
+	// user delete;(완성)
 	@RequestMapping(value = "aUserDelete", method = RequestMethod.GET)
 	public String adminUserDelete(String id) throws Exception{
 		memberService.setDelete(id);
@@ -65,7 +66,7 @@ public class AdminController {
 	}
 	////////////// board 관리; //////////////
 	////////////// notice board; //////////////
-	@RequestMapping(value = "aBoardNoticeList", method = RequestMethod.GET) 
+	@RequestMapping(value = "aNoticeList", method = RequestMethod.GET) 
 	public ModelAndView adminNoticeList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView(); 
 		List<BoardDTO> list = noticeServiceImpl.getList(pageMaker, session); 
@@ -75,7 +76,12 @@ public class AdminController {
 		mv.setViewName("admin/Board/aBoardList");
 	return mv;
 	}
-	// notice;
+	@RequestMapping(value = "aNoticeDelete", method = RequestMethod.GET)
+	public String adminNoticeDelete(HttpSession session, String num) throws Exception{
+		System.out.println(num);
+		noticeServiceImpl.setDelete(num, session);
+		return "redirect:./aNoticeList";
+	}
 	// show;
 	// festival
 	// after;

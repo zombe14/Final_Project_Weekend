@@ -12,9 +12,7 @@
 <body>
 	<script type="text/javascript">
 		$(function() {
-			$(".pBtn").on(
-					"click",
-					function() {
+			$(".pBtn").on("click", function() {
 						var id = $(this).attr("id");
 						var grade = $(this).attr("title");
 						var check = confirm("아이디 : " + id + "\n" + "등급 : "
@@ -23,14 +21,11 @@
 							if (grade == 3) {
 								alert("더 이상 등급을 올릴수 없습니다.");
 							} else {
-								location.href = "../admin/aUserUpdateP?id="
-										+ id;
+								location.href = "../admin/aUserUpdateP?id="+id;
 							}
 						}
 					});
-			$(".mBtn").on(
-					"click",
-					function() {
+			$(".mBtn").on("click", function() {
 						var id = $(this).attr("id");
 						var grade = $(this).attr("title");
 						var check = confirm("아이디 : " + id + "\n" + "등급 : "
@@ -39,8 +34,7 @@
 							if (grade == 1) {
 								alert("더 이상 등급을 내릴수 없습니다.");
 							} else {
-								location.href = "../admin/aUserUpdateM?id="
-										+ id;
+								location.href = "../admin/aUserUpdateM?id="+id;
 							}
 						}
 					});
@@ -48,7 +42,7 @@
 				var id = $(this).attr("id");
 				var check = confirm("해당 유저를 삭제하시겠습니까?");
 				if (check) {
-					location.href = "../admin/aUserDelete?id=" + id;
+					location.href = "../admin/aUserDelete?id="+id;
 				}
 			});
 		});
@@ -65,22 +59,19 @@
 						<small>${board} 관리</small>
 					</h4>
 					<hr>
+					<!-- 검색창 -->
 					<div>
-						<form class="form-inline" action="./${board}List">
+						<form class="form-inline" action="./a${board}List">
 							<div class="form-group col-xs-2">
 								<select class="form-control" name="kind">
-									<option class="k" value="1">ID</option>
-									<option class="k" value="2">NAME</option>
-									<option class="k" value="3">GRADE</option>
-									<option class="k" value="4">가입일</option>
+									<option value="1">ID</option>
+									<option value="2">NAME</option>
+									<option value="3">GRADE</option>
 								</select>
 							</div>
-
 							<div class="form-group col-xs-2">
-								<input type="text" class="form-control" value="${pager.search}"
-									name="search">
+								<input type="text" class="form-control" value="${pager.search}" name="search">
 							</div>
-
 							<div class="form-group col-xs-2">
 								<button class="form-control">Search</button>
 							</div>
@@ -107,7 +98,17 @@
 									<td>${dto.name}</td>
 									<td>${dto.age}</td>
 									<td>${dto.email}</td>
-									<td>${dto.grade}</td>
+									<c:choose>
+										<c:when test="${dto.grade eq 1}">
+											<td>일반 회원</td>
+										</c:when>
+										<c:when test="${dto.grade eq 2}">
+											<td>공연 관계자</td>
+										</c:when>
+										<c:otherwise>
+											<td>관리자</td>
+										</c:otherwise>
+									</c:choose>
 									<td>${dto.reg_date}</td>
 									<td><input class="pBtn" type="button" value="UP" title='${dto.grade}' id='${dto.id}'></td>
 									<td><input class="mBtn" type="button" value="DOWN" title='${dto.grade}' id='${dto.id}'></td>
@@ -118,26 +119,23 @@
 						<div id="paging">
 							<c:if test="${list[0].id eq null}">
 								<ul class="pagination">
-									<li class="pagingClick"><a href="a${board}List">검색결과가 없습니다</a></li>
+									<li class="pagingClick"><a href="a${board}List">결과가 없습니다</a></li>
 								</ul>
 							</c:if>
 							<c:if test="${list[0].id ne null}">
 								<ul class="pagination">
 									<c:choose>
 										<c:when test="${pager.curBlock>1}">
-											<li class="pagingClick"><a
-												href="a${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
+											<li class="pagingClick"><a href="a${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
 										</c:when>
 										<c:otherwise>
 											<li><a>이전</a></li>
 										</c:otherwise>
 									</c:choose>
-
 									<c:forEach begin="${pager.startNum}" end="${pager.lastNum}"
 										var="i">
 										<li class="pagingClick"><a href="a${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 									</c:forEach>
-
 									<c:choose>
 										<c:when test="${pager.curBlock < pager.totalBlock}">
 											<li class="pagingClick"><a href="a${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a></li>
