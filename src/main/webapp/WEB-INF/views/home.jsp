@@ -16,12 +16,10 @@
 	</div>
 	<div id="container">
 		<c:import url="./inc/container.jsp"></c:import>
-<<<<<<< HEAD
+
 	</div> 
-=======
-	</div>
-	
->>>>>>> master
+
+
 	<div id="footer">
 		<c:import url="./inc/footer.jsp"></c:import>
 	</div>

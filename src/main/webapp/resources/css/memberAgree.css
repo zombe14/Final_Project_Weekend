@@ -1,5 +1,50 @@
+input[type=checkbox] {  
+    display: none;  
+}
+
+input[type=checkbox] + label{
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 25px;  
+    margin-right: 15px;  
+    font-size: 13px;
+}
+
+input[type=checkbox]+ label:before {     
+
+    content: "";  
+    display: inline-block;  
+    width: 20px;  
+    height: 20px;  
+    margin-right: 3px;  
+    position: absolute;  
+    left: 0;  
+    bottom: 1px;  
+    background-color: #ccc;  
+    border-radius: 2px; 
+    box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}
+input[type=checkbox]:checked + label:before { 
+
+    content: "\2713";  /* 체크모양 */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+    font-size: 18px; 
+    font-weight:800; 
+    color: #fff;  
+    background:#2f87c1;
+    text-align: center;  
+    line-height: 18px;  
+
+} 
+
+
+
 #checkAll{
 	font-size: 25px;
+}
+#checkAll_sub_sub{
+	font-size: 15px;
 }
 .check{
 	width: 25px;
@@ -24,7 +69,8 @@
     background: no-repeat 50%/50% 50%;
 }
 .checkAllfont_sub{
-	margin-left: 10px;
+	margin-top : 7px;
+	margin-left: 5px;
 }
 .iCheckbox  i{
 	color: red;
@@ -38,7 +84,7 @@
 .terms_box{
 	position: relative;
     overflow: auto;
-    height: 88px;
+    height: 100px;
     margin-top: 8px;
     padding: 12px;
     border: 1px solid #dadada;
