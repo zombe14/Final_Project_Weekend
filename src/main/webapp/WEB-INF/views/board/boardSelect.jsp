@@ -23,7 +23,7 @@
 			<c:import url="../inc/header.jsp"></c:import>
 		</div>
 		<div id="container">
-			<div class="inner">
+			<div class="conta">
 				num : ${dto.num} 
 				<br> 
 				title : ${dto.title} 

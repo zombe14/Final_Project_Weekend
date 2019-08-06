@@ -1,29 +1,31 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!-- header -->
 <div id="h_container">
 	<div class="h_top">
 		<div class="h_wrap">
 			<div class="user_menu">
+			<input type="hidden" value="${member.id }" id="memberId">
+				
+			
 				<c:choose>
 					<c:when test="${member.grade eq '3'}">
 							<div id="admin">
 								<a href="${pageContext.request.contextPath}/admin/adminMain">관리자 페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:when test="${member.grade eq '2'}">
 							<div id="logout">
 								<a href="${pageContext.request.contextPath}/myPage/myPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:when test="${member.grade eq '1'}">
 							<div id="logout">
 								<a href="${pageContext.request.contextPath}/myPage/myPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
-								<a href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
+								<a href="${pageContext.request.contextPath}/member/memberLogout" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:otherwise>
@@ -100,10 +102,10 @@
 							class="fa fa-home fa-fw"></i>아동/가족</a></li>
 					<li id="navbar-page" class="navp navp1"><a href="#"><i
 							class="fa fa-home fa-fw"></i>랭킹</a></li>
-					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/notice/noticeList"><i
-							class="fa fa-home fa-fw"></i>(공지사항)</a></li>
-					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/after/afterAllList"><i
-							class="fa fa-home fa-fw"></i>(후기)</a></li>
+					<li id="navbar-page" class="navp"><a href="#"><i
+							class="fa fa-home fa-fw"></i>이벤트</a></li>
+					<li id="navbar-page" class="navp"><a href="#"><i
+							class="fa fa-home fa-fw"></i>유저추천</a></li>
 				</ul>
 			</div>
 		</div>

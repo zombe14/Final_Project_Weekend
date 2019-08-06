@@ -45,6 +45,9 @@ public class MemberDAO {
 	public int setUpdatezero(MemberDTO memberDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setUpdatezero", memberDTO);
 	}
+	public int setUpdateoverlap(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdateoverlap", memberDTO);
+	}
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelect", memberDTO);
 	}

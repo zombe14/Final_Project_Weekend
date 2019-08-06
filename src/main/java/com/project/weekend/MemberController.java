@@ -5,12 +5,16 @@ import java.text.DateFormat;
 
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -93,6 +97,8 @@ public class MemberController {
 		MemberDTO getId = memberService.getId(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
+		int overlap = memberService.setUpdateoverlap(memberDTO);
+		System.out.println(overlap);
 		String message="존재 하지 않는 아이디 입니다.";
 		if(getId==null) {
 			mv.setViewName("common/messageMove");
@@ -122,15 +128,38 @@ public class MemberController {
 					mv.addObject("path", "./memberLogin");
 				}
 			}else {
+				
 			}
 		}
 		return mv;
 	}
 	@RequestMapping(value = "memberAgree", method = RequestMethod.GET)
 	public void getAgree()throws Exception{}
-	@RequestMapping(value = "memberLogout")
-	public String logout(HttpSession session)throws Exception{
+	
+	@RequestMapping(value = "memberLogout", method =RequestMethod.GET)
+	public String logout(HttpServletRequest request,HttpSession session, MemberDTO memberDTO)throws Exception{
+
 		session.invalidate();
 		return "redirect:../";
 	}
+	
+	
+	
+	
+																								// Iterator<HttpSession>
+																								// iterator =
+																								// sessionMap.keySet().iterator();
+																								// while
+																								// (iterator.hasNext())
+																								// { HttpSession key =
+																								// (HttpSession)
+																								// iterator.next();
+																								// dataMap.clear(); //이미
+																								// 접속한 사용자(세션)
+																								// dataMap.put("userId",
+																								// sessionMap.get(key));
+																								// this.duplicationRoleCheck(Session,
+																								// dataMap , sessionMap,
+																								// srpCodeList); }
+
 }

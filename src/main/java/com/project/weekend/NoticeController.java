@@ -32,6 +32,7 @@ public class NoticeController {
 	private NoticeServiceImpl noticeSerivceImpl;
 	private static final String boardTitle = "공지";
 	
+	
 	/*공지 글쓰기*/
 	// 글쓰기 폼으로 이동 - admin
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
