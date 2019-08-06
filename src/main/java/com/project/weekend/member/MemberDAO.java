@@ -17,14 +17,24 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private static final String NAMESPACE="MemberMapper.";
 	// 상혁;
+	// 리스트;
 	public List<MemberDTO> getList(PageMaker pageMaker) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", pageMaker);
 	}
 	public int getTotalCount(PageMaker pageMaker) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pageMaker);
 	}
-	public int setDelete(List<String> list)throws Exception{
-		return sqlSession.delete(NAMESPACE+"setDelete", list);
+	// 등급 업;
+	public int setUpdateP(String id) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdateP", id);
+	}
+	// 등급 다운;
+	public int setUpdateM(String id) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdateM", id);
+	}
+	// 회원 삭제;
+	public int setDelete(String id)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDeleteA", id);
 	}
 	// 상혁 끝;
 	

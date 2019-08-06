@@ -18,7 +18,7 @@
       <c:import url="../inc/header.jsp"></c:import>
       </div>
       <div id="container">
-      	<div class="inner">
+      	<div class="conta">
   	      	
       		 <form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
 				<c:if test="${board eq 'after'}">

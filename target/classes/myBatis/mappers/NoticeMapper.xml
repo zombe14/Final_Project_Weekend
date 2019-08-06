@@ -80,4 +80,8 @@
 	<select id="getNum" resultType="Integer">
 			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL 
 	</select>
+	
+	<select id="getNewList" resultMap="noticeResult">
+		SELECT * FROM (SELECT ROWNUM R, N.* FROM (SELECT TITLE FROM NOTICE ORDER BY REG_DATE DESC) N)  WHERE R BETWEEN 1 AND 5 
+	</select>
 </mapper>

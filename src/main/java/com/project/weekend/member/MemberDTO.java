@@ -16,10 +16,6 @@ public class MemberDTO {
 	private int overlap;
 	private Date reg_date;
 	
-	
-	
-	
-	
 	public Date getReg_date() {
 		return reg_date;
 	}

@@ -34,14 +34,13 @@
 			<div class="call_container">
 				<ul class="call_menu">
 					<li class="cmenu1"><a href="${pageContext.request.contextPath}/callcenter/main">고객센터 홈</a></li>
-					<li class="cmenu2"><a href="">공지사항</a></li>
-					<li class="cmenu3"><a href="">FAQ</a></li>
+					<li class="cmenu2"><a href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a></li>
+					<li class="cmenu3"><a href="${pageContext.request.contextPath}/qna/qnaList">QnA</a></li>
 					<li class="cmenu4"><a href="">예매안내</a></li>
 					<li class="cmenu5"><a href="">결제수단안내</a></li>
-					<li class="cmenu6"><a href="">회원정보안내</a></li>
-					<li class="cmenu7"><a href="${pageContext.request.contextPath}/callcenter/cancel">환불안내</a></li>
-					<li class="cmenu8"><a href="">부정이용 규제안내</a></li>
-					<li class="cmenu9"><a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
+					<li class="cmenu6"><a href="${pageContext.request.contextPath}/callcenter/cancel">환불안내</a></li>
+					<li class="cmenu7"><a href="${pageContext.request.contextPath}/callcenter/legalguide">부정이용 규제안내</a></li>
+					<li class="cmenu8"><a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
 				</ul>
 				<div class="call_cont">
 					<div class="partner_effect">
