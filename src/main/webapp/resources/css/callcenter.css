@@ -1,15 +1,23 @@
+#container{
+    background-color: #f5f6f7;
+}
+
 .call_quick{
-	border: 1px solid #41b40a;
+	border: 1px solid #00d344;
 	height: 140px;
 	margin-bottom: 10px;
 	border-radius: 2px;
+    background-color: white;
 }
 
+i{
+	font-family: "Noto Sans KR", sans-serif;
+}
 .call_quick .title{
 	width: 170px;
 	height: 138px;
 	float: left;
-	background: #41b40a;
+	background: #00d344;
 	text-align: center;
 	padding-top: 53px;
 	margin-left: 0px;
@@ -17,7 +25,6 @@
 
 .call_quick h2{
 	color: white;
-	height: 27px;
 }
 
 .call_quick ul{
@@ -48,6 +55,7 @@
     border-radius: 2px;
     width: 1000px;
     overflow: hidden;
+    background-color: white;
 }
 
 .call_menu{
@@ -86,3 +94,67 @@
     border-left: 1px solid #efefef;
 }
 
+/* main */
+
+.help_link{
+	overflow: hidden;
+}
+
+.help_link li{
+	padding: 30px;
+	background-color: #f4f4f4;
+	margin: 0 5px 5px 0;
+	width: 244px;
+	height: 200px;
+}
+
+.help_link img{
+	width:60px;
+	float: right;
+	position: relative;
+	bottom: -20px;
+	left: 10px;
+}
+
+.help_link p{
+	margin-top: 20px;
+	float: left;
+}
+
+.help_link i{
+	color: #41b40a;
+}
+
+.helpmain_list{
+	overflow: hidden;
+	margin-top: 40px;
+}
+
+.helpmain_question{
+	float: left;
+    width: 351px;
+    margin-right: 40px;
+}
+
+.helpmain_list ul{
+	border-top: 2px solid #999;
+}
+
+.helpmain_list li{
+	width: 100%;
+	height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #ececec;
+}
+
+.h1 img{
+	top:-20px;
+}
+
+.help_link li.h1{
+	background-color: #d4f7d4;
+}
+
+.helpmain_notice{
+	overflow: hidden;
+}

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="QnaMapper">
+	
+	<select id="getNum" resultType="Integer">
+		SELECT QNA_SEQ.NEXTVAL FROM DUAL
+	</select>
+
+	<insert id="setWrite" parameterType="QnaDTO">
+		INSERT INTO QNA(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH)
+		VALUES(#{num},#{title},#{writer},#{contents},sysdate,0,#{pw},0,0,0)
+	</insert>
+
+	<resultMap type="QnaDTO" id="qnaResult">
+		<id column="num" property="num"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="contents" property="contents"/>
+		<result column="reg_date" property="reg_date"/>
+		<result column="hit" property="hit"/>
+		<result column="pw" property="pw"/>
+		<result column="ref" property="ref"/>
+		<result column="step" property="step"/>
+		<result column="depth" property="depth"/>
+		<collection property="fileDTOs" javaType="List" ofType="FileDTO">
+			<id column="fnum" property="fnum"/>
+			<result column="num" property="num"/>
+			<result column="fname" property="fname"/>
+			<result column="oname" property="oname"/>
+		</collection>
+	</resultMap>
+	<select id="getList" parameterType="PageMaker" resultMap="qnaResult">
+		SELECT * FROM 
+		(SELECT ROWNUM R, Q.* FROM 
+		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH 
+		FROM QNA WHERE
+		<choose>
+			<when test="kind = 1">
+				TITLE
+			</when>
+			<when test="kind = 2">
+				CONTENTS
+			</when>
+			<when test="kind = 3">
+				WRITER
+			</when>
+			<otherwise>
+				WRITER
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
+		ORDER BY REG_DATE DESC) Q) 
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<select id="getCount" resultType="Integer">
+		SELECT COUNT(NUM) 
+		FROM QNA WHERE
+		<choose>
+			<when test="kind = 1">
+				TITLE
+			</when>
+			<when test="kind = 2">
+				CONTENTS
+			</when>
+			<when test="kind = 3">
+				WRITER
+			</when>
+			<otherwise>
+				WRITER
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
+	</select>
+
+	<select id="getSelect" resultMap="qnaResult" parameterType="String">
+		SELECT * FROM QNA FULL JOIN FILES USING(NUM) WHERE NUM = #{num}
+	</select>
+	
+	<select id="getTop" resultMap="qnaResult">
+		SELECT * FROM QNA WHERE TOP = '1'
+	</select>
+	
+	<update id="setUpdate" parameterType="QnaDTO">
+		UPDATE QNA SET TITLE = #{title}, CONTENTS = #{contents} WHERE NUM = #{num}
+	</update>
+	
+	<delete id="setDelete" parameterType="String">
+		DELETE QNA WHERE NUM = #{num}
+	</delete>
+	
+	<insert id="setReplyWrite" parameterType="QnaDTO">
+		INSERT INTO QNA(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH) 
+		VALUES(${num}, #{writer}, #{contents}, sysdate, 0, #{pw}, #{ref}, #{step}, #{depth})
+	</insert>
+	<update id="setHitUpdate" parameterType="String">
+		UPDATE QNA SET HIT = HIT + 1 WHERE NUM = #{num}
+	</update>
+	
+	
+</mapper>

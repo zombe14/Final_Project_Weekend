@@ -27,8 +27,10 @@
 				<br> 
 				reg_Date : ${dto.reg_date} 
 				<br>
+				hit : ${dto.hit} 
+				<br>
 				contents : ${dto.contents} 
-				<br> hit : ${dto.hit} 
+				<br> 
 				<br> 
 				
 				<c:forEach items="${dto.fileDTOs}" var="f">
@@ -41,12 +43,20 @@
 						<input type="text" name="oname" id="oname">
 						<input type="text" name="board" value="board">
 					</form>
-				</div>
-				
+				</div>			
 				
 				<a id="list" title="${board}" class="${dto.num}">목록</a>
-				<a href="./${board}Update?num=${dto.num}">수정</a> 
-				<a id="delete">삭제</a>
+				<a id="update" class="${board}">수정</a> 
+				<a id="delete" class="${board}">삭제</a>
+
+				<form action="./${board}Delete" id="deleteFrm" method="post">
+					<c:if test="${board eq 'notice' or board eq 'qna'}">
+						<input type="hidden" class="num" id = "${dto.num}" name="num" value="${dto.num}">
+					</c:if>
+					<c:if test="${board eq 'after'}">
+						<input type="hidden" class="anum" id = "${dto.anum}" name="anum" value="${dto.anum}">
+					</c:if>					
+				</form>
 			</div>
    </div>
    <div id="footer">
@@ -58,10 +68,25 @@
 	<script type="text/javascript">
 	/* 글 삭제 */
 	$('#delete').click(function() {
-		var check = confirm('삭제하시겠습니까?');
+		var check = confirm('삭제하시겠습니까?');		
 		if(check){
-			location.href="./${board}Delete?num=${dto.num}";
+			$('#deleteFrm').submit();
 		}
+	});
+	
+	/* 글 수정 */
+	$('#update').click(function() {
+		var board = $(this).attr('class');
+		var num = 0;
+		
+		if(board == 'notice' || board == 'qna'){
+			num = $('.num').attr('id');
+			location.href="./${board}Update?num="+num;
+		} else if (board == 'after') {
+			num = $('.anum').attr('id');
+			location.href="./${board}Update?anum="+num;
+		}
+		
 	});
 	
 	/* 첨부파일 다운로드 */
@@ -80,8 +105,8 @@
 		var num = $(this).attr('class');
 		if(board == 'after'){
 			list = "../festi/festiSelect?num="+num;		
-		} else if (board == 'notice'){
-			list = "./noticeList";
+		} else if (board == 'notice'||'qna'){
+			list = "./"+board+"List";
 		}
 		location.href = list;
 	});

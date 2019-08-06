@@ -43,12 +43,12 @@
 			<div class="logo">
 				<!-- <h1>로고 자리</h1> -->
 
-				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo2_2.png"></a>
+				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo1.png"></a>
 
 			</div>
 			<div class="search_wrap">
-				<input type="text" placeholder="검색어 입력" id="search">
-				<a href="#" class="btn_search"><img src="${pageContext.request.contextPath}/resources/images/home/h_search.png" style="width: 20px;"></a>
+				<input type="text" placeholder="" id="search">
+				<a href="#" class="btn_search"><img src="${pageContext.request.contextPath}/resources/images/home/h_search.png" style="width: 15px;"></a>
 			</div>
 			<!-- <div class="search">
 		</div> -->
@@ -73,8 +73,8 @@
 			<div class="nav_wrap">
 				<ul class="nav navbar-nav">
 					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>오늘의 추천</a></li>
-					<li class="dropdown navp"><a href="#"
+							class="fa fa-home fa-fw"></i>W 추천</a></li>
+					<li class="dropdown navp navp1"><a href="#"
 						class="dropdown-caategory" id="dropdownCategoryMenu"
 						data-toggle="dropdown"><i class="fa fa-folder-open"></i>공연<i
 							class="caret"></i></a>
@@ -85,27 +85,25 @@
 							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=4"><i class="fa fa-folder"></i>소규모 연극</a></li>
 							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=5"><i class="fa fa-folder"></i>대학로 연극</a></li>
 						</ul></li>
-					<li class="dropdown" class="navp"><a href="#"
-						class="dropdown-caategory" id="dropdownCategoryMenu"
+					<li class="dropdown navp"><a href="#"
+						class="dropdown-caategory navp1" id="dropdownCategoryMenu"
 						data-toggle="dropdown"><i class="fa fa-folder-open"></i>축제<i
 							class="caret"></i></a>
 						<ul class="dropdown-menu" role="menu"
 							aria-labelledby="dropdownCategoryMenu">
 							<li class="divider"></li>
 							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=1"><i class="fa fa-folder"></i>전시</a></li>
-							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=2"><i class="fa fa-folder"></i>행사</a></li>
-							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=3"><i class="fa fa-folder"></i>레저</a></li>
+							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=2"><i class="fa fa-folder"></i>소규모 행사</a></li>
+							<li><a href="${pageContext.request.contextPath}/festi/festiList?category=3"><i class="fa fa-folder"></i>레저/체험</a></li>
 						</ul></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
+					<li id="navbar-page" class="navp navp1"><a href="#"><i
 							class="fa fa-home fa-fw"></i>아동/가족</a></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
+					<li id="navbar-page" class="navp navp1"><a href="#"><i
 							class="fa fa-home fa-fw"></i>랭킹</a></li>
 					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/notice/noticeList"><i
 							class="fa fa-home fa-fw"></i>(공지사항)</a></li>
 					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/after/afterAllList"><i
 							class="fa fa-home fa-fw"></i>(후기)</a></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>빈칸</a></li>
 				</ul>
 			</div>
 		</div>

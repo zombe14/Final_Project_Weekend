@@ -57,7 +57,7 @@ public class AjaxController {
 		return mv;
 	}
 	
-	// update file delete ajax 
+	// update file delete ajax - db, 폴더
 	@RequestMapping(value = "/ajax/fileDelete", method = RequestMethod.POST)
 	public ModelAndView fileDelete(FileDTO fileDTO, String board, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();

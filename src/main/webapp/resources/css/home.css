@@ -9,8 +9,14 @@ body, input, textarea, select button, table, p, div{
 body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
     margin: 0;
     padding: 0;
-    
 }
+
+h1, h2, h3, h4{
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+}
+
 #wrap{
 	overflow: hidden;
 	min-height:100%;
@@ -22,10 +28,9 @@ html, body{
 }
 
 .inner{
-	color: #757575;
-	width: 1200px;
 	margin: 0 auto;
-	position: relative;
+	width: 1050px;
+	padding: 50px 0;
 }
 
 a {
@@ -40,6 +45,7 @@ a:hover {
 
 ul{
 	list-style: none;
+/* 	overflow: hidden; */
 }
 
 li{
@@ -106,35 +112,34 @@ strong{
 
 .logo{
 	float: left;
-	margin-top: -15px;
+	margin-top: -32px;
 }
 
 #search {
 	
 	width: 334px;
     height: 39px;
-	border: 2px solid #41b40a;
+	border: 2px solid #00d344;
 	padding-left: 10px;
 	outline: none;
 }
 
 .search_wrap{
-	margin-left: 15px;
+	margin-left: 100px;
 	width: 900px;
 }
 
 .btn_search {
-	
-	background-color: #41b40a;
-	padding: 11px 12px;
+	background-color: #00d344;
+	padding: 10.5px 12px;
 	margin-left: -5px;
 	/* vertical-align: middle; */
 	color: white;
 }
 
 .h_menu{
-	min-height: 58px;
-	background: url(http://tketlink.dn.toastoven.net/markup_resources/2019071801/web/img/bg_head_menu.gif) repeat-x 0 0;
+	min-height: 59px;
+	background: url(../images/home/bg_head_menu.gif) repeat-x 0 0;
 }
 
 .h_inner {
@@ -157,17 +162,32 @@ strong{
 	font-size: 20px;
 }
 
+.open > a{
+	background-color: #d4f7d4;
+	color: #41b40a;
+}
+
+.open a:focus{
+	background-color: #d4f7d4;
+}
+
+.nav li a{
+	padding: 17px 50px;
+}
+
+.nav li a:hover{
+	background-color: #d4f7d4;
+}
+
 .nav_wrap{
-	width: 1200px;
-	margin: 0 auto;
+	margin-left: 380px;
 }
 
-.navp{
-	padding: 0 30px;
+.dropdown-menu{
+	padding: 0;
 }
-
 #menulist{
-	border: 1px solid #f0f0f0;
+	border-top: 1px solid #f0f0f0;
 }
 
 .log{
@@ -179,22 +199,29 @@ strong{
 }
 
 .dropdown-menu li a{
-	padding: 20px 20px;
+	padding: 15px 40px;
+    font-size: 15px;
+    width: 158px;
+    text-align: center;
+}
+
+.dropdown-menu li a:hover{
+	background-color: #d4f7d4;
 }
 /*  -----------------------container Css----------------------- */
 
 .section_top{
 	position: relative;
-	padding: 50px 0 0;
 }
 
 .section_rank{
 	position: relative;
-	padding: 50px 0 0;	
+	padding: 30px 0;	
 }
 
 .section_best{
-	padding: 60px 0;
+	padding: 30px 0;
+	width: 1068px;
 }
 
 /* #main_banner{
@@ -203,36 +230,33 @@ strong{
 } */
 
 .ticket_main{
-	width: 1200px;
 	position: relative;
-	margin-top: 30px;
 }
 
 .ticket_left{
 	float: left;
-	width: 802px;
+	width: 730px;
 	}
 
 .ticket_right{
 	overflow: hidden;
-	width: 398px;
+	width: 320px;
 }
 .ticket_cont{
 	border: 1px solid #e6e6e6;
     border-radius: 2px 0 0 2px;
-	width: 800px;
     height: 218px;
     overflow: hidden;
     background-color: #f8f8f8;
 }
 
 .ticket_left .ticket_cont ul{
-	padding-top: 20px;
+	padding-top: 19px;
 }
 
 .ticket_cont li.first{
 	position: relative;
-    top: -20px;
+    top: -19px;
     left: 0;
     width: 179px;
     height: 218px;
@@ -241,10 +265,11 @@ strong{
 }
 
 .ticket_cont li{
-	padding-left: 30px;
-	font-size: 15px;
+	padding-left: 20px;
+	font-size: 14px;
 	height: 36px;
 	line-height: 36px;
+	letter-spacing: 1;
 }
 
 .ticket_header{
@@ -257,7 +282,7 @@ strong{
 }
 
 .title img{
-	margin-top: -10px;
+	margin-top: -13px;
 }
 
 .first{
@@ -276,32 +301,31 @@ strong{
 
 .rank_left{
 	float: left;
-	width: 600px;
+	width: 525px;
 	overflow: hidden;
 	}
 
 .rank_right{
 	float:left;
-	width: 600px;
+	width: 525px;
 	overflow: hidden;
 }
 
 .rank_cont{
 	border: 1px solid #e6e6e6;
     border-radius: 2px 0 0 2px;
-    width: 598px;
     height: 218px;
     overflow: hidden;
     background-color: #f8f8f8;    
 }
 
 .rank_cont ul{
-	padding-top: 20px;
+	padding-top: 19px;
 }
 
 .rank_cont li.first{
 	position: relative;
-    top: -20px;
+    top: -19px;
     left: 0;
     width: 179px;
     height: 218px;
@@ -310,18 +334,27 @@ strong{
 }
 
 .rank_cont li{
-	padding-left: 30px;
-	font-size: 15px;
+	padding-left: 20px;
+	font-size: 14px;
 /* 	font-weight: bold; */
 	height: 36px;
+	width: 340px;
 	line-height: 36px;
-	letter-spacing: 2;
+	letter-spacing: 1;
 	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .rank_header{
 	height: 50px;
 	overflow: hidden;
+}
+
+.rank_cont li span{
+	margin-right: 10px;
+	font-weight: bold;
 }
 
 .best_header{
@@ -336,10 +369,15 @@ strong{
 
 .section_best .best_list li{
 	overflow: hidden;
-	margin: 0 0 18px 18px;
-	height: 480px;
-	width: 286.5px;
+	margin: 0 0 19px 19px;
+	height: 430px;
+	width: 247px;
 	position: relative;
+}
+
+.best_cont img{
+	width: 247px;
+	height: 320px;
 }
 
 .list_info{
@@ -352,10 +390,9 @@ strong{
 .main_right{
 	margin-left: 650px;
  	position: fixed;
-	top: 30%;
  	position: absolute;
 	top: 700px; 
-	left: 50%;
+	left: 45%;
 	overflow: hidden;
 	width: 105px;
 }
@@ -376,17 +413,19 @@ strong{
 
 .right_suv{
 	position: fixed;
-	top: 50%;
+	top: 30%;
 }
 
 .a{
 	border:0 solid black;
 	width:60px;
+	background-color: rgba(255, 0, 0, 0.0);
 }
 
 .b{
 	border:0 solid black;
 	width: 60px;
+	background-color: rgba(255, 0, 0, 0.0);
 }
 
 #back_to_top{
@@ -397,6 +436,13 @@ strong{
 	height: 44px;
 }
 
+#back_to_top img{
+	margin-left: 5px;
+}
+
+.weathericon{
+	margin-top: -8px;
+}
 /*  ------------------------Footer Css-------------------- */
 
 #f_container{

@@ -4,6 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="NoticeMapper">
+
+	<update id="setHitUpdate" parameterType="String">
+		UPDATE NOTICE SET HIT = HIT + 1 WHERE NUM = #{num}
+	</update>
 	<insert id="setWrite" parameterType="NoticeDTO">
 		INSERT INTO NOTICE(NUM,TITLE,WRITER,CONTENTS,HIT,REG_DATE,TOP) 
 		VALUES(#{num}, #{title}, #{writer}, #{contents}, 0, SYSDATE, #{top})

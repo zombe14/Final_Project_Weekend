@@ -47,9 +47,10 @@ li{
 }
 
 #header{
-	z-index: 200;
 	position: relative;
 	height: 120px;
+	padding: 10px 20px;
+	background-color: #f5f6f7;
 }
 
 #h_container{	
@@ -68,6 +69,7 @@ li{
 #container{
 	margin: 0;
 	overflow: hidden;
+	background-color: #f5f6f7;
 }
 
 #content{
@@ -171,11 +173,11 @@ li{
 .map {
     overflow: hidden;
     position: relative;
-    height: 800px;
+    height: 500px;
 	width: 100%;
     float: left;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 /* footer */
