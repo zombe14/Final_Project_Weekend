@@ -136,7 +136,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberLogout", method =RequestMethod.GET)
 	public String logout(HttpServletRequest request,HttpSession session, MemberDTO memberDTO)throws Exception{
-
 		session.invalidate();
 		return "redirect:../";
 	}
