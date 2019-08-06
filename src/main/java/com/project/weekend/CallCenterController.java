@@ -17,27 +17,35 @@ import com.project.weekend.util.PageMaker;
 @Controller
 @RequestMapping("/callcenter/")
 public class CallCenterController {
-	
+
 	@Inject
 	private NoticeServiceImpl noticeServiceImpl;
-	
+
 	@RequestMapping(value = "main")
-	public void mainSelect(){}
-	@RequestMapping(value = "ticketguide")
-	public void ticketguideSelect() {}
-	@RequestMapping(value = "cancel")
-	public void cancel() {}
-	@RequestMapping(value = "legalguide")
-	public void legalguide() {}
-	
-	/*고객센터 공지사항*/
-	@RequestMapping(value = "main", method = RequestMethod.GET)
-	public ModelAndView mainNoticeList(PageMaker pageMaker ,HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<BoardDTO> list = noticeServiceImpl.getList(pageMaker, session);
-		mv.addObject("board", "notice");
-		mv.addObject("list", list);
-		return mv;
-		
+	public void mainSelect() {
 	}
+
+	@RequestMapping(value = "ticketguide")
+	public void ticketguideSelect() {
+	}
+
+	@RequestMapping(value = "cancel")
+	public void cancel() {
+	}
+
+	@RequestMapping(value = "legalguide")
+	public void legalguide() {
+	}
+
+	/*
+	 * 고객센터 공지사항
+	 * 
+	 * @RequestMapping(value = "main", method = RequestMethod.GET) public
+	 * ModelAndView mainNoticeList(PageMaker pageMaker ,HttpSession session) throws
+	 * Exception{ ModelAndView mv = new ModelAndView(); List<BoardDTO> list =
+	 * noticeServiceImpl.getList(pageMaker, session); mv.addObject("board",
+	 * "notice"); mv.addObject("list", list); return mv;
+	 * 
+	 * }
+	 */
 }
