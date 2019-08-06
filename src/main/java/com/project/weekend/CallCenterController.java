@@ -1,20 +1,39 @@
-package com.project.weekend;
+﻿package com.project.weekend;
 
 import java.util.List;
 
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.project.weekend.board.BoardDTO;
+import com.project.weekend.board.notice.NoticeDTO;
+import com.project.weekend.board.notice.NoticeServiceImpl;
+
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 @RequestMapping("/callcenter/")
 public class CallCenterController {
 
-	/*
-	 * @Inject private NoticeServiceImpl noticeServiceImpl;
-	 */
+
+	@Inject 
+	private NoticeServiceImpl noticeServiceImpl;
+
 
 	@RequestMapping(value = "main")
-	public void mainSelect() {
+	public ModelAndView mainSelect() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<BoardDTO> news = noticeServiceImpl.getNewList();
+		mv.addObject("list", news);
+		mv.setViewName("callcenter/main");
+		return mv;
 	}
 
 	@RequestMapping(value = "ticketguide")
@@ -40,4 +59,5 @@ public class CallCenterController {
 	 * 
 	 * }
 	 */
+
 }

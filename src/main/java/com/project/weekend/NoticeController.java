@@ -138,12 +138,15 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		List<BoardDTO> list = noticeSerivceImpl.getList(pageMaker, session);
 		List<BoardDTO> top = noticeSerivceImpl.getTopList();
+		
 		mv.addObject("board", "notice");
 		mv.addObject("boardTitle", boardTitle);
 		mv.addObject("list", list);
 		mv.addObject("top", top);
+		
 		mv.addObject("pager",pageMaker);
 		mv.setViewName("board/boardList");
+		
 		return mv;
 	}
 	

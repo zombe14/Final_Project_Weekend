@@ -1,16 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:import url="../temp/boot.jsp"></c:import>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>[${boardTitle}]${dto.title}</title>
+<c:import url="../temp/boot.jsp"></c:import>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="shortcut icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
+<style type="text/css">
+	#replyContents{
+		resize: none;
+	}
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -48,6 +53,9 @@
 				<a id="list" title="${board}" class="${dto.num}">목록</a>
 				<a id="update" class="${board}">수정</a> 
 				<a id="delete" class="${board}">삭제</a>
+				<c:if test="${board eq 'qna'}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
+					<a id="replyBtn" class="btn btn-default">답변달기</a>
+				</c:if>
 
 				<form action="./${board}Delete" id="deleteFrm" method="post">
 					<c:if test="${board eq 'notice' or board eq 'qna'}">
@@ -57,6 +65,26 @@
 						<input type="hidden" class="anum" id = "${dto.anum}" name="anum" value="${dto.anum}">
 					</c:if>					
 				</form>
+				<%-- <hr>
+				<c:if test="${board eq 'qna'}">
+					<c:forEach items="${replyDTO}" var = "r">
+						${r.writer}
+						<p>${r.contents}</p>
+						<a id="replyUpdate">수정</a>
+						<a id="replyDelete">삭제</a>
+					</c:forEach>
+					<hr>
+					<c:if test="${member.grade eq 3}">
+						<div id="replyDiv">
+							<form action="./${board}ReplyWrite" method="post" id="replyFrm">
+								<p>${member.id}memberId</p>
+								<input type="hidden" name="writer" value="${member.id}memberId">
+								<textarea rows="3" cols="100" id="replyContents"></textarea>
+								<a class="btn btn-default" id="replyWrite">답변등록</a>
+							</form>
+						</div>
+					</c:if>
+				</c:if> --%>
 			</div>
    </div>
    <div id="footer">
@@ -110,6 +138,24 @@
 		}
 		location.href = list;
 	});
+	/* 
+	if('${board}' == 'qna'){
+		$('#replyWrite').click(function() {
+			if($('#replyContents').val() == ""){
+				alert('내용을 입력해주세요');
+			} else {
+				$.ajax({
+					url:'./${board}ReplyWrite'
+				});
+			}
+		});
+	} */
+	if('${board}' == 'qna'){
+		$('#replyBtn').click(function() {
+			console.log('click');
+			location.href = "./${board}ReplyWrite?num=${dto.num}";
+		});
+	}
 	
 </script>
 </body>

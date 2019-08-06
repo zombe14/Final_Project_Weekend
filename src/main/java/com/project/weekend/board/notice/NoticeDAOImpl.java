@@ -58,5 +58,9 @@ public class NoticeDAOImpl implements BoardDAO {
 	public int setHitUpdate(String num) throws Exception{
 		return sqlSession.update(NAMESPACE+"setHitUpdate", num);
 	}
+	
+	public List<BoardDTO> getNewList() throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getNewList");
+	}
 
 }
