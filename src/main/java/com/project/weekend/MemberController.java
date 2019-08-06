@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.Request;
@@ -97,8 +98,6 @@ public class MemberController {
 		MemberDTO getId = memberService.getId(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
-		int overlap = memberService.setUpdateoverlap(memberDTO);
-		System.out.println(overlap);
 		String message="존재 하지 않는 아이디 입니다.";
 		if(getId==null) {
 			mv.setViewName("common/messageMove");
@@ -116,7 +115,7 @@ public class MemberController {
 						mv.addObject("path", "../");
 					}else {
 						session.setAttribute("member", memberDTO);
-						memberService.setUpdatezero(memberDTO);
+						int zero = memberService.setUpdatezero(memberDTO);
 						message = "Login Success";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
@@ -136,8 +135,10 @@ public class MemberController {
 	@RequestMapping(value = "memberAgree", method = RequestMethod.GET)
 	public void getAgree()throws Exception{}
 	
-	@RequestMapping(value = "memberLogout")
-	public String logout(HttpServletRequest request,HttpSession session, MemberDTO memberDTO)throws Exception{
+	@RequestMapping(value = "memberLogout", method = RequestMethod.POST)
+	public String logout(MemberDTO memberDTO, HttpSession session, HttpServletRequest request)throws Exception{
+		String id = request.getParameter("id");
+		System.out.println(id);
 		session.invalidate();
 		return "redirect:../";
 	}
