@@ -33,7 +33,7 @@
 	<select id="getList" parameterType="PageMaker" resultMap="qnaResult">
 		SELECT * FROM 
 		(SELECT ROWNUM R, Q.* FROM 
-		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH 
+		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW
 		FROM QNA WHERE
 		<choose>
 			<when test="kind = 1">

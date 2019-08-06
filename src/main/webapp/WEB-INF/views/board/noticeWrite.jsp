@@ -25,7 +25,7 @@
 			<c:import url="../inc/header.jsp"></c:import>
 		</div>
 		<div id="container">
-			<div class="inner">
+			<div class="conta">
 				<strong>${boardTitle} 글쓰기</strong>
 				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
 					<table class="table table-bordered">
@@ -62,17 +62,7 @@
 									</div>
 								</td>
 							</tr>
-							<c:if test="${board eq 'qna'}">
-							<tr>
-								<td>비밀번호</td>
-								<td><div>
-										<input type="radio" class="pwSel" name="secret" id="nonSecret" checked="checked"> 오픈글 
-										<input type="radio" class="pwSel" name="secret" id="secret"> 비밀글 
-										<input type="password" name="pw" id="pw" placeholder="글 열람 시 사용할 비밀번호를 입력해주세요" value="${dto.pw}">
-									</div>
-								</td>
-							</tr>
-							</c:if>
+							
 					</table>
 					
 					<input type="hidden" id="board" name="${board}">
@@ -147,29 +137,16 @@
 		});
 		
 		// 상단 배치 개수 제한
-		if('${board}' == 'notice'){
+		
 			var topC = $('#topCount').attr('title');
 			$('#top').hide();
 			if(topC < 7){
 				$('#top').show();
 			}
-		}
-		if('${board}'== 'qna'){
-			if($('#nonSecret').prop('checked',true)){
-				$('#pw').val('');
-				$('#pw').hide();
-			}
-			$('.pwSel').click(function(){
-				if($('#nonSecret').prop('checked')==true){
-					$('#pw').val('');
-					$('#pw').hide();
-				} 
-				if($('#secret').prop('checked')==true){
-					$('#pw').removeAttr('readonly');
-					$('#pw').show();
-				}
-			});
-		}
+		
+		
+		
+		
 
 	</script>
 </body>

@@ -102,10 +102,10 @@
 							class="fa fa-home fa-fw"></i>아동/가족</a></li>
 					<li id="navbar-page" class="navp navp1"><a href="#"><i
 							class="fa fa-home fa-fw"></i>랭킹</a></li>
-					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/notice/noticeList"><i
-							class="fa fa-home fa-fw"></i>(공지사항)</a></li>
-					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/after/afterAllList"><i
-							class="fa fa-home fa-fw"></i>(후기)</a></li>
+					<li id="navbar-page" class="navp"><a href="#"><i
+							class="fa fa-home fa-fw"></i>이벤트</a></li>
+					<li id="navbar-page" class="navp"><a href="#"><i
+							class="fa fa-home fa-fw"></i>유저추천</a></li>
 				</ul>
 			</div>
 		</div>

@@ -5,63 +5,10 @@
 <html>
 <head>
 <title>${boardTitle} 목록</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/home.css">
-<link rel="shortcut icon" type="image/x-icon"
-	href="../resources/images/logo/logo.png" />
-<style type="text/css">
-	/* css 할거*/
-	/* 3. 글쓰기 버튼$('#boardWrite'), 검색버튼 디자인 */
-	/* 4. 검색 form, 글쓰기 버튼 위치 잡기  */
-	/* 6. 테이블 위에 어떻게 할지 */
-	
-	/* 2. 페이징 처리 가운데로 */
-	
-	#paging{
-	
-	}
-	
-	.pagingClick{
-		color: green;
-		cursor: pointer;
-	}
-	
-	/* 5. 검색버튼 */
-	#searchButton{
-		width: 30px;
-	}
-	
-	/* 7. 각 행 cursor: pointer */
-	.select{
-		cursor: pointer;
-	}
-	.select:hover{
-		/* 제목에만 underline주는 법 찾아보기 */
-		text-decoration: underline;
-	}
-	/* 8. 중요한 공지사항 색깔 다시 정하기 */
-	.mark{
-		background-color: #41b40a17;
-	}
-
-	/* 9. 테이블 행이 적을 때 페이징 ul 안올라가게 */
-	#tableDiv{
-		min-height: 30vh; 
-	}
-	.td10 {
-		/* 1. 제목 빼고 가운데 정렬 */
-		text-align:center;
-		/* 10. 각 열 크기 조절 */
-		width: 10%;
-	}
-	
-	.td60 {
-		width: 60%;
-	}
-
-}
-
-</style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="shortcut icon" type="image/x-icon" href="../resources/images/logo/logo.png" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/callcenter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/boardList.css">
 </head>
 <body>
 	<div id="wrap">
@@ -69,29 +16,47 @@
 			<c:import url="../inc/header.jsp"></c:import>
 		</div>
 		<div id="container">
-			<div class="inner">
-				<!-- 검색창 -->
-				<form action="./${board}List">
-					<select name="kind">
-						<option value="0">전체</option>
-						<option value="1">제목</option>
-						<option value="2">내용</option>
-						<c:if test="${board eq 'after' or board eq 'qna'}">
-							<option value="3">작성자</option>
-						</c:if>
-					</select> 
-					<input type="text" placeholder="검색어를 입력하세요" name="search">
-					<button id="searchButton">검색</button>
-				</form>
-				<%-- <c:if test="${member.grade eq 3}"> --%>
-					<div>
-						<button id="boardWrite" value="${board}">${boardTitle} 글쓰기</button>
-					</div>
+			<div class="conta">
+			<div class="call_quick">
+				<div class="title">
+					<h2>고객센터</h2>
+				</div>
+				<ul>
+					<li class="qmenu"><a href=""><img src="${pageContext.request.contextPath}/resources/images/callcenter/call1.png">아이디/<br>패스워드 찾기</a></li>
+					<li class="qmenu"><a href=""><img src="${pageContext.request.contextPath}/resources/images/callcenter/call2.png">상담내역<br>확인</a></li>
+					<li class="qmenu"><a href=""><img src="${pageContext.request.contextPath}/resources/images/callcenter/call3.png">티켓<br>예매문의</a></li>
+					<li class="qmenu"><a href=""><img src="${pageContext.request.contextPath}/resources/images/callcenter/call4.png">티켓<br>환불문의</a></li>
+					<li class="qmenu"><a href=""><img src="${pageContext.request.contextPath}/resources/images/callcenter/call5.png">티켓<br>수령문의</a></li>
+				</ul>
+			</div>
+			<div class="call_container">
+				<ul class="call_menu">
+					<li class="cmenu1"><a href="${pageContext.request.contextPath}/callcenter/main">고객센터 홈</a></li>
+					<li class="cmenu2"><a href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a></li>
+					<li class="cmenu3"><a href="${pageContext.request.contextPath}/qna/qnaList">QnA</a></li>
+					<li class="cmenu4"><a href="">예매안내</a></li>
+					<li class="cmenu5"><a href="">결제수단안내</a></li>
+					<li class="cmenu6"><a href="${pageContext.request.contextPath}/callcenter/cancel">환불안내</a></li>
+					<li class="cmenu7"><a href="${pageContext.request.contextPath}/callcenter/legalguide">부정이용 규제안내</a></li>
+					<li class="cmenu8"><a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
+				</ul>
+				<div class="call_cont">
+				<div class="board_h3">
+				<h3>${boardTitle} 게시판</h3>
+				</div>
+				
 				<%-- </c:if> --%>
+				
+			<c:if test="${board eq 'notice' }">
+				<c:forEach items="${news}" var="t">
+					<p>${t.title}</p>
+				</c:forEach>
+			</c:if>
+				
 				<div id="tableDiv">
 					<!-- notice list 테이블 -->
 					<table class="table">
-						<thead>
+						<thead class="table_head">
 							<th class="td10">번호</th>
 							<th class="td60">제목</th>
 							<th class="td10">작성자</th>
@@ -131,11 +96,11 @@
 					</table>
 				</div>
 				<div id="paging">
-					<c:if test="${list[0].reg_date eq null}">
+					<%-- <c:if test="${list[0].reg_date eq null}">
 						<ul class="pagination">
 							<li class="pagingClick"><a href="${board}List">검색결과가 없습니다</a></li>
 						</ul>
-					</c:if>
+					</c:if> --%>
 					<c:if test="${list[0].reg_date ne null}">
 						<ul class="pagination">
 							<c:choose>
@@ -143,7 +108,7 @@
 									<li class="pagingClick"><a href="${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a>이전</a></li>
+									<li class="pagingo"><a>이전</a></li>
 								</c:otherwise>
 							</c:choose>
 	
@@ -157,14 +122,33 @@
 									<li class="pagingClick"><a href="${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a>다음</a></li>
+									<li class="pagingo"><a>다음</a></li>
 								</c:otherwise>
 							</c:choose>
 						</ul>
 					</c:if>
 				</div>
-
+				<div class="boardwrite">
+						<button id="boardWrite" value="${board}">${boardTitle} 글쓰기</button>
+				</div>
+								<!-- 검색창 -->
+				<form action="./${board}List" class="search_form">
+					<select name="kind" class="search_select">
+						<option value="0">전체</option>
+						<option value="1">제목</option>
+						<option value="2">내용</option>
+						<c:if test="${board eq 'after' or board eq 'qna'}">
+							<option value="3">작성자</option>
+						</c:if>
+					</select> 
+					<input type="text" placeholder="" name="search" class="search_input">
+					<button id="searchButton">검색</button>
+				</form>
+				<%-- <c:if test="${member.grade eq 3}"> --%>
+					
+				</div>
 			</div>
+		</div>
 		</div>
 		<div id="footer">
 			<c:import url="../inc/footer.jsp"></c:import>
@@ -191,6 +175,7 @@
 			num = num.substring(1);
 			$(this).children('p').append(num);
 		});
+		
 	</script>
 
 </body>
