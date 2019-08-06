@@ -110,8 +110,8 @@
 										</c:otherwise>
 									</c:choose>
 									<td>${dto.reg_date}</td>
-									<td><input class="pBtn" type="button" value="UP" title='${dto.grade}' id='${dto.id}'></td>
-									<td><input class="mBtn" type="button" value="DOWN" title='${dto.grade}' id='${dto.id}'></td>
+									<td><input class="pBtn" type="button" value="UP" title='${dto.grade}' id='${dto.id}'>
+										<input class="mBtn" type="button" value="DOWN" title='${dto.grade}' id='${dto.id}'></td>
 									<td><input class="dBtn" type="button" value="삭제" id='${dto.id}'></td>
 								</tr>
 							</c:forEach>

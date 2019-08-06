@@ -93,12 +93,10 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
 	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session)throws Exception{
-		System.out.println("start");
 		MemberDTO getId = memberService.getId(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
 		int overlap = memberService.setUpdateoverlap(memberDTO);
-		System.out.println(overlap);
 		String message="존재 하지 않는 아이디 입니다.";
 		if(getId==null) {
 			mv.setViewName("common/messageMove");
