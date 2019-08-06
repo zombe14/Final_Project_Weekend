@@ -54,7 +54,7 @@
 				<a id="update" class="${board}">수정</a> 
 				<a id="delete" class="${board}">삭제</a>
 				<c:if test="${board eq 'qna'}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
-					<a id="reply" class="">답변달기</a>
+					<a id="replyBtn" class="btn btn-default">답변달기</a>
 				</c:if>
 
 				<form action="./${board}Delete" id="deleteFrm" method="post">
@@ -151,7 +151,10 @@
 		});
 	} */
 	if('${board}' == 'qna'){
-		
+		$('#replyBtn').click(function() {
+			console.log('click');
+			location.href = "./${board}ReplyWrite?num=${dto.num}";
+		});
 	}
 	
 </script>

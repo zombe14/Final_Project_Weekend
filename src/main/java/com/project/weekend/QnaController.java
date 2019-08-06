@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.client.support.HttpAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +25,8 @@ public class QnaController {
 	@Inject
 	private QnaService qnaService;
 	private static final String board = "qna";
-	private static final String boardTitle = "QnA";
+	private static final String boardTitle = "Q&A";
+	private static final String reply = "Q&A 답변";
 
 	@RequestMapping(value = "qnaWrite", method = RequestMethod.GET)
 	public ModelAndView setWrite() throws Exception {
@@ -46,10 +48,14 @@ public class QnaController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "qnaReplyWrite", method = RequestMethod.POST)
-	public ModelAndView setReplyWrite(QnaDTO qnaDTO) throws Exception{
+	@RequestMapping(value = "qnaReplyWrite", method = RequestMethod.GET)
+	public ModelAndView setReplyWrite(QnaDTO qnaDTO, String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
+		QnaDTO qnaOrigin = qnaService.getSelect(num, session, request, response);
+		mv.addObject("qnaOrigin", qnaOrigin);
+		mv.addObject("board", board);
+		mv.addObject("boardTitle", reply);
+		mv.setViewName("board/qnaWrite");
 		return mv;
 	}
 
