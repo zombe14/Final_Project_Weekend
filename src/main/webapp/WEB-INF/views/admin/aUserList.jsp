@@ -6,8 +6,8 @@
 <head>
 <title>유저 관리</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<c:import url="../../temp/adminBoot.jsp" />
-<c:import url="../../../../resources/css/adminBoard.css" />
+<c:import url="../temp/adminBoot.jsp" />
+<c:import url="../../../resources/css/adminBoard.css" />
 </head>
 <body>
 	<script type="text/javascript">
@@ -74,12 +74,12 @@
 		});
 	</script>
 	<div class="totalBody">
-		<c:import url="../../inc/admin_header.jsp" />
+		<c:import url="../inc/admin_header.jsp" />
 		<!-- left bar 시작 -->
 		<div class="container-fluid text-center">
 			<div class="row content">
 				<!-- side bar -->
-				<c:import url="../../inc/admin_left_bar.jsp" />
+				<c:import url="../inc/admin_left_bar.jsp" />
 				<div class="col-sm-10">
 					<h4>
 						<small>${board} 관리</small>

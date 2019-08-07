@@ -7,9 +7,9 @@
 <title>${board}관리</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 관리자용 bootstrap -->
-<c:import url="../../temp/adminBoot.jsp" />
+<c:import url="../temp/adminBoot.jsp" />
 <!-- 관리자용 css -->
-<c:import url="../../../../resources/css/adminBoard.css" />
+<c:import url="../../../resources/css/adminBoard.css" />
 </head>
 <body>
 <script type="text/javascript">
@@ -32,11 +32,11 @@
 </script>
 	<div class="totalBody">
 		<!-- header.jsp -->
-		<c:import url="../../inc/admin_header.jsp" />
+		<c:import url="../inc/admin_header.jsp" />
 		<div class="container-fluid text-center">
 			<div class="row content">
 				<!-- side bar -->
-				<c:import url="../../inc/admin_left_bar.jsp" />
+				<c:import url="../inc/admin_left_bar.jsp" />
 				<div class="col-sm-10">
 					<h4>
 						<small>${board} 관리</small>

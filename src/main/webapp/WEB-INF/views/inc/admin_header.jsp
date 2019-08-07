@@ -15,8 +15,8 @@
       <ul class="nav navbar-nav" class="active">
         <li><a href="${pageContext.request.contextPath}/admin/aUserList">유저관리</a></li>
         <li><a href="${pageContext.request.contextPath}/admin/aNoticeList">게시판 관리</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/aReserBoard">예약 관리</a></li>
-        <li><a href="#">이건 뭐야 무서워</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin/aReserList">예약 관리</a></li>
+        <li><a href="#">빈칸</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       	<!-- 관리자 로그아웃 -->
