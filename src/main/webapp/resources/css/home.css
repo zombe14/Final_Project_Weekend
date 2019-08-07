@@ -176,16 +176,16 @@ ul{
 }
 
 .nav li a{
-	padding: 17px 50px;
+	padding: 17px 47px;
 }
 
 .nav li a:hover{
 	background-color: #d4f7d4;
 }
 
-.nav_wrap{
+/* .nav_wrap{
 	margin-left: 380px;
-}
+} */
 
 .dropdown-menu{
 	padding: 0;
@@ -200,6 +200,12 @@ ul{
 
 .navbar-nav{
 	font-weight: bold;
+	min-width: 1110px;
+}
+
+.collapse{
+	width: 1110px;
+	margin: 0 auto;
 }
 
 .dropdown-menu li a{
