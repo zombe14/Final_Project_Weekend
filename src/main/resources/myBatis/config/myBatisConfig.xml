@@ -9,6 +9,7 @@
 		<typeAlias type="com.project.weekend.board.festi.after.AfterDTO" alias="AfterDTO"/>
 		<typeAlias type="com.project.weekend.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="com.project.weekend.board.festi.festiQna.FestiQnaDTO" alias="FestiQnaDTO"/>
+		<typeAlias type="com.project.weekend.board.comments.CommentsDTO" alias="CommentsDTO"/>
 		<!-- 상혁 -->
 		<typeAlias type="com.project.weekend.member.MemberDTO" alias="MemberDTO"/>
 		

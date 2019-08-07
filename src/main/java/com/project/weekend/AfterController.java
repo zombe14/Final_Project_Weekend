@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.weekend.board.comments.CommentsDTO;
+import com.project.weekend.board.comments.CommentsService;
 import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.board.festi.after.AfterDTO;
 import com.project.weekend.board.festi.after.AfterService;
@@ -28,6 +30,8 @@ public class AfterController {
 	private AfterService afterService;
 	@Inject
 	private FestiService festiService;
+	@Inject
+	private CommentsService commentsService;
 
 	@RequestMapping(value = "afterWrite", method = RequestMethod.GET)
 	public ModelAndView setWrite(String num, HttpSession session) throws Exception {
@@ -121,6 +125,14 @@ public class AfterController {
 		mv.addObject("boardTitle", after);
 		mv.addObject("pager", pageMaker);
 		mv.setViewName(path);
+		return mv;
+	}
+	
+	@RequestMapping(value = "commentsWrite", method = RequestMethod.POST)
+	public ModelAndView setCommentyWrite(CommentsDTO commentsDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = commentsService.setCommentsWrite(commentsDTO);
+		mv.addObject("result", result);
 		return mv;
 	}
 

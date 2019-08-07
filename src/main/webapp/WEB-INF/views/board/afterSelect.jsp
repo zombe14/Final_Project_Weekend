@@ -12,7 +12,7 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <style type="text/css">
-	#replyContents{
+	#commentsContents{
 		resize: none;
 	}
 </style>
@@ -61,28 +61,28 @@
 							
 				</form>
 				<hr>
-				<p>까지는까악하고울지</p>
+				<p>까지는까악</p>
 				<p>내용콘텐츠집가고싶다핵더움</p>
 				<p>2019.08.07. 19:10</p>
-				<a id="replyUpdate">수정</a> 
-				<a id="replyDelete">삭제</a>
-				<a id="rereplyWrite">댓글등록</a>
-				<c:forEach items="${replyDTO}" var="r">
+				<a id="commentsUpdate">수정</a> 
+				<a id="commentsDelete">삭제</a>
+				<a id="recommentsWrite">댓글등록</a>
+				<c:forEach items="${commentsDTO}" var="r">
 					<p>${r.writer}</p>
 					<p>${r.contents}</p>
 					<p>${r.reg_date}</p>
-					<a id="replyUpdate">수정</a>
-					<a id="replyDelete">삭제</a>
-					<a id="rereplyWrite">댓글등록</a>
+					<a id="commentsUpdate">수정</a>
+					<a id="commentsDelete">삭제</a>
+					<a id="recommentsWrite">댓글등록</a>
 				</c:forEach>
 				<hr>
 
-				<div id="replyDiv">
-					<form action="./${board}ReplyWrite" method="post" id="replyFrm">
+				<div id="commentsDiv">
+					<form action="./${board}commentsWrite" method="post" id="commentsFrm">
 						<p>${member.nickname}memberNickname</p>
-						<input type="hidden" name="writer" value="${member.nickname}">
-						<textarea rows="3" cols="100" id="replyContents"></textarea>
-						<a class="btn btn-default" id="replyWrite">댓글등록</a>
+						<input type="hidden" name="writer" id="writer" value="${member.nickname}임시">
+						<textarea rows="3" cols="100" id="commentsContents"></textarea>
+						<a class="btn btn-default" id="commentsWrite">댓글등록</a>
 					</form>
 				</div>
 
@@ -138,6 +138,27 @@
 			list = "./"+board+"List";
 		}
 		location.href = list;
+	});
+	
+	$('#commentsWrite').click(function() {
+		var writer = $('#writer').val();
+		var contents = $('#commentsContents').val();
+		$.ajax({
+			type:'post',
+			url:'./commentsWrite',
+			data:{
+				writer:writer,
+				contents:contents
+			},
+			success:function(data){
+				data = data.trim();
+				if(data == '1'){
+					alert('성공');
+				} else {
+					alert('실패');
+				}
+			},
+		});
 	});
 	
 	
