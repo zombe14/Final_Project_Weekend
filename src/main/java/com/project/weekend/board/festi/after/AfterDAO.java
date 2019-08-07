@@ -26,6 +26,10 @@ public class AfterDAO {
 		return sqlSession.delete(NAMESPACE+"setDelete", anum);
 	}
 	
+	public int setDeleteAll(String num) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDeleteAll", num);
+	}
+	
 	public int setUpdate(AfterDTO afterDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setUpdate", afterDTO);
 	}

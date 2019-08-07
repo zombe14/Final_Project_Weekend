@@ -1,6 +1,6 @@
 select * from qna
 
-select * from after
+select * from festi
 select * from show_order
 SELECT * FROM 
 		(SELECT ROWNUM R, Q.* FROM 

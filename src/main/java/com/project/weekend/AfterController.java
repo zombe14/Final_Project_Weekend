@@ -83,10 +83,11 @@ public class AfterController {
 	}
 
 	@RequestMapping(value = "afterDelete", method = RequestMethod.POST)
-	public ModelAndView setDelete(String anum, HttpSession session) throws Exception {
+	public ModelAndView setDelete(String anum, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		String num = afterService.getSelect(anum, session, request, response).getNum();
 		int res = afterService.setDelete(anum, session);
-		String path = "redirect:./afterAllList";
+		String path = "redirect:../festi/festiSelect?num="+num;
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.setViewName(path);
@@ -99,7 +100,7 @@ public class AfterController {
 
 		AfterDTO afterDTO = afterService.getSelect(num, session, request, response);
 
-		String path = "board/boardSelect";
+		String path = "board/afterSelect";
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);

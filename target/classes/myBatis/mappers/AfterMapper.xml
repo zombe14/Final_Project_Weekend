@@ -9,6 +9,9 @@
 	<delete id="setDelete" parameterType="String">
 		DELETE AFTER WHERE ANUM = #{anum}
 	</delete>
+	<delete id="setDeleteAll" parameterType="String">
+		DELETE AFTER WHERE NUM = #{num}
+	</delete>
 	<update id="setUpdate" parameterType="AfterDTO">
 		UPDATE AFTER SET TITLE = #{title}, CONTENTS = #{contents}, POINT = #{point} WHERE ANUM = #{anum}
 	</update>
@@ -16,7 +19,7 @@
 		select after_seq.nextval from dual
 	</select>
 	<select id="getSelect" parameterType="String" resultMap="afterResult">
-		SELECT * FROM AFTER FULL JOIN FILES ON(AFTER.ANUM = FILES.NUM) WHERE ANUM = #{anum}
+		SELECT * FROM AFTER FULL JOIN FILES ON(AFTER.ANUM = FILES.NUM) WHERE AFTER.ANUM = #{anum}
 	</select>
 	<update id="setHitUpdate" parameterType="String">
 		UPDATE AFTER SET HIT = HIT + 1 WHERE ANUM = #{anum}

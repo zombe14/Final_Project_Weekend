@@ -167,7 +167,7 @@ return datepicker.regional.ko;
 	<script type="text/javascript">
 	/* 글 삭제 */
 	$('#delete').click(function() {
-		var check = confirm('삭제하시겠습니까?');
+		var check = confirm('삭제하시겠습니까? 후기와 Q&A가 모두 삭제됩니다.');
 		if(check){
 			
 			location.href="./${board}Delete?num=${dto.num}";
