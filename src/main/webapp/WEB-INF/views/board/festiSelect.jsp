@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="../temp/boot.jsp"></c:import>
 <!DOCTYPE html>
@@ -18,62 +18,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
-<script type="text/javascript">
-
-// 달력위젯
-$(document).ready(function(){
-	$(function(){
-    		var startDate = $("#sd").val;
-    		
-    	$("#date1").datepicker({
-    		 showOn: "both",
-             buttonImage: "../resources/images/festi/calicon.png",
-             buttonImageOnly: true,
-             changeMonth : true,
-             changeYear : true,
-             dateFormat : "yy-mm-dd",
-             minDate : "startDate"
-    	});
-	});
-
-// 달력위젯 한글 패치
-( function( factory ) {
-	if ( typeof define === "function" && define.amd ) {
-
-		// AMD. Register as an anonymous module.
-		define( [ "../widgets/datepicker" ], factory );
-	} else {
-
-		// Browser globals
-		factory( jQuery.datepicker );
-	}
-}( function( datepicker ) {
-
-datepicker.regional.ko = {
-	closeText: "닫기",
-	prevText: "이전달",
-	nextText: "다음달",
-	currentText: "오늘",
-	monthNames: [ "1월","2월","3월","4월","5월","6월",
-	"7월","8월","9월","10월","11월","12월" ],
-	monthNamesShort: [ "1월","2월","3월","4월","5월","6월",
-	"7월","8월","9월","10월","11월","12월" ],
-	dayNames: [ "일요일","월요일","화요일","수요일","목요일","금요일","토요일" ],
-	dayNamesShort: [ "일","월","화","수","목","금","토" ],
-	dayNamesMin: [ "일","월","화","수","목","금","토" ],
-	weekHeader: "주",
-	firstDay: 0,
-	isRTL: false,
-	showMonthAfterYear: true,
-	yearSuffix: "년" };
-datepicker.setDefaults( datepicker.regional.ko );
-
-return datepicker.regional.ko;
-
-} ) );
-});
-
-</script>
+<script type="text/javascript" src="../resources/js/calendar.js"></script>
 
 </head>
 <body>
@@ -83,11 +28,12 @@ return datepicker.regional.ko;
 		</div>
 		<div id="container">
 			<div class="conta">
-				<div class="festi_conta">
+				<div class="festi_top">
 				<!-- 축제 핵심 내용 -->
-				<div>
+				<div class="festi_wrap">
 					<div class="bx_title">
 					<strong>${dto.title}</strong>
+					<a href="./${board}List?category=${dto.category}"><img alt="리스트 아이콘" src="../resources/images/festi/list.png"> </a>
 					</div>
 					<div class="detail_info">
 						<div class="bx_img">
@@ -104,36 +50,53 @@ return datepicker.regional.ko;
 								<dt class="bit">총 좌석</dt>
 								<dd class="bid">${dto.total} 좌석</dd>
 							</dl>
+							
+							<div class="btc_file">
+							<em>파일 다운로드 : </em>
+							<c:forEach items="${dto.fileDTOs}" var="f">
+								<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
+							</c:forEach>
+							</div>
 						</div>
 					</div>
 					<!-- 날짜 정하는 div -->
 					<div class="detail_info_right">
 						<input type="text" name="date" id="date1" size="12" />
+						<dl class="doline_x">
+							<dt>예매가능 회차</dt>
+							<dd>
+								<select class="festi_select">
+									<option>10:00</option>
+									<option>11:00</option>
+								</select>
+							</dd>
+						</dl>
 						<div class="reserve_button"><a href="#">예매하기</a></div>
+						<div class="admin_button">
+							<a href="./${board}Update?num=${dto.num}">수정</a> 
+							<a id="delete">삭제</a>
+						</div>
 					</div>
 				</div>
 			</div>
-						<p class="festi_contents">${dto.contents}</p>
-					<c:forEach items="${dto.fileDTOs}" var="f">
-						<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
-					</c:forEach>
-				<!-- 내용 끝 -->
-				<!-- ajax 파일 다운로드 -->
-				<div style="display:none;">
-					<form action="../ajax/fileDownload" method="post" id="downForm">
-						<input type="text" name="fname" id="fname">
-						<input type="text" name="oname" id="oname">
-						<input type="text" name="board" value="board">
-					</form>
+				<div class="festi_detail">
+						<c:import url="../inc/festi_detail.jsp"></c:import>
 				</div>
+				<!-- 내용 끝 -->
+				
+					<!-- ajax 파일 다운로드 -->
+							<div style="display:none;">
+								<form action="../ajax/fileDownload" method="post" id="downForm">
+									<input type="text" name="fname" id="fname">
+									<input type="text" name="oname" id="oname">
+									<input type="text" name="board" value="board">
+								</form>
+							</div>
 				<!-- ajax 파일 다운로드 끝 -->
 				
 				
-				<a href="./${board}List?category=${dto.category}">목록</a>
 				<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
 				<%-- <c:if test="${member.grade > 1}"> --%> 
-				<a href="./${board}Update?num=${dto.num}">수정</a> 
-				<a id="delete">삭제</a>
 				<%-- </c:if> --%>
 				
 				<!--  후기 -->
