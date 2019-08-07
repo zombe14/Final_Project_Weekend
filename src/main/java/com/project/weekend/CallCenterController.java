@@ -1,4 +1,4 @@
-﻿package com.project.weekend;
+package com.project.weekend;
 
 import java.util.List;
 
@@ -37,17 +37,25 @@ public class CallCenterController {
 	}
 
 	@RequestMapping(value = "ticketguide")
-	public void ticketguideSelect() {
-	}
+	public void ticketguideSelect() {}
 
 	@RequestMapping(value = "cancel")
-	public void cancel() {
-	}
+	public void cancel() {}
 
 	@RequestMapping(value = "legalguide")
-	public void legalguide() {
-	}
+	public void legalguide() {}
 
+	@RequestMapping(value = "reservation")
+	public void reservation() {}
+	
+	@RequestMapping(value = "payment")
+	public void payment() {}
+	
+	@RequestMapping(value = "infosearch")
+	public void infosearch() {}
+	
+	@RequestMapping(value = "receive")
+	public void receive() {}
 	/*
 	 * 고객센터 공지사항
 	 * 
