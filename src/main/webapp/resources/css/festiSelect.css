@@ -1,0 +1,78 @@
+#container{
+    background-color: #f5f6f7;
+}
+
+.festi_conta{
+	padding: 30px;
+	background-color: white;
+	overflow: hidden;
+}
+
+.detail_info_right{
+	float: right;
+    margin-top: 30px;
+    padding-left: 30px;
+    width: 260px;
+    min-height: 382px;
+    border-left: 1px solid #e1e1e1;
+}
+
+.bx_title{
+	font-size: 25px;
+	padding-bottom: 30px;
+	border-bottom: 2px solid #999;
+}
+
+.detail_info{
+	margin-top: 30px;
+	float: left;
+	position: relative;
+	width: 675px;
+	min-height: 382px;
+}
+
+.bx_img{
+	float: left;
+}
+
+.bx_img img{
+	width: 314px;
+	height: 382px;
+}
+
+.btc_info{
+	float: left;
+	padding: 10px 30px;
+	width: 320px;
+}
+
+.btc_info dl{
+	padding: 20px;
+	border-bottom: 2px solid #999;
+}
+
+.bit{
+	padding-bottom: 10px;
+	font-size: 14px;
+}
+
+.bid{
+	padding-bottom: 20px;
+	font-size: 13px;
+}
+
+.reserve_button{
+	margin-top: 20px;
+}
+
+.reserve_button a{
+	padding: 11px 45px;
+	background-color: #00d344;
+	color: white;
+	font-size: 30px;
+}
+
+.ui-datepicker-trigger{
+	width: 19px;
+	margin-left: 5px;
+}
