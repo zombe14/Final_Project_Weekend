@@ -66,6 +66,7 @@ public class MemberController {
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
 	public void setWrite(@ModelAttribute MemberDTO memberVO)throws Exception{
 	}
+	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -111,34 +112,32 @@ public class MemberController {
 				mv.addObject("message", message);
 				mv.addObject("path", "./memberLogin");
 			}else {
-			
-			
-			memberDTO = memberService.getSelect(memberDTO);
-			message="Login Fail";
-			if(result==1) {	
-				if(memberDTO != null) {
-					if(memberDTO.getCount()>6) {
-						message = "로그인 횟수 제한";	
-						mv.setViewName("common/messageMove");
-						mv.addObject("message", message);
-						mv.addObject("path", "../");
+				memberDTO = memberService.getSelect(memberDTO);
+				message="Login Fail";
+				if(result==1) {	
+					if(memberDTO != null) {
+						if(memberDTO.getCount()>6) {
+							message = "로그인 횟수 제한";	
+							mv.setViewName("common/messageMove");
+							mv.addObject("message", message);
+							mv.addObject("path", "../");
+						}else {
+							session.setAttribute("member", memberDTO);
+							int zero = memberService.setUpdatezero(memberDTO);
+							message = "Login Success";	
+							mv.setViewName("common/messageMove");
+							mv.addObject("message", message);
+							mv.addObject("path", "../");
+						}
 					}else {
-						session.setAttribute("member", memberDTO);
-						int zero = memberService.setUpdatezero(memberDTO);
-						message = "Login Success";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
-						mv.addObject("path", "../");
+						mv.addObject("path", "./memberLogin");
 					}
 				}else {
-					mv.setViewName("common/messageMove");
-					mv.addObject("message", message);
-					mv.addObject("path", "./memberLogin");
+					
 				}
-			}else {
-				
 			}
-		}
 		}
 		return mv;
 	}
