@@ -29,15 +29,13 @@
 	</beans:bean>
 	
 <!-- memberInterceptor -->
-	<beans:bean id="memberInterceptor" class="com.project.interceptor.MemberInterceptor" >
-	</beans:bean>
-	<interceptors>
+	<beans:bean id="memberInterceptor" class="com.project.weekend.interceptor.MemberInterceptor" />
+ 	<interceptors>
 		<interceptor>
 			<mapping path="/admin/*"/>
 			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
-
-	</interceptors>  
+	</interceptors> 
 	
 	<context:component-scan base-package="com.project.weekend" />
 	<context:component-scan base-package="com.project.weekend.member" />
