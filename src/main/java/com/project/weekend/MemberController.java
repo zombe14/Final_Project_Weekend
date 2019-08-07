@@ -66,7 +66,6 @@ public class MemberController {
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
 	public void setWrite(@ModelAttribute MemberDTO memberVO)throws Exception{
 	}
-	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -95,10 +94,10 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
 	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session)throws Exception{
-		System.out.println("start");
 		MemberDTO getId = memberService.getId(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
+		int overlap = memberService.setUpdateoverlap(memberDTO);
 		MemberDTO getOverlap = memberService.getSelectOverlap(memberDTO);
 		String message="존재 하지 않는 아이디 입니다.";
 		if(getId==null) {
@@ -106,38 +105,40 @@ public class MemberController {
 			mv.addObject("message", message);
 			mv.addObject("path", "./memberLogin");
 		}else {
-			if(getOverlap!=null) {
+			if(getOverlap==null) {
 				message = "현재 로그인 상태인 아이디입니다.";
 				mv.setViewName("common/messageMove");
 				mv.addObject("message", message);
 				mv.addObject("path", "./memberLogin");
 			}else {
-				memberDTO = memberService.getSelect(memberDTO);
-				message="Login Fail";
-				if(result==1) {	
-					if(memberDTO != null) {
-						if(memberDTO.getCount()>6) {
-							message = "로그인 횟수 제한";	
-							mv.setViewName("common/messageMove");
-							mv.addObject("message", message);
-							mv.addObject("path", "../");
-						}else {
-							session.setAttribute("member", memberDTO);
-							int zero = memberService.setUpdatezero(memberDTO);
-							message = "Login Success";	
-							mv.setViewName("common/messageMove");
-							mv.addObject("message", message);
-							mv.addObject("path", "../");
-						}
-					}else {
+			
+			
+			memberDTO = memberService.getSelect(memberDTO);
+			message="Login Fail";
+			if(result==1) {	
+				if(memberDTO != null) {
+					if(memberDTO.getCount()>6) {
+						message = "로그인 횟수 제한";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
-						mv.addObject("path", "./memberLogin");
+						mv.addObject("path", "../");
+					}else {
+						session.setAttribute("member", memberDTO);
+						int zero = memberService.setUpdatezero(memberDTO);
+						message = "Login Success";	
+						mv.setViewName("common/messageMove");
+						mv.addObject("message", message);
+						mv.addObject("path", "../");
 					}
 				}else {
-					
+					mv.setViewName("common/messageMove");
+					mv.addObject("message", message);
+					mv.addObject("path", "./memberLogin");
 				}
+			}else {
+				
 			}
+		}
 		}
 		return mv;
 	}
