@@ -20,10 +20,9 @@
       <div id="container">
       	<div class="conta">
   	      	<div class="conta">
-				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
-				<c:if test="${board eq 'qnaReply'}">
-					<input type="hidden" name ="ref" value="${qnaOrigin.num}">
-				</c:if>
+				<form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
+				
+					<input type="hidden" name ="num" value="${dto.num}">
 
 					<div>
 						<label for="title">제목<span>*</span></label>

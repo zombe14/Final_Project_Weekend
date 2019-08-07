@@ -20,7 +20,7 @@ import com.project.weekend.util.PageMaker;
 @RequestMapping(value = "/after/")
 public class AfterController {
 
-	private String after = "After";
+	private String after = "후기";
 
 	@Inject
 	private AfterService afterService;
