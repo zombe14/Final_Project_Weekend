@@ -235,11 +235,15 @@ button {
     color: #666;
     font-style: normal;
 }
-.joinWrap .certifyButtonWrap_final button {
+.certifyButtonWrap_final {
     background: #41b40a;
     color: #fff;
     font-size: 18px;
     padding: 7px 20px 8px;
+    text-align: center;
+}
+#final_button{
+	text-align: center;
 }
 
 input[type=text]:focus{

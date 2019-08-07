@@ -8,7 +8,6 @@
 	<div class="h_top">
 		<div class="h_wrap">
 			<div class="user_menu">
-			<input type="hidden" value="${member.id}" id="id" name="id">
 				<c:choose>
 					<c:when test="${member.grade eq '3'}">
 							<div id="admin">
