@@ -7,8 +7,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class MemberInterceptor extends HandlerInterceptorAdapter {
+import com.project.weekend.member.MemberDTO;
+import com.project.weekend.member.MemberService;
 
+
+public class MemberInterceptor extends HandlerInterceptorAdapter {
+	private MemberService memberService;
+	private MemberDTO memberDTO;
+	@SuppressWarnings("unused")
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -16,7 +22,9 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("member");
 		boolean result=false;
-		if(obj != null) {
+		MemberDTO getSelectGrade = memberService.getSelectGrade(memberDTO);
+		
+		if(obj!=null) {
 			result=true;
 		}else {
 			response.sendRedirect("../member/memberLogin");

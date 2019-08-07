@@ -98,8 +98,6 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
 		MemberDTO getOverlap = memberService.getSelectOverlap(memberDTO);
-		System.out.println(getId);
-		System.out.println(getOverlap);
 		String message="존재 하지 않는 아이디 입니다.";
 		if(getId==null) {
 			mv.setViewName("common/messageMove");
