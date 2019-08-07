@@ -47,19 +47,19 @@ public class AdminController {
 		return mv;
 	}
 	// user up grade;(완성)
-	@RequestMapping(value = "aUserUpdateP", method = RequestMethod.GET)
+	@RequestMapping(value = "aUserUpdateP", method = RequestMethod.POST)
 	public String adminUserUpdateP(String id) throws Exception{
 		memberService.setUpdateP(id);
 		return "redirect:./aUserList";
 	}
 	// user down grade;(완성)
-	@RequestMapping(value = "aUserUpdateM", method = RequestMethod.GET)
+	@RequestMapping(value = "aUserUpdateM", method = RequestMethod.POST)
 	public String adminUserUpdateM(String id) throws Exception{
 		memberService.setUpdateM(id);
 		return "redirect:./aUserList";
 	}
 	// user delete;(완성)
-	@RequestMapping(value = "aUserDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "aUserDelete", method = RequestMethod.POST)
 	public String adminUserDelete(String id) throws Exception{
 		memberService.setDelete(id);
 		return "redirect:./aUserList";
@@ -76,9 +76,8 @@ public class AdminController {
 		mv.setViewName("admin/Board/aBoardList");
 	return mv;
 	}
-	@RequestMapping(value = "aNoticeDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "aNoticeDelete", method = RequestMethod.POST)
 	public String adminNoticeDelete(HttpSession session, String num) throws Exception{
-		System.out.println(num);
 		noticeServiceImpl.setDelete(num, session);
 		return "redirect:./aNoticeList";
 	}
