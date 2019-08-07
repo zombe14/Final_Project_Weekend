@@ -25,6 +25,7 @@ public class QnaController {
 	@Inject
 	private QnaService qnaService;
 	private static final String board = "qna";
+	private static final String board2 = "qnaReply";
 	private static final String boardTitle = "Q&A";
 	private static final String reply = "Q&A 답변";
 
@@ -33,7 +34,7 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);
-		mv.setViewName("board/noticeWrite");
+		mv.setViewName("board/qnaWrite");
 		return mv;
 	}
 
@@ -49,14 +50,26 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "qnaReplyWrite", method = RequestMethod.GET)
-	public ModelAndView setReplyWrite(QnaDTO qnaDTO, String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView setReplyWrite(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		QnaDTO qnaOrigin = qnaService.getSelect(num, session, request, response);
 		mv.addObject("qnaOrigin", qnaOrigin);
-		mv.addObject("board", board);
+		mv.addObject("board", board2);
 		mv.addObject("boardTitle", reply);
 		mv.setViewName("board/qnaWrite");
 		return mv;
+	}
+	
+	@RequestMapping(value = "qnaReplyWrite", method = RequestMethod.POST)
+	public String setReplyWrite(QnaDTO qnaDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int res = qnaService.setReplyWrite(qnaDTO,filelist, session);
+		String path = "window.history.back()";
+		if(res>0) {
+			path = "redirect:./qnaList";
+		}
+		mv.setViewName("redirect:./qnaList");
+		return path;
 	}
 
 	@RequestMapping(value = "qnaList", method = RequestMethod.GET)
