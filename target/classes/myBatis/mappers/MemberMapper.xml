@@ -14,6 +14,7 @@
 		<result property="phone" column="phone"/>
 		<result property="grade" column="grade"/>	
 		<result property="count" column="count"/>
+		<result property="overlap" column="overlap"/>
 		<result property="reg_date" column="reg_date"/>
 	</resultMap>
 	<!-- 상혁 -->
@@ -36,7 +37,7 @@
 					NICKNAME|NAME|GRADE LIKE '%'||#{search}||'%'
 				</otherwise>
 			</choose>
-				ORDER BY reg_date ASC) M)
+				ORDER BY reg_date DESC) M)
 				WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<!-- pageing 처리를 위한 -->
@@ -100,6 +101,6 @@
 		select * from member where id=#{id} and count>5
 	</select>
 	<select id="getSelectOverlap" resultType="MemberDTO" parameterType="MemberDTO">
-		select * from member where id=#{id} and overlap=1
+		select * from member where overlap>0 and id=#{id}
 	</select>
 </mapper>

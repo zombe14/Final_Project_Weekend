@@ -1,6 +1,6 @@
 
 $(function() {
-	$("#pw").focus(function () {
+	$("#pw").click(function () {
 		var memid = $("#memid").val();
 		var result_memid = $("#result_memid").val();
 		if(memid==''||result_memid==''){
@@ -234,7 +234,7 @@ $(function() {
 	});
 	
 	$("#memberidCheck").click(function() {
-		var id = $("#id").val();
+		var id = $('#id').val();
 		idd = id.trim();
 		if(idd==''){
 			alert('아이디를 입력하세요');

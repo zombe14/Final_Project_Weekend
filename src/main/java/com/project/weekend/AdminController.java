@@ -43,23 +43,23 @@ public class AdminController {
 		mv.addObject("board", "User");
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
-		mv.setViewName("admin/User/aUserList");
+		mv.setViewName("admin/aUserList");
 		return mv;
 	}
 	// user up grade;(완성)
-	@RequestMapping(value = "aUserUpdateP", method = RequestMethod.GET)
+	@RequestMapping(value = "aUserUpdateP", method = RequestMethod.POST)
 	public String adminUserUpdateP(String id) throws Exception{
 		memberService.setUpdateP(id);
 		return "redirect:./aUserList";
 	}
 	// user down grade;(완성)
-	@RequestMapping(value = "aUserUpdateM", method = RequestMethod.GET)
+	@RequestMapping(value = "aUserUpdateM", method = RequestMethod.POST)
 	public String adminUserUpdateM(String id) throws Exception{
 		memberService.setUpdateM(id);
 		return "redirect:./aUserList";
 	}
 	// user delete;(완성)
-	@RequestMapping(value = "aUserDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "aUserDelete", method = RequestMethod.POST)
 	public String adminUserDelete(String id) throws Exception{
 		memberService.setDelete(id);
 		return "redirect:./aUserList";
@@ -73,12 +73,11 @@ public class AdminController {
 		mv.addObject("board", "Notice"); 
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
-		mv.setViewName("admin/Board/aBoardList");
+		mv.setViewName("admin/aBoardList");
 	return mv;
 	}
-	@RequestMapping(value = "aNoticeDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "aNoticeDelete", method = RequestMethod.POST)
 	public String adminNoticeDelete(HttpSession session, String num) throws Exception{
-		System.out.println(num);
 		noticeServiceImpl.setDelete(num, session);
 		return "redirect:./aNoticeList";
 	}
@@ -89,11 +88,11 @@ public class AdminController {
 	// rank;
 	// qna;
 	////////////// reservation 관리; //////////////
-	@RequestMapping(value = "adminReserBoard", method = RequestMethod.GET)
+	@RequestMapping(value = "aReserList", method = RequestMethod.GET)
 	public ModelAndView adminReserList() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board", "Reser");
-		mv.setViewName("admin/Reser/adminReserBoard");
+		mv.setViewName("admin/aReserList");
 		return mv;
 	}
 	// reservation;

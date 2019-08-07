@@ -8,7 +8,10 @@
 	<div class="h_top">
 		<div class="h_wrap">
 			<div class="user_menu">
-			<input type="hidden" value="${member.id}" id="id" name="id">
+
+			<input type="hidden" value="${member.id }" id="memberId">
+
+
 				<c:choose>
 					<c:when test="${member.grade eq '3'}">
 							<div id="admin">
@@ -35,7 +38,6 @@
 						</div>
 					</c:otherwise>
 				</c:choose>
-		
 			</div>
 		</div>
 	</div>
@@ -43,9 +45,7 @@
 		<div class="h_middle">
 			<div class="logo">
 				<!-- <h1>로고 자리</h1> -->
-
 				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo1.png"></a>
-
 			</div>
 			<div class="search_wrap">
 				<input type="text" placeholder="" id="search">
