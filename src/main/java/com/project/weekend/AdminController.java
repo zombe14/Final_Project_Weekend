@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.board.notice.NoticeServiceImpl;
+import com.project.weekend.board.qna.QnaDTO;
+import com.project.weekend.board.qna.QnaService;
 import com.project.weekend.member.MemberDTO;
 import com.project.weekend.member.MemberService;
 import com.project.weekend.util.PageMaker;
@@ -24,6 +26,8 @@ public class AdminController {
 	private NoticeServiceImpl noticeServiceImpl;
 	@Inject
 	private MemberService memberService;
+	@Inject
+	private QnaService qnaService;
 
 	////////////// admin Main; //////////////
 	// 여기에 전반적인 뭔가를 뿌려야됨;
@@ -86,13 +90,30 @@ public class AdminController {
 	// after;
 	// recommend;
 	// rank;
-	// qna;
+	//////////////QnA board; //////////////
+	// QnaList
+	@RequestMapping(value = "aQnaList", method = RequestMethod.GET)
+	public ModelAndView adminQnaList(PageMaker pageMaker, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<QnaDTO> list = qnaService.getList(pageMaker, session);
+		mv.addObject("board", "Qna");
+		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
+		mv.setViewName("admin/aBoardList");
+		return mv;
+	}
+	// QnaDelete
+	@RequestMapping(value = "aQnaDelete", method = RequestMethod.POST)
+	public String adminQnaDelete(String num, HttpSession session) throws Exception{
+		qnaService.setDelete(num, session);
+		return "redirect:./aQnaList";
+	}
 	////////////// reservation 관리; //////////////
 	@RequestMapping(value = "aReserList", method = RequestMethod.GET)
 	public ModelAndView adminReserList() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board", "Reser");
-		mv.setViewName("admin/aReserList");
+		mv.setViewName("admin/aRaBoard");
 		return mv;
 	}
 	// reservation;

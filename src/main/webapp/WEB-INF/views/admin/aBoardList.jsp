@@ -18,11 +18,11 @@
 			var id = $(this).attr("id");
 			var check = confirm("이 글을 삭제하시겠습니까?");
 			if(check){
-				$.post("../admin/aNoticeDelete",
+				$.post("../admin/a${board}Delete",
 						{num:id},
 						function () {
 							alert("삭제되었습니다.");
-							location.href="../admin/aNoticeList";
+							location.href="../admin/a${board}List";
 						})
 			}else{
 				alert("삭제 실패하였습니다.");
