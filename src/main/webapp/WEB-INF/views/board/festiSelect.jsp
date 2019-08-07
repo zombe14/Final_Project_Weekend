@@ -23,13 +23,16 @@
 // 달력위젯
 $(document).ready(function(){
 	$(function(){
+    		var startDate = $("#sd").val;
+    		
     	$("#date1").datepicker({
     		 showOn: "both",
              buttonImage: "../resources/images/festi/calicon.png",
              buttonImageOnly: true,
              changeMonth : true,
              changeYear : true,
-             dateFormat : "yy-mm-dd"
+             dateFormat : "yy-mm-dd",
+             minDate : "startDate"
     	});
 	});
 
@@ -59,7 +62,6 @@ datepicker.regional.ko = {
 	dayNamesShort: [ "일","월","화","수","목","금","토" ],
 	dayNamesMin: [ "일","월","화","수","목","금","토" ],
 	weekHeader: "주",
-	dateFormat: "yy. m. d.",
 	firstDay: 0,
 	isRTL: false,
 	showMonthAfterYear: true,
