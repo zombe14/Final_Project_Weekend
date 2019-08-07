@@ -2,7 +2,7 @@
   	.totalBody{
   	height: 900px;
   	width: 1300px;
-  	margin: auto;
+  	margin: 100px auto;
   	}
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {height: 800px}
@@ -33,4 +33,22 @@
     width: 45px;
     font-size: 5px;
     }
+    /* 메인 글자색 */
+	.h2{
+	color: black;
+	}
+    /*  */
+    .mypage_body{
+	border: 1px solid #00d344;
+	height: 400px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+    background-color: white;
+}
+    /* 이미지 크기 조정 */
+    .qmyimg a img{
+	margin: 0 auto;
+	display: block;
+	width: 100px;
+}
   </style>

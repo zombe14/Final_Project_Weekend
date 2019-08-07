@@ -29,12 +29,12 @@ i{
 .call_quick ul{
 	overflow: hidden;
 	text-align: center;
-	width: 828px;
-	margin: 22px auto;
+	width: 1000px;
+	margin: 16px 0 auto;
 }
 /* 메뉴 크기 및 정렬 */
 .call_quick li{
-	width: 165px;
+	width: 166px;
 	height: 150px;	
 	float: left;
 	text-align: center;

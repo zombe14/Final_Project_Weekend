@@ -15,38 +15,21 @@
 	<div class="totalBody">
 		<!-- header.jsp -->
 		<c:import url="../inc/admin_header.jsp" />
-		<div class="container-fluid text-center">
-			<div class="row content">
-				<!-- side bar -->
-				<c:import url="../inc/admin_left_bar.jsp" />
-				<!-- body 시작 -->
-				<div class="container col-sm-10">
-					<table class="table table-hover">
-						<tr>
-							<td>NUM</td>
-							<td>TITLE</td>
-							<td>WRITER</td>
-							<td>DATE</td>
-							<td>HIT</td>
-						</tr>
-						<c:forEach items="${list}" var="dto">
-							<tr>
-								<td>${dto.num}</td>
-								<td>${dto.title}</td>
-								<td>${dto.writer}</td>
-								<td>${dto.reg_date}</td>
-								<td>${dto.hit}</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
-				<!-- body 끝 -->
-			</div>
+		<div id="mypage_body">
+			<h2> 관리자 페이지 입니다.</h2>
 		</div>
+		<br>
+			<ul>
+				<li class="qmyimg"><a href="./mBoardList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage1.png">회원정보<br>수정</a></li>
+				<li class="qmyimg"><a href=""><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage5.png">비밀번호<br>변경</a></li>
+				<li class="qmyimg"><a href=""><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage2.png">티켓<br>관리</a></li>
+				<li class="qmyimg"><a href=""><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage4.png">공연 문의<br>내역</a></li>
+				<li class="qmyimg"><a href=""><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage3.png">나의 게시글<br>관리</a></li>
+				<li class="qmyimg"><a href=""><img src="${pageContext.request.contextPath}/resources/images/mypage/myPageLogout.png">회원 탈퇴</a></li>
+			</ul>
 		<footer class="container-fluid text-center">
 			<p>이곳엔 무엇을 넣어야 할 것인가?</p>
 		</footer>
 	</div>
-
 </body>
 </html>
