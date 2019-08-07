@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
@@ -79,7 +82,6 @@ public class AfterService {
 	public int setUpdate(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int res = 0;
 		res = afterDAO.setUpdate(afterDTO);
-		res = fileDAO.setDeleteAll(afterDTO.getAnum());
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 		String num = afterDTO.getAnum();
 		for(MultipartFile f : filelist) {
@@ -92,9 +94,32 @@ public class AfterService {
 		return res;
 	}
 	
-	public AfterDTO getSelect(String num, HttpSession session) throws Exception{
+	public AfterDTO getSelect(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		AfterDTO afterDTO = new AfterDTO();
 		afterDTO = afterDAO.getSelect(num);
+		//update 시 파일 없는데 X만 뜨는거 방지. 새로운 리스트로 세팅
+		if(afterDTO.getFileDTOs().size()==1) {
+			if(afterDTO.getFileDTOs().get(0).getFname()==null) {
+				afterDTO.setFileDTOs(new ArrayList<FileDTO>());
+			}
+		}
+		
+		// 쿠키를 이용해서 ajax, 새로고침 시 조회수 증가 방지
+		boolean isGet = false;
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null) {
+			for(Cookie c:cookies) {
+				if(c.getName().equals(num)) {
+					isGet=true;
+				}
+			}
+		}
+		if(!isGet) {
+			afterDAO.setHitUpdate(num);
+			Cookie c = new Cookie(num, num);
+			c.setMaxAge(30*60); // 30분
+			response.addCookie(c);
+		}
 		return afterDTO;
 	}
 	

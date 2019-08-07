@@ -50,7 +50,7 @@
 			</otherwise>
 		</choose>
 		LIKE '%'||#{search}||'%'
-		ORDER BY  (SUBSTR(ref, 2)*1) DESC, STEP ASC) Q) 
+		ORDER BY  (SUBSTR(ref, 2)*1) DESC, STEP DESC) Q) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
@@ -87,7 +87,7 @@
 	</update>
 	
 	<delete id="setDelete" parameterType="String">
-		DELETE QNA WHERE NUM = #{num}
+		DELETE QNA WHERE REF = #{num} 
 	</delete>
 	
 	<!-- reply -->

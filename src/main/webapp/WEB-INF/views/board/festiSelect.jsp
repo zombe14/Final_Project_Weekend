@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:import url="../temp/boot.jsp"></c:import>
 <!DOCTYPE html>
 <html>
@@ -137,7 +138,7 @@ return datepicker.regional.ko;
 				<%-- </c:if> --%>
 				
 				<!--  후기 -->
-				<table>
+				<table class="table">
 					<thead>
 						<th>NUM</th>
 						<th>TITLE</th>
@@ -147,7 +148,7 @@ return datepicker.regional.ko;
 					</thead>
 					<c:forEach items="${after}" var="i">
 						<tr title="${i.anum}" class="afterSel">
-							<td>${i.anum}</td>
+							<td>${fn:substring(i.anum, 1,8)}</td>
 							<td>${i.title}</td>
 							<td>${i.writer}</td>
 							<td>${i.reg_date}</td>

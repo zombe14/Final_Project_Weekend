@@ -26,38 +26,44 @@
       <div id="container">
       	<div class="inner">
   	      	
-      		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
-				
-					<div>
-						<p>${originTitle} ${boardTitle}</p>
-					</div>
-      		 	
+      		 <form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
+			      		 	
 				<div>
 					<label for="title">제목<span class="r">*</span></label>
-					<input type="text" name="title" id="title">
+					<input type="text" name="title" id="title" value="${dto.title}">
 				</div>
 				<div>
 					<label for="writer">작성자<span class="r">*</span></label>
-					<input type="text" name="writer" value="${member.nickname}memberNickname" id="writer" readonly="readonly">
+					<input type="text" name="writer" value="${dto.writer}" id="writer" readonly="readonly">
 				</div>
 				
 				<div>
 					<label for="contents">내용<span class="r">*</span></label>
-					<textarea rows="" cols="" name="contents" id="contents"></textarea>
+					<textarea rows="" cols="" name="contents" id="contents">${dto.contents}</textarea>
 				</div>
 				<div>
 					<label for="files">첨부파일</label>
 					<a id="addFiles">파일추가</a>
+					<div id="filed">
+						<input type="hidden" id="fileCount" value="${dto.fileDTOs.size()}">
+						<c:forEach items="${dto.fileDTOs}" var="f">
+							<c:if test="${f.oname ne null}">
+								<div class="fileDTOsDiv">
+									<p style="display: inline-block;">${f.oname}</p>
+									<span class="glyphicon glyphicon-remove deleteFile" id="${f.fnum}" title="${f.fname}" style="display: inline-block;"></span>
+								</div> 
+							</c:if>
+						</c:forEach>
+					</div>
+					<hr>
 					<div id="files">
-						<div>
-							<input type="file" class="filelist" name="filelist" style="display: inline-block">
-							<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
-						</div>
+						
 					</div>
 				</div>
 				
 					<div>
-	      		 		<input type="hidden" name="num" value="${originNum}">
+	      		 		<input type="hidden" name="anum" value="${dto.anum}"> 
+	      		 		<input type="hidden" name="num" value="${dto.num}">
 					</div>
 					<div>
 						<label for="point">별점<span class="r">*</span></label>
@@ -103,8 +109,11 @@
 	
 	// 정적인 input 파일 제거
 	$('.deleteFile').click(function() {
-		$(this).parent().remove();
-		limit--
+		var check = comfirm('삭제하시겠습니까? 복구 불가능합니다.');
+		if(check){
+			$(this).parent().remove();
+			limit--
+		}
 	});
 	
 	// 동적으로 그려진 input file 제거
@@ -114,6 +123,15 @@
 	});
 	/* 첨부 파일 관리 끝 */
 	
+	/* 별점 유지 */
+	var point = ${dto.point};
+	$('.point').each(function() {
+		if($(this).val() == point){
+			$(this).attr('checked','checked');
+		}
+	});
+	
+	/* 작성 조건 */
 	$('#write').click(function() {
 		var pointCheck=false;
 		$('.point').each(function() {

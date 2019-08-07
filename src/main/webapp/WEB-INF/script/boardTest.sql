@@ -1,3 +1,7 @@
+select * from qna
+
+select * from after
+select * from show_order
 SELECT * FROM 
 		(SELECT ROWNUM R, Q.* FROM 
 		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW, (SUBSTR(NUM, 2)*1) n

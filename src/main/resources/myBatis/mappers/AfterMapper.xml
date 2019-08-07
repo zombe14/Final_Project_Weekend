@@ -16,9 +16,11 @@
 		select after_seq.nextval from dual
 	</select>
 	<select id="getSelect" parameterType="String" resultMap="afterResult">
-		SELECT * FROM AFTER WHERE ANUM = #{anum}
+		SELECT * FROM AFTER FULL JOIN FILES ON(AFTER.ANUM = FILES.NUM) WHERE ANUM = #{anum}
 	</select>
-	
+	<update id="setHitUpdate" parameterType="String">
+		UPDATE AFTER SET HIT = HIT + 1 WHERE ANUM = #{anum}
+	</update>
 	<!-- ================================================================= -->
 	<select id="getCount" resultType="Integer" parameterType="PageMaker">
 		SELECT COUNT(ANUM) FROM AFTER WHERE 

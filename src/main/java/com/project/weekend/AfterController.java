@@ -3,6 +3,8 @@ package com.project.weekend;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -40,7 +42,8 @@ public class AfterController {
 	}
 
 	@RequestMapping(value = "afterWrite", method = RequestMethod.POST)
-	public ModelAndView setWrite(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
+	public ModelAndView setWrite(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session)
+			throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int res = 0;
 
@@ -56,31 +59,30 @@ public class AfterController {
 	}
 
 	@RequestMapping(value = "afterUpdate", method = RequestMethod.GET)
-	public ModelAndView setUpdate(String anum, HttpSession session) throws Exception {
+	public ModelAndView setUpdate(String anum, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		AfterDTO afterDTO = afterService.getSelect(anum, session);
-		mv.addObject("originNum", anum);
-		mv.addObject("originTitle", afterDTO.getTitle());
+		AfterDTO afterDTO = afterService.getSelect(anum, session,request,response);
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
-		mv.setViewName("board/boardUpdate");
+		mv.setViewName("board/afterUpdate");
 		return mv;
 	}
 
 	@RequestMapping(value = "afterUpdate", method = RequestMethod.POST)
-	public ModelAndView setUpdate(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
+	public ModelAndView setUpdate(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session)
+			throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int res = 0;
 		res = afterService.setUpdate(afterDTO, filelist, session);
-		String path = "redirect:./afterSelect?anum=" + afterDTO.getAnum();
+		String path = "redirect:../festi/festiSelect?num=" + afterDTO.getNum();
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.setViewName(path);
 		return mv;
 	}
 
-	@RequestMapping(value = "afterDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "afterDelete", method = RequestMethod.POST)
 	public ModelAndView setDelete(String anum, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int res = afterService.setDelete(anum, session);
@@ -92,11 +94,11 @@ public class AfterController {
 	}
 
 	@RequestMapping(value = "afterSelect", method = RequestMethod.GET)
-	public ModelAndView getSelect(String num, HttpSession session) throws Exception {
+	public ModelAndView getSelect(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
-		AfterDTO afterDTO = afterService.getSelect(num, session);
-		
+		AfterDTO afterDTO = afterService.getSelect(num, session, request, response);
+
 		String path = "board/boardSelect";
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
@@ -105,13 +107,11 @@ public class AfterController {
 		return mv;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////
-
 	@RequestMapping(value = "afterList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker, String num) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
-		String path = "board/boardList";
+		String path = "board/afterList";
 
 		List<AfterDTO> list = afterService.getList(pageMaker);
 
@@ -123,14 +123,14 @@ public class AfterController {
 		return mv;
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////////
+
+	/*
 	@RequestMapping(value = "afterAllList", method = RequestMethod.GET)
 	public ModelAndView getAllList(PageMaker pageMaker) throws Exception {
 		ModelAndView mv = new ModelAndView();
-
 		String path = "board/boardList";
-
 		List<AfterDTO> list = afterService.getAllList(pageMaker);
-
 		mv.addObject("list", list);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
@@ -138,4 +138,5 @@ public class AfterController {
 		mv.setViewName(path);
 		return mv;
 	}
+	*/
 }
