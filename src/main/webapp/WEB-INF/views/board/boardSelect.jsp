@@ -53,7 +53,7 @@
 				<a id="list" title="${board}" class="${dto.num}">목록</a>
 				<a id="update" class="${board}">수정</a> 
 				<a id="delete" class="${board}">삭제</a>
-				<c:if test="${board eq 'qna'}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
+				<c:if test="${board eq 'qna' and dto.step eq 0}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
 					<a id="replyBtn" class="btn btn-default">답변달기</a>
 				</c:if>
 
@@ -65,7 +65,7 @@
 						<input type="hidden" class="anum" id = "${dto.anum}" name="anum" value="${dto.anum}">
 					</c:if>					
 				</form>
-				<%-- <hr>
+				<%-- <hr>  댓글.
 				<c:if test="${board eq 'qna'}">
 					<c:forEach items="${replyDTO}" var = "r">
 						${r.writer}

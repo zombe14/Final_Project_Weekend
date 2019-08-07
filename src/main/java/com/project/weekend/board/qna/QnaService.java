@@ -124,6 +124,7 @@ public class QnaService {
 		int res = 0;
 		String num = "q" + qnaDAO.getNum();
 		qnaDTO.setNum(num);
+		res = qnaDAO.setReplyUpdate(qnaDTO);
 		res = qnaDAO.setReplyWrite(qnaDTO);
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 		for (MultipartFile f : filelist) {
