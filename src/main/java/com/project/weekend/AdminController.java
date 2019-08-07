@@ -70,6 +70,7 @@ public class AdminController {
 	}
 	////////////// board 관리; //////////////
 	////////////// notice board; //////////////
+	// notice List(완성)
 	@RequestMapping(value = "aNoticeList", method = RequestMethod.GET) 
 	public ModelAndView adminNoticeList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView(); 
@@ -80,18 +81,39 @@ public class AdminController {
 		mv.setViewName("admin/aBoardList");
 	return mv;
 	}
+	// notice Delete(완성)
 	@RequestMapping(value = "aNoticeDelete", method = RequestMethod.POST)
 	public String adminNoticeDelete(HttpSession session, String num) throws Exception{
 		noticeServiceImpl.setDelete(num, session);
 		return "redirect:./aNoticeList";
 	}
 	// show;
+	public ModelAndView adminShowList() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
 	// festival
+	public ModelAndView adminFestiList() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
 	// after;
+	public ModelAndView adminAfterList() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
 	// recommend;
+	public ModelAndView adminRecommend() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
 	// rank;
+	public ModelAndView adminRankList() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
 	//////////////QnA board; //////////////
-	// QnaList
+	// QnaList(완성)
 	@RequestMapping(value = "aQnaList", method = RequestMethod.GET)
 	public ModelAndView adminQnaList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -102,7 +124,7 @@ public class AdminController {
 		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
-	// QnaDelete
+	// QnaDelete(완성)
 	@RequestMapping(value = "aQnaDelete", method = RequestMethod.POST)
 	public String adminQnaDelete(String num, HttpSession session) throws Exception{
 		qnaService.setDelete(num, session);
