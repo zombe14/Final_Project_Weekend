@@ -115,7 +115,7 @@
 					</table>
 				</div>
 				<div class="certifyButtonWrap">
-					<button class="certifyButtonWrapButton">
+					<button type="button" class="certifyButtonWrapButton">
 						본인확인
 					</button>
 				</div>
