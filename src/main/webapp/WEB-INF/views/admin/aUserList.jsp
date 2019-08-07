@@ -6,25 +6,39 @@
 <head>
 <title>유저 관리</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<c:import url="../../temp/adminBoot.jsp" />
-<c:import url="../../../../resources/css/adminBoard.css" />
+<c:import url="../temp/adminBoot.jsp" />
+<c:import url="../../../resources/css/adminBoard.css" />
 </head>
 <body>
 	<script type="text/javascript">
 		$(function() {
-			$(".pBtn").on("click", function() {
-						var id = $(this).attr("id");
-						var grade = $(this).attr("title");
-						var check = confirm("아이디 : " + id + "\n" + "등급 : "
-								+ grade + "\n" + "등급을 올리시겠습니까?");
-						if (check) {
-							if (grade == 3) {
-								alert("더 이상 등급을 올릴수 없습니다.");
-							} else {
-								location.href = "../admin/aUserUpdateP?id="+id;
-							}
-						}
-					});
+			/* 유저 등급 UP */
+			$(".pBtn").on("click", function(){
+				/* id 값을 세팅 */
+				var id = $(this).attr("id");
+				/* grade 값을 세팅 */
+				var grade = $(this).attr("title");
+				var check = confirm("아이디 : " + id + "\n" + "등급 : "
+						+ grade + "\n" + "등급을 올리시겠습니까?");
+				/* check=true 세팅 */
+				if(check){
+					/* 최고 grade 3을 넘지 못하도록 세팅 */
+					if(grade == 3){
+						alert("현재 최고 등급입니다.");
+					}else{
+						/* post형식으로 mapping한 주소로 id값을 보냄 */
+						$.post("../admin/aUserUpdateP",
+								{id:id},
+								function () {
+									/* 이후 최신 상태 유지를 위해 페이지를 새로부름 */
+									location.href="../admin/aUserList";
+								});
+					}
+				}else{
+					alert("실패 하였습니다.");
+				};
+			});
+			/* 유저 등급 DOWN */
 			$(".mBtn").on("click", function() {
 						var id = $(this).attr("id");
 						var grade = $(this).attr("title");
@@ -34,26 +48,38 @@
 							if (grade == 1) {
 								alert("더 이상 등급을 내릴수 없습니다.");
 							} else {
-								location.href = "../admin/aUserUpdateM?id="+id;
+								$.post("../admin/aUserUpdateM",
+										{id:id},
+										function () {
+											location.href="../admin/aUserList";
+										});
 							}
 						}
 					});
+			/* 유저 삭제 */
 			$(".dBtn").on("click", function() {
 				var id = $(this).attr("id");
 				var check = confirm("해당 유저를 삭제하시겠습니까?");
 				if (check) {
-					location.href = "../admin/aUserDelete?id="+id;
+					$.post("../admin/aUserDelete",
+							{id:id},
+							function () {
+								alert("유저가 삭제되었습니다.");
+								location.href="../admin/aUserList";
+							})
+				}else{
+					alert("유저 삭제에 실패하였습니다.")
 				}
 			});
 		});
 	</script>
 	<div class="totalBody">
-		<c:import url="../../inc/admin_header.jsp" />
+		<c:import url="../inc/admin_header.jsp" />
 		<!-- left bar 시작 -->
 		<div class="container-fluid text-center">
 			<div class="row content">
 				<!-- side bar -->
-				<c:import url="../../inc/admin_left_bar.jsp" />
+				<c:import url="../inc/admin_left_bar.jsp" />
 				<div class="col-sm-10">
 					<h4>
 						<small>${board} 관리</small>
@@ -110,8 +136,8 @@
 										</c:otherwise>
 									</c:choose>
 									<td>${dto.reg_date}</td>
-									<td><input class="pBtn" type="button" value="UP" title='${dto.grade}' id='${dto.id}'></td>
-									<td><input class="mBtn" type="button" value="DOWN" title='${dto.grade}' id='${dto.id}'></td>
+									<td><input class="pBtn" type="button" value="UP" title='${dto.grade}' id='${dto.id}'>
+										<input class="mBtn" type="button" value="DOWN" title='${dto.grade}' id='${dto.id}'></td>
 									<td><input class="dBtn" type="button" value="삭제" id='${dto.id}'></td>
 								</tr>
 							</c:forEach>

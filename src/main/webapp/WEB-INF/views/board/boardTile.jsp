@@ -7,6 +7,7 @@
 <title>${boardTitle} List</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/boardTile.css">
 <link rel="shortcut icon" type="image/x-icon"
 	href="../resources/images/logo/logo.png" />
 </head>
@@ -17,7 +18,7 @@
 		</div>
 		<div id="container">
 			<div class="conta">
-				<!-- 검색창 -->
+				<%-- <!-- 검색창 -->
 				<div>
 					<form action="./${board}List">
 						<select name="kind">
@@ -29,14 +30,17 @@
 						<input type="text" placeholder="검색어를 입력하세요" name="search">
 						<button id="search">검색</button>
 					</form>
+				</div> --%>
+				<div class="festi_header">
+					<strong>전체</strong>
 				</div>
 				<div class="col-12">
 					<c:forEach items="${list}" var="i">
 						<div class="col-sm-3">
 						<a href="./${board}Select?num=${i.num}">
-							<div style="height: 450px; border: 1px solid black;margin: 10px; padding: 0">
+							<div class="board_img">
 								<div>
-									<img alt="${i.fileDTOs[0].oname}" src="../resources/images/board/${i.fileDTOs[0].fname}"  style="width: 100%; height: auto;">
+									<img alt="${i.fileDTOs[0].oname}" src="../resources/images/board/${i.fileDTOs[0].fname}">
 								</div>
 								<p>${i.title}</p>
 								<p>${i.startDate}</p>
@@ -47,8 +51,8 @@
 						</div>
 					</c:forEach>
 				</div>
-				<div>
-					<a href="./${board}Write">${boardTitle} WRITE</a>
+				<div class="boardTile_write">
+					<a href="./${board}Write">${boardTitle} 글쓰기</a>
 				</div>
 			</div>
 		</div>
