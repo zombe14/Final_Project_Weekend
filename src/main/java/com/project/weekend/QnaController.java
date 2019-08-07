@@ -76,7 +76,7 @@ public class QnaController {
 	public ModelAndView getList(PageMaker pageMaker, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<QnaDTO> list = qnaService.getList(pageMaker, session);
-		String path = "board/boardList";
+		String path = "board/qnaList";
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
 		mv.addObject("board", board);
@@ -89,7 +89,7 @@ public class QnaController {
 	public ModelAndView setUpdate(String num, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		QnaDTO qnaDTO = qnaService.getSelect(num, session, request, response);
-		String path = "board/noticeUpdate";
+		String path = "board/qnaUpdate";
 		mv.addObject("dto", qnaDTO);
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);

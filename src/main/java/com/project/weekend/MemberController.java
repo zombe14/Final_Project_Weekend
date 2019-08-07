@@ -97,8 +97,9 @@ public class MemberController {
 		MemberDTO getId = memberService.getId(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
-		int overlap = memberService.setUpdateoverlap(memberDTO);
 		MemberDTO getOverlap = memberService.getSelectOverlap(memberDTO);
+		System.out.println(getId);
+		System.out.println(getOverlap);
 		String message="존재 하지 않는 아이디 입니다.";
 		if(getId==null) {
 			mv.setViewName("common/messageMove");
@@ -111,8 +112,6 @@ public class MemberController {
 				mv.addObject("message", message);
 				mv.addObject("path", "./memberLogin");
 			}else {
-			
-			
 			memberDTO = memberService.getSelect(memberDTO);
 			message="Login Fail";
 			if(result==1) {	
@@ -141,7 +140,7 @@ public class MemberController {
 		}
 		}
 		return mv;
-	}
+	}	
 	@RequestMapping(value = "memberAgree", method = RequestMethod.GET)
 	public void getAgree()throws Exception{}
 	

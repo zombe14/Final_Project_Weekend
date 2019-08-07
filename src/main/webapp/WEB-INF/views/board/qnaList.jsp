@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:import url="../temp/boot.jsp"></c:import>
 <html>
 <head>
@@ -60,36 +61,25 @@
 							<th class="td10">조회수</th>
 						</thead>
 
-						<!-- 관리자가 상단에 배치할 공지. pageMaker의 perPage에 영향 X. 밑에 중복. -->
-						<c:if test="${board eq 'notice'}">
-							<c:forEach items="${top}" var="top">
-								<tr title="${top.num}" class="select mark">
-									<td class="td10 selectRow" id="${top.num}">중요</td>
-									<td>${top.title}</td>
-									<td class="td10">${top.writer}</td>
-									<td class="td10">${top.reg_date}</td>
-									<td class="td10">${top.hit}</td>
-								</tr>
-							</c:forEach>
-						</c:if>
-
-
-						<!-- 일반 공지 리스트 -->
+		
 						<c:forEach items="${list}" var="list">
-							<tr class="select">
-								<c:if test="${board eq 'notice' or board eq 'qna'}">
-									<td class="selectRow td10" id="${list.num}"><p></p></td>
+							<tr class="select" title="${list.pw}" id="${list.num}">
+								<td class="selectRow td10">${fn:substring(list.num, 1,8)}</td>
+								<c:if test="${list.pw eq null }">
+									<td>
+										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
+										${list.title}
+									</td>
+									<td class="td10">${list.writer}</td>
 								</c:if>
-								<c:if test="${board eq 'after' or board eq 'afterAll'}">
-									<td class="selectRow" id="${list.anum}"></td>
+								<c:if test="${list.pw ne null}">
+									<td>
+										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
+										비밀글입니다.
+									</td>
+									<td>${fn:substring(list.writer, 0, 3)}****</td>
 								</c:if>
-								<td>
-									<c:if test="${board eq 'qna'}">
-										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;답변 : </c:forEach>
-									</c:if>
-										${list.title}									
-								</td>
-								<td class="td10">${list.writer}</td>
+								
 								<td class="td10">${list.reg_date}</td>
 								<td class="td10">${list.hit}</td>
 							</tr>
@@ -97,11 +87,7 @@
 					</table>
 				</div>
 				<div id="paging">
-					<%-- <c:if test="${list[0].reg_date eq null}">
-						<ul class="pagination">
-							<li class="pagingClick"><a href="${board}List">검색결과가 없습니다</a></li>
-						</ul>
-					</c:if> --%>
+					
 					<c:if test="${list[0].reg_date ne null}">
 						<ul class="pagination">
 							<c:choose>
@@ -130,7 +116,7 @@
 					</c:if>
 				</div>
 				<div class="boardwrite">
-						<button id="boardWrite" value="${board}">${boardTitle} 글쓰기</button>
+						<button id="boardWrite">${boardTitle} 글쓰기</button>
 				</div>
 								<!-- 검색창 -->
 				<form action="./${board}List" class="search_form">
@@ -138,9 +124,9 @@
 						<option value="0">전체</option>
 						<option value="1">제목</option>
 						<option value="2">내용</option>
-						<c:if test="${board eq 'after' or board eq 'qna'}">
+						
 							<option value="3">작성자</option>
-						</c:if>
+						
 					</select> 
 					<input type="text" placeholder="" name="search" class="search_input">
 					<button id="searchButton">검색</button>
@@ -158,24 +144,37 @@
 
 	<!-- ------script---------- -->
 	<script type="text/javascript">
-		/* 각 행 선택 시 select 페이지 이동 */
-		$('.select').click(function() {
-			var num = $(this).children('.selectRow').attr('id');
-			location.href = "./${board}Select?num=" + num;
-		});
-
+	
 		/* board 글쓰기 이동 */
 		$('#boardWrite').click(function() {
-			var board = $(this).val();
-			location.href = "./" + board + "Write"
+			location.href = "./${board}Write";
 		});
 
-		/* 테이블의 num 앞에 구분 문자 안보이게 */
-		$('.selectRow').each(function() {
+		
+		/* 각 행 선택 시 select 페이지 이동 */
+		$('.select').click(function() {
+			var pw = $(this).attr('title');
 			var num = $(this).attr('id');
-			num = num.substring(1);
-			$(this).children('p').append(num);
+			/* 비밀번호 틀렸을 때 다시 프롬프트 창 띄우게 */
+			password(pw,num);
 		});
+		
+		function password(pw,num) {
+			/* 비밀글이거나   ( 작성자 본인일때 조건 추가하기) */
+			if(pw != "" ){
+				var input = prompt('비밀번호를입력해주세요');
+				if(input != null){
+					if(pw == input){
+						location.href = "./${board}Select?num="+num;
+					} else {
+						alert('비밀번호가 틀렸습니다.');
+						password(pw,num);
+					}
+				}				
+			} else {
+				location.href = "./${board}Select?num="+num;
+			}
+		} 
 		
 	</script>
 

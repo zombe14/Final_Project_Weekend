@@ -5,8 +5,10 @@ SELECT * FROM
 		LIKE '%'||'%'
 		ORDER BY (SUBSTR(ref, 2)*1) DESC, STEP ASC) Q) 
 		WHERE R BETWEEN 1 AND 100
-delete qna
+delete qna where num = 'q60'
 update qna set num
+
+select * from qna
 		
 SELECT * FROM 
 		(SELECT ROWNUM R, Q.* FROM 
