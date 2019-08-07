@@ -25,17 +25,20 @@
 		</div>
 		<div id="container">
 			<div class="conta">
-
-				<form action="./${board}Write" method="post"
-					enctype="multipart/form-data" id="frm">
+				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+				<c:if test="${board eq 'qnaReply'}">
+					<p>원글 제목 : ${qnaOrigin.title}</p>
+					<p>원글 글쓴이 : ${qnaOrigin.writer}</p>
+					<input type="hidden" name ="ref" value="${qnaOrigin.num}">
+				</c:if>
 
 					<div>
-						<label for="title">제목<span>*</span></label> <input type="text"
-							name="title">
+						<label for="title">제목<span>*</span></label>
+						<input type="text" name="title" id="title">
 					</div>
 					<div>
-						<label for="writer">작성자<span>*</span></label> <input type="text"
-							name="writer" placeholder="session nickname (Admin) + readonly">
+						<label for="writer">작성자<span>*</span></label> 
+						<input type="text" name="writer" placeholder="${member.id}memberId">
 					</div>
 
 					<div>
@@ -46,25 +49,20 @@
 						<label for="files">첨부파일</label> <a id="addFiles">파일추가</a>
 						<div id="files">
 							<div>
-								<input type="file" class="filelist" name="filelist"
-									style="display: inline-block"> <span
-									class="glyphicon glyphicon-remove deleteFile"
-									style="display: inline-block"></span>
+								<input type="file" class="filelist" name="filelist" style="display: inline-block"> 
+								<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
 							</div>
 						</div>
 					</div>
-
-
-
+					
 					<div>
-						<label for="pw">비밀번호</label> <input type="radio" class="pwSel"
-							name="secret" id="nonSecret" checked="checked"> 오픈글 <input
-							type="radio" class="pwSel" name="secret" id="secret"> 비밀글
-						<input type="password" name="pw" id="pw"
-							placeholder="글 열람 시 사용할 비밀번호를 입력해주세요">
+						<label for="pw">비밀번호</label> 
+						<input type="radio" class="pwSel" name="secret" id="nonSecret" checked="checked"> 공개 
+						<input type="radio" class="pwSel" name="secret" id="secret"> 비밀글
+						<input type="password" name="pw" id="pw" placeholder="비밀번호를 입력해주세요">
 					</div>
 
-					<input type="button" id="write" value="등록">
+					<a class="btn btn-default" id="write">등록</a>
 				</form>
 
 			</div>
@@ -123,9 +121,6 @@
 			}
 		});
 
-		// date picker
-
-		/* date picker 끝 */
 
 		if ($('#nonSecret').prop('checked', true)) {
 			$('#pw').val('');
@@ -141,6 +136,11 @@
 				$('#pw').show();
 			}
 		});
+		
+		$('#write').click(function() {
+			$('#frm').submit();				
+		});
+		
 	</script>
 </body>
 </html>

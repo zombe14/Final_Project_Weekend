@@ -94,9 +94,12 @@
 		update member set count=0, overlap=overlap+1 where id=#{id}
 	</update>
 	<update id="setUpdateoverlap" parameterType="MemberDTO">
-		update member set count=0, overlap=0 where id=#{id}
+		update member set overlap=0 where id=#{id}
 	</update>
 	<select id="getSelectCount" resultType="MemberDTO" parameterType="MemberDTO">
 		select * from member where id=#{id} and count>5
+	</select>
+	<select id="getSelectOverlap" resultType="MemberDTO" parameterType="MemberDTO">
+		select * from member where id=#{id} and overlap=1
 	</select>
 </mapper>
