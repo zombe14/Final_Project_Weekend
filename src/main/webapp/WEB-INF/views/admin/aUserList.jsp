@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>유저 관리</title>
+<title>{board} 관리</title>
 <!-- 그저 로고일뿐 -->
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <!-- 관리자 보드용 css 가져옴 -->
@@ -95,6 +95,7 @@
 		});
 	</script>
 	<div class="totalBody">
+		<!-- header 시작 -->
 		<c:import url="../inc/admin_header.jsp" />
 		<!-- left bar 시작 -->
 		<div class="container-fluid text-center">
@@ -102,10 +103,6 @@
 				<!-- side bar -->
 				<c:import url="../inc/admin_left_bar.jsp" />
 				<div class="col-sm-10">
-					<h4>
-						<small>${board} 관리</small>
-					</h4>
-					<hr>
 					<!-- 검색창 -->
 					<div>
 						<form class="form-inline" action="./a${board}List">
@@ -198,7 +195,9 @@
 				</div>
 			</div>
 		</div>
-		<h1>Footer를 넣을 예정</h1>
+	<div class="footer">
+		<c:import url="../inc/admin_footer.jsp"></c:import>
+	</div>
 	</div>
 </body>
 </html>

@@ -1,6 +1,6 @@
-/* /////////////////////////////관리자 board css ///////////////////////////// */
+/*  ------------------------관리자 board Css-------------------- */
 .totalBody {
-	height: 1000px;
+	height: 600px;
 	width: 1300px;
 	margin: 50px auto;
 }
@@ -12,25 +12,69 @@
 .sidenav {
 	background-color: #f1f1f1;
 	width: 150px;
-	height: 100%;
+	height: 578px;
 }
 /* Set black background color, white text and some padding */
-footer {
-	background-color: #555;
+.footer {
+	background-color: #333;
 	color: white;
 	padding: 15px;
 }
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
 	.sidenav {
-		height: auto;
+		height: 578px;
 		padding: 15px;
 	}
 	.row.content {
-		height: auto;
+		height: 578px;
 	}
 }
 .pBtn, .mBtn, .dBtn {
 	width: 45px;
 	font-size: 5px;
+}
+/*  ------------------------Footer Css-------------------- */
+#f_container{
+	width: 1300px;
+	color: #757575;
+	margin: 0 auto;
+}
+
+.f_menu{
+	font-weight: bold;
+    height: 11px;
+    line-height: 12px;
+    color: #999;
+    margin-bottom: 23px;
+}
+
+.f_menu a {
+      color: #999;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0 3px;
+   }
+   
+.f_logo{
+	float: left;
+}
+
+.f_inner{
+	width: 600px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.f_info{
+	color: #757575;
+}
+
+.f_menu a:first-child{
+	color: #ccc;
+}
+
+.f_address a{
+	color: #757575;
+	padding: 0 3px;
 }

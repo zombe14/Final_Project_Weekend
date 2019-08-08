@@ -33,7 +33,14 @@ public class AdminController {
 	@Inject
 	private FestiService festiService;
 
-	//////////////////////////////// admin Main; ////////////////////////////////
+	//----------------------------------- admin Check; -----------------------------------//
+	@RequestMapping(value = "adminCheck", method = RequestMethod.GET)
+	public String adminCheck() throws Exception{
+		return "admin/aCheck";
+	}
+	
+	
+	//----------------------------------- admin Main; -----------------------------------//
 	@RequestMapping(value = "adminMain", method = RequestMethod.GET)
 	public ModelAndView adminBoard() throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -42,7 +49,7 @@ public class AdminController {
 		mv.setViewName("admin/adminMain");
 		return mv;
 	}
-	//////////////////////////////// admin User; ////////////////////////////////
+	//----------------------------------- admin User; -----------------------------------//
 	// userList(완성)
 	@RequestMapping(value = "aUserList", method = RequestMethod.GET)
 	public ModelAndView aUserList(PageMaker pageMaker, HttpSession session) throws Exception {
@@ -57,23 +64,32 @@ public class AdminController {
 	}
 	// user up grade;(완성)
 	@RequestMapping(value = "aUserUpdateP", method = RequestMethod.POST)
-	public String adminUserUpdateP(String id) throws Exception{
-		memberService.setUpdateP(id);
-		return "redirect:./aUserList";
+	public ModelAndView adminUserUpdateP(String id) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setUpdateP(id);
+		mv.addObject("board", "User");
+		mv.setViewName("admin/aUserList");
+		return mv;
 	}
 	// user down grade;(완성)
 	@RequestMapping(value = "aUserUpdateM", method = RequestMethod.POST)
-	public String adminUserUpdateM(String id) throws Exception{
-		memberService.setUpdateM(id);
-		return "redirect:./aUserList";
+	public ModelAndView adminUserUpdateM(String id) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setUpdateM(id);
+		mv.addObject("board", "User");
+		mv.setViewName("admin/aUserList");
+		return mv;
 	}
 	// user delete;(완성)
 	@RequestMapping(value = "aUserDelete", method = RequestMethod.POST)
-	public String adminUserDelete(String id) throws Exception{
-		memberService.setDelete(id);
-		return "redirect:./aUserList";
+	public ModelAndView adminUserDelete(String id) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setDelete(id);
+		mv.addObject("board", "User");
+		mv.setViewName("admin/aUserList");
+		return mv;
 	}
-	////////////////////////////// board 관리; ////////////////////////////////
+	//----------------------------------- board 관리; -----------------------------------//
 	////////////// notice board; //////////////
 	// notice List(완성)
 	@RequestMapping(value = "aNoticeList", method = RequestMethod.GET) 
@@ -89,9 +105,12 @@ public class AdminController {
 	}
 	// notice Delete(완성)
 	@RequestMapping(value = "aNoticeDelete", method = RequestMethod.POST)
-	public String adminNoticeDelete(HttpSession session, String num) throws Exception{
+	public ModelAndView adminNoticeDelete(HttpSession session, String num) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		noticeServiceImpl.setDelete(num, session);
-		return "redirect:./aNoticeList";
+		mv.addObject("board", "Notice");
+		mv.setViewName("admin/aNoticeList");
+		return mv;
 	}
 	//////////////QnA board; //////////////
 	// QnaList(완성)
@@ -128,7 +147,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
-	////////////////////////////////Enjoy 관리; ////////////////////////////////
+	//----------------------------------- Enjoy 관리 -----------------------------------//
 	// 공연/축제 전체 목록(완성)
 	@RequestMapping(value = "aEnjoyList", method = RequestMethod.GET)
 	public ModelAndView adminEnjoyList(PageMaker pageMaker) throws Exception{
@@ -157,7 +176,7 @@ public class AdminController {
 		festiService.setDelete(num, session);
 		return "redirect:./aEnjoyList";
 	}
-	//////////////////////////////// reservation 관리; ////////////////////////////////
+	//----------------------------------- reservation 관리 -----------------------------------//
 	@RequestMapping(value = "aReserList", method = RequestMethod.GET)
 	public ModelAndView adminReserList() throws Exception{
 		ModelAndView mv = new ModelAndView();
