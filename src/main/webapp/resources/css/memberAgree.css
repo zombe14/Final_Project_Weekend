@@ -27,7 +27,7 @@ input[type=checkbox]+ label:before {
 }
 input[type=checkbox]:checked + label:before { 
 
-    content: "\2713";  /* Ã¼Å©¸ð¾ç */
+    content: "\2713";  /* Ã¼Å©ï¿½ï¿½ï¿½ */
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
     font-size: 18px; 
     font-weight:800; 

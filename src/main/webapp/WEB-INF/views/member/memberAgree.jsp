@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberAgree.css?ver=1">
   <c:import url="../temp/boot.jsp"></c:import> 
-  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberAgree.js?ver=1"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberAgree.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
 
