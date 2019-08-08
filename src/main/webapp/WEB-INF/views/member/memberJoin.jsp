@@ -17,14 +17,14 @@
 </head>
 <body>
 <div id="wrap">
-	<div id="header">
-		<c:import url="../inc/header.jsp"></c:import>
-	</div>
 	<div id="container">
 	<div class="conta">
+		<div class="join_wrap">
+			<div class="join_logo">
+				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
+			</div>
 	<form action="./memberJoin"  id="frm" method="POST" enctype="multipart/form-data">
 		<div class="joinWrap">
-			<h2>회원가입</h2>
 			<div class="essentiaDataWrap">
 				<h3 class="conTitle">
 					<i>필수</i> 정보입력</h3>
@@ -33,7 +33,7 @@
 					<table>
 						<caption>필수 정보입력</caption>
 						<colgroup>
-							<col style="width: 240px">
+							<col style="width: 133px">
 							<col style="width: *"> </colgroup>
 						<tbody>
 							<tr>
@@ -109,30 +109,31 @@
 										<input id="check" name="" value="N" type="checkbox">
 										<label for="check">SMS, 이메일을 통한 상품 및 이벤트 정보 수신에 동의합니다. (선택)</label>
 									</div>
+									<div class="certifyButtonWrap">
+										<button class="certifyButtonWrapButton">
+											본인확인
+										</button>
+									</div>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<div class="certifyButtonWrap">
-					<button class="certifyButtonWrapButton">
-						본인확인
-					</button>
-				</div>
+				
 			</div>
 			
 			<div class="tableBox">
 					<table>
 						<caption>필수 정보입력2</caption>
 						<colgroup>
-							<col style="width: 240px">
+							<col style="width: 133px">
 							<col style="width: *"> </colgroup>
 							<tbody>
 							<tr>
 								<th scope="row">
 									<span class="essential">*</span>아이디 </th>
 								<td>
-									<input type="text" name="id" maxlength="20" class="iText" title="id" id="id" placeholder="띄어쓰기 없는영문, 숫자로만 6~20자">
+									<input type="text" name="id" maxlength="20" class="iText" title="id" id="id">
 									<input type="hidden" name="chkMemId" value="" id="memidCheck">
 									<div class="infoLayerBox" style="display:none;top:46px;">
 										<div class="infoContent">아이디를 정확히 입력하여 주십시오.
@@ -208,11 +209,11 @@
 								<td>
 								<input type="text" name="nickname" class="iText" title="nickname" id="nickname" minlength="4" maxlength="20">
 								<input type="button" id="nicknameCheck" value="중복확인">
-								<div id="nicknameCheck">
+								<!-- <div id="nicknameCheck">
 											
-								</div>
+								</div> -->
 							</tr>
-							<tr>
+							<!-- <tr>
 								<th scope="row">
 									<span class="essential">*</span>어린이회원 </th>
 								<td>
@@ -223,7 +224,7 @@
 										</label>
 									</div>
 								</td>
-							</tr>
+							</tr> -->
 							<tr>
 								<th scope="row">
 									프로필사진
@@ -235,17 +236,26 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="certifyButtonWrap_final certifyButtonWrap">
+				<div class="certifyButtonWrap_final certifyButtonWrap jnbtn">
 						회원가입
 				</div>
 		</div>
 		</form>
+		<div class="join_footer">
+						<div class="join_menu">
+							<a href="${pageContext.request.contextPath}/footer/personalInformation">개인정보처리방침</a>
+							<span>|</span>
+							<a href="${pageContext.request.contextPath}/footer/youth">청소년보호정책</a>
+							<span>|</span> 
+							<a href="${pageContext.request.contextPath}/footer/use">이용약관</a>
+							<span>|</span>
+							<a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
+						</div>
+					</div>
 		</div>
 	</div>
 	<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.JPG"></a>
-	<div id="footer">
-		<c:import url="../inc/footer.jsp"></c:import>
-	</div>
+</div>
 </div>
 </body>
 </html>
