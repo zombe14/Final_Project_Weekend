@@ -39,7 +39,7 @@
 				<c:import url="../inc/admin_left_bar.jsp" />
 				<div class="col-sm-10">
 					<h4>
-						<small>${board} 관리</small>
+						<small>${title} 관리</small>
 					</h4>
 					<hr>
 					<div>

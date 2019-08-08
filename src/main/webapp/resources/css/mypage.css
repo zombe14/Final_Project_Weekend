@@ -41,7 +41,7 @@ i{
 	border-right: 1px solid #efefef;
 }
 /* 이미지 크기 조정 */
-.qmenu a img{
+.mqmenu a img{
 	margin: 0 auto;
 	display: block;
 	width: 110px;

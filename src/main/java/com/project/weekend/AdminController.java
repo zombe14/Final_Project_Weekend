@@ -34,6 +34,7 @@ public class AdminController {
 	@RequestMapping(value = "adminMain", method = RequestMethod.GET)
 	public ModelAndView adminBoard() throws Exception {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("title", "관리자 메인");
 		mv.addObject("board", "adminMain");
 		mv.setViewName("admin/adminMain");
 		return mv;
@@ -44,6 +45,7 @@ public class AdminController {
 	public ModelAndView aUserList(PageMaker pageMaker, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<MemberDTO> list = memberService.getList(session, pageMaker);
+		mv.addObject("Title", "유저");
 		mv.addObject("board", "User");
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
@@ -74,7 +76,8 @@ public class AdminController {
 	@RequestMapping(value = "aNoticeList", method = RequestMethod.GET) 
 	public ModelAndView adminNoticeList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView(); 
-		List<BoardDTO> list = noticeServiceImpl.getList(pageMaker, session); 
+		List<BoardDTO> list = noticeServiceImpl.getList(pageMaker, session);
+		mv.addObject("Title", "공지사항");
 		mv.addObject("board", "Notice"); 
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
@@ -86,6 +89,13 @@ public class AdminController {
 	public String adminNoticeDelete(HttpSession session, String num) throws Exception{
 		noticeServiceImpl.setDelete(num, session);
 		return "redirect:./aNoticeList";
+	}
+	@RequestMapping(value = "aEnjoyList", method = RequestMethod.GET)
+	public ModelAndView adminEnjoyList() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("board", "Enjoy");
+		mv.setViewName("admin/aBoardList");
+		return mv;
 	}
 	// show;
 	public ModelAndView adminShowList() throws Exception{
@@ -118,6 +128,7 @@ public class AdminController {
 	public ModelAndView adminQnaList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<QnaDTO> list = qnaService.getList(pageMaker, session);
+		mv.addObject("Title", "QnA");
 		mv.addObject("board", "Qna");
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
@@ -134,8 +145,9 @@ public class AdminController {
 	@RequestMapping(value = "aReserList", method = RequestMethod.GET)
 	public ModelAndView adminReserList() throws Exception{
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("Title", "예약");
 		mv.addObject("board", "Reser");
-		mv.setViewName("admin/aRaBoard");
+		mv.setViewName("admin/aReserList");
 		return mv;
 	}
 	// reservation;

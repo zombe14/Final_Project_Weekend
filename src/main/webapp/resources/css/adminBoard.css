@@ -1,9 +1,5 @@
   <style>
-  	.totalBody{
-  	height: 900px;
-  	width: 1300px;
-  	margin: 100px auto;
-  	}
+  	/* ///////////////////건드리지 말것/////////////////// */
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {height: 800px}
     
@@ -33,22 +29,53 @@
     width: 45px;
     font-size: 5px;
     }
-    /* 메인 글자색 */
-	.h2{
-	color: black;
+    /* ///////////////////건드리지 말것/////////////////// */
+    
+    /* 전체 body 설정 */
+    .totalBody{
+  	height: 700px;
+  	width: 1300px;
+  	margin: 100px auto;
+  	}
+	.admin_tbody{
+	margin-top: 50px;
+	background-color: 1px solid #101010;
 	}
     /*  */
-    .mypage_body{
+    .admin_hbody{
 	border: 1px solid #00d344;
-	height: 400px;
-	margin-bottom: 10px;
+	height: 150px;
+	width: 1000px;
+	margin-top : 100px;
+	margin: auto;
+	text-align: center;
 	border-radius: 2px;
-    background-color: white;
+    background-color: #101010;
+	}
+    /* 메인 글자색 */
+	.admin_hbody h1{
+	color: white;
+	}
+	/* 아이콘 감싸는 body */
+	.admin_mbody{
+	border: 1px solid #00d344;
+	height: 250px;
+	width: 1000px;
+	margin: auto;
+	}
+	/* 아이콘 메뉴 크기 및 정렬 */
+	.admin_mbody li{
+	width: 166px;
+	height: 150px;	
+	float: left;
+	margin: 36px;
+	text-align: center;
+	border-right: 1px solid #efefef;
 }
     /* 이미지 크기 조정 */
     .qmyimg a img{
 	margin: 0 auto;
 	display: block;
-	width: 100px;
-}
+	width: 110px;
+	}
   </style>
