@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.Request;
@@ -96,13 +97,21 @@ public class MemberController {
 		MemberDTO getId = memberService.getId(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
-		int overlap = memberService.setUpdateoverlap(memberDTO);
+		MemberDTO getOverlap = memberService.getSelectOverlap(memberDTO);
+		System.out.println(getId);
+		System.out.println(getOverlap);
 		String message="존재 하지 않는 아이디 입니다.";
 		if(getId==null) {
 			mv.setViewName("common/messageMove");
 			mv.addObject("message", message);
 			mv.addObject("path", "./memberLogin");
 		}else {
+			if(getOverlap!=null) {
+				message = "현재 로그인 상태인 아이디입니다.";
+				mv.setViewName("common/messageMove");
+				mv.addObject("message", message);
+				mv.addObject("path", "./memberLogin");
+			}else {
 			memberDTO = memberService.getSelect(memberDTO);
 			message="Login Fail";
 			if(result==1) {	
@@ -114,7 +123,7 @@ public class MemberController {
 						mv.addObject("path", "../");
 					}else {
 						session.setAttribute("member", memberDTO);
-						memberService.setUpdatezero(memberDTO);
+						int zero = memberService.setUpdatezero(memberDTO);
 						message = "Login Success";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
@@ -129,34 +138,19 @@ public class MemberController {
 				
 			}
 		}
+		}
 		return mv;
-	}
+	}	
 	@RequestMapping(value = "memberAgree", method = RequestMethod.GET)
 	public void getAgree()throws Exception{}
 	
-	@RequestMapping(value = "memberLogout", method =RequestMethod.GET)
-	public String logout(HttpServletRequest request,HttpSession session, MemberDTO memberDTO)throws Exception{
+	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
+	public String logout(String id, HttpSession session, MemberDTO memberDTO)throws Exception{
+		memberService.setUpdateoverlap(memberDTO);
 		session.invalidate();
 		return "redirect:../";
 	}
 	
 	
-	
-	
-																								// Iterator<HttpSession>
-																								// iterator =
-																								// sessionMap.keySet().iterator();
-																								// while
-																								// (iterator.hasNext())
-																								// { HttpSession key =
-																								// (HttpSession)
-																								// iterator.next();
-																								// dataMap.clear(); //이미
-																								// 접속한 사용자(세션)
-																								// dataMap.put("userId",
-																								// sessionMap.get(key));
-																								// this.duplicationRoleCheck(Session,
-																								// dataMap , sessionMap,
-																								// srpCodeList); }
 
 }

@@ -41,7 +41,7 @@
 
 	/* 9. 테이블 행이 적을 때 페이징 ul 안올라가게 */
 #tableDiv{
-	min-height: 30vh;
+	/* min-height: 30vh; */
     border-bottom: 2px solid #ddd;
     margin-bottom: 20px;
 }
@@ -91,14 +91,14 @@
 
 .search_form{
 	text-align: center;
-	margin-left: 60px;
+	margin-left: 85px;
 }
 
-.board_h3{
+/* .board_h3{
 	padding-bottom: 30px;
 	border-bottom: 2px solid #999;
 	margin-bottom: 36px;
-}
+} */
 
 .board_h3 h3{
 	font-weight: bold;

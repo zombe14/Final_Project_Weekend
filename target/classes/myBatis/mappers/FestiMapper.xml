@@ -62,7 +62,7 @@
 	</select>
 
 	<select id="getSelect" resultMap="festiResult" parameterType="String">
-		SELECT * FROM FESTI WHERE NUM = #{num}
+		SELECT * FROM FESTI FULL JOIN FILES USING(NUM) WHERE NUM = #{num}
 	</select>
 	
 	<select id="getTop" resultMap="festiResult">
@@ -77,5 +77,29 @@
 	<delete id="setDelete" parameterType="String">
 		DELETE FESTI WHERE NUM = #{num}
 	</delete>
+	
+	<!-- 상혁 -->
+	<select id="getAllList" parameterType="PageMaker" resultMap="festiResult">
+		SELECT * FROM 
+		(SELECT ROWNUM R, F.* FROM 
+		(SELECT NUM, TITLE, STARTDATE, ENDDATE, LOCAL FROM FESTI WHERE
+		<choose>
+			<when test="kind = 1">
+				TITLE
+			</when>
+			<when test="kind = 2">
+				CONTENTS
+			</when>
+			<when test="kind = 3">
+				LOCAL
+			</when>
+			<otherwise>
+				TITLE
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
+		ORDER BY NUM DESC) F) 
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
 	
 </mapper>

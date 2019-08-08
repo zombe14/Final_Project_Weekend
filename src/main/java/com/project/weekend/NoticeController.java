@@ -30,11 +30,11 @@ public class NoticeController {
 	private NoticeDAOImpl noticeDAOImpl;
 	@Inject
 	private NoticeServiceImpl noticeSerivceImpl;
-	private static final String boardTitle = "공지";
+	private static final String boardTitle = "怨듭�";
 	
 	
-	/*공지 글쓰기*/
-	// 글쓰기 폼으로 이동 - admin
+	/*怨듭� 湲��벐湲�*/
+	// 湲��벐湲� �뤌�쑝濡� �씠�룞 - admin
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
 	public ModelAndView noticeWrite(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -47,12 +47,12 @@ public class NoticeController {
 		return mv;
 	}
 	
-	// 글쓰기 프로세스 진행 - admin
+	// 湲��벐湲� �봽濡쒖꽭�뒪 吏꾪뻾 - admin
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public ModelAndView noticeWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String path = "./noticeList";
-		String message = "글 작성에 실패했어요";
+		String message = "湲� �옉�꽦�뿉 �떎�뙣�뻽�뼱�슂";
 		int result = noticeSerivceImpl.setWrite(boardDTO, filelist, session);
 		if(result>0) {
 			mv.setViewName("redirect:./noticeList");
@@ -65,8 +65,8 @@ public class NoticeController {
 		return mv;
 	}
 	
-	/*공지 업데이트*/
-	// 업데이트 폼으로 이동 - admin
+	/*怨듭� �뾽�뜲�씠�듃*/
+	// �뾽�뜲�씠�듃 �뤌�쑝濡� �씠�룞 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.GET)
 	public ModelAndView noticeUpdate(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -79,7 +79,7 @@ public class NoticeController {
 		mv.setViewName("board/noticeUpdate");
 		return mv;
 	}
-	// 업데이트 프로세스 진행 - admin
+	// �뾽�뜲�씠�듃 �봽濡쒖꽭�뒪 吏꾪뻾 - admin
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
 	public ModelAndView noticeUpdate(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -93,23 +93,23 @@ public class NoticeController {
 		}
 		return mv;
 	}
-	// 공지 삭제 - admin
+	// 怨듭� �궘�젣 - admin
 	@RequestMapping(value = "noticeDelete", method = RequestMethod.POST)
 	public ModelAndView noticeDelete(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String path = "./boardSelect?num="+num;
-		String message = "삭제가 실패했습니다.";
+		String message = "�궘�젣媛� �떎�뙣�뻽�뒿�땲�떎.";
 		int res = noticeSerivceImpl.setDelete(num, session);
 		if(res>0) {
 			path = "../notice/noticeList";
-			message="삭제가 완료됐습니다.";
+			message="�궘�젣媛� �셿猷뚮릱�뒿�땲�떎.";
 		}
 		mv.addObject("message", message);
 		mv.addObject("path", path);
 		mv.setViewName("common/messageMove");
 		return mv;
 	}
-	// 공지글보기 - all
+	// 怨듭�湲�蹂닿린 - all
 	@RequestMapping(value = "noticeSelect", method = RequestMethod.GET)
 	public ModelAndView noticeSelect(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -120,7 +120,7 @@ public class NoticeController {
 		mv.setViewName("board/boardSelect");
 		return mv;
 	}
-	// 공지리스트 - all
+	// 怨듭�由ъ뒪�듃 - all
 	@RequestMapping(value = "noticeList", method = RequestMethod.GET)
 	public ModelAndView noticeList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();

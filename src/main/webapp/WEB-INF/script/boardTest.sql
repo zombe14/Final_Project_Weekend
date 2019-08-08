@@ -1,6 +1,58 @@
+create table comments(
+	cnum number(8) constraint comment_cnum_pk primary key,
+	num varchar2(400),
+	contents clob,
+	reg_date date,
+	writer varchar2(400),
+	step number(8),
+	depth number(8),
+	ref number(8)
+)
+drop table comments
+create sequence com_seq
+	start with 1
+	nomaxvalue
+	nocycle
+	nocache
+select * from qna
+
+select * from files
+select * from show_order
+SELECT * FROM 
+		(SELECT ROWNUM R, Q.* FROM 
+		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW, (SUBSTR(NUM, 2)*1) n
+		FROM QNA WHERE title 
+		LIKE '%'||'%'
+		ORDER BY (SUBSTR(ref, 2)*1) DESC, STEP ASC) Q) 
+		WHERE R BETWEEN 1 AND 100
+delete qna where num = 'q60'
+update qna set num
+
+select * from qna
+		
+SELECT * FROM 
+		(SELECT ROWNUM R, Q.* FROM 
+		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW
+		FROM QNA 
+		ORDER BY (select substr(num, 2)*1 from qna) DESC STEP ASC) Q) 
+		WHERE R BETWEEN 1 AND 10
+
+select * from qna order by SUBSTR(NUM, 2)*1 DESC
+		
+select num, substr(num, 2)*1 as n from qna order by n DESC
 ----------------------
 
-select * from qna order by reg_date
+select * from qna order by  desc
+
+select num, substr(num, 2)*1 as n from qna order by n desc
+
+delete qna where num = 'q'
+
+INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH) 
+		VALUES ('q'+QNA_SEQ.NEXTVAL, 'r1', 'r1', 'r1', sysdate, 0, '0', 'q39', 1, 1)
+		
+INSERT INTO QNA(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH)
+		VALUES('q', 'r1', 'r1', 'r1', sysdate, 0, '0', 'q39', 1, 1)
 
 ----------------------
 UPDATE NOTICE SET HIT = HIT + 1 WHERE NUM = 'n188'
@@ -37,7 +89,7 @@ delete festi where num=1
 select * from user_sequences
 
 SELECT * FROM    ALL_CONSTRAINTS
-WHERE    TABLE_NAME = 'CART'
+WHERE    TABLE_NAME = 'QNA'
 
 
 -- 1. 시퀀스 삭제

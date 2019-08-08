@@ -23,11 +23,11 @@
 					<h2>고객센터</h2>
 				</div>
 				<ul>
-					<li class="qmenu"><a href=""><img src="${pageContext.request.contextPath}/resources/images/callcenter/call1.png">아이디/<br>패스워드 찾기</a></li>
-					<li class="qmenu"><a href=""><img src="${pageContext.request.contextPath}/resources/images/callcenter/call2.png">상담내역<br>확인</a></li>
-					<li class="qmenu"><a href=""><img src="${pageContext.request.contextPath}/resources/images/callcenter/call3.png">티켓<br>예매문의</a></li>
-					<li class="qmenu"><a href=""><img src="${pageContext.request.contextPath}/resources/images/callcenter/call4.png">티켓<br>환불문의</a></li>
-					<li class="qmenu"><a href=""><img src="${pageContext.request.contextPath}/resources/images/callcenter/call5.png">티켓<br>수령문의</a></li>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/infosearch"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call1.png">아이디/<br>패스워드 찾기</a></li>
+					<li class="qmenu"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call2.png">상담내역<br>확인</a></li>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/reservation"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call3.png">티켓<br>예매문의</a></li>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/cancel"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call4.png">티켓<br>환불문의</a></li>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/receive"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call5.png">티켓<br>수령문의</a></li>
 				</ul>
 			</div>
 			<div class="call_container">
@@ -35,8 +35,8 @@
 					<li class="cmenu1"><a href="${pageContext.request.contextPath}/callcenter/main">고객센터 홈</a></li>
 					<li class="cmenu2"><a href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a></li>
 					<li class="cmenu3"><a href="${pageContext.request.contextPath}/qna/qnaList">QnA</a></li>
-					<li class="cmenu4"><a href="">예매안내</a></li>
-					<li class="cmenu5"><a href="">결제수단안내</a></li>
+					<li class="cmenu4"><a href="${pageContext.request.contextPath}/callcenter/reservation">예매안내</a></li>
+					<li class="cmenu5"><a href="${pageContext.request.contextPath}/callcenter/payment">결제수단안내</a></li>
 					<li class="cmenu6"><a href="${pageContext.request.contextPath}/callcenter/cancel">환불안내</a></li>
 					<li class="cmenu7"><a href="${pageContext.request.contextPath}/callcenter/legalguide">부정이용 규제안내</a></li>
 					<li class="cmenu8"><a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
@@ -44,21 +44,21 @@
 				<div class="call_cont">
 					<ul class="help_link">
 						<li class="first">
-							<a href="">
+							<a href="${pageContext.request.contextPath}/callcenter/reservation">
 								<h4><i>예매 도움</i> 받기</h4>
 								<p>예매 안내를 통해서<br>편리한 예매방법을<br>알아보세요.</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help1.png">
 							</a>
 						</li>
 						<li>
-							<a href="">
+							<a href="${pageContext.request.contextPath}/.">
 								<h4><i>1:1 상담</i> 받기</h4>
 								<p>빠르고 간편한<br>온라인 1:1문의를<br>이용해보세요.</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help2.png">
 							</a>
 						</li>
 						<li>
-							<a href="">
+							<a href="${pageContext.request.contextPath}/qna/qnaList">
 								<h4><i>QnA</i> 보기</h4>
 								<p>궁금한 질문들을<br>쉽고 편하게<br>한번에 알아보세요.</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help3.png">
@@ -72,22 +72,18 @@
 							</a>
 						</li>
 						<li class="h1">
-							<a href="">
 								<h4><i>예매 상담</i> 하기</h4>
 								<p>1588-0000</p>
 								<br>
 								<p>09:00 ~ 18:00(월-금)</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help5.png">
-							</a>
 						</li>
 						<li class="h1">
-							<a href="">
 								<h4><i>문의</i> 하기</h4>
 								<p>1588-0001</p>
 								<br>
 								<p>09:00 ~ 18:00(월-금)</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help5.png">
-							</a>
 						</li>
 					</ul>
 					<div class="helpmain_list">
@@ -113,11 +109,13 @@
 						</div>
 						<div class="helpmain_notice">
 							<strong>최근 공지 사항</strong>
+							<ul>
 							<c:forEach items="${list}" var="list">
-								<tr>
-									<td>${list.title}</td>
-								</tr>
+								<li>
+									${list.title}
+								</li>
 							</c:forEach>
+							</ul>
 						</div>
 					</div>
 				</div>

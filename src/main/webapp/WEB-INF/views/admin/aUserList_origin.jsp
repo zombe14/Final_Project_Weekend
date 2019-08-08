@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- 관리자용 bootstrap -->
+<c:import url="../temp/adminBoot.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
 <title>유저 관리</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<c:import url="../../temp/adminBoot.jsp" />
-<c:import url="../../../../resources/css/adminBoard.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminBoard.css">
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 </head>
 <body>
 	<script type="text/javascript">
@@ -29,7 +32,18 @@
 						/* post형식으로 mapping한 주소로 id값을 보냄 */
 						$.post("../admin/aUserUpdateP",
 								{id:id},
-								function () {
+								function (data) {
+									if(data = 1){
+										if(grade == 1){
+											grade = 2;
+										}else{
+											grade = 3;
+										}
+										alert("아이디 : " + id + "\n" + "현재 등급 : "
+												+ grade + "\n" + "등급이 올라갔습니다.")
+									}else{
+										alert("실패")
+									}
 									/* 이후 최신 상태 유지를 위해 페이지를 새로부름 */
 									location.href="../admin/aUserList";
 								});
@@ -50,7 +64,14 @@
 							} else {
 								$.post("../admin/aUserUpdateM",
 										{id:id},
-										function () {
+										function (data) {
+											if(grade == 3){
+												grade = 2;
+											}else{
+												grade = 1;
+											}
+											alert("아이디 : "+id+"\n"+"현재 등급 : "
+													+grade+"\n"+"등급이 내려갔습니다.")
 											location.href="../admin/aUserList";
 										});
 							}
@@ -74,12 +95,12 @@
 		});
 	</script>
 	<div class="totalBody">
-		<c:import url="../../inc/admin_header.jsp" />
+		<c:import url="../inc/admin_header.jsp" />
 		<!-- left bar 시작 -->
 		<div class="container-fluid text-center">
 			<div class="row content">
 				<!-- side bar -->
-				<c:import url="../../inc/admin_left_bar.jsp" />
+				<c:import url="../inc/admin_left_bar.jsp" />
 				<div class="col-sm-10">
 					<h4>
 						<small>${board} 관리</small>
@@ -173,14 +194,10 @@
 								</ul>
 							</c:if>
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
-		<footer class="container-fluid">
-			<p>Footer Text</p>
-		</footer>
 	</div>
 </body>
 </html>

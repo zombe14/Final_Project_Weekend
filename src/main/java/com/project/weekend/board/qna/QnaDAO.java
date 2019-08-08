@@ -24,7 +24,7 @@ public class QnaDAO{
 	public int setWrite(QnaDTO qnaDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setWrite", qnaDTO);
 	}
-
+	
 	
 	public int setUpdate(QnaDTO qnaDTO) throws Exception {
 		return sqlSession.update(NAMESPACE+"setUpdate", qnaDTO);
@@ -47,13 +47,18 @@ public class QnaDAO{
 	public List<QnaDTO> getList(PageMaker pageMaker) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getList", pageMaker);
 	}
+		
+	public int setHitUpdate(String num) throws Exception{
+		return sqlSession.update(NAMESPACE+"setHitUpdate", num);
+	}
 	
 	public int setReplyWrite(QnaDTO qnaDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setReplyWrite", qnaDTO);
 	}
-	
-	public int setHitUpdate(String num) throws Exception{
-		return sqlSession.update(NAMESPACE+"setHitUpdate", num);
+
+	public int setReplyUpdate(QnaDTO qnaDTO) throws Exception{ 
+		return sqlSession.update(NAMESPACE+"setReplyUpdate", qnaDTO);
 	}
+	 
 
 }

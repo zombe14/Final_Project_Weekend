@@ -119,5 +119,24 @@ public class QnaService {
 		pageMaker.makePage(totalCount);
 		return list;
 	}
+	
+	public int setReplyWrite(QnaDTO qnaDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+		int res = 0;
+		String num = "q" + qnaDAO.getNum();
+		qnaDTO.setNum(num);
+		res = qnaDAO.setReplyUpdate(qnaDTO);
+		res = qnaDAO.setReplyWrite(qnaDTO);
+		String realPath = session.getServletContext().getRealPath("/resources/images/board");
+		for (MultipartFile f : filelist) {
+			if (f.getOriginalFilename().length() > 0) {
+				FileDTO fileDTO = new FileDTO();
+				fileDTO.setFname(fileSaver.saveFile(realPath, f));
+				fileDTO.setNum(num);
+				fileDTO.setOname(f.getOriginalFilename());
+				res = fileDAO.setWrite(fileDTO);
+			}
+		}
+		return res;
+	}
 
 }

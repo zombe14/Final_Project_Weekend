@@ -1,24 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- 관리자용 bootstrap -->
+<c:import url="../temp/adminBoot.jsp" />
+<!-- 관리자용 css -->
 <!DOCTYPE html>
 <html>
 <head>
 <title>${board}관리</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 관리자용 bootstrap -->
-<c:import url="../../temp/adminBoot.jsp" />
-<!-- 관리자용 css -->
-<c:import url="../../../../resources/css/adminBoard.css" />
 </head>
 <body>
 <div class="totalBody">
 	<!-- header.jsp -->
-	<c:import url="../../inc/admin_header.jsp" />
+	<c:import url="../inc/admin_header.jsp" />
 	<div class="container-fluid">
 		<div class="row content text-center">
 			<!-- side bar -->
-			<c:import url="../../inc/admin_left_bar.jsp"/>
+			<c:import url="../inc/admin_left_bar.jsp"/>
 			<div class="col-sm-10">
 				<h4>
 					<small>${board} 관리</small>

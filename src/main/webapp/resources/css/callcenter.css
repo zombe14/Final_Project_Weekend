@@ -10,6 +10,17 @@
     background-color: white;
 }
 
+.call_cont strong{
+	font-size: 15px;
+}
+
+.call_cont h3{
+    border-bottom: 2px solid #999;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
 i{
 	font-family: "Noto Sans KR", sans-serif;
 }
@@ -163,3 +174,4 @@ i{
 .helpmain_notice{
 	overflow: hidden;
 }
+
