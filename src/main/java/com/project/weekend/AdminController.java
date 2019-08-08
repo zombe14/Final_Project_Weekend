@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.project.weekend.board.BoardDTO;
+import com.project.weekend.board.festi.FestiDTO;
+import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.board.notice.NoticeServiceImpl;
 import com.project.weekend.board.qna.QnaDTO;
 import com.project.weekend.board.qna.QnaService;
@@ -23,14 +25,15 @@ import com.project.weekend.util.PageMaker;
 @RequestMapping(value = "/admin/")
 public class AdminController {
 	@Inject
-	private NoticeServiceImpl noticeServiceImpl;
-	@Inject
 	private MemberService memberService;
 	@Inject
+	private NoticeServiceImpl noticeServiceImpl;
+	@Inject
 	private QnaService qnaService;
+	@Inject
+	private FestiService festiService;
 
-	////////////// admin Main; //////////////
-	// 여기에 전반적인 뭔가를 뿌려야됨;
+	//////////////////////////////// admin Main; ////////////////////////////////
 	@RequestMapping(value = "adminMain", method = RequestMethod.GET)
 	public ModelAndView adminBoard() throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -39,13 +42,13 @@ public class AdminController {
 		mv.setViewName("admin/adminMain");
 		return mv;
 	}
-	////////////// admin User; //////////////
+	//////////////////////////////// admin User; ////////////////////////////////
 	// userList(완성)
 	@RequestMapping(value = "aUserList", method = RequestMethod.GET)
 	public ModelAndView aUserList(PageMaker pageMaker, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<MemberDTO> list = memberService.getList(session, pageMaker);
-		mv.addObject("Title", "유저");
+		mv.addObject("title", "유저");
 		mv.addObject("board", "User");
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
@@ -70,14 +73,14 @@ public class AdminController {
 		memberService.setDelete(id);
 		return "redirect:./aUserList";
 	}
-	////////////// board 관리; //////////////
+	////////////////////////////// board 관리; ////////////////////////////////
 	////////////// notice board; //////////////
 	// notice List(완성)
 	@RequestMapping(value = "aNoticeList", method = RequestMethod.GET) 
 	public ModelAndView adminNoticeList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView(); 
 		List<BoardDTO> list = noticeServiceImpl.getList(pageMaker, session);
-		mv.addObject("Title", "공지사항");
+		mv.addObject("title", "공지사항");
 		mv.addObject("board", "Notice"); 
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
@@ -90,10 +93,51 @@ public class AdminController {
 		noticeServiceImpl.setDelete(num, session);
 		return "redirect:./aNoticeList";
 	}
-	@RequestMapping(value = "aEnjoyList", method = RequestMethod.GET)
-	public ModelAndView adminEnjoyList() throws Exception{
+	//////////////QnA board; //////////////
+	// QnaList(완성)
+	@RequestMapping(value = "aQnaList", method = RequestMethod.GET)
+	public ModelAndView adminQnaList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<QnaDTO> list = qnaService.getList(pageMaker, session);
+		mv.addObject("title", "QnA");
+		mv.addObject("board", "Qna");
+		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
+		mv.setViewName("admin/aBoardList");
+		return mv;
+	}
+	// QnaDelete(완성)
+	@RequestMapping(value = "aQnaDelete", method = RequestMethod.POST)
+	public String adminQnaDelete(String num, HttpSession session) throws Exception{
+		qnaService.setDelete(num, session);
+		return "redirect:./aQnaList";
+	}
+	
+	// rank;
+	public ModelAndView adminRankList() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
+	// after;
+	public ModelAndView adminAfterList() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
+	// recommend;
+	public ModelAndView adminRecommend() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
+	////////////////////////////////Enjoy 관리; ////////////////////////////////
+	// 공연/축제 전체 목록(완성)
+	@RequestMapping(value = "aEnjoyList", method = RequestMethod.GET)
+	public ModelAndView adminEnjoyList(PageMaker pageMaker) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<FestiDTO> list = festiService.getAllList(pageMaker);
+		mv.addObject("title", "Enjoy");
 		mv.addObject("board", "Enjoy");
+		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
 		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
@@ -107,48 +151,19 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
-	// rank;
-	public ModelAndView adminRankList() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		return mv;
+	// 공연/축제 삭제;(완성)
+	@RequestMapping(value = "aEnjoyDelete", method = RequestMethod.POST)
+	public String adminEnjoyDelete(String num, HttpSession session) throws Exception{
+		festiService.setDelete(num, session);
+		return "redirect:./aEnjoyList";
 	}
-	//////////////QnA board; //////////////
-	// QnaList(완성)
-	@RequestMapping(value = "aQnaList", method = RequestMethod.GET)
-	public ModelAndView adminQnaList(PageMaker pageMaker, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<QnaDTO> list = qnaService.getList(pageMaker, session);
-		mv.addObject("Title", "QnA");
-		mv.addObject("board", "Qna");
-		mv.addObject("list", list);
-		mv.addObject("pager", pageMaker);
-		mv.setViewName("admin/aBoardList");
-		return mv;
-	}
-	// QnaDelete(완성)
-	@RequestMapping(value = "aQnaDelete", method = RequestMethod.POST)
-	public String adminQnaDelete(String num, HttpSession session) throws Exception{
-		qnaService.setDelete(num, session);
-		return "redirect:./aQnaList";
-	}
-	////////////// reservation 관리; //////////////
+	//////////////////////////////// reservation 관리; ////////////////////////////////
 	@RequestMapping(value = "aReserList", method = RequestMethod.GET)
 	public ModelAndView adminReserList() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("Title", "예약");
+		mv.addObject("title", "예약");
 		mv.addObject("board", "Reser");
 		mv.setViewName("admin/aReserList");
-		return mv;
-	}
-	//////////////Enjoy 관리; //////////////
-	// after;
-	public ModelAndView adminAfterList() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		return mv;
-	}
-	// recommend;
-	public ModelAndView adminRecommend() throws Exception{
-		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 	// reservation;

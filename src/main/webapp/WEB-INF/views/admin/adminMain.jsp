@@ -21,10 +21,10 @@
 			</div>
 			<div class="admin_mbody">
 				<ul>
-					<li class="qmyimg"><a href="./aUserList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage1.png">유저<br>관리</a></li>
-					<li class="qmyimg"><a href="./aNoticeList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage5.png">게시글<br>관리</a></li>
-					<li class="qmyimg"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage2.png">공연<br>관리</a></li>
-					<li class="qmyimg"><a href="./aReserList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage4.png">예약<br>관리</a></li>
+					<li class="qmyimg"><a href="./aUserList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage1.png"><br>유저 관리</a></li>
+					<li class="qmyimg"><a href="./aNoticeList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage5.png"><br>게시글 관리</a></li>
+					<li class="qmyimg"><a href="./aEnjoyList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage2.png"><br>공연 관리</a></li>
+					<li class="qmyimg"><a href="./aReserList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage4.png"><br>예약 관리</a></li>
 				</ul>
 			</div>	
 		</div>
