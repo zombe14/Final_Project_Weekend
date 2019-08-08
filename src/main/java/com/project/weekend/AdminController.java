@@ -107,16 +107,6 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
-	// after;
-	public ModelAndView adminAfterList() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		return mv;
-	}
-	// recommend;
-	public ModelAndView adminRecommend() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		return mv;
-	}
 	// rank;
 	public ModelAndView adminRankList() throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -148,6 +138,17 @@ public class AdminController {
 		mv.addObject("Title", "예약");
 		mv.addObject("board", "Reser");
 		mv.setViewName("admin/aReserList");
+		return mv;
+	}
+	//////////////Enjoy 관리; //////////////
+	// after;
+	public ModelAndView adminAfterList() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
+	// recommend;
+	public ModelAndView adminRecommend() throws Exception{
+		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 	// reservation;
