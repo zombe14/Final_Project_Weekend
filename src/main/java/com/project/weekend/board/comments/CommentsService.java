@@ -29,14 +29,13 @@ public class CommentsService {
 		List<CommentsDTO> list= commentsDAO.getList(pageMaker);
 		int totalCount = commentsDAO.getCount(pageMaker);
 		pageMaker.makePage(totalCount);	
-		
-		System.out.println(pageMaker.getNum());
-		System.out.println(pageMaker.getTotalBlock());
-		
-		System.out.println("com ser : "+totalCount);
-		System.out.println("ser : "+list.size());
 	
 		return list;
+	}
+	
+	public int setCommentsDelete(String cnum, HttpSession session) throws Exception{
+		int res = commentsDAO.setDelete(Integer.parseInt(cnum));
+		return res;
 	}
 
 }

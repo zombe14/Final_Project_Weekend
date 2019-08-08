@@ -26,8 +26,19 @@ public class QnaDAOTest extends AbstractTest{
 	private PageMaker pageMaker;
 	
 	@Test
+	public void commentsWrite() throws Exception{
+		for(int i= 0 ; i<20;i++) {
+			CommentsDTO c = new CommentsDTO();
+			c.setNum("a24");
+			c.setWriter("user"+(i+1));
+			c.setContents("comments"+(i+1));
+			commentsDAO.setWrite(c);
+		}
+	}
+	
+	//@Test
 	public void commentslist() throws Exception{
-		String num = "f11";
+		String num = "a24";
 		pageMaker.setNum(num);
 		int totalCount = commentsDAO.getCount(pageMaker);
 		pageMaker.makeRow();

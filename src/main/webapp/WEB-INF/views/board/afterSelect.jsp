@@ -61,55 +61,8 @@
 							
 				</form>
 				<hr>
-				<div id="commentsDiv">
-					<div id = "commnetedDiv">
-						<c:forEach items="${list}" var="r">
-							<p>${r.writer}</p>
-							<p>${r.contents}</p>
-							<p>${r.reg_date}</p>
-							<a class="commentsUpdate">수정</a>
-							<a class="commentsDelete">삭제</a>
-							<a class="recommentsWrite">댓글등록</a>
-						</c:forEach>
-						<div id="paging">
-							<c:if test="${list[0].reg_date ne null}">
-								<ul class="pagination">
-									<c:choose>
-										<c:when test="${pager.curBlock>1}">
-											<li class="pagingClick"><a href="${board}select?num=${dto.num}&curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="pagingo"><a>이전</a></li>
-										</c:otherwise>
-									</c:choose>
-			
-									<c:forEach begin="${pager.startNum}" end="${pager.lastNum}"
-										var="i">
-										<li class="pagingClick"><a href="${board}select?num=${dto.num}&curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
-									</c:forEach>
-			
-									<c:choose>
-										<c:when test="${pager.curBlock < pager.totalBlock}">
-											<li class="pagingClick"><a href="${board}select?num=${dto.num}&curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="pagingo"><a>다음</a></li>
-										</c:otherwise>
-									</c:choose>
-								</ul>
-							</c:if>
-						</div>
-					</div>
-					<hr>
-					<div id="commentsWriteDiv">
-						<form action="./${board}commentsWrite" method="post" id="commentsFrm">
-							<p>${member.nickname}memberNickname</p>
-							<input type="hidden" name="writer" id="writer" value="${member.nickname}임시">
-							<textarea rows="3" cols="100" id="commentsContents"></textarea>
-							<a class="btn btn-default" id="commentsWrite">댓글등록</a>
-						</form>
-					</div>
-				</div>
+				<c:import url="./commentsList.jsp"/>
+				
 			</div>
    </div>
    <div id="footer">
@@ -157,36 +110,8 @@
 		}
 		location.href = list;
 	});
-	console.log('${dto.anum}');
-	$('#commentsWrite').click(function() {
-		var writer = $('#writer').val();
-		var contents = $('#commentsContents').val();
-		var num = '${dto.anum}';
-		$.ajax({
-			type:'POST',
-			url:'./commentsWrite',
-			data:{
-				writer:writer,
-				contents:contents,
-				num:num
-			},
-			success:function(data){
-				data = data.trim();
-				if(data == '1'){
-					location.href="./afterSelect?anum=${dto.anum}"				
-				} else {
-					alert('실패');
-				}
-			},
-			error:function(d){
-				console.log(d);
-			}
-		});
-	});
+
 	
-	function loadComments() {
-		
-	}
 	
 	
 </script>

@@ -1,3 +1,5 @@
+DELTE COMMENTS WHERE CNUM = 40
+
 create table comments(
 	cnum number(8) constraint comment_cnum_pk primary key,
 	num varchar2(400),

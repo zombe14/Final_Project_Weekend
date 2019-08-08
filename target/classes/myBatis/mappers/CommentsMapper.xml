@@ -16,8 +16,8 @@
 		SELECT * FROM 
 		(SELECT ROWNUM R, C.* FROM 
 		(SELECT * FROM COMMENTS
-		WHERE ANUM = #{anum} 
-		ORDER BY (SUBSTR(REF, 2)*1) DESC, STEP DESC) C) 
+		WHERE ANUM = #{num} 
+		ORDER BY REF DESC, STEP DESC) C) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
@@ -25,4 +25,7 @@
 		SELECT COUNT(CNUM) FROM COMMENTS WHERE ANUM = #{anum}
 	</select>
 	
+	<delete id="setDelete" parameterType="Integer">
+		DELETE COMMENTS WHERE CNUM = #{cnum}
+	</delete>
 </mapper>

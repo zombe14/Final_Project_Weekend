@@ -29,5 +29,9 @@ public class CommentsDAO {
 	public int getCount(PageMaker pageMaker) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getCount", pageMaker.getNum());
 	}
+	
+	public int setDelete(int cnum) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", cnum);
+	}
 
 }

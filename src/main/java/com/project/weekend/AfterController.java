@@ -26,6 +26,7 @@ import com.project.weekend.util.PageMaker;
 public class AfterController {
 
 	private String after = "후기";
+	private String board2 = "comments";
 
 	@Inject
 	private AfterService afterService;
@@ -75,8 +76,7 @@ public class AfterController {
 	}
 
 	@RequestMapping(value = "afterUpdate", method = RequestMethod.POST)
-	public ModelAndView setUpdate(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session)
-			throws Exception {
+	public ModelAndView setUpdate(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int res = 0;
 		res = afterService.setUpdate(afterDTO, filelist, session);
@@ -99,39 +99,32 @@ public class AfterController {
 		return mv;
 	}
 
-	@RequestMapping(value = "afterSelect", method = RequestMethod.GET)
-	public ModelAndView getSelect(String num, PageMaker pageMaker, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		AfterDTO afterDTO = afterService.getSelect(num, session, request, response);
-		//List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
-		String path = "board/afterSelect";		
-		//mv.addObject("list", list);
-		mv.addObject("dto", afterDTO);
-		mv.addObject("board", "after");
-		mv.addObject("boardTitle", after);
-		mv.setViewName(path);
-		return mv;
-	}
-
 	@RequestMapping(value = "afterList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker, String num) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<AfterDTO> list = afterService.getList(pageMaker);
 		String path = "board/afterList";
-		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
+		mv.addObject("list", list);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
 		mv.setViewName(path);		
 		return mv;
 	}
-	
-	@RequestMapping(value = "commentsWrite", method = RequestMethod.POST)
-	public ModelAndView setCommentyWrite(CommentsDTO commentsDTO) throws Exception{
+
+	@RequestMapping(value = "afterSelect", method = RequestMethod.GET)
+	public ModelAndView getSelect(String num, PageMaker pageMaker, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		int result = commentsService.setCommentsWrite(commentsDTO);
-		mv.addObject("result", result);
-		mv.setViewName("common/message");
+		AfterDTO afterDTO = afterService.getSelect(num, session, request, response);
+		String path = "board/afterSelect";		
+		mv.addObject("dto", afterDTO);
+		mv.addObject("board", "after");
+		mv.addObject("boardTitle", after);
+		mv.addObject("board2", board2);
+		List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
+		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
+		mv.setViewName(path);
 		return mv;
 	}
 	
@@ -141,6 +134,26 @@ public class AfterController {
 		List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
+		mv.addObject("board2", "comments");
+		mv.setViewName("common/message");
+		return mv;
+	}
+	
+	@RequestMapping(value = "commentsWrite", method = RequestMethod.POST)
+	public ModelAndView setCommentsWrite(CommentsDTO commentsDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = commentsService.setCommentsWrite(commentsDTO);
+		mv.addObject("result", result);
+		mv.setViewName("common/message");
+		return mv;
+	}
+	
+	@RequestMapping(value = "commentsDelete", method = RequestMethod.POST)
+	public ModelAndView setCommentsDelete(String cnum, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int res = commentsService.setCommentsDelete(cnum, session);
+		mv.addObject("result", res);
+		mv.setViewName("common/message");
 		return mv;
 	}
 
