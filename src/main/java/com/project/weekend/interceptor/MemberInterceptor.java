@@ -28,9 +28,6 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 			ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
 		super.postHandle(request, response, handler, modelAndView);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("common/messageMove");
-		mv.addObject("path", "./memberLogin");
 		return;
 	}
 
