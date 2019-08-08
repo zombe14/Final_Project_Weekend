@@ -7,10 +7,10 @@
 <html>
 <head>
 <title>유저 관리</title>
-<!-- 그저 로고일뿐 -->
-<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-<!-- 관리자 보드용 css 가져옴 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminBoard.css">
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 </head>
 <body>
 	<script type="text/javascript">
@@ -198,7 +198,6 @@
 				</div>
 			</div>
 		</div>
-		<h1>Footer를 넣을 예정</h1>
 	</div>
 </body>
 </html>
