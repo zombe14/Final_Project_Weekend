@@ -112,7 +112,7 @@ public class QnaController {
 	public ModelAndView getSelect(String num, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		QnaDTO qnaDTO = qnaService.getSelect(num, session, request, response);
-		String path = "board/boardSelect";
+		String path = "board/qnaSelect";
 		mv.addObject("dto", qnaDTO);
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);

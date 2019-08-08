@@ -97,16 +97,16 @@ public class FestiController {
 	
 	//update-process
 	@RequestMapping(value = "festiUpdate", method = RequestMethod.POST)
-	public ModelAndView setUpdate(FestiDTO festiDTO) throws Exception{
+	public ModelAndView setUpdate(FestiDTO festiDTO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int res = festiService.setUpdate(festiDTO);
+		int res = festiService.setUpdate(festiDTO, session);
 		mv.setViewName("redirect:./festiSelect?num="+festiDTO.getNum());
 		return mv;
 	}
 	
 	@RequestMapping(value = "festiDelete", method = RequestMethod.GET)
-	public String setDelete(String num) throws Exception{
-		int res = festiService.setDelete(num);
+	public String setDelete(String num,  HttpSession session) throws Exception{
+		int res = festiService.setDelete(num, session);
 		String path = "redirect:./festiSelect?num="+num;
 		if (res>0) {
 			path = "redirect:./festiList";

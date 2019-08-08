@@ -20,10 +20,9 @@
       <div id="container">
       	<div class="conta">
   	      	<div class="conta">
-				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
-				<c:if test="${board eq 'qnaReply'}">
-					<input type="hidden" name ="ref" value="${qnaOrigin.num}">
-				</c:if>
+				<form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
+				
+					<input type="hidden" name ="num" value="${dto.num}">
 
 					<div>
 						<label for="title">제목<span>*</span></label>
@@ -108,9 +107,33 @@
 	
 	// 정적인 input 파일 제거
 	$('.deleteFile').click(function() {
-		$(this).parent().remove();
-		limit--
-	});
+			var con = confirm('삭제하시겠습니까? 복구가 불가능합니다.');
+			if(con){
+				var fnum = $(this).attr('id');
+				var fname = $(this).attr('title');
+				var selector = $(this);
+				$.ajax({
+					url:"../ajax/fileDelete",
+					type:'post',
+					data:{
+						fnum:fnum,
+						fname:fname,
+						board:'board'
+					},
+					success:function(data){
+						data = data.trim();
+						if(data == '1'){
+							selector.parent().remove();
+							selector.prev().remove();
+							selector.remove();
+							limit--;
+						} else {
+							alert('삭제 할 수 없습니다.');
+						}
+					}
+				});		
+			}
+		});
 	
 	// 동적으로 그려진 input file 제거
 	$('#files').on('click','.deleteFile',function(){

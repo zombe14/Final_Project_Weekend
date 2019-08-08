@@ -1,3 +1,23 @@
+create table comments(
+	cnum number(8) constraint comment_cnum_pk primary key,
+	num varchar2(400),
+	contents clob,
+	reg_date date,
+	writer varchar2(400),
+	step number(8),
+	depth number(8),
+	ref number(8)
+)
+drop table comments
+create sequence com_seq
+	start with 1
+	nomaxvalue
+	nocycle
+	nocache
+select * from qna
+
+select * from files
+select * from show_order
 SELECT * FROM 
 		(SELECT ROWNUM R, Q.* FROM 
 		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW, (SUBSTR(NUM, 2)*1) n

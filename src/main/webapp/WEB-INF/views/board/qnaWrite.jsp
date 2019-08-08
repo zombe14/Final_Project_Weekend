@@ -34,7 +34,12 @@
 
 					<div>
 						<label for="title">제목<span>*</span></label>
-						<input type="text" name="title" id="title">
+						<c:if test="${board eq 'qna'}">
+							<input type="text" name="title" id="title">
+						</c:if>
+						<c:if test="${board eq 'qnaReply'}">
+							<input type="text" name="title" id="title" value="${qnaOrigin.title} 답변입니다.">
+						</c:if>
 					</div>
 					<div>
 						<label for="writer">작성자<span>*</span></label> 
