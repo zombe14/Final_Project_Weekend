@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberAgree.css?ver=1">
   <c:import url="../temp/boot.jsp"></c:import> 
-  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberAgree.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberAgree.js?ver=1"></script>
   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
 
@@ -24,6 +24,7 @@
 	</div>
 	<div id="container">
 	<div class="inner">
+		<form action="./memberAgree" id="memberAgrree_post" method="POST">
 		<h1>약관동의</h1>
 		<div class="essentialTermsWrap">
 					<div>
@@ -106,9 +107,10 @@
 					    </div>
 					</div>
 				</div>
-            <button id="join" class="btn btn-danger" style="border-radius: 0px;	margin-top: 20px; width: 20%; margin-left: 40%;" type="submit" form="new_normal_user">
+            <button id="join" class="btn btn-danger" style="border-radius: 0px;	margin-top: 20px; width: 20%; margin-left: 40%;" type="button" >
             회원가입하기
         </button>
+        </form>
 
 	</div>
 	</div>

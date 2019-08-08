@@ -141,7 +141,15 @@ public class MemberController {
 	}	
 	@RequestMapping(value = "memberAgree", method = RequestMethod.GET)
 	public void getAgree()throws Exception{}
-	
+	@RequestMapping(value = "memberAgree", method = RequestMethod.POST)
+	public String getAgree(HttpSession session)throws Exception{
+		System.out.println("getAgree");
+		ModelAndView mv = new ModelAndView();
+		String memberAgree = "member";
+		session.setAttribute("memberAgree", memberAgree);
+		return "redirect:./memberJoin";
+		
+	}
 	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
 	public String logout(String id, HttpSession session, MemberDTO memberDTO)throws Exception{
 		memberService.setUpdateoverlap(memberDTO);
