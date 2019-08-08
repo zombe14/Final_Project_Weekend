@@ -103,9 +103,9 @@ public class AfterController {
 	public ModelAndView getSelect(String num, PageMaker pageMaker, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		AfterDTO afterDTO = afterService.getSelect(num, session, request, response);
-		List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
+		//List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
 		String path = "board/afterSelect";		
-		mv.addObject("list", list);
+		//mv.addObject("list", list);
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);

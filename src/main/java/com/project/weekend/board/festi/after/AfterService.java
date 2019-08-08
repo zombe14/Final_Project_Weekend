@@ -89,6 +89,7 @@ public class AfterService {
 	
 	public AfterDTO getSelect(String anum, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		AfterDTO afterDTO = new AfterDTO();
+		System.out.println(anum);
 		afterDTO = afterDAO.getSelect(anum);
 		//update 시 파일 없는데 X만 뜨는거 방지. 새로운 리스트로 세팅
 		if(afterDTO.getFileDTOs().size()==1) {
