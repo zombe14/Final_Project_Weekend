@@ -8,6 +8,13 @@ create table comments(
 	depth number(8),
 	ref number(8)
 )
+
+SELECT * FROM 
+		(SELECT ROWNUM R, C.* FROM 
+		(SELECT * FROM COMMENTS 
+		ORDER BY (SUBSTR(REF, 2)*1) DESC, STEP DESC) C) 
+		WHERE R BETWEEN 1 AND 10
+
 drop table comments
 create sequence com_seq
 	start with 1
@@ -15,7 +22,7 @@ create sequence com_seq
 	nocycle
 	nocache
 select * from qna
-
+SELECT COM_SEQ.NEXTVAL FROM DUAL
 select * from files
 select * from show_order
 SELECT * FROM 

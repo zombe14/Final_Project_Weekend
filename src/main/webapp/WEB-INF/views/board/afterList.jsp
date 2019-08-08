@@ -65,14 +65,8 @@
 						
 						<c:forEach items="${list}" var="list">
 							<tr class="select">
-								
-								
-									<td class="selectRow" id="${list.anum}">${fn:substring(list.anum, 1,8)}</td>
-								
-								<td>
-									
-										${list.title}									
-								</td>
+								<td class="selectRow" id="${list.anum}">${fn:substring(list.anum, 1,8)}</td>
+								<td class="td60">${list.title}</td>
 								<td class="td10">${list.writer}</td>
 								<td class="td10">${list.reg_date}</td>
 								<td class="td10">${list.hit}</td>
@@ -144,8 +138,8 @@
 	<script type="text/javascript">
 		/* 각 행 선택 시 select 페이지 이동 */
 		$('.select').click(function() {
-			var num = $(this).children('.selectRow').attr('id');
-			location.href = "./${board}Select?num=" + num;
+			var anum = $(this).children('.selectRow').attr('id');
+			location.href = "./${board}Select?anum=" + anum;
 		});
 
 		/* board 글쓰기 이동 */

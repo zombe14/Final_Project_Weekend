@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -99,12 +100,12 @@ public class AfterController {
 	}
 
 	@RequestMapping(value = "afterSelect", method = RequestMethod.GET)
-	public ModelAndView getSelect(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView getSelect(String num, PageMaker pageMaker, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
-
 		AfterDTO afterDTO = afterService.getSelect(num, session, request, response);
-
-		String path = "board/afterSelect";
+		List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
+		String path = "board/afterSelect";		
+		mv.addObject("list", list);
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
@@ -115,16 +116,13 @@ public class AfterController {
 	@RequestMapping(value = "afterList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker, String num) throws Exception {
 		ModelAndView mv = new ModelAndView();
-
-		String path = "board/afterList";
-
 		List<AfterDTO> list = afterService.getList(pageMaker);
-
+		String path = "board/afterList";
 		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
-		mv.addObject("pager", pageMaker);
-		mv.setViewName(path);
+		mv.setViewName(path);		
 		return mv;
 	}
 	
@@ -133,6 +131,16 @@ public class AfterController {
 		ModelAndView mv = new ModelAndView();
 		int result = commentsService.setCommentsWrite(commentsDTO);
 		mv.addObject("result", result);
+		mv.setViewName("common/message");
+		return mv;
+	}
+	
+	@RequestMapping(value = "commentsList", method = RequestMethod.GET)
+	public ModelAndView getCommentsList(PageMaker pageMaker, HttpSession session)  throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
+		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
 		return mv;
 	}
 
