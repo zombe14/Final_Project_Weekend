@@ -4,7 +4,7 @@
 <c:import url="./temp/boot.jsp"></c:import>
 <html>
 <head>
-	<title>Weekend뭐해</title>
+	<title>Weekend 뭐해</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
 	<link rel="shortcut icon" type="image/x-icon" href="./resources/images/logo/logo.png" />
 	<script type="text/javascript" src="./resources/js/home.js"></script>

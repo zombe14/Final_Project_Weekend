@@ -19,6 +19,7 @@
 	</div>
 	<div id="container">
 		<div class="conta">
+			<div class="cancel_wrap">
 			<div class="call_quick">
 				<div class="title">
 					<h2>고객센터</h2>
@@ -91,6 +92,7 @@
                             </div>
                         </div>
 					</div>
+				</div>
 				</div>
 			</div>
 		</div>

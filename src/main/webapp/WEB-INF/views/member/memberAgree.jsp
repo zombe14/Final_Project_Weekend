@@ -14,7 +14,7 @@
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
 
 
-<title>Insert title here</title>
+<title> Weekend - 약관동의 </title>
 </head>
 <body>
 	<div id="wrap">
