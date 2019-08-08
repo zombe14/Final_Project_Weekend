@@ -19,11 +19,13 @@
 .write_title input{
 	width: 95%;
 	height: 30px;
+	outline: none;
 }
 
 .write_writer input{
 	width: 41%;
 	height: 30px;
+	outline: none;
 }
 
 #write{
@@ -39,4 +41,8 @@
 
 #filesDiv{
 	margin-top: 10px;
+}
+
+input:focus{
+	border: 2px solid #00d344;
 }
