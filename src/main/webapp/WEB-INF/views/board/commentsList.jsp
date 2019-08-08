@@ -1,167 +1,153 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<div id="commentsDiv">
-	<div id="commnetedDiv">
-		<div class="comment">
-			<c:forEach items="${list}" var="r">
-				<p>${r.cnum} | ${r.num}</p>
-				<p>${r.writer}</p>
-				<input type="hidden" class="cnum" id="${r.cnum}">
-				<div id="${r.cnum}contentsDiv">
-					<p class="contents" id="${r.cnum}Contents">${r.contents}</p>
-					<%-- <form action="./commentsUpdate" method="post" id="${r.cnum}Frm">
-						<a class="cnum" id="${r.cnum}" style="visibility: hidden;"></a>
-						<textarea rows="3" cols="100" id="commentsContents" style="resize: none;">${r.contents}</textarea>
-						<a class="comUpdateBtn">수정</a>
-					</form> --%>
+<c:import url="../temp/boot.jsp"></c:import>
+<c:import url="../temp/boot.jsp"></c:import>
+<html>
+<head>
+<title>${boardTitle} 목록</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="shortcut icon" type="image/x-icon" href="../resources/images/logo/logo.png" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/callcenter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/boardList.css">
+</head>
+<body>
+<div class="container">
+<br><br>
+	<!-- commentsDiv : 여기부터 -->
+	<div id="commentsDiv">
+		
+		<!-- 댓글작성 폼 -->
+		<div id="commentsWriteDiv">
+			<form action="./${board}commentsWrite" method="post" id="commentsFrm">
+				<strong>댓글 (${list.size}1)</strong>
+				<div>				
+					<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
 				</div>
-				<p>${r.reg_date}</p>
-				<a class="recommentsWrite" class="btn btn-default">댓글등록</a>
-				<%--추가하기 <c:if test="${r.writer eq member.nickname}"> --%>
-					<a class="commentsUpdate" id="${r.cnum}" class="btn btn-default" title="${r.contents}">수정</a>
-					<a class="commentsDelete" id="${r.cnum}" class="btn btn-default">삭제</a>
-				<%-- </c:if> --%>
-				<hr>
+				<div>
+					<textarea rows="3" cols="100" id="commentsContents" style="resize: none;"></textarea>
+				</div>
+				<div>
+					<input type="hidden" id="num" name="num" value="${dto.anum}">
+				</div>
+				<a class="btn" id="commentsWrite">댓글등록</a>
+			</form>
+		</div>
+		<!-- 댓글작성 폼 끝 -->
+		<hr>
+		<!-- 댓글리스트 -->
+		<div id="commentsListDiv">
+			<!-- 미리보기 ***지우기*** -->
+			<div id="commentsDiv">
+				<strong>ssseulan222</strong>
+				<p>잘보고갑니다. @->--</p>
+				<p>2019.08.08. 19:27 | <a id = "reComWriteBtn">댓글달기</a>
+					<%-- <c:if test="${list.writer eq member.nickname}">  : 추가하기--%> 
+					 | <a id = "comUpdateBtn">수정</a> | <a id="comDeleteBtn">삭제</a>
+					<%-- </c:if> --%>
+				</p>
+			</div>
+			<!-- 미리보기 ***지우기*** -->
+			<!-- 댓글 하나씩 -->
+			<c:forEach items="${list}" var="list">
+				<div id="commentsDiv">
+					<strong>${list.writer}</strong>
+					<p>${list.contents}</p>
+					<p>${list.reg_date}
+						 | <a id = "reComWriteBtn">댓글달기</a>
+						<%-- <c:if test="${list.writer eq member.nickname}">  : 추가하기--%> 
+						 | <a id = "comUpdateBtn">수정</a> | <a id="comDeleteBtn">삭제</a>
+						<%-- </c:if> --%>
+					</p>
+				</div>
 			</c:forEach>
 		</div>
-		<div id="paging">
-			<c:if test="${list[0].reg_date ne null}">
-				<ul class="pagination">
-					<c:choose>
-						<c:when test="${pager.curBlock>1}">
-							<li class="pagingClick"><a href="${board2}List?num=${dto.num}&curPage=${pager.startNum-1}">이전</a></li> 
-							<!-- <li class="pagingClick"><a id="prev">이전</a></li> -->
-						</c:when>
-						<c:otherwise>
-							<li class="pagingo"><a>이전</a></li>
-						</c:otherwise>
-					</c:choose>
-
-					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-						<li class="pagingClick"><a href="${board2}List?num=${dto.num}&curPage=${i}" class="page" id="${i}">${i}</a></li>
-					</c:forEach>
-
-					<c:choose>
-						<c:when test="${pager.curBlock < pager.totalBlock}">
-							<li class="pagingClick"><a href="${board2}List?num=${dto.num}&curPage=${pager.lastNum+1}">다음</a></li>
-							<!-- <li class="pagingClick"><a id="next">다음</a></li> -->
-						</c:when>
-						<c:otherwise>
-							<li class="pagingo"><a>다음</a></li>
-						</c:otherwise>
-					</c:choose>
-				</ul>
-			</c:if>
-		</div>
+		<!-- 댓글리스트 끝 -->
+		
 	</div>
-	<hr>
-	<div id="commentsWriteDiv">
-		<form action="./${board}commentsWrite" method="post" id="commentsFrm">
-			<p>${member.nickname}memberNickname</p>
-			<input type="hidden" name="writer" id="writer" value="${member.nickname}임시">
-			<textarea rows="3" cols="100" id="commentsContents" style="resize: none;"></textarea>
-			<a class="btn btn-default" id="commentsWrite">댓글등록</a>
-		</form>
-	</div>
+	<!-- commentsDiv : 여기까지만 살리기-->
+	
+	<!-- container 끝 -->
 </div>
 <script type="text/javascript">
+	
+	/* 처음에 페이지에서 댓글 불러오기 */
+	getCommentsList();
+	
+	/* 댓글 등록하기 - ajax */
 	$('#commentsWrite').click(function() {
 		var writer = $('#writer').val();
 		var contents = $('#commentsContents').val();
-		var num = '${dto.anum}';
-		$.ajax({
-			type : 'POST',
-			url : './commentsWrite',
-			data : {
-				writer : writer,
-				contents : contents,
-				num : num
-			},
-			success : function(data) {
-				data = data.trim();
-				if (data == '1') {
-					location.href = "./afterSelect?num="+num;
-				} else {
-					alert('실패');
-				}
-			},
-			error : function(d) {
-				console.log(d);
-			}
-		});
-	});
-
-	function loadComments() {
-
-	}
-	
-	$('#next').click(function() {
-		
-		var curPage = "${pager.lastNum+1}";
-		var num = "${list[0].num}";
-		$.ajax({
-			type:'GET',
-			url:'./commentsList',
-			data:{
-				curPage:curPage,
-				num:num
-			},
-			success:function(data){
-				data = data.trim();
-				if(data == '1'){
-					alert('d');
-				} else {
-					alert('n');
-				}
-			}
-		});
-	});
-	
-	$('.commentsDelete').click(function() {
-		var check = confirm('삭제하시겠습니까?');
-		var selector = $(this);
-		if(check){
-			var cnum = $(this).attr('id');
+		var num = $('#num').val();
+		if(contents == ''){
+			alert('내용을 입력해주세요');
+		} else {
 			$.ajax({
 				type:'POST',
-				url:'./commentsDelete',
-				data:{cnum:cnum},
+				url:'./commentsWrite',
+				data:{
+					writer:writer,
+					contents:contents,
+					num:num
+				},
 				success:function(data){
 					data = data.trim();
 					if(data == '1'){
-						location.href="./afterSelect?num=${list[0].num}";
+						getCommentsList();
+						$('#commentsContents').val('');
 					} else {
-						alert('삭제 실패');
+						alert('다시 작성해주세요');
 					}
 				},
-				error:function(d){
-					console.log(d);
+				error:function(data){
+					console.log(data);
 				}
 			});
 		}
 	});
 	
-	$('.commentsUpdate').click(function() {
-		var sel = $(this)
-		var id = sel.attr('id'); // = r.cnum
-		var contents = sel.attr('title');
-		$('#'+id+'Contents').hide();
-		/* var update = '<form action="./commentsUpdate" method="post" id="'+id+'Frm">' + 
-					 '<a class="cnum" id="'+id+'" style="visibility: hidden;"></a>'+
-					 '<textarea rows="3" cols="100" id="commentsContents" style="resize: none;">'+contents+'</textarea>'+
-					 '<a class="comUpdateBtn">수정</a>'+
-					 '</form>';
-		sel.parent().children('#'+id+'contentsDiv').append(update); */
-		
-
-	});
-	
-	$('#'+id+'contentsDiv').on('click','.comUpdateBtn',function(){
-		var cnum = $(this).prev('.cnum').attr(id);
-		console.log(cnum);
-		console.log('g');
-	});
+	function getCommentsList(){
+		$.ajax({
+			type:'GET',
+			url:'./commentsList',
+			dataType:'json',
+			data:{
+				num:$('#num').val()
+			},
+			success:function(data){
+				data = data.trim();
+				if(data == '1'){
+					var html = "";
+		            var cCnt = data.length;
+		            
+		            if(data.length > 0){
+		                
+		                for(i=0; i<data.length; i++){
+		                    html += "<div>";
+		                    html += "<div><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
+		                    html += data[i].contents + "<tr><td></td></tr>";
+		                    html += "</table></div>";
+		                    html += "</div>";
+		                }
+		                
+		            } else {
+		                
+		                html += "<div>";
+		                html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
+		                html += "</table></div>";
+		                html += "</div>";
+		                
+		            }
+		            
+		            $("#cCnt").html(cCnt);
+		            $("#commentList").html(html);
+				} else {
+					alert('댓글을 불러오지 못했어요');
+				}
+			}
+		});
+	}
 		
 </script>
+</body>
+</html>

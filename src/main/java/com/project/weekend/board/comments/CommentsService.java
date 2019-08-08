@@ -19,6 +19,7 @@ public class CommentsService {
 	private CommentsDAO commentsDAO;
 	
 	public int setCommentsWrite(CommentsDTO commentsDTO) throws Exception{
+		System.out.println("ser : "+commentsDTO.getNum());
 		int res = commentsDAO.setWrite(commentsDTO);
 		return res;
 	}
@@ -35,6 +36,11 @@ public class CommentsService {
 	
 	public int setCommentsDelete(String cnum, HttpSession session) throws Exception{
 		int res = commentsDAO.setDelete(Integer.parseInt(cnum));
+		return res;
+	}
+	
+	public int setCommentsUpdate(CommentsDTO commentsDTO, HttpSession session) throws Exception{
+		int res = commentsDAO.setUpdate(commentsDTO);
 		return res;
 	}
 

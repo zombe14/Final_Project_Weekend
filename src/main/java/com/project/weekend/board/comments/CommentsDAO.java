@@ -19,6 +19,7 @@ public class CommentsDAO {
 	private static final String NAMESPACE = "CommentsMapper.";
 	
 	public int setWrite(CommentsDTO commentsDTO) throws Exception{
+		System.out.println("dao : "+commentsDTO.getNum());
 		return sqlSession.insert(NAMESPACE+"setWrite", commentsDTO);
 	}
 	
@@ -32,6 +33,10 @@ public class CommentsDAO {
 	
 	public int setDelete(int cnum) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDelete", cnum);
+	}
+	
+	public int setUpdate(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", commentsDTO);
 	}
 
 }

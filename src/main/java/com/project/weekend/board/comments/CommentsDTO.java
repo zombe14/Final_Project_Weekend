@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 public class CommentsDTO {
 	private int cnum;
-	private String anum;
+	private String num;
 	private String contents;
 	private Date reg_date;
 	private String writer;
@@ -38,10 +38,10 @@ public class CommentsDTO {
 		this.cnum = cnum;
 	}
 	public String getNum() {
-		return anum;
+		return num;
 	}
-	public void setNum(String anum) {
-		this.anum = anum;
+	public void setNum(String num) {
+		this.num = num;
 	}
 	public String getContents() {
 		return contents;
@@ -61,4 +61,5 @@ public class CommentsDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+	
 }
