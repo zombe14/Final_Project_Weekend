@@ -1,0 +1,44 @@
+.boardSelect_btn{
+	padding: 4px 15px;
+    background-color: white;
+    font-size: 12px;
+    float: right;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 20px 3px;
+    border: 1px solid #adadad;
+}
+
+.tableDiv{
+	/* min-height: 30vh; */
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.td2 {
+	width: 40%;
+	text-align: center;
+}
+
+.td1 {
+	text-align:center;
+	width: 15%;
+}
+
+.dt1{
+	padding: 21px 16px 30px;
+}
+	
+.table{	
+	margin-bottom: 0px;
+}
+
+.table_head{
+	background-color: #f5f6f7;
+}
+
+.boardSelect_btn:hover{
+	background-color: #00d344;
+	border: 1px solid white;
+	color: white;
+}

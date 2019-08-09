@@ -23,6 +23,7 @@ public class FestiDTO{
 	private Date reg_date;
 	private int hit;
 	private int top;
+	private String age;
 	
 
 	//------------
@@ -117,6 +118,12 @@ public class FestiDTO{
 	}
 	public void setTop(int top) {
 		this.top = top;
+	}
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
 	}
 
 }

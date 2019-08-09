@@ -4,7 +4,6 @@ import java.sql.Date;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class CommentsDTO {
 	private int cnum;
 	private String num;
@@ -62,4 +61,5 @@ public class CommentsDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+	
 }
