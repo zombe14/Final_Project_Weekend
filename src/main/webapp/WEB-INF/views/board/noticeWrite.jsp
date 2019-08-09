@@ -11,13 +11,8 @@
 <title>${boardTitle} 글쓰기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-<style type="text/css">
-	/* 1. readonly 배경색 */
-	/* 2. * 빨간색 */
-	.r{
-		color: red;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/callcenter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/noticeWrite.css">
 </head>
 <body>
 	<div id="wrap">
@@ -26,24 +21,49 @@
 		</div>
 		<div id="container">
 			<div class="conta">
-				<strong>${boardTitle} 글쓰기</strong>
+				<div class="call_quick">
+				<div class="title">
+					<h2>고객센터</h2>
+				</div>
+				<ul>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/infosearch"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call1.png">아이디/<br>패스워드 찾기</a></li>
+					<li class="qmenu"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call2.png">상담내역<br>확인</a></li>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/reservation"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call3.png">티켓<br>예매문의</a></li>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/cancel"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call4.png">티켓<br>환불문의</a></li>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/receive"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call5.png">티켓<br>수령문의</a></li>
+				</ul>
+			</div>
+			<div class="call_container">
+				<ul class="call_menu">
+					<li class="cmenu1"><a href="${pageContext.request.contextPath}/callcenter/main">고객센터 홈</a></li>
+					<li class="cmenu2"><a href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a></li>
+					<li class="cmenu3"><a href="${pageContext.request.contextPath}/qna/qnaList">QnA</a></li>
+					<li class="cmenu4"><a href="${pageContext.request.contextPath}/callcenter/reservation">예매안내</a></li>
+					<li class="cmenu5"><a href="${pageContext.request.contextPath}/callcenter/payment">결제수단안내</a></li>
+					<li class="cmenu6"><a href="${pageContext.request.contextPath}/callcenter/cancel">환불안내</a></li>
+					<li class="cmenu7"><a href="${pageContext.request.contextPath}/callcenter/legalguide">부정이용 규제안내</a></li>
+					<li class="cmenu8"><a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
+				</ul>
+				<div class="call_cont">
+					<h3>${boardTitle} 글쓰기</h3>
+					<div class="call_wrap">
 				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
 					<table class="table table-bordered">
-							<tr>
-								<td><label for="title">제목 <span class="r"> *</span></label></td>
-								<td><input type="text" name="title" class="required" id="title"></td>
+							<tr class="write_title">
+								<td class="td1"><label for="title">제목 <span class="r"> *</span></label></td>
+								<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="title" class="required" id="title"></td>
+							</tr>
+							<tr class="write_writer">
+								<td  class="td1"><label for="writer">작성자 <span class="r"> *</span></label></td>
+								<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}memberNickname" readonly="readonly" class="required" id="writer"></td>
 							</tr>
 							<tr>
-								<td><label for="writer">작성자 <span class="r"> *</span></label></td>
-								<td><input type="text" name="writer" value="${member.nickname}memberNickname" readonly="readonly" class="required" id="writer"></td>
-							</tr>
-							<tr>
-								<td><label for="contents">내용 <span class="r"> *</span></label></td>
+								<td  class="td1"><label for="contents">내용 <span class="r"> *</span></label></td>
 								<td><textarea rows="" cols="" name="contents" id="contents" class="required"></textarea></td>
 							</tr>
 							<c:if test="${board eq 'notice'}">
 							<tr>
-								<td><label for="top">상단에 등록 하기</label></td>
+								<td  class="td1"><label for="top">상단에 등록 하기</label></td>
 								<td>
 									<input type="checkbox" id="top" name="top" value="0">
 									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </span><span id="topCount" title="${topCount}">${topCount} / 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
@@ -51,7 +71,7 @@
 							</tr>
 							</c:if>
 							<tr>
-								<td><label for="files">첨부파일</label></td>
+								<td  class="td1"><label for="files">첨부파일</label></td>
 								<td>
 									<input type="button" id="addFiles" value="파일 추가">
 									<div id="filesDiv">
@@ -63,13 +83,14 @@
 								</td>
 							</tr>
 							
-					</table>
-					
-					<input type="hidden" id="board" name="${board}">
-					<a id="write" class="btn btn-default">등록하기</a>
-				</form>
-
+						</table>
+							<input type="hidden" id="board" name="${board}">
+							<a id="write" class="btn btn-default">등록하기</a>
+					</form>
+				</div>
 			</div>
+		</div>
+	</div>
 		</div>
 		<div id="footer">
 			<c:import url="../inc/footer.jsp"></c:import>

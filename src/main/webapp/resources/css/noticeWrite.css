@@ -1,0 +1,48 @@
+/* 1. readonly 배경색 */
+/* 2. * 빨간색 */
+
+.r{
+	color: red;
+	}
+	
+.td1{
+	text-align: center;
+	width: 130px;
+	background: #f5f6f7;
+	}
+	
+.pencil{
+	width: 20px;
+	margin-right: 10px;
+	}
+	
+.write_title input{
+	width: 95%;
+	height: 30px;
+	outline: none;
+}
+
+.write_writer input{
+	width: 41%;
+	height: 30px;
+	outline: none;
+}
+
+#write{
+    background-color: #00d344;
+    color: white;
+    padding: 11px 25px;
+    float: right;
+}
+
+#addFiles{
+	width: 67px;
+}
+
+#filesDiv{
+	margin-top: 10px;
+}
+
+input:focus{
+	border: 2px solid #00d344;
+}
