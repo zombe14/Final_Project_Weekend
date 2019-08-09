@@ -74,24 +74,10 @@
 					</div>
 				</div>				
 				<div>
-					<label for="category">대분류<span class="r">*</span></label>
-					<input type="radio" name="firstCategory" class="mainFesti" id="show" checked="checked" > 공연
-					<input type="radio" name="firstCategory" class="mainFesti" id="festival"> 축제							
-
-					<div class="subShow">
-						<label for="writer">소분류<span class="r">*</span></label>
-						<input type="radio" name="subFesti" class="t" value="4" id="showFirst"> 지방 연극
-						<input type="radio" name="subFesti" class="t" value="5"> 대학로 연극
-						<input type="radio" name="subFesti" class="t" value="6"> 콘서트
-					</div>
-					
-					<div class="subFestival">
-						<label for="writer">소분류<span class="r">*</span></label>
-						<input type="radio" name="subFesti" class="t" value="1" id="festiFirst">전시
-						<input type="radio" name="subFesti" class="t" value="2"> 행사	
-						<input type="radio" name="subFesti" class="t" value="3"> 레저
-					</div>
-					<input type="hidden" id="category" name="category" value="4">
+					<label for="category">카테고리<span class="r">*</span></label>
+					<input type="radio" name="category" class="category" id="show" checked="checked" value="1"> 공연
+					<input type="radio" name="category" class="category" id="festival" value="2"> 축제						
+					<input type="radio" name="category" class="category" id="daehakro" value="3"> 대학로 연극
 				</div>
 				<div>
 					<label for="startDate">시작일<span class="r">*</span></label>
@@ -101,13 +87,15 @@
 					<label for="endDate">종료일<span class="r">*</span></label>
 					<input type="date" name="endDate" class="date">
 				</div>
-				<div>
-					<label for="price">가격</label>
-					<input type="number" name="price" value="0"><span>원</span>
-				</div>
-				<div id="totalDiv">
-					<label for="total">좌석 </label>
-					<input type="number" name="total" value="0"><span>석</span>
+				<div id="daehakDiv">
+					<div>
+						<label for="price">가격</label>
+						<input type="number" name="price" value="0"><span>원</span>
+					</div>
+					<div>
+						<label for="total">좌석 </label>
+						<input type="number" name="total" value="0"><span>석</span>
+					</div>
 				</div>
 				<div id="ageDiv">
 					<label for="age">연령제한<span class="r">*</span></label>
@@ -122,7 +110,7 @@
 					<input type="text" name="local1" id="local1" onclick="openMap()" style="width: 30%;">
 					<input type="text" name="local2" id="local2" placeholder="상세주소를 입력해주세요" readonly="readonly"  style="width: 20%;" >
 					<input type="text" name="local" id="local" readonly="readonly"  style="width: 30%;" >
-					이 주소가 맞습니다. <input type="checkbox" id="localConfirm">
+					이 주소가 맞습니다.<span class="r">*</span> <input type="checkbox" id="localConfirm">
 					<input type="hidden" name="region" id="region">
 					<div id="map" style="width:100%;height:500px;margin-top:10px;display:none">
 					</div>
@@ -282,7 +270,7 @@ $('#top').click(function(){
   $('#local2').blur(function() {
 	$('#local').val('');
 	if($('#local2').val() != ''){
-		var local = $('#local1').val()+"   "+$('#local2').val();
+		var local = $('#local1').val()+"  "+$('#local2').val();
 		$('#local').val(local);
 	}
   });
@@ -291,22 +279,12 @@ $('#top').click(function(){
 
 
 	/* category */
-	$('.subFestival').hide();
-	$('#showFirst').prop('checked', true);
-
-	$('.mainFesti').click(function() {
-		if ($(this).attr('id') == 'show') {
-			$('.subShow').show();
-			$('.subFestival').hide();
-			$('#showFirst').prop('checked', true);
-			$('#category').val('4');
-			$('#totalDiv').show();
+	$('#daehakDiv').hide();
+	$('.category').click(function() {
+		if ($(this).val() == '3') {
+			$('#daehakDiv').show();
 		} else {
-			$('.subShow').hide();
-			$('.subFestival').show();
-			$('#festiFirst').prop('checked', true);
-			$('#category').val('1');
-			$('#totalDiv').hide();
+			$('#daehakDiv').hide();
 		}
 	});
 
@@ -335,14 +313,11 @@ $('#top').click(function(){
 		var contents = $('#contents').val() != '';
 		var category = $('#category').val() != '';
 		var age = $('#age').val() != '';
-		var local = $('#localConfirm').is(':checked');
+		var local = $('#local').val()!== '' && $('#localConfirm').is(':checked');
 		if(title && writer && contents && category && age && local){
-			console.log(title, writer, contents, category, age, local);
-			//alert('ok');
 			$('#frm').submit();
 		} else {
-			console.log(title, writer, contents, category, age, local);
-			//alert('필수(*)를 모두 입력해주세요');
+			alert('필수(*)를 모두 입력해주세요');
 		}
 	});
 </script>
