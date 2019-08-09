@@ -72,9 +72,9 @@ public class FestiController {
 		FestiDTO festiDTO = festiService.getSelect(num);
 		pageMaker.setNum(num);
 		List<AfterDTO> list = afterService.getList(pageMaker);
-
+		System.out.println(festiDTO.getContents());
 		mv.addObject("after", list);
-
+		
 		mv.addObject("dto", festiDTO);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");

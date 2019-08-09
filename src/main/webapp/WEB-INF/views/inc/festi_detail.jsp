@@ -9,5 +9,5 @@
 	</ul>
 </div>
 <div class="festi_wrap2">
-
+	상세설명 : ${dto.contents}
 </div>

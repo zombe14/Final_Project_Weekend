@@ -85,7 +85,7 @@
 							
 						</table>
 							<input type="hidden" id="board" name="${board}">
-							<a id="write" class="btn btn-default">등록하기</a>
+							<a id="write" class="noticeWrite_btn">등록하기</a>
 					</form>
 				</div>
 			</div>
