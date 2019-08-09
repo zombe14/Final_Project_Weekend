@@ -8,8 +8,8 @@
 	</select>
 
 	<insert id="setWrite" parameterType="FestiDTO">
-		INSERT INTO FESTI(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, CATEGORY, PRICE, TOTAL, STARTDATE, ENDDATE, LOCAL, TOP)
-		VALUES(#{num},#{title},#{writer},#{contents},sysdate,0,#{category},#{price},#{total},#{startDate},#{endDate},#{local},#{top})
+		INSERT INTO FESTI(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, CATEGORY, PRICE, TOTAL, STARTDATE, ENDDATE, LOCAL, TOP, AGE, REGION)
+		VALUES(#{num},#{title},#{writer},#{contents},sysdate,0,#{category},#{price},#{total},#{startDate},#{endDate},#{local},#{top}, #{age}, #{region})
 	</insert>
 
 	<resultMap type="FestiDTO" id="festiResult">
@@ -26,6 +26,8 @@
 		<result column="startDate" property="startDate"/>
 		<result column="endDate" property="endDate"/>
 		<result column="local" property="local"/>
+		<result column="age" property="age"/>
+		<result column="region" property="region"/>
 		<collection property="fileDTOs" javaType="List" ofType="FileDTO">
 			<id column="fnum" property="fnum"/>
 			<result column="num" property="num"/>
@@ -36,7 +38,7 @@
 	<select id="getList" parameterType="PageMaker" resultMap="festiResult">
 		SELECT * FROM 
 		(SELECT ROWNUM R, F.* FROM 
-		(SELECT NUM, TITLE, STARTDATE, ENDDATE, LOCAL FROM FESTI
+		(SELECT NUM, TITLE, STARTDATE, ENDDATE, LOCAL, region FROM FESTI
 		WHERE CATEGORY = #{category} AND
 		<choose>
 			<when test="kind = 1">
@@ -71,7 +73,7 @@
 	
 	<update id="setUpdate" parameterType="FestiDTO">
 		UPDATE FESTI SET TITLE = #{title}, CONTENTS = #{contents}, TOP = #{top}, CATEGORY = #{category}, PRICE = #{price}, 
-		TOTAL = #{total}, STARTDATE = #{startDate}, ENDDATE = #{endDate}, LOCAL = #{local} WHERE NUM = #{num}
+		TOTAL = #{total}, STARTDATE = #{startDate}, ENDDATE = #{endDate}, LOCAL = #{local}, age = #{age}, region = #{region} WHERE NUM = #{num}
 	</update>
 	
 	<delete id="setDelete" parameterType="String">
