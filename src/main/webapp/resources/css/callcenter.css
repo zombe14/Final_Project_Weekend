@@ -175,3 +175,10 @@ i{
 	overflow: hidden;
 }
 
+.time{
+	font-size: 13px;
+}
+
+.phone_num{
+	font-size: 20px;
+}
