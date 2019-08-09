@@ -135,13 +135,12 @@ public class AdminController {
 	//////////////after board; //////////////
 	// 페스티벌 후기;
 	@RequestMapping(value = "aFestiAfterList", method = RequestMethod.GET)
-	public ModelAndView adminFestiAfterList(String num, PageMaker pageMaker) throws Exception{
+	public ModelAndView adminFestiAfterList() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<AfterDTO> list = afterService.getAllList(pageMaker);
+		List<AfterDTO> list = afterService.getAfterList();
 		mv.addObject("title", "페스티벌 후기");
 		mv.addObject("board", "FestiAfter");
 		mv.addObject("list", list);
-		mv.addObject("pager", pageMaker);
 		mv.setViewName("admin/aBoardList");
 		return mv;
 	}

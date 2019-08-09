@@ -112,11 +112,25 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<!-- 상혁 -->
-	<select id="getFestiAfterList" parameterType="PageMaker" resultMap="afterResult">
-
-	</select>
-	<select id="getShowAfterList" parameterType="PageMaker" resultMap="afterResult">
-
+	<!-- 축제/ 공연 리스트 -->
+	<!-- 후기 리스트 -->
+	<select id="getAfterList" parameterType="PageMaker" resultMap="afterResult">
+		select a.*, f.title from after a join festi f on f.category = 1 where 
+		<choose>
+			<when test="1">
+				title
+			</when>
+			<when test="2">
+				contents
+			</when>
+			<when test="2">
+				writer
+			</when>
+			<otherwise>
+				like '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+		a.num = f.num order by anum desc
 	</select>
 	<!-- 상혁 끝 -->
 	<resultMap type="AfterDTO" id="afterResult">
