@@ -8,14 +8,11 @@
 	<div class="h_top">
 		<div class="h_wrap">
 			<div class="user_menu">
-
 			<input type="hidden" value="${member.id }" id="memberId">
-
-
 				<c:choose>
 					<c:when test="${member.grade eq '3'}">
 							<div id="admin">
-								<a href="${pageContext.request.contextPath}/admin/adminMain">관리자 페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+								<a href="${pageContext.request.contextPath}/admin/adminCheck">관리자 페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
 								<a href="${pageContext.request.contextPath}/member/memberLogout?id=${member.id}" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
