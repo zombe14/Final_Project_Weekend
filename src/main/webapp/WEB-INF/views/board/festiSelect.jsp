@@ -57,6 +57,14 @@
 							<c:forEach items="${dto.fileDTOs}" var="f">
 								<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
 							</c:forEach>
+								<!-- ajax 파일 다운로드 -->
+							<div style="display:none;">
+								<form action="../ajax/fileDownload" method="post" id="downForm">
+									<input type="text" name="fname" id="fname">
+									<input type="text" name="oname" id="oname">
+									<input type="text" name="board" value="board">
+								</form>
+							</div>
 							</div>
 						</div>
 					</div>
@@ -81,34 +89,10 @@
 				</div>
 			</div>
 
-						<p class="festi_contents">${dto.contents}</p>
-					<c:forEach items="${dto.fileDTOs}" var="f">
-						<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
-					</c:forEach>
-					
-				<!-- 내용 끝 -->
-				<!-- ajax 파일 다운로드 -->
-				<div style="display:none;">
-					<form action="../ajax/fileDownload" method="post" id="downForm">
-						<input type="text" name="fname" id="fname">
-						<input type="text" name="oname" id="oname">
-						<input type="text" name="board" value="board">
-					</form>
-
 				<div class="festi_detail">
 						<c:import url="../inc/festi_detail.jsp"></c:import>
 				</div>
-				<!-- 내용 끝 -->
-				
-					<!-- ajax 파일 다운로드 -->
-							<div style="display:none;">
-								<form action="../ajax/fileDownload" method="post" id="downForm">
-									<input type="text" name="fname" id="fname">
-									<input type="text" name="oname" id="oname">
-									<input type="text" name="board" value="board">
-								</form>
-							</div>
-				<!-- ajax 파일 다운로드 끝 -->
+		
 				
 				<!-- 지우기 -->
 				<div>
