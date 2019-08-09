@@ -111,10 +111,14 @@
 		ORDER BY REG_DATE DESC) A)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
-	
-	
-	
-	
+	<!-- 상혁 -->
+	<select id="getFestiAfterList" parameterType="PageMaker" resultMap="afterResult">
+
+	</select>
+	<select id="getShowAfterList" parameterType="PageMaker" resultMap="afterResult">
+
+	</select>
+	<!-- 상혁 끝 -->
 	<resultMap type="AfterDTO" id="afterResult">
 		<id column="anum" property="anum"/>
 		<result column="num" property="num"/>

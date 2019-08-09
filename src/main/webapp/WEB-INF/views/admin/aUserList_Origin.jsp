@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>{board} 관리</title>
+<title>${board} 관리</title>
 <!-- 그저 로고일뿐 -->
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <!-- 관리자 보드용 css 가져옴 -->

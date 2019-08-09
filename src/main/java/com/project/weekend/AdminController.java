@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
+import com.project.weekend.board.festi.after.AfterDTO;
+import com.project.weekend.board.festi.after.AfterService;
 import com.project.weekend.board.notice.NoticeServiceImpl;
 import com.project.weekend.board.qna.QnaDTO;
 import com.project.weekend.board.qna.QnaService;
@@ -29,23 +31,19 @@ public class AdminController {
 	@Inject
 	private NoticeServiceImpl noticeServiceImpl;
 	@Inject
+	private AfterService afterService;
+	@Inject
 	private QnaService qnaService;
 	@Inject
 	private FestiService festiService;
-
-	//----------------------------------- admin Check; -----------------------------------//
-	@RequestMapping(value = "adminCheck", method = RequestMethod.GET)
-	public String adminCheck() throws Exception{
-		return "admin/aCheck";
-	}
-	
-	
 	//----------------------------------- admin Main; -----------------------------------//
+	// 관리자페이지 메인(완성)
 	@RequestMapping(value = "adminMain", method = RequestMethod.GET)
-	public ModelAndView adminBoard() throws Exception {
+	public ModelAndView adminBoard(String id) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("title", "관리자 메인");
 		mv.addObject("board", "adminMain");
+		mv.addObject("id", id);
 		mv.setViewName("admin/adminMain");
 		return mv;
 	}
@@ -59,7 +57,7 @@ public class AdminController {
 		mv.addObject("board", "User");
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
-		mv.setViewName("admin/aUserList");
+		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
 	// user up grade;(완성)
@@ -68,7 +66,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdateP(id);
 		mv.addObject("board", "User");
-		mv.setViewName("admin/aUserList");
+		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
 	// user down grade;(완성)
@@ -77,7 +75,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdateM(id);
 		mv.addObject("board", "User");
-		mv.setViewName("admin/aUserList");
+		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
 	// user delete;(완성)
@@ -86,7 +84,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setDelete(id);
 		mv.addObject("board", "User");
-		mv.setViewName("admin/aUserList");
+		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
 	//----------------------------------- board 관리; -----------------------------------//
@@ -109,7 +107,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		noticeServiceImpl.setDelete(num, session);
 		mv.addObject("board", "Notice");
-		mv.setViewName("admin/aNoticeList");
+		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
 	//////////////QnA board; //////////////
@@ -127,23 +125,46 @@ public class AdminController {
 	}
 	// QnaDelete(완성)
 	@RequestMapping(value = "aQnaDelete", method = RequestMethod.POST)
-	public String adminQnaDelete(String num, HttpSession session) throws Exception{
+	public ModelAndView adminQnaDelete(String num, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		qnaService.setDelete(num, session);
-		return "redirect:./aQnaList";
-	}
-	
-	// rank;
-	public ModelAndView adminRankList() throws Exception{
-		ModelAndView mv = new ModelAndView();
+		mv.addObject("board", "Qna");
+		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
-	// after;
-	public ModelAndView adminAfterList() throws Exception{
+	//////////////after board; //////////////
+	// 페스티벌 후기;
+	@RequestMapping(value = "aFestiAfterList", method = RequestMethod.GET)
+	public ModelAndView adminFestiAfterList(String num, PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<AfterDTO> list = afterService.getAllList(pageMaker);
+		mv.addObject("title", "페스티벌 후기");
+		mv.addObject("board", "FestiAfter");
+		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
+		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
+	// 공연 후기;
+	@RequestMapping(value = "aShowAfterList", method = RequestMethod.GET)
+	public ModelAndView adminShowAfterList(String num, PageMaker pageMaker) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<AfterDTO> list = afterService.getAllList(pageMaker);
+		mv.addObject("title", "공연 후기");
+		mv.addObject("board", "ShowAfter");
+		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
+		mv.setViewName("admin/aBoardList");
+		return mv;
+	}
+		ModelAndView mv = new ModelAndView();
 	// recommend;
 	public ModelAndView adminRecommend() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		return mv;
+	}
+	// rank;
+	public ModelAndView adminRankList() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
