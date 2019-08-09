@@ -119,11 +119,6 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="certifyButtonWrap">
-					<button type="button" class="certifyButtonWrapButton">
-						본인확인
-					</button>
-				</div>
 			</div>
 			
 			<div class="tableBox">
