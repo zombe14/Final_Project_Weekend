@@ -5,12 +5,15 @@
 	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	<sec:http use-expressions="true">
-		<sec:intercept-url pattern="/admin/**" access="hasAuthority('ROLE_ADMIN')"/>
-		<sec:intercept-url pattern="/manager/**" access="hasRole('ROLE_MANAGER')"/>
+	<sec:http use-expressions="true" auto-config="true">
 		<sec:intercept-url pattern="/member/**" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/**" access="permitAll"/>
-		<sec:form-login/>
+		<sec:form-login login-page="/member/memberLogin"
+		login-processing-url="/memberLogin"
+		always-use-default-target="true"
+		default-target-url="/"
+		username-parameter="id" password-parameter="pw"
+		/>
 		<sec:logout/>
 	</sec:http>
 	
@@ -18,8 +21,6 @@
 		<sec:authentication-provider>
 			<sec:user-service>
 				<sec:user name="test1" password="1q2w3e4r%" authorities="ROLE_USER"/>
-				<sec:user name="manager" password="qwer" authorities="ROLE_MANAGER"/>
-				<sec:user name="admin" password="admin" authorities="ROLE_ADMIN,ROLE_USER"/>
 			</sec:user-service>
 		</sec:authentication-provider>
 	</sec:authentication-manager>
