@@ -24,6 +24,7 @@ public class FestiDTO{
 	private int hit;
 	private int top;
 	private String age;
+	private String region;
 	
 
 	//------------
@@ -124,6 +125,12 @@ public class FestiDTO{
 	}
 	public void setAge(String age) {
 		this.age = age;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
 	}
 
 }

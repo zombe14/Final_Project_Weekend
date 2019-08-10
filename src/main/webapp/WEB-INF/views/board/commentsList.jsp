@@ -20,7 +20,7 @@
 		<!-- 댓글작성 폼 -->
 		<div id="commentsWriteDiv">
 			<form action="./${board}commentsWrite" method="post" id="commentsFrm">
-				<strong>댓글 (${list.size}1)</strong>
+				<strong><span>댓글(</span><span id="cCnt"></span>)</strong>
 				<div>				
 					<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
 				</div>
@@ -37,30 +37,25 @@
 		<hr>
 		<!-- 댓글리스트 -->
 		<div id="commentsListDiv">
-			<!-- 미리보기 ***지우기*** -->
-			<div id="commentsDiv">
-				<strong>ssseulan222</strong>
-				<p>잘보고갑니다. @->--</p>
-				<p>2019.08.08. 19:27 | <a id = "reComWriteBtn">댓글달기</a>
-					<%-- <c:if test="${list.writer eq member.nickname}">  : 추가하기--%> 
-					 | <a id = "comUpdateBtn">수정</a> | <a id="comDeleteBtn">삭제</a>
-					<%-- </c:if> --%>
-				</p>
-			</div>
-			<!-- 미리보기 ***지우기*** -->
 			<!-- 댓글 하나씩 -->
-			<c:forEach items="${list}" var="list">
-				<div id="commentsDiv">
+			<%-- <c:forEach items="${list}" var="list">
+				<div class="commentsDiv">
 					<strong>${list.writer}</strong>
 					<p>${list.contents}</p>
 					<p>${list.reg_date}
 						 | <a id = "reComWriteBtn">댓글달기</a>
-						<%-- <c:if test="${list.writer eq member.nickname}">  : 추가하기--%> 
+						<c:if test="${list.writer eq member.nickname}">  : 추가하기 
 						 | <a id = "comUpdateBtn">수정</a> | <a id="comDeleteBtn">삭제</a>
-						<%-- </c:if> --%>
+						</c:if>
 					</p>
 				</div>
-			</c:forEach>
+			</c:forEach> --%>
+		</div>
+		<div class="container">
+		    <form id="commentListForm" name="commentListForm" method="post">
+		        <div id="commentList">
+		        </div>
+		    </form>
 		</div>
 		<!-- 댓글리스트 끝 -->
 		
@@ -123,19 +118,17 @@
 		            if(data.length > 0){
 		                
 		                for(i=0; i<data.length; i++){
-		                    html += "<div>";
-		                    html += "<div><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
-		                    html += data[i].contents + "<tr><td></td></tr>";
-		                    html += "</table></div>";
-		                    html += "</div>";
+		                	html += '<div class="commentsDiv">';
+		                    html += "<strong>data[i].writer</strong>";
+		                    html += "<p>"+data[i].contents+"</p>";
+		                    html += '<p>'+data[i].reg_date +'| <a id = "reComWriteBtn">댓글달기</a> ';
+		                    html += '| <a id = "comUpdateBtn">수정</a> | <a id="comDeleteBtn">삭제</a>';
+		                    html += "</p></div>";
 		                }
 		                
 		            } else {
 		                
-		                html += "<div>";
-		                html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
-		                html += "</table></div>";
-		                html += "</div>";
+		              		html += '<div class="commentsDiv"><p>댓글이 없습니다.</p></div>';
 		                
 		            }
 		            
