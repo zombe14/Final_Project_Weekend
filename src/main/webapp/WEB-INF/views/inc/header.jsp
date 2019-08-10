@@ -18,13 +18,13 @@
 					</c:when>
 					<c:when test="${member.grade eq '2'}">
 							<div id="logout">
-								<a href="${pageContext.request.contextPath}/myPage/myPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+								<a href="${pageContext.request.contextPath}/myPage/myMain">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
 								<a href="${pageContext.request.contextPath}/member/memberLogout?id=${member.id}" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:when test="${member.grade eq '1'}">
 							<div id="logout">
-								<a href="${pageContext.request.contextPath}/myPage/myPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+								<a href="${pageContext.request.contextPath}/myPage/myMain">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
 								<a href="${pageContext.request.contextPath}/member/memberLogout?id=${member.id}" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
