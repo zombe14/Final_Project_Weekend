@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>{board} 관리</title>
+<title>${title}관리</title>
 <!-- 그저 로고일뿐 -->
 <link rel="shortcut icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
@@ -89,31 +89,31 @@
 			/* -------------------------- 유저 삭제 --------------------------*/
 			$(".dBtn").on("click", function() {
 				var id = $(this).attr("id");
-				var check = confirm("해당 유저를 삭제하시겠습니까?");
+				var check = confirm(id+"유저를 삭제하시겠습니까?");
 				if (check) {
 					$.post("../admin/aUserDelete", {
 						id : id
 					}, function() {
-						alert("유저가 삭제되었습니다.");
+						alert(id+"유저가 삭제되었습니다.");
 						location.href = "../admin/aUserList";
 					})
 				} else {
-					alert("유저 삭제에 실패하였습니다.")
+					alert(id+"유저 삭제에 실패하였습니다.")
 				}
 			});
 			/* -------------------------- board 관리 -------------------------- */
-			$(".d2Btn").on("click", function() {
+			$(".ddBtn").on("click", function() {
 				var id = $(this).attr("id");
-				var check = confirm("이 글을 삭제하시겠습니까?");
+				var check = confirm(id+"글을 삭제하시겠습니까?");
 				if (check) {
 					$.post("../admin/a${board}Delete", {
 						num : id
 					}, function() {
-						alert("삭제되었습니다.");
+						alert(id+"글이 삭제되었습니다.");
 						location.href = "../admin/a${board}List";
 					})
 				} else {
-					alert("삭제 실패하였습니다.");
+					alert(id+"글의 삭제 실패하였습니다.");
 				}
 			});
 		});
@@ -164,12 +164,12 @@
 							<c:choose>
 								<c:when test="${board eq 'User'}">
 									<tr>
-										<td>ID</td>
-										<td>NICKNAME</td>
-										<td>NAME</td>
-										<td>AGE</td>
-										<td>EMAIL</td>
-										<td>GRADE</td>
+										<td>아이디</td>
+										<td>닉네임</td>
+										<td>이름</td>
+										<td>나이</td>
+										<td>이메일</td>
+										<td>등급</td>
 										<td>가입일</td>
 										<td>기능</td>
 										<td>유저 삭제</td>
@@ -202,34 +202,39 @@
 										</tr>
 									</c:forEach>
 								</c:when>
-								<c:when test="${board eq 'Notice'}">
+								<c:when test="Reser">
 									<tr>
-										<td>NUM</td>
-										<td>TITLE</td>
-										<td>WRITER</td>
-										<td>DATE</td>
-										<td>HIT</td>
-										<td>기능</td>
+										<td>번호</td>
+										<td>지역</td>
+										<td>공연 이름</td>
+										<td>시작시간</td>
+										<td>수량</td>
+										<td>구매일</td>
+										<td>주문자</td>
+										<td>주문번호</td>
+										<td>취소 시키기</td>
 									</tr>
 									<c:forEach items="${list}" var="dto">
 										<tr>
 											<td>${dto.num}</td>
-											<td>${dto.title}</td>
-											<td>${dto.writer}</td>
-											<td>${dto.reg_date}</td>
-											<td>${dto.hit}</td>
-											<td><input type="button" value="삭제" class="dBtn"
-												id="${dto.num}" />
+											<td>${dto.state}</td>
+											<td>${dto.item_name}</td>
+											<td>${dto.show_time}</td>
+											<td>${dto.amount}</td>
+											<td>${dto.buy_date}</td>
+											<td>${dto.partner_user_id}</td>
+											<td>${dto.partner_order_id}</td>
+											<td><input class="dddBtn" type="button" value="취소"></td>
 										</tr>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
 									<tr>
-										<td>NUM</td>
-										<td>TITLE</td>
-										<td>WRITER</td>
-										<td>DATE</td>
-										<td>HIT</td>
+										<td>글 번호</td>
+										<td>제목</td>
+										<td>글쓴이(닉네임)</td>
+										<td>게시일</td>
+										<td>조회수</td>
 										<td>기능</td>
 									</tr>
 									<c:forEach items="${list}" var="dto">
@@ -239,14 +244,13 @@
 											<td>${dto.writer}</td>
 											<td>${dto.reg_date}</td>
 											<td>${dto.hit}</td>
-											<td><input type="button" value="삭제" class="dBtn"
-												id="${dto.num}" />
+											<td><input type="button" value="삭제" class="ddBtn"id="${dto.num}" />
 										</tr>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
 						</table>
-						<!-- 유저 페이징 처리 -->
+						<!-- 페이징 처리 -->
 						<c:choose>
 							<c:when test="${board eq 'User'}">
 								<div id="paging">
@@ -285,7 +289,8 @@
 									</c:if>
 								</div>
 							</c:when>
-							<c:when test="${board eq 'Notice'}">
+							
+							<c:otherwise>
 								<div id="paging">
 									<c:if test="${list[0].num eq null}">
 										<ul class="pagination">
@@ -321,9 +326,8 @@
 										</ul>
 									</c:if>
 								</div>
-							</c:when>
+							</c:otherwise>
 						</c:choose>
-
 					</div>
 				</div>
 			</div>

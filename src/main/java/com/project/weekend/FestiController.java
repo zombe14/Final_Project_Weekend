@@ -37,13 +37,13 @@ public class FestiController {
 	}
 	
 	//write process - post
-	@RequestMapping(value = "festi", method = RequestMethod.POST)
+	@RequestMapping(value = "festiWrite", method = RequestMethod.POST)
 	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String path = "board/boardTile";
 		int res = festiService.setWrite(festiDTO, filelist, session);
 		if(res>0) {
-			path = "redirect:./festiList";
+			path = "redirect:./festiSelect?num="+festiDTO.getNum();
 		} else {
 			path = "redirect:./festiList";
 		}
@@ -72,9 +72,9 @@ public class FestiController {
 		FestiDTO festiDTO = festiService.getSelect(num);
 		pageMaker.setNum(num);
 		List<AfterDTO> list = afterService.getList(pageMaker);
-
+		System.out.println(festiDTO.getContents());
 		mv.addObject("after", list);
-
+		
 		mv.addObject("dto", festiDTO);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");

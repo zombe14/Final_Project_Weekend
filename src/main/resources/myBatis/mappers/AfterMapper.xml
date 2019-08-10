@@ -7,7 +7,7 @@
 		VALUES(#{anum}, #{num}, #{writer}, #{title}, #{contents}, sysdate, 0, #{point}, 0, 0, 0)
 	</insert>
 	<delete id="setDelete" parameterType="String">
-		DELETE AFTER WHERE ANUM = #{anum}
+		DELETE AFTER WHERE ANUM = #{num}
 	</delete>
 	<delete id="setDeleteAll" parameterType="String">
 		DELETE AFTER WHERE NUM = #{num}
@@ -19,7 +19,7 @@
 		select after_seq.nextval from dual
 	</select>
 	<select id="getSelect" parameterType="String" resultMap="afterResult">
-		SELECT * FROM AFTER FULL JOIN FILES ON(AFTER.ANUM = FILES.NUM) WHERE AFTER.ANUM = #{anum}
+		SELECT * FROM AFTER FULL JOIN FILES ON(AFTER.ANUM = FILES.NUM) WHERE AFTER.ANUM = #{num}
 	</select>
 	<update id="setHitUpdate" parameterType="String">
 		UPDATE AFTER SET HIT = HIT + 1 WHERE ANUM = #{anum}
@@ -108,13 +108,33 @@
 			</otherwise>
 		</choose>
 		LIKE '%'||#{search}||'%'
+		and(select categroy from festi where (select num from after where anum = #{anum}))
 		ORDER BY REG_DATE DESC) A)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
+	<!-- 상혁 -->
+	<!-- 축제/ 공연 리스트 -->
 	
-	
-	
-	
+	<!-- 후기 리스트 -->
+	<select id="getAfterList" parameterType="PageMaker" resultMap="afterResult">
+		select a.*, f.title from after a join festi f on f.category = 1 where 
+		<choose>
+			<when test="1">
+				title
+			</when>
+			<when test="2">
+				contents
+			</when>
+			<when test="2">
+				writer
+			</when>
+			<otherwise>
+				like '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+		a.num = f.num order by anum desc
+	</select>
+	<!-- 상혁 끝 -->
 	<resultMap type="AfterDTO" id="afterResult">
 		<id column="anum" property="anum"/>
 		<result column="num" property="num"/>

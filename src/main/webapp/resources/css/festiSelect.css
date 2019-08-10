@@ -1,11 +1,28 @@
+
 #container{
     background-color: #f5f6f7;
 }
 
-.festi_conta{
+.festi_wrap{
+	overflow: hidden;
+}
+
+.festi_wrap2{
+	border: 1px solid #757575;
+	margin-top: 30px;
+}
+
+.festi_top, .festi_detail{
 	padding: 30px;
 	background-color: white;
 	overflow: hidden;
+	border: 1px solid #999;
+}
+
+.bx_title img{
+	width: 24px;
+	float: right;
+	margin: 10px;
 }
 
 .detail_info_right{
@@ -15,6 +32,18 @@
     width: 260px;
     min-height: 382px;
     border-left: 1px solid #e1e1e1;
+}
+
+.btc_file{
+	margin: 20px;
+}
+
+.btc_file input{
+	margin-left: 10px;
+}
+
+.btc_file em{
+	font-weight: bold;
 }
 
 .bx_title{
@@ -63,10 +92,13 @@
 
 .reserve_button{
 	margin-top: 20px;
+	overflow: hidden;
+	height: 55px;
+	padding-top: 6px;
 }
 
 .reserve_button a{
-	padding: 11px 45px;
+	padding: 15px 45px;
 	background-color: #00d344;
 	color: white;
 	font-size: 30px;
@@ -76,3 +108,61 @@
 	width: 19px;
 	margin-left: 5px;
 }
+
+.festi_select{
+	width: 200px;
+	height: 30px;
+}
+
+.festi_detail{
+	overflow: hidden;
+	margin-top: 50px;
+	position: relative;
+}
+
+.hasDatepicker{
+	width: 170px;
+	height: 30px;
+}
+
+.doline_x{
+	margin-top: 190px;
+}
+
+ .navbar-inverse{
+	background-color: #00d344;
+ }
+ 
+.navbar-collapse{
+	padding-left: 0px;
+}
+
+.navsection li a{
+	padding: 17px 70px;
+} 
+
+.festi_menu{
+	margin-left: 10px;
+}
+
+.festi_menu li a{
+	border: 1px solid #757575;
+    float: left;
+    padding: 10px 87.2px;
+    margin: 0 -0.5px;
+}
+
+.admin_button{
+	margin-top: 20px;
+}
+.admin_button a{
+	padding: 5px 38.3px;
+	background-color: #00d344;
+	color: white;
+}
+
+.festi_menu li:first-child{
+	margin:0 -9px;
+}
+
+.festi_menu li a:hover{color: white; background-color: #757575;}

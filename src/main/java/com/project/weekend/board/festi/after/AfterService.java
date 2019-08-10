@@ -87,9 +87,9 @@ public class AfterService {
 		return res;
 	}
 	
-	public AfterDTO getSelect(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public AfterDTO getSelect(String anum, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		AfterDTO afterDTO = new AfterDTO();
-		afterDTO = afterDAO.getSelect(num);
+		afterDTO = afterDAO.getSelect(anum);
 		//update 시 파일 없는데 X만 뜨는거 방지. 새로운 리스트로 세팅
 		if(afterDTO.getFileDTOs().size()==1) {
 			if(afterDTO.getFileDTOs().get(0).getFname()==null) {
@@ -102,14 +102,14 @@ public class AfterService {
 		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for(Cookie c:cookies) {
-				if(c.getName().equals(num)) {
+				if(c.getName().equals(anum)) {
 					isGet=true;
 				}
 			}
 		}
 		if(!isGet) {
-			afterDAO.setHitUpdate(num);
-			Cookie c = new Cookie(num, num);
+			afterDAO.setHitUpdate(anum);
+			Cookie c = new Cookie(anum, anum);
 			c.setMaxAge(30*60); // 30분
 			response.addCookie(c);
 		}
@@ -150,6 +150,11 @@ public class AfterService {
 		
 		List<AfterDTO> list = afterDAO.getAllList(pageMaker);
 		
+		return list;
+	}
+	// 상혁
+	public List<AfterDTO> getAfterList() throws Exception{
+		List<AfterDTO> list = afterDAO.getAfterList();
 		return list;
 	}
 	

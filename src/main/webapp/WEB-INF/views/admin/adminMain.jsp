@@ -20,7 +20,7 @@
 			<div class="conta">
 			<div class="call_quick mypage_quick">
 				<div class="title">
-					<h2>환영합니다 ${title}님!</h2>
+					<h2>환영합니다 ${id}님!</h2>
 					<br>
 					<h2>대충 사랑한다는 말이 들어갈 자리? 뭘 넣을까?..</h2>
 				</div>

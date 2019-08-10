@@ -61,31 +61,8 @@
 							
 				</form>
 				<hr>
-				<p>까지는까악</p>
-				<p>내용콘텐츠집가고싶다핵더움</p>
-				<p>2019.08.07. 19:10</p>
-				<a id="commentsUpdate">수정</a> 
-				<a id="commentsDelete">삭제</a>
-				<a id="recommentsWrite">댓글등록</a>
-				<c:forEach items="${commentsDTO}" var="r">
-					<p>${r.writer}</p>
-					<p>${r.contents}</p>
-					<p>${r.reg_date}</p>
-					<a id="commentsUpdate">수정</a>
-					<a id="commentsDelete">삭제</a>
-					<a id="recommentsWrite">댓글등록</a>
-				</c:forEach>
-				<hr>
-
-				<div id="commentsDiv">
-					<form action="./${board}commentsWrite" method="post" id="commentsFrm">
-						<p>${member.nickname}memberNickname</p>
-						<input type="hidden" name="writer" id="writer" value="${member.nickname}임시">
-						<textarea rows="3" cols="100" id="commentsContents"></textarea>
-						<a class="btn btn-default" id="commentsWrite">댓글등록</a>
-					</form>
-				</div>
-
+				<c:import url="./commentsList.jsp"/>
+				
 			</div>
    </div>
    <div id="footer">
@@ -106,15 +83,9 @@
 	/* 글 수정 */
 	$('#update').click(function() {
 		var board = $(this).attr('class');
-		var num = 0;
-		
-		if(board == 'notice' || board == 'qna'){
-			num = $('.num').attr('id');
-			location.href="./${board}Update?num="+num;
-		} else if (board == 'after') {
-			num = $('.anum').attr('id');
-			location.href="./${board}Update?anum="+num;
-		}
+		var num = $('.anum').attr('id');
+		location.href="./${board}Update?anum="+num;
+	
 		
 	});
 	
@@ -139,27 +110,8 @@
 		}
 		location.href = list;
 	});
+
 	
-	$('#commentsWrite').click(function() {
-		var writer = $('#writer').val();
-		var contents = $('#commentsContents').val();
-		$.ajax({
-			type:'post',
-			url:'./commentsWrite',
-			data:{
-				writer:writer,
-				contents:contents
-			},
-			success:function(data){
-				data = data.trim();
-				if(data == '1'){
-					alert('성공');
-				} else {
-					alert('실패');
-				}
-			},
-		});
-	});
 	
 	
 </script>
