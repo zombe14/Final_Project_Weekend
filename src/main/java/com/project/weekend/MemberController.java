@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -93,7 +95,7 @@ public class MemberController {
 	public void getSelect()throws Exception{}
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
-	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session)throws Exception{
+	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session,HttpServletRequest request,HttpServletResponse response ,@CookieValue(value = "mcookie",required = false)Cookie mcookie)throws Exception{
 		MemberDTO getId = memberService.getId(memberDTO);
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.setUpdate(memberDTO);
@@ -152,6 +154,7 @@ public class MemberController {
 	}
 	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
 	public String logout(String id, HttpSession session, MemberDTO memberDTO)throws Exception{
+		
 		memberService.setUpdateoverlap(memberDTO);
 		session.invalidate();
 		return "redirect:../";
