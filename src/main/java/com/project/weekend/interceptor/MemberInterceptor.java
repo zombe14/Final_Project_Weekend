@@ -12,6 +12,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception{
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("memberAgree");
+		Object obj2 = session.getAttribute("memberAgree2");
 		boolean result = false;
 		
 		if(obj!=null) {
@@ -19,7 +20,6 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 		}else {
 			response.sendRedirect("../member/memberAgree");
 		}
-		session.invalidate();
 		return result;
 	}
 

@@ -33,6 +33,7 @@
  	<interceptors>
 		<interceptor>
 			<mapping path="/member/memberJoin"/>
+			<mapping path="/member/memberAgree2"/>
 			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
 
