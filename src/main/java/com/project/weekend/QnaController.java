@@ -52,8 +52,8 @@ public class QnaController {
 	@RequestMapping(value = "qnaReplyWrite", method = RequestMethod.GET)
 	public ModelAndView setReplyWrite(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		QnaDTO qnaOrigin = qnaService.getSelect(num, session, request, response);
-		mv.addObject("qnaOrigin", qnaOrigin);
+		QnaDTO qnaDTO = qnaService.getSelect(num, session, request, response);
+		mv.addObject("qnaOrigin", qnaDTO);
 		mv.addObject("board", board2);
 		mv.addObject("boardTitle", reply);
 		mv.setViewName("board/qnaWrite");

@@ -14,6 +14,8 @@ import org.junit.Test;
 import com.project.weekend.AbstractTest;
 import com.project.weekend.board.comments.CommentsDAO;
 import com.project.weekend.board.comments.CommentsDTO;
+import com.project.weekend.board.festi.festiQna.FestiQnaDAO;
+import com.project.weekend.board.festi.festiQna.FestiQnaDTO;
 import com.project.weekend.util.PageMaker;
 
 public class QnaDAOTest extends AbstractTest{
@@ -25,13 +27,19 @@ public class QnaDAOTest extends AbstractTest{
 	@Inject
 	private PageMaker pageMaker;
 	@Inject
-	//private CommuDAO c;
+	private FestiQnaDAO f;
 	
 	@Test
 	public void commuwrite() throws Exception{
-		//CommuDTO commuDTO = new CommuDTO();
-		//String num = commuDTO
-		//commuDTO.setNum(num);
+		FestiQnaDTO festiQnaDTO = new FestiQnaDTO();
+		festiQnaDTO.setQnum("j1");
+		festiQnaDTO.setNum("f31");
+		festiQnaDTO.setTitle("test");
+		festiQnaDTO.setWriter("test");
+		festiQnaDTO.setContents("f");
+		festiQnaDTO.setPw("1111");
+		int res = f.setWrite(festiQnaDTO);
+		assertEquals(res, 1);
 	}
 	//@Test
 	public void commentsWrite() throws Exception{

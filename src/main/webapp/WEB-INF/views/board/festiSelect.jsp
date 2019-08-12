@@ -197,11 +197,12 @@
 				<!-- 장소 지도 -->
 				<div>
 					<h2>공연장정보</h2>
+					<br>
 					<div>
 						<h3>위치</h3>
 						<div id="localMap" style="width: 100%; height: 500px;"></div>
 					</div>
-					
+					<br>
 					<!-- 주변 맛집 -->
 					<div>
 						<h3>주변 식당</h3>
@@ -223,7 +224,7 @@
 						    </div>
 						</div>
 					</div>
-					
+					<br>
 					<!-- 주변 숙소 -->
 					<div>
 						<h3>주변 숙소</h3>
@@ -246,11 +247,12 @@
 						</div>
 					</div>
 				</div>
-				
+				<!-- 지도 끝 -->
 				
 				
 				
 				<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
+				<a href="../festiQna/fqnaWrite?num=${dto.num}">질문하기</a>
 				<%-- <c:if test="${member.grade > 1}"> --%> 
 				<%-- </c:if> --%>
 				
@@ -266,6 +268,26 @@
 					<c:forEach items="${after}" var="i">
 						<tr title="${i.anum}" class="afterSel">
 							<td>${fn:substring(i.anum, 1,8)}</td>
+							<td>${i.title}</td>
+							<td>${i.writer}</td>
+							<td>${i.reg_date}</td>
+							<td>${i.hit}</td>
+						</tr>					
+					</c:forEach>
+				</table>
+				
+				<!--  질문 -->
+				<table class="table">
+					<thead>
+						<th>NUM</th>
+						<th>TITLE</th>
+						<th>Writer</th>
+						<th>DATE</th>
+						<th>hit</th>
+					</thead>
+					<c:forEach items="${qna}" var="i">
+						<tr title="${i.anum}" class="qnaSel">
+							<td>${fn:substring(i.qnum, 1,8)}</td>
 							<td>${i.title}</td>
 							<td>${i.writer}</td>
 							<td>${i.reg_date}</td>
@@ -306,6 +328,10 @@
 	/* 후기 보기 */
 	$('.afterSel').click(function() {
 		location.href="../after/afterSelect?num="+$(this).attr('title');
+	});
+	/* 질문 보기 */
+	$('.qnaSel').click(function() {
+		location.href="../festiQna/fqnaSelect?num="+$(this).attr('title');
 	});
 	
 	

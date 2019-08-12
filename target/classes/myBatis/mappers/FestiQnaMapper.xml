@@ -2,5 +2,64 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="FestiQnaMapper">
+	<resultMap type="FestiQnaDTO" id="fqnaResult">
+		<id column="qnum" property="qnum"/>
+		<result column="num" property="num"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="contents" property="contents"/>
+		<result column="reg_date" property="reg_date"/>
+		<result column="ref" property="ref"/>
+		<result column="step" property="step"/>
+		<result column="depth" property="depth"/>
+		<result column="pw" property="pw"/>
+		<collection property="fileDTOs" javaType="List" ofType="FileDTO">
+			<id column="fnum" property="fnum"/>
+			<result column="num" property="num"/>
+			<result column="fname" property="fname"/>
+			<result column="oname" property="oname"/>
+		</collection>
+	</resultMap>
+	<select id="getNum" resultType="Integer">
+		SELECT FESTIQNA_SEQ.NEXTVAL FROM DUAL
+	</select>
+	<insert id="setWrite" parameterType="FestiQnaDTO">
+		INSERT INTO FESTIQNA (QNUM, NUM, TITLE, WRITER, CONTENTS, REF, STEP, DEPTH, REG_DATE, PW)
+		VALUES(#{qnum}, #{num}, #{title}, #{writer}, #{contents}, #{qnum}, 0, 0, SYSDATE, #{pw})
+	</insert>
+	<update id="setUpdate" parameterType="FestiQnaDTO">
+		UPDATE FESTIQNA SET TITLE = #{title}, CONTENTS = #{contents} WHERE QNUM = #{qnum}
+	</update>
+	
+	<!-- 답글만 삭제 -->
+	<delete id="setDelete" parameterType="String">
+		DELETE FESTIQNA WHERE QNUM = #{qnum}
+	</delete>
+	<!-- 질문 원본 글 + 답글 삭제-->
+	<delete id="setDeleteOrigin" parameterType="String">
+		DELETE FESTIAQNA WHERE REF = #{qnum}
+	</delete>
+	<!-- 축제 삭제 시 달린 질문+답글 다 삭제 -->
+	<delete id ="setDeleteAll" parameterType="String">
+		delete festiqna where num = #{num}	
+	</delete>
+	
+	<select id="getSelect" parameterType="String" resultMap="fqnaResult">
+		SELECT * FROM FESTIQNA FULL JOIN FILES ON(FESTIQNA.QNUM = FILES.NUM) WHERE FESTIQNA.QNUM = #{qnum}
+	</select>
+	
+	<select id="getCount" resultType="Integer" parameterType="PageMaker">
+		SELECT COUNT(QNUM) FROM FESTIQNA WHERE NUM = #{num}
+	</select>
+	
+	<select id="getList" parameterType="PageMaker" resultMap="fqnaResult">
+		SELECT * FROM 
+		(SELECT ROWNUM R, Q.* FROM 
+		(SELECT * FROM FESTIQNA 
+		WHERE NUM = #{num} 
+		ORDER BY (SUBSTR(REF, 2)*1) DESC, STEP ASC) Q) 
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
 	
 </mapper>

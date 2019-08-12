@@ -50,7 +50,7 @@
 			</otherwise>
 		</choose>
 		LIKE '%'||#{search}||'%'
-		ORDER BY  (SUBSTR(ref, 2)*1) DESC, STEP DESC) Q) 
+		ORDER BY  (SUBSTR(ref, 2)*1) DESC, STEP ASC) Q) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
