@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberAgree.css?ver=1">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberAgree.css">
   <c:import url="../temp/boot.jsp"></c:import> 
   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberAgree.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
@@ -17,23 +17,7 @@
 <title> Weekend - 약관동의 </title>
 </head>
 <body>
-<<<<<<< HEAD
-<div>
-<div id="wrap">
-	<div id="header">
-		<c:import url="../inc/header.jsp"></c:import>
-	</div>
-	<div id="container">
-	<div class="inner">
-		<form action="./memberAgree" id="memberAgrree_post" method="POST">
-		<h1>약관동의</h1>
-		<div class="essentialTermsWrap">
-					<div>
-						<div class="custom-control custom-checkbox mb-3 checks" id="checkAll">
-					      <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-					      <label class="custom-control-label" id="checkAllfont" for="customCheck"><p class="checkAllfont_sub" id="checkAll_sub_sub">약관 전체동의</p>	</label>
-					    </div>
-=======
+
 	<div id="wrap">
 		<div id="container">
 			<div class="conta">
@@ -41,13 +25,14 @@
 					<div class="join_logo">
 						<a href="${pageContext.request.contextPath}/."><img alt=""
 							src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
->>>>>>> master
+
 					</div>
 					<div class="essentialTermsWrap">
 						<div>
 							<div class="custom-control custom-checkbox mb-3 checks" id="checkAll">
 								<input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
 								<label class="custom-control-label" id="checkAllfont" for="customCheck">
+								<form action="./memberAgree" id="memberAgrree_post" method="POST">
 								<p class="checkAllfont_sub" id="checkAll_sub_sub">약관 전체동의</p> </label>
 							</div>
 						</div>
@@ -138,21 +123,8 @@
 						</div>
 					</div>
 				</div>
-<<<<<<< HEAD
-            <button id="join" class="btn btn-danger" style="border-radius: 0px;	margin-top: 20px; width: 20%; margin-left: 40%;" type="button" >
-            회원가입하기
-        </button>
-        </form>
-
-	</div>
-	</div>
-</div>
-<div id="footer" style="margin-top: 300px;">
-		<c:import url="../inc/footer.jsp"></c:import>
-=======
 			</div>
 		</div>
->>>>>>> master
-	</div>
+
 </body>
 </html>
