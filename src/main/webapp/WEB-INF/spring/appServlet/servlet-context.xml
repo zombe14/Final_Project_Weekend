@@ -25,7 +25,7 @@
 	
 	<!-- 파일 다운로드 용. ajax. 순서 첫번째.  -->
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver"> 
-		<beans:property name="order" value="0"/> 
+		<beans:property name="order" value="0"/>  
 	</beans:bean>
 	
 	<context:component-scan base-package="com.project.weekend" />

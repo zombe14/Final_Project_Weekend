@@ -113,4 +113,8 @@ public class FestiController {
 		}
 		return path;
 	}
+	
+	//festiMain
+	@RequestMapping(value = "festiMain")
+	public void festiMain() throws Exception{};
 }
