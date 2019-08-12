@@ -55,34 +55,39 @@
     		
     		coordinates = val.geometry.coordinates;
     		name = val.properties.CTP_KOR_NM;
-		/*  console.log(coordinates);
-    		console.log(name);         */
+		  	/* console.log(coordinates);
+    		console.log(name);  */        
     		displayArea(coordinates, name);
     	})
-    })
+    });
     
-   var polygons = [];
 		
+   var polygons = [];
      
 // 다각형을 생성하고 이벤트를 등록하는 함수입니다
 function displayArea(coordinates, name) {
-	var path =[];
-	var points = [];
+	var points = [];	// 중심좌표 구하기 위한 지역구 좌표들
+	var path =[];	// 폴리곤 그려줄 path
+	
 	$.each(coordinates[0], function(index, coordinate){
 		var point = new Object();
 		point.x = coordinate[1];
 		point.y = coordinate[0];
 		points.push(point);
-		/* console.log(point.x);
-		console.log(point.y); */
-		/* console.log(points); */
-		path.(push(new kakao.maps.LatLng(point.x, point.y));
+	/* 	console.log(points); */
+		/* console.log(point.y); */
+		path.push(new kakao.maps.LatLng(point.x, point.y));
+		//console.log(path.push(new kakao.maps.LatLng(point.x, point.y)));
+	// 다각형을 생성
 		
-		console.log(path);   
-	})
-	
+	});
+	/* for(var i = 0; i < path.length; i++){
+		console.log(path[i]);
+	} */
+ 	/* console.log(path); */
+	/* console.log(points); */
 	var polygon = new kakao.maps.Polygon({
-		map : map,
+		map : map,	// 다각형을 표시할 지도 객체
 		path : path,
 		strokeWeight : 2,
 		strokeColor : '#004c80',
@@ -90,6 +95,7 @@ function displayArea(coordinates, name) {
 		fillColor : '#fff',
 		fillOpacity : 0.7
 	});
+	
 	
 	// 폴리곤 이벤트 주기 < 마지막에 >
 	
