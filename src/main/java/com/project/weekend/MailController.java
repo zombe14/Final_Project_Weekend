@@ -27,13 +27,14 @@ public class MailController {
 	@Inject
 	private MailService mailService;
 	@RequestMapping(value = "/mailSending",method = RequestMethod.POST)
-	public String mailSending(HttpServletRequest request){
-		
+	public void mailSending(HttpServletRequest request,HttpSession session){
+        int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
+        String joinCode = String.valueOf(ran);
+        session.setAttribute("joinCode", joinCode);
 	    String setfrom = "ts560593@gmail.com";         
 	    String tomail  = request.getParameter("email");     // 받는 사람 이메일
-	    String title   = "회원가입"; // 제목
-	    String content = "회원가입";   // 내용
-	   System.out.println(tomail);
+	    String title   = "Weekend 회원 가입 인증이메일 입니다."; // 제목
+	    String content = "회원 가입 코드는 '"+joinCode+"' 입니다.";   // 내용
 	    try {
 	      MimeMessage message = mailSender.createMimeMessage();
 	      MimeMessageHelper messageHelper 
@@ -49,23 +50,19 @@ public class MailController {
 	      System.out.println(e);
 	    }
 	    System.out.println("완료");
-	    return "redirect:./member/memberJoin";
 	  }
-		/*
-		 * System.out.println("메일"); String setfrom = ""; String tomail =
-		 * request.getParameter("email"); String title = request.getParameter("title");
-		 * String content = request.getParameter("content"); MimeMessage message =
-		 * mailSender.createMimeMessage();
-		 * 
-		 * 
-		 * MimeMessageHelper messageHelper = new
-		 * MimeMessageHelper(message,true,"UTF-8");
-		 * 
-		 * messageHelper.setFrom(setfrom); messageHelper.setTo(tomail);
-		 * messageHelper.setSubject(title); messageHelper.setText(content);
-		 * 
-		 * mailSender.send(message);
-		 */
 	
+	@RequestMapping(value = "/mailCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public int mailCheck(HttpSession session,HttpServletRequest request)throws Exception{
+		String emailCode = (String)session.getAttribute("joinCode");
+		String Code = request.getParameter("Code");
+		int result = 0;
+		if(emailCode.equals(Code)) {
+			result =1;
+		}
+		System.out.println(result);
+		return result;
+	}
 	
 }

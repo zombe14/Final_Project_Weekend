@@ -1,5 +1,5 @@
 $(function() {
-
+	$('#emailCodeCheckbt').hide();
 	
 	$("#memEmail_select").blur(function() {
 		var t = true;
@@ -61,6 +61,7 @@ $(function() {
 		var a = $('#num_select').val();
 		var b = $('#hp2').val();
 		var c = $('#hp3').val();
+		var d = $('#result_emailCodeCheckbt').val();
 		var s = $('#email_store').val();
 		var v = true;
 		var email = $('#email').val();
@@ -69,10 +70,13 @@ $(function() {
 		if(a==''||b==''||c==''){
 			alert("휴대폰 번호를 입력하세요");
 			v = false;
-		}else if(a!=''&&b!=''&&c!=''&&s=='0'){
+		}else if(a!=''&&b!=''&&c!=''&&s=='0'&&d=='0'){
 			v = true;
-		}else{
+		}else if(d==''){
+			alert("메일인증을 완료하세요");
 			v = false;
+		}else{
+			v=false;
 		}
 		if(v){
 			$("#frm").submit();
@@ -108,11 +112,36 @@ $(function() {
 				type: "POST",
 				url: "../mail/mailSending",
 				success:function(data){
-					
+
 				}
 			});
+			$('#emailFirst').attr('readonly', true);
+			$('#memEmail_select').hide();
+			$('#emailCodeCheckbt').show();
+			$("#emailCodeCheck").attr('type', 'text');
 		}else{
 			$('#email_store').val('');
 		}
+	});
+	$("#emailCodeCheckbt").click(function() {
+		var emailCode = $('#emailCodeCheck').val();
+		$.ajax({
+			data:{
+				Code : emailCode
+			},
+			type: "POST",
+			url: "../mail/mailCheck",
+			success:function(data){
+				if(data==1){
+					$("#result_emailCodeCheckbt").val('0');
+					$('#emailCodeCheckbt').hide();
+					$('#emailCheck').hide();
+					$("#emailCodeCheck").attr('type', 'hidden');
+					alert("인증이 완료되었습니다.");
+				}else{
+					alert("코드가 일치하지 않습니다.")
+				}
+			}
+		});
 	});
 });
