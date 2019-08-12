@@ -67,7 +67,12 @@ input[type=checkbox] + label{
 } */
 input[type=checkbox]:checked + label{ 
 
+<<<<<<< HEAD
+    content: "\2713";  /* üũ��� */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+=======
  /*    content: "\2713"; 
+>>>>>>> master
     font-size: 18px; 
     font-weight:800; 
     text-align: center;  
