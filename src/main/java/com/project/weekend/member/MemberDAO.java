@@ -67,7 +67,4 @@ public class MemberDAO {
 	public MemberDTO getSelectOverlap(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelectOverlap", memberDTO);
 	}
-	public MemberDTO getSelectGrade(MemberDTO memberDTO)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getSelectGrade", memberDTO);
-	}
 }
