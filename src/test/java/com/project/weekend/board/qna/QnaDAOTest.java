@@ -24,8 +24,16 @@ public class QnaDAOTest extends AbstractTest{
 	private CommentsDAO commentsDAO;
 	@Inject
 	private PageMaker pageMaker;
+	@Inject
+	//private CommuDAO c;
 	
 	@Test
+	public void commuwrite() throws Exception{
+		//CommuDTO commuDTO = new CommuDTO();
+		//String num = commuDTO
+		//commuDTO.setNum(num);
+	}
+	//@Test
 	public void commentsWrite() throws Exception{
 		for(int i= 0 ; i<20;i++) {
 			CommentsDTO c = new CommentsDTO();

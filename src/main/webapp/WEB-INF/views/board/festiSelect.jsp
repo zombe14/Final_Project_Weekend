@@ -22,6 +22,81 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 <script type="text/javascript" src="../resources/js/calendar.js"></script>
+<style type="text/css">
+#menu_wrap3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    margin: 10px 0 30px 10px;
+    padding: 5px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+    font-size: 12px;
+    border-radius: 10px;
+}
+#menu_wrap3 hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 2px solid #5F5F5F;
+    margin: 3px 0;
+}
+
+#placesList3 .item .marker_1 {
+    background-position: 0 -10px;
+}
+
+#placesList3 .item span {
+    display: block;
+    margin-top: 4px;
+}
+
+#placesList3 .item {
+    position: relative;
+    border-bottom: 1px solid #888;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 65px;
+}
+#placesList3 li {
+    list-style: none;
+}
+
+#placesList3 .item .info {
+    padding: 10px 0 10px 10px;
+}
+#placesList3 .item h5, #placesList .item .info {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#placesList3 .info .tel {
+    color: #009900;
+}
+
+#placesList3 .item .markerbg {
+    float: left;
+    position: absolute;
+    width: 36px;
+    height: 37px;
+    margin: 10px 0 0 10px;
+    /* background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat; */
+}
+#placesList3 .info .jibun {
+    padding-left: 26px;
+    background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;
+}
+#placesList3 .info .gray {
+    color: #8a8a8a;
+}
+
+
+
+
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -120,44 +195,56 @@
 				<!-- 지우기 끝 -->
 				
 				<!-- 장소 지도 -->
-				<div id="localMap" style="width: 100%; height: 500px;"></div>
-				
-				<!-- 주변 맛집 -->
-				<div class="map_wrap">
-				    <div id="map2" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
-					<!-- 리스트 -->
-				    <div id="menu_wrap" class="bg_white">
-				        <div class="option">
-				            <div>
-				                <form onsubmit="searchPlaces(); return false;">
-				                   <input type="text" value="${dto.local} 맛집" id="keyword" size="10" readonly="readonly"> 
-				                   <button type="submit">검색하기</button> 
-				                </form>
-				            </div>
-				        </div>
-				        <hr>
-				        <ul id="placesList"></ul>
-				        <div id="pagination"></div>
-				    </div>
-				</div>
-				
-				<!-- 주변 숙소 -->
-				<div class="map_wrap">
-				    <div id="map3" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
-					<!-- 리스트 -->
-				    <div id="menu_wrap3" class="bg_white">
-				        <div class="option">
-				            <div>
-				                <form onsubmit="searchPlaces3(); return false;">
-				                   <input type="text" value="${dto.local} 숙소" id="keyword3" size="10" readonly="readonly"> 
-				                   <button type="submit">검색하기</button> 
-				                </form>
-				            </div>
-				        </div>
-				        <hr>
-				        <ul id="placesList3"></ul>
-				        <div id="pagination3"></div>
-				    </div>
+				<div>
+					<h2>공연장정보</h2>
+					<div>
+						<h3>위치</h3>
+						<div id="localMap" style="width: 100%; height: 500px;"></div>
+					</div>
+					
+					<!-- 주변 맛집 -->
+					<div>
+						<h3>주변 식당</h3>
+						<div class="map_wrap">
+						    <div id="map2" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
+							<!-- 리스트 -->
+						    <div id="menu_wrap" class="bg_white">
+						        <div class="option">
+						            <div>
+						                <form onsubmit="searchPlaces(); return false;">
+						                   <input type="text" value="${dto.local} 맛집" id="keyword" size="10" readonly="readonly"> 
+						                   <button type="submit">검색하기</button> 
+						                </form>
+						            </div>
+						        </div>
+						        <hr>
+						        <ul id="placesList"></ul>
+						        <div id="pagination"></div>
+						    </div>
+						</div>
+					</div>
+					
+					<!-- 주변 숙소 -->
+					<div>
+						<h3>주변 숙소</h3>
+						<div class="map_wrap">
+						    <div id="map3" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
+							<!-- 리스트 -->
+						    <div id="menu_wrap3" class="bg_white">
+						        <div class="option">
+						            <div>
+						                <form onsubmit="searchPlaces3(); return false;">
+						                   <input type="text" value="${dto.local} 숙소" id="keyword3" size="10" readonly="readonly"> 
+						                   <button type="submit">검색하기</button> 
+						                </form>
+						            </div>
+						        </div>
+						        <hr>
+						        <ul id="placesList3"></ul>
+						        <div id="pagination3"></div>
+						    </div>
+						</div>
+					</div>
 				</div>
 				
 				
@@ -222,21 +309,22 @@
 	});
 	
 	
+	
 	/* 행사 위치 */
 	var mapContainer1 = document.getElementById('localMap'), // 지도를 표시할 div 
-    mapOption = {
+    mapOption1 = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        level: 5 // 지도의 확대 레벨
     };  
 
 	// 지도를 생성합니다    
-	var map = new kakao.maps.Map(mapContainer1, mapOption); 
+	var map1 = new kakao.maps.Map(mapContainer1, mapOption1); 
 	
 	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new kakao.maps.services.Geocoder();
-	
+	var geocoder1 = new kakao.maps.services.Geocoder();
+	var local = "${dto.local}";
 	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch('${dto.local}', function(result, status) {
+	geocoder1.addressSearch(local, function(result, status) {
 	
 	    // 정상적으로 검색이 완료됐으면 
 	     if (status === kakao.maps.services.Status.OK) {
@@ -245,20 +333,23 @@
 	
 	        // 결과값으로 받은 위치를 마커로 표시합니다
 	        var marker = new kakao.maps.Marker({
-	            map: map,
+	            map: map1,
 	            position: coords
 	        });
 	
 	        // 인포윈도우로 장소에 대한 설명을 표시합니다
 	        var infowindow = new kakao.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">${dto.local}</div>'
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+local+'</div>'
 	        });
-	        infowindow.open(map, marker);
+	        infowindow.open(map1, marker);
 	
 	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	        map.setCenter(coords);
+	        map1.setCenter(coords);
 	    } 
 	}); 
+		
+	
+	
 	
 	
 	/* 행사주변 맛집 */
@@ -477,21 +568,18 @@
 	        el.removeChild (el.lastChild);
 	    }
 	}
-	 
-	 
-	 
-	 
+
 	 
 	 
 	 
 	/* 근처 숙박업소 */
 	var markers3 = [];
 	var mapContainer3 = document.getElementById('map3'), // 지도를 표시할 div 
-    mapOption = {
+    mapOption3 = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };  
-	var map3 = new kakao.maps.Map(mapContainer3, mapOption);
+	var map3 = new kakao.maps.Map(mapContainer3, mapOption3);
 	var ps3 = new kakao.maps.services.Places();
 	var infowindow3 = new kakao.maps.InfoWindow({zIndex:1});
 	searchPlaces3();
@@ -519,7 +607,7 @@
 	        displayPlaces3(data);
 	
 	        // 페이지 번호를 표출합니다
-	        displayPagination3(pagination3);
+	        displayPagination3(pagination);
 	
 	    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 	
@@ -537,7 +625,7 @@
 	// 검색 결과 목록과 마커를 표출하는 함수입니다
 	function displayPlaces3(places) {
 	
-	    var listEl = document.getElementById('placesList3'), 
+	    var listEl = document.getElementById('placesList3'),
 	    menuEl = document.getElementById('menu_wrap3'),
 	    fragment = document.createDocumentFragment(), 
 	    bounds = new kakao.maps.LatLngBounds(), 
@@ -554,7 +642,7 @@
 	        // 마커를 생성하고 지도에 표시합니다
 	        var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
 	            marker = addMarker3(placePosition, i), 
-	            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+	            itemEl = getListItem3(i, places[i]); // 검색 결과 항목 Element를 생성합니다
 	
 	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
 	        // LatLngBounds 객체에 좌표를 추가합니다
@@ -586,6 +674,7 @@
 	
 	    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
 	    listEl.appendChild(fragment);
+	  
 	    menuEl.scrollTop = 0;
 	
 	    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
@@ -593,7 +682,7 @@
 	}
 	
 	// 검색결과 항목을 Element로 반환하는 함수입니다
-	function getListItem(index, places) {
+	function getListItem3(index, places) {
 	
 	    var el = document.createElement('li'),
 	    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
@@ -646,7 +735,7 @@
 	}
 	
 	// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-	function displayPagination3(pagination3) {
+	function displayPagination3(pagination) {
 	    var paginationEl = document.getElementById('pagination3'),
 	        fragment = document.createDocumentFragment(),
 	        i; 
@@ -656,17 +745,17 @@
 	        paginationEl.removeChild (paginationEl.lastChild);
 	    }
 	
-	    for (i=1; i<=pagination3.last; i++) {
+	    for (i=1; i<=pagination.last; i++) {
 	        var el = document.createElement('a');
 	        el.href = "#";
 	        el.innerHTML = i;
 	
-	        if (i===pagination3.current) {
+	        if (i===pagination.current) {
 	            el.className = 'on';
 	        } else {
 	            el.onclick = (function(i) {
 	                return function() {
-	                    pagination3.gotoPage(i);
+	                    pagination.gotoPage(i);
 	                }
 	            })(i);
 	        }
@@ -685,6 +774,7 @@
 	    infowindow3.open(map3, marker);
 	}
 
+	
 </script>
 
 </body>
