@@ -44,7 +44,7 @@
 					</div>
 					<div>
 						<label for="writer">작성자<span>*</span></label> 
-						<input type="text" name="writer" value="${member.id}memberId" readonly="readonly">
+						<input type="text" name="writer" value="${member.nickname}memberNick" readonly="readonly">
 					</div>
 
 					<div>

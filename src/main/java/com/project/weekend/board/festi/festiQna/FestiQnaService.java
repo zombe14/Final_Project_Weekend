@@ -96,5 +96,11 @@ public class FestiQnaService {
 		List<FestiQnaDTO> list = festiQnaDAO.getList(pageMaker);
 		return list;
 	}
+	
+	public int setReplyWrite(FestiQnaDTO festiQnaDTO) throws Exception{
+		int res = festiQnaDAO.setReplyUpdate(festiQnaDTO);
+		res = festiQnaDAO.setReplyWrite(festiQnaDTO);
+		return res;
+	}
 
 }

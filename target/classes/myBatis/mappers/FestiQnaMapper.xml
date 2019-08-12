@@ -60,6 +60,26 @@
 		ORDER BY (SUBSTR(REF, 2)*1) DESC, STEP ASC) Q) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
+	<!-- query piece -->
+	<sql id="subRef">
+		select ref from festiqna where qnum=#{qnum}
+	</sql>
+	<sql id="subStep">
+		select step from festiqna where qnum=#{qnum}
+	</sql>
+	<update id="setReplyPreUpdate">
+		update festiqna set step=step+1 
+		where ref=(<include refid="subRef"/>)
+		and step>(<include refid="subStep"/>)
+	</update>
 	
+	<!-- reply -->
+	<insert id="setReplyWrite" parameterType="FestiQnaDTO">
+		INSERT INTO FESTIQNA (QNUM, NUM, TITLE, WRITER, CONTENTS, REF, STEP, DEPTH, REG_DATE, PW)
+		VALUES(#{qnum}, #{num}, #{title}, #{writer}, #{contents}, 
+		(<include refid="subRef"/>), (<include refid="subStep"/>)+1, (select depth from festiqna where qnum=#{qnum})+1, SYSDATE, #{pw})
+	
+	</insert>
+
 	
 </mapper>

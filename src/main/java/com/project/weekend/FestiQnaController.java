@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
+import com.project.weekend.board.festi.festiQna.FestiQnaDAO;
 import com.project.weekend.board.festi.festiQna.FestiQnaDTO;
 import com.project.weekend.board.festi.festiQna.FestiQnaService;
 import com.project.weekend.util.PageMaker;
@@ -26,6 +27,7 @@ public class FestiQnaController {
 	@Inject
 	private FestiService festiService;
 	private static final String board = "fqna";
+	private static final String board2 = "fqnaReply";
 	private static final String boardTitle = "FestiQna";
 
 	@RequestMapping(value = "fqnaWrite", method = RequestMethod.GET)
@@ -98,6 +100,30 @@ public class FestiQnaController {
 	@RequestMapping(value = "fqnaList", method = RequestMethod.GET)
 	public ModelAndView getList(String num, PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView(); 
+		return mv;
+	}
+	
+	@RequestMapping(value = "fqnaReplyWrite", method = RequestMethod.GET)
+	public ModelAndView setReplyWrite(String qnum) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		FestiQnaDTO festiQnaDTO = festiQnaService.getSelect(qnum);
+		mv.addObject("origin", festiQnaDTO);
+		mv.addObject("board", board2);
+		mv.addObject("boardTitle", boardTitle);
+		
+		mv.setViewName("board/fqnaWrite");
+		return mv;
+	}
+	
+	@RequestMapping(value = "fqnaReplyWrite", method = RequestMethod.POST)
+	public ModelAndView setReplyWrite(FestiQnaDTO festiQnaDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int res = festiQnaService.setReplyWrite(festiQnaDTO);
+		if(res>0) {
+			mv.setViewName("redirect:../festi/festiSelect?num="+festiQnaDTO.getNum());
+		} else {
+			mv.setViewName("redirect:../festi/festiSelect?num="+festiQnaDTO.getNum());
+		}
 		return mv;
 	}
 }

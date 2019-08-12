@@ -51,4 +51,14 @@ public class FestiQnaDAO {
 	public List<FestiQnaDTO> getList(PageMaker pageMaker) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", pageMaker);
 	}
+	
+	//답글 사전작업
+	public int setReplyUpdate(FestiQnaDTO festiQnaDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setReplyPreUpdate", festiQnaDTO);
+	}
+	
+	//답글 달기
+	public int setReplyWrite(FestiQnaDTO festiQnaDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setReplyWrite", festiQnaDTO);
+	}
 }
