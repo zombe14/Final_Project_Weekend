@@ -89,9 +89,11 @@ public class MemberController {
 
 		return mv;
 	}
-	@RequestMapping(value = "memberLogin", method = RequestMethod.GET)
-	public void getSelect()throws Exception{}
-	
+
+	/*
+	 * @RequestMapping(value = "memberLogin", method = RequestMethod.GET) public
+	 * void getSelect()throws Exception{}
+	 */
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
 	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session)throws Exception{
 		MemberDTO getId = memberService.getId(memberDTO);
