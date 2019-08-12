@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
      <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=1"></script>
+  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=3"></script>
 <title>Weekend - 회원가입</title>
 
 </head>
@@ -117,16 +117,30 @@
 							</tr>
 							<tr>
 								<th scope="row">
+									<span class="essential">*</span>주민번호 </th>
+								<td>
+									<input type="hidden" id="jumins" name="jumins" title="jumins">
+						             <input type="text" name="unum1" id="unum1" size="12" maxlength="6" class="iTextnum">-
+						             <input type="password" name="unum2" id="unum2" size="12" maxlength="7" class="iTextnum"></input>
+									<input type="button" id="juminnum" value="중복확인">
+									<div id="juminnumCheck">
+										
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
 									<span class="essential">*</span>활동명 </th>
 								<td>
 								<input type="text" name="nickname" class="iText" title="nickname" id="nickname" minlength="4" maxlength="20">
 
 								<input type="button" id="nicknameCheckbt" value="중복확인">
-							<div id="nicknameCheck">
-
-											
-								</div>
+								<div id="nicknameCheck"></div>
+								<input type="hidden" id="age" name="age" title="age">
+								</td>
+								
 							</tr>
+							
 							<tr>
 								<th scope="row">
 									프로필사진

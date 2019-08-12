@@ -38,6 +38,20 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
+	@RequestMapping(value = "memberjumin", method = RequestMethod.POST)
+	@ResponseBody
+	public int getjumin(MemberDTO memberDTO)throws Exception{
+		System.out.println("들어옴");
+		memberDTO = memberService.getjumin(memberDTO);
+		int result=0;
+		if(memberDTO==null) {
+
+		}else {
+			result=1;
+		}
+		return result;
+	}
+	
 	@RequestMapping(value = "getId", method = RequestMethod.POST)
 	@ResponseBody
 	public int getId(MemberDTO memberDTO)throws Exception{
@@ -70,6 +84,9 @@ public class MemberController {
 	}
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
+		System.out.println("dd");
+		int jumin = (Integer) session.getAttribute("jumin");
+		System.out.println(jumin);
 		ModelAndView mv = new ModelAndView();
 		MemberDTO getId = memberService.getId(memberDTO);
 		String message="Join Fail";

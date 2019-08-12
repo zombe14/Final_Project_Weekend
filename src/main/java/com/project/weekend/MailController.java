@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.weekend.mail.MailService;
+import com.project.weekend.member.MemberDTO;
+import com.project.weekend.member.MemberService;
 
 @Controller
 @RequestMapping("/mail/")
@@ -26,9 +28,20 @@ public class MailController {
 	private JavaMailSender mailSender;
 	@Inject
 	private MailService mailService;
+	@Inject
+	private MemberService memberService;
 	@RequestMapping(value = "/mailSending",method = RequestMethod.POST)
-	public void mailSending(HttpServletRequest request,HttpSession session){
+	@ResponseBody
+	public int mailSending(HttpServletRequest request,HttpSession session, MemberDTO memberDTO){
         int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
+        int result = 0;
+        try {
+			memberDTO = memberService.getSelectEmail(memberDTO);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        if(memberDTO==null) {
         String joinCode = String.valueOf(ran);
         session.setAttribute("joinCode", joinCode);
 	    String setfrom = "ts560593@gmail.com";         
@@ -50,6 +63,11 @@ public class MailController {
 	      System.out.println(e);
 	    }
 	    System.out.println("완료");
+	    result = 1;
+        }else {
+        	
+        }
+        return result;
 	  }
 	
 	@RequestMapping(value = "/mailCheck", method = RequestMethod.POST)

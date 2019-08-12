@@ -16,6 +16,7 @@
 		<result property="count" column="count"/>
 		<result property="overlap" column="overlap"/>
 		<result property="reg_date" column="reg_date"/>
+		<result property="jumin" column="jumin"/>
 	</resultMap>
 	<!-- 상혁 -->
 	<!-- 유저 리스트 -->
@@ -86,13 +87,13 @@
 		delete member where id=#{id}
 	</delete>
 	<insert id="setWrite" parameterType="MemberDTO">
-		insert into member  values(#{id}, #{pw}, #{name}, 0, #{email}, #{phone}, 1, #{nickname},0,0,sysdate)
+		insert into member  values(#{id}, #{pw}, #{name}, #{age}, #{email}, #{phone}, 1, #{nickname},0,0,sysdate, #{jumin})
 	</insert>
 	<update id="setUpdate" parameterType="MemberDTO">
 		update member set count=count+1 where id =#{id}
 	</update>
 	<update id="setUpdatezero" parameterType="MemberDTO">
-		update member set count=0, overlap=overlap+1 where id=#{id}
+		update member set count=0, overlap=overlap+0 where id=#{id}
 	</update>
 	<update id="setUpdateoverlap" parameterType="MemberDTO">
 		update member set overlap=0 where id=#{id}
@@ -105,5 +106,11 @@
 	</select>
 	<select id="getSelectGrade" resultType="MemberDTO" parameterType="MemberDTO">
 		select * from member where grade=3 and id=#{id}
+	</select>
+	<select id="getSelectEmail" resultType="MemberDTO" parameterType="MemberDTO">
+		select * from member where email=#{email}
+	</select>
+	<select id="getjumin" resultType="MemberDTO" parameterType="MemberDTO">
+		select * from member where jumin=#{jumin}
 	</select>
 </mapper>

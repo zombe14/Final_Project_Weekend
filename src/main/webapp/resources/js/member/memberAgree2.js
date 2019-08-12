@@ -112,13 +112,16 @@ $(function() {
 				type: "POST",
 				url: "../mail/mailSending",
 				success:function(data){
-
+					if(data==1){
+						$('#emailFirst').attr('readonly', true);
+						$('#memEmail_select').hide();
+						$('#emailCodeCheckbt').show();
+						$("#emailCodeCheck").attr('type', 'text');
+					}else{
+						alert("중복된 이메일입니다.");
+					}
 				}
 			});
-			$('#emailFirst').attr('readonly', true);
-			$('#memEmail_select').hide();
-			$('#emailCodeCheckbt').show();
-			$("#emailCodeCheck").attr('type', 'text');
 		}else{
 			$('#email_store').val('');
 		}

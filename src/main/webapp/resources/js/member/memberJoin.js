@@ -210,17 +210,20 @@ $(function() {
 		var pww = $("#pww").val();
 		var pwwcheck = $("#pwwcheck").val();
 		var memNamecheck = $("#memNamecheck").val();
-		
+		var jumin = $("#juminnumCheck").val();
+		var age = $('#age').val();
 		var finalpw = false;
 		if(pw==pwCheck){
 			finalpw = true;
-			if(v&&pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw){
-				alert('성공');
+			if(v&&pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw&&jumin=='0'){
 				$("#frm").submit();
 			}else if(nicknameCheck!='0'){
 				alert("활동명을 입력하세요");
-			}else{	
+			}else if(jumin!='0'){	
+				alert("주민번호를 확인해주세요");
+			}else{
 				alert("비밀번호나 이름을 확인해주세요");
+				
 			}
 		}else{
 			alert("비밀번호가 일치하지 않습니다.");
@@ -281,6 +284,74 @@ $(function() {
 			});
 		}
 	});
+	
+	$('#juminnum').click(function() {
+		var num1 = document.getElementById("unum1");
+        var num2 = document.getElementById("unum2");
+        var arrNum1 = new Array(); // 주민번호 앞자리숫자 6개를 담을 배열
+        var arrNum2 = new Array();
+        var jumins3 = $("#unum1").val() + $("#unum2").val(); //주민등록번호 생년월일 전달 
+        var fmt = RegExp(/^\d{6}[1234]\d{6}$/) //포멧 설정 
+		var buf = new Array(13); //주민번호 유효성 검사
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = (date.getMonth() + 1);
+	    var day = date.getDate();  
+	    if (month < 10) month = '0' + month;
+	    if (day < 10) day = '0' + day;
+	    var monthDay = month + day;
+		var birthYear = (jumins3.charAt(6) <= "2") ? "19" : "20";
+		birthYear += $("#unum1").val().substr(0, 2); 
+		birthmd = $("#unum1").val().substr(2, 4);
+		
+		var age = monthDay < birthmd ? year - birthYear - 1 : year - birthYear;
+		$('#age').val(age);
+		
+
+		if (!fmt.test(jumins3)) {
+			alert("주민등록번호 형식에 맞게 입력해주세요"); $("#unum1").focus(); 
+			$("#juminnumCheck").val('');
+		}else{
+		//주민번호 존재 검사 
+		for (var i = 0; i < buf.length; i++){ 
+			buf[i] = parseInt(jumins3.charAt(i)); 
+		} 
+		var multipliers = [2,3,4,5,6,7,8,9,2,3,4,5];// 밑에 더해주는 12자리 숫자들 
+		var sum = 0; 
+		for (var i = 0; i < 12; i++){ 
+			sum += (buf[i] *= multipliers[i]);// 배열끼리12번 돌면서 
+		}
+		if ((11 - (sum % 11)) % 10 != buf[12]) { 
+			alert("잘못된 주민등록번호 입니다."); 
+			$("#unum1").focus(); 
+			$("#juminnumCheck").val('');
+		}else{
+			var jumin = $('#jumins').val($("#unum1").val() + $("#unum2").val());
+			$.ajax({
+				data:{
+					jumin : jumin
+				},
+				type: "POST",
+				url: "../member/memberjumin",
+				success:function(data){
+					
+				}
+			})
+			alert("사용가능한 주민번호입니다.");
+			$('#jumin').val(jumins3);
+			$("#juminnumCheck").val('0');
+			$('.iTextnum').attr('readonly', true);
+			$("#juminnum").attr('type', 'hidden');
+		}
+		}
+
+	});
+	
+
+
+		
+	
+
 });
 	
 
