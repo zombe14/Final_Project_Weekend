@@ -8,10 +8,10 @@
 <meta charset="utf-8">
   <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css?ver=5">
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
      <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" /> 
-  <script type="text/javascript" src="../resources/js/member/memberAgree2.js"></script>
+  <script type="text/javascript" src="../resources/js/member/memberAgree2.js?ver=1"></script>
 <title>Weekend - 본인인증</title>  
 
 </head>
@@ -68,7 +68,7 @@
 										<span class="addr">@</span>
 										<input type="text" class="iText" title="이메일주소" name="memEmail2" disabled="" id="email_adress">
 										<div class="customSelect mailSelect">
-											<select name="memEmail3"  id="memEmail_select">
+											<select name="memEmail3"  id="memEmail_select" >
 												<option value="">선택해주세요</option>
 												
 													<option value="naver.com">naver.com</option>
@@ -96,12 +96,19 @@
 											</select>
 										</div>
 										<input type="hidden" id="email" name="email" title="email">
-										<div id="result_mememail">
-										
-									</div>
 									<button type="button" id="emailCheck">
 										메일인증하기
 									</button>
+									<input type="hidden" class="iText" id="emailCodeCheck" name="emailCodeCheck">
+									<button type="button" id="emailCodeCheckbt">
+										메일코드확인
+									</button>
+									</div>
+										<div id="result_mememail">
+										
+									</div>
+									<div id="result_emailCodeCheckbt">
+										
 									</div>
 									<div class="mailAreaMessage">
 										<span class="alertMessage" style="display:none; margin-bottom:6px;"></span>
@@ -122,7 +129,7 @@
 		</form>
 		</div>
 	</div>
-
+	
 </div>
 </body>
 </html>
