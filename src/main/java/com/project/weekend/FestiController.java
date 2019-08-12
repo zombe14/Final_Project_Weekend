@@ -37,13 +37,13 @@ public class FestiController {
 	}
 	
 	//write process - post
-	@RequestMapping(value = "festi", method = RequestMethod.POST)
+	@RequestMapping(value = "festiWrite", method = RequestMethod.POST)
 	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String path = "board/boardTile";
 		int res = festiService.setWrite(festiDTO, filelist, session);
 		if(res>0) {
-			path = "redirect:./festiList";
+			path = "redirect:./festiSelect?num="+festiDTO.getNum();
 		} else {
 			path = "redirect:./festiList";
 		}
@@ -72,9 +72,9 @@ public class FestiController {
 		FestiDTO festiDTO = festiService.getSelect(num);
 		pageMaker.setNum(num);
 		List<AfterDTO> list = afterService.getList(pageMaker);
-
+		System.out.println(festiDTO.getContents());
 		mv.addObject("after", list);
-
+		
 		mv.addObject("dto", festiDTO);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
@@ -97,16 +97,16 @@ public class FestiController {
 	
 	//update-process
 	@RequestMapping(value = "festiUpdate", method = RequestMethod.POST)
-	public ModelAndView setUpdate(FestiDTO festiDTO) throws Exception{
+	public ModelAndView setUpdate(FestiDTO festiDTO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int res = festiService.setUpdate(festiDTO);
+		int res = festiService.setUpdate(festiDTO, session);
 		mv.setViewName("redirect:./festiSelect?num="+festiDTO.getNum());
 		return mv;
 	}
 	
 	@RequestMapping(value = "festiDelete", method = RequestMethod.GET)
-	public String setDelete(String num) throws Exception{
-		int res = festiService.setDelete(num);
+	public String setDelete(String num,  HttpSession session) throws Exception{
+		int res = festiService.setDelete(num, session);
 		String path = "redirect:./festiSelect?num="+num;
 		if (res>0) {
 			path = "redirect:./festiList";

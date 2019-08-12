@@ -55,7 +55,7 @@
 				CONTENTS LIKE '%'||#{search}||'%'
 			</otherwise>
 		</choose>
-		ORDER BY NUM DESC) N)
+		ORDER BY REG_DATE DESC) N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<!-- NOTICE 페이지 상단에 강조할 공지글 배치. SEARCH에 영향 x -->
@@ -82,6 +82,6 @@
 	</select>
 	
 	<select id="getNewList" resultMap="noticeResult">
-		SELECT * FROM (SELECT ROWNUM R, N.* FROM (SELECT TITLE FROM NOTICE ORDER BY REG_DATE DESC) N)  WHERE R BETWEEN 1 AND 5 
+		SELECT * FROM (SELECT ROWNUM R, N.* FROM (SELECT NUM, TITLE FROM NOTICE ORDER BY REG_DATE DESC) N)  WHERE R BETWEEN 1 AND 5 
 	</select>
 </mapper>

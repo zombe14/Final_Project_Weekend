@@ -1,3 +1,32 @@
+DELTE COMMENTS WHERE CNUM = 40
+
+create table comments(
+	cnum number(8) constraint comment_cnum_pk primary key,
+	num varchar2(400),
+	contents clob,
+	reg_date date,
+	writer varchar2(400),
+	step number(8),
+	depth number(8),
+	ref number(8)
+)
+
+SELECT * FROM 
+		(SELECT ROWNUM R, C.* FROM 
+		(SELECT * FROM COMMENTS 
+		ORDER BY (SUBSTR(REF, 2)*1) DESC, STEP DESC) C) 
+		WHERE R BETWEEN 1 AND 10
+
+drop table comments
+create sequence com_seq
+	start with 1
+	nomaxvalue
+	nocycle
+	nocache
+select * from qna
+SELECT COM_SEQ.NEXTVAL FROM DUAL
+select * from files
+select * from show_order
 SELECT * FROM 
 		(SELECT ROWNUM R, Q.* FROM 
 		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW, (SUBSTR(NUM, 2)*1) n
@@ -5,8 +34,10 @@ SELECT * FROM
 		LIKE '%'||'%'
 		ORDER BY (SUBSTR(ref, 2)*1) DESC, STEP ASC) Q) 
 		WHERE R BETWEEN 1 AND 100
-delete qna
+delete qna where num = 'q60'
 update qna set num
+
+select * from qna
 		
 SELECT * FROM 
 		(SELECT ROWNUM R, Q.* FROM 

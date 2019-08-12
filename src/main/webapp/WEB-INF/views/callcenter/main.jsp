@@ -73,16 +73,16 @@
 						</li>
 						<li class="h1">
 								<h4><i>예매 상담</i> 하기</h4>
-								<p>1588-0000</p>
+								<p class="phone_num">1588-0000</p>
 								<br>
-								<p>09:00 ~ 18:00(월-금)</p>
+								<p class="time">09:00 ~ 18:00(월-금)</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help5.png">
 						</li>
 						<li class="h1">
 								<h4><i>문의</i> 하기</h4>
-								<p>1588-0001</p>
+								<p class="phone_num">1588-0001</p>
 								<br>
-								<p>09:00 ~ 18:00(월-금)</p>
+								<p class="time">09:00 ~ 18:00(월-금)</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help5.png">
 						</li>
 					</ul>
@@ -111,9 +111,7 @@
 							<strong>최근 공지 사항</strong>
 							<ul>
 							<c:forEach items="${list}" var="list">
-								<li>
-									${list.title}
-								</li>
+								<li><a href="${pageContext.request.contextPath}/notice/noticeSelect?num=${list.num}">${list.title}</a></li>
 							</c:forEach>
 							</ul>
 						</div>

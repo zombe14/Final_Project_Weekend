@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CommentsMapper">
+	
+	<insert id="setWrite" parameterType="CommentsDTO">
+		<selectKey keyProperty="cnum" order="BEFORE" resultType="Integer">
+			SELECT COM_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO COMMENTS(CNUM, NUM, WRITER, CONTENTS, REG_DATE, REF, STEP, DEPTH) 
+		VALUES (#{cnum}, #{num}, #{writer}, #{contents}, sysdate, #{cnum}, 0, 0)
+	</insert>
+	
+	
+	<select id="getList" parameterType="PageMaker" resultType="CommentsDTO">
+		SELECT * FROM 
+		(SELECT ROWNUM R, C.* FROM 
+		(SELECT * FROM COMMENTS
+		WHERE NUM = #{num} 
+		ORDER BY REF DESC, STEP DESC) C) 
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<select id="getCount" parameterType="String" resultType="Integer">
+		SELECT COUNT(CNUM) FROM COMMENTS WHERE NUM = #{num}
+	</select>
+	
+	<delete id="setDelete" parameterType="Integer">
+		DELETE COMMENTS WHERE CNUM = #{cnum}
+	</delete>
+	
+	<update id="setUpdate" parameterType="CommentsDTO">
+		UPDATE COMMENTS SET CONTENTS = #{contents} WHERE CNUM = #{cnum}
+	</update>
+</mapper>

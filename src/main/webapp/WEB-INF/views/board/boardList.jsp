@@ -86,8 +86,8 @@
 								<td>
 									<c:if test="${board eq 'qna'}">
 										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;답변 : </c:forEach>
-									</c:if>	
-									${list.title}
+									</c:if>
+										${list.title}									
 								</td>
 								<td class="td10">${list.writer}</td>
 								<td class="td10">${list.reg_date}</td>
