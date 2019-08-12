@@ -24,7 +24,9 @@
 		</div>
 		<div id="container">
 			<div class="conta">
-				num : ${dto.num} 
+				num : ${dto.num}
+				<br>
+				qnum : ${dto.qnum}
 				<br> 
 				title : ${dto.title} 
 				<br> 
@@ -32,7 +34,9 @@
 				<br> 
 				reg_Date : ${dto.reg_date} 
 				<br>
+				<c:if test="${board ne 'fqna'}">
 				hit : ${dto.hit} 
+				</c:if>
 				<br>
 				contents : ${dto.contents} 
 				<br> 
@@ -58,9 +62,12 @@
 				</c:if>
 
 				<form action="./${board}Delete" id="deleteFrm" method="post">
-					
-					<input type="hidden" class="num" id = "${dto.num}" name="num" value="${dto.num}">
-									
+					<c:if test="${board eq 'qna' or board eq 'qnaReply'}">
+						<input type="hidden" class="num" id = "${dto.num}" name="num" value="${dto.num}">
+					</c:if>			
+					<c:if test="${board eq 'fqna' or board eq 'fqnaReply'}">
+						<input type="hidden" class="num" id = "${dto.qnum}" name="qnum" value="${dto.qnum}">
+					</c:if>
 				</form>
 				<%-- <hr>  댓글.
 				<c:if test="${board eq 'qna'}">
@@ -110,6 +117,8 @@
 		} else if (board == 'after') {
 			num = $('.anum').attr('id');
 			location.href="./${board}Update?anum="+num;
+		} else if(board == 'fqna'){
+			location.href = "./${board}Update?qnum=${dto.qnum}";
 		}
 		
 	});
@@ -128,10 +137,10 @@
 		var list = "";
 		var board = $(this).attr('title');
 		var num = $(this).attr('class');
-		if(board == 'after'){
-			list = "../festi/festiSelect?num="+num;		
-		} else if (board == 'notice'||'qna'){
-			list = "./"+board+"List";
+		if(board == 'qna'){
+			list = "../qna/qnaList";		
+		} else if (board == 'fqna'){
+			list = "../festi/festiSelect?num=${dto.num}";
 		}
 		location.href = list;
 	});
@@ -151,6 +160,11 @@
 		$('#replyBtn').click(function() {
 			console.log('click');
 			location.href = "./${board}ReplyWrite?num=${dto.num}";
+		});
+	} else if('${board}' == 'fqna'){
+		$('#replyBtn').click(function() {
+			console.log('click');
+			location.href = "./${board}ReplyWrite?qnum=${dto.qnum}";
 		});
 	}
 	

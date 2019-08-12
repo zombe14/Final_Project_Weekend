@@ -25,7 +25,7 @@
 		</div>
 		<div id="container">
 			<div class="conta">
-				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+				<form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
 				board : ${board}
 				<c:if test="${board eq 'fqnaReply'}">
 					<p>원글 제목 : ${origin.title}</p>
@@ -36,7 +36,7 @@
 					<div>
 						<label for="title">제목<span>*</span></label>
 						<c:if test="${board eq 'fqna'}">
-							<input type="text" name="title" id="title">
+							<input type="text" name="title" id="title" value="${dto.title}">
 						</c:if>
 						<c:if test="${board eq 'fqnaReply'}">
 							<input type="text" name="title" id="title" value="${origin.title} 답변입니다.">
@@ -44,20 +44,30 @@
 					</div>
 					<div>
 						<label for="writer">작성자<span>*</span></label> 
-						<input type="text" name="writer" value="${member.id}memberId" readonly="readonly">
+						<input type="text" name="writer" value="${dto.writer}" readonly="readonly">
 					</div>
 
 					<div>
 						<label for="contents">내용<span>*</span></label>
-						<textarea rows="" cols="" name="contents" id="contents"></textarea>
+						<textarea rows="" cols="" name="contents" id="contents">${dto.contents}</textarea>
 					</div>
 					<div>
 						<label for="files">첨부파일</label> <a id="addFiles">파일추가</a>
+						<!-- 이미 있는 파일들 -->
+						<div id="filed">
+							<input type="hidden" id="fileCount" value="${dto.fileDTOs.size()}">
+							<c:forEach items="${dto.fileDTOs}" var="f">
+								<c:if test="${f.oname ne null}">
+									<div class="fileDTOsDiv">
+										<p style="display: inline-block;">${f.oname}</p>
+										<span class="glyphicon glyphicon-remove deleteFile" id="${f.fnum}" title="${f.fname}" style="display: inline-block;"></span>
+									</div> 
+								</c:if>
+							</c:forEach>
+						</div>
+						<hr>
 						<div id="files">
-							<div>
-								<input type="file" class="filelist" name="filelist" style="display: inline-block"> 
-								<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
-							</div>
+							
 						</div>
 					</div>
 					<c:if test="${board eq 'fqna'}">
@@ -76,7 +86,7 @@
 							<input type="password" name="pw" id="pw">
 						</div>
 					</c:if>
-					<input type="text" name="num" value="${origin.num}">
+					<input type="text" name="qnum" value="${dto.qnum}">
 					<a class="btn btn-default" id="write">등록</a>
 				</form>
 
@@ -91,74 +101,82 @@
 	<script src="../resources/js/summernote.js"></script>
 	<!-- script -->
 	<script type="text/javascript">
-		/* 첨부 파일 관리 */
-		// 개수 제한. 최대 5개까지.
-		var limit = 1;
-		// 파일 추가
-		$('#addFiles')
-				.click(
-						function() {
-							var addFiles = '<div>'
-									+ '<input type="file" class="filelist" name="filelist" style="display: inline-block"> '
-									+ '<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>'
-									+ '</div>';
-							if (limit < 5) {
-								$('#files').append(addFiles);
-								limit++
-							} else {
-								alert("최대 5개까지 첨부가능합니다.");
-							}
-						});
-
-		// 정적인 input 파일 제거
-		$('.deleteFile').click(function() {
-			$(this).parent().remove();
-			limit--
+	/* 첨부 파일 관리 */
+	// 개수 제한. 최대 5개까지.
+	var limit = 1;
+	// 파일 추가
+	$('#addFiles').click(function() {
+		var addFiles = '<div>'
+							+'<input type="file" class="filelist" name="filelist" style="display: inline-block"> '
+							+'<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>'
+						+'</div>';
+		if(limit<5){
+			$('#files').append(addFiles);
+			limit++
+		} else {
+			alert("최대 5개까지 첨부가능합니다.");
+		}
+	});
+	
+	// 정적인 input 파일 제거
+	$('.deleteFile').click(function() {
+			var con = confirm('삭제하시겠습니까? 복구가 불가능합니다.');
+			if(con){
+				var fnum = $(this).attr('id');
+				var fname = $(this).attr('title');
+				var selector = $(this);
+				$.ajax({
+					url:"../ajax/fileDelete",
+					type:'post',
+					data:{
+						fnum:fnum,
+						fname:fname,
+						board:'board'
+					},
+					success:function(data){
+						data = data.trim();
+						if(data == '1'){
+							selector.parent().remove();
+							selector.prev().remove();
+							selector.remove();
+							limit--;
+						} else {
+							alert('삭제 할 수 없습니다.');
+						}
+					}
+				});		
+			}
 		});
-
-		// 동적으로 그려진 input file 제거
-		$('#files').on('click', '.deleteFile', function() {
-			$(this).parent().remove();
-			limit--
-		});
-
-		/* 첨부 파일 관리 끝 */
-
-		/* 비밀글 */
-		if('${board}'=='qna'){
-			$('#pw').hide();
-			$('.pwSel').click(function() {
-				var secret = $('#secret').prop('checked');
-				console.log(secret);
-				if ($('#secret').prop('checked')) {
-					$('#pw').show();
-				} else {
-					$('#pw').hide();
-				}
-			});	
-			if ($('#nonSecret').prop('checked', true)) {
+	
+	// 동적으로 그려진 input file 제거
+	$('#files').on('click','.deleteFile',function(){
+		$(this).parent().remove();
+		limit--
+	});
+	/* 첨부 파일 관리 끝 */
+	// 오픈/비밀 유지
+		if('${board}'== 'qna' || '${board}' == 'fqna'){
+			if($('#pw').val() == ""){
+				$('#nonSecret').prop('checked',true);
 				$('#pw').val('');
 				$('#pw').hide();
+			} else {
+				$('#secret').prop('checked',true);
 			}
-			$('.pwSel').click(function() {
-				if ($('#nonSecret').prop('checked') == true) {
+			
+			$('.pwSel').click(function(){
+				if($('#nonSecret').prop('checked')==true){
 					$('#pw').val('');
 					$('#pw').hide();
-				}
-				if ($('#secret').prop('checked') == true) {
+				} 
+				if($('#secret').prop('checked')==true){
 					$('#pw').removeAttr('readonly');
 					$('#pw').show();
 				}
 			});
 		}
-		
-		if('${board}'=='qnaReply'){
-			$('#replyDiv').hide();
-			if('${qnaOrigin.pw}' != ''){
-				$('#pw').val('${qnaOrigin.pw}');
-			}
-		}
-		
+	
+
 		$('#write').click(function() {
 			var secretCheck = $('#secret').prop('checked');
 			if($('#title').val()!='' && $('#writer').val() != '' && $('#contents').val() != ''){
@@ -173,6 +191,7 @@
 				alert('필수(*)를 모두 입력해주세요');
 			}
 		});
+
 		
 	</script>
 </body>

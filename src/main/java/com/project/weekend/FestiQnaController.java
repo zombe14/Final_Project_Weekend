@@ -44,32 +44,54 @@ public class FestiQnaController {
 		ModelAndView mv = new ModelAndView();
 		int res = festiQnaService.setWrite(festiQnaDTO, filelist, session);
 		if (res>0) {
-			mv.setViewName("redirect:../festi/festiSelect?num="+festiQnaDTO.getNum());
+			mv.setViewName("redirect:./fqnaSelect?qnum="+festiQnaDTO.getQnum());
 		}
 		return mv;
 	}
 	
 	@RequestMapping(value = "fqnaUpdate", method = RequestMethod.GET)
 	public ModelAndView setUpdate(String qnum) throws Exception{
-		ModelAndView mv = new ModelAndView(); 
+		ModelAndView mv = new ModelAndView();
+		FestiQnaDTO festiQnaDTO = festiQnaService.getSelect(qnum);
+		mv.addObject("dto", festiQnaDTO);
+		mv.addObject("board", board);
+		mv.addObject("boardTitle", boardTitle);
+		mv.setViewName("board/fqnaUpdate");
 		return mv;
 	}
 	
 	@RequestMapping(value = "fqnaUpdate", method = RequestMethod.POST)
 	public ModelAndView setUpdate(FestiQnaDTO festiQnaDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView(); 
+		ModelAndView mv = new ModelAndView();
+		int res = festiQnaService.setUpdate(festiQnaDTO, filelist, session);
+		System.out.println(res);
+		if(res>0) {
+			mv.setViewName("redirect:./fqnaSelect?qnum="+festiQnaDTO.getQnum());
+		}
 		return mv;
 	}
 	
 	@RequestMapping(value = "fqnaDelete", method = RequestMethod.POST)
-	public ModelAndView setDelete(String qnum) throws Exception{
-		ModelAndView mv = new ModelAndView(); 
+	public ModelAndView setDelete(String qnum, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String num = festiQnaService.getSelect(qnum).getNum();
+		int res = festiQnaService.setDelete(qnum, session);
+		if(res>0) {
+			mv.setViewName("redirect:../festi/festiSelect?num="+num);
+		} else {
+			
+		}
 		return mv;
 	}
 	
 	@RequestMapping(value = "fqnaSelect", method = RequestMethod.GET)
 	public ModelAndView getSelect(String qnum) throws Exception{
-		ModelAndView mv = new ModelAndView(); 
+		ModelAndView mv = new ModelAndView();
+		FestiQnaDTO festiQnaDTO = festiQnaService.getSelect(qnum);
+		mv.addObject("dto", festiQnaDTO);
+		mv.addObject("board", board);
+		mv.addObject("boardTitle", boardTitle);
+		mv.setViewName("board/qnaSelect");
 		return mv;
 	}
 	

@@ -204,7 +204,7 @@
 					</div>
 					<br>
 					<!-- 주변 맛집 -->
-					<div>
+					<div id="resta">
 						<h3>주변 식당</h3>
 						<div class="map_wrap">
 						    <div id="map2" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
@@ -226,7 +226,7 @@
 					</div>
 					<br>
 					<!-- 주변 숙소 -->
-					<div>
+					<div id="hotel">
 						<h3>주변 숙소</h3>
 						<div class="map_wrap">
 						    <div id="map3" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
@@ -252,7 +252,7 @@
 				
 				
 				<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
-				<a href="../festiQna/fqnaWrite?num=${dto.num}">질문하기</a>
+				
 				<%-- <c:if test="${member.grade > 1}"> --%> 
 				<%-- </c:if> --%>
 				
@@ -277,21 +277,23 @@
 				</table>
 				
 				<!--  질문 -->
+				<a href="../festiQna/fqnaWrite?num=${dto.num}">질문하기</a>
 				<table class="table">
 					<thead>
 						<th>NUM</th>
 						<th>TITLE</th>
 						<th>Writer</th>
 						<th>DATE</th>
-						<th>hit</th>
+						<th>상태</th>
 					</thead>
 					<c:forEach items="${qna}" var="i">
-						<tr title="${i.anum}" class="qnaSel">
+						<tr title="${i.qnum}" class="qnaSel">
 							<td>${fn:substring(i.qnum, 1,8)}</td>
 							<td>${i.title}</td>
 							<td>${i.writer}</td>
 							<td>${i.reg_date}</td>
-							<td>${i.hit}</td>
+							<td>답변대기중						
+							</td>
 						</tr>					
 					</c:forEach>
 				</table>
@@ -331,7 +333,7 @@
 	});
 	/* 질문 보기 */
 	$('.qnaSel').click(function() {
-		location.href="../festiQna/fqnaSelect?num="+$(this).attr('title');
+		location.href="../festiQna/fqnaSelect?qnum="+$(this).attr('title');
 	});
 	
 	
@@ -377,7 +379,7 @@
 	
 	
 	
-	
+
 	/* 행사주변 맛집 */
 	// 마커를 담을 배열입니다
 	var markers = [];
@@ -423,19 +425,21 @@
 	
 	        // 페이지 번호를 표출합니다
 	        displayPagination(pagination);
+	        $('#resta').show();
 	
 	    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 	
-	        alert('검색 결과가 존재하지 않습니다.');
+	    	$('#resta').hide();
 	        return;
 	
 	    } else if (status === kakao.maps.services.Status.ERROR) {
 	
-	        alert('검색 결과 중 오류가 발생했습니다.');
+	    	$('#resta').hide();
 	        return;
 	
 	    }
 	}
+	
 	
 	// 검색 결과 목록과 마커를 표출하는 함수입니다
 	function displayPlaces(places) {
@@ -599,6 +603,7 @@
 	 
 	 
 	/* 근처 숙박업소 */
+
 	var markers3 = [];
 	var mapContainer3 = document.getElementById('map3'), // 지도를 표시할 div 
     mapOption3 = {
@@ -634,19 +639,21 @@
 	
 	        // 페이지 번호를 표출합니다
 	        displayPagination3(pagination);
+	        $('#hotel').show();
 	
 	    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 	
-	        alert('검색 결과가 존재하지 않습니다.');
+	    	 $('#hotel').hide();
 	        return;
 	
 	    } else if (status === kakao.maps.services.Status.ERROR) {
 	
-	        alert('검색 결과 중 오류가 발생했습니다.');
+	    	$('#hotel').hide();
 	        return;
 	
 	    }
 	}
+	
 	
 	// 검색 결과 목록과 마커를 표출하는 함수입니다
 	function displayPlaces3(places) {
@@ -799,7 +806,6 @@
 	    infowindow3.setContent(content);
 	    infowindow3.open(map3, marker);
 	}
-
 	
 </script>
 

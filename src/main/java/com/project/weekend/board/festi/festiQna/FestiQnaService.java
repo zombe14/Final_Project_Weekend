@@ -58,9 +58,16 @@ public class FestiQnaService {
 		return res;
 	}
 	
-	public int setDelete(String qnum) throws Exception{
+	public int setDelete(String qnum, HttpSession session) throws Exception{
 		int res = festiQnaDAO.setDelete(qnum);
-		res = fileDAO.setDeleteAll(qnum);
+		
+		List<FileDTO> list = fileDAO.getList(qnum);
+		
+		if(list != null) {
+			for(FileDTO fileDTO : list) {
+				res = fileService.setDelete(fileDTO, "board", session);
+			}
+		}
 		return res;
 	}
 	
