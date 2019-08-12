@@ -1,3 +1,49 @@
+#wrap{
+	background-color: #f5f6f7;
+}
+
+input{
+	outline: none;
+}
+
+.join_wrap{
+	width:500px;
+	margin: 0 auto;
+}
+
+.join_logo{
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.join_footer span{
+	color: #8e8e8e;
+}
+
+.join_footer{
+	text-align: center;
+}
+
+.join_menu span{
+	padding: 10px;
+}
+
+.join_menu a:first-child {
+	font-weight: bold;
+}
+
+.jnbtn{
+	width: 100%;
+    height: 60px;
+    background-color: #00d344;
+    font-size: 20px;
+    color: white;
+    border: 1px solid white;
+    margin-bottom: 20px;
+    padding: 15px;
+	cursor: pointer;
+}
+
 .joinWrap{
 	margin-top: 30px;
     position: relative;
@@ -18,13 +64,13 @@
     letter-spacing: -1px;
 }
 .joinWrap .conTitle i {
-    color: #41b40a;
+    color: #00d344;
     font-style: normal;
 }
 .joinWrap .tableBox table {
     width: 100%;
     position: relative;
-    table-layout: fixed;
+	table-layout: fixed;
     border-top: 1px solid #b6bdc7;
 }
 table {
@@ -79,9 +125,9 @@ element.style {
     cursor: pointer;
 }
 .joinWrap .tableBox table td select {
-    height: 33px;
+    height: 40px;
     line-height: 33px;
-    width: 168px;
+    width: 101px;
     border: 1px solid #dfe5ed;
     font-family: "Noto Sans KR", "NanumGothic", "Nanum Gothic", "Malgun Gothic", "Apple SD Gothic Neo", dotum, sans-serif;
 }
@@ -157,10 +203,11 @@ select {
 }
 #num_select{
 	width: 100px;
-	height: 28px;
+	height: 40px;
 }
 .joinWrap .tableBox table td .phoneNumber .iText {
-    width: 70px;
+    width: 100px;
+    height: 40px;
 }
 #hypen_first{
 	margin-left: 24px;
@@ -171,7 +218,8 @@ select {
     margin-right: 5px;
 }
 .joinWrap .tableBox table td .mailArea .iText {
-    width: 150px;
+    width: 101px;
+    height: 40px;
 }
 .iCheckbox input[type="checkbox"] {
     width: 22px;
@@ -181,13 +229,33 @@ select {
 }
 .joinWrap .certifyButtonWrap {
     text-align: center;
-    margin: 20px 0 30px;
 }
 .joinWrap .certifyButtonWrap button {
-    background: #41b40a;
-    color: #fff;
-    font-size: 18px;
-    padding: 7px 20px 8px;
+    border: 1px solid white;
+    padding: 10px 20px;
+    background: #00d344;
+    color: white;
+    font-size: 14px;
+    float: right;
+    margin-right: 5px;
+}
+
+#memberidCheck{
+    border: 1px solid white;
+    padding: 10px 20px;
+    background: #00d344;
+    color: white;	
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+#nicknameCheckbt{
+    border: 1px solid white;
+    padding: 10px 20px;
+    background: #00d344;
+    color: white;
+    font-size: 14px;
+    margin: 0 5px;
 }
 button {
     margin: 0;
@@ -198,10 +266,11 @@ button {
     font-family: "Noto Sans KR", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
 }
 .joinWrap  .iText {
-    width: 340px;
+    width: 220px;
     -webkit-transition: 0.5s;
   	transition: 0.5s;
   	outline: none;
+  	height: 40px;
 }
 .iText {
     padding: 0 8px;
@@ -236,7 +305,7 @@ button {
     font-style: normal;
 }
 .certifyButtonWrap_final {
-    background: #41b40a;
+    background: #00d344;
     color: #fff;
     font-size: 18px;
     padding: 7px 20px 8px;
@@ -246,17 +315,32 @@ button {
 	text-align: center;
 }
 
+.iCheckbox label{
+	padding: 10px 35px;
+}
+
 input[type=text]:focus{
-	border: 1px solid #41b40a;
+	border: 1px solid #00d344;
 	
 }
 
 input[type=password]:focus{
-	border: 1px solid #41b40a;
+	border: 1px solid #00d344;
 	
 }
 
+input[type=checkbox] { display:none; }
 
+input[type=checkbox] + label { 
+	display: inline-block; 
+	cursor: pointer; 
+	line-height: 22px;  
+	background: url('../images/memberagree/checkbox_off.png') left/22px no-repeat; 
+}
+
+input[type=checkbox]:checked + label { 
+	 background: url("../images/memberagree/checkbox_on.png") left/20px no-repeat;
+ }
 
 
 

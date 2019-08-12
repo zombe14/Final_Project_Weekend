@@ -36,6 +36,11 @@
 	<bean class="com.project.weekend.board.festi.after.AfterDAO" id="afterDAO"/>
 	<bean class="com.project.weekend.board.festi.after.AfterService" id="afterService"/>
 	
+	<!-- comments -->
+	<bean class="com.project.weekend.board.comments.CommentsDTO" id="commentsDTO"/>
+	<bean class="com.project.weekend.board.comments.CommentsDAO" id="commentsDAO"/>
+	<bean class="com.project.weekend.board.comments.CommentsService" id="commentsService"/>
+	
 	<!-- qna -->
 	<bean class="com.project.weekend.board.qna.QnaDTO" id="qnaDTO" />
 	<bean class="com.project.weekend.board.qna.QnaDAO" id="qnaDAO" />

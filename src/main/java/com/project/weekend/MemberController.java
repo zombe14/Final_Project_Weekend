@@ -66,14 +66,13 @@ public class MemberController {
 
 	
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
-	public void setWrite(@ModelAttribute MemberDTO memberVO)throws Exception{
+	public void setWrite(@ModelAttribute MemberDTO memberDTO)throws Exception{
 	}
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MemberDTO getId = memberService.getId(memberDTO);
 		String message="Join Fail";
-
 		if(getId!=null) {
 			message="이미 존재하는 아이디입니다.";
 			mv.setViewName("common/messageMove");
@@ -145,13 +144,26 @@ public class MemberController {
 	public void getAgree()throws Exception{}
 	@RequestMapping(value = "memberAgree", method = RequestMethod.POST)
 	public String getAgree(HttpSession session)throws Exception{
-		System.out.println("getAgree");
 		ModelAndView mv = new ModelAndView();
 		String memberAgree = "member";
 		session.setAttribute("memberAgree", memberAgree);
+		return "redirect:./memberAgree2";
+		
+	}
+	@RequestMapping(value = "memberAgree2", method = RequestMethod.GET)
+	public void getAgree2()throws Exception{}
+	@RequestMapping(value = "memberAgree2", method = RequestMethod.POST)
+	public String getAgree2(HttpSession session,MemberDTO memberDTO)throws Exception{
+		session.setAttribute("memberEmail", memberDTO.getEmail());
+		session.setAttribute("memberPhone", memberDTO.getPhone());
+		session.setAttribute("memberAgree2", "memberAgree2");
+		ModelAndView mv = new ModelAndView();
+		String memberAgree2 = "member2";
+		session.setAttribute("memberAgree2", memberAgree2);
 		return "redirect:./memberJoin";
 		
 	}
+	
 	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
 	public String logout(String id, HttpSession session, MemberDTO memberDTO)throws Exception{
 		

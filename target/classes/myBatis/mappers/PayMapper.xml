@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PayMapper">
+	<insert id="payment" parameterType="PayVO">
+		insert into payment values(
+			#{tid}, #{partner_order_id}, #{partner_user_id},
+			null, #{total_amount}, #{total_amount}, 2
+		)
+	</insert>
+	
+	<update id="updateToken" parameterType="PayVO">
+		update payment set pg_token=#{pg_token}, state = 1
+		where partner_order_id=#{partner_order_id}
+	</update>
+	
+	<select id="selectOne" parameterType="String" resultType="PayVO">
+		select * from payment where partner_order_id=#{partner_order_id}
+	</select>
+	
+	<select id="selectList" resultType="PayVO">
+		select * from payment
+	</select>
+	
+	<update id="cancel" parameterType="String">
+		update payment set Cancel_available_amount  = 0, state = 0 where partner_order_id = #{partner_order_id}
+	</update>
+</mapper>

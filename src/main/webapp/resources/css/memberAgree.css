@@ -1,3 +1,43 @@
+#wrap{
+	background-color: #f5f6f7;
+}
+
+.join_wrap{
+	width:500px;
+	margin: 0 auto;
+}
+
+.join_logo{
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.join_footer span{
+	color: #8e8e8e;
+}
+
+.agbtn{
+	width: 100%;
+    height: 60px;
+    background-color: #00d344;
+    font-size: 20px;
+    color: white;
+    border: 1px solid white;
+    margin-bottom: 20px;
+}
+
+.join_footer{
+	text-align: center;
+}
+
+.join_menu span{
+	padding: 10px;
+}
+
+.join_menu a:first-child {
+	font-weight: bold;
+}
+
 input[type=checkbox] {  
     display: none;  
 }
@@ -6,12 +46,14 @@ input[type=checkbox] + label{
     display: inline-block;  
     cursor: pointer;  
     position: relative;  
-    padding-left: 25px;  
+    padding-left: 25px;
+    line-height: 22px;   
     margin-right: 15px;  
     font-size: 13px;
+    background: url("../images/memberagree/checkbox_off.png") left/20px no-repeat;
 }
 
-input[type=checkbox]+ label:before {     
+/* input[type=checkbox]+ label:before {     
 
     content: "";  
     display: inline-block;  
@@ -20,31 +62,31 @@ input[type=checkbox]+ label:before {
     margin-right: 3px;  
     position: absolute;  
     left: 0;  
-    bottom: 1px;  
-    background-color: #ccffff;
-    border-radius: 2px; 
-    box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
-}
-input[type=checkbox]:checked + label:before { 
+    bottom: 1px;
+    background: url("../images/memberagree/checkbox_off.png") left/20px no-repeat;
+} */
+input[type=checkbox]:checked + label{ 
 
+<<<<<<< HEAD
     content: "\2713";  /* üũ��� */
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+=======
+ /*    content: "\2713"; 
+>>>>>>> master
     font-size: 18px; 
     font-weight:800; 
-    color: #fff;  
-    background:#00ff00;
     text-align: center;  
-    line-height: 18px;  
+    line-height: 18px; */
+    background: url("../images/memberagree/checkbox_on.png") left/20px no-repeat;
 
-} 
+}
 
-
+label p{
+	font-size: 15px;
+}
 
 #checkAll{
 	font-size: 25px;
-}
-#checkAll_sub_sub{
-	font-size: 15px;
 }
 .check{
 	width: 25px;
@@ -69,13 +111,12 @@ input[type=checkbox]:checked + label:before {
     background: no-repeat 50%/50% 50%;
 }
 .checkAllfont_sub{
-	margin-top : 7px;
 	margin-left: 5px;
 }
-.iCheckbox  i{
+.iCheckbox  b{
 	color: red;
 }
-.custom-control i{
+.custom-control b{
 	color: red;
 }
 #checkAllfont1{
@@ -91,4 +132,6 @@ input[type=checkbox]:checked + label:before {
     background: #fff;
 }
 
-
+.agreebox{
+	margin: 15px 0px;
+}

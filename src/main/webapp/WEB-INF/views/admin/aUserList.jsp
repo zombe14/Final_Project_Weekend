@@ -29,7 +29,18 @@
 						/* post형식으로 mapping한 주소로 id값을 보냄 */
 						$.post("../admin/aUserUpdateP",
 								{id:id},
-								function () {
+								function (data) {
+									if(data = 1){
+										if(grade == 1){
+											grade = 2;
+										}else{
+											grade = 3;
+										}
+										alert("아이디 : " + id + "\n" + "현재 등급 : "
+												+ grade + "\n" + "등급이 올라갔습니다.")
+									}else{
+										alert("실패")
+									}
 									/* 이후 최신 상태 유지를 위해 페이지를 새로부름 */
 									location.href="../admin/aUserList";
 								});
@@ -50,7 +61,14 @@
 							} else {
 								$.post("../admin/aUserUpdateM",
 										{id:id},
-										function () {
+										function (data) {
+											if(grade == 3){
+												grade = 2;
+											}else{
+												grade = 1;
+											}
+											alert("아이디 : "+id+"\n"+"현재 등급 : "
+													+grade+"\n"+"등급이 내려갔습니다.")
 											location.href="../admin/aUserList";
 										});
 							}
