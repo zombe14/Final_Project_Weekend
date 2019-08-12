@@ -106,7 +106,7 @@ $(function() {
 					email : email
 				},
 				type: "POST",
-				url: "../mail/mailSend",
+				url: "../mail/mailSending",
 				success:function(data){
 					
 				}

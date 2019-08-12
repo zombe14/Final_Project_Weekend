@@ -26,23 +26,31 @@ public class MailController {
 	private JavaMailSender mailSender;
 	@Inject
 	private MailService mailService;
-	@RequestMapping(value = "/mailSend",method = RequestMethod.POST)
-	@ResponseBody
-	public boolean mailSending(HttpServletRequest request,HttpSession session,@RequestParam(value = "email")String email)throws Exception{
-		System.out.println("메일");
-		System.out.println(email);
-
-
-		int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
-	        String joinCode = String.valueOf(ran);
-	        session.setAttribute("joinCode", joinCode);
+	@RequestMapping(value = "/mailSending",method = RequestMethod.POST)
+	public String mailSending(HttpServletRequest request){
+		
+	    String setfrom = "ts560593@gmail.com";         
+	    String tomail  = request.getParameter("email");     // 받는 사람 이메일
+	    String title   = "회원가입"; // 제목
+	    String content = "회원가입";   // 내용
+	   System.out.println(tomail);
+	    try {
+	      MimeMessage message = mailSender.createMimeMessage();
+	      MimeMessageHelper messageHelper 
+	                        = new MimeMessageHelper(message, true, "UTF-8");
 	 
-	        String subject = "회원가입 인증 코드 발급 안내 입니다.";
-	        StringBuilder sb = new StringBuilder();
-	        sb.append("귀하의 인증 코드는 " + joinCode + " 입니다.");
-	        return mailService.send(subject, sb.toString(), "ts560593@gmail.com", email, null);
-
-
+	      messageHelper.setFrom(setfrom);  // 보내는사람 생략하거나 하면 정상작동을 안함
+	      messageHelper.setTo(tomail);     // 받는사람 이메일
+	      messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+	      messageHelper.setText(content);  // 메일 내용
+	     
+	      mailSender.send(message);
+	    } catch(Exception e){
+	      System.out.println(e);
+	    }
+	    System.out.println("완료");
+	    return "redirect:./member/memberJoin";
+	  }
 		/*
 		 * System.out.println("메일"); String setfrom = ""; String tomail =
 		 * request.getParameter("email"); String title = request.getParameter("title");
@@ -58,6 +66,6 @@ public class MailController {
 		 * 
 		 * mailSender.send(message);
 		 */
-	}
+	
 	
 }
