@@ -1,6 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/project/weekend/MemberController.java=UTF-8
 encoding//src/main/java/com/project/weekend/NoticeController.java=UTF-8
-encoding//src/main/java/com/project/weekend/interceptor/AdminInterceptor.java=UTF-8
 encoding//src/main/java/com/project/weekend/interceptor/MemberInterceptor.java=UTF-8
 encoding//src/main/java/com/project/weekend/util/FileSaver.java=UTF-8

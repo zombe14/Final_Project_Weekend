@@ -28,22 +28,12 @@
 		<beans:property name="order" value="0"/> 
 	</beans:bean>
 	
-<!--Interceptor -->
+<!-- memberInterceptor -->
 	<beans:bean id="memberInterceptor" class="com.project.weekend.interceptor.MemberInterceptor" />
  	<interceptors>
 		<interceptor>
-			<mapping path="/member/memberJoin"/>
-			<mapping path="/member/memberAgree2"/>
-			<beans:ref bean="memberInterceptor"/>
-		</interceptor>
-
-	</interceptors>
-	
-	<beans:bean id="adminInterceptor" class="com.project.weekend.interceptor.AdminInterceptor" />
- 	<interceptors>
-		<interceptor>
 			<mapping path="/admin/*"/>
-			<beans:ref bean="adminInterceptor"/>
+			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
 	</interceptors> 
 	

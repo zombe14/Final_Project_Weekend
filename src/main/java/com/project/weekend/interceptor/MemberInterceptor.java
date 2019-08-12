@@ -1,4 +1,5 @@
 package com.project.weekend.interceptor;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -7,19 +8,20 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class MemberInterceptor extends HandlerInterceptorAdapter {
-	
+
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception{
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("memberAgree");
-		Object obj2 = session.getAttribute("memberAgree2");
-		boolean result = false;
-		
-		if(obj!=null) {
-			result = true;
+		Object obj = session.getAttribute("member");
+		boolean result=false;
+		if(obj != null) {
+			result=true;
 		}else {
-			response.sendRedirect("../member/memberAgree");
+			response.sendRedirect("../member/memberLogin");
 		}
+		
 		return result;
 	}
 
@@ -28,7 +30,6 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 			ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
 		super.postHandle(request, response, handler, modelAndView);
-		return;
 	}
 
 	@Override
@@ -37,5 +38,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 		// TODO Auto-generated method stub
 		super.afterCompletion(request, response, handler, ex);
 	}
-}
 	
+	
+
+}

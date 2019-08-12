@@ -11,6 +11,7 @@
 
 			<input type="hidden" value="${member.id }" id="memberId">
 
+
 				<c:choose>
 					<c:when test="${member.grade eq '3'}">
 							<div id="admin">
