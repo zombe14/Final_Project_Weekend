@@ -289,10 +289,11 @@
 					<c:forEach items="${qna}" var="i">
 						<tr title="${i.qnum}" class="qnaSel">
 							<td>${fn:substring(i.qnum, 1,8)}</td>
-							<td>${i.title}</td>
+							<td><c:if test="${i.depth eq '1'}">&nbsp;&nbsp;&nbsp;&nbsp;답변 : </c:if>${i.title}</td>
 							<td>${i.writer}</td>
 							<td>${i.reg_date}</td>
-							<td>답변대기중						
+							<td><c:if test="${i.answer eq '0'}">답변대기중</c:if>
+								<c:if test="${i.answer eq '1'}">답변완료</c:if>
 							</td>
 						</tr>					
 					</c:forEach>

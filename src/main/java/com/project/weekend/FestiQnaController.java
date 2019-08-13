@@ -74,15 +74,20 @@ public class FestiQnaController {
 	}
 	
 	@RequestMapping(value = "fqnaDelete", method = RequestMethod.POST)
-	public ModelAndView setDelete(String qnum, HttpSession session) throws Exception{
+	public ModelAndView setDelete(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		String num = festiQnaService.getSelect(qnum).getNum();
-		int res = festiQnaService.setDelete(qnum, session);
-		if(res>0) {
-			mv.setViewName("redirect:../festi/festiSelect?num="+num);
-		} else {
-			
-		}
+		// 원글 : originDelete - ref
+		// 답글 : delete - qnum
+		
+		String ref = festiQnaService.getSelect(num).getRef();
+		System.out.println(ref);
+		//int res = festiQnaService.setDelete(festiQnaService.getSelect(qnum).getRef(), session);
+		/*
+		 * if(res>0) { mv.setViewName("redirect:../festi/festiSelect?num="+num); } else
+		 * {
+		 * 
+		 * }
+		 */
 		return mv;
 	}
 	

@@ -13,6 +13,7 @@
 		<result column="step" property="step"/>
 		<result column="depth" property="depth"/>
 		<result column="pw" property="pw"/>
+		<result column="answer" property="answer"/>
 		<collection property="fileDTOs" javaType="List" ofType="FileDTO">
 			<id column="fnum" property="fnum"/>
 			<result column="num" property="num"/>
@@ -24,8 +25,8 @@
 		SELECT FESTIQNA_SEQ.NEXTVAL FROM DUAL
 	</select>
 	<insert id="setWrite" parameterType="FestiQnaDTO">
-		INSERT INTO FESTIQNA (QNUM, NUM, TITLE, WRITER, CONTENTS, REF, STEP, DEPTH, REG_DATE, PW)
-		VALUES(#{qnum}, #{num}, #{title}, #{writer}, #{contents}, #{qnum}, 0, 0, SYSDATE, #{pw})
+		INSERT INTO FESTIQNA (QNUM, NUM, TITLE, WRITER, CONTENTS, REF, STEP, DEPTH, REG_DATE, PW, ANSWER)
+		VALUES(#{qnum}, #{num}, #{title}, #{writer}, #{contents}, #{qnum}, 0, 0, SYSDATE, #{pw}, 0)
 	</insert>
 	<update id="setUpdate" parameterType="FestiQnaDTO">
 		UPDATE FESTIQNA SET TITLE = #{title}, CONTENTS = #{contents} WHERE QNUM = #{qnum}
@@ -37,7 +38,7 @@
 	</delete>
 	<!-- 질문 원본 글 + 답글 삭제-->
 	<delete id="setDeleteOrigin" parameterType="String">
-		DELETE FESTIAQNA WHERE REF = #{qnum}
+		DELETE FESTIAQNA WHERE REF = #{ref}
 	</delete>
 	<!-- 축제 삭제 시 달린 질문+답글 다 삭제 -->
 	<delete id ="setDeleteAll" parameterType="String">
@@ -60,26 +61,28 @@
 		ORDER BY (SUBSTR(REF, 2)*1) DESC, STEP ASC) Q) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
-	<!-- query piece -->
-	<sql id="subRef">
-		select ref from festiqna where qnum=#{qnum}
-	</sql>
-	<sql id="subStep">
-		select step from festiqna where qnum=#{qnum}
-	</sql>
-	<update id="setReplyPreUpdate">
+
+	
+	
+<!-- 	<update id="setReplyPreUpdate">
 		update festiqna set step=step+1 
-		where ref=(<include refid="subRef"/>)
-		and step>(<include refid="subStep"/>)
-	</update>
+		where ref=#{ref}
+		and step>(select step from festiqna where qnum=#{ref})
+	</update> -->
 	
 	<!-- reply -->
-	<insert id="setReplyWrite" parameterType="FestiQnaDTO">
+<!-- 	<insert id="setReplyWrite2" parameterType="FestiQnaDTO">
 		INSERT INTO FESTIQNA (QNUM, NUM, TITLE, WRITER, CONTENTS, REF, STEP, DEPTH, REG_DATE, PW)
-		VALUES(#{qnum}, #{num}, #{title}, #{writer}, #{contents}, 
-		(<include refid="subRef"/>), (<include refid="subStep"/>)+1, (select depth from festiqna where qnum=#{qnum})+1, SYSDATE, #{pw})
-	
+		VALUES(#{qnum}, #{num}, #{title}, #{writer}, #{contents}, #{ref}, 
+		(select step from festiqna where qnum=#{ref})+1, (select depth from festiqna where qnum=#{ref})+1, SYSDATE, #{pw})
+	</insert> -->
+	<insert id="setReplyWrite" parameterType="FestiQnaDTO">
+		INSERT INTO FESTIQNA (QNUM, NUM, TITLE, WRITER, CONTENTS, REF, STEP, DEPTH, REG_DATE, PW, answer)
+		VALUES(#{qnum}, #{num}, #{title}, #{writer}, #{contents}, #{ref}, 
+		(select count(qnum) from festiqna where ref=#{ref}), 1, SYSDATE, #{pw}, 2)
 	</insert>
-
+	<update id="setAnswer" parameterType="String">
+		update festiqna set answer = 1 where ref = #{ref} and step = 0
+	</update>
 	
 </mapper>

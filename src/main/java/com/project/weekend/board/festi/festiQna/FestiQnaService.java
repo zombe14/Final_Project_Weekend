@@ -98,8 +98,12 @@ public class FestiQnaService {
 	}
 	
 	public int setReplyWrite(FestiQnaDTO festiQnaDTO) throws Exception{
-		int res = festiQnaDAO.setReplyUpdate(festiQnaDTO);
-		res = festiQnaDAO.setReplyWrite(festiQnaDTO);
+		String qnum = "j"+festiQnaDAO.getNum();
+		festiQnaDTO.setQnum(qnum);
+		int res = festiQnaDAO.setReplyWrite(festiQnaDTO);
+		String ref = festiQnaDAO.getSelect(qnum).getRef();
+		System.out.println(ref);
+		res=festiQnaDAO.setAnswer(ref);
 		return res;
 	}
 

@@ -30,7 +30,8 @@
 				<c:if test="${board eq 'fqnaReply'}">
 					<p>원글 제목 : ${origin.title}</p>
 					<p>원글 글쓴이 : ${origin.writer}</p>
-					<input type="hidden" name ="ref" value="${origin.num}">
+					<p>ref : ${origin.qnum}</p>
+					<input type="hidden" name ="ref" value="${origin.qnum}">
 				</c:if>
 
 					<div>
@@ -125,7 +126,7 @@
 		/* 첨부 파일 관리 끝 */
 
 		/* 비밀글 */
-		if('${board}'=='qna'){
+		if('${board}'=='fqna'){
 			$('#pw').hide();
 			$('.pwSel').click(function() {
 				var secret = $('#secret').prop('checked');
@@ -152,7 +153,7 @@
 			});
 		}
 		
-		if('${board}'=='qnaReply'){
+		if('${board}'=='fqnaReply'){
 			$('#replyDiv').hide();
 			if('${qnaOrigin.pw}' != ''){
 				$('#pw').val('${qnaOrigin.pw}');

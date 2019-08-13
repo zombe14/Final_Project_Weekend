@@ -32,8 +32,8 @@ public class FestiQnaDAO {
 		return sqlSession.delete(NAMESPACE+"setDelete", qnum);
 	}
 	
-	public int setDeleteOrigin(String num) throws Exception{
-		return sqlSession.delete(NAMESPACE+"setDeleteOrigin", num);
+	public int setDeleteOrigin(String ref) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDeleteOrigin", ref);
 	}
 	
 	public int setDeleteAll(String num) throws Exception{
@@ -60,5 +60,10 @@ public class FestiQnaDAO {
 	//답글 달기
 	public int setReplyWrite(FestiQnaDTO festiQnaDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setReplyWrite", festiQnaDTO);
+	}
+	
+	// 답변 달았을 때 상태메세지
+	public int setAnswer(String ref) throws Exception{
+		return sqlSession.update(NAMESPACE+"setAnswer", ref);
 	}
 }

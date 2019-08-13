@@ -34,7 +34,9 @@
 				<br> 
 				reg_Date : ${dto.reg_date} 
 				<br>
+				<c:if test="${board ne 'fqna'}">
 				hit : ${dto.hit} 
+				</c:if>
 				<br>
 				contents : ${dto.contents} 
 				<br> 
@@ -63,6 +65,9 @@
 					<c:if test="${board eq 'qna' or board eq 'qnaReply'}">
 						<input type="hidden" class="num" id = "${dto.num}" name="num" value="${dto.num}">
 					</c:if>			
+					<c:if test="${board eq 'fqna' or board eq 'fqnaReply'}">
+						<input type="hidden" class="num" id = "${dto.qnum}" name="qnum" value="${dto.qnum}">
+					</c:if>
 				</form>
 				<%-- <hr>  댓글.
 				<c:if test="${board eq 'qna'}">
