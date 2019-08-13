@@ -124,7 +124,10 @@ public class FestiController {
 		String path = "redirect:./festiSelect?num="+num;
 		if (res>0) {
 			path = "redirect:./festiList?category="+category;
+		} else {
+			
 		}
+		System.out.println("f con : "+res);
 		return path;
 	}
 }

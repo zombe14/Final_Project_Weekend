@@ -92,8 +92,8 @@ public class FestiService {
 	public int setDelete(String num, HttpSession session) throws Exception{
 		int res = 0;
 		res = festiDAO.setDelete(num);
-		res = afterService.setDeleteAll(num);
-		res = festiQnaService.setDeleteOrigin(num);
+		res = afterService.setDeleteAll(num, session);
+		//res = festiQnaService.setDeleteOrigin(num);
 		List<FileDTO> list = fileDAO.getList(num);
 		if(list != null) {
 			for(FileDTO fileDTO : list) {
