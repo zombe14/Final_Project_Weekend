@@ -64,7 +64,7 @@
 		
 						<c:forEach items="${list}" var="list">
 							<tr class="select" title="${list.pw}" id="${list.num}">
-								<td class="selectRow td10">${fn:substring(list.num, 1,8)}</td>
+								<td class="selectRow td10">${fn:substring(list.num, 1,9)}</td>
 								<c:if test="${list.pw eq null }">
 									<td>
 										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
