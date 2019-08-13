@@ -66,7 +66,6 @@ public class FestiQnaController {
 	public ModelAndView setUpdate(FestiQnaDTO festiQnaDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int res = festiQnaService.setUpdate(festiQnaDTO, filelist, session);
-		System.out.println(res);
 		if(res>0) {
 			mv.setViewName("redirect:./fqnaSelect?qnum="+festiQnaDTO.getQnum());
 		}
@@ -79,7 +78,6 @@ public class FestiQnaController {
 	public ModelAndView setDelete(String ref, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		String num = festiQnaService.getSelect(ref).getNum();
-		System.out.println(num);
 		int res = festiQnaService.setDelete(ref, session);
 		String path = "redirect:../festi/festiSelect?num="+num;
 		mv.addObject("board", board);

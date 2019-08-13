@@ -36,12 +36,15 @@ public class FestiQnaDAO {
 	
 	
 	public int setDelete(String ref) throws Exception{
-		System.out.println("dao : "+ref);
 		return sqlSession.delete(NAMESPACE+"setDeleteOrigin", ref);
 	}
 	
 	public int setDeleteAll(String num) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDeleteAll", num);
+	}
+	
+	public int setDeleteOrigin(String num) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDeleteOrigin", num);
 	}
 	
 	/////////////////////////////////////////////////////////////

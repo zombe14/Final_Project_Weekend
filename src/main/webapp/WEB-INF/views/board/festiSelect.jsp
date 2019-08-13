@@ -160,6 +160,9 @@
 						<div class="admin_button">
 							<a href="./${board}Update?num=${dto.num}">수정</a> 
 							<a id="delete">삭제</a>
+							<form action="./festiDelete" id="festiDeleteFrm" method="post">
+								<input type="hidden" name="num" value="${dto.num}">
+							</form>
 						</div>
 					</div>
 				</div>
@@ -314,8 +317,7 @@
 	$('#delete').click(function() {
 		var check = confirm('삭제하시겠습니까? 후기와 Q&A가 모두 삭제됩니다.');
 		if(check){
-			
-			location.href="./${board}Delete?num=${dto.num}";
+			$('#festiDeleteFrm').submit();
 		}
 	});
 	

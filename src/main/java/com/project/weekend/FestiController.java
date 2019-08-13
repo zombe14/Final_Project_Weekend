@@ -117,12 +117,13 @@ public class FestiController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "festiDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "festiDelete", method = RequestMethod.POST)
 	public String setDelete(String num,  HttpSession session) throws Exception{
+		int category = festiService.getSelect(num).getCategory();
 		int res = festiService.setDelete(num, session);
 		String path = "redirect:./festiSelect?num="+num;
 		if (res>0) {
-			path = "redirect:./festiList";
+			path = "redirect:./festiList?category="+category;
 		}
 		return path;
 	}

@@ -37,11 +37,11 @@
 		DELETE FESTIQNA WHERE QNUM = #{qnum}
 	</delete>
 	<!-- 질문 원본 글 + 답글 삭제-->
-	<delete id="setDeleteOrigin" parameterType="String">
+	<delete id ="setDeleteAll" parameterType="String">
 		DELETE FESTIQNA WHERE REF = #{ref}
 	</delete>
 	<!-- 축제 삭제 시 달린 질문+답글 다 삭제 -->
-	<delete id ="setDeleteAll" parameterType="String">
+	<delete id="setDeleteOrigin" parameterType="String">
 		delete festiqna where num = #{num}	
 	</delete>
 	
