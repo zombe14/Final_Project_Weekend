@@ -51,4 +51,9 @@
 	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaDAO" id="festiQnaDAO"/>
 	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaService" id="festiQnaService"/>
 	
+	<!-- date -->
+	<bean class="com.project.weekend.board.festi.dates.DatesDTO" id="datesDTO"/>
+	<bean class="com.project.weekend.board.festi.dates.DatesDAO" id="datesDAO"/>
+	<bean class="com.project.weekend.board.festi.dates.DatesService" id="datesService"/>
+	
 </beans>

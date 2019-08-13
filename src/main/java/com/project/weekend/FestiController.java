@@ -15,6 +15,8 @@ import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.board.festi.after.AfterDTO;
 import com.project.weekend.board.festi.after.AfterService;
+import com.project.weekend.board.festi.dates.DatesDTO;
+import com.project.weekend.board.festi.dates.DatesService;
 import com.project.weekend.board.festi.festiQna.FestiQnaDTO;
 import com.project.weekend.board.festi.festiQna.FestiQnaService;
 import com.project.weekend.util.PageMaker;
@@ -29,6 +31,8 @@ public class FestiController {
 	private AfterService afterService;
 	@Inject
 	private FestiQnaService festiQnaService;
+	@Inject
+	private DatesService datesService;
 	
 	//write form - get
 	@RequestMapping(value = "festiWrite", method = RequestMethod.GET)
@@ -42,10 +46,13 @@ public class FestiController {
 	
 	//write process - post
 	@RequestMapping(value = "festiWrite", method = RequestMethod.POST)
-	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+	public ModelAndView setWrite(FestiDTO festiDTO, List<DatesDTO> datesDTOs, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String path = "board/boardTile";
 		int res = festiService.setWrite(festiDTO, filelist, session);
+		for(DatesDTO d : datesDTOs) {
+		 res = datesService.setWrite(d, session);
+		}
 		if(res>0) {
 			path = "redirect:./festiSelect?num="+festiDTO.getNum();
 		} else {

@@ -23,12 +23,12 @@ public class FestiDAOImplTest extends AbstractTest{
 	
 		f.setTitle("Festi");
 		f.setWriter("FestiDAOImpl");
-		f.setPrice(0);
+		//f.setPrice(0);
 		
 		f.setHit(0);
 		f.setLocal("서울");
 		f.setTop(0);
-		f.setTotal(0);
+		//f.setTotal(0);
 
 		
 		int res = dao.setWrite(f);
