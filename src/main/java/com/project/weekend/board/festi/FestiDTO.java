@@ -11,12 +11,12 @@ import com.project.weekend.file.FileDTO;
 // top
 public class FestiDTO{
 	private int category;	// 1-전시, 2-행사, 3-레저
-	/*
+	
 	private int price;	// 가격
 	private int total; // 전체좌석
 	private Date startDate;	// 시작일
 	private Date endDate;	// 종료일
-	*/
+	
 	private String local;	// 지역
 	private String num;
 	private String title;
@@ -85,7 +85,7 @@ public class FestiDTO{
 	public void setCategory(int category) {
 		this.category = category;
 	}
-	/*
+	
 	public int getPrice() {
 		return price;
 	}
@@ -110,7 +110,7 @@ public class FestiDTO{
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	*/
+	
 	public String getLocal() {
 		return local;
 	}

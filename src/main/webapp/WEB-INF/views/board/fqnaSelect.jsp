@@ -34,9 +34,7 @@
 				<br> 
 				reg_Date : ${dto.reg_date} 
 				<br>
-				<c:if test="${board ne 'fqna'}">
-				hit : ${dto.hit} 
-				</c:if>
+				
 				<br>
 				contents : ${dto.contents} 
 				<br> 
@@ -61,34 +59,15 @@
 					<a id="replyBtn" class="btn btn-default">답변달기</a>
 				</c:if>
 
-				<form action="./${board}Delete" id="deleteFrm" method="post">
-					<c:if test="${board eq 'qna' or board eq 'qnaReply'}">
-						<input type="hidden" class="num" id = "${dto.num}" name="num" value="${dto.num}">
-					</c:if>			
-					<c:if test="${board eq 'fqna' or board eq 'fqnaReply'}">
-						<input type="hidden" class="num" id = "${dto.qnum}" name="qnum" value="${dto.qnum}">
-					</c:if>
+				
+				<!-- 원글일때 -->
+				<form action="./fqnaDelete" id="deleteOriginFrm" method="post">
+					<input type="hidden" name="ref" value="${dto.ref}">
 				</form>
-				<%-- <hr>  댓글.
-				<c:if test="${board eq 'qna'}">
-					<c:forEach items="${replyDTO}" var = "r">
-						${r.writer}
-						<p>${r.contents}</p>
-						<a id="replyUpdate">수정</a>
-						<a id="replyDelete">삭제</a>
-					</c:forEach>
-					<hr>
-					<c:if test="${member.grade eq 3}">
-						<div id="replyDiv">
-							<form action="./${board}ReplyWrite" method="post" id="replyFrm">
-								<p>${member.id}memberId</p>
-								<input type="hidden" name="writer" value="${member.id}memberId">
-								<textarea rows="3" cols="100" id="replyContents"></textarea>
-								<a class="btn btn-default" id="replyWrite">답변등록</a>
-							</form>
-						</div>
-					</c:if>
-				</c:if> --%>
+				<!-- 답글일때 -->
+				<form action="./fqnaReplyDelete" id="deleteReplyFrm" method="post">
+					<input type="hidden" name="qnum" value="${dto.qnum}">
+				</form>
 			</div>
    </div>
    <div id="footer">
@@ -100,10 +79,22 @@
 	<script type="text/javascript">
 	/* 글 삭제 */
 	$('#delete').click(function() {
-		var check = confirm('삭제하시겠습니까? 답변도 모두 삭제됩니다.');		
-		if(check){
-			$('#deleteFrm').submit();
+		
+		/* 질문 원글일 때 */
+		if('${dto.step}' == '0'){
+			var check = confirm('삭제하시겠습니까? 답변도 모두 삭제됩니다.');		
+			if(check){
+				$('#deleteOriginFrm').submit();
+			}
+		} 
+		/* 답글일때 */
+		else{
+			var check = confirm('삭제하시겠습니까?');		
+			if(check){
+				$('#deleteReplyFrm').submit();
+			}
 		}
+		
 	});
 	
 	/* 글 수정 */
@@ -111,15 +102,8 @@
 		var board = $(this).attr('class');
 		var num = 0;
 		
-		if(board == 'notice' || board == 'qna'){
-			num = $('.num').attr('id');
-			location.href="./${board}Update?num="+num;
-		} else if (board == 'after') {
-			num = $('.anum').attr('id');
-			location.href="./${board}Update?anum="+num;
-		} else if(board == 'fqna'){
 			location.href = "./${board}Update?qnum=${dto.qnum}";
-		}
+		
 		
 	});
 	
@@ -156,17 +140,12 @@
 			}
 		});
 	} */
-	if('${board}' == 'qna'){
-		$('#replyBtn').click(function() {
-			console.log('click');
-			location.href = "./${board}ReplyWrite?num=${dto.num}";
-		});
-	} else if('${board}' == 'fqna'){
+	
 		$('#replyBtn').click(function() {
 			console.log('click');
 			location.href = "./${board}ReplyWrite?qnum=${dto.qnum}";
 		});
-	}
+	
 	
 </script>
 </body>

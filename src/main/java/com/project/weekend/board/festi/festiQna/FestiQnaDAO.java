@@ -28,17 +28,23 @@ public class FestiQnaDAO {
 		return sqlSession.update(NAMESPACE+"setUpdate", festiQnaDTO);
 	}
 	
-	public int setDelete(String qnum) throws Exception{
+	public int setReplyDelete(String qnum) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDelete", qnum);
 	}
 	
-	public int setDeleteOrigin(String ref) throws Exception{
+	/////////////////////////////////////////////////////////////
+	
+	
+	public int setDelete(String ref) throws Exception{
+		System.out.println("dao : "+ref);
 		return sqlSession.delete(NAMESPACE+"setDeleteOrigin", ref);
 	}
 	
 	public int setDeleteAll(String num) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDeleteAll", num);
 	}
+	
+	/////////////////////////////////////////////////////////////
 	
 	public FestiQnaDTO getSelect(String qnum) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelect", qnum);
@@ -65,5 +71,9 @@ public class FestiQnaDAO {
 	// 답변 달았을 때 상태메세지
 	public int setAnswer(String ref) throws Exception{
 		return sqlSession.update(NAMESPACE+"setAnswer", ref);
+	}
+	
+	public List<String> getSelectRef(String ref) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getSelectRef", ref);
 	}
 }

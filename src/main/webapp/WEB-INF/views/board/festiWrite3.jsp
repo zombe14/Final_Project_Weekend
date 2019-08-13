@@ -79,14 +79,7 @@
 					<input type="radio" name="category" class="category" id="festival" value="2"> 축제						
 					<input type="radio" name="category" class="category" id="daehakro" value="3"> 대학로 연극
 				</div>
-				<div>
-					<label for="startDate">시작일<span class="r">*</span></label>
-					<input type="date" name="startDate" class="date">  
-				</div>
-				<div>
-					<label for="endDate">종료일<span class="r">*</span></label>
-					<input type="date" name="endDate" class="date">
-				</div>
+				
 				<div id="daehakDiv">
 					<div>
 						<label for="price">가격</label>
@@ -97,6 +90,7 @@
 						<input type="number" name="total" value="0"><span>석</span>
 					</div>
 				</div>
+				
 				<div id="ageDiv">
 					<label for="age">연령제한<span class="r">*</span></label>
 					<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 전연령
@@ -123,14 +117,37 @@
 				<%-- </c:if> --%>
 				
       		 	<a id="write" class="btn btn-default">등록</a>
+      		 	
+      		 	<br>----------------------------------------------------------------------------------------------------------------------------------<br>
+      		 	
+      		 	<input type = "radio" name="sep">연속				
+				<div>
+					<label for="startDate">시작일<span class="r">*</span></label>
+					<input type="date" name="startDate" class="date">  
+				</div>
+				<div>
+					<label for="endDate">종료일<span class="r">*</span></label>
+					<input type="date" name="endDate" class="date">
+				</div>
+				<input type = "radio" name="sep">비연속
+				날짜 : <input type="date" name="reg_date">
+				시작시간 : <input type="text" name="time" placeholder="예시) 14:00">
+				좌석 : <input type="number" name = "seat">
+				가격 : <input type="number" name="price">
+				<a id="addDates">좌석  추가하기</a>
+      		 	
+      		 	<br>----------------------------------------------------------------------------------------------------------------------------------<br>
+      		 	
 			</form> 
-			
+
+			</div>
+      		 				
       	</div>
       </div>
       <div id="footer">
       <c:import url="../inc/footer.jsp"></c:import>
       </div>
-   </div>
+ 
    
 <!-- 지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 	
@@ -305,8 +322,6 @@ $('#top').click(function(){
 	});
 	
 	/* 가격상세 */
-	
-
 	$('#write').click(function() {
 		var title = $('#title').val() != '';
 		var writer = $('#writer').val() != '';

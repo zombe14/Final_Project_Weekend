@@ -46,13 +46,15 @@ public class FestiController {
 	
 	//write process - post
 	@RequestMapping(value = "festiWrite", method = RequestMethod.POST)
-	public ModelAndView setWrite(FestiDTO festiDTO, List<DatesDTO> datesDTOs, List<MultipartFile> filelist, HttpSession session) throws Exception{
+	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{ //, List<DatesDTO> datesDTOs
 		ModelAndView mv = new ModelAndView();
 		String path = "board/boardTile";
 		int res = festiService.setWrite(festiDTO, filelist, session);
+		/*
 		for(DatesDTO d : datesDTOs) {
 		 res = datesService.setWrite(d, session);
 		}
+		*/
 		if(res>0) {
 			path = "redirect:./festiSelect?num="+festiDTO.getNum();
 		} else {

@@ -38,7 +38,7 @@
 	</delete>
 	<!-- 질문 원본 글 + 답글 삭제-->
 	<delete id="setDeleteOrigin" parameterType="String">
-		DELETE FESTIAQNA WHERE REF = #{ref}
+		DELETE FESTIQNA WHERE REF = #{ref}
 	</delete>
 	<!-- 축제 삭제 시 달린 질문+답글 다 삭제 -->
 	<delete id ="setDeleteAll" parameterType="String">
@@ -61,7 +61,9 @@
 		ORDER BY (SUBSTR(REF, 2)*1) DESC, STEP ASC) Q) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
-
+	<select id="getSelectRef" parameterType="String" resultType="String">
+		select qnum from festiQna where ref = #{ref}
+	</select>
 	
 	
 <!-- 	<update id="setReplyPreUpdate">

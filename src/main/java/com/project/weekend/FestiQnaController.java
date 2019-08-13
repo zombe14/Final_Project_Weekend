@@ -72,25 +72,36 @@ public class FestiQnaController {
 		}
 		return mv;
 	}
+
 	
+	// 원본글
 	@RequestMapping(value = "fqnaDelete", method = RequestMethod.POST)
-	public ModelAndView setDelete(String num, HttpSession session) throws Exception{
+	public ModelAndView setDelete(String ref, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		// 원글 : originDelete - ref
-		// 답글 : delete - qnum
-		
-		String ref = festiQnaService.getSelect(num).getRef();
-		System.out.println(ref);
-		//int res = festiQnaService.setDelete(festiQnaService.getSelect(qnum).getRef(), session);
-		/*
-		 * if(res>0) { mv.setViewName("redirect:../festi/festiSelect?num="+num); } else
-		 * {
-		 * 
-		 * }
-		 */
+		String num = festiQnaService.getSelect(ref).getNum();
+		System.out.println(num);
+		int res = festiQnaService.setDelete(ref, session);
+		String path = "redirect:../festi/festiSelect?num="+num;
+		mv.addObject("board", board);
+		mv.addObject("boardTitle", boardTitle);
+		mv.setViewName(path);
 		return mv;
 	}
+
 	
+	
+	@RequestMapping(value = "fqnaReplyDelete", method = RequestMethod.POST)
+	public ModelAndView setReplyDelete(String qnum, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String num = festiQnaService.getSelect(qnum).getNum();
+		int res = festiQnaService.setReplyDelete(qnum, session);
+		String path = "redirect:../festi/festiSelect?num="+num;
+		if(res>0) {
+			
+		}
+		mv.setViewName(path);
+		return mv;
+	}
 	@RequestMapping(value = "fqnaSelect", method = RequestMethod.GET)
 	public ModelAndView getSelect(String qnum) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -98,7 +109,7 @@ public class FestiQnaController {
 		mv.addObject("dto", festiQnaDTO);
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);
-		mv.setViewName("board/qnaSelect");
+		mv.setViewName("board/fqnaSelect");
 		return mv;
 	}
 	
