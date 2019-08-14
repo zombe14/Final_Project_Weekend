@@ -13,11 +13,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/boardSelect.css">
 <link rel="shortcut icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-<style type="text/css">
-	#replyContents{
-		resize: none;
-	}
-</style>
 </head>
 <body>
 	<div id="wrap">

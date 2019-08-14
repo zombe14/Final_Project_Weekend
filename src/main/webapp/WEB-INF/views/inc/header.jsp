@@ -75,7 +75,7 @@
 				<ul class="nav navbar-nav">
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>W 추천</a></li>
-					<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiList?category=6"><i
+					<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiList?category=1"><i
 							class="fa fa-home fa-fw"></i>공연</a></li>
 							<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiMain"><i
 							class="fa fa-home fa-fw"></i>축제</a></li>
