@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.festi.after.AfterDAO;
 import com.project.weekend.board.festi.after.AfterService;
+import com.project.weekend.board.festi.festiQna.FestiQnaDAO;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.file.FileService;
@@ -31,6 +32,8 @@ public class FestiService {
 	private FileService fileService;
 	@Inject
 	private AfterDAO afterDAO;
+	@Inject
+	private FestiQnaDAO festiQnaDAO;
 
 	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int num = festiDAO.getNum();
@@ -85,6 +88,7 @@ public class FestiService {
 		int res = 0;
 		res = festiDAO.setDelete(num);
 		res = afterDAO.setDeleteAll(num);
+		res = festiQnaDAO.setDeleteOrigin(num);
 		List<FileDTO> list = fileDAO.getList(num);
 		if(list != null) {
 			for(FileDTO fileDTO : list) {

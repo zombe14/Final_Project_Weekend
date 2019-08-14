@@ -52,8 +52,8 @@ public class QnaController {
 	@RequestMapping(value = "qnaReplyWrite", method = RequestMethod.GET)
 	public ModelAndView setReplyWrite(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		QnaDTO qnaOrigin = qnaService.getSelect(num, session, request, response);
-		mv.addObject("qnaOrigin", qnaOrigin);
+		QnaDTO qnaDTO = qnaService.getSelect(num, session, request, response);
+		mv.addObject("qnaOrigin", qnaDTO);
 		mv.addObject("board", board2);
 		mv.addObject("boardTitle", reply);
 		mv.setViewName("board/qnaWrite");
@@ -63,6 +63,7 @@ public class QnaController {
 	@RequestMapping(value = "qnaReplyWrite", method = RequestMethod.POST)
 	public String setReplyWrite(QnaDTO qnaDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		int res = qnaService.setReplyWrite(qnaDTO,filelist, session);
 		String path = "window.history.back()";
 		if(res>0) {
@@ -120,13 +121,26 @@ public class QnaController {
 		return mv;
 	}
 
+	// 원본글
 	@RequestMapping(value = "qnaDelete", method = RequestMethod.POST)
-	public ModelAndView setDelete(String num, HttpSession session) throws Exception {
+	public ModelAndView setDelete(String ref, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		int res = qnaService.setDelete(num, session);
+		int res = qnaService.setDelete(ref, session);
 		String path = "redirect:./qnaList";
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);
+		mv.setViewName(path);
+		return mv;
+	}
+	
+	@RequestMapping(value = "qnaReplyDelete", method = RequestMethod.POST)
+	public ModelAndView setReplyDelete(String num, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int res = qnaService.setReplyDelete(num, session);
+		String path = "redirect:./qnaList";
+		if(res>0) {
+			
+		}
 		mv.setViewName(path);
 		return mv;
 	}

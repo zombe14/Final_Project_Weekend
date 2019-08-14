@@ -30,7 +30,7 @@ public class NoticeController {
 	private NoticeDAOImpl noticeDAOImpl;
 	@Inject
 	private NoticeServiceImpl noticeSerivceImpl;
-	private static final String boardTitle = "怨듭�";
+	private static final String boardTitle = "공지";
 	
 	
 	/*怨듭� 湲��벐湲�*/
@@ -52,7 +52,7 @@ public class NoticeController {
 	public ModelAndView noticeWrite(BoardDTO boardDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String path = "./noticeList";
-		String message = "湲� �옉�꽦�뿉 �떎�뙣�뻽�뼱�슂";
+		String message = "공지를 작성하지 못했습니다.";
 		int result = noticeSerivceImpl.setWrite(boardDTO, filelist, session);
 		if(result>0) {
 			mv.setViewName("redirect:./noticeList");
@@ -98,11 +98,11 @@ public class NoticeController {
 	public ModelAndView noticeDelete(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String path = "./boardSelect?num="+num;
-		String message = "�궘�젣媛� �떎�뙣�뻽�뒿�땲�떎.";
+		String message = "공지를 삭제하지 못했습니다.";
 		int res = noticeSerivceImpl.setDelete(num, session);
 		if(res>0) {
 			path = "../notice/noticeList";
-			message="�궘�젣媛� �셿猷뚮릱�뒿�땲�떎.";
+			message="공지를 삭제하였습니다.";
 		}
 		mv.addObject("message", message);
 		mv.addObject("path", path);

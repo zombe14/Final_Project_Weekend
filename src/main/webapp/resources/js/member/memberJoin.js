@@ -146,7 +146,7 @@ $(function() {
 		}
 	});
 	
-/*	
+	
 	$("#memEmail_select").blur(function() {
 		var t = true;
 		var f = true;
@@ -209,7 +209,6 @@ $(function() {
 		var c = $('#hp3').val();
 		var s = $('#email_store').val();
 		var v = true;
-		var email = $('#email').val();
 		var phone = a+b+c;
 		$('#phone').val(phone);
 		if(a==''||b==''||c==''){
@@ -221,21 +220,11 @@ $(function() {
 			v = false;
 		}
 		if(v){
-			$.ajax({
-				data:{
-					email : email
-				},
-				type: "POST",
-				url: "../mail/mailSend",
-				success:function(data){
-					
-				}
-				
-			});
+			location.href="../";
 		}else{
 			alert("필수 항목을 입력하세요");
 		}
-	});*/
+	});
 	
 	$("#id").keyup(function(e) { 
 		if (!(e.keyCode >=37 && e.keyCode<=40)) {
@@ -328,7 +317,23 @@ $(function() {
 	});
 	
 	$(".certifyButtonWrap_final").click(function() {
+		var num_select = $("#num_select").val();
+		var hp2 = $("#hp2").val();
+		var hp3 = $("#hp3").val();
+		var phone = num_select + hp2 + hp3;
+		var s = $('#email_store').val();
 		var v = true;
+		if(num_select==''||hp2==''||hp3==''){
+			alert("휴대폰 번호를 입력하세요");
+			v = false;
+		}else if(hp3!=''&&hp2!=''&&num_select!=''&&s=='0'){
+			v = true;
+		}else if(s==''){
+			alert("이메일을 입력하세요");
+			v= false;
+		}else{
+			v = false;
+		}
 		var nicknameCheck = document.getElementById("nicknameCheck").value;
 		var pw = document.getElementById("pw").value;
 		var pwCheck = document.getElementById("pwCheck").value;
@@ -402,9 +407,9 @@ $(function() {
 			});
 		}
 	});
-	$("#nicknameCheckbt").click(function() {
+	$("#nicknameCheck").click(function() {
 		var nickname = $("#nickname").val();
-		nicknametrim = nickname.trim();
+		var nicknametrim = nickname.trim();
 		if(nicknametrim==''){
 			alert('활동명을 입력하세요');
 		}else{
@@ -421,7 +426,7 @@ $(function() {
 					}else{
 						alert("사용가능한 활동명 입니다");
 						$('#nickname').attr('readonly', true);
-						$("#nicknameCheckbt").attr('type', 'hidden');
+						$("#nicknameCheck").attr('type', 'hidden');
 						$("#result_nicknameCheck").val('0');
 					}
 				}

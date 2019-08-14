@@ -15,6 +15,8 @@ import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.board.festi.after.AfterDTO;
 import com.project.weekend.board.festi.after.AfterService;
+import com.project.weekend.board.festi.festiQna.FestiQnaDTO;
+import com.project.weekend.board.festi.festiQna.FestiQnaService;
 import com.project.weekend.util.PageMaker;
 
 @Controller
@@ -25,6 +27,8 @@ public class FestiController {
 	private FestiService festiService;
 	@Inject
 	private AfterService afterService;
+	@Inject
+	private FestiQnaService festiQnaService;
 	
 	//write form - get
 	@RequestMapping(value = "festiWrite", method = RequestMethod.GET)
@@ -71,10 +75,10 @@ public class FestiController {
 		ModelAndView mv = new ModelAndView();
 		FestiDTO festiDTO = festiService.getSelect(num);
 		pageMaker.setNum(num);
-		List<AfterDTO> list = afterService.getList(pageMaker);
-		System.out.println(festiDTO.getContents());
-		mv.addObject("after", list);
-		
+		List<AfterDTO> afterlist = afterService.getList(pageMaker);
+		List<FestiQnaDTO> qnalist = festiQnaService.getList(pageMaker);
+		mv.addObject("qna", qnalist);
+		mv.addObject("after", afterlist);
 		mv.addObject("dto", festiDTO);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
@@ -113,4 +117,8 @@ public class FestiController {
 		}
 		return path;
 	}
+	
+	//festiMain
+	@RequestMapping(value = "festiMain")
+	public void festiMain() throws Exception{};
 }
