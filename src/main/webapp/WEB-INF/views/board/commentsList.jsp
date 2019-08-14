@@ -16,6 +16,8 @@
 			    	<%-- </c:if> --%>
 			    		<a class="reCom" title = "${c.cnum}">댓글달기</a>
 			    		<div id="${c.cnum}ReComDiv">
+			    		<!-- 여기에 대댓글 입력 폼 나오게 -->
+			    		<input type="text" name = "writer" value=>
 			    		</div>
 		    	</div>
 		     </div>
