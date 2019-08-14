@@ -1,6 +1,6 @@
 
 $(function() {
-	$("#pw").focus(function () {
+	$("#pw").click(function () {
 		var memid = $("#memid").val();
 		var result_memid = $("#result_memid").val();
 		if(memid==''||result_memid==''){
@@ -234,7 +234,7 @@ $(function() {
 	});
 	
 	$("#memberidCheck").click(function() {
-		var id = $("#id").val();
+		var id = $('#id').val();
 		idd = id.trim();
 		if(idd==''){
 			alert('아이디를 입력하세요');
@@ -276,7 +276,7 @@ $(function() {
 						alert("이미 존재하는 활동명입니다");
 						$("#result_nicknameCheck").val('');
 					}else{
-						alert("사용가능한 활동명 입니다")
+						alert("사용가능한 활동명 입니다");
 						$('#nickname').attr('readonly', true);
 						$("#nicknameCheck").attr('type', 'hidden');
 						$("#result_nicknameCheck").val('0');

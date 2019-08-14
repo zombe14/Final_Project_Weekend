@@ -28,6 +28,15 @@
 		<beans:property name="order" value="0"/>  
 	</beans:bean>
 	
+<!-- memberInterceptor -->
+	<beans:bean id="memberInterceptor" class="com.project.weekend.interceptor.MemberInterceptor" />
+ 	<interceptors>
+		<interceptor>
+			<mapping path="/admin/*"/>
+			<beans:ref bean="memberInterceptor"/>
+		</interceptor>
+	</interceptors> 
+	
 	<context:component-scan base-package="com.project.weekend" />
 	<context:component-scan base-package="com.project.weekend.member" />
 	

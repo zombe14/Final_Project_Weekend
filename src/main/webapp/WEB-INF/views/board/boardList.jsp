@@ -47,11 +47,7 @@
 				
 				<%-- </c:if> --%>
 				
-			<c:if test="${board eq 'notice' }">
-				<c:forEach items="${news}" var="t">
-					<p>${t.title}</p>
-				</c:forEach>
-			</c:if>
+		
 				
 				<div id="tableDiv">
 					<!-- notice list 테이블 -->
@@ -87,7 +83,12 @@
 								<c:if test="${board eq 'after' or board eq 'afterAll'}">
 									<td class="selectRow" id="${list.anum}"></td>
 								</c:if>
-								<td>${list.title}</td>
+								<td>
+									<c:if test="${board eq 'qna'}">
+										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;답변 : </c:forEach>
+									</c:if>
+										${list.title}									
+								</td>
 								<td class="td10">${list.writer}</td>
 								<td class="td10">${list.reg_date}</td>
 								<td class="td10">${list.hit}</td>

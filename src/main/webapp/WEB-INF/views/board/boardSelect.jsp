@@ -114,7 +114,7 @@
 						<input type="hidden" class="anum" id = "${dto.anum}" name="anum" value="${dto.anum}">
 					</c:if>					
 				</form>
-				<%-- <hr>
+				<%-- <hr>  댓글.
 				<c:if test="${board eq 'qna'}">
 					<c:forEach items="${replyDTO}" var = "r">
 						${r.writer}
@@ -157,16 +157,8 @@
 	/* 글 수정 */
 	$('#update').click(function() {
 		var board = $(this).attr('class');
-		var num = 0;
-		
-		if(board == 'notice' || board == 'qna'){
-			num = $('.num').attr('id');
-			location.href="./${board}Update?num="+num;
-		} else if (board == 'after') {
-			num = $('.anum').attr('id');
-			location.href="./${board}Update?anum="+num;
-		}
-		
+		var num = $('.num').attr('id');
+		location.href="./${board}Update?num="+num;
 	});
 	
 	/* 첨부파일 다운로드 */

@@ -55,7 +55,7 @@
 				CONTENTS LIKE '%'||#{search}||'%'
 			</otherwise>
 		</choose>
-		ORDER BY NUM DESC) N)
+		ORDER BY REG_DATE DESC) N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<!-- NOTICE 페이지 상단에 강조할 공지글 배치. SEARCH에 영향 x -->

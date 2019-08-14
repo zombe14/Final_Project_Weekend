@@ -10,9 +10,12 @@ import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.weekend.board.festi.after.AfterDAO;
 import com.project.weekend.board.festi.after.AfterService;
+import com.project.weekend.board.festi.festiQna.FestiQnaDAO;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
+import com.project.weekend.file.FileService;
 import com.project.weekend.util.FileSaver;
 import com.project.weekend.util.PageMaker;
 
@@ -25,6 +28,12 @@ public class FestiService {
 	private FileDAO fileDAO;
 	@Inject
 	private FileSaver fileSaver;
+	@Inject
+	private FileService fileService;
+	@Inject
+	private AfterDAO afterDAO;
+	@Inject
+	private FestiQnaDAO festiQnaDAO;
 
 	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int num = festiDAO.getNum();
@@ -69,16 +78,23 @@ public class FestiService {
 		return festiDTO;
 	}
 	
-	public int setUpdate(FestiDTO festiDTO) throws Exception{
+	public int setUpdate(FestiDTO festiDTO, HttpSession session) throws Exception{
 		int res = festiDAO.setUpdate(festiDTO);
 		
 		return res;
 	}
 	
-	public int setDelete(String num) throws Exception{
+	public int setDelete(String num, HttpSession session) throws Exception{
 		int res = 0;
 		res = festiDAO.setDelete(num);
-		res = fileDAO.setDeleteAll(num);
+		res = afterDAO.setDeleteAll(num);
+		res = festiQnaDAO.setDeleteOrigin(num);
+		List<FileDTO> list = fileDAO.getList(num);
+		if(list != null) {
+			for(FileDTO fileDTO : list) {
+				res = fileService.setDelete(fileDTO, "board", session);
+			}
+		}
 		return res;
 	}
 	

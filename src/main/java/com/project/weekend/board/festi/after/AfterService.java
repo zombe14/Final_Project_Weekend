@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
@@ -13,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
+import com.project.weekend.file.FileService;
 import com.project.weekend.util.FileSaver;
 import com.project.weekend.util.PageMaker;
 
@@ -25,6 +29,8 @@ public class AfterService {
 	private FileDAO fileDAO;
 	@Inject
 	private FileSaver fileSaver;
+	@Inject
+	private FileService fileService;
 	
 	public int setWrite(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		int res = 0;
@@ -52,26 +58,16 @@ public class AfterService {
 	
 	public int setDelete(String anum, HttpSession session) throws Exception{
 		int res = 0;
-		System.out.println("ser 1 : "+res);
-		System.out.println(anum);
-		res = afterDAO.setDelete(anum);
-		System.out.println("ser 2 : "+res);
-		res = fileDAO.setDeleteAll(anum);
-		System.out.println("ser 3 : "+res);
-		List<FileDTO> files = fileDAO.getList(anum);
 		
-		// db에서 글 삭제
 		res = afterDAO.setDelete(anum);
-		System.out.println("ser 4 : "+res);
-		// files db에서 삭제
-		fileDAO.setDeleteAll(anum);
-
-		// 이미지 디렉토리에서 파일 삭제
-		String realPath=session.getServletContext().getRealPath("/resources/images/board");
-		for(FileDTO f : files) {
-			String fname = f.getFname();
-			fileSaver.deleteFile(realPath, fname);
-		} 
+		
+		List<FileDTO> list = fileDAO.getList(anum);
+		
+		if(list != null) {
+			for(FileDTO fileDTO : list) {
+				res = fileService.setDelete(fileDTO, "board", session);
+			}
+		}
 			
 		return res;
 	}
@@ -79,7 +75,6 @@ public class AfterService {
 	public int setUpdate(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int res = 0;
 		res = afterDAO.setUpdate(afterDTO);
-		res = fileDAO.setDeleteAll(afterDTO.getAnum());
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 		String num = afterDTO.getAnum();
 		for(MultipartFile f : filelist) {
@@ -92,9 +87,32 @@ public class AfterService {
 		return res;
 	}
 	
-	public AfterDTO getSelect(String num, HttpSession session) throws Exception{
+	public AfterDTO getSelect(String anum, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		AfterDTO afterDTO = new AfterDTO();
-		afterDTO = afterDAO.getSelect(num);
+		afterDTO = afterDAO.getSelect(anum);
+		//update 시 파일 없는데 X만 뜨는거 방지. 새로운 리스트로 세팅
+		if(afterDTO.getFileDTOs().size()==1) {
+			if(afterDTO.getFileDTOs().get(0).getFname()==null) {
+				afterDTO.setFileDTOs(new ArrayList<FileDTO>());
+			}
+		}
+		
+		// 쿠키를 이용해서 ajax, 새로고침 시 조회수 증가 방지
+		boolean isGet = false;
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null) {
+			for(Cookie c:cookies) {
+				if(c.getName().equals(anum)) {
+					isGet=true;
+				}
+			}
+		}
+		if(!isGet) {
+			afterDAO.setHitUpdate(anum);
+			Cookie c = new Cookie(anum, anum);
+			c.setMaxAge(30*60); // 30분
+			response.addCookie(c);
+		}
 		return afterDTO;
 	}
 	

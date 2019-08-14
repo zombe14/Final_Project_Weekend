@@ -25,6 +25,7 @@ public class QnaController {
 	@Inject
 	private QnaService qnaService;
 	private static final String board = "qna";
+	private static final String board2 = "qnaReply";
 	private static final String boardTitle = "Q&A";
 	private static final String reply = "Q&A 답변";
 
@@ -33,7 +34,7 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);
-		mv.setViewName("board/noticeWrite");
+		mv.setViewName("board/qnaWrite");
 		return mv;
 	}
 
@@ -49,21 +50,34 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "qnaReplyWrite", method = RequestMethod.GET)
-	public ModelAndView setReplyWrite(QnaDTO qnaDTO, String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView setReplyWrite(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		QnaDTO qnaOrigin = qnaService.getSelect(num, session, request, response);
-		mv.addObject("qnaOrigin", qnaOrigin);
-		mv.addObject("board", board);
+		QnaDTO qnaDTO = qnaService.getSelect(num, session, request, response);
+		mv.addObject("qnaOrigin", qnaDTO);
+		mv.addObject("board", board2);
 		mv.addObject("boardTitle", reply);
 		mv.setViewName("board/qnaWrite");
 		return mv;
+	}
+	
+	@RequestMapping(value = "qnaReplyWrite", method = RequestMethod.POST)
+	public String setReplyWrite(QnaDTO qnaDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		int res = qnaService.setReplyWrite(qnaDTO,filelist, session);
+		String path = "window.history.back()";
+		if(res>0) {
+			path = "redirect:./qnaList";
+		}
+		mv.setViewName("redirect:./qnaList");
+		return path;
 	}
 
 	@RequestMapping(value = "qnaList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<QnaDTO> list = qnaService.getList(pageMaker, session);
-		String path = "board/boardList";
+		String path = "board/qnaList";
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
 		mv.addObject("board", board);
@@ -76,7 +90,7 @@ public class QnaController {
 	public ModelAndView setUpdate(String num, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		QnaDTO qnaDTO = qnaService.getSelect(num, session, request, response);
-		String path = "board/noticeUpdate";
+		String path = "board/qnaUpdate";
 		mv.addObject("dto", qnaDTO);
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);
@@ -99,7 +113,7 @@ public class QnaController {
 	public ModelAndView getSelect(String num, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		QnaDTO qnaDTO = qnaService.getSelect(num, session, request, response);
-		String path = "board/boardSelect";
+		String path = "board/qnaSelect";
 		mv.addObject("dto", qnaDTO);
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);
@@ -107,13 +121,26 @@ public class QnaController {
 		return mv;
 	}
 
+	// 원본글
 	@RequestMapping(value = "qnaDelete", method = RequestMethod.POST)
-	public ModelAndView setDelete(String num, HttpSession session) throws Exception {
+	public ModelAndView setDelete(String ref, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		int res = qnaService.setDelete(num, session);
+		int res = qnaService.setDelete(ref, session);
 		String path = "redirect:./qnaList";
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);
+		mv.setViewName(path);
+		return mv;
+	}
+	
+	@RequestMapping(value = "qnaReplyDelete", method = RequestMethod.POST)
+	public ModelAndView setReplyDelete(String num, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int res = qnaService.setReplyDelete(num, session);
+		String path = "redirect:./qnaList";
+		if(res>0) {
+			
+		}
 		mv.setViewName(path);
 		return mv;
 	}

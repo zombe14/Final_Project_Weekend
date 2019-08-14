@@ -25,16 +25,29 @@ public class MemberService {
 	private MemberFileDAO memberFileDAO;
 
 	// 상혁 시작;
+	// 리스트
 	public List<MemberDTO> getList(HttpSession session, PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
 		List<MemberDTO> list = memberDAO.getList(pageMaker);
 		int totalCount = memberDAO.getTotalCount(pageMaker);
-		pageMaker.makeRow();
 		pageMaker.makePage(totalCount);
 		return list;
 	}
-	public int setDelete(String [] id) throws Exception{
-		List<String> list = Arrays.asList(id);
-		return memberDAO.setDelete(list);
+	// 회원 등급 조정
+	// 등급 UP
+	public int setUpdateP(String id) throws Exception{
+		int result = memberDAO.setUpdateP(id);
+		return result;
+	}
+	// 등급 DOWN
+	public int setUpdateM(String id) throws Exception{
+		int result = memberDAO.setUpdateM(id);
+		return result;
+	}
+	// 회원 삭제
+	public int setDelete(String id) throws Exception{
+		int result = memberDAO.setDelete(id);
+		return result;
 	}
 	// 상혁 끝;
 	
@@ -74,4 +87,12 @@ public class MemberService {
 	public MemberDTO getSelectCount(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelectCount(memberDTO);
 	}
+	public MemberDTO getSelectOverlap(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getSelectOverlap(memberDTO);
+	}
+	
+	
+	
+	
+	
 }

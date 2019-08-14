@@ -304,11 +304,15 @@ button {
     color: #666;
     font-style: normal;
 }
-.joinWrap .certifyButtonWrap_final button {
-    background: #41b40a;
+.certifyButtonWrap_final {
+    background: #00d344;
     color: #fff;
     font-size: 18px;
     padding: 7px 20px 8px;
+    text-align: center;
+}
+#final_button{
+	text-align: center;
 }
 
 .iCheckbox label{
