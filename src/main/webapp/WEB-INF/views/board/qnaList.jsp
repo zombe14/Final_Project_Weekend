@@ -55,16 +55,17 @@
 					<table class="table">
 						<thead class="table_head">
 							<th class="td10">번호</th>
-							<th class="td60">제목</th>
+							<th class="td33">제목</th>
 							<th class="td10">작성자</th>
 							<th class="td10">작성일</th>
 							<th class="td10">조회수</th>
+							<th class="td07">답변</th>
 						</thead>
 
 		
 						<c:forEach items="${list}" var="list">
 							<tr class="select" title="${list.pw}" id="${list.num}">
-								<td class="selectRow td10">${fn:substring(list.num, 1,8)}</td>
+								<td class="selectRow td10">${fn:substring(list.num, 1,9)}</td>
 								<c:if test="${list.pw eq null }">
 									<td>
 										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
@@ -82,6 +83,10 @@
 								
 								<td class="td10">${list.reg_date}</td>
 								<td class="td10">${list.hit}</td>
+								<td class="td07">
+									<c:if test="${list.answer eq '1'}">완료</c:if>
+									<c:if test="${list.answer eq '0'}">작성중</c:if>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>

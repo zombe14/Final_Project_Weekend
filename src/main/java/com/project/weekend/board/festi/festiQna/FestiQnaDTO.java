@@ -15,6 +15,10 @@ public class FestiQnaDTO {
 	private String ref;
 	private int step;
 	private int depth;
+	private String pw;
+	private int answer;
+	private ArrayList<FileDTO> fileDTOs;
+	
 	public String getQnum() {
 		return qnum;
 	}
@@ -75,5 +79,16 @@ public class FestiQnaDTO {
 	public void setFileDTOs(ArrayList<FileDTO> fileDTOs) {
 		this.fileDTOs = fileDTOs;
 	}
-	private ArrayList<FileDTO> fileDTOs;
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+	public int getAnswer() {
+		return answer;
+	}
+	public void setAnswer(int answer) {
+		this.answer = answer;
+	}
 }

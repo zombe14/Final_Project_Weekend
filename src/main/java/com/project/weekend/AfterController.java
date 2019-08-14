@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.weekend.board.comments.CommentsDAO;
 import com.project.weekend.board.comments.CommentsDTO;
 import com.project.weekend.board.comments.CommentsService;
 import com.project.weekend.board.festi.FestiService;
@@ -117,7 +118,9 @@ public class AfterController {
 	public ModelAndView getSelect(String num, PageMaker pageMaker, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		AfterDTO afterDTO = afterService.getSelect(num, session, request, response);
-		String path = "board/afterSelect";		
+		String path = "board/afterSelect";
+		int cCnt = commentsService.getAmount(pageMaker);
+		mv.addObject("cCnt",cCnt);
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
@@ -138,46 +141,40 @@ public class AfterController {
 	public ModelAndView getCommentsList(PageMaker pageMaker, HttpSession session)  throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
-		mv.addObject("list", list);
+		mv.addObject("clist", list);
 		mv.addObject("pager", pageMaker);
-		mv.addObject("board2", "comments");
+		mv.addObject("board", "comments");
 		mv.setViewName("board/commentsList");
 		return mv;
 	}
-	
-	@RequestMapping(value = "commentsListJson")
-	@ResponseBody
-	public List<CommentsDTO> getCommentsListJson(PageMaker pageMaker, HttpSession session) throws Exception{
-		List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
-		return list;
-	}
-	
+
 	@RequestMapping(value = "commentsWrite", method = RequestMethod.POST)
-	public ModelAndView setCommentsWrite(CommentsDTO commentsDTO) throws Exception{
-		System.out.println("con : "+commentsDTO.getNum());
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public int setCommentsWrite(CommentsDTO commentsDTO) throws Exception{
 		int result = commentsService.setCommentsWrite(commentsDTO);
-		mv.addObject("result", result);
-		mv.setViewName("common/message");
-		return mv;
+		return result;
 	}
 	
 	@RequestMapping(value = "commentsDelete", method = RequestMethod.POST)
-	public ModelAndView setCommentsDelete(String cnum, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public int setCommentsDelete(int cnum, HttpSession session) throws Exception{
 		int res = commentsService.setCommentsDelete(cnum, session);
-		mv.addObject("result", res);
-		mv.setViewName("common/message");
-		return mv;
+		return res;
 	}
 	
 	@RequestMapping(value = "commentsUpdate", method = RequestMethod.POST)
-	public ModelAndView setCommentsUpdate(CommentsDTO commentsDTO, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public int setCommentsUpdate(CommentsDTO commentsDTO, HttpSession session) throws Exception{
 		int res = commentsService.setCommentsUpdate(commentsDTO, session);
-		mv.addObject("result", res);
-		mv.setViewName("common/message");
-		return mv;
+		return res;
+	}
+	
+	@RequestMapping(value = "reComWrite")
+	@ResponseBody
+	public int setReComWrite(CommentsDTO commentsDTO, HttpSession session) throws Exception{
+		int res = 0;
+		res = commentsService.setReComWrite(commentsDTO);
+		return res;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////

@@ -32,4 +32,31 @@
 	<update id="setUpdate" parameterType="CommentsDTO">
 		UPDATE COMMENTS SET CONTENTS = #{contents} WHERE CNUM = #{cnum}
 	</update>
+	
+	<sql id="subRef">
+		select ref from comments where cnum=#{cnum}
+	</sql>
+	<sql id="subStep">
+		select step from comments where cnum=#{cnum}
+	</sql>
+	
+	<!-- 답글사전작업 -->
+	<update id="setReComUpdate" parameterType="CommentsDTO">
+		update comments set step=step+1 
+		where ref=(<include refid="subRef"/>)
+		and step>(<include refid="subStep"/>)
+	</update>
+	
+	<insert id="setReCom" parameterType="CommentsDTO">
+		insert into comments(CNUM, NUM, WRITER, CONTENTS, REG_DATE, REF, STEP, DEPTH)
+		values(COM_SEQ.NEXTVAL, #{num}, #{writer}, #{contents}, sysdate, 
+		(<include refid="subRef"/>), (<include refid="subStep"/>)+1, 1)
+	</insert>
+	
+	
+	
+	
+
+
+	
 </mapper>
