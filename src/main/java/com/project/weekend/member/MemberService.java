@@ -90,15 +90,8 @@ public class MemberService {
 	public MemberDTO getSelectOverlap(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelectOverlap(memberDTO);
 	}
-	public MemberDTO getSelectGrade(MemberDTO memberDTO)throws Exception{
-		return memberDAO.getSelectGrade(memberDTO);
-	}
-	public MemberDTO getSelectEmail(MemberDTO memberDTO)throws Exception{
-		return memberDAO.getSelectEmail(memberDTO);
-	}
-	public MemberDTO getjumin(MemberDTO memberDTO)throws Exception{
-		return memberDAO.getjumin(memberDTO);
-	}
+	
+	
 	
 	
 	

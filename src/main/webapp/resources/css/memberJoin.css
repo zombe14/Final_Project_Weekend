@@ -249,7 +249,7 @@ select {
     margin: 0 5px;
 }
 
-#nicknameCheckbt{
+#nicknameCheck{
     border: 1px solid white;
     padding: 10px 20px;
     background: #00d344;
@@ -341,38 +341,7 @@ input[type=checkbox] + label {
 input[type=checkbox]:checked + label { 
 	 background: url("../images/memberagree/checkbox_on.png") left/20px no-repeat;
  }
-#emailCheck {
-	border: 1px solid white;
-    padding: 10px 20px;
-    background: #00d344;
-    color: white;
-    font-size: 14px;
-    margin: 0 5px;
-}
-#emailCodeCheckbt{
-	border: 1px solid white;
-    padding: 10px 20px;
-    background: #00d344;
-    color: white;
-    font-size: 14px;
-    margin: 0 5px;
-}
-.iTextnum{
-	width: 107px;
-    height: 30px;
-    padding: 0 8px;
-    height: 31px;
-    font-size: 14px;
-    border: 1px solid #dfe5ed;
-    vertical-align: middle;
-    font-family: "Noto Sans KR", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
-}
-#juminnum{
-	border: 1px solid white;
-    padding: 10px 18px;
-    background: #00d344;
-    color: white;	
-    font-size: 14px;
-    margin: 0 5px;
-}
+
+
+
 

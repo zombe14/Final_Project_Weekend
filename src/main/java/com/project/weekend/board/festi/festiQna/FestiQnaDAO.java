@@ -1,12 +1,16 @@
 package com.project.weekend.board.festi.festiQna;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import com.project.weekend.util.PageMaker;
 
 @Repository
 public class FestiQnaDAO {
-<<<<<<< HEAD
-
-=======
 	
 	@Inject
 	private SqlSession sqlSession;
@@ -75,5 +79,4 @@ public class FestiQnaDAO {
 	public List<String> getSelectRef(String ref) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getSelectRef", ref);
 	}
->>>>>>> a2164bd5b131d32956086be78ea10e0bfe560e55
 }

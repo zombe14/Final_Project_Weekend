@@ -1,14 +1,35 @@
 package com.project.weekend;
 
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.project.weekend.board.festi.FestiDTO;
+import com.project.weekend.board.festi.FestiService;
+import com.project.weekend.board.festi.festiQna.FestiQnaDAO;
+import com.project.weekend.board.festi.festiQna.FestiQnaDTO;
+import com.project.weekend.board.festi.festiQna.FestiQnaService;
+import com.project.weekend.util.PageMaker;
 
 @Controller
 @RequestMapping(value = "/festiQna/")
 public class FestiQnaController {
+	
+	@Inject
+	private FestiQnaService festiQnaService;
+	@Inject
+	private FestiService festiService;
+	private static final String board = "fqna";
+	private static final String board2 = "fqnaReply";
+	private static final String boardTitle = "FestiQna";
 
-<<<<<<< HEAD
-=======
 	@RequestMapping(value = "fqnaWrite", method = RequestMethod.GET)
 	public ModelAndView setWrite(String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -119,5 +140,4 @@ public class FestiQnaController {
 		}
 		return mv;
 	}
->>>>>>> a2164bd5b131d32956086be78ea10e0bfe560e55
 }

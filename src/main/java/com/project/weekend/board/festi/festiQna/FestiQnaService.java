@@ -1,11 +1,21 @@
 package com.project.weekend.board.festi.festiQna;
 
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.project.weekend.file.FileDAO;
+import com.project.weekend.file.FileDTO;
+import com.project.weekend.file.FileService;
+import com.project.weekend.util.FileSaver;
+import com.project.weekend.util.PageMaker;
 
 @Service
 public class FestiQnaService {
-<<<<<<< HEAD
-=======
 	
 	@Inject
 	private FestiQnaDAO festiQnaDAO;
@@ -119,6 +129,5 @@ public class FestiQnaService {
 		res=festiQnaDAO.setAnswer(ref);
 		return res;
 	}
->>>>>>> a2164bd5b131d32956086be78ea10e0bfe560e55
 
 }

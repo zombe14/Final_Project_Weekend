@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberAgree.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberAgree.css?ver=1">
   <c:import url="../temp/boot.jsp"></c:import> 
   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberAgree.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
@@ -17,7 +17,6 @@
 <title> Weekend - 약관동의 </title>
 </head>
 <body>
-
 	<div id="wrap">
 		<div id="container">
 			<div class="conta">
@@ -25,9 +24,7 @@
 					<div class="join_logo">
 						<a href="${pageContext.request.contextPath}/."><img alt=""
 							src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
-
 					</div>
-					<form action="./memberAgree" id="memberAgrree_post" method="POST">
 					<div class="essentialTermsWrap">
 						<div>
 							<div class="custom-control custom-checkbox mb-3 checks" id="checkAll">
@@ -111,7 +108,6 @@
 						</div>
 					</div>
 					<button id="join" class="agbtn" type="submit" form="new_normal_user">동의하기</button>
-					</form>
 					<div class="join_footer">
 						<div class="join_menu">
 							<a href="${pageContext.request.contextPath}/footer/personalInformation">개인정보처리방침</a>
@@ -126,7 +122,6 @@
 				</div>
 			</div>
 		</div>
-		</div>
-
+	</div>
 </body>
 </html>

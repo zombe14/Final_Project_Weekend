@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="FestiQnaMapper">
-<<<<<<< HEAD
-=======
 	<resultMap type="FestiQnaDTO" id="fqnaResult">
 		<id column="qnum" property="qnum"/>
 		<result column="num" property="num"/>
@@ -88,6 +86,5 @@
 	<update id="setAnswer" parameterType="String">
 		update festiqna set answer = 1 where ref = #{ref} and step = 0
 	</update>
->>>>>>> a2164bd5b131d32956086be78ea10e0bfe560e55
 	
 </mapper>
