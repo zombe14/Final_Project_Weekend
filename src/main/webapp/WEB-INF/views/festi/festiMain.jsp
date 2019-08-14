@@ -32,108 +32,18 @@
 </div>
 <script>
 
-	// 카카오맵 jsp에 띄우기
+	 // 카카오맵 jsp에 띄우기
 	
 	var container = document.getElementById('map');
 	var options = {
 		center: new kakao.maps.LatLng(36.2683, 127.6358),
 		level: 12
-	};
+	}
 
 	var map = new kakao.maps.Map(container, options);  
 	customOverlay = new kakao.maps.CustomOverlay({}),
 	infowindow = new kakao.maps.InfoWindow({removable: true});
 	
-    $.getJSON("${pageContext.request.contextPath}/resources/json/korea.geojson", function(geojson){
-    	
-    	var data = geojson.features;
-    	var coordinates = []; // 좌표 저장할 배열
-    	var name = '';	// 행정 구 이름
-    	
-    	console.log(data);
-    	$.each(data, function(index, val){
-    		
-    		coordinates = val.geometry.coordinates;
-    		name = val.properties.CTP_KOR_NM;
-		  	/* console.log(coordinates);
-    		console.log(name);  */        
-    		displayArea(coordinates, name);
-    	})
-    });
-    
-		
-   var polygons = [];
-     
-// 다각형을 생성하고 이벤트를 등록하는 함수입니다
-function displayArea(coordinates, name) {
-	var points = [];	// 중심좌표 구하기 위한 지역구 좌표들
-	var path =[];	// 폴리곤 그려줄 path
-	
-	$.each(coordinates[0], function(index, coordinate){
-		var point = new Object();
-		point.x = coordinate[1];
-		point.y = coordinate[0];
-		points.push(point);
-	/* 	console.log(points); */
-		/* console.log(point.y); */
-		path.push(new kakao.maps.LatLng(point.x, point.y));
-		//console.log(path.push(new kakao.maps.LatLng(point.x, point.y)));
-	// 다각형을 생성
-		
-	});
-	/* for(var i = 0; i < path.length; i++){
-		console.log(path[i]);
-	} */
- 	/* console.log(path); */
-	/* console.log(points); */
-	var polygon = new kakao.maps.Polygon({
-		map : map,	// 다각형을 표시할 지도 객체
-		path : path,
-		strokeWeight : 2,
-		strokeColor : '#004c80',
-		strokeOpacity : 0.8,
-		fillColor : '#fff',
-		fillOpacity : 0.7
-	});
-	
-	
-	// 폴리곤 이벤트 주기 < 마지막에 >
-	
-	/* polygons.push(polygon);
-	
-	daum.maps.event.addListener(polygon, 'mouseover', function(mouseEvent){
-		polygon.setOptions({
-			fillColor : '#09f'
-		});
-		
-		customOverlay.setContent('<div class="area">'+name+'</div>');
-		
-		customOverlay.setPosition(mouseEvent.latLng);
-		customOverlay.setMap(map);
-	});
-	
-	daum.maps.event.addListener(polygon, 'mousemove', function(mouseEvent){
-		customOverlay.setPosition(mouseEvent.latLng);
-	});
-	
-	daum.maps.event.addListener(polygon,'mouseout', function(){
-		polygon.setOptions({
-			fillColor : '#fff'
-		});
-		customOverlay.setMap(null);
-	});
-	
-	daum.maps.event.addListener(polygon, 'click', function(){
-		var level = map.getLevel()-2;
-	
-		map.setLevel(level, {anchor: centroid(points), animate: {
-			duration: 350
-		}});
-		
-		deletePolygon(polygons);
-	}); */
-	
-}
 </script>
 </body>
 </html>
