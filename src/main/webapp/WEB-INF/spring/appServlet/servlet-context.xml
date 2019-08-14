@@ -29,7 +29,7 @@
 	</beans:bean>
 	
 <!--Interceptor -->
-	<beans:bean id="memberInterceptor" class="com.project.weekend.interceptor.memberInterceptor" />
+	<beans:bean id="memberInterceptor" class="com.project.weekend.interceptor.MemberInterceptor" />
  	<interceptors>
 		<interceptor>
 			<mapping path="/member/memberJoin"/>
