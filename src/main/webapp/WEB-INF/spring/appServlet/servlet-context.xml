@@ -25,15 +25,24 @@
 	
 	<!-- 파일 다운로드 용. ajax. 순서 첫번째.  -->
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver"> 
-		<beans:property name="order" value="0"/>  
+		<beans:property name="order" value="0"/> 
 	</beans:bean>
 	
-<!-- memberInterceptor -->
+<!--Interceptor -->
 	<beans:bean id="memberInterceptor" class="com.project.weekend.interceptor.MemberInterceptor" />
  	<interceptors>
 		<interceptor>
-			<mapping path="/admin/*"/>
+			<mapping path="/member/memberJoin"/>
 			<beans:ref bean="memberInterceptor"/>
+		</interceptor>
+
+	</interceptors>
+	
+	<beans:bean id="adminInterceptor" class="com.project.weekend.interceptor.AdminInterceptor" />
+ 	<interceptors>
+		<interceptor>
+			<mapping path="/admin/*"/>
+			<beans:ref bean="adminInterceptor"/>
 		</interceptor>
 	</interceptors> 
 	

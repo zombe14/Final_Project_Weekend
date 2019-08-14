@@ -8,7 +8,7 @@
 <meta charset="utf-8">
   <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
      <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
   <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=1"></script>
@@ -24,7 +24,8 @@
 				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
 			</div>
 	<form action="./memberJoin"  id="frm" method="POST" enctype="multipart/form-data">
-		<div class="joinWrap">
+	<div class="joinWrap">
+			<h2>본인인증</h2>
 			<div class="essentiaDataWrap">
 				<h3 class="conTitle">
 					<i>필수</i> 정보입력</h3>
@@ -33,7 +34,7 @@
 					<table>
 						<caption>필수 정보입력</caption>
 						<colgroup>
-							<col style="width: 133px">
+							<col style="width: 240px">
 							<col style="width: *"> </colgroup>
 						<tbody>
 							<tr>
@@ -70,7 +71,7 @@
 										<span class="addr">@</span>
 										<input type="text" class="iText" title="이메일주소" name="memEmail2" disabled="" id="email_adress">
 										<div class="customSelect mailSelect">
-											<select name="memEmail3"  id="memEmail_select">
+											<select name="memEmail3"  id="memEmail_select" >
 												<option value="">선택해주세요</option>
 												
 													<option value="naver.com">naver.com</option>
@@ -98,29 +99,36 @@
 											</select>
 										</div>
 										<input type="hidden" id="email" name="email" title="email">
+									<button type="button" id="emailCheck">
+										메일인증하기
+									</button>
+									<input type="hidden" class="iText" id="emailCodeCheck" name="emailCodeCheck">
+									<button type="button" id="emailCodeCheckbt">
+										메일코드확인
+									</button>
+									</div>
 										<div id="result_mememail">
 										
 									</div>
+									<div id="result_emailCodeCheckbt">
+										
 									</div>
 									<div class="mailAreaMessage">
 										<span class="alertMessage" style="display:none; margin-bottom:6px;"></span>
 									</div>
-									<div class="iCheckbox">
-										<input id="check" name="" value="N" type="checkbox">
-										<label for="check">SMS, 이메일을 통한 상품 및 이벤트 정보 수신에 동의합니다. (선택)</label>
-									</div>
-									<div class="certifyButtonWrap">
-										<button class="certifyButtonWrapButton">
-											본인확인
-										</button>
-									</div>
+									
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
-			
+
+			<div class="essentiaDataWrap">
+			</div>
+
+			 <input type="hidden" value="${memberEmail }" name="email" id="email">
+			 <input type="hidden" value="${memberPhone }" name="phone" id="phone">
 			<div class="tableBox">
 					<table>
 						<caption>필수 정보입력2</caption>
@@ -204,26 +212,30 @@
 							</tr>
 							<tr>
 								<th scope="row">
+									<span class="essential">*</span>주민번호 </th>
+								<td>
+									<input type="hidden" id="jumin" name="jumin" title="jumin">
+						             <input type="text" name="unum1" id="unum1" size="12" maxlength="6" class="iTextnum">-
+						             <input type="password" name="unum2" id="unum2" size="12" maxlength="7" class="iTextnum"></input>
+									<input type="button" id="juminnum" value="중복확인">
+									<div id="juminnumCheck">
+										
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
 									<span class="essential">*</span>활동명 </th>
 								<td>
 								<input type="text" name="nickname" class="iText" title="nickname" id="nickname" minlength="4" maxlength="20">
-								<input type="button" id="nicknameCheck" value="중복확인">
-								<!-- <div id="nicknameCheck">
-											
-								</div> -->
-							</tr>
-							<!-- <tr>
-								<th scope="row">
-									<span class="essential">*</span>어린이회원 </th>
-								<td>
-									<div class="iCheckbox minorChkWrap">
-										<input id="minorChk" name="minorChk" type="checkbox" onclick="javascript:fncOpenCertifyPopup('PAR_EMAIL_CERTIFY');" value="N">
-										<label for="minorChk">14세 미만
-											<i>14세 미만 가입 시 보호자 동의 후 가입 가능합니다. 14세 미만 가입시 꼭 체크해주세요.</i>
-										</label>
-									</div>
+
+								<input type="button" id="nicknameCheckbt" value="중복확인">
+								<div id="nicknameCheck"></div>
+								<input type="hidden" id="age" name="age" title="age">
 								</td>
-							</tr> -->
+								
+							</tr>
+							
 							<tr>
 								<th scope="row">
 									프로필사진
