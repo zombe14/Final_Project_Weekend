@@ -75,9 +75,9 @@
 				</div>				
 				<div>
 					<label for="category">카테고리<span class="r">*</span></label>
-					<input type="radio" name="category" class="category" id="show" checked="checked" value="1"> 공연
-					<input type="radio" name="category" class="category" id="festival" value="2"> 축제						
-					<input type="radio" name="category" class="category" id="daehakro" value="3"> 대학로 연극
+					<input type="radio" name="category" class="category" id="show" checked="checked" value="6"> 6.공연
+					<input type="radio" name="category" class="category" id="festival" value="2"> 2. 축제						
+					<input type="radio" name="category" class="category" id="daehakro" value="3"> 3. 대학로 연극
 				</div>
 				<div>
 					<label for="startDate">시작일<span class="r">*</span></label>
