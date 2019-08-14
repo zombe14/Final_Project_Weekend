@@ -1,0 +1,223 @@
+body, input, textarea, select button, table, p, div{
+	font-family: ng,NanumGothic,'나눔고딕','굴림',Gulim,Sans-serif;
+	font-size: 12px;
+	color: #555;
+}
+
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+
+html, body{
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+	color: #444;
+}
+
+a:hover {
+	
+	text-decoration: none;
+}
+
+ul{
+	list-style: none;
+}
+
+li{
+	float: left;
+}
+
+#wrap{
+	overflow: hidden;
+	min-height:100%;
+	min-width: 1000px;
+}
+
+.inner{
+	color: #757575;
+	margin: 0 auto;
+	position: relative;
+}
+
+#header{
+	position: relative;
+	height: 120px;
+	padding: 10px 20px;
+	background-color: #f5f6f7;
+}
+
+#h_container{	
+	width: 1100px;
+	color: #757575;
+	margin: 0 auto;
+}
+
+.logo{
+	float: left;
+	margin-top: 15px;
+}
+/* container */
+
+
+#container{
+	margin: 0;
+	overflow: hidden;
+	background-color: #f5f6f7;
+}
+
+#content{
+	height: 100%;
+	padding: 10px 0 200px;
+}
+
+.img_area{
+	overflow: hidden;
+	position: relative;
+	height: 650px;
+	text-align: center;
+}
+
+.img_area .img_box li {
+    overflow: hidden;
+    position: relative;
+    height: 650px;
+    background-size: cover;
+    background-position: 50% 0;
+    text-align: center;
+    width: 100%;
+}
+
+.img_area .img_box strong {
+    width: 398px;
+    height: 153px;
+    margin: 136px 0 37px;
+    font-size: 60px;
+    color: #fff;
+/*     display: inline-block; */
+	overflow: hidden;
+	line-height: 300px;
+	vertical-align: top;
+}
+
+.img_area .img_box .txt {
+    font-size: 36px;
+    line-height: 54px;
+    color: #fff;
+}
+
+.co_info{
+	padding: 100px 0;
+    background: #f4f4f4;
+}
+
+.layout {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.co_info div.co_info_01 {
+    width: 35%;
+}
+
+.co_info div.co_info_02 {
+    width: 35%;
+}
+
+.co_info div.co_info_03 {
+    width: 30%;
+}
+
+.co_info .layout div {
+    float: left;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.co_info div.co_info_01 img {
+    width: 274px;
+}
+
+.co_info div.co_info_02 img {
+    width: 262px;
+}
+
+.co_info div.co_info_03 img {
+    width: 273px;
+}
+
+.co_info div img {
+    height: auto;
+    margin: 0 0 30px 15px;
+}
+
+.co_info div p {
+    padding-right: 50px;
+}
+
+.co_info div strong {
+    display: block;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 10px;
+}
+
+.map {
+    overflow: hidden;
+    position: relative;
+    height: 500px;
+	width: 100%;
+    float: left;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* footer */
+
+#footer{
+	
+	height: 190px;
+	background: #333;
+	padding-top: 50px;
+	position: relative;
+	overflow: hidden;
+}
+
+#f_container{
+	
+	width: 1100px;
+	color: #757575;
+	margin: 0 auto;
+}
+
+.f_menu{
+	font-weight: bold;
+    height: 11px;
+    line-height: 12px;
+    color: #999;
+    margin-bottom: 23px;
+}
+
+.f_menu a {
+      color: #999;
+      text-decoration: none;
+      font-weight: bold;
+   }
+   
+.f_logo{
+	float: left;
+}
+
+.f_inner{
+	width: 600px;
+	margin: 0 auto;
+	
+}

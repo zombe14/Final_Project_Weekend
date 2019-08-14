@@ -1,0 +1,139 @@
+/* css 할거*/
+	/* 3. 글쓰기 버튼$('#boardWrite'), 검색버튼 디자인 */
+	/* 4. 검색 form, 글쓰기 버튼 위치 잡기  */
+	/* 6. 테이블 위에 어떻게 할지 */
+	
+	/* 2. 페이징 처리 가운데로 */
+
+#paging{
+	text-align: center;
+}
+	
+.pagingClick{
+	color: green;
+	cursor: pointer;
+}
+	
+	/* 5. 검색버튼 */
+#searchButton{
+	width: 50px;
+    height: 32px;
+    background-color: #00d344;
+    color: white;
+    font-size: 13;
+    border: 1px solid white;
+}
+	
+	/* 7. 각 행 cursor: pointer */
+.select{
+	cursor: pointer;
+}
+
+.select:hover{
+		/* 제목에만 underline주는 법 찾아보기 */
+	text-decoration: underline;
+}
+	/* 8. 중요한 공지사항 색깔 다시 정하기 */
+.mark{
+	/* background-color: #41b40a17; */
+	background-color: #d4f7d4;
+}
+
+	/* 9. 테이블 행이 적을 때 페이징 ul 안올라가게 */
+#tableDiv{
+	/* min-height: 30vh; */
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+.td10 {
+		/* 1. 제목 빼고 가운데 정렬 */
+	text-align:center;
+		/* 10. 각 열 크기 조절 */
+	width: 10%;
+}
+	
+.table{	
+	margin-bottom: 0px;
+}
+
+.td60 {
+	width: 40%;
+	text-align: center;
+}
+
+.td33{
+	width: 33%;
+	text-align: center;
+}
+.td07{
+	width: 7%;
+	text-align: center;
+}
+
+.table_head{
+	background-color: #f5f6f7;
+}
+
+.search_select{
+	width: 50px;
+    height: 28px;
+    background-color: #f5f6f7;	
+}
+
+.search_input{
+    padding: 4px 10px;
+    width: 240px;
+}
+
+.boardwrite{
+	float: right;
+	
+}
+
+#boardWrite{
+	height: 31px;
+	background-color: white;
+    color: black;
+    border: 1px solid #adadad;
+    width: 90px;
+	border-radius: 10px;
+}
+
+#boardWrite:hover{
+	background-color: #00d344;
+	border: 1px solid white;
+	color: white;
+}
+
+.search_form{
+	text-align: center;
+	margin-left: 85px;
+}
+
+/* .board_h3{
+	padding-bottom: 30px;
+	border-bottom: 2px solid #999;
+	margin-bottom: 36px;
+} */
+
+.board_h3 h3{
+	font-weight: bold;
+}
+
+.pagination{
+	margin: 0px;
+	margin-bottom: 20px;
+}
+
+.pagination > li > a{
+	color: black;
+}
+
+.pagination > li.pagingClick > a:hover{
+	color: white;
+	background-color: #00d344;
+}
+
+.pagination > li.pagingo > a:hover{
+	color: black;
+}
