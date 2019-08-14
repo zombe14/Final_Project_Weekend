@@ -138,28 +138,18 @@ public class AfterController {
 	public ModelAndView getCommentsList(PageMaker pageMaker, HttpSession session)  throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
-		mv.addObject("list", list);
+		mv.addObject("clist", list);
 		mv.addObject("pager", pageMaker);
-		mv.addObject("board2", "comments");
+		mv.addObject("board", "comments");
 		mv.setViewName("board/commentsList");
 		return mv;
 	}
-	
-	@RequestMapping(value = "commentsListJson")
-	@ResponseBody
-	public List<CommentsDTO> getCommentsListJson(PageMaker pageMaker, HttpSession session) throws Exception{
-		List<CommentsDTO> list = commentsService.getCommentsList(pageMaker, session);
-		return list;
-	}
-	
+
 	@RequestMapping(value = "commentsWrite", method = RequestMethod.POST)
-	public ModelAndView setCommentsWrite(CommentsDTO commentsDTO) throws Exception{
-		System.out.println("con : "+commentsDTO.getNum());
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public int setCommentsWrite(CommentsDTO commentsDTO) throws Exception{
 		int result = commentsService.setCommentsWrite(commentsDTO);
-		mv.addObject("result", result);
-		mv.setViewName("common/message");
-		return mv;
+		return result;
 	}
 	
 	@RequestMapping(value = "commentsDelete", method = RequestMethod.POST)

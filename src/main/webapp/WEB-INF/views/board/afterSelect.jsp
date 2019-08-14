@@ -60,9 +60,28 @@
 						<input type="hidden" class="anum" id = "${dto.anum}" name="anum" value="${dto.anum}">
 							
 				</form>
+				<!-- ------------------------------------------ 댓글 ------------------------------------------ -->
 				<hr>
-				<c:import url="./commentsList.jsp"/>
-				
+				<div id="commentsWriteDiv">
+					<form action="./${board}commentsWrite" method="post" id="commentsFrm">
+						<input type="hidden" id="num" name="num" value="${dto.anum}">
+						<strong><span>댓글(</span><span id="cCnt">${clist.size()}</span>)</strong>
+						<div>				
+							<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
+						</div>
+						<div style="display: inline-block;">
+							<textarea rows="3" cols="100" id="commentsContents" style="resize: none;"></textarea>
+						</div>
+						<div style="display: inline-block;">
+							<a class="btn" id="commentsWrite">댓글등록</a>
+						</div>
+					</form>
+				</div>
+				<hr>
+				<div id="commentsList">
+					
+				</div>
+					
 			</div>
    </div>
    <div id="footer">
@@ -72,6 +91,55 @@
 	
 	<!-- script -->
 	<script type="text/javascript">
+	 getCommentsList();
+	/* 댓글 등록하기 - ajax */
+	$('#commentsWrite').click(function() {
+		var writer = $('#writer').val();
+		var contents = $('#commentsContents').val();
+		var num = '${dto.anum}';
+		if(contents == ''){
+			alert('내용을 입력해주세요');
+		} else {
+			$.ajax({
+				type:'POST',
+				url:'./commentsWrite',
+				data:{
+					writer:writer,
+					contents:contents,
+					num:num
+				},
+				success:function(data){
+	
+					if(data == '1'){
+						getCommentsList();
+						$('#commentsContents').val('');
+					} else {
+						alert('다시 작성해주세요');
+					}
+				},
+				error:function(data){
+					console.log(data);
+				}
+			});
+		}
+	});
+	
+
+	function getCommentsList(){
+		$.ajax({
+			type:'GET',
+			url:'./commentsList',
+			data:{
+				num:'${dto.anum}'
+			},
+			success:function(data){
+				data = data.trim();
+				$('#commentsList').html(data);
+					
+			}
+		});
+	}
+	
 	/* 글 삭제 */
 	$('#delete').click(function() {
 		var check = confirm('삭제하시겠습니까?');		
