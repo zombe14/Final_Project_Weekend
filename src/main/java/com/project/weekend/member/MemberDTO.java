@@ -15,7 +15,15 @@ public class MemberDTO {
 	private int count;
 	private int overlap;
 	private Date reg_date;
+	private String jumin;
 	
+	
+	public String getJumin() {
+		return jumin;
+	}
+	public void setJumin(String jumin) {
+		this.jumin = jumin;
+	}
 	public Date getReg_date() {
 		return reg_date;
 	}
