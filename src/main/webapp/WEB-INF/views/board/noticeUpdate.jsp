@@ -91,10 +91,10 @@
 									</tr>
 
 									<tr>
-										<td class="td1"><label for="top">상단에 등록 하기</label></td>
-										<td><input type="checkbox" id="top" name="top"
+										<td class="td1"><label for="check">상단에 등록 하기</label></td>
+										<td><input type="checkbox" id="check" name="top"
 											value="${dto.top}"> 
-											<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </span>
+											<label for="check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </label>
 											<span id="topCount" title="${topCount}">${topCount}
 												/ 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
 										</td>
