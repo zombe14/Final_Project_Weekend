@@ -65,7 +65,7 @@
 				<div id="commentsWriteDiv">
 					<form action="./${board}commentsWrite" method="post" id="commentsFrm">
 						<input type="hidden" id="num" name="num" value="${dto.anum}">
-						<strong><span>댓글(</span><span id="cCnt">${clist.size()}</span>)</strong>
+						<strong><span>댓글(</span><span id="cCnt">${cCnt}</span>)</strong>
 						<div>				
 							<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
 						</div>
@@ -124,7 +124,11 @@
 		}
 	});
 	
-
+	$('.update').click(function() {
+		var num = $(this).attr('class');
+	 });
+	 
+	
 	function getCommentsList(){
 		$.ajax({
 			type:'GET',
@@ -133,7 +137,7 @@
 				num:'${dto.anum}'
 			},
 			success:function(data){
-				data = data.trim();
+				data = data.trim();    	
 				$('#commentsList').html(data);
 					
 			}

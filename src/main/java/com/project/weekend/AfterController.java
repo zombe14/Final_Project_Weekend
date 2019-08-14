@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.weekend.board.comments.CommentsDAO;
 import com.project.weekend.board.comments.CommentsDTO;
 import com.project.weekend.board.comments.CommentsService;
 import com.project.weekend.board.festi.FestiService;
@@ -117,7 +118,9 @@ public class AfterController {
 	public ModelAndView getSelect(String num, PageMaker pageMaker, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		AfterDTO afterDTO = afterService.getSelect(num, session, request, response);
-		String path = "board/afterSelect";		
+		String path = "board/afterSelect";
+		int cCnt = commentsService.getAmount(pageMaker);
+		mv.addObject("cCnt",cCnt);
 		mv.addObject("dto", afterDTO);
 		mv.addObject("board", "after");
 		mv.addObject("boardTitle", after);
@@ -153,21 +156,17 @@ public class AfterController {
 	}
 	
 	@RequestMapping(value = "commentsDelete", method = RequestMethod.POST)
-	public ModelAndView setCommentsDelete(String cnum, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public int setCommentsDelete(int cnum, HttpSession session) throws Exception{
 		int res = commentsService.setCommentsDelete(cnum, session);
-		mv.addObject("result", res);
-		mv.setViewName("common/message");
-		return mv;
+		return res;
 	}
 	
 	@RequestMapping(value = "commentsUpdate", method = RequestMethod.POST)
-	public ModelAndView setCommentsUpdate(CommentsDTO commentsDTO, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public int setCommentsUpdate(CommentsDTO commentsDTO, HttpSession session) throws Exception{
 		int res = commentsService.setCommentsUpdate(commentsDTO, session);
-		mv.addObject("result", res);
-		mv.setViewName("common/message");
-		return mv;
+		return res;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
