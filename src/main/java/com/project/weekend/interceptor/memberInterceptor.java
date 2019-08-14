@@ -7,8 +7,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+<<<<<<< HEAD
 public class MemberInterceptor extends HandlerInterceptorAdapter {
 
+=======
+public class memberInterceptor extends HandlerInterceptorAdapter {
+	
+>>>>>>> member
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
