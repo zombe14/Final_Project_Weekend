@@ -114,6 +114,7 @@
 	</select>
 	<!-- 상혁 -->
 	<!-- 축제/ 공연 리스트 -->
+	
 	<!-- 후기 리스트 -->
 	<select id="getAfterList" parameterType="PageMaker" resultMap="afterResult">
 		select a.*, f.title from after a join festi f on f.category = 1 where 
