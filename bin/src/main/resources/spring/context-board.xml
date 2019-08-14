@@ -1,0 +1,59 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- interceptor -->
+<!-- 	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/qna/qnaSelect"/>
+			<ref bean="qnaPwInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+	
+	
+	<!-- transaction, aop -->
+	<aop:aspectj-autoproxy />
+	
+	<!-- board -->
+	<bean class="com.project.weekend.board.qna.QnaPwInterceptor" id="qnaPwInterceptor"/>
+	
+	<!-- notice -->
+	<bean class="com.project.weekend.board.notice.NoticeDTO" id="noticeDTO" />
+	<bean class="com.project.weekend.board.notice.NoticeDAOImpl" id="noticeDAO" />
+	<bean class="com.project.weekend.board.notice.NoticeServiceImpl" id="noticeServiceImpl" />
+	
+	<!-- festi -->
+	<bean class="com.project.weekend.board.festi.FestiDTO" id="festiDTO" />
+	<bean class="com.project.weekend.board.festi.FestiDAO" id="festiDAO" />
+	<bean class="com.project.weekend.board.festi.FestiService" id="festiService" />
+	
+	<!-- after -->
+	<bean class="com.project.weekend.board.festi.after.AfterDTO" id="afterDTO"/>
+	<bean class="com.project.weekend.board.festi.after.AfterDAO" id="afterDAO"/>
+	<bean class="com.project.weekend.board.festi.after.AfterService" id="afterService"/>
+	
+	<!-- comments -->
+	<bean class="com.project.weekend.board.comments.CommentsDTO" id="commentsDTO"/>
+	<bean class="com.project.weekend.board.comments.CommentsDAO" id="commentsDAO"/>
+	<bean class="com.project.weekend.board.comments.CommentsService" id="commentsService"/>
+	
+	<!-- qna -->
+	<bean class="com.project.weekend.board.qna.QnaDTO" id="qnaDTO" />
+	<bean class="com.project.weekend.board.qna.QnaDAO" id="qnaDAO" />
+	<bean class="com.project.weekend.board.qna.QnaService" id="qnaService" />
+	
+	<!-- festiQna -->
+	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaDTO" id="festiQnaDTO"/>
+	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaDAO" id="festiQnaDAO"/>
+	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaService" id="festiQnaService"/>
+	
+	<!-- date -->
+	<bean class="com.project.weekend.board.festi.dates.DatesDTO" id="datesDTO"/>
+	<bean class="com.project.weekend.board.festi.dates.DatesDAO" id="datesDAO"/>
+	<bean class="com.project.weekend.board.festi.dates.DatesService" id="datesService"/>
+	
+</beans>
