@@ -20,7 +20,6 @@ public class QnaDTO{
 	private String contents;
 	private Date reg_date;
 	private int hit;
-	private int answer;
 	
 	private ArrayList<FileDTO> fileDTOs;
 	public ArrayList<FileDTO> getFileDTOs() {
@@ -90,11 +89,5 @@ public class QnaDTO{
 	}
 	public void setPw(String pw) {
 		this.pw = pw;
-	}
-	public int getAnswer() {
-		return answer;
-	}
-	public void setAnswer(int answer) {
-		this.answer = answer;
 	}
 }

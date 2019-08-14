@@ -24,9 +24,7 @@
 		</div>
 		<div id="container">
 			<div class="conta">
-				num : ${dto.num}
-				<br>
-			
+				num : ${dto.num} 
 				<br> 
 				title : ${dto.title} 
 				<br> 
@@ -52,22 +50,38 @@
 					</form>
 				</div>			
 				
-				<a id="list" href="./qnaList">목록</a>
-				<a id="update" class="${board}" href="./${board}Update?num=${dto.num}">수정</a> 
+				<a id="list" title="${board}" class="${dto.num}">목록</a>
+				<a id="update" class="${board}">수정</a> 
 				<a id="delete" class="${board}">삭제</a>
-				<c:if test="${dto.answer eq 0}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
+				<c:if test="${dto.step eq 0}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
 					<a id="replyBtn" class="btn btn-default">답변달기</a>
 				</c:if>
 
-				<!-- 원글일때 -->
-				<form action="./qnaDelete" id="deleteOriginFrm" method="post">
-					<input type="hidden" name="ref" value="${dto.ref}">
+				<form action="./${board}Delete" id="deleteFrm" method="post">
+					
+					<input type="hidden" class="num" id = "${dto.num}" name="num" value="${dto.num}">
+									
 				</form>
-				<!-- 답글일때 -->
-				<form action="./qnaReplyDelete" id="deleteReplyFrm" method="post">
-					<input type="hidden" name="num" value="${dto.num}">
-				</form>
-				
+				<%-- <hr>  댓글.
+				<c:if test="${board eq 'qna'}">
+					<c:forEach items="${replyDTO}" var = "r">
+						${r.writer}
+						<p>${r.contents}</p>
+						<a id="replyUpdate">수정</a>
+						<a id="replyDelete">삭제</a>
+					</c:forEach>
+					<hr>
+					<c:if test="${member.grade eq 3}">
+						<div id="replyDiv">
+							<form action="./${board}ReplyWrite" method="post" id="replyFrm">
+								<p>${member.id}memberId</p>
+								<input type="hidden" name="writer" value="${member.id}memberId">
+								<textarea rows="3" cols="100" id="replyContents"></textarea>
+								<a class="btn btn-default" id="replyWrite">답변등록</a>
+							</form>
+						</div>
+					</c:if>
+				</c:if> --%>
 			</div>
    </div>
    <div id="footer">
@@ -79,25 +93,26 @@
 	<script type="text/javascript">
 	/* 글 삭제 */
 	$('#delete').click(function() {
+		var check = confirm('삭제하시겠습니까? 답변도 모두 삭제됩니다.');		
+		if(check){
+			$('#deleteFrm').submit();
+		}
+	});
+	
+	/* 글 수정 */
+	$('#update').click(function() {
+		var board = $(this).attr('class');
+		var num = 0;
 		
-		/* 질문 원글일 때 */
-		if('${dto.step}' == '0'){
-			var check = confirm('삭제하시겠습니까? 답변도 모두 삭제됩니다.');		
-			if(check){
-				$('#deleteOriginFrm').submit();
-			}
-		} 
-		/* 답글일때 */
-		else{
-			var check = confirm('삭제하시겠습니까?');		
-			if(check){
-				$('#deleteReplyFrm').submit();
-			}
+		if(board == 'notice' || board == 'qna'){
+			num = $('.num').attr('id');
+			location.href="./${board}Update?num="+num;
+		} else if (board == 'after') {
+			num = $('.anum').attr('id');
+			location.href="./${board}Update?anum="+num;
 		}
 		
 	});
-	
-
 	
 	/* 첨부파일 다운로드 */
 	$('.down').click(function() {
@@ -108,8 +123,30 @@
 		$('#downForm').submit();
 	});
 	
-	
-
+	/* 목록 */
+	$('#list').click(function() {
+		var list = "";
+		var board = $(this).attr('title');
+		var num = $(this).attr('class');
+		if(board == 'after'){
+			list = "../festi/festiSelect?num="+num;		
+		} else if (board == 'notice'||'qna'){
+			list = "./"+board+"List";
+		}
+		location.href = list;
+	});
+	/* 
+	if('${board}' == 'qna'){
+		$('#replyWrite').click(function() {
+			if($('#replyContents').val() == ""){
+				alert('내용을 입력해주세요');
+			} else {
+				$.ajax({
+					url:'./${board}ReplyWrite'
+				});
+			}
+		});
+	} */
 	if('${board}' == 'qna'){
 		$('#replyBtn').click(function() {
 			console.log('click');

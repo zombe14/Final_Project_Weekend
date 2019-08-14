@@ -34,10 +34,6 @@ public class QnaDAO{
 	public int setDelete(String num) throws Exception {
 		return sqlSession.delete(NAMESPACE+"setDelete", num);
 	}
-	
-	public int setReplyDelete(String num) throws Exception{
-		return sqlSession.delete(NAMESPACE+"setReplyDelete", num);
-	}
 
 	
 	public QnaDTO getSelect(String num) throws Exception {
@@ -59,13 +55,10 @@ public class QnaDAO{
 	public int setReplyWrite(QnaDTO qnaDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setReplyWrite", qnaDTO);
 	}
-	
-	public int setAnswer(String ref) throws Exception{
-		return sqlSession.update(NAMESPACE+"setAnswer", ref);
+
+	public int setReplyUpdate(QnaDTO qnaDTO) throws Exception{ 
+		return sqlSession.update(NAMESPACE+"setReplyUpdate", qnaDTO);
 	}
-	
-	public List<String> getSelectRef(String ref) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getSelectRef", ref);
-	}
+	 
 
 }

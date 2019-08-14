@@ -29,7 +29,6 @@
 				<c:if test="${board eq 'qnaReply'}">
 					<p>원글 제목 : ${qnaOrigin.title}</p>
 					<p>원글 글쓴이 : ${qnaOrigin.writer}</p>
-					<p>ref:${qnaOrigin.num}</p>
 					<input type="hidden" name ="ref" value="${qnaOrigin.num}">
 				</c:if>
 

@@ -49,6 +49,6 @@
 	<!-- festiQna -->
 	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaDTO" id="festiQnaDTO"/>
 	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaDAO" id="festiQnaDAO"/>
-	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaService" id="festiQnaService"/>
+	<bean class="com.project.weekend.board.festi.festiQna.FestiQnaService" id="festiQnaService"/>	
 	
 </beans>

@@ -19,8 +19,9 @@ $(function() {
 		var c1 = $("#customCheck1").prop('checked');
 		var c2 = $("#customCheck2").prop('checked');
 		var c3 = $("#customCheck3").prop('checked');
+
 		if(c1&&c2&&c3){
-			location.href="./memberJoin";
+			$("#memberAgrree_post").submit();
 		}else{
 			alert("필수 약관에 동의 하세요");
 		}
