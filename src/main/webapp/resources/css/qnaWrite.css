@@ -17,7 +17,7 @@
 	}
 	
 .write_title input{
-	width: 95%;
+	width: 94%;
 	height: 30px;
 	outline: none;
 }
@@ -40,7 +40,7 @@ input:focus{
 	border: 2px solid #00d344;
 }
 
-.noticeWrite_btn{
+.qnaWrite_btn{
 	background-color: white;
     color: black;
     padding: 4px 15px;
@@ -50,13 +50,13 @@ input:focus{
     border-radius: 10px;
 }
 
-.noticeWrite_btn:hover{
+.qnaWrite_btn:hover{
 	background-color: #00d344;
 	border: 1px solid white;
 	color: white;
 }
 
-.noticeUpdate_btn{
+ .qnaUpdate_btn{
 	background-color: white;
     color: black;
     padding: 4px 15px;
@@ -66,7 +66,7 @@ input:focus{
     border-radius: 10px;
 }
 
-.noticeUpdate_btn:hover{
+.qnaUpdate_btn:hover{
 	background-color: #00d344;
 	border: 1px solid white;
 	color: white;

@@ -13,6 +13,8 @@
 	href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="shortcut icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/callcenter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/qnaWrite.css">
 <!-- date picker -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -25,61 +27,101 @@
 		</div>
 		<div id="container">
 			<div class="conta">
+			<div class="call_quick">
+				<div class="title">
+					<h2>고객센터</h2>
+				</div>
+				<ul>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/infosearch"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call1.png">아이디/<br>패스워드 찾기</a></li>
+					<li class="qmenu"><a href="#"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call2.png">상담내역<br>확인</a></li>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/reservation"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call3.png">티켓<br>예매문의</a></li>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/cancel"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call4.png">티켓<br>환불문의</a></li>
+					<li class="qmenu"><a href="${pageContext.request.contextPath}/callcenter/receive"><img src="${pageContext.request.contextPath}/resources/images/callcenter/call5.png">티켓<br>수령문의</a></li>
+				</ul>
+			</div>
+			<div class="call_container">
+				<ul class="call_menu">
+					<li class="cmenu1"><a href="${pageContext.request.contextPath}/callcenter/main">고객센터 홈</a></li>
+					<li class="cmenu2"><a href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a></li>
+					<li class="cmenu3"><a href="${pageContext.request.contextPath}/qna/qnaList">QnA</a></li>
+					<li class="cmenu4"><a href="${pageContext.request.contextPath}/callcenter/reservation">예매안내</a></li>
+					<li class="cmenu5"><a href="${pageContext.request.contextPath}/callcenter/payment">결제수단안내</a></li>
+					<li class="cmenu6"><a href="${pageContext.request.contextPath}/callcenter/cancel">환불안내</a></li>
+					<li class="cmenu7"><a href="${pageContext.request.contextPath}/callcenter/legalguide">부정이용 규제안내</a></li>
+					<li class="cmenu8"><a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
+				</ul>
+				<div class="call_cont">
+					<h3>${boardTitle} 글쓰기</h3>
+					<div class="call_wrap">
 				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
-				<c:if test="${board eq 'qnaReply'}">
+				<%-- <c:if test="${board eq 'qnaReply'}">
 					<p>원글 제목 : ${qnaOrigin.title}</p>
 					<p>원글 글쓴이 : ${qnaOrigin.writer}</p>
 					<p>ref:${qnaOrigin.num}</p>
 					<input type="hidden" name ="ref" value="${qnaOrigin.num}">
-				</c:if>
-
-					<div>
-						<label for="title">제목<span>*</span></label>
+				</c:if> --%>
+				<table class="table table-bordered">
+					<tr class="write_title">
+						<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png">
 						<c:if test="${board eq 'qna'}">
 							<input type="text" name="title" id="title">
 						</c:if>
 						<c:if test="${board eq 'qnaReply'}">
 							<input type="text" name="title" id="title" value="${qnaOrigin.title} 답변입니다.">
 						</c:if>
-					</div>
-					<div>
-						<label for="writer">작성자<span>*</span></label> 
-						<input type="text" name="writer" value="${member.id}memberId" readonly="readonly">
-					</div>
-
-					<div>
-						<label for="contents">내용<span>*</span></label>
-						<textarea rows="" cols="" name="contents" id="contents"></textarea>
-					</div>
-					<div>
-						<label for="files">첨부파일</label> <a id="addFiles">파일추가</a>
-						<div id="files">
+						</td>
+					</tr>
+					<tr class="write_writer">
+						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.id}memberId" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td  class="td1"><label for="contents">내용<span>*</span></label></td>
+						<td><textarea rows="" cols="" name="contents" id="contents"></textarea></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="files">첨부파일</label></td>
+						<td>
+							<input type="button" id="addFiles" value="파일추가">
+						<div id="filesDiv">
 							<div>
 								<input type="file" class="filelist" name="filelist" style="display: inline-block"> 
 								<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
 							</div>
 						</div>
-					</div>
+						</td>
+					</tr>
+					<tr>
 					<c:if test="${board eq 'qna'}">
-						<div>
+						<td class="td1">
 							<label for="pw">비밀번호</label> 
+						</td>
+						<td>
 							<input type="radio" class="pwSel" name="secret" id="nonSecret" checked="checked"> 공개글
 							<input type="radio" class="pwSel" name="secret" id="secret"> 비밀글
 							<input type="password" name="pw" id="pw" placeholder="질문글과 답변을 볼 때 사용 할 비밀번호를 입력해주세요">
-						</div>
+						</td>
 					</c:if>
 					<c:if test="${board eq 'qnaReply'}">
-						<div id="replyDiv">
+						<td class="td1">
 							<label for="pw">비밀번호</label> 
+						</td>
+						<td>
+						<div id="replyDiv">
 							<input type="radio" class="pwSel" name="secret" id="nonSecret" > 공개글
 							<input type="radio" class="pwSel" name="secret" id="secret"> 비밀글
 							<input type="password" name="pw" id="pw">
 						</div>
+						</td>
 					</c:if>
 
-					<a class="btn btn-default" id="write">등록</a>
+				</table>
+					<a class="qnaWrite_btn" id="write">등록</a>
 				</form>
-
+				</div>
+				</div>
+				</div>
 			</div>
 		</div>
 		<div id="footer">

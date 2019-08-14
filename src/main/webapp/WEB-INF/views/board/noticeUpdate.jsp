@@ -9,14 +9,10 @@
 <c:import url="../temp/summernote.jsp" />
 <title>${boardTitle} 글 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/callcenter.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/noticeWrite.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-<style type="text/css">
-	/* 2. * 빨간색 */
-	.r{
-		color: red;
-	}
 
-</style>
 </head>
 <body>
 	<div id="wrap">
@@ -25,61 +21,117 @@
 		</div>
 		<div id="container">
 			<div class="conta">
-				<strong>${boardTitle} 글 수정</strong>
-				<form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
-					<table class="table table-bordered">
-							<tr>
-								<td><label for="title">제목 <span class="r"> *</span></label></td>
-								<td><input type="text" name="title" class="required" id="title" value="${dto.title}"></td>
-							</tr>
-							<tr>
-								<td><label for="writer">작성자 <span class="r"> *</span></label></td>
-								<td><input type="text" name="writer" value="${dto.writer}" readonly="readonly" class="required" id="writer"></td>
-							</tr>
-							<tr>
-								<td><label for="contents">내용 <span class="r"> *</span></label></td>
-								<td><textarea rows="" cols="" name="contents" id="contents" class="required">${dto.contents}</textarea></td>
-							</tr>
-							
-							<tr>
-								<td><label for="top">상단에 등록 하기</label></td>
-								<td>
-									<input type="checkbox" id="top" name="top" value="${dto.top}">
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </span><span id="topCount" title="${topCount}">${topCount} / 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
-								</td>
-							</tr>
-							
-							<tr>
-								<td>
-									<label for="files">첨부파일</label>
-								</td>
-								<td>
-									<!-- 이미 있는 파일들 -->
-									<div id="filed">
-										<input type="hidden" id="fileCount" value="${dto.fileDTOs.size()}">
-										<c:forEach items="${dto.fileDTOs}" var="f">
-											<c:if test="${f.oname ne null}">
-												<div class="fileDTOsDiv">
-													<p style="display: inline-block;">${f.oname}</p>
-													<span class="glyphicon glyphicon-remove deleteFile" id="${f.fnum}" title="${f.fname}" style="display: inline-block;"></span>
-												</div> 
-											</c:if>
-										</c:forEach>
-									</div>
-									<hr>
-									<!-- 추가 할 파일들 -->
-									<div class="filesDiv">
-									</div>
-									<input type="button" id="addFiles" value="파일 추가">
-								</td>
-							</tr>
-							
-					</table>
-					
-					<input type="hidden" name="num" value="${dto.num}">
-					<a id="write" class="btn btn-default">등록하기</a>
-				</form>
+				<div class="call_quick">
+					<div class="title">
+						<h2>고객센터</h2>
+					</div>
+					<ul>
+						<li class="qmenu"><a
+							href="${pageContext.request.contextPath}/callcenter/infosearch"><img
+								src="${pageContext.request.contextPath}/resources/images/callcenter/call1.png">아이디/<br>패스워드
+								찾기</a></li>
+						<li class="qmenu"><a href="#"><img
+								src="${pageContext.request.contextPath}/resources/images/callcenter/call2.png">상담내역<br>확인</a></li>
+						<li class="qmenu"><a
+							href="${pageContext.request.contextPath}/callcenter/reservation"><img
+								src="${pageContext.request.contextPath}/resources/images/callcenter/call3.png">티켓<br>예매문의</a></li>
+						<li class="qmenu"><a
+							href="${pageContext.request.contextPath}/callcenter/cancel"><img
+								src="${pageContext.request.contextPath}/resources/images/callcenter/call4.png">티켓<br>환불문의</a></li>
+						<li class="qmenu"><a
+							href="${pageContext.request.contextPath}/callcenter/receive"><img
+								src="${pageContext.request.contextPath}/resources/images/callcenter/call5.png">티켓<br>수령문의</a></li>
+					</ul>
+				</div>
+				<div class="call_container">
+					<ul class="call_menu">
+						<li class="cmenu1"><a
+							href="${pageContext.request.contextPath}/callcenter/main">고객센터
+								홈</a></li>
+						<li class="cmenu2"><a
+							href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a></li>
+						<li class="cmenu3"><a
+							href="${pageContext.request.contextPath}/qna/qnaList">QnA</a></li>
+						<li class="cmenu4"><a
+							href="${pageContext.request.contextPath}/callcenter/reservation">예매안내</a></li>
+						<li class="cmenu5"><a
+							href="${pageContext.request.contextPath}/callcenter/payment">결제수단안내</a></li>
+						<li class="cmenu6"><a
+							href="${pageContext.request.contextPath}/callcenter/cancel">환불안내</a></li>
+						<li class="cmenu7"><a
+							href="${pageContext.request.contextPath}/callcenter/legalguide">부정이용
+								규제안내</a></li>
+						<li class="cmenu8"><a
+							href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
+					</ul>
+					<div class="call_cont">
+						<h3>${boardTitle}글 수정</h3>
+						<div class="call_wrap">
+							<form action="./${board}Update" method="post"
+								enctype="multipart/form-data" id="frm">
+								<table class="table table-bordered">
+									<tr class="update_title">
+										<td class="td1"><label for="title">제목 <span class="r">
+													*</span></label></td>
+										<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="title" class="required"
+											id="title" value="${dto.title}"></td>
+									</tr>
+									<tr class="update_writer">
+										<td class="td1"><label for="writer">작성자 <span class="r">
+													*</span></label></td>
+										<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer"
+											value="${dto.writer}" readonly="readonly" class="required"
+											id="writer"></td>
+									</tr>
+									<tr>
+										<td class="td1"><label for="contents">내용 <span class="r">
+													*</span></label></td>
+										<td><textarea rows="" cols="" name="contents"
+												id="contents" class="required">${dto.contents}</textarea></td>
+									</tr>
 
+									<tr>
+										<td class="td1"><label for="top">상단에 등록 하기</label></td>
+										<td><input type="checkbox" id="top" name="top"
+											value="${dto.top}"> 
+											<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </span>
+											<span id="topCount" title="${topCount}">${topCount}
+												/ 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td class="td1"><label for="files">첨부파일</label></td>
+										<td>
+											<!-- <hr> 추가 할 파일들 -->
+											<input type="button" id="addFiles" value="파일 추가">
+											<!-- 이미 있는 파일들 -->
+											<div id="filed">
+												<input type="hidden" id="fileCount"
+													value="${dto.fileDTOs.size()}">
+												<c:forEach items="${dto.fileDTOs}" var="f">
+													<c:if test="${f.oname ne null}">
+														<div class="fileDTOsDiv">
+															<p style="display: inline-block;">${f.oname}</p>
+															<span class="glyphicon glyphicon-remove deleteFile"
+																id="${f.fnum}" title="${f.fname}"
+																style="display: inline-block;"></span>
+														</div>
+													</c:if>
+												</c:forEach>
+											</div>
+											<div class="filesDiv"></div> 
+										</td>
+									</tr>
+
+								</table>
+
+								<input type="hidden" name="num" value="${dto.num}"> <a
+									id="write" class="btn btn-default noticeUpdate_btn">등록하기</a>
+							</form>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div id="footer">
