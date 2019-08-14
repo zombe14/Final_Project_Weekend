@@ -74,12 +74,12 @@
 							</tr>
 							</c:if>
 							<tr>
-								<td  class="td1"><label for="files">첨부파일</label></td>
+								<td class="td1"><label for="files">첨부파일</label></td>
 								<td>
-									<input type="button" id="addFiles" value="파일 추가"><img alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png">
+									<button type="button" id="addFiles" value="파일 추가"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">항목 추가 </button>
 									<div id="filesDiv">
 										<div>
-											<input type="file" class="filelist" name="filelist" style="display: inline-block;"> 
+											<input type="file" class="filelist" name="filelist" style="display: inline-block;">
 											<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block;"></span>
 										</div>
 									</div>
@@ -167,8 +167,6 @@
 			if(topC < 7){
 				$('#top').show();
 			}
-		
-		
 		
 		
 

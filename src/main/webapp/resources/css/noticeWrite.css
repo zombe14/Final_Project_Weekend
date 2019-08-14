@@ -29,11 +29,18 @@
 }
 
 #addFiles{
-	width: 67px;
+	width: 90px;
+	float: right;
+	border-radius: 20px; 
 }
 
-#filesDiv{
-	margin-top: 10px;
+#addFiles img{
+	width: 20px;
+	margin-right: 6px;
+}
+
+.pwpw{
+	width: 300px;
 }
 
 input:focus{

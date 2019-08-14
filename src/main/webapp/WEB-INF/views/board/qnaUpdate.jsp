@@ -124,8 +124,8 @@
 							<label for="pw">비밀번호</label> 
 						</td>
 						<td>
-							<input type="radio" class="pwSel" name="secret" id="nonSecret" checked="checked"> 공개글
-							<input type="radio" class="pwSel" name="secret" id="secret"> 비밀글
+							<input type="radio" class="pwSel" name="secret" id="nonSecret" checked="checked"> <label>공개글</label>
+							<input type="radio" class="pwSel" name="secret" id="secret"> <label>비밀글</label>
 							<input type="password" name="pw" id="pw" placeholder="질문글과 답변을 볼 때 사용 할 비밀번호를 입력해주세요">
 						</td>
 					</c:if>
@@ -135,8 +135,8 @@
 						</td>
 						<td>
 						<div id="replyDiv">
-							<input type="radio" class="pwSel" name="secret" id="nonSecret" > 공개글
-							<input type="radio" class="pwSel" name="secret" id="secret"> 비밀글
+							<input type="radio" class="pwSel" name="secret" id="nonSecret" > <label>공개글</label>
+							<input type="radio" class="pwSel" name="secret" id="secret"><label>비밀글</label>
 							<input type="password" name="pw" id="pw">
 						</div>
 						</td>
