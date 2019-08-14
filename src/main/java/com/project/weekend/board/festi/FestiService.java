@@ -12,6 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.festi.after.AfterDAO;
 import com.project.weekend.board.festi.after.AfterService;
+<<<<<<< HEAD
+=======
+import com.project.weekend.board.festi.festiQna.FestiQnaDAO;
+import com.project.weekend.board.festi.festiQna.FestiQnaService;
+>>>>>>> a2164bd5b131d32956086be78ea10e0bfe560e55
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.file.FileService;
@@ -31,6 +36,15 @@ public class FestiService {
 	private FileService fileService;
 	@Inject
 	private AfterDAO afterDAO;
+<<<<<<< HEAD
+=======
+	@Inject
+	private FestiQnaDAO festiQnaDAO;
+	@Inject
+	private AfterService afterService;
+	@Inject
+	private FestiQnaService festiQnaService;
+>>>>>>> a2164bd5b131d32956086be78ea10e0bfe560e55
 
 	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int num = festiDAO.getNum();
@@ -84,13 +98,19 @@ public class FestiService {
 	public int setDelete(String num, HttpSession session) throws Exception{
 		int res = 0;
 		res = festiDAO.setDelete(num);
+<<<<<<< HEAD
 		res = afterDAO.setDeleteAll(num);
+=======
+		res = afterService.setDeleteAll(num, session);
+		//res = festiQnaService.setDeleteOrigin(num);
+>>>>>>> a2164bd5b131d32956086be78ea10e0bfe560e55
 		List<FileDTO> list = fileDAO.getList(num);
 		if(list != null) {
 			for(FileDTO fileDTO : list) {
 				res = fileService.setDelete(fileDTO, "board", session);
 			}
 		}
+		
 		return res;
 	}
 	

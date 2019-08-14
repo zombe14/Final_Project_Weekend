@@ -112,7 +112,9 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
-	
+	<select id="getListNum" parameterType="String" resultType="String">
+		select anum from after where num = #{num}
+	</select>
 	
 	
 	<resultMap type="AfterDTO" id="afterResult">

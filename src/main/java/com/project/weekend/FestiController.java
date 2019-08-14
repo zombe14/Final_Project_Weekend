@@ -15,6 +15,13 @@ import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.board.festi.after.AfterDTO;
 import com.project.weekend.board.festi.after.AfterService;
+<<<<<<< HEAD
+=======
+import com.project.weekend.board.festi.dates.DatesDTO;
+import com.project.weekend.board.festi.dates.DatesService;
+import com.project.weekend.board.festi.festiQna.FestiQnaDTO;
+import com.project.weekend.board.festi.festiQna.FestiQnaService;
+>>>>>>> a2164bd5b131d32956086be78ea10e0bfe560e55
 import com.project.weekend.util.PageMaker;
 
 @Controller
@@ -25,6 +32,13 @@ public class FestiController {
 	private FestiService festiService;
 	@Inject
 	private AfterService afterService;
+<<<<<<< HEAD
+=======
+	@Inject
+	private FestiQnaService festiQnaService;
+	@Inject
+	private DatesService datesService;
+>>>>>>> a2164bd5b131d32956086be78ea10e0bfe560e55
 	
 	//write form - get
 	@RequestMapping(value = "festiWrite", method = RequestMethod.GET)
@@ -38,10 +52,15 @@ public class FestiController {
 	
 	//write process - post
 	@RequestMapping(value = "festiWrite", method = RequestMethod.POST)
-	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{ //, List<DatesDTO> datesDTOs
 		ModelAndView mv = new ModelAndView();
 		String path = "board/boardTile";
 		int res = festiService.setWrite(festiDTO, filelist, session);
+		/*
+		for(DatesDTO d : datesDTOs) {
+		 res = datesService.setWrite(d, session);
+		}
+		*/
 		if(res>0) {
 			path = "redirect:./festiSelect?num="+festiDTO.getNum();
 		} else {
@@ -104,13 +123,17 @@ public class FestiController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "festiDelete", method = RequestMethod.GET)
+	@RequestMapping(value = "festiDelete", method = RequestMethod.POST)
 	public String setDelete(String num,  HttpSession session) throws Exception{
+		int category = festiService.getSelect(num).getCategory();
 		int res = festiService.setDelete(num, session);
 		String path = "redirect:./festiSelect?num="+num;
 		if (res>0) {
-			path = "redirect:./festiList";
+			path = "redirect:./festiList?category="+category;
+		} else {
+			
 		}
+		System.out.println("f con : "+res);
 		return path;
 	}
 }
