@@ -130,4 +130,8 @@ public class FestiController {
 		System.out.println("f con : "+res);
 		return path;
 	}
+	
+	//festiMain
+	@RequestMapping(value = "festiMain")
+	public void festiMain() throws Exception{};
 }
