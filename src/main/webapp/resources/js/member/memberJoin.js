@@ -359,6 +359,7 @@ $(function() {
 		if(pw==pwCheck){
 			finalpw = true;
 			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw&&jumin=='0'&&d){
+				alert("완료");
 				$("#frm").submit();
 			}else if(nicknameCheck!='0'){
 				alert("활동명을 입력하세요");

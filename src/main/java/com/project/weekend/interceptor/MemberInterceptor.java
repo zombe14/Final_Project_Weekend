@@ -18,7 +18,6 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 		boolean result=false;
 		if(obj != null) {
 			result=true;
-			session.invalidate();
 		}else {
 			response.sendRedirect("../member/memberAgree");
 		}
