@@ -90,7 +90,7 @@ public class MemberService {
 	public MemberDTO getSelectOverlap(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelectOverlap(memberDTO);
 	}
-<<<<<<< HEAD
+
 	public MemberDTO getSelectGrade(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelectGrade(memberDTO);
 	}
@@ -100,10 +100,7 @@ public class MemberService {
 	public MemberDTO getjumin(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getjumin(memberDTO);
 	}
-=======
-	
-	
->>>>>>> master
+
 	
 	
 	

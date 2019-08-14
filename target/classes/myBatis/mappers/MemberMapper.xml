@@ -104,7 +104,7 @@
 	<select id="getSelectOverlap" resultType="MemberDTO" parameterType="MemberDTO">
 		select * from member where overlap>0 and id=#{id}
 	</select>
-<<<<<<< HEAD
+
 	<select id="getSelectGrade" resultType="MemberDTO" parameterType="MemberDTO">
 		select * from member where grade=3 and id=#{id}
 	</select>
@@ -114,6 +114,4 @@
 	<select id="getjumin" resultType="MemberDTO" parameterType="MemberDTO">
 		select * from member where jumin=#{jumin}
 	</select>
-=======
->>>>>>> master
 </mapper>

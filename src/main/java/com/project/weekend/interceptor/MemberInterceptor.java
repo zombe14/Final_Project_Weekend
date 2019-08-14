@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 <<<<<<< HEAD:src/main/java/com/project/weekend/interceptor/memberInterceptor.java
-public class memberInterceptor extends HandlerInterceptorAdapter {
+public class MemberInterceptor extends HandlerInterceptorAdapter {
 	
 =======
 public class MemberInterceptor extends HandlerInterceptorAdapter {
