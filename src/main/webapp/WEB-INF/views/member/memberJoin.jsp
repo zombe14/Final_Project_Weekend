@@ -24,7 +24,7 @@
 				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
 			</div>
 	<form action="./memberJoin"  id="frm" method="POST" enctype="multipart/form-data">
-	<div class="joinWrap">
+		<div class="joinWrap">
 			<div class="essentiaDataWrap">
 				<h3 class="conTitle">
 					<i>필수</i> 정보입력</h3>
@@ -33,7 +33,7 @@
 					<table>
 						<caption>필수 정보입력</caption>
 						<colgroup>
-							<col style="width: 240px">
+							<col style="width: 133px">
 							<col style="width: *"> </colgroup>
 						<tbody>
 							<tr>
@@ -70,7 +70,7 @@
 										<span class="addr">@</span>
 										<input type="text" class="iText" title="이메일주소" name="memEmail2" disabled="" id="email_adress">
 										<div class="customSelect mailSelect">
-											<select name="memEmail3"  id="memEmail_select" >
+											<select name="memEmail3"  id="memEmail_select">
 												<option value="">선택해주세요</option>
 												
 													<option value="naver.com">naver.com</option>
@@ -121,7 +121,7 @@
 						</tbody>
 					</table>
 				</div>
-			</div>
+
 
 			<div class="essentiaDataWrap">
 			</div>
@@ -251,6 +251,7 @@
 							회원가입
 					</button>
 				</div>
+		</div>
 		</div>
 		</form>
 		<div class="join_footer">
