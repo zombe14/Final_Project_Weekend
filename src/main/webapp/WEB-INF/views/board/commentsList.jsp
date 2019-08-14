@@ -4,56 +4,62 @@
 
 		<div id="commentsList">
 			<c:forEach items="${clist}" var="c">
-			 <div id = "${c.cnum}">
-				<div>
-			    	${c.writer} | ${c.reg_date}<br>
-			    	${c.contents}
-		    	</div>
-		    	<div>
-			    	<%-- <c:if test="${dto.writer eq member.nickname}"> --%>
-			    		<a class="update" title = "${c.cnum}">수정</a>
-			    		<a class="delete" title = "${c.cnum}">삭제</a>
-			    	<%-- </c:if> --%>
-			    		<a class="reCom" title = "${c.cnum}">댓글달기</a>
-			    		<div id="${c.cnum}ReComDiv">
-			    		<!-- 여기에 대댓글 입력 폼 나오게 -->
-			    		<input type="text" name = "writer" value=>
-			    		</div>
-		    	</div>
-		     </div>
-		   	 <div id="${c.cnum}Update" class="updateDiv">
-		   	 	<form action="./commentsWrite" id="${c.cnum}Frm">
-		   	 		${c.writer}
-		   	 		<input type="hidden" name="writer" value="${c.writer}">
-		   	 		<div>
-		   	 			<textarea rows="3" cols="100" style="resize: none;" id="${c.cnum}Con">${c.contents}</textarea>
-		   	 			<a class="btn btn-default updateBtn" id="${c.cnum}Btn">수정</a>
-		   	 		</div>
-		   	 	</form>
-		   	 </div>
+				 <div id = "${c.cnum}">
+					<div>
+				    	${c.writer} | ${c.reg_date} | ${c.cnum}<br>
+				    	${c.contents}
+			    	</div>
+			    	<div>
+				    	<%-- <c:if test="${dto.writer eq member.nickname}"> --%>
+				    		<a class="update" title = "${c.cnum}">수정</a>
+				    		<a class="delete" title = "${c.cnum}">삭제</a>
+				    	<%-- </c:if> --%>
+				    		<a class="reCom" title = "${c.cnum}" name = "${c.ref}">댓글달기</a>
+				    		<div id="${c.ref}ReComDiv" class="reComDiv">
+					    	
+							</div>
+			    	</div>
+			     </div>
+			   	 <div id="${c.cnum}Update" class="updateDiv">
+			   	 	<form action="./commentsWrite" id="${c.cnum}Frm">
+			   	 		${c.writer}
+			   	 		<input type="hidden" name="writer" value="${c.writer}">
+			   	 		<div>
+			   	 			<textarea rows="3" cols="100" style="resize: none;" id="${c.cnum}Con">${c.contents}</textarea>
+			   	 			<a class="btn btn-default updateBtn" id="${c.cnum}Btn">수정</a>
+			   	 		</div>
+			   	 	</form>
+			   	 </div>
+			   	 <hr>
 		   	</c:forEach>
-		   	 
-		   	 
-		   	 <div id="${c.cnum}ReComDiv">
-				<input type="hidden" id="num" name="num" value="${dto.anum}">
-				<div>				
-					<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
-				</div>
-				<div style="display: inline-block;">
-					<textarea rows="3" cols="100" id="commentsContents" style="resize: none;"></textarea>
-				</div>
-				<a class="btn btn-default">댓글등록</a>
-    		</div>
-	    	<hr>
 		   
 		</div>
 		
 		
 
 <script type="text/javascript">
+var ref = 0;
 $('.reCom').click(function() {
+	$('.reComDiv2').remove();
+	ref = $(this).attr('name');
+	$('#'+ref+'ReComDiv').show();
+	var html ='';
+	html += '<div id="${c.ref}ReComDiv2" class="reComDiv2">';
+	html += '<input type="hidden" name="ref" value="'+ref+'">';
+	html += '<input type="hidden" name = "writer" value="${member.nickname}Nick" id="'+ref+'Writer">';
+	html += '<textarea rows="3" cols="100" style="resize: none;" id="'+ref+'Contents">'+ref+'</textarea>';
+	html += '<a id="'+ref+'ReComBtn" style="cursor:pointer">댓글등록</a>';
+	html += '</div>';
+	$('#'+ref+'ReComDiv').html(html);
+	console.log(ref);
 	
+	console.log('#'+ref+'ReComDiv')
 });
+	
+$('#'+ref+'ReComDiv2').on('click','#'+ref+'ReComBtn',function(e){
+	alert(ref);	
+});
+
 
 $('.updateDiv').hide();
 /* 하나의 수정창만 열리게. 수정버튼 클릭했을 때 그 글의 cnum 저장 */
