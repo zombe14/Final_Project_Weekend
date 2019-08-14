@@ -15,6 +15,8 @@
 			    		<a class="delete" title = "${c.cnum}">삭제</a>
 			    	<%-- </c:if> --%>
 			    		<a class="reCom" title = "${c.cnum}">댓글달기</a>
+			    		<div id="${c.cnum}ReComDiv">
+			    		</div>
 		    	</div>
 		     </div>
 		   	 <div id="${c.cnum}Update" class="updateDiv">
@@ -27,13 +29,29 @@
 		   	 		</div>
 		   	 	</form>
 		   	 </div>
+		   	</c:forEach>
+		   	 
+		   	 
+		   	 <div id="${c.cnum}ReComDiv">
+				<input type="hidden" id="num" name="num" value="${dto.anum}">
+				<div>				
+					<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
+				</div>
+				<div style="display: inline-block;">
+					<textarea rows="3" cols="100" id="commentsContents" style="resize: none;"></textarea>
+				</div>
+				<a class="btn btn-default">댓글등록</a>
+    		</div>
 	    	<hr>
-		    </c:forEach>
+		   
 		</div>
 		
 		
 
 <script type="text/javascript">
+$('.reCom').click(function() {
+	
+});
 
 $('.updateDiv').hide();
 /* 하나의 수정창만 열리게. 수정버튼 클릭했을 때 그 글의 cnum 저장 */
@@ -101,6 +119,8 @@ $('.delete').click(function() {
 		 });
 	 }
 });
+
+
 
  
 </script>

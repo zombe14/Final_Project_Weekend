@@ -168,6 +168,14 @@ public class AfterController {
 		int res = commentsService.setCommentsUpdate(commentsDTO, session);
 		return res;
 	}
+	
+	@RequestMapping(value = "reComWrite")
+	@ResponseBody
+	public int setReComWrite(CommentsDTO commentsDTO, HttpSession session) throws Exception{
+		int res = 0;
+		res = commentsService.setReComWrite(commentsDTO);
+		return res;
+	}
 
 	//////////////////////////////////////////////////////////////////////////////////////
 

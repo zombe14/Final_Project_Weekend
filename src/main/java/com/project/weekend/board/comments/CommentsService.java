@@ -48,5 +48,12 @@ public class CommentsService {
 		int res = commentsDAO.getCount(pageMaker);
 		return res;
 	}
+	
+	public int setReComWrite(CommentsDTO commentsDTO) throws Exception{
+		int res = 0;
+		res = commentsDAO.setReComUpdate(commentsDTO);
+		res = commentsDAO.setReCom(commentsDTO);
+		return res;
+	}
 
 }
