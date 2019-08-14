@@ -1,5 +1,130 @@
 
 $(function() {
+	$('#emailCodeCheckbt').hide();
+	$("#memEmail_select").blur(function() {
+		var t = true;
+		var f = true;
+		var email_last = $(this).val();
+		$('#email_adress').val(email_last);
+		var email_first = $("#emailFirst").val();
+		var email= email_first+'@'+email_last;
+		$('#email').val(email);
+		if(email_last==''){
+			t =false;
+		}else{
+			t = true;
+		}
+		if(email_first==''){
+			f = false;
+		}else{
+			f = true;
+		}
+		if(t&&f){
+			$('#email_store').val("0");
+		}else{
+			$('#email_store').val('');
+		}
+	});
+	$("#emailFirst").keyup(function(e) { 
+		if (!(e.keyCode >=37 && e.keyCode<=40)) {
+			var v = $(this).val();
+			$(this).val(v.replace(/[^a-z0-9]/gi,''));
+			result_mememail.innerHTML = "영문과 숫자로 입력해주세요.";
+		}else{
+			
+		}
+	});
+	$("#emailFirst").blur(function() {
+		var t = true;
+		var f = true;
+		var email_last=$('#memEmail_select').val();
+		var email_first = $("#emailFirst").val();
+		var email= email_first+'@'+email_last;
+		$('#email').val(email);
+		if(email_last==''){
+			t =false;
+		}else{
+			t = true;
+		}
+		if(email_first==''){
+			f = false;
+		}else{
+			f = true;
+		}
+		if(t&&f){
+			$('#email_store').val('0');
+		}else{
+			$('#email_store').val('');
+		}
+	});
+	
+	$('#emailCheck').click(function name() {
+		var t = true;
+		var f = true;
+		var email_last = $('#memEmail_select').val();
+		$('#email_adress').val(email_last);
+		var email_first = $("#emailFirst").val();
+		var email= email_first+'@'+email_last;
+		$('#email').val(email);
+		if(email_last==''){
+			alert("이메일 주소를 입력하세요");
+			t =false;
+		}else{
+			t = true;
+		}
+		if(email_first==''){
+			alert("이메일 주소를 입력하세요");
+			f = false;
+		}else{
+			f = true;
+		}
+		if(t&&f){
+			$.ajax({
+				data:{
+					email : email
+				},
+				type: "POST",
+				url: "../mail/mailSending",
+				success:function(data){
+					if(data==1){
+						$('#emailFirst').attr('readonly', true);
+						$('#memEmail_select').hide();
+						$('#emailCodeCheckbt').show();
+						$("#emailCodeCheck").attr('type', 'text');
+					}else{
+						alert("중복된 이메일입니다.");
+					}
+				}
+			});
+		}else{
+			$('#email_store').val('');
+		}
+	});
+	$("#emailCodeCheckbt").click(function() {
+		var emailCode = $('#emailCodeCheck').val();
+		$.ajax({
+			data:{
+				Code : emailCode
+			},
+			type: "POST",
+			url: "../mail/mailCheck",
+			success:function(data){
+				if(data==1){
+					$("#result_emailCodeCheckbt").val('0');
+					$('#emailCodeCheckbt').hide();
+					$('#emailCheck').hide();
+					$("#emailCodeCheck").attr('type', 'hidden');
+					alert("인증이 완료되었습니다.");
+				}else{
+					alert("코드가 일치하지 않습니다.");
+				}
+			}
+		});
+	});
+	
+	
+	
+	
 	$("#pw").click(function () {
 		var memid = $("#memid").val();
 		var result_memid = $("#result_memid").val();
@@ -211,11 +336,29 @@ $(function() {
 		var pwwcheck = $("#pwwcheck").val();
 		var memNamecheck = $("#memNamecheck").val();
 		var jumin = $("#juminnumCheck").val();
+		var emailCheck = $("#result_emailCodeCheckbt").val();
 		var age = $('#age').val();
+		var a = $('#num_select').val();
+		var b = $('#hp2').val();
+		var c = $('#hp3').val();
+		var s = $('#email_store').val();
+		var d = true;
+		var email = $('#email').val();
+		var phone = a+b+c;
+		$('#phone').val(phone);
+		if(a==''||b==''||c==''){
+			alert("휴대폰 번호를 입력하세요");
+			d = false;
+		}else if(a!=''&&b!=''&&c!=''&&s=='0'){
+			d = true;
+		}else{
+			d=false;
+		}
 		var finalpw = false;
+		if(emailCheck=='0'){
 		if(pw==pwCheck){
 			finalpw = true;
-			if(v&&pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw&&jumin=='0'){
+			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw&&jumin=='0'&&d){
 				$("#frm").submit();
 			}else if(nicknameCheck!='0'){
 				alert("활동명을 입력하세요");
@@ -223,11 +366,13 @@ $(function() {
 				alert("주민번호를 확인해주세요");
 			}else{
 				alert("비밀번호나 이름을 확인해주세요");
-				
 			}
 		}else{
 			alert("비밀번호가 일치하지 않습니다.");
 			finalpw = false;
+		}
+		}else{
+			alert("이메일을 인증해주세요");
 		}
 	});
 	
@@ -291,6 +436,7 @@ $(function() {
         var arrNum1 = new Array(); // 주민번호 앞자리숫자 6개를 담을 배열
         var arrNum2 = new Array();
         var jumins3 = $("#unum1").val() + $("#unum2").val(); //주민등록번호 생년월일 전달 
+        var jumin1 = jumins3;
         var fmt = RegExp(/^\d{6}[1234]\d{6}$/) //포멧 설정 
 		var buf = new Array(13); //주민번호 유효성 검사
 		var date = new Date();
@@ -306,8 +452,8 @@ $(function() {
 		
 		var age = monthDay < birthmd ? year - birthYear - 1 : year - birthYear;
 		$('#age').val(age);
-		
-
+		$("#jumin").val(jumin1);
+		var jumins = $("#jumin").val();
 		if (!fmt.test(jumins3)) {
 			alert("주민등록번호 형식에 맞게 입력해주세요"); $("#unum1").focus(); 
 			$("#juminnumCheck").val('');
@@ -326,19 +472,18 @@ $(function() {
 			$("#unum1").focus(); 
 			$("#juminnumCheck").val('');
 		}else{
-			var jumin = $('#jumins').val($("#unum1").val() + $("#unum2").val());
 			$.ajax({
 				data:{
-					jumin : jumin
+					jumin : jumins
 				},
 				type: "POST",
-				url: "../member/memberjumin",
+				url: "../member/getjumin",
 				success:function(data){
 					
 				}
-			})
+				
+			});
 			alert("사용가능한 주민번호입니다.");
-			$('#jumin').val(jumins3);
 			$("#juminnumCheck").val('0');
 			$('.iTextnum').attr('readonly', true);
 			$("#juminnum").attr('type', 'hidden');

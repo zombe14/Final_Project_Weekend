@@ -29,11 +29,10 @@
 	</beans:bean>
 	
 <!--Interceptor -->
-	<beans:bean id="memberInterceptor" class="com.project.weekend.interceptor.MemberInterceptor" />
+	<beans:bean id="memberInterceptor" class="com.project.weekend.interceptor.memberInterceptor" />
  	<interceptors>
 		<interceptor>
 			<mapping path="/member/memberJoin"/>
-			<mapping path="/member/memberAgree2"/>
 			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
 

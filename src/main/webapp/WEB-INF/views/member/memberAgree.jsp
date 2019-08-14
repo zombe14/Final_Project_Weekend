@@ -27,12 +27,12 @@
 							src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
 
 					</div>
+					<form action="./memberAgree" id="memberAgrree_post" method="POST">
 					<div class="essentialTermsWrap">
 						<div>
 							<div class="custom-control custom-checkbox mb-3 checks" id="checkAll">
 								<input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
 								<label class="custom-control-label" id="checkAllfont" for="customCheck">
-								<form action="./memberAgree" id="memberAgrree_post" method="POST">
 								<p class="checkAllfont_sub" id="checkAll_sub_sub">약관 전체동의</p> </label>
 							</div>
 						</div>
@@ -111,6 +111,7 @@
 						</div>
 					</div>
 					<button id="join" class="agbtn" type="submit" form="new_normal_user">동의하기</button>
+					</form>
 					<div class="join_footer">
 						<div class="join_menu">
 							<a href="${pageContext.request.contextPath}/footer/personalInformation">개인정보처리방침</a>
@@ -124,6 +125,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 
 </body>

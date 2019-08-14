@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,10 +39,10 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
-	@RequestMapping(value = "memberjumin", method = RequestMethod.POST)
+	@RequestMapping(value = "getjumin", method = RequestMethod.POST)
 	@ResponseBody
 	public int getjumin(MemberDTO memberDTO)throws Exception{
-		System.out.println("들어옴");
+		System.out.println("getjuminpost");
 		memberDTO = memberService.getjumin(memberDTO);
 		int result=0;
 		if(memberDTO==null) {
@@ -85,8 +86,6 @@ public class MemberController {
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
 		System.out.println("dd");
-		int jumin = (Integer) session.getAttribute("jumin");
-		System.out.println(jumin);
 		ModelAndView mv = new ModelAndView();
 		MemberDTO getId = memberService.getId(memberDTO);
 		String message="Join Fail";
@@ -164,23 +163,21 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		String memberAgree = "member";
 		session.setAttribute("memberAgree", memberAgree);
-		return "redirect:./memberAgree2";
-		
-	}
-	@RequestMapping(value = "memberAgree2", method = RequestMethod.GET)
-	public void getAgree2()throws Exception{}
-	@RequestMapping(value = "memberAgree2", method = RequestMethod.POST)
-	public String getAgree2(HttpSession session,MemberDTO memberDTO)throws Exception{
-		session.setAttribute("memberEmail", memberDTO.getEmail());
-		session.setAttribute("memberPhone", memberDTO.getPhone());
-		session.setAttribute("memberAgree2", "memberAgree2");
-		ModelAndView mv = new ModelAndView();
-		String memberAgree2 = "member2";
-		session.setAttribute("memberAgree2", memberAgree2);
 		return "redirect:./memberJoin";
 		
 	}
-	
+	/*
+	 * @RequestMapping(value = "memberAgree2", method = RequestMethod.GET) public
+	 * void getAgree2()throws Exception{}
+	 * 
+	 * @RequestMapping(value = "memberAgree2", method = RequestMethod.POST) public
+	 * String getAgree2(HttpSession session,MemberDTO memberDTO)throws Exception{
+	 * session.setAttribute("memberEmail", memberDTO.getEmail());
+	 * session.setAttribute("memberPhone", memberDTO.getPhone()); ModelAndView mv =
+	 * new ModelAndView(); String memberAgree2 = "member2";
+	 * session.setAttribute("memberAgree2", memberAgree2); return
+	 * "redirect:./memberJoin"; }
+	 */
 	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
 	public String logout(String id, HttpSession session, MemberDTO memberDTO)throws Exception{
 		
