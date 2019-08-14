@@ -135,6 +135,9 @@
 		a.num = f.num order by anum desc
 	</select>
 	<!-- 상혁 끝 -->
+	<select id="getListNum" parameterType="String" resultType="String">
+		select anum from after where num = #{num}
+	</select>
 	<resultMap type="AfterDTO" id="afterResult">
 		<id column="anum" property="anum"/>
 		<result column="num" property="num"/>

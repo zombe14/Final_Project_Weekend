@@ -34,13 +34,25 @@ public class CommentsService {
 		return list;
 	}
 	
-	public int setCommentsDelete(String cnum, HttpSession session) throws Exception{
-		int res = commentsDAO.setDelete(Integer.parseInt(cnum));
+	public int setCommentsDelete(int cnum, HttpSession session) throws Exception{
+		int res = commentsDAO.setDelete(cnum);
 		return res;
 	}
 	
 	public int setCommentsUpdate(CommentsDTO commentsDTO, HttpSession session) throws Exception{
 		int res = commentsDAO.setUpdate(commentsDTO);
+		return res;
+	}
+	
+	public int getAmount(PageMaker pageMaker) throws Exception{
+		int res = commentsDAO.getCount(pageMaker);
+		return res;
+	}
+	
+	public int setReComWrite(CommentsDTO commentsDTO) throws Exception{
+		int res = 0;
+		res = commentsDAO.setReComUpdate(commentsDTO);
+		res = commentsDAO.setReCom(commentsDTO);
 		return res;
 	}
 

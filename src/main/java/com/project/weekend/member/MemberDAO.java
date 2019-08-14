@@ -40,7 +40,6 @@ public class MemberDAO {
 	// 마이페이지;
 	// 내 정보 수정;
 	public int setUpdateMy(MemberDTO memberDTO) throws Exception{
-		System.out.println("변경 디에오 진입");
 		return sqlSession.update(NAMESPACE+"setUpdateMy", memberDTO);
 	}
 	// 상혁 끝;
@@ -73,5 +72,14 @@ public class MemberDAO {
 	}
 	public MemberDTO getSelectOverlap(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelectOverlap", memberDTO);
+	}
+	public MemberDTO getSelectGrade(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSelectGrade", memberDTO);
+	}
+	public MemberDTO getSelectEmail(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSelectEmail", memberDTO);
+	}
+	public MemberDTO getjumin(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getjumin", memberDTO);
 	}
 }

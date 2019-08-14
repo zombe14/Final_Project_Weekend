@@ -1,4 +1,4 @@
-package com.project.weekend;
+﻿package com.project.weekend;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -28,12 +28,13 @@ public class MyPageController {
 	@RequestMapping(value = "mInfoList", method = RequestMethod.POST)
 	public ModelAndView myInfoChange(HttpSession sesssion, MemberDTO memberDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("변경 컨트롤러 진입");
 		int result = 0;
 		result = memberService.setUpdateMy(memberDTO);
-		System.out.println("변경 서비스 갔다옴");
-		System.out.println(result);
 		mv.setViewName("redirect:./mInfoList");
+		result = memberService.setUpdateMy(memberDTO);
+		sesssion.setAttribute("member", memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
 		return mv;
 	}
 	// 비밀번호 변경

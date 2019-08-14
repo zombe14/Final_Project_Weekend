@@ -52,10 +52,7 @@ public class MemberService {
 	}
 	// 마이 페이지;
 	public int setUpdateMy(MemberDTO memberDTO) throws Exception{
-		System.out.println("변경 서비스 진입");
 		int result = memberDAO.setUpdateMy(memberDTO);
-		System.out.println("변경 디에오 갔다옴");
-		System.out.println(result);
 		return result; 
 	}
 	// 상혁 끝;
@@ -99,8 +96,15 @@ public class MemberService {
 	public MemberDTO getSelectOverlap(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelectOverlap(memberDTO);
 	}
-	
-	
+	public MemberDTO getSelectGrade(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getSelectGrade(memberDTO);
+	}
+	public MemberDTO getSelectEmail(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getSelectEmail(memberDTO);
+	}
+	public MemberDTO getjumin(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getjumin(memberDTO);
+	}
 	
 	
 	
