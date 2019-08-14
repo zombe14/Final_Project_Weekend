@@ -17,6 +17,7 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private static final String NAMESPACE="MemberMapper.";
 	// 상혁;
+	// 관리자;
 	// 리스트;
 	public List<MemberDTO> getList(PageMaker pageMaker) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", pageMaker);
@@ -35,6 +36,12 @@ public class MemberDAO {
 	// 회원 삭제;
 	public int setDelete(String id)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDeleteA", id);
+	}
+	// 마이페이지;
+	// 내 정보 수정;
+	public int setUpdateMy(MemberDTO memberDTO) throws Exception{
+		System.out.println("변경 디에오 진입");
+		return sqlSession.update(NAMESPACE+"setUpdateMy", memberDTO);
 	}
 	// 상혁 끝;
 	

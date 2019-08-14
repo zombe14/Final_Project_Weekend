@@ -25,6 +25,7 @@ public class MemberService {
 	private MemberFileDAO memberFileDAO;
 
 	// 상혁 시작;
+	// 관리자;
 	// 리스트
 	public List<MemberDTO> getList(HttpSession session, PageMaker pageMaker) throws Exception{
 		pageMaker.makeRow();
@@ -48,6 +49,14 @@ public class MemberService {
 	public int setDelete(String id) throws Exception{
 		int result = memberDAO.setDelete(id);
 		return result;
+	}
+	// 마이 페이지;
+	public int setUpdateMy(MemberDTO memberDTO) throws Exception{
+		System.out.println("변경 서비스 진입");
+		int result = memberDAO.setUpdateMy(memberDTO);
+		System.out.println("변경 디에오 갔다옴");
+		System.out.println(result);
+		return result; 
 	}
 	// 상혁 끝;
 	
