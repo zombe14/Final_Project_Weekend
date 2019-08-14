@@ -51,14 +51,13 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 
-	<select id="getCount" resultType="Integer">
-		SELECT COUNT(NUM) FROM FESTI
+	<select id="getCount" resultType="Integer" parameterType="Integer">
+		SELECT COUNT(NUM) FROM FESTI where category = #{category}
 	</select>
 
 	<select id="getSelect" resultMap="festiResult"
 		parameterType="String">
-		SELECT * FROM FESTI FULL JOIN FILES USING(NUM) WHERE NUM
-		= #{num}
+		SELECT * FROM FESTI FULL JOIN FILES USING(NUM) WHERE NUM = #{num}
 	</select>
 
 	<select id="getTop" resultMap="festiResult">
