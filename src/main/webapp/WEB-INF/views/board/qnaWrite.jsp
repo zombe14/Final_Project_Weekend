@@ -54,12 +54,13 @@
 					<h3>${boardTitle} 글쓰기</h3>
 					<div class="call_wrap">
 				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
-				<%-- <c:if test="${board eq 'qnaReply'}">
-					<p>원글 제목 : ${qnaOrigin.title}</p>
+				 <c:if test="${board eq 'qnaReply'}">
+				 
+					<%-- <p>원글 제목 : ${qnaOrigin.title}</p>
 					<p>원글 글쓴이 : ${qnaOrigin.writer}</p>
-					<p>ref:${qnaOrigin.num}</p>
+					<p>ref:${qnaOrigin.num}</p> --%>
 					<input type="hidden" name ="ref" value="${qnaOrigin.num}">
-				</c:if> --%>
+				</c:if> 
 				<table class="table table-bordered">
 					<tr class="write_title">
 						<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
@@ -84,7 +85,7 @@
 						<td class="td1"><label for="files">첨부파일</label></td>
 						<td>
 							<input type="button" id="addFiles" value="파일추가">
-						<div id="filesDiv">
+						<div id="files">
 							<div>
 								<input type="file" class="filelist" name="filelist" style="display: inline-block"> 
 								<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>

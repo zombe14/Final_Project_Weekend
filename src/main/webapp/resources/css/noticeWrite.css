@@ -72,19 +72,20 @@ input:focus{
 	color: white;
 }
 
-/* input[type=checkbox] { display:none; }
+input[type=checkbox] { display:none; }
 
 input[type=checkbox] + label { 
 	display: inline-block; 
 	cursor: pointer; 
 	line-height: 22px;  
-	background: url('../images/checkbox/checkbox_off.png') left/22px no-repeat; 
+	background: url('../images/checkbox/checkbox_off.png') left/15px no-repeat; 
+	padding: 0 5px;
 }
 
 input[type=checkbox]:checked + label { 
-	 background: url("../images/checkbox/checkbox_on.png") left/20px no-repeat;
+	 background: url("../images/checkbox/checkbox_on.png") left/15px no-repeat;
  }
- */
+ 
 .update_title input{
 	width: 95%;
 	height: 30px;
