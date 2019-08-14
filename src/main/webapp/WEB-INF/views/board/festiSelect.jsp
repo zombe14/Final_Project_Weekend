@@ -290,10 +290,24 @@
 						<th>상태</th>
 					</thead>
 					<c:forEach items="${qna}" var="i">
-						<tr title="${i.qnum}" class="qnaSel">
+						<tr title="${i.qnum}" class="qnaSel" id="${i.pw}">
 							<td>${fn:substring(i.qnum, 1,8)}</td>
-							<td><c:if test="${i.depth eq '1'}">&nbsp;&nbsp;&nbsp;&nbsp;답변 : </c:if>${i.title}</td>
-							<td>${i.writer}</td>
+							<td>
+								<c:if test="${i.pw ne null}">
+									<c:if test="${i.depth eq '1'}">&nbsp;&nbsp;&nbsp;&nbsp;답변 : </c:if>비밀글입니다.
+								</c:if>
+								<c:if test="${i.pw eq null}">
+									<c:if test="${i.depth eq '1'}">&nbsp;&nbsp;&nbsp;&nbsp;답변 : </c:if>${i.title}
+								</c:if>
+							</td>
+							<td>
+								<c:if test="${i.pw eq null}">
+									${i.writer}
+								</c:if>
+								<c:if test="${i.pw ne null}">
+									${fn:substring(i.writer, 0, 3)}****
+								</c:if>
+							</td>
 							<td>${i.reg_date}</td>
 							<td><c:if test="${i.answer eq '0'}">답변대기중</c:if>
 								<c:if test="${i.answer eq '1'}">답변완료</c:if>
@@ -313,6 +327,32 @@
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services"></script> -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript">
+	
+	/* 각 행 선택 시 select 페이지 이동 */
+	$('.qnaSel').click(function() {
+		var pw = $(this).attr('id');
+		var num = $(this).attr('title');
+		/* 비밀번호 틀렸을 때 다시 프롬프트 창 띄우게 */
+		password(pw,num);
+	});
+	
+	function password(pw,num) {
+		/* 비밀글이거나   ( 작성자 본인일때 조건 추가하기) */
+		if(pw != "" ){
+			var input = prompt('비밀번호를입력해주세요');
+			if(input != null){
+				if(pw == input){
+					location.href = "./${board}Select?num="+num;
+				} else {
+					alert('비밀번호가 틀렸습니다.');
+					password(pw,num);
+				}
+			}				
+		} else {
+			location.href = "./${board}Select?num="+num;
+		}
+	} 
+	
 	/* 글 삭제 */
 	$('#delete').click(function() {
 		var check = confirm('삭제하시겠습니까? 후기와 Q&A가 모두 삭제됩니다.');
