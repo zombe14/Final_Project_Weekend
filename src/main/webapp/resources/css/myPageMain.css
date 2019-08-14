@@ -1,0 +1,560 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); 
+
+body, input, textarea, select button, table, p, div{
+	/* font-family: '돋움',dotum,sans-serif; */
+	font-family: "Noto Sans KR", sans-serif;
+	font-size: 12px;
+}
+
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
+    margin: 0;
+    padding: 0;
+}
+
+.list_info h4{
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+}
+
+#wrap{
+	overflow: hidden;
+	min-height:100%;
+	min-width: 1200px;
+}
+
+html, body{
+	height: 100%;
+}
+
+.inner{
+	margin: 0 auto;
+	width: 1050px;
+	padding: 50px 0;
+}
+
+a {
+	text-decoration: none;
+	color: #444;
+}
+
+a:hover {
+	color: #41b40a;
+	text-decoration: none;
+}
+
+ul{
+	list-style: none;
+/* 	overflow: hidden; */
+}
+
+.ticket_header strong{
+	font-size: 25px;
+}
+
+.best_header strong{
+	font-size: 25px;
+}
+
+.rank_header strong{
+	font-size: 25px;
+}
+
+#header{
+	z-index: 200;
+	position: relative;
+}
+
+#container{
+	margin: 0;
+	overflow: hidden;
+}
+#footer{
+	
+	height: 190px;
+	background: #333;
+	padding-top: 50px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* ----------------------------Header Css---------------- */
+
+.h_wrap{
+	width: 78%;
+}
+
+.user_menu{
+	float: right;
+	
+}
+
+.h_top{
+	background: #fafafa;
+	border-bottom: 1px solid #f0f0f0;
+	height: 35px;
+	padding-top: 11px;
+	position: relative;
+	margin:0 auto;
+}
+
+.h_search {
+	
+	margin: 32px auto;
+	text-align: center;
+}
+
+.h_search img {
+	
+	vertical-align: middle;
+}
+
+.h_middle{
+	width: 1100px;
+	margin: 0 auto;
+}
+
+.logo{
+	float: left;
+	margin-top: -32px;
+}
+
+#search {
+	
+	width: 334px;
+    height: 39px;
+	border: 2px solid #00d344;
+	padding-left: 10px;
+	outline: none;
+}
+
+.search_wrap{
+	margin-left: 100px;
+	width: 900px;
+}
+
+.btn_search {
+	background-color: #00d344;
+	padding: 10.5px 12px;
+	margin-left: -5px;
+	/* vertical-align: middle; */
+	color: white;
+}
+
+.h_menu{
+	min-height: 59px;
+	background: url(../images/home/bg_head_menu.gif) repeat-x 0 0;
+}
+
+.h_inner {
+    width: 990px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.menu_list{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.h_menu li{
+	float: left;
+	box-sizing: border-box;
+}
+
+.nav{
+	font-size: 20px;
+}
+
+.open > a{
+	background-color: #d4f7d4;
+	color: #41b40a;
+}
+
+.open a:focus{
+	background-color: #d4f7d4;
+}
+
+.nav li a{
+	padding: 17px 47px;
+}
+
+.nav li a:hover{
+	background-color: #d4f7d4;
+}
+
+/* .nav_wrap{
+	margin-left: 380px;
+} */
+
+.dropdown-menu{
+	padding: 0;
+}
+#menulist{
+	border-top: 1px solid #f0f0f0;
+}
+
+.log{
+	padding: 0 3px;
+}
+
+.navbar-nav{
+	font-weight: bold;
+	min-width: 1110px;
+}
+
+.collapse{
+	width: 1110px;
+	margin: 0 auto;
+}
+
+.dropdown-menu li a{
+	padding: 15px 40px;
+    font-size: 15px;
+    width: 158px;
+    text-align: center;
+}
+
+.dropdown-menu li a:hover{
+	background-color: #d4f7d4;
+}
+/*  -----------------------container Css----------------------- */
+
+.section_top{
+	position: relative;
+}
+
+.section_rank{
+	position: relative;
+	padding: 30px 0;	
+}
+
+.section_best{
+	padding: 30px 0;
+	width: 1068px;
+}
+
+/* #main_banner{
+	width: 1200px;
+	margin: 0 auto;
+} */
+
+.ticket_main{
+	position: relative;
+}
+
+.ticket_left{
+	float: left;
+	width: 730px;
+	}
+
+.ticket_right{
+	overflow: hidden;
+	width: 320px;
+}
+.ticket_cont{
+	border: 1px solid #e6e6e6;
+    border-radius: 2px 0 0 2px;
+    height: 218px;
+    overflow: hidden;
+    background-color: #f8f8f8;
+}
+
+.ticket_left .ticket_cont ul{
+	padding-top: 19px;
+}
+
+.ticket_cont li.first{
+	position: relative;
+    top: -19px;
+    left: 0;
+    width: 179px;
+    height: 218px;
+    border-right: 1px solid #e6e6e6;
+    padding: 0;
+}
+
+.ticket_cont li{
+	padding-left: 20px;
+	font-size: 14px;
+	height: 36px;
+	line-height: 36px;
+	letter-spacing: 1;
+	float: left;
+}
+
+.ticket_header{
+	height: 50px;
+	overflow: hidden;
+}
+
+.title{
+	margin-left:8px;
+}
+
+.title img{
+	margin-top: -13px;
+}
+
+.first{
+	float: left;
+}
+
+/* rank */
+
+.rank_main{
+	width: 1200px;
+	position: relative;
+	margin-top: 30px;
+
+	overflow: hidden;
+}
+
+.rank_left{
+	float: left;
+	width: 525px;
+	overflow: hidden;
+	}
+
+.rank_right{
+	float:left;
+	width: 525px;
+	overflow: hidden;
+}
+
+.rank_cont{
+	border: 1px solid #e6e6e6;
+    border-radius: 2px 0 0 2px;
+    height: 218px;
+    overflow: hidden;
+    background-color: #f8f8f8;    
+}
+
+.rank_cont ul{
+	padding-top: 19px;
+}
+
+.rank_cont li.first{
+	position: relative;
+    top: -19px;
+    left: 0;
+    width: 179px;
+    height: 218px;
+    border-right: 1px solid #e6e6e6;
+    padding: 0;
+}
+
+.rank_cont li{
+	padding-left: 20px;
+	font-size: 14px;
+/* 	font-weight: bold; */
+	height: 36px;
+	width: 340px;
+	line-height: 36px;
+	letter-spacing: 1;
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.rank_header{
+	height: 50px;
+	overflow: hidden;
+}
+
+.rank_cont li span{
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+.best_header{
+	height: 50px;
+	overflow: hidden;
+}
+
+.best_list{
+	margin-left:-18px;
+	overflow: hidden;
+}
+
+.section_best .best_list li{
+	overflow: hidden;
+	margin: 0 0 19px 19px;
+	height: 430px;
+	width: 247px;
+	position: relative;
+	float: left;
+}
+
+.best_cont img{
+	width: 247px;
+	height: 320px;
+}
+
+.list_info{
+	padding: 10px 5px;
+	height: 60px;
+	border: 1px solid white;
+	
+}
+
+.main_right{
+	margin-left: 650px;
+ 	position: fixed;
+ 	position: absolute;
+	top: 700px; 
+	left: 45%;
+	overflow: hidden;
+	width: 105px;
+}
+
+.main_right li{
+	float: left;
+}
+.main_right li:nth-child(4){
+	border: 2px solid #e6e6e6;
+}
+
+.conta{
+	width:1000px;
+	height : 700px;
+	margin: 0 auto;
+	padding: 50px 0;
+}
+.homeconta{
+	width:1250px;
+	margin: 0 auto;
+}
+
+.right_suv{
+	position: fixed;
+	top: 30%;
+}
+
+.a{
+	border:0 solid black;
+	width:60px;
+	background-color: rgba(255, 0, 0, 0.0);
+}
+
+.b{
+	border:0 solid black;
+	width: 60px;
+	background-color: rgba(255, 0, 0, 0.0);
+}
+
+#back_to_top{
+	position: fixed;
+	top: 50%;
+	right: 0;
+	width: 44px;
+	height: 44px;
+}
+
+#back_to_top img{
+	margin-left: 5px;
+}
+
+.weathericon{
+	margin-top: -8px;
+}
+
+/*  ------------------------Footer Css-------------------- */
+
+#f_container{
+	width: 1100px;
+	color: #757575;
+	margin: 0 auto;
+}
+
+.f_menu{
+	font-weight: bold;
+    height: 11px;
+    line-height: 12px;
+    color: #999;
+    margin-bottom: 23px;
+}
+
+.f_menu a {
+      color: #999;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0 3px;
+   }
+   
+.f_logo{
+	float: left;
+}
+
+.f_inner{
+	width: 600px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.f_info{
+	color: #757575;
+}
+
+.f_menu a:first-child{
+	color: #ccc;
+}
+
+.f_address a{
+	color: #757575;
+	padding: 0 3px;
+}
+
+
+#container{
+    background-color: #f5f6f7;
+}
+/* body 칸 */
+.call_quick{
+	border: 1px solid #00d344;
+	height: 400px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+    background-color: white;
+}
+i{
+	font-family: "Noto Sans KR", sans-serif;
+}
+/* 마이 페이지 형태 */
+.call_quick .title{
+	width: 1000px;
+	height: 200px;
+	background: #00d344;
+	text-align: center;
+	padding-top: 53px;
+	margin-left: 0px;
+}
+/* 마이 페이지 글자색 */
+.call_quick h2{
+	color: white;
+}
+/* 메인 body */
+.call_quick ul{
+	overflow: hidden;
+	text-align: center;
+	width: 1000px;
+	margin: 16px 0 auto;
+}
+/* 메뉴 크기 및 정렬 */
+.call_quick li{
+	width: 166px;
+	height: 150px;	
+	float: left;
+	text-align: center;
+	border-right: 1px solid #efefef;
+}
+/* 이미지 크기 조정 */
+.mqmenu a img{
+	margin: 0 auto;
+	display: block;
+	width: 110px;
+}
+.form-control{
+	width: 250px;
+}

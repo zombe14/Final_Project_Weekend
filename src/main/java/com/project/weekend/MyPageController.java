@@ -6,7 +6,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.project.weekend.member.MemberDTO;
 import com.project.weekend.member.MemberService;
 
 @Controller
@@ -18,9 +20,21 @@ public class MyPageController {
 	@RequestMapping(value = "myMain")
 	public void myMain() throws Exception{
 	}
-	// 내정보 변경
+	// 내 정보 출력
 	@RequestMapping(value = "mInfoList", method = RequestMethod.GET)
 	public void myBoardList() throws Exception{
+	}
+	// 내 정보 변경
+	@RequestMapping(value = "mInfoList", method = RequestMethod.POST)
+	public ModelAndView myInfoChange(HttpSession sesssion, MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		String path = "../myPage/mInfoList";
+		result = memberService.setUpdateMy(memberDTO);
+		sesssion.setAttribute("member", memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		return mv;
 	}
 	// 비밀번호 변경
 	@RequestMapping(value = "mPasswordList", method = RequestMethod.GET)

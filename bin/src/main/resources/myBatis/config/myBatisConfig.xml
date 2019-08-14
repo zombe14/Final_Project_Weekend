@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<!-- 난슬 -->
+		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.project.weekend.board.festi.FestiDTO" alias="FestiDTO"/>
+		<typeAlias type="com.project.weekend.board.festi.after.AfterDTO" alias="AfterDTO"/>
+		<typeAlias type="com.project.weekend.board.qna.QnaDTO" alias="QnaDTO"/>
+		<typeAlias type="com.project.weekend.board.festi.festiQna.FestiQnaDTO" alias="FestiQnaDTO"/>
+		<typeAlias type="com.project.weekend.board.comments.CommentsDTO" alias="CommentsDTO"/>
+		<typeAlias type="com.project.weekend.board.festi.dates.DatesDTO" alias="DatesDTO"/>
+		<!-- 상혁 -->
+		<typeAlias type="com.project.weekend.member.MemberDTO" alias="MemberDTO"/>
+		
+		<!-- 선영 -->
+		<typeAlias type="com.project.weekend.pay.PayVO" alias="PayVO" />
+
+
+		<!-- 공통 -->
+		<typeAlias type="java.lang.Integer" alias="Integer"/>
+		<typeAlias type="java.util.List" alias="List"/>
+		<typeAlias type="com.project.weekend.board.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.project.weekend.file.FileDTO" alias="FileDTO"/>
+		<typeAlias type="com.project.weekend.board.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.project.weekend.util.PageMaker" alias="PageMaker"/>
+
+		<typeAlias type="java.lang.String" alias="String"/>
+
+		
+	</typeAliases>
+</configuration>
