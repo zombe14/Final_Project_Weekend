@@ -25,7 +25,6 @@
 			</div>
 	<form action="./memberJoin"  id="frm" method="POST" enctype="multipart/form-data">
 	<div class="joinWrap">
-			<h2>본인인증</h2>
 			<div class="essentiaDataWrap">
 				<h3 class="conTitle">
 					<i>필수</i> 정보입력</h3>
