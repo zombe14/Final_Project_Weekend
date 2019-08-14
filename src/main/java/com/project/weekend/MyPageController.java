@@ -30,8 +30,6 @@ public class MyPageController {
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
 		result = memberService.setUpdateMy(memberDTO);
-		mv.setViewName("redirect:./mInfoList");
-		result = memberService.setUpdateMy(memberDTO);
 		sesssion.setAttribute("member", memberDTO);
 		mv.addObject("result", result);
 		mv.setViewName("./common/message");
