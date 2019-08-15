@@ -176,7 +176,7 @@ ul{
 }
 
 .nav li a{
-	padding: 17px 47px;
+	padding: 17px 63px;
 }
 
 .nav li a:hover{
@@ -208,13 +208,13 @@ ul{
 	margin: 0 auto;
 }
 
-.dropdown-menu li a{
-	padding: 15px 40px;
+/* .dropdown-menu li a{
+	padding: 15px 10px;
     font-size: 15px;
     width: 158px;
     text-align: center;
 }
-
+ */
 .dropdown-menu li a:hover{
 	background-color: #d4f7d4;
 }

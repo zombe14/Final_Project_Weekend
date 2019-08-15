@@ -8,8 +8,6 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css"> 
 	<link rel="shortcut icon" type="image/x-icon" href="./resources/images/logo/logo.png" />
 	<script type="text/javascript" src="./resources/js/home.js"></script>
-	  
-	
 </head>
 <body>
 <div id="wrap">
@@ -18,10 +16,7 @@
 	</div>
 	<div id="container">
 		<c:import url="./inc/container.jsp"></c:import>
-
 	</div> 
-
-
 	<div id="footer">
 		<c:import url="./inc/footer.jsp"></c:import>
 	</div>

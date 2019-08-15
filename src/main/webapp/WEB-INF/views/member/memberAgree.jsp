@@ -17,6 +17,7 @@
 <title> Weekend - 약관동의 </title>
 </head>
 <body>
+
 	<div id="wrap">
 		<div id="container">
 			<div class="conta">
@@ -24,7 +25,9 @@
 					<div class="join_logo">
 						<a href="${pageContext.request.contextPath}/."><img alt=""
 							src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
+
 					</div>
+					<form action="./memberAgree" id="memberAgrree_post" method="POST">
 					<div class="essentialTermsWrap">
 						<div>
 							<div class="custom-control custom-checkbox mb-3 checks" id="checkAll">
@@ -108,6 +111,7 @@
 						</div>
 					</div>
 					<button id="join" class="agbtn" type="submit" form="new_normal_user">동의하기</button>
+					</form>
 					<div class="join_footer">
 						<div class="join_menu">
 							<a href="${pageContext.request.contextPath}/footer/personalInformation">개인정보처리방침</a>
@@ -122,6 +126,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+		</div>
+
 </body>
 </html>
