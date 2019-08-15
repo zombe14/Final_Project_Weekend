@@ -51,10 +51,26 @@ public class MemberService {
 		return result;
 	}
 	// 마이 페이지;
+	// 내 정보 수정
 	public int setUpdateMy(MemberDTO memberDTO) throws Exception{
 		int result = memberDAO.setUpdateMy(memberDTO);
 		return result; 
 	}
+	// 비밀번호 수정;
+	// pw재 확인;
+	public int getUpdatePs1(MemberDTO memberDTO) throws Exception{
+		System.out.println("서비스1 도착");
+		int result = memberDAO.getUpdatePs1(memberDTO);
+		System.out.println("서비스1 나감");
+		return result;
+	}
+	public int setUpdatePs2(MemberDTO memberDTO) throws Exception{
+		System.out.println("서비스2 도착");
+		int result = memberDAO.setUpdatePs2(memberDTO);
+		System.out.println("서비스2 나감");
+		return result;
+	}
+	
 	// 상혁 끝;
 	
 	
