@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.festi.after.AfterDAO;
 import com.project.weekend.board.festi.after.AfterService;
+import com.project.weekend.board.festi.festiQna.FestiQnaDAO;
+import com.project.weekend.board.festi.festiQna.FestiQnaService;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.file.FileService;
@@ -31,6 +33,12 @@ public class FestiService {
 	private FileService fileService;
 	@Inject
 	private AfterDAO afterDAO;
+	@Inject
+	private FestiQnaDAO festiQnaDAO;
+	@Inject
+	private AfterService afterService;
+	@Inject
+	private FestiQnaService festiQnaService;
 
 	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int num = festiDAO.getNum();
@@ -84,18 +92,28 @@ public class FestiService {
 	public int setDelete(String num, HttpSession session) throws Exception{
 		int res = 0;
 		res = festiDAO.setDelete(num);
-		res = afterDAO.setDeleteAll(num);
+		res = afterService.setDeleteAll(num, session);
+		//res = festiQnaService.setDeleteOrigin(num);
 		List<FileDTO> list = fileDAO.getList(num);
 		if(list != null) {
 			for(FileDTO fileDTO : list) {
 				res = fileService.setDelete(fileDTO, "board", session);
 			}
 		}
+		
 		return res;
 	}
 	
 	public int getNum() throws Exception{
 		return festiDAO.getNum();
+	}
+	// 상혁
+	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getAllList(pageMaker);
+		int totalCount = festiDAO.getCount();
+		pageMaker.makePage(totalCount);
+		return list;
 	}
 
 }

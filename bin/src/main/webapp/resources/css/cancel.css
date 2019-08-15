@@ -1,0 +1,19 @@
+dt{
+	font-weight: normal;
+	padding-left: 11px;
+	line-height: 22px;
+}
+
+.info_memlist_block{
+	margin-top: 30px;
+}
+
+.dsc{
+	margin-top: 10px;
+}
+
+.cancel_wrap li{
+    padding-left: 21px;
+    line-height: 22px;
+    text-indent: -11px;	
+}

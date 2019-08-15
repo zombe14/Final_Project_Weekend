@@ -13,11 +13,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/boardSelect.css">
 <link rel="shortcut icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-<style type="text/css">
-	#replyContents{
-		resize: none;
-	}
-</style>
 </head>
 <body>
 	<div id="wrap">
@@ -157,16 +152,8 @@
 	/* 글 수정 */
 	$('#update').click(function() {
 		var board = $(this).attr('class');
-		var num = 0;
-		
-		if(board == 'notice' || board == 'qna'){
-			num = $('.num').attr('id');
-			location.href="./${board}Update?num="+num;
-		} else if (board == 'after') {
-			num = $('.anum').attr('id');
-			location.href="./${board}Update?anum="+num;
-		}
-		
+		var num = $('.num').attr('id');
+		location.href="./${board}Update?num="+num;
 	});
 	
 	/* 첨부파일 다운로드 */

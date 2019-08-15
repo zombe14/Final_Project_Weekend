@@ -27,6 +27,7 @@ public class AfterDAO {
 	}
 	
 	public int setDeleteAll(String num) throws Exception{
+		System.out.println("a dao : "+num);
 		return sqlSession.delete(NAMESPACE+"setDeleteAll", num);
 	}
 	
@@ -54,11 +55,18 @@ public class AfterDAO {
 		return sqlSession.selectList(NAMESPACE+"getList", pageMaker);
 	}
 	
-	public List<AfterDTO> getAllList(PageMaker pagerMaker) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getAllList", pagerMaker);
+	public List<AfterDTO> getAllList(PageMaker pageMaker) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getAllList", pageMaker);
 	}
 	
 	public int setHitUpdate(String anum) throws Exception{
 		return sqlSession.update(NAMESPACE+"setHitUpdate", anum);
+	}
+	// 상혁
+	public List<AfterDTO> getAfterList() throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getAfterList");
+	}		
+	public List<String> getListNum (String num) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getListNum", num);
 	}
 }

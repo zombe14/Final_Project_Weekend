@@ -9,6 +9,10 @@
 	text-align: center;
 }
 	
+#replyContents{
+		resize: none;
+	}	
+	
 .pagingClick{
 	color: green;
 	cursor: pointer;
@@ -58,6 +62,15 @@
 
 .td60 {
 	width: 40%;
+	text-align: center;
+}
+
+.td33{
+	width: 33%;
+	text-align: center;
+}
+.td07{
+	width: 7%;
 	text-align: center;
 }
 

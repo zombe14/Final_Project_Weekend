@@ -38,5 +38,13 @@ public class CommentsDAO {
 	public int setUpdate(CommentsDTO commentsDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setUpdate", commentsDTO);
 	}
+	
+	public int setReComUpdate(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setReComUpdate", commentsDTO);
+	}
+	
+	public int setReCom(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setReCom", commentsDTO);
+	}
 
 }

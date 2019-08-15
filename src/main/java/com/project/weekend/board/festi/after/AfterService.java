@@ -72,6 +72,24 @@ public class AfterService {
 		return res;
 	}
 	
+	public int setDeleteAll(String num, HttpSession session) throws Exception{
+		int res = 1;
+		List<String> afterDTOs = afterDAO.getListNum(num);
+		System.out.println("a Ser : "+afterDTOs.size());
+		if(afterDTOs.size()>0) {
+			for(String a : afterDTOs) {
+				System.out.println(a);
+				res = fileDAO.setDeleteAll(a);
+				System.out.println(res);
+			}
+		}
+
+		res = afterDAO.setDeleteAll(num);
+		System.out.println(res);
+		
+		return res;
+	}
+	
 	public int setUpdate(AfterDTO afterDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int res = 0;
 		res = afterDAO.setUpdate(afterDTO);
@@ -150,6 +168,11 @@ public class AfterService {
 		
 		List<AfterDTO> list = afterDAO.getAllList(pageMaker);
 		
+		return list;
+	}
+	// 상혁
+	public List<AfterDTO> getAfterList() throws Exception{
+		List<AfterDTO> list = afterDAO.getAfterList();
 		return list;
 	}
 	

@@ -8,8 +8,8 @@
 	</select>
 
 	<insert id="setWrite" parameterType="QnaDTO">
-		INSERT INTO QNA(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH)
-		VALUES(#{num},#{title},#{writer},#{contents},sysdate,0,#{pw},#{num},0,0)
+		INSERT INTO QNA(NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH, answer)
+		VALUES(#{num},#{title},#{writer},#{contents},sysdate,0,#{pw},#{num},0,0,0)
 	</insert>
 
 	<resultMap type="QnaDTO" id="qnaResult">
@@ -23,6 +23,7 @@
 		<result column="ref" property="ref"/>
 		<result column="step" property="step"/>
 		<result column="depth" property="depth"/>
+		<result column="answer" property="answer"/>
 		<collection property="fileDTOs" javaType="List" ofType="FileDTO">
 			<id column="fnum" property="fnum"/>
 			<result column="num" property="num"/>
@@ -33,7 +34,7 @@
 	<select id="getList" parameterType="PageMaker" resultMap="qnaResult">
 		SELECT * FROM 
 		(SELECT ROWNUM R, Q.* FROM 
-		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW 
+		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW, answer
 		FROM QNA WHERE
 		<choose>
 			<when test="kind = 1">
@@ -50,7 +51,7 @@
 			</otherwise>
 		</choose>
 		LIKE '%'||#{search}||'%'
-		ORDER BY  (SUBSTR(ref, 2)*1) DESC, STEP DESC) Q) 
+		ORDER BY  (SUBSTR(ref, 2)*1) DESC, STEP ASC) Q) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
@@ -77,6 +78,9 @@
 	<select id="getSelect" resultMap="qnaResult" parameterType="String">
 		SELECT * FROM QNA FULL JOIN FILES USING(NUM) WHERE NUM = #{num}
 	</select>
+	<select id="getSelectRef" parameterType="String" resultType="String">
+		select num from qna where ref = #{ref}
+	</select>
 	
 	<select id="getTop" resultMap="qnaResult">
 		SELECT * FROM QNA WHERE TOP = '1'
@@ -90,24 +94,24 @@
 		DELETE QNA WHERE REF = #{num} 
 	</delete>
 	
+	<insert id="setReplyDelete" parameterType="String">
+		delete qna where num = #{num}
+	</insert>
 	<!-- reply -->
 	<insert id="setReplyWrite" parameterType="QnaDTO">
-		INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH) 
+		INSERT INTO QNA (NUM, TITLE, WRITER, CONTENTS, REG_DATE, HIT, PW, REF, STEP, DEPTH, answer) 
 		VALUES (#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{pw}, #{ref}, 
-				(select step from qna where num=#{ref})+1, (select depth from qna where num=#{ref})+1
-				)
+				(select count(num) from qna where ref=#{ref}), 1, 2)
 	</insert>
-	
-	<update id="setReplyUpdate" parameterType="QnaDTO">
-		UPDATE QNA SET STEP=STEP+1 
-		WHERE REF=(SELECT REF FROM QNA WHERE NUM=#{ref})
-		AND STEP>(SELECT STEP FROM QNA WHERE NUM=#{ref})
-	</update> 
-	
+
 	<!-- hit -->
 
 	<update id="setHitUpdate" parameterType="String">
 		UPDATE QNA SET HIT = HIT + 1 WHERE NUM = #{num}
+	</update>
+	
+	<update id="setAnswer" parameterType="String">
+		update qna set answer = 1 where ref = #{ref} and step = 0
 	</update>
 	
 	
