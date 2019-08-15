@@ -2,32 +2,28 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header -->
-
  
 <div id="h_container">
 	<div class="h_top">
 		<div class="h_wrap">
 			<div class="user_menu">
-
 			<input type="hidden" value="${member.id }" id="memberId">
-
-
 				<c:choose>
 					<c:when test="${member.grade eq '3'}">
 							<div id="admin">
-								<a href="${pageContext.request.contextPath}/admin/adminMain">관리자 페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+								<a href="${pageContext.request.contextPath}/admin/adminMain?id=${member.id}">관리자 페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
 								<a href="${pageContext.request.contextPath}/member/memberLogout?id=${member.id}" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:when test="${member.grade eq '2'}">
 							<div id="logout">
-								<a href="${pageContext.request.contextPath}/myPage/myPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+								<a href="${pageContext.request.contextPath}/myPage/myMain">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
 								<a href="${pageContext.request.contextPath}/member/memberLogout?id=${member.id}" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
 					<c:when test="${member.grade eq '1'}">
 							<div id="logout">
-								<a href="${pageContext.request.contextPath}/myPage/myPageBoard">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
+								<a href="${pageContext.request.contextPath}/myPage/myMain">마이페이지</a> <span class="log">|</span> <a href="#">예매확인/취소</a> <span class="log">|</span>
 								<a href="${pageContext.request.contextPath}/member/memberLogout?id=${member.id}" class="memberLogout">로그아웃</a> <span class="log">|</span> <a href="${pageContext.request.contextPath}/callcenter/main">고객센터</a>
 							</div>
 					</c:when>
@@ -75,7 +71,7 @@
 				<ul class="nav navbar-nav">
 					<li id="navbar-page" class="navp"><a href="#"><i
 							class="fa fa-home fa-fw"></i>W 추천</a></li>
-					<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiList?category=6"><i
+					<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiList?category=1"><i
 							class="fa fa-home fa-fw"></i>공연</a></li>
 							<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiMain"><i
 							class="fa fa-home fa-fw"></i>축제</a></li>

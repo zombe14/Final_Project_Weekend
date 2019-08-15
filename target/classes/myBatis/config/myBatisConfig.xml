@@ -17,7 +17,6 @@
 		<!-- 선영 -->
 		<typeAlias type="com.project.weekend.pay.PayVO" alias="PayVO" />
 
-
 		<!-- 공통 -->
 		<typeAlias type="java.lang.Integer" alias="Integer"/>
 		<typeAlias type="java.util.List" alias="List"/>

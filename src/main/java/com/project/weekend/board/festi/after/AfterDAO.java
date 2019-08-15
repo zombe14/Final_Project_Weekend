@@ -62,7 +62,10 @@ public class AfterDAO {
 	public int setHitUpdate(String anum) throws Exception{
 		return sqlSession.update(NAMESPACE+"setHitUpdate", anum);
 	}
-	
+	// 상혁
+	public List<AfterDTO> getAfterList() throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getAfterList");
+	}		
 	public List<String> getListNum (String num) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getListNum", num);
 	}

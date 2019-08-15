@@ -107,5 +107,13 @@ public class FestiService {
 	public int getNum() throws Exception{
 		return festiDAO.getNum();
 	}
+	// 상혁
+	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getAllList(pageMaker);
+		int totalCount = festiDAO.getCount();
+		pageMaker.makePage(totalCount);
+		return list;
+	}
 
 }
