@@ -104,7 +104,7 @@
 										<td class="td1"><label for="files">첨부파일</label></td>
 										<td>
 											<!-- <hr> 추가 할 파일들 -->
-											<input type="button" id="addFiles" value="파일 추가">
+											<button type="button" id="addFiles" value="파일 추가"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일 추가 </button>
 											<!-- 이미 있는 파일들 -->
 											<div id="filed">
 												<input type="hidden" id="fileCount"

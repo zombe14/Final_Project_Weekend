@@ -31,7 +31,7 @@
 #addFiles{
 	width: 90px;
 	float: right;
-	border-radius: 20px; 
+	/* border-radius: 20px;  */
 }
 
 #addFiles img{

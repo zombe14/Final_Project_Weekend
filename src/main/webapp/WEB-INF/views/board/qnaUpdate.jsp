@@ -99,8 +99,9 @@
 										<tr>
 											<td class="td1"><label for="files">첨부파일</label></td>
 											<td>
-												<!-- <hr> 추가 할 파일들 --> <input type="button" id="addFiles"
-												value="파일 추가"> <!-- 이미 있는 파일들 -->
+												<!-- <hr> 추가 할 파일들 -->
+												<button type="button" id="addFiles" value="파일 추가"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일 추가 </button>
+												<!-- 이미 있는 파일들 -->
 												<div id="filed">
 													<input type="hidden" id="fileCount"
 														value="${dto.fileDTOs.size()}">
@@ -126,7 +127,7 @@
 						<td>
 							<input type="radio" class="pwSel" name="secret" id="nonSecret" checked="checked"> <label>공개글</label>
 							<input type="radio" class="pwSel" name="secret" id="secret"> <label>비밀글</label>
-							<input type="password" name="pw" id="pw" placeholder="질문글과 답변을 볼 때 사용 할 비밀번호를 입력해주세요">
+							<input type="password" name="pw" id="pw" class="pwpw" placeholder="질문글과 답변을 볼 때 사용 할 비밀번호를 입력해주세요">
 						</td>
 					</c:if>
 					<c:if test="${board eq 'qnaReply'}">
