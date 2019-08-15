@@ -11,39 +11,42 @@
 <body>
 <script type="text/javascript">
 	$(function () {
-		/* 비밀번호 변경하기 */
 		$("#pBtn").on("click",function(){
-			/* 입력 정보 저장 */
 			var id = $("#id").val();
 			var pw = $("#pw").val();
 			var npw = $("#npw").val();
 			var cnpw = $("#cnpw").val();
-			/* 새 비밀번호 일치 여부 */
-			if (npw == cnpw){
-				/* 비밀번호 변경 여부 확인 */
+			// 새 비밀번호 일치 확인;
+			if(npw == cnpw){
 				var check = confirm("비밀번호를 변경하시겠습니까?");
 				if(check){
-					alert(npw);
-					$.post("../myPage/mPasswordList",{
-						id : id,
-						pw : pw,
-						npw : npw
-						}, function(data){
-							if(data == 1){
-								alert("수정이 완료되었습니다.");
-								location.href = "./myMain";
+					$.post("./mPasswordList1",{id : id,	pw : pw}, function (data) {
+						if(data == 1){
+							pw = npw;
+							$.post("./mPasswordList2",{id : id, pw : pw}, function (data){
+									if(data == 1){
+										alert("비밀번호 변경에 성공하였습니다.\다시 로그인해 주세요.");
+										location.href = "../member/memberLogin";
+									}else{
+										alert("비밀번호 변경에 실패하였습니다.\n다시 시도해 주세요.");
+										location.href = "./mPasswordList";
+									}// 마지막 if 끝;
+							}// 마지막 function 끝;
+							)// 마지막 $.post 끝;
 							}else{
-								alert("수정에 실패하였습니다.");
-								location.href = "./mPasswordList";
-							} // end of if;
-						} //$.post function 끝;
-					)// $.post 끝;
-				} // 비밀번호 변경 여부 확인 끝;
+								alert("현재 비밀번호가 잘못 입력되었습니다.\n다시 확인해 주세요.")
+							}// 마지막 if 끝;
+					}// 두번째 function 끝;
+					)// 두번째 $.post 끝;
+						}else{
+							alert("비밀번호 변경이 취소되었습니다.");
+							location.href="./myMain";
+					}// 비밀번호 변경 확인 끝;
 			}else{
-				alert("입력하신 새 비밀번호가 다릅니다.\n다시 확인해주세요.");
-			} // 새 비밀번호 체크랑 일치 여부;
-		})// uBtn 끝;
-
+				alert("새 비밀번호가 서로 다르게 입력되었습니다.\n확인 후 다시 시도해 주세요.");
+			}// 새 비밀번호 일치확인 끝;
+		})// pBtn 끝;
+		
 		/* 취소하고 돌아가기 */
 		$("#gBtn").on("click",function(){
 			var check = confirm("변경사항을 모두 취소하고 돌아가시겠습니까?")

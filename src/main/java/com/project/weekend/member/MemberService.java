@@ -57,17 +57,14 @@ public class MemberService {
 		return result; 
 	}
 	// 비밀번호 수정;
-	// pw재 확인;
+	// 본인 여부 확인;
 	public int getUpdatePs1(MemberDTO memberDTO) throws Exception{
-		System.out.println("서비스1 도착");
 		int result = memberDAO.getUpdatePs1(memberDTO);
-		System.out.println("서비스1 나감");
 		return result;
 	}
+	// pw 변경;
 	public int setUpdatePs2(MemberDTO memberDTO) throws Exception{
-		System.out.println("서비스2 도착");
 		int result = memberDAO.setUpdatePs2(memberDTO);
-		System.out.println("서비스2 나감");
 		return result;
 	}
 	

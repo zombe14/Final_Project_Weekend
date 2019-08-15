@@ -39,28 +39,24 @@ public class MyPageController {
 	// 비밀번호 변경 페이지 출력
 	@RequestMapping(value = "mPasswordList", method = RequestMethod.GET)
 	public void myPasswordList() throws Exception{
-		System.out.println("겟으로 왔음");
 	}
-	// 비밀번호 변경 method
-	@RequestMapping(value = "mPasswordList", method = RequestMethod.POST)
-	public ModelAndView myPasswordChange(HttpSession session, MemberDTO memberDTO) throws Exception{
-		System.out.println("포스트로 왔음");
+	// 비밀번호 변경 method1(id와 pw 확인용)
+	@RequestMapping(value = "mPasswordList1", method = RequestMethod.POST)
+	public ModelAndView myPasswordChange1(HttpSession session, MemberDTO memberDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.getUpdatePs1(memberDTO);
-		System.out.println(result);
-		int fResult = 0;
-		String path = "./myMain";
-		String message = "비밀번호 변경에 실패하였습니다.";
-		if (result == 1) {
-			System.out.println("첫번째 result 1 뜸");
-			fResult = memberService.setUpdatePs2(memberDTO);
-		}
-		if(result != 0 && fResult != 0) {
-			System.out.println("모든 조건 충족");
-			path = "./common/message";
-		}
 		mv.addObject("result", result);
-		mv.setViewName(path);
+		mv.setViewName("./common/message");
+		return mv;
+	}
+	// 비밀번호 변경 method2(실제 비밀번호 변경)
+	@RequestMapping(value = "mPasswordList2", method = RequestMethod.POST)
+	public ModelAndView myPasswordChange2(HttpSession session, MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setUpdatePs2(memberDTO);
+		System.out.println(result);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
 		return mv;
 	}
 	// 티켓 관리
