@@ -11,6 +11,40 @@
 <body>
 <script type="text/javascript">
 	$(function () {
+		/* 비밀번호 변경하기 */
+		$("#pBtn").on("click",function(){
+			/* 입력 정보 저장 */
+			var id = $("#id").val();
+			var pw = $("#pw").val();
+			var npw = $("#npw").val();
+			var cnpw = $("#cnpw").val();
+			/* 새 비밀번호 일치 여부 */
+			if (npw == cnpw){
+				/* 비밀번호 변경 여부 확인 */
+				var check = confirm("비밀번호를 변경하시겠습니까?");
+				if(check){
+					alert(npw);
+					$.post("../myPage/mPasswordList",{
+						id : id,
+						pw : pw,
+						npw : npw
+						}, function(data){
+							if(data == 1){
+								alert("수정이 완료되었습니다.");
+								location.href = "./myMain";
+							}else{
+								alert("수정에 실패하였습니다.");
+								location.href = "./mPasswordList";
+							} // end of if;
+						} //$.post function 끝;
+					)// $.post 끝;
+				} // 비밀번호 변경 여부 확인 끝;
+			}else{
+				alert("입력하신 새 비밀번호가 다릅니다.\n다시 확인해주세요.");
+			} // 새 비밀번호 체크랑 일치 여부;
+		})// uBtn 끝;
+
+		/* 취소하고 돌아가기 */
 		$("#gBtn").on("click",function(){
 			var check = confirm("변경사항을 모두 취소하고 돌아가시겠습니까?")
 			if(check){
@@ -19,7 +53,7 @@
 				alert("정보 수정을 계속 진행합니다.");
 			}
 		})// #Btn 끝;
-	})// 밖 function 끝;
+	})// 기본 function 끝;
 </script>
 	<div id="wrap">
 		<div id="header">
@@ -46,7 +80,7 @@
 			      			<label>변경할 비밀번호 재입력:</label>
 			      			<input type="password" class="form-control" placeholder="변경할 비밀번호를 다시 입력해 주세요." id="cnpw" name="cnpw">
 		    			</div>
-		    			<button type="button" class="btn btn-default" id ="uBtn">수정 완료</button>
+		    			<button type="button" class="btn btn-default" id ="pBtn">수정 완료</button>
 		  				<button type="button" class="btn btn-default" id ="gBtn">되돌아 가기</button>
 					</form>
 				</div>
