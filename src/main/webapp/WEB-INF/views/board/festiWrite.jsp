@@ -75,10 +75,11 @@
 				</div>				
 				<div>
 					<label for="category">카테고리<span class="r">*</span></label>
-					<input type="radio" name="category" class="category" id="show" checked="checked" value="6"> 6.공연
+					<input type="radio" name="category" class="category" id="show" checked="checked" value="1"> 1.공연
 					<input type="radio" name="category" class="category" id="festival" value="2"> 2. 축제						
 					<input type="radio" name="category" class="category" id="daehakro" value="3"> 3. 대학로 연극
 				</div>
+				
 				<div>
 					<label for="startDate">시작일<span class="r">*</span></label>
 					<input type="date" name="startDate" class="date">  
@@ -115,12 +116,23 @@
 					<div id="map" style="width:100%;height:500px;margin-top:10px;display:none">
 					</div>
 				</div>
-				<%-- <c:if test="${member.grade eq 3}">  추가하기 --%>
+				<c:if test="${member.grade eq 3}">
 				<div>
 					<label for="top">상단에 등록 하기</label>
 					<input type="checkbox" id="top" name="top" value="0">
 				</div>
-				<%-- </c:if> --%>
+				</c:if>
+				
+				
+				<hr>
+				<div>
+				<a class="btn btn-default">옵션 추가하기</a>
+				<input type="date" name="reg_date">
+				
+				</div>
+				<hr>
+				
+				
 				
       		 	<a id="write" class="btn btn-default">등록</a>
 			</form> 

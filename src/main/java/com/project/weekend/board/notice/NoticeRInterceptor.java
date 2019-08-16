@@ -6,24 +6,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class NoticeCUDInterceptor extends HandlerInterceptorAdapter{
+public class NoticeRInterceptor extends HandlerInterceptorAdapter{
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		boolean res = false;
 		HttpSession session = request.getSession();
 		Object member = session.getAttribute("member");
-		System.out.println("member : "+member);
-		int grade = (Integer)session.getAttribute("grade");
 		if(member == null) {
 			response.sendRedirect("../member/memberLogin");
 		} else {
-			if(grade != 3) {
-				//권한이 없습니다. 알림창 뜨게
-				response.sendRedirect("./noticeList");
-			} else {
-				res = true;
-			}
+			res = true;
 		}
 		return res;
 	}

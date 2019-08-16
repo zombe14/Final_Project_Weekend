@@ -1,13 +1,16 @@
-package com.project.weekend.board.notice;
+package com.project.weekend.board.qna;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class NoticeLInterceptor extends HandlerInterceptorAdapter{
-
+@Component
+public class QnaCLInterceptor extends HandlerInterceptorAdapter {
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		boolean res = false;
@@ -20,5 +23,14 @@ public class NoticeLInterceptor extends HandlerInterceptorAdapter{
 		}
 		return res;
 	}
+	
+	
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler, String pw) throws Exception{
+		boolean res = false;
+		
+		return res;
+	}
+	
+	
 
 }
