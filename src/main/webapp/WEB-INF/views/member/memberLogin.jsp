@@ -32,9 +32,8 @@
 						<button type="submit" id="Login" class="lgbtn">로그인</button>
 					</form>
 					
-					<div id="naver_id_login" style="text-align:center"><a href="${url}">
-<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
-<br>
+	<div id="naver_id_login" style="text-align:center">
+<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></div>
 					
 					<div class="login_bot">
 						<a href="./memberAgree" class="lob">회원가입</a> <span class="log lob">|</span>

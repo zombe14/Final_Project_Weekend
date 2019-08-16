@@ -15,7 +15,7 @@ public class NaverLoginBO {
 	/* 인증 요청문을 구성하는 파라미터 */
 	private final static String CLIENT_ID = "MDl5dSw56gsi4SAi7sL7";
 	private final static String CLIENT_SECRET = "6XRlnLRgNo";
-	private final static String REDIRECT_URI = "http://localhost:801/weekend/";
+	private final static String REDIRECT_URI = "http://localhost:801/weekend/member/callback.do";
 	private final static String SESSION_STATE = "oauth_state";
 	/* 프로필 조회 API URL */
 	private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";
