@@ -4,7 +4,7 @@
 
 		<div id="commentsList">
 			<c:forEach items="${clist}" var="c">
-				 <div id = "${c.cnum}">
+				 <div id = "${c.cnum}" class="commentsDiv">
 					<div>
 				    	${c.writer} | ${c.reg_date} | ${c.cnum}<br>
 				    	${c.contents}
@@ -67,6 +67,8 @@ var cnum2 = 0;
 $('.update').click(function() {
 	var cnum = $(this).attr('title');
 	cnum2 = cnum;
+	$('.commentsDiv').show();
+	$('#'+cnum2).hide();
 	$('.updateDiv').hide();
 	$('#'+cnum2+'Update').show();
 });
