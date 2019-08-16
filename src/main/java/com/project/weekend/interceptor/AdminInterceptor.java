@@ -23,7 +23,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 			if(grade.equals(3)) {
 				result=true;
 			}else {
-				response.sendRedirect("../../../../../");
+				response.sendRedirect("../");
 			}
 		}else {
 			response.sendRedirect("../member/memberLogin");
