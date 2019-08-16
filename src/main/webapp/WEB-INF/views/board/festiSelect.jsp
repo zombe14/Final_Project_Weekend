@@ -146,7 +146,8 @@
 					</div>
 					<!-- 날짜 정하는 div -->
 					<div class="detail_info_right">
-						<input type="text" name="date" id="date1" size="12" />
+						<!-- <input type="text" name="date"  size="12" /> -->
+						<div id="date1"></div>
 						<dl class="doline_x">
 							<dt>예매가능 회차</dt>
 							<dd>
@@ -172,14 +173,18 @@
 						<div class="festi_wrap">
 							<div class="festi_menu">
 								<button onclick="fnMove('1')">상세정보</button>
-								<button onclick="fnMove('2')">공연장 정보</button>
-								<button onclick="fnMove('3')">티켓 수령 및 취소</button>
-								<button onclick="fnMove('4')">관람 후기</button>
+								<button onclick="fnMove('2')">공연장정보</button>
+								<button onclick="fnMove('3')">질문하기</button>
+								<button onclick="fnMove('4')">관람후기</button>
 							</div>
 						</div>
 					<div id="div1" class="festi_wrap2">
+						<div class="festi_title">
+							<strong>상세정보</strong>
+							<br>
+						</div>
 						<div>
-							<ol>
+							<ul>
 								<li>${dto.category}</li>
 								<li>${dto.price}</li>
 								<li>${dto.total}</li>
@@ -195,22 +200,23 @@
 								<li>${dto.top}</li>
 								<li>${dto.age}</li>
 								<li>${dto.region}</li>
-							</ol>
+							</ul>
 						</div>
 					</div>
 					<div id="div2" class="festi_wrap2">
 						<!-- 장소 지도 -->
-						<div>
-							<h2>공연장정보</h2>
+						<div class="festi_title">
+							<strong>공연장정보</strong>
 							<br>
-						<div>
-							<h3>위치</h3>
+						</div>
+						<div class="festi_h4">
+							<img alt="" src="${pageContext.request.contextPath}/resources/images/location.png"><h4>위치</h4>
+						</div>
 							<div id="localMap" style="width: 100%; height: 500px;"></div>
-							</div>
 							<br>
 						<!-- 주변 맛집 -->
-						<div id="resta">
-							<h3>주변 식당</h3>
+						<div id="resta" class="festi_h4">
+							<img alt="" src="${pageContext.request.contextPath}/resources/images/location.png"><h4>주변 식당</h4>
 							<div class="map_wrap">
 						   		 <div id="map2" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
 								<!-- 리스트 -->
@@ -231,8 +237,8 @@
 					</div>
 					<br>
 					<!-- 주변 숙소 -->
-					<div id="hotel">
-						<h3>주변 숙소</h3>
+					<div id="hotel" class="festi_h4">
+						<img alt="" src="${pageContext.request.contextPath}/resources/images/location.png"><h4>주변 숙소</h4>
 						<div class="map_wrap">
 						    <div id="map3" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
 							<!-- 리스트 -->
@@ -253,10 +259,14 @@
 					</div>
 				</div>
 				<!-- 지도 끝 -->
-			</div>
+			
 			<div id="div3" class="festi_wrap2">
+				<div class="festi_title">
+					<strong>질문하기</strong>
+					<a href="../festiQna/fqnaWrite?num=${dto.num}">질문하기</a>
+				</div>
+				<div>
 				<!--  질문 -->
-				<a href="../festiQna/fqnaWrite?num=${dto.num}">질문하기</a>
 					<table class="table">
 						<thead>
 							<th>NUM</th>
@@ -292,8 +302,13 @@
 						</c:forEach>
 					</table>
 					</div>
+					</div>
 					<div id="div4" class="festi_wrap2">
-						<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
+						<div class="festi_title">
+							<strong>관람후기</strong>
+							<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
+						</div>
+						<div>
 				
 							<%-- <c:if test="${member.grade > 1}"> --%> 
 							<%-- </c:if> --%>
@@ -317,6 +332,7 @@
 								</tr>
 							</c:forEach>
 						</table>
+						</div>
 					</div>
 				</div>
    			</div>
@@ -329,7 +345,7 @@
 	<!-- script -->
 	<!-- 지도 -->
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services"></script> -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript">
 	
 	/* 각 행 선택 시 select 페이지 이동 */
