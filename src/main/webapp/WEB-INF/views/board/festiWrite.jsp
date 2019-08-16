@@ -125,12 +125,33 @@
 				
 				
 				<hr>
-				<div>
-				<a class="btn btn-default">옵션 추가하기</a>
-				<input type="date" name="reg_date">
-				
+				<div id="datesOptionDiv">
+					<a class="btn btn-default" id="addOptions">옵션 추가하기</a>
+					<div id="datesOption">
+						<div id="option1">
+							<div>
+								<div class="dateDiv">
+									<label for="dates">날짜 </label>
+									<input type="date" name="reg_date" class="dates">
+								</div>
+								<div class="timeDiv">
+									<label for="time">시작시간</label>
+									<input type="text" name="time" class="time">
+								</div>				
+								<div class="seatDiv">
+									<label for="seat">좌석</label>
+									<input type="number" name="seat" class="seat">
+								</div>
+								<div class="priceDiv">
+									<label for="price">가격</label>
+									<input type="number" name="price" class="price">
+								</div>
+							</div>
+							<hr>
+						</div>
+					</div>
 				</div>
-				<hr>
+				
 				
 				
 				
@@ -150,6 +171,13 @@
 <script src="../resources/js/summernote.js"></script>
 <!-- script -->
 <script type="text/javascript">
+
+$('#addOptions').click(function() {
+	var option = $('#option1').html();
+	console.log(option)
+	var html = option
+	$('#datesOption').append(html);
+});
 
 /* 첨부 파일 관리 */
 // 개수 제한. 최대 5개까지.
