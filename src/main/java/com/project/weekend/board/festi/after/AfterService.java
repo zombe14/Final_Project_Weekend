@@ -170,5 +170,10 @@ public class AfterService {
 		
 		return list;
 	}
+	// 상혁
+	public List<AfterDTO> getAfterList() throws Exception{
+		List<AfterDTO> list = afterDAO.getAfterList();
+		return list;
+	}
 	
 }

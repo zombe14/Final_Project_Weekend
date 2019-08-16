@@ -63,20 +63,23 @@
 							</tr>
 							<c:if test="${board eq 'notice'}">
 							<tr>
-								<td  class="td1"><label for="top">상단에 등록 하기</label></td>
+								<td  class="td1">
+								<label for="check">상단 등록</label></td>
 								<td>
-									<input type="checkbox" id="top" name="top" value="0">
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </span><span id="topCount" title="${topCount}">${topCount} / 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
+									<div class="iCheckbox">
+									<input type="checkbox" id="check" name="top" value="0">
+									<label for="check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </label><span id="topCount" title="${topCount}">${topCount} / 7 개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ 상단에는 최대 7개까지 등록 가능합니다.</span>
+									</div>
 								</td>
 							</tr>
 							</c:if>
 							<tr>
-								<td  class="td1"><label for="files">첨부파일</label></td>
+								<td class="td1"><label for="files">첨부파일</label></td>
 								<td>
-									<input type="button" id="addFiles" value="파일 추가">
+									<button type="button" id="addFiles" value="파일 추가"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일 추가 </button>
 									<div id="filesDiv">
 										<div>
-											<input type="file" class="filelist" name="filelist" style="display: inline-block;"> 
+											<input type="file" class="filelist" name="filelist" style="display: inline-block;">
 											<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block;"></span>
 										</div>
 									</div>
@@ -136,7 +139,7 @@
 		});
 
 		//상단 배치 체크박스에 값 주기 ( 1: 등록하기 / 0: 등록안함)
-		$('#top').click(function() {
+		$('#check').click(function() {
 			if ($(this).is(':checked')) {
 				$(this).val(1);
 			} else {
@@ -164,8 +167,6 @@
 			if(topC < 7){
 				$('#top').show();
 			}
-		
-		
 		
 		
 

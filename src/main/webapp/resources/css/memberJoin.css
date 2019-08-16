@@ -248,8 +248,31 @@ select {
     font-size: 14px;
     margin: 0 5px;
 }
-
-#nicknameCheck{
+#emailCheck{
+    border: 1px solid white;
+    padding: 10px 20px;
+    background: #00d344;
+    color: white;	
+    font-size: 14px;
+    margin: 0 5px;
+}
+#emailCodeCheck{
+    border: 1px solid white;
+    padding: 10px 20px;
+    background: #00d344;
+    color: white;	
+    font-size: 14px;
+    margin: 0 5px;
+}
+#juminnum{
+    border: 1px solid white;
+    padding: 10px 20px;
+    background: #00d344;
+    color: white;	
+    font-size: 14px;
+    margin: 0 5px;
+}
+#nicknameCheckbt{
     border: 1px solid white;
     padding: 10px 20px;
     background: #00d344;
@@ -271,6 +294,19 @@ button {
   	transition: 0.5s;
   	outline: none;
   	height: 40px;
+}
+.iTextnum {
+    width: 105px;
+    -webkit-transition: 0.5s;
+  	transition: 0.5s;
+  	outline: none;
+  	height: 40px;
+  	padding: 0 8px;
+    height: 31px;
+    font-size: 14px;
+    border: 1px solid #dfe5ed;
+    vertical-align: middle;
+    font-family: "Noto Sans KR", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
 }
 .iText {
     padding: 0 8px;
@@ -335,11 +371,11 @@ input[type=checkbox] + label {
 	display: inline-block; 
 	cursor: pointer; 
 	line-height: 22px;  
-	background: url('../images/memberagree/checkbox_off.png') left/22px no-repeat; 
+	background: url('../images/checkbox/checkbox_off.png') left/22px no-repeat; 
 }
 
 input[type=checkbox]:checked + label { 
-	 background: url("../images/memberagree/checkbox_on.png") left/20px no-repeat;
+	 background: url("../images/checkbox/checkbox_on.png") left/20px no-repeat;
  }
 
 

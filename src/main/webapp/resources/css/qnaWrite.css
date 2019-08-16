@@ -1,0 +1,136 @@
+/* 1. readonly 배경색 */
+/* 2. * 빨간색 */
+
+.r{
+	color: red;
+	}
+	
+.td1{
+	text-align: center;
+	width: 130px;
+	background: #f5f6f7;
+	}
+	
+.pencil{
+	width: 20px;
+	margin-right: 10px;
+	}
+	
+.write_title input{
+	width: 94%;
+	height: 30px;
+	outline: none;
+}
+
+.write_writer input{
+	width: 41%;
+	height: 30px;
+	outline: none;
+}
+
+#addFiles{
+	width: 90px;
+	float: right;
+	/* border-radius: 20px; */
+}
+
+#addFiles img{
+	width: 20px;
+	margin-right: 6px;
+}
+
+input:focus{
+	border: 2px solid #00d344;
+}
+
+.qnaWrite_btn{
+	background-color: white;
+    color: black;
+    padding: 4px 15px;
+    float: right;
+    border: 1px solid #adadad;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.qnaWrite_btn:hover{
+	background-color: #00d344;
+	border: 1px solid white;
+	color: white;
+}
+
+ .qnaUpdate_btn{
+	background-color: white;
+    color: black;
+    padding: 4px 15px;
+    float: right;
+    border: 1px solid #adadad;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.qnaUpdate_btn:hover{
+	background-color: #00d344;
+	border: 1px solid white;
+	color: white;
+}
+
+/* input[type=checkbox] { display:none; }
+
+input[type=checkbox] + label { 
+	display: inline-block; 
+	cursor: pointer; 
+	line-height: 22px;  
+	background: url('../images/checkbox/checkbox_off.png') left/22px no-repeat; 
+}
+
+input[type=checkbox]:checked + label { 
+	 background: url("../images/checkbox/checkbox_on.png") left/20px no-repeat;
+ }
+ */
+.update_title input{
+	width: 95%;
+	height: 30px;
+	outline: none;
+}
+
+.update_writer input{
+	width: 41%;
+	height: 30px;
+	outline: none;
+}
+
+.pwpw{
+	width: 300px;
+}
+
+.example{
+  margin-bottom : 1.5em;
+}
+
+input[type=checkbox]:not(old),
+input[type=radio   ]:not(old){
+  width   : 28px;
+  margin  : 0;
+  padding : 0;
+  opacity : 0;
+}
+
+input[type=checkbox]:not(old) + label,
+input[type=radio   ]:not(old) + label{
+  display      : inline-block;
+  margin-left  : -28px;
+  padding-left : 28px;
+  background   : url('../images/checks.png') no-repeat 0 0;
+  line-height  : 24px;
+}
+
+input[type=checkbox]:not(old):checked + label{
+  background-position : 0 -24px;
+}
+
+input[type=radio]:not(old):checked + label{
+  background-position : 0 -48px;
+}
+
+

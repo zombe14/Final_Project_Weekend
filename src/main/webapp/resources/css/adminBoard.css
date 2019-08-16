@@ -1,36 +1,80 @@
-  <style>
-  	.totalBody{
-  	height: 900px;
-  	width: 1300px;
-  	margin: auto;
-  	}
-    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 800px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f1f1f1;
-      width: 150px;
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height: auto;} 
-    }
-    .pBtn, .mBtn, .dBtn{
-    width: 45px;
-    font-size: 5px;
-    }
-  </style>
+/*  ------------------------관리자 board Css-------------------- */
+.totalBody {
+	height: 600px;
+	width: 1300px;
+	margin: 50px auto;
+}
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+.row.content {
+	height: 500px
+}
+/* Set gray background color and 100% height */
+.sidenav {
+	background-color: #f1f1f1;
+	width: 150px;
+	height: 650px;
+}
+/* Set black background color, white text and some padding */
+.footer {
+	background-color: #333;
+	color: white;
+	padding: 15px;
+}
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: 578px;
+		padding: 15px;
+	}
+	.row.content {
+		height: 578px;
+	}
+}
+.pBtn, .mBtn, .dBtn {
+	width: 45px;
+	font-size: 5px;
+}
+/*  ------------------------Footer Css-------------------- */
+#f_container{
+	width: 1300px;
+	color: #757575;
+	margin: 0 auto;
+}
+
+.f_menu{
+	font-weight: bold;
+    height: 11px;
+    line-height: 12px;
+    color: #999;
+    margin-bottom: 23px;
+}
+
+.f_menu a {
+      color: #999;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0 3px;
+   }
+   
+.f_logo{
+	float: left;
+}
+
+.f_inner{
+	width: 600px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.f_info{
+	color: #757575;
+}
+
+.f_menu a:first-child{
+	color: #ccc;
+}
+
+.f_address a{
+	color: #757575;
+	padding: 0 3px;
+}

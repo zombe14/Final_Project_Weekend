@@ -85,10 +85,9 @@ public class MemberController {
 	}
 	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
-		System.out.println("dd");
 		ModelAndView mv = new ModelAndView();
 		MemberDTO getId = memberService.getId(memberDTO);
-		String message="Join Fail";
+		String message="회원가입 실패";
 		if(getId!=null) {
 			message="이미 존재하는 아이디입니다.";
 			mv.setViewName("common/messageMove");
@@ -97,7 +96,7 @@ public class MemberController {
 		}else {
 			int result = memberService.setWrite(memberDTO, photo, session);
 			if(result>0) {
-				message="Join Success";
+				message="회원가입 성공";
 			}
 			mv.setViewName("common/messageMove");
 			mv.addObject("message", message);
@@ -128,7 +127,7 @@ public class MemberController {
 				mv.addObject("path", "./memberLogin");
 			}else {
 			memberDTO = memberService.getSelect(memberDTO);
-			message="Login Fail";
+			message="로그인 실패";
 			if(result==1) {	
 				if(memberDTO != null) {
 					if(memberDTO.getCount()>6) {
@@ -138,8 +137,9 @@ public class MemberController {
 						mv.addObject("path", "../");
 					}else {
 						session.setAttribute("member", memberDTO);
+						session.setAttribute("grade", memberDTO.getGrade());
 						int zero = memberService.setUpdatezero(memberDTO);
-						message = "Login Success";	
+						message = "로그인 성공";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
 						mv.addObject("path", "../");

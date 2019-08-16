@@ -52,6 +52,11 @@ public class FestiDAO{
 	public int setDelete(String num) throws Exception{
 		return SqlSession.delete(NAMESPACE+"setDelete", num);
 	}
+	
+	// 상혁
+	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getAllList", pageMaker);
+	}
 
 }
 

@@ -29,11 +29,18 @@
 }
 
 #addFiles{
-	width: 67px;
+	width: 90px;
+	float: right;
+	/* border-radius: 20px;  */
 }
 
-#filesDiv{
-	margin-top: 10px;
+#addFiles img{
+	width: 20px;
+	margin-right: 6px;
+}
+
+.pwpw{
+	width: 300px;
 }
 
 input:focus{
@@ -54,4 +61,46 @@ input:focus{
 	background-color: #00d344;
 	border: 1px solid white;
 	color: white;
+}
+
+.noticeUpdate_btn{
+	background-color: white;
+    color: black;
+    padding: 4px 15px;
+    float: right;
+    border: 1px solid #adadad;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.noticeUpdate_btn:hover{
+	background-color: #00d344;
+	border: 1px solid white;
+	color: white;
+}
+
+input[type=checkbox] { display:none; }
+
+input[type=checkbox] + label { 
+	display: inline-block; 
+	cursor: pointer; 
+	line-height: 22px;  
+	background: url('../images/checkbox/checkbox_off.png') left/15px no-repeat; 
+	padding: 0 5px;
+}
+
+input[type=checkbox]:checked + label { 
+	 background: url("../images/checkbox/checkbox_on.png") left/15px no-repeat;
+ }
+ 
+.update_title input{
+	width: 95%;
+	height: 30px;
+	outline: none;
+}
+
+.update_writer input{
+	width: 41%;
+	height: 30px;
+	outline: none;
 }
