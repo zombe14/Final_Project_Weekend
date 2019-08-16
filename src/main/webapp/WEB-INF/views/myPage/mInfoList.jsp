@@ -98,7 +98,7 @@
 							$("#pCheck").hide();
 							pCheck = true;
 						}else{
-							// 확인된 전화번호를 사용하지 않겠따는 코드;
+							// 확인된 전화번호를 사용하지 않겠다는 코드;
 							alert("사용하실 전화번호를 기입 후 중복체크를 눌러주세요.");
 							$("#phone").val(Ophone);
 						}
@@ -116,8 +116,47 @@
 		// 기존 이메일 보관;
 		var Oemail = $("#email").val();
 		// 이메일 확인 여부;
-		var eCheck = true;
-		
+		var eCheck = false;
+		$("#eCheck").on("click", function () {
+			var email = $("#email").val();
+			if(email == Oemail){
+				var check = confirm("기존 이메일을 그대로 사용하시겠습니까?");
+				if(check){
+					// 기존 메일을 그대로 사용하겠다는 코드;
+					result_emailOk.innerHTML = '기존 이메일을 사용합니다.';
+					$("#email").prop('readonly', true);
+					$("#eCheck").hide();
+					eCheck = true;
+				}else{
+					// 기존 메일을 그대로 사용안하겠다는 코드;
+					alert("사용하실 이메일을 기입 후 중복체크를 눌러주세요.");
+					event.preventDefault();
+				}
+			}else{
+				//기존 이메일과 일치하지 않을경우의 코드;
+				$.post("./mEmailCheck",{
+					email : email
+				}, function(data){
+					if(data == 1){
+						// data == 1 즉, 이미 존재하는 이메일일 경우 코드;
+						alert("이미 존재하는 이메일 입니다.");
+						$("#email").val(Oemail);
+					}else{
+						// data == 0 즉, 사용 가능한 이메일일 경우 코드;
+						var check = confirm("사용 가능한 이메일입니다. 사용하시겠습니까?");
+						if(check){
+							// 중복체크한 이메일을 쓰겠다는 코드;
+							alert("후하 이제 중복체크 메서드만 보내면 된다!");
+						}else{
+							// 새로운 이메일을 쓰겠다는 코드;
+							alert("사용하실 이메일을 기입 후 중복체크를 눌러주세요.");
+							$("#email").val(Oemail);
+						}// 중복체크한 이메일 사용 여부 끝;
+					} // 중복확인용 function 끝;
+				} // email 값을 보내서 중복여부 확인 끝;
+				)
+			} // 기존 이메일 일치 여부 확인 끝;
+		}); // eBtn 끝;
 		
 		
 		/////////////////////////////// 수정 폼 보내기;
@@ -159,7 +198,7 @@
 							alert("수정이 완료되었습니다.");
 							location.href = "./mInfoList";
 						}else{
-							alert("수정에 실패하였습니다. \n 비밀번호를 다시 확인해 주세요");
+							alert("수정에 실패하였습니다. \n비밀번호를 다시 확인해 주세요");
 							location.href = "./mInfoList";
 						}
 					}// post 보낸뒤 function 끝;
@@ -213,20 +252,45 @@
 		    			<div class="form-group">
 		      				<label>이메일:</label>
 		      				<input type="text" class="form-control" id="email" name="email" value="${member.email}" >
-		      				<button type="submit" class="btn btn-default" id="eCheck">중복확인</button>
-		      				<div id="result_phoneOk" class="result_font" style="color: green"></div>
+		      				<button type="button" class="btn btn-default" id="eCheck">중복확인</button>
+		      				<div id="result_emailOk" class="result_font" style="color: green"></div>
 		    			</div>
 		    			<div class="form-group">
-		      				<label>가입날짜:</label>
-		      				<input type="text" class="form-control" readonly="readonly" id="reg_date" name="reg_date" value="${member.reg_date}" >
-		    			</div>
-		    			<input type="hidden" id ="grade" name="grade" value="${member.grade}">
-		  				<button type="button" class="btn btn-default" id ="uBtn">수정 완료</button>
-		  				<button type="button" class="btn btn-default" id ="gBtn">되돌아 가기</button>
-		 			</form>
+		    				<label>이메일:</label>
+		    					<input type="hidden" name="myemail" id=email>
+		    					<!-- 여기엔 내가 쓴 이메일 아이디가 온다. -->
+		    					<input type="text" class="form-control" title="이메일 아이디" id="email" name="email" value="${member.email}" maxlength="50">
+		    					<span class="from-control">@</span>
+		    					<!-- 여기로 선택한 이메일 주소가 와야됨. -->
+		    					<input type="text" class="form-control" title="이메일 주소" id="emailAddress" name="emailAddress">
+		    					<div class="form-control" id = "emailSelect">
+			    					<select>
+			    						<option value="">선택해주세요</option>
+			    							<option value="naver.com">naver.com</option>
+											<option value="hanmail.net">hanmail.net</option>
+											<option value="gmail.com">gmail.com</option>
+											<option value="nate.com">nate.com</option>
+											<option value="hotmail.com">hotmail.com</option>
+											<option value="dreamwiz.com">dreamwiz.com</option>
+											<option value="freechal.com">freechal.com</option>
+											<option value="hanmir.com">hanmir.com</option>
+											<option value="korea.com">korea.com</option>
+											<option value="paran.com">paran.com</option>
+											<option value="etc"> 직접입력</option>
+		    						</select>
+		    					</div>
+		    				</div>
+		    				<div class="form-group">
+			      				<label>가입날짜:</label>
+			      				<input type="text" class="form-control" readonly="readonly" id="reg_date" name="reg_date" value="${member.reg_date}" >
+			    			</div>
+		    				<input type="hidden" id ="grade" name="grade" value="${member.grade}">
+		  					<button type="button" class="btn btn-default" id ="uBtn">수정 완료</button>
+		  					<button type="button" class="btn btn-default" id ="gBtn">되돌아 가기</button>
+		 				</form>
+					</div>
 				</div>
 			</div>
-		</div>
 		<div id="footer">
 			<c:import url="../inc/footer.jsp"></c:import>
 		</div>

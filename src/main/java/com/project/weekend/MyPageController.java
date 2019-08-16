@@ -51,12 +51,22 @@ public class MyPageController {
 	public ModelAndView myPhoneCheck(MemberDTO memberDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
-		result = memberService.getSelectPhone(memberDTO);
+		result = memberService.getSelectPhoneMy(memberDTO);
 		mv.addObject("result", result);
 		mv.setViewName("./common/message");
 		return mv;
 	}
-	// 이메일 중복 여부(택수씨 코드 사용);
+	// 이메일 중복 여부
+	@RequestMapping(value = "mEmailCheck", method = RequestMethod.POST)
+	public ModelAndView myMailCheck(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		result = memberService.getSelectEmailMy(memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		return mv;
+	}
+	// 이메일 인증(택수씨 코드 사용);
 	////////////////////////// 비밀번호 변경
 	// 비밀번호 변경 페이지 출력
 	@RequestMapping(value = "mPasswordList", method = RequestMethod.GET)
