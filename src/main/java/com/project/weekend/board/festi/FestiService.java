@@ -111,7 +111,7 @@ public class FestiService {
 	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getAllList(pageMaker);
-		int totalCount = festiDAO.getCount();
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makePage(totalCount);
 		return list;
 	}
