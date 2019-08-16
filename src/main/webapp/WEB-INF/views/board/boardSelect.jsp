@@ -95,40 +95,18 @@
 				</div>			
 				
 				<a id="list" class="boardSelect_btn"title="${board}" class="${dto.num}">목록</a>
-				<a id="update" class="${board} boardSelect_btn">수정</a> 
-				<a id="delete" class="${board} boardSelect_btn">삭제</a>
-				<c:if test="${board eq 'qna'}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
-					<a id="replyBtn" class="boardSelect_btn">답변달기</a>
+				<c:if test="${member.grade eq '3'}">
+					<a id="update" class="${board} boardSelect_btn">수정</a> 
+					<a id="delete" class="${board} boardSelect_btn">삭제</a>
 				</c:if>
 
+
 				<form action="./${board}Delete" id="deleteFrm" method="post">
-					<c:if test="${board eq 'notice' or board eq 'qna'}">
-						<input type="hidden" class="num" id = "${dto.num}" name="num" value="${dto.num}">
-					</c:if>
-					<c:if test="${board eq 'after'}">
-						<input type="hidden" class="anum" id = "${dto.anum}" name="anum" value="${dto.anum}">
-					</c:if>					
+				
+					<input type="hidden" class="num" id = "${dto.num}" name="num" value="${dto.num}">
+				
 				</form>
-				<%-- <hr>  댓글.
-				<c:if test="${board eq 'qna'}">
-					<c:forEach items="${replyDTO}" var = "r">
-						${r.writer}
-						<p>${r.contents}</p>
-						<a id="replyUpdate">수정</a>
-						<a id="replyDelete">삭제</a>
-					</c:forEach>
-					<hr>
-					<c:if test="${member.grade eq 3}">
-						<div id="replyDiv">
-							<form action="./${board}ReplyWrite" method="post" id="replyFrm">
-								<p>${member.id}memberId</p>
-								<input type="hidden" name="writer" value="${member.id}memberId">
-								<textarea rows="3" cols="100" id="replyContents"></textarea>
-								<a class="btn btn-default" id="replyWrite">답변등록</a>
-							</form>
-						</div>
-					</c:if>
-				</c:if> --%>
+				
 			</div>
 		</div>
 		</div>

@@ -6,20 +6,31 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
-	<!-- interceptor -->
-<!-- 	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/qna/qnaSelect"/>
-			<ref bean="qnaPwInterceptor"/>
-		</mvc:interceptor>
-	</mvc:interceptors> -->
-	
 	
 	<!-- transaction, aop -->
 	<aop:aspectj-autoproxy />
 	
-	<!-- board -->
+	<!-- interceptor -->
+	<bean class="com.project.weekend.board.notice.NoticeCUDInterceptor" id="noticeCUDInterceptor"/>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/notice/noticeWrite"/>
+			<mvc:mapping path="/notice/noticeUpdate"/>
+			<mvc:mapping path="/notice/noticeDelete"/>
+			<ref bean="noticeCUDInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	<bean class="com.project.weekend.board.notice.NoticeLInterceptor" id="noticeLInterceptor"/>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/notice/noticeSelect"/>
+			<ref bean="noticeLInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
 	<bean class="com.project.weekend.board.qna.QnaPwInterceptor" id="qnaPwInterceptor"/>
+	
 	
 	<!-- notice -->
 	<bean class="com.project.weekend.board.notice.NoticeDTO" id="noticeDTO" />
