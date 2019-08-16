@@ -33,6 +33,9 @@
 				</div> --%>
 				<div class="festi_header">
 					<strong>전체</strong>
+					<div class="boardTile_write">
+						<a href="./${board}Write">${boardTitle} 글쓰기</a>
+					</div>
 				</div>
 				<div class="col-12">
 					<c:forEach items="${list}" var="i">
@@ -50,9 +53,6 @@
 						</a>
 						</div>
 					</c:forEach>
-				</div>
-				<div class="boardTile_write">
-					<a href="./${board}Write">${boardTitle} 글쓰기</a>
 				</div>
 			</div>
 		</div>

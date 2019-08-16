@@ -13,7 +13,8 @@
 		<typeAlias type="com.project.weekend.board.festi.dates.DatesDTO" alias="DatesDTO"/>
 		<!-- 상혁 -->
 		<typeAlias type="com.project.weekend.member.MemberDTO" alias="MemberDTO"/>
-		
+		<!-- 원식 -->
+		<typeAlias type="com.project.weekend.board.open.OpenDTO" alias="OpenDTO"/>
 		<!-- 선영 -->
 		<typeAlias type="com.project.weekend.pay.PayVO" alias="PayVO" />
 
