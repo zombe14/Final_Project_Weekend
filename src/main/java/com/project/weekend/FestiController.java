@@ -66,9 +66,9 @@ public class FestiController {
 	
 	// list
 	@RequestMapping(value = "festiList", method = RequestMethod.GET)
-	public ModelAndView getList(PageMaker pageMaker, int category) throws Exception{
+	public ModelAndView getList(PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<FestiDTO> list = festiService.getList(pageMaker, category);
+		List<FestiDTO> list = festiService.getList(pageMaker);
 		mv.addObject("list", list);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
@@ -127,7 +127,6 @@ public class FestiController {
 		} else {
 			
 		}
-		System.out.println("f con : "+res);
 		return path;
 	}
 	

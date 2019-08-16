@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <!-- 지도 -->
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services"></script>	
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services"></script>	
 <!-- date picker -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- date picker -->
@@ -75,9 +75,9 @@
 				</div>				
 				<div>
 					<label for="category">카테고리<span class="r">*</span></label>
-					<input type="radio" name="category" class="category" id="show" checked="checked" value="1"> 공연
-					<input type="radio" name="category" class="category" id="festival" value="2"> 축제						
-					<input type="radio" name="category" class="category" id="daehakro" value="3"> 대학로 연극
+					<input type="radio" name="category" class="category" id="show" checked="checked" value="6"> 6.공연
+					<input type="radio" name="category" class="category" id="festival" value="2"> 2. 축제						
+					<input type="radio" name="category" class="category" id="daehakro" value="3"> 3. 대학로 연극
 				</div>
 				<div>
 					<label for="startDate">시작일<span class="r">*</span></label>

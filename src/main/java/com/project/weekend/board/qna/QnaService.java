@@ -95,7 +95,9 @@ public class QnaService {
 
 	// 답글
 	public int setReplyDelete(String num, HttpSession session) throws Exception {
-		int res = qnaDAO.setReplyDelete(num);
+		String ref = qnaDAO.getSelect(num).getRef();
+		int res = qnaDAO.setAnswerDelete(ref);
+		res = qnaDAO.setReplyDelete(num);
 		List<FileDTO> list = fileDAO.getList(num);
 		if (list != null) {
 			for (FileDTO fileDTO : list) {

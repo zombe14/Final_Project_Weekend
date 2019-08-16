@@ -104,7 +104,7 @@
 										<td class="td1"><label for="files">첨부파일</label></td>
 										<td>
 											<!-- <hr> 추가 할 파일들 -->
-											<input type="button" id="addFiles" value="파일 추가">
+											<button type="button" id="addFiles" value="파일 추가"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일 추가 </button>
 											<!-- 이미 있는 파일들 -->
 											<div id="filed">
 												<input type="hidden" id="fileCount"
@@ -208,10 +208,10 @@
 		});
 
 		//상단 배치 체크박스에 값 주기 ( 1: 등록하기 / 0: 등록안함)
-		if($('#top').val() == 1){
-			$('#top').attr('checked','checked')
+		if($('#check').val() == 1){
+			$('#check').attr('checked','checked')
 		}
-		$('#top').click(function() {
+		$('#check').click(function() {
 			if ($(this).is(':checked')) {
 				$(this).val(1);
 			} else {
