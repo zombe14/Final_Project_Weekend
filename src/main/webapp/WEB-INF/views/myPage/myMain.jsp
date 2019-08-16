@@ -20,7 +20,11 @@
 				<div class="title">
 					<br>
 						<h2>환영합니다. ${member.id} 님!</h2>
+					<h2>${member.phone}</h2>
+					<h2>대충 개인정보를 띄우는 창</h2>
 					<br>
+				</div>
+				<div>
 				</div>
 				<br>
 				<ul>

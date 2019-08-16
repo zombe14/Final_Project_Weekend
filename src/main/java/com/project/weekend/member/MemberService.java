@@ -56,6 +56,13 @@ public class MemberService {
 		int result = memberDAO.setUpdateMy(memberDTO);
 		return result; 
 	}
+	// 닉네임 중복여부(택수씨 코드 사용);
+	// 전화번호 중복여부;
+	public int getSelectPhone(MemberDTO memberDTO) throws Exception{
+		int result = memberDAO.getSelectPhone(memberDTO);
+		return result;
+	}
+	// 이메일 중복여부(택수씨 코드 사용);
 	// 비밀번호 수정;
 	// 본인 여부 확인;
 	public int getUpdateCheck(MemberDTO memberDTO) throws Exception{

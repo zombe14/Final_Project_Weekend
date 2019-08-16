@@ -85,8 +85,12 @@
 	<update id="setUpdatePs" parameterType="MemberDTO">
 		update member set pw = #{pw} where id = #{id}
 	</update>
-	<delete id="setDeleteMy" parameterType="MemberDTO">
-	</delete>
+	<!-- 닉네임 중복체크 (택수씨 코드 사용)-->
+	<!-- 전화번호 중복체크 -->
+	<select id="getSelectPhone" parameterType="MemberDTO" resultType="Integer" >
+		select count(*) from member where phone = #{phone}
+	</select>
+	<!-- 이메일 중복체크 (택수씨 코드 사용) -->
 	<!-- 상혁끝 -->
 	
 	<select id="getSelect" resultMap="member" parameterType="MemberDTO">
