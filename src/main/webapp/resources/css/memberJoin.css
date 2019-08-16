@@ -335,11 +335,11 @@ input[type=checkbox] + label {
 	display: inline-block; 
 	cursor: pointer; 
 	line-height: 22px;  
-	background: url('../images/memberagree/checkbox_off.png') left/22px no-repeat; 
+	background: url('../images/checkbox/checkbox_off.png') left/22px no-repeat; 
 }
 
 input[type=checkbox]:checked + label { 
-	 background: url("../images/memberagree/checkbox_on.png") left/20px no-repeat;
+	 background: url("../images/checkbox/checkbox_on.png") left/20px no-repeat;
  }
 
 

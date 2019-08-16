@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="../temp/boot.jsp"></c:import>
@@ -11,7 +11,7 @@
 <body>
 <script type="text/javascript">
 	$(function () {
-		/* 
+/* 
 		// 닉네임 중복확인
 		$("#nCheck").on("click", function(){
 			var nickname = $("#nickname").val();
@@ -33,7 +33,7 @@
 				}//success 끝;
 				})// ajax 끝;
 			})// nCheck 끝;
-		 */
+*/
 		 
 /* 		 
 		 //////////////////////////////////수정폼 보내기 개정판;
@@ -43,6 +43,9 @@
 			var pw = $("#pw").val();
 			var pwc = $("#pw").val();
 			var phone = $("#phone").val();
+			var email = $("email").val();
+			var nickname = $("nickname").val();
+
 			var email = $("#email").val();
 			var nickname = $("#nickname").val();
 			var reg_date = $("#reg_date").val();
@@ -53,8 +56,6 @@
 			var pCheck = false;
 			// 이메일 중복검사 시행여부;
 			var eCheck = false;
-			
-			
 		 })//#uBtn 끝;
 */	 
 		///////////////////////////////////수정폼 보내기
@@ -67,6 +68,7 @@
 			var nickname = $("#nickname").val();
 			var reg_date = $("#reg_date").val();
 			var grade = $("#grade").val();
+
 			var check = confirm("수정을 마치시겠습니까?");
 			if(check){
 				$.post("../myPage/mInfoList",{
@@ -88,7 +90,8 @@
 					}// post 보낸뒤 function 끝;
 				)//$.post 끝;
 			}// if(check) 끝;
-		})//.pBtn 끝;
+		})//#pBtn 끝;
+		
 		$("#gBtn").on("click",function(){
 			var check = confirm("변경사항을 모두 취소하고 돌아가시겠습니까?")
 			if(check){
