@@ -47,6 +47,11 @@
 		(SELECT NUM, TITLE, STARTDATE, ENDDATE, LOCAL, region
 		FROM FESTI FULL JOIN FILES USING(NUM)
 		WHERE CATEGORY = #{category}
+		<choose>
+			<when test="category == 2">
+				and region = #{region}
+			</when>
+		</choose>
 		ORDER BY NUM DESC) F)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
@@ -61,8 +66,7 @@
 	</select>
 
 	<select id="getTop" resultMap="festiResult">
-		SELECT * FROM FESTI WHERE TOP =
-		'1'
+		SELECT * FROM FESTI WHERE TOP = '1'
 	</select>
 
 	<update id="setUpdate" parameterType="FestiDTO">
