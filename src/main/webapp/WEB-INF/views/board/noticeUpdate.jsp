@@ -208,10 +208,10 @@
 		});
 
 		//상단 배치 체크박스에 값 주기 ( 1: 등록하기 / 0: 등록안함)
-		if($('#top').val() == 1){
-			$('#top').attr('checked','checked')
+		if($('#check').val() == 1){
+			$('#check').attr('checked','checked')
 		}
-		$('#top').click(function() {
+		$('#check').click(function() {
 			if ($(this).is(':checked')) {
 				$(this).val(1);
 			} else {

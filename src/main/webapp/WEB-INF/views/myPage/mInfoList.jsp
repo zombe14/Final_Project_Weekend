@@ -90,7 +90,7 @@
 					}// post 보낸뒤 function 끝;
 				)//$.post 끝;
 			}// if(check) 끝;
-		})//.pBtn 끝;
+		})//#pBtn 끝;
 		
 		$("#gBtn").on("click",function(){
 			var check = confirm("변경사항을 모두 취소하고 돌아가시겠습니까?")
@@ -110,8 +110,6 @@
 		<div id="container">
 			<div class="conta">
 				<div class="call_quick mypage_quick">
-					<!-- <form action="./mInfoList" method="post" enctype="multipart/form-data">
-					</form> -->
 					<form>
 		    			<div class="form-group">
 		      				<label>아이디:</label>
