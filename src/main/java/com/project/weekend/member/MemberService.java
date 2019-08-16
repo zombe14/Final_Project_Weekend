@@ -58,13 +58,13 @@ public class MemberService {
 	}
 	// 비밀번호 수정;
 	// 본인 여부 확인;
-	public int getUpdatePs1(MemberDTO memberDTO) throws Exception{
-		int result = memberDAO.getUpdatePs1(memberDTO);
+	public int getUpdateCheck(MemberDTO memberDTO) throws Exception{
+		int result = memberDAO.getUpdateCheck(memberDTO);
 		return result;
 	}
 	// pw 변경;
-	public int setUpdatePs2(MemberDTO memberDTO) throws Exception{
-		int result = memberDAO.setUpdatePs2(memberDTO);
+	public int setUpdatePs(MemberDTO memberDTO) throws Exception{
+		int result = memberDAO.setUpdatePs(memberDTO);
 		return result;
 	}
 	

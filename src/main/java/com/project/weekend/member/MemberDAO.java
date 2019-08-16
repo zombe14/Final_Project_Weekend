@@ -43,11 +43,11 @@ public class MemberDAO {
 		return sqlSession.update(NAMESPACE+"setUpdateMy", memberDTO);
 	}
 	// 비밀번호 수정;
-	public int getUpdatePs1(MemberDTO memberDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getUpdatePs1", memberDTO);
+	public int getUpdateCheck(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getUpdateCheck", memberDTO);
 	}
-	public int setUpdatePs2(MemberDTO memberDTO) throws Exception{
-		return sqlSession.update(NAMESPACE+"setUpdatePs2", memberDTO);
+	public int setUpdatePs(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdatePs", memberDTO);
 	}
 	// 상혁 끝;
 	
