@@ -9,7 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 
 
-public class AdminInterceptor extends HandlerInterceptorAdapter {
+public class MyPageInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -18,12 +18,11 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		Object obj = session.getAttribute("member");
 		Object grade = session.getAttribute("grade");
 		boolean result=false;
-		
 		if(obj!=null) {
 			if(grade.equals(3)) {
-				result=true;
+				response.sendRedirect("../admin/adminMain");
 			}else {
-				response.sendRedirect("../../../../../");
+				result=true;
 			}
 		}else {
 			response.sendRedirect("../member/memberLogin");

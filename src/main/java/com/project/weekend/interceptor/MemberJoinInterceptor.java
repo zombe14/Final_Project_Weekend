@@ -7,26 +7,25 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+public class MemberJoinInterceptor extends HandlerInterceptorAdapter {
 
-
-public class AdminInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("member");
-		Object grade = session.getAttribute("grade");
+		Object obj = session.getAttribute("memberAgree");
+		Object member = session.getAttribute("member");
 		boolean result=false;
-		
-		if(obj!=null) {
-			if(grade.equals(3)) {
+		if(member==null) {
+			if(obj != null) {
 				result=true;
+				session.invalidate();
 			}else {
-				response.sendRedirect("../../../../../");
+				response.sendRedirect("../member/memberAgree");
 			}
 		}else {
-			response.sendRedirect("../member/memberLogin");
+			response.sendRedirect("../");
 		}
 		
 		return result;

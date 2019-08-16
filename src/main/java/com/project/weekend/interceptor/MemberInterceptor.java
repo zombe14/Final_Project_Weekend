@@ -14,13 +14,12 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("memberAgree");
+		Object obj = session.getAttribute("member");
 		boolean result=false;
 		if(obj != null) {
-			result=true;
-			session.invalidate();
+			response.sendRedirect("../");
 		}else {
-			response.sendRedirect("../member/memberAgree");
+			result=true;
 		}
 		
 		return result;
