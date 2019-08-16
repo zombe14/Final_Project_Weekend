@@ -17,7 +17,6 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("member");
 		Object grade = session.getAttribute("grade");
-		System.out.println(grade);
 		boolean result=false;
 		
 		if(obj!=null) {
