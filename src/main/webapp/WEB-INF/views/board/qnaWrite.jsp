@@ -78,13 +78,13 @@
 						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.id}memberId" readonly="readonly"></td>
 					</tr>
 					<tr>
-						<td  class="td1"><label for="contents">내용<span>*</span></label></td>
+						<td  class="td1"><label for="contents">내용<span class="r">*</span></label></td>
 						<td><textarea rows="" cols="" name="contents" id="contents"></textarea></td>
 					</tr>
 					<tr>
 						<td class="td1"><label for="files">첨부파일</label></td>
 						<td>
-							<button type="button" id="addFiles" value="파일 추가"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">항목 추가 </button>
+							<button type="button" id="addFiles" value="파일 추가"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일 추가 </button>
 						<div id="files">
 							<div>
 								<input type="file" class="filelist" name="filelist" style="display: inline-block"> 
