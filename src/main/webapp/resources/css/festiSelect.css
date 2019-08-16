@@ -9,7 +9,43 @@
 
 .festi_wrap2{
 	border: 1px solid #757575;
-	margin-top: 30px;
+	/* margin-top: 30px; */
+	padding: 30px;
+}
+
+.festi_wrap2 strong{
+	font-size: 22px;	
+}
+
+.festi_title{
+	padding-bottom: 20px;
+    border-bottom: 1px solid #999;
+    margin-bottom: 20px;
+}
+
+.festi_title a{
+	background-color: white;
+    color: black;
+    padding: 4px 15px;
+    float: right;
+    border: 1px solid #adadad;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.festi_title a:hover{
+	background-color: #00d344;
+	border: 1px solid white;
+	color: white;
+}
+
+.festi_h4 h4{
+	padding-bottom: 20px;
+}
+
+.festi_h4 img{
+	width: 20px;
+    float: left;
 }
 
 .festi_top, .festi_detail{
@@ -29,7 +65,7 @@
 	float: right;
     margin-top: 30px;
     padding-left: 30px;
-    width: 260px;
+    width: 240px;
     min-height: 382px;
     border-left: 1px solid #e1e1e1;
 }
@@ -47,7 +83,7 @@
 }
 
 .bx_title{
-	font-size: 25px;
+	font-size: 26px;
 	padding-bottom: 30px;
 	border-bottom: 2px solid #999;
 }
@@ -94,14 +130,14 @@
 	margin-top: 20px;
 	overflow: hidden;
 	height: 55px;
-	padding-top: 6px;
+	padding-top: 13px;
 }
 
 .reserve_button a{
-	padding: 15px 45px;
+	padding: 20px 63px;
 	background-color: #00d344;
 	color: white;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 .ui-datepicker-trigger{
@@ -141,24 +177,20 @@
 	padding: 17px 70px;
 } 
 
-.festi_menu{
-	margin-left: 10px;
-}
-
-.festi_menu li a{
-	border: 1px solid #757575;
-    float: left;
-    padding: 10px 87.2px;
-    margin: 0 -0.5px;
+.festi_menu button{
+	width: 235.6px;
+    height: 44px;
+    margin-right: -4px;
 }
 
 .admin_button{
 	margin-top: 20px;
 }
 .admin_button a{
-	padding: 5px 38.3px;
+	padding: 5px 37px;
 	background-color: #00d344;
 	color: white;
+	margin-right: 5px;
 }
 
 .festi_menu li:first-child{
