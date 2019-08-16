@@ -10,11 +10,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberLogin.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberLogin.js?ver=2"></script>
 </head>
 <body>
    <div id="wrap">
       <div id="container">
+      
       	<div class="conta">
 				<div class="login_wrap">
 					<div class="login_logo">
@@ -29,6 +31,11 @@
 						</div>
 						<button type="submit" id="Login" class="lgbtn">로그인</button>
 					</form>
+					
+					<div id="naver_id_login" style="text-align:center"><a href="${url}">
+<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+<br>
+					
 					<div class="login_bot">
 						<a href="./memberAgree" class="lob">회원가입</a> <span class="log lob">|</span>
 						<a href="#" class="lob">비밀번호 찾기</a> <span class="log lob">|</span>
@@ -49,5 +56,14 @@
       	</div>
     </div>	
 </div>
+ <script type="text/javascript">
+  	var naver_id_login = new naver_id_login("MDl5dSw56gsi4SAi7sL7", "http://localhost:801/weekend/");
+  	var state = naver_id_login.getUniqState();
+  	naver_id_login.setButton("white", 2,40);
+  	naver_id_login.setDomain("YOUR_SERVICE_URL");
+  	naver_id_login.setState(state);
+  	naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
+  </script>
 </body>
 </html>

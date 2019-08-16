@@ -1,8 +1,8 @@
 ﻿package com.project.weekend;
 
+import java.io.IOException;
 import java.text.DateFormat;
-
-
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,9 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.omg.CORBA.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,8 +32,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.project.weekend.member.MemberDTO;
 import com.project.weekend.member.MemberService;
+import com.project.weekend.naver.NaverLoginBO;
 
 @Controller
 @RequestMapping("/member/")
@@ -38,6 +43,14 @@ public class MemberController {
 	
 	@Inject
 	private MemberService memberService;
+	private NaverLoginBO naverLoginBO;
+	private String apiResult = null;
+	
+	@Autowired
+	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+	this.naverLoginBO = naverLoginBO;
+	}
+
 	
 	@RequestMapping(value = "getjumin", method = RequestMethod.POST)
 	@ResponseBody
@@ -166,18 +179,38 @@ public class MemberController {
 		return "redirect:./memberJoin";
 		
 	}
+	
+	@RequestMapping(value = "naverLogin", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Login(Model model, HttpSession session) {
+	/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
+	String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+	System.out.println("네이버:" + naverAuthUrl);
+	//네이버
+	model.addAttribute("url", naverAuthUrl);
+	return "naverLogin";
+	}
+	
 	/*
-	 * @RequestMapping(value = "memberAgree2", method = RequestMethod.GET) public
-	 * void getAgree2()throws Exception{}
-	 * 
-	 * @RequestMapping(value = "memberAgree2", method = RequestMethod.POST) public
-	 * String getAgree2(HttpSession session,MemberDTO memberDTO)throws Exception{
-	 * session.setAttribute("memberEmail", memberDTO.getEmail());
-	 * session.setAttribute("memberPhone", memberDTO.getPhone()); ModelAndView mv =
-	 * new ModelAndView(); String memberAgree2 = "member2";
-	 * session.setAttribute("memberAgree2", memberAgree2); return
-	 * "redirect:./memberJoin"; }
+	 * @RequestMapping(value = "callback", method = { RequestMethod.GET,
+	 * RequestMethod.POST }) public String callback(Model model, @RequestParam
+	 * String code, @RequestParam String state, HttpSession session) throws
+	 * IOException, ParseException { System.out.println("여기는 callback");
+	 * OAuth2AccessToken oauthToken; oauthToken =
+	 * naverLoginBO.getAccessToken(session, code, state); //1. 로그인 사용자 정보를 읽어온다.
+	 * apiResult = naverLoginBO.getUserProfile(oauthToken); //String형식의 json데이터 //2.
+	 * String형식인 apiResult를 json형태로 바꿈 JSONParser parser = new JSONParser(); Object
+	 * obj = null; try { obj = parser.parse(apiResult); } catch
+	 * (org.json.simple.parser.ParseException e) { // TODO Auto-generated catch
+	 * block e.printStackTrace(); } JSONObject jsonObj = (JSONObject) obj; //3. 데이터
+	 * 파싱 //Top레벨 단계 _response 파싱 JSONObject response_obj =
+	 * (JSONObject)jsonObj.get("response"); //response의 nickname값 파싱 String nickname
+	 * = (String)response_obj.get("nickname"); System.out.println(nickname); //4.파싱
+	 * 닉네임 세션으로 저장 session.setAttribute("sessionId",nickname); //세션 생성
+	 * model.addAttribute("result", apiResult); return "Login"; }
 	 */
+	
+	
+	
 	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
 	public String logout(String id, HttpSession session, MemberDTO memberDTO)throws Exception{
 		
