@@ -215,7 +215,7 @@
 								<td>
 									<input type="hidden" id="jumin" name="jumin" title="jumin">
 						             <input type="text" name="unum1" id="unum1" size="12" maxlength="6" class="iTextnum">-
-						             <input type="password" name="unum2" id="unum2" size="12" maxlength="7" class="iTextnum"></input>
+						             <input type="password" name="unum2" id="unum2"size="12" maxlength="7" class="iTextnum"></input>
 									<input type="button" id="juminnum" value="중복확인">
 									<div id="juminnumCheck">
 										
