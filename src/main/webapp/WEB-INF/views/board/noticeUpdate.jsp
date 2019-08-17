@@ -91,7 +91,7 @@
 									</tr>
 
 									<tr>
-										<td class="td1"><label for="check">상단에 등록 하기</label></td>
+										<td class="td1"><label for="check">상단 등록</label></td>
 										<td><input type="checkbox" id="check" name="top"
 											value="${dto.top}"> 
 											<label for="check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </label>
