@@ -45,6 +45,28 @@ public class MyPageController {
 		mv.setViewName("./common/message");
 		return mv;
 	}
+	// 닉네임 중복 여부(택수씨 코드 사용);
+	// 전화번호 중복 여부;
+	@RequestMapping(value = "mPhoneCheck", method = RequestMethod.POST)
+	public ModelAndView myPhoneCheck(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		result = memberService.getSelectPhoneMy(memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		return mv;
+	}
+	// 이메일 중복 여부
+	@RequestMapping(value = "mEmailCheck", method = RequestMethod.POST)
+	public ModelAndView myMailCheck(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		result = memberService.getSelectEmailMy(memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		return mv;
+	}
+	// 이메일 인증(택수씨 코드 사용);
 	////////////////////////// 비밀번호 변경
 	// 비밀번호 변경 페이지 출력
 	@RequestMapping(value = "mPasswordList", method = RequestMethod.GET)
@@ -57,6 +79,7 @@ public class MyPageController {
 		int result = memberService.setUpdatePs(memberDTO);
 		mv.addObject("result", result);
 		mv.setViewName("./common/message");
+		session.invalidate();
 		return mv;
 	}
 	////////////////////////// 내 티켓 관리

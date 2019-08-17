@@ -10,22 +10,13 @@
 
 <title>${boardTitle} Write</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/festiWrite.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <!-- 지도 -->
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services"></script>	
 <!-- date picker -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- date picker -->
-<style type="text/css">
-	#preview-img{
-		width: 300px;
-		height: auto;
-		border-radius: 4px;
-	}
-	.r{
-		color:red;
-	}
-</style>
 </head>
 <body>
    <div id="wrap">

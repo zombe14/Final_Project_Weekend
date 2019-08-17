@@ -10,22 +10,13 @@
 
 <title>${boardTitle} Write</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/festiWrite.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <!-- 지도 -->
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services"></script>	
 <!-- date picker -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- date picker -->
-<style type="text/css">
-	#preview-img{
-		width: 300px;
-		height: auto;
-		border-radius: 4px;
-	}
-	.r{
-		color:red;
-	}
-</style>
 </head>
 <body>
    <div id="wrap">
@@ -34,8 +25,12 @@
       </div>
       <div id="container">
       	<div class="conta">
-  	      	
+  	      	<div class="fwrite_wrap">
+  	      		<div class="fwrite_title">
+  	      			<h3>${board}글쓰기</h3>
+  	      		</div>
       		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+
 				
 				<div>
 					<label for="title">제목<span class="r">*</span></label>
@@ -156,14 +151,120 @@
 				
 				
       		 	<a id="write" class="btn btn-default">등록</a>
+
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
+							<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="title" id="title" style="width: 96%"></td>
+						</tr>
+						<tr>
+							<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
+							<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}memberNick" readonly="readonly" id="writer" style="width: 40%"></td>
+						</tr>
+						<tr>
+							<td class="td1"><label for="contents">내용<span class="r">*</span></label></td>
+							<td><textarea rows="" cols="" name="contents" id="contents"></textarea></td>
+						</tr>
+						<tr>
+							<td class="td1"><label for="category">카테고리<span class="r">*</span></label></td>
+							<td>
+									<input type="radio" name="category" class="category" id="show" checked="checked" value="1">
+									<label for="show">공연</label>
+									<input type="radio" name="category" class="category" id="festival" value="2">
+									<label for="festival">축제</label>						
+									<input type="radio" name="category" class="category" id="daehakro" value="3">
+									<label for="daehakro">대학로 연극</label>
+							</td>
+						</tr>
+						<tr id="ageDiv">
+							<td class="td1"><label for="age">연령제한<span class="r">*</span></label></td>
+							<td>
+								<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 
+								<label for="all">전연령</label>
+								<input type="radio" name="ageSel" class="age" id="teen" value="2">
+								<label for="teen">청소년 이상</label>
+								<input type="radio" name="ageSel" class="age" id="adult" value="3">
+								<label for="adult">성인 이상</label>
+								<input type="radio" name="ageSel" class="age" id="etc" value="4">
+								<label for="etc">기타</label>
+								<input type="text" class="age" id="age" name="age" value="1">
+							</td>
+						</tr>
+						<tr>
+							<td class="td1"><label for="startDate">시작일<span class="r">*</span></label></td>
+							<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="startDate" class="date"></td>
+						</tr>
+						<tr>
+							<td class="td1"><label for="endDate">종료일<span class="r">*</span></label></td>
+							<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="endDate" class="date"></td>
+						</tr>
+						<tr class="daehakDiv">
+							<td class="td1"><label for="price">가격</label></td>
+							<td><input type="number" name="price" value="0"><span>&nbsp; &nbsp;원</span></td>
+						</tr>
+						<tr class="daehakDiv">
+							<td class="td1"><label for="total">좌석 </label></td>
+							<td><input type="number" name="total" value="0"><span>&nbsp; &nbsp;석</span></td>
+						</tr>
+						<tr>
+							<td class="td1"><label for="local">지역<span class="r">*</span></label></td>
+							<td>
+								<img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/location.png">
+								<input type="text" name="local1" id="local1" onclick="openMap()" style="width: 50%;">
+								<input type="text" name="local2" id="local2" placeholder="상세주소를 입력해주세요" readonly="readonly"  style="width: 45%;" >
+								<br>
+								<img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/location.png">
+								<input type="text" name="local" id="local" readonly="readonly"  style="width: 73%;" >
+								<input type="checkbox" id="localConfirm">
+								<label for="localConfirm" class="localConfirm">이 주소가 맞습니다.</label>
+								<input type="hidden" name="region" id="region">
+								<div id="map" style="width:100%;height:500px;margin-top:10px;display:none"></div>
+							</td>
+						</tr>
+						<tr>
+							<td class="td1"><label for="files">썸네일</label><span class="r">*</span></td>
+							<td>
+								<div id="thumbnailDiv">
+									<div id="thumbnailSelectDiv">
+										<input type="file" class="filelist" id="thumbnail" name="filelist" style="display: inline-block" accept=".jpg, .png, .gif, .jpeg">
+										<span style="color: red">※  jpg, png, gif, jpeg 확장자만 업로드 가능합니다.</span>
+									</div>
+									<!-- 이미지 미리보기 -->
+									<div id="preview">
+										<img id="preview-img" src="#">
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="td1"><label for="files">첨부파일</label></td>
+							<td>
+								<a id="addFiles"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일추가</a>
+								<div id="files">
+									<input type="file" class="filelist" name="filelist" style="display: inline-block">
+									<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="td1"><label for="top">상단 등록</label></td>
+							<td><input type="checkbox" id="top" name="top" value="0">
+							<label for="top">등록</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+      		 	<a id="write" class="festiWrite_btn">등록하기</a>
+
 			</form> 
-			
+  	      	</div>
       	</div>
-      </div>
-      <div id="footer">
-      <c:import url="../inc/footer.jsp"></c:import>
-      </div>
-   </div>
+    </div>
+    <div id="footer">
+    	<c:import url="../inc/footer.jsp"></c:import>
+	</div>
+</div>
    
 <!-- 지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 	
@@ -319,12 +420,12 @@ $('#top').click(function(){
 
 
 	/* category */
-	$('#daehakDiv').hide();
+	$('.daehakDiv').hide();
 	$('.category').click(function() {
 		if ($(this).val() == '3') {
-			$('#daehakDiv').show();
+			$('.daehakDiv').show();
 		} else {
-			$('#daehakDiv').hide();
+			$('.daehakDiv').hide();
 		}
 	});
 

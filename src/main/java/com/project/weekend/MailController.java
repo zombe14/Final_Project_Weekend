@@ -62,7 +62,6 @@ public class MailController {
 	    } catch(Exception e){
 	      System.out.println(e);
 	    }
-	    System.out.println("완료");
 	    result = 1;
         }else {
         	
@@ -79,8 +78,6 @@ public class MailController {
 		if(emailCode.equals(Code)) {
 			result =1;
 		}
-		System.out.println(result);
 		return result;
 	}
-	
 }
