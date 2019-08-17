@@ -130,7 +130,9 @@
 					</c:if>
 				</div>
 				<div class="boardwrite">
+					<c:if test="${member.grade eq '3'}">
 						<button id="boardWrite" value="${board}">${boardTitle} 글쓰기</button>
+					</c:if>
 				</div>
 								<!-- 검색창 -->
 				<form action="./${board}List" class="search_form">

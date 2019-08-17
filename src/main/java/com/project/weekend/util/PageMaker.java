@@ -23,6 +23,14 @@ public class PageMaker {
 	/* 난슬 */
 	private int category;	// festi/show 분류 때문에 추가
 	private String num;		// after 분류
+	private String region;
+	
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
 	public int getCategory() {
 		if(category>6 || category<1) {
 			this.category = 1;
