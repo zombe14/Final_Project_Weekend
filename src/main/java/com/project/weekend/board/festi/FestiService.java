@@ -115,5 +115,14 @@ public class FestiService {
 		pageMaker.makePage(totalCount);
 		return list;
 	}
+	// 상혁
+	// 내글 불러오기
+	public List<FestiDTO> getListMy(PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getListMy(pageMaker);
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makePage(totalCount);
+		return list;
+	}
 
 }

@@ -100,4 +100,12 @@
 		ORDER BY NUM DESC) F) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
+	<!-- 상혁시작 -->
+	
+	<!-- 2레벨 -->
+	<!-- 내가 쓴 글 가져오기 -->
+	<select id="getListMy" parameterType="PageMaker" resultType="FestiDTO">
+		select * from festi where writer = 'zombe15'
+	</select>
+	<!-- 상혁 끝 -->
 </mapper>

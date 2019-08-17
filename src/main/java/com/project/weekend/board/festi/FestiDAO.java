@@ -57,6 +57,12 @@ public class FestiDAO{
 	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
 		return SqlSession.selectList(NAMESPACE+"getAllList", pageMaker);
 	}
+	// 내가 쓴 글 가져오기
+	// 2레벨
+	public List<FestiDTO> getListMy(PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getListMy", pageMaker);
+	}
+	
 
 }
 
