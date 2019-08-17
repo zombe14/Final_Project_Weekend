@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <!-- 지도 -->
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services"></script>	
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services"></script>	
 <!-- date picker -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- date picker -->
@@ -75,11 +75,18 @@
 				</div>				
 				<div>
 					<label for="category">카테고리<span class="r">*</span></label>
-					<input type="radio" name="category" class="category" id="show" checked="checked" value="1"> 공연
-					<input type="radio" name="category" class="category" id="festival" value="2"> 축제						
-					<input type="radio" name="category" class="category" id="daehakro" value="3"> 대학로 연극
+					<input type="radio" name="category" class="category" id="show" checked="checked" value="1"> 1.공연
+					<input type="radio" name="category" class="category" id="festival" value="2"> 2. 축제						
+					<input type="radio" name="category" class="category" id="daehakro" value="3"> 3. 대학로 연극
 				</div>
-				
+				<div>
+					<label for="startDate">시작일<span class="r">*</span></label>
+					<input type="date" name="startDate" class="date">  
+				</div>
+				<div>
+					<label for="endDate">종료일<span class="r">*</span></label>
+					<input type="date" name="endDate" class="date">
+				</div>
 				<div id="daehakDiv">
 					<div>
 						<label for="price">가격</label>
@@ -90,7 +97,6 @@
 						<input type="number" name="total" value="0"><span>석</span>
 					</div>
 				</div>
-				
 				<div id="ageDiv">
 					<label for="age">연령제한<span class="r">*</span></label>
 					<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 전연령
@@ -109,45 +115,22 @@
 					<div id="map" style="width:100%;height:500px;margin-top:10px;display:none">
 					</div>
 				</div>
-				<%-- <c:if test="${member.grade eq 3}">  추가하기 --%>
+				<c:if test="${member.grade eq 3}">
 				<div>
 					<label for="top">상단에 등록 하기</label>
 					<input type="checkbox" id="top" name="top" value="0">
 				</div>
-				<%-- </c:if> --%>
+				</c:if>
 				
       		 	<a id="write" class="btn btn-default">등록</a>
-      		 	
-      		 	<br>----------------------------------------------------------------------------------------------------------------------------------<br>
-      		 	
-      		 	<input type = "radio" name="sep">연속				
-				<div>
-					<label for="startDate">시작일<span class="r">*</span></label>
-					<input type="date" name="startDate" class="date">  
-				</div>
-				<div>
-					<label for="endDate">종료일<span class="r">*</span></label>
-					<input type="date" name="endDate" class="date">
-				</div>
-				<input type = "radio" name="sep">비연속
-				날짜 : <input type="date" name="reg_date">
-				시작시간 : <input type="text" name="time" placeholder="예시) 14:00">
-				좌석 : <input type="number" name = "seat">
-				가격 : <input type="number" name="price">
-				<a id="addDates">좌석  추가하기</a>
-      		 	
-      		 	<br>----------------------------------------------------------------------------------------------------------------------------------<br>
-      		 	
 			</form> 
-
-			</div>
-      		 				
+			
       	</div>
       </div>
       <div id="footer">
       <c:import url="../inc/footer.jsp"></c:import>
       </div>
- 
+   </div>
    
 <!-- 지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 	
@@ -322,6 +305,8 @@ $('#top').click(function(){
 	});
 	
 	/* 가격상세 */
+	
+
 	$('#write').click(function() {
 		var title = $('#title').val() != '';
 		var writer = $('#writer').val() != '';

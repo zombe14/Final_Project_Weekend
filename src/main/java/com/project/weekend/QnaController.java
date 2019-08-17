@@ -144,5 +144,17 @@ public class QnaController {
 		mv.setViewName(path);
 		return mv;
 	}
+	
+	@RequestMapping(value = "qnaReplyUpdate", method = RequestMethod.GET)
+	public ModelAndView setReplyUpdate(String num, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		QnaDTO qnaDTO = qnaService.getSelect(num, session, request, response);
+		String path = "board/qnaUpdate";
+		mv.addObject("dto", qnaDTO);
+		mv.addObject("board", board+"Reply");
+		mv.addObject("boardTitle", boardTitle);
+		mv.setViewName(path);
+		return mv;
+	}
 
 }

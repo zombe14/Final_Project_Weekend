@@ -10,22 +10,13 @@
 
 <title>${boardTitle} Write</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/festiWrite.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <!-- 지도 -->
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services"></script>	
 <!-- date picker -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- date picker -->
-<style type="text/css">
-	#preview-img{
-		width: 300px;
-		height: auto;
-		border-radius: 4px;
-	}
-	.r{
-		color:red;
-	}
-</style>
 </head>
 <body>
    <div id="wrap">
@@ -34,8 +25,12 @@
       </div>
       <div id="container">
       	<div class="conta">
-  	      	
+  	      	<div class="fwrite_wrap">
+  	      		<div class="fwrite_title">
+  	      			<h3>${board}글쓰기</h3>
+  	      		</div>
       		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+
 				
 				<div>
 					<label for="title">제목<span class="r">*</span></label>
@@ -75,10 +70,11 @@
 				</div>				
 				<div>
 					<label for="category">카테고리<span class="r">*</span></label>
-					<input type="radio" name="category" class="category" id="show" checked="checked" value="6"> 6.공연
+					<input type="radio" name="category" class="category" id="show" checked="checked" value="1"> 1.공연
 					<input type="radio" name="category" class="category" id="festival" value="2"> 2. 축제						
 					<input type="radio" name="category" class="category" id="daehakro" value="3"> 3. 대학로 연극
 				</div>
+				
 				<div>
 					<label for="startDate">시작일<span class="r">*</span></label>
 					<input type="date" name="startDate" class="date">  
@@ -115,22 +111,56 @@
 					<div id="map" style="width:100%;height:500px;margin-top:10px;display:none">
 					</div>
 				</div>
-				<%-- <c:if test="${member.grade eq 3}">  추가하기 --%>
+				<c:if test="${member.grade eq 3}">
 				<div>
 					<label for="top">상단에 등록 하기</label>
 					<input type="checkbox" id="top" name="top" value="0">
 				</div>
-				<%-- </c:if> --%>
+				</c:if>
+				
+				
+				<hr>
+				<div id="datesOptionDiv">
+					<a class="btn btn-default" id="addOptions">옵션 추가하기</a>
+					<div id="datesOption">
+						<div id="option1">
+							<div>
+								<div class="dateDiv">
+									<label for="dates">날짜 </label>
+									<input type="date" name="reg_date" class="dates">
+								</div>
+								<div class="timeDiv">
+									<label for="time">시작시간</label>
+									<input type="text" name="time" class="time">
+								</div>				
+								<div class="seatDiv">
+									<label for="seat">좌석</label>
+									<input type="number" name="seat" class="seat">
+								</div>
+								<div class="priceDiv">
+									<label for="price">가격</label>
+									<input type="number" name="price" class="price">
+								</div>
+							</div>
+							<hr>
+						</div>
+					</div>
+				</div>
+				
+				
+				
 				
       		 	<a id="write" class="btn btn-default">등록</a>
+
+				
 			</form> 
-			
+  	      	</div>
       	</div>
-      </div>
-      <div id="footer">
-      <c:import url="../inc/footer.jsp"></c:import>
-      </div>
-   </div>
+    </div>
+    <div id="footer">
+    	<c:import url="../inc/footer.jsp"></c:import>
+	</div>
+</div>
    
 <!-- 지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 	
@@ -138,6 +168,13 @@
 <script src="../resources/js/summernote.js"></script>
 <!-- script -->
 <script type="text/javascript">
+
+$('#addOptions').click(function() {
+	var option = $('#option1').html();
+	console.log(option)
+	var html = option
+	$('#datesOption').append(html);
+});
 
 /* 첨부 파일 관리 */
 // 개수 제한. 최대 5개까지.
@@ -279,12 +316,12 @@ $('#top').click(function(){
 
 
 	/* category */
-	$('#daehakDiv').hide();
+	$('.daehakDiv').hide();
 	$('.category').click(function() {
 		if ($(this).val() == '3') {
-			$('#daehakDiv').show();
+			$('.daehakDiv').show();
 		} else {
-			$('#daehakDiv').hide();
+			$('.daehakDiv').hide();
 		}
 	});
 

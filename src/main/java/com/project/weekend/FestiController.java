@@ -72,6 +72,8 @@ public class FestiController {
 		mv.addObject("list", list);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
+		mv.addObject("region", pageMaker.getRegion());
+		mv.addObject("category", pageMaker.getCategory());
 		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/boardTile");
 		return mv;
@@ -104,7 +106,7 @@ public class FestiController {
 		mv.addObject("dto", festiDTO);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
-		mv.setViewName("board/boardUpdate");
+		mv.setViewName("board/festiUpdate");
 		return mv;
 	}
 	
