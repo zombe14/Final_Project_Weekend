@@ -160,7 +160,6 @@
 			var emailAddress = $("#emailAddress").val();
 			// 주소를 완성시킨다;
 			email = emailId+add+emailAddress;
-			alert(email);
 			// 중복체크 클릭시 기존 이메일인지 확인 후 사용여부;
 			if(email == oEmail){
 				var check = confirm("기존 이메일을 그대로 사용하시겠습니까?");
@@ -354,22 +353,20 @@
 		    					<span class="from-control" id = "add">@</span>
 		    					<!-- 여기로 선택한 이메일 주소가 와야됨. -->
 		    					<input type="text" class="form-control" title="이메일 주소" readonly="readonly" id="emailAddress" name="emailAddress">
-		    					<div class="form-control">
-			    					<select id = "emailSelect" class="eSelect">
-			    							<option value = "">선택해주세요</option>
-											<option value = "naver.com">naver.com</option>
-											<option value = "hanmail.net">hanmail.net</option>
-											<option value = "gmail.com">gmail.com</option>
-											<option value = "nate.com">nate.com</option>
-											<option value = "hotmail.com">hotmail.com</option>
-											<option value = "dreamwiz.com">dreamwiz.com</option>
-											<option value = "freechal.com">freechal.com</option>
-											<option value = "hanmir.com">hanmir.com</option>
-											<option value = "korea.com">korea.com</option>
-											<option value = "paran.com">paran.com</option>
-											<option value = "etc"> 직접입력</option>
-		    						</select>
-		    					</div>
+			    				<select class = "form-control" id = "emailSelect" class="eSelect">
+			    						<option value = "">선택해주세요</option>
+										<option value = "naver.com">naver.com</option>
+										<option value = "hanmail.net">hanmail.net</option>
+										<option value = "gmail.com">gmail.com</option>
+										<option value = "nate.com">nate.com</option>
+										<option value = "hotmail.com">hotmail.com</option>
+										<option value = "dreamwiz.com">dreamwiz.com</option>
+										<option value = "freechal.com">freechal.com</option>
+										<option value = "hanmir.com">hanmir.com</option>
+										<option value = "korea.com">korea.com</option>
+										<option value = "paran.com">paran.com</option>
+										<option value = "etc"> 직접입력</option>
+		    					</select>
 		    					<button type="button" class="btn btn-default" id="eCheck">중복확인</button>
 		    					<button type="button" class="btn btn-default" id="eCheck2">인증코드 보내기</button>
 		    					<input type="text" class="form-control" title="인증번호 입력" placeholder="번호를 입력해 주세요." id="emailCheckNumber">
