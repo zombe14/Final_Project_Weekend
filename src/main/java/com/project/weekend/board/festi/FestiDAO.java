@@ -105,6 +105,11 @@ public class FestiDAO{
 	public int setUserRecoDelete(String num) throws Exception{
 		return SqlSession.delete(NAMESPACE+"setUserRecoDelete", num);
 	}
+	// 랭크;
+	// 리스트;
+	public List<FestiDTO> getRankList(PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getRankList", pageMaker);
+	}
 	// 상혁 끝;
 	
 

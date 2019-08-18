@@ -180,8 +180,8 @@
 	</delete>
 	<!-- 랭킹 -->
 	<!-- 리스트 -->
-	<select id="getRankListSelect" resultMap="festiResult" parameterType="FestiDTO">
-		select * from festi where category = 1 and hit > 1 order by hit desc
+	<select id="getRankList" resultMap="festiResult" parameterType="FestiDTO">
+		select * from festi where category = #{category} and hit > 1 order by hit desc
 	</select>
 	<!-- 상혁 끝 -->
 </mapper>

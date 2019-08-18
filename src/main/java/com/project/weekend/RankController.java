@@ -1,18 +1,32 @@
 package com.project.weekend;
 
+import java.sql.Date;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.project.weekend.board.festi.FestiDTO;
+import com.project.weekend.board.festi.FestiService;
+import com.project.weekend.util.PageMaker;
 
 @Controller
 @RequestMapping(value = "/rank/")
 public class RankController {
+	@Inject
+	private FestiService festiService;
 
-	@RequestMapping(value = "rank_festi1")
-	public void rank1() {}
-	@RequestMapping(value = "rank_festi2")
-	public void rank2() {}
-	@RequestMapping(value = "rank_festi3")
-	public void rank3() {}
-	
+	@RequestMapping(value = "rank_festi")
+	public ModelAndView rank(PageMaker pageMaker) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<FestiDTO> list = festiService.getRankList(pageMaker);
+		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
+		mv.setViewName("/rank/rank_festi");
+		return mv;
+	}
 	
 }

@@ -35,6 +35,7 @@ public class UserRecoController{
 		ModelAndView mv = new ModelAndView();
 		List<FestiDTO> list = festiService.getUserRecoList(pageMaker);
 		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/UserRecoList");
 		return mv;
 	}
