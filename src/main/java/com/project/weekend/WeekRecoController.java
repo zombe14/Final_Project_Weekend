@@ -39,6 +39,7 @@ public class WeekRecoController{
 		ModelAndView mv = new ModelAndView();
 		List<FestiDTO> list = festiService.getWeekRecoList(pageMaker);
 		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/WeekRecoList");
 		return mv;
 	}
