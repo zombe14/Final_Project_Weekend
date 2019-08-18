@@ -23,58 +23,62 @@ import com.project.weekend.board.festi.festiQna.FestiQnaService;
 import com.project.weekend.util.PageMaker;
 
 @Controller
-@RequestMapping(value = "/UserReco/")
-public class UserRecoController{
+@RequestMapping(value = "/WeekReco/")
+public class WeekRecoController{
 	
 	@Inject
 	private FestiService festiService;
+	@Inject
+	private FestiQnaService festiQnaService;
+	@Inject
+	private DatesService datesService;
 	
 	// 리스트 출력;
-	@RequestMapping(value = "UserRecoList", method = RequestMethod.GET)
+	@RequestMapping(value = "WeekRecoList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<FestiDTO> list = festiService.getUserRecoList(pageMaker);
+		List<FestiDTO> list = festiService.getWeekRecoList(pageMaker);
 		mv.addObject("list", list);
-		mv.setViewName("board/UserRecoList");
+		mv.setViewName("board/WeekRecoList");
 		return mv;
 	}
 	// 글선택
-	@RequestMapping(value = "UserRecoSelect", method = RequestMethod.GET)
+	@RequestMapping(value = "WeekRecoSelect", method = RequestMethod.GET)
 	public ModelAndView getSelect(String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		FestiDTO festiDTO = festiService.getUserRecoSelect(num);
+		FestiDTO festiDTO = festiService.getWeekRecoSelect(num);
 		mv.addObject("list", festiDTO);
-		mv.setViewName("board/UserRecoSelect");
+		mv.setViewName("board/WeekRecoSelect");
 		return mv;
 	}
 	// 글쓰기;
-	@RequestMapping(value = "UserRecoWrite", method = RequestMethod.POST)
+	@RequestMapping(value = "WeekRecoWrite", method = RequestMethod.POST)
 	public void setWrite() throws Exception{
 	}
 	// 글수정;
 	// 글수정 폼으로;
-	@RequestMapping(value = "UserRecoUpdate", method = RequestMethod.GET)
+	@RequestMapping(value = "WeekRecoUpdate", method = RequestMethod.GET)
 	public ModelAndView setUpdate(String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		FestiDTO festiDTO = festiService.getUserRecoSelect(num);
+		FestiDTO festiDTO = festiService.getWeekRecoSelect(num);
 		mv.addObject("board", festiDTO);
-		mv.setViewName("board/userRecoUpdate");
+		mv.setViewName("board/WeekRecoUpdate");
 		return mv;
 	}
 	// 글수정 진행;
-	@RequestMapping(value = "UserRecoUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "WeekRecoUpdate", method = RequestMethod.POST)
 	public ModelAndView setUpdate(FestiDTO festiDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = festiService.setUserRecoUpdate(festiDTO);
+		int result = festiService.setWeekRecoUpdate(festiDTO);
 		mv.addObject("result", result);
 		mv.setViewName("./common/message");
 		return mv;
 	} 
 	// 글삭제;
-	@RequestMapping(value = "UserRecoDelete", method = RequestMethod.POST)
+	@RequestMapping(value = "WeekRecoDelete", method = RequestMethod.POST)
 	public ModelAndView setDelete(String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = festiService.setUserRecoDelete(num);
+		int result = festiService.setWeekRecoDelete(num);
 		mv.addObject("result", result);
 		mv.setViewName("./common/message");
 		return mv;

@@ -124,7 +124,39 @@ public class FestiService {
 		pageMaker.makePage(totalCount);
 		return list;
 	}
-	// 유저 추천
+	// w 추천;
+	// 리스트;
+	public List<FestiDTO> getWeekRecoList(PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getWeekRecoList(pageMaker);
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makePage(totalCount);
+		return list;
+	}
+	// 글선택;
+	public FestiDTO getWeekRecoSelect(String num) throws Exception{
+		FestiDTO festiDTO = festiDAO.getWeekRecoSelect(num);
+		return festiDTO;
+	}
+	// 글쓰기;
+	public int setWeekRecoWrite(FestiDTO festiDTO) throws Exception{
+		int result = 0;
+		result = festiDAO.setWeekRecoWrite(festiDTO);
+		return result;
+	} 
+	// 글수정;
+	public int setWeekRecoUpdate(FestiDTO festiDTO) throws Exception{
+		int result = 0;
+		result = festiDAO.setWeekRecoUpdate(festiDTO);
+		return result;
+	}
+	// 글삭제;
+	public int setWeekRecoDelete(String num) throws Exception{
+		int result = 0;
+		result = festiDAO.setWeekRecoDelete(num);
+		return result;
+	}
+	// 유저 추천;
 	// 리스트;
 	public List<FestiDTO> getUserRecoList(PageMaker pageMaker) throws Exception{
 		pageMaker.makeRow();

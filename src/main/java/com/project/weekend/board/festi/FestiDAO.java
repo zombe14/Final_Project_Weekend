@@ -63,7 +63,27 @@ public class FestiDAO{
 	public List<FestiDTO> getListMy(PageMaker pageMaker) throws Exception{
 		return SqlSession.selectList(NAMESPACE+"getListMy", pageMaker);
 	}
-	
+	// w추천;
+	// 리스트;
+	public List<FestiDTO> getWeekRecoList(PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getWeekRecoList", pageMaker);
+	}
+	// 글선택;
+	public FestiDTO getWeekRecoSelect(String num) throws Exception{
+		return SqlSession.selectOne(NAMESPACE+"getWeekRecoSelect", num);
+	}
+	// 글쓰기;
+	public int setWeekRecoWrite(FestiDTO festiDTO) throws Exception{
+		return SqlSession.insert(NAMESPACE+"setWeekRecoWrite", festiDTO);
+	}
+	// 글수정;
+	public int setWeekRecoUpdate(FestiDTO festiDTO) throws Exception{
+		return SqlSession.update(NAMESPACE+"setWeekRecoUpdate", festiDTO);
+	}
+	// 글삭제;
+	public int setWeekRecoDelete(String num) throws Exception{
+		return SqlSession.delete(NAMESPACE+"setWeekRecoDelete", num);
+	}
 	// 유저 추천;
 	// 리스트;
 	public List<FestiDTO> getUserRecoList(PageMaker pageMaker) throws Exception{

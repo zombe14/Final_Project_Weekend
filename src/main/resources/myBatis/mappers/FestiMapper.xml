@@ -6,7 +6,6 @@
 	<select id="getNum" resultType="Integer">
 		select festi_seq.nextval from dual
 	</select>
-
 	<insert id="setWrite" parameterType="FestiDTO">
 		INSERT INTO FESTI(NUM,
 		TITLE, WRITER, CONTENTS, REG_DATE, HIT, CATEGORY, PRICE, TOTAL,
@@ -14,7 +13,6 @@
 		VALUES(#{num},#{title},#{writer},#{contents},sysdate,0,#{category},#{price},#{total},#{startDate},#{endDate},#{local},#{top},
 		#{age}, #{region})
 	</insert>
-
 	<resultMap type="FestiDTO" id="festiResult">
 		<id column="num" property="num" />
 		<result column="title" property="title" />
@@ -60,8 +58,7 @@
 		SELECT COUNT(NUM) FROM FESTI where category = #{category}
 	</select>
 
-	<select id="getSelect" resultMap="festiResult"
-		parameterType="String">
+	<select id="getSelect" resultMap="festiResult" parameterType="String">
 		SELECT * FROM FESTI FULL JOIN FILES USING(NUM) WHERE NUM = #{num}
 	</select>
 
@@ -112,6 +109,33 @@
 		select * from festi where writer = 'zombe15'
 	</select>
 	<!-- W추천 -->
+	<!-- 리스트 불러오기 -->
+	<select id="getWeekRecoList" parameterType="pageMaker" resultType="FestiDTO">
+		select * from
+		(select rownum R, F.* from
+		(select num, title, local, region
+		from festi full join files using(num)
+		where category = 0
+		order by num desc) F)
+		where r between #{startRow} and #{lastRow}
+	</select>
+	<!-- 글선택 -->
+	<select id="getWeekRecoSelect" resultMap="festiResult" parameterType="String">
+		select * from festi full join files using(num) where num = #{num}
+	</select>
+	<!-- 글쓰기 -->
+	<insert id="setWeekRecoWrite" parameterType="FestiDTO">
+		insert into festi(num, title, writer, contents, reg_date, hit, region, category, local)
+		values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{region}, #{category}, #{local})
+	</insert>
+	<!-- 글수정 -->
+	<update id="setWeekRecoUpdate" parameterType="FestiDTO">
+		update festi set title = #{title}, contents=#{contents} where num = #{num}
+	</update>
+	<!-- 글삭제 -->
+	<delete id="setWeekRecoDelete" parameterType="String">
+		delete festi where num = #{num}
+	</delete>
 	<!-- 유저추천 -->
 	<!-- 리스트 불러오기 -->
 	<select id="getUserRecoList" parameterType="PageMaker" resultType="FestiDTO">
@@ -133,6 +157,7 @@
 			</otherwise>
 		</choose>
 		like '%'||#{search}||'%'
+		and category = 4
 		order by num desc) F)
 		where R between #{startRow} and #{lastRow}
 	</select>
@@ -142,8 +167,8 @@
 	</select>
 	<!-- 글 쓰기 -->
 	<insert id="setUserRecoWrite" parameterType="FestiDTO">
-		insert into festi(num, title, contents, reg_date, hit, region, category)
-		valuse(#{num},#{title},#{contents},#{reg_date},#{hit},#{region},#{category})
+		insert into festi(num, title, writer, contents, reg_date, hit, region, category)
+		valuse(#{num},#{title}, #{writer}, #{contents}, sysdate, 0, #{region}, 4)
 	</insert>
 	<!-- 글 수정 -->
 	<update id="setUserRecoUpdate" parameterType="FestiDTO">
