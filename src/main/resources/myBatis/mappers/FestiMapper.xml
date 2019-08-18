@@ -113,6 +113,46 @@
 	</select>
 	<!-- W추천 -->
 	<!-- 유저추천 -->
+	<!-- 리스트 불러오기 -->
+	<select id="getUserRecoList" parameterType="PageMaker" resultType="FestiDTO">
+		select * from
+		(select rownum R, F.* from
+		(select * from festi where
+		<choose>
+			<when test="kind = 1">
+				title
+			</when>
+			<when test="kind = 2">
+				contents
+			</when>
+			<when test="kind = 3">
+				writer
+			</when>
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%'
+		order by num desc) F)
+		where R between #{startRow} and #{lastRow}
+	</select>
+	<!-- 글 선택 -->
+	<select id="getUserRecoSelect" resultMap="festiResult" parameterType="String">
+		select * from festi where num = #{num}
+	</select>
+	<!-- 글 쓰기 -->
+	<insert id="setUserRecoWrite" parameterType="FestiDTO">
+		insert into festi(num, title, contents, reg_date, hit, region, category)
+		valuse(#{num},#{title},#{contents},#{reg_date},#{hit},#{region},#{category})
+	</insert>
+	<!-- 글 수정 -->
+	<update id="setUserRecoUpdate" parameterType="FestiDTO">
+		update festi set title = #{title}, contents = #{contents}, region=#{region} where num = #{num}
+	</update>
+	<!-- 글 삭제 -->
+	<delete id="setUserRecoDelete" parameterType="String">
+		delete festi where num = #{num}
+	</delete>
 	<!-- 랭킹 -->
 	
 	<!-- 상혁 끝 -->

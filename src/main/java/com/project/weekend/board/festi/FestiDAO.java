@@ -53,15 +53,39 @@ public class FestiDAO{
 		return SqlSession.delete(NAMESPACE+"setDelete", num);
 	}
 	
-	// 상혁
+	// 상혁;
+	// 관리자용;
 	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
 		return SqlSession.selectList(NAMESPACE+"getAllList", pageMaker);
 	}
-	// 내가 쓴 글 가져오기
-	// 2레벨
+	// 내가 쓴 글 가져오기;
+	// 2레벨;
 	public List<FestiDTO> getListMy(PageMaker pageMaker) throws Exception{
 		return SqlSession.selectList(NAMESPACE+"getListMy", pageMaker);
 	}
+	
+	// 유저 추천;
+	// 리스트;
+	public List<FestiDTO> getUserRecoList(PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getUserRecoList", pageMaker);
+	}
+	// 글선택;
+	public FestiDTO getUserRecoSelect(String num) throws Exception{
+		return SqlSession.selectOne(NAMESPACE+"getUserRecoSelect", num);
+	}
+	// 글쓰기;
+	public int  setUserRecoWrite(FestiDTO festiDTO) throws Exception{
+		return SqlSession.insert(NAMESPACE+"setUserRecoWrite", festiDTO);
+	}
+	// 글수정;
+	public int setUserRecoUpdate(FestiDTO festiDTO) throws Exception{
+		return SqlSession.update(NAMESPACE+"setUserRecoUpdate", festiDTO);
+	}
+	// 글삭제;
+	public int setUserRecoDelete(String num) throws Exception{
+		return SqlSession.delete(NAMESPACE+"setUserRecoDelete", num);
+	}
+	// 상혁 끝;
 	
 
 }
