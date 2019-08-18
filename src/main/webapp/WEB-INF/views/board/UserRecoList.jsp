@@ -37,8 +37,8 @@
 						</thead>
   	      				<c:forEach items="${list}" var="list">
 							<tr class="select">
-								<td class="selectRow td10" id="${list.num}"></td>
-								<td class="td60">${list.title}</td>
+								<td class="selectRow td10" id="${list.num}"><p></p></td>
+								<td>${list.title}</td>
 								<td class="td10">${list.writer}</td>
 								<td class="td10">${list.reg_date}</td>
 								<td class="td10">${list.hit}</td>
@@ -76,7 +76,7 @@
 				</div>
 				
 				<div class="boardwrite">
-						<button id="boardWrite" value="${board}">${boardTitle} 글쓰기</button>
+						<a href="${pageContext.request.contextPath}/UserReco/UserRecoWrite" id="boardWrite">${boardTitle} 글쓰기</a>
 				</div>
   	      						<!-- 검색창 -->
 				<form action="./${board}List" class="search_form">
@@ -95,5 +95,15 @@
     		<c:import url="../inc/footer.jsp"></c:import>
 		</div>
 	</div>
+<script type="text/javascript">
+
+		/* 테이블의 num 앞에 구분 문자 안보이게 */
+		$('.selectRow').each(function() {
+			var num = $(this).attr('id');
+			num = num.substring(1);
+			$(this).children('p').append(num);
+		});
+		
+	</script>
 </body>
 </html>

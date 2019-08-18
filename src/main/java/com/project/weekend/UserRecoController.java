@@ -49,8 +49,7 @@ public class UserRecoController{
 	}
 	// 글쓰기;
 	@RequestMapping(value = "UserRecoWrite", method = RequestMethod.POST)
-	public void setWrite() throws Exception{
-	}
+	public void setWrite() throws Exception{}
 	// 글수정;
 	// 글수정 폼으로;
 	@RequestMapping(value = "UserRecoUpdate", method = RequestMethod.GET)
