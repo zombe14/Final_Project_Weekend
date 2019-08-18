@@ -119,7 +119,7 @@ public class MemberController {
 		return mv;
 	}
 	@RequestMapping(value = "memberLogin", method = RequestMethod.GET)
-	public void getSelect()throws Exception{}
+	public void getSelect(Model model,HttpSession session)throws Exception{}
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
 	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session,HttpServletRequest request,HttpServletResponse response ,@CookieValue(value = "mcookie",required = false)Cookie mcookie)throws Exception{
@@ -180,14 +180,12 @@ public class MemberController {
 		
 	}
 	
-    @RequestMapping(value = "memberNaverLogin", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "NaverLogin", method = { RequestMethod.GET, RequestMethod.POST })
     public String login(Model model, HttpSession session) {
-        
+        System.out.println("들어옴");
         /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
         String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-        
-        //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
-        //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
+        System.out.println("들어옴");
         System.out.println("네이버:" + naverAuthUrl);
         
         //네이버 
@@ -198,7 +196,7 @@ public class MemberController {
     }
 
     //네이버 로그인 성공시 callback호출 메소드
-    @RequestMapping(value = "callback.do", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "callback", method = { RequestMethod.GET, RequestMethod.POST })
     public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
             throws IOException {
         System.out.println("여기는 callback");
@@ -210,7 +208,7 @@ public class MemberController {
         model.addAttribute("result", apiResult);
         System.out.println("result"+apiResult);
     
-        return "../";
+        return "./memberLogin";
     }
 	
 	

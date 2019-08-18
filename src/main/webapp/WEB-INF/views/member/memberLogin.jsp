@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberLogin.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberLogin.js?ver=2"></script>
 </head>
 <body>
@@ -32,8 +31,8 @@
 						<button type="submit" id="Login" class="lgbtn">로그인</button>
 					</form>
 					
-	<div id="naver_id_login" style="text-align:center">
-<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></div>
+	<div id="naver_id_login" style="text-align:center"><a href="${url}">
+<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
 					
 					<div class="login_bot">
 						<a href="./memberAgree" class="lob">회원가입</a> <span class="log lob">|</span>
