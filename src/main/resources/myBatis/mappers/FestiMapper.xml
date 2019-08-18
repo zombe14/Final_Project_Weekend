@@ -183,6 +183,5 @@
 	<select id="getRankListSelect" resultMap="festiResult" parameterType="FestiDTO">
 		select * from festi where category = 1 and hit > 1 order by hit desc
 	</select>
-	
 	<!-- 상혁 끝 -->
 </mapper>
