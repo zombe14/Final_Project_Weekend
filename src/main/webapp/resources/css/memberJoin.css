@@ -67,12 +67,20 @@ input{
     color: #00d344;
     font-style: normal;
 }
-.joinWrap .tableBox table {
+.joinWrap .tableBox .table1 {
     width: 100%;
     position: relative;
 	table-layout: fixed;
     border-top: 1px solid #b6bdc7;
 }
+
+.joinWrap .tableBox .table2 {
+    width: 100%;
+    position: relative;
+	table-layout: fixed;
+    border-bottom: 1px solid #b6bdc7;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -248,8 +256,33 @@ select {
     font-size: 14px;
     margin: 0 5px;
 }
-
-#nicknameCheck{
+#emailCheck{
+    border: 1px solid white;
+    padding: 10px 20px;
+    background: #00d344;
+    color: white;	
+    font-size: 14px;
+    margin: 0 5px;
+    margin-top: 10px;
+    float: right;
+}
+#emailCodeCheck{
+    border: 1px solid white;
+    padding: 10px 20px;
+    background: #00d344;
+    color: white;	
+    font-size: 14px;
+    margin: 0 5px;
+}
+#juminnum{
+    border: 1px solid white;
+    padding: 10px 20px;
+    background: #00d344;
+    color: white;	
+    font-size: 14px;
+    margin: 0 5px;
+}
+#nicknameCheckbt{
     border: 1px solid white;
     padding: 10px 20px;
     background: #00d344;
@@ -271,6 +304,19 @@ button {
   	transition: 0.5s;
   	outline: none;
   	height: 40px;
+}
+.iTextnum {
+    width: 105px;
+    -webkit-transition: 0.5s;
+  	transition: 0.5s;
+  	outline: none;
+  	height: 40px;
+  	padding: 0 8px;
+    height: 31px;
+    font-size: 14px;
+    border: 1px solid #dfe5ed;
+    vertical-align: middle;
+    font-family: "Noto Sans KR", -apple-system, "Helvetica Neue", Helvetica, sans-serif;
 }
 .iText {
     padding: 0 8px;

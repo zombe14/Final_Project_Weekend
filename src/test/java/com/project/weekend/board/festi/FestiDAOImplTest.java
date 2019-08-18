@@ -18,7 +18,7 @@ public class FestiDAOImplTest extends AbstractTest{
 	@Test
 	public void setWrite() throws Exception {
 		FestiDTO f = new FestiDTO();
-		f.setCategory(1);
+		//f.setCategory(1);
 		f.setContents("FestiDAOImpl Test");
 	
 		f.setTitle("Festi");

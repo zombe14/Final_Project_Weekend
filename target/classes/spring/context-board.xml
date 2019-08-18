@@ -6,20 +6,43 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
-	<!-- interceptor -->
-<!-- 	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/qna/qnaSelect"/>
-			<ref bean="qnaPwInterceptor"/>
-		</mvc:interceptor>
-	</mvc:interceptors> -->
-	
 	
 	<!-- transaction, aop -->
 	<aop:aspectj-autoproxy />
 	
-	<!-- board -->
+	<!-- interceptor -->
+	<bean class="com.project.weekend.board.notice.NoticeCUDInterceptor" id="noticeCUDInterceptor"/>	<!-- 작성, 수정, 삭제 - 3 -->
+	<bean class="com.project.weekend.board.notice.NoticeRInterceptor" id="noticeRInterceptor"/>	<!-- 읽기 - 1, 2, 3 | 리스트 - 0(비회원), 1, 2, 3 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/notice/noticeWrite"/>
+			<mvc:mapping path="/notice/noticeUpdate"/>
+			<mvc:mapping path="/notice/noticeDelete"/>
+			<ref bean="noticeCUDInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/notice/noticeSelect"/>
+			<ref bean="noticeRInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<bean class="com.project.weekend.board.qna.QnaCLInterceptor" id="qnaCLInterceptor"/>	<!-- 작성, 리스트 : 1, 2, 3 -->
+	<bean class="com.project.weekend.board.qna.QnaReplyInterceptor" id="qnaReplyInterceptor"/>	<!-- 답변 작성, 수정, 삭제 : 3 -->
 	<bean class="com.project.weekend.board.qna.QnaPwInterceptor" id="qnaPwInterceptor"/>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/qna/qnaWrite"/>
+			<mvc:mapping path="/qna/qnaList"/>
+			<ref bean="qnaCLInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/qna/qnaReplyWrite"/>
+			<mvc:mapping path="/qna/qnaReplyDelete"/>
+			<mvc:mapping path="/qna/qnaReplyUpdate"/>
+			<ref bean="qnaReplyInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 	
 	<!-- notice -->
 	<bean class="com.project.weekend.board.notice.NoticeDTO" id="noticeDTO" />
@@ -55,5 +78,10 @@
 	<bean class="com.project.weekend.board.festi.dates.DatesDTO" id="datesDTO"/>
 	<bean class="com.project.weekend.board.festi.dates.DatesDAO" id="datesDAO"/>
 	<bean class="com.project.weekend.board.festi.dates.DatesService" id="datesService"/>
+	
+	<!-- Wonsik Open -->
+	<bean class="com.project.weekend.board.open.OpenDTO" id="openDTO" />
+	<bean class="com.project.weekend.board.open.OpenDAO" id="openDAO" />
+	<bean class="com.project.weekend.board.open.OpenService" id="openService" />
 	
 </beans>

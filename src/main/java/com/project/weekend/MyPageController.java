@@ -16,11 +16,21 @@ import com.project.weekend.member.MemberService;
 public class MyPageController {
 	@Inject
 	private MemberService memberService;
-	// 마이 페이지 메인
+	////////////////////////// 마이 페이지 메인
 	@RequestMapping(value = "myMain")
 	public void myMain() throws Exception{
 	}
-	// 내 정보 출력
+	// 본인확인(id와 pw 확인용)
+	@RequestMapping(value = "mCheck", method = RequestMethod.POST)
+	public ModelAndView myCheck(HttpSession session, MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.getUpdateCheck(memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		return mv;
+	}
+	////////////////////////// 내 정보
+	// 내 정보 페이지 출력
 	@RequestMapping(value = "mInfoList", method = RequestMethod.GET)
 	public void myBoardList() throws Exception{
 	}
@@ -35,25 +45,80 @@ public class MyPageController {
 		mv.setViewName("./common/message");
 		return mv;
 	}
-	// 비밀번호 변경
+	// 닉네임 중복 여부(택수씨 코드 사용);
+	// 전화번호 중복 여부;
+	@RequestMapping(value = "mPhoneCheck", method = RequestMethod.POST)
+	public ModelAndView myPhoneCheck(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		result = memberService.getSelectPhoneMy(memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		return mv;
+	}
+	// 이메일 중복 여부
+	@RequestMapping(value = "mEmailCheck", method = RequestMethod.POST)
+	public ModelAndView myMailCheck(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		result = memberService.getSelectEmailMy(memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		return mv;
+	}
+	// 이메일 인증(택수씨 코드 사용);
+	////////////////////////// 비밀번호 변경
+	// 비밀번호 변경 페이지 출력
 	@RequestMapping(value = "mPasswordList", method = RequestMethod.GET)
 	public void myPasswordList() throws Exception{
 	}
-	// 티켓 관리
+	// 비밀번호 변경(실제 비밀번호 변경)
+	@RequestMapping(value = "mPasswordList", method = RequestMethod.POST)
+	public ModelAndView myPasswordChange(HttpSession session, MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setUpdatePs(memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		session.invalidate();
+		return mv;
+	}
+	////////////////////////// 내 티켓 관리
+	// 티켓 관리 페이지 출력
 	@RequestMapping(value = "mTicketList", method = RequestMethod.GET)
 	public void myTicketList() throws Exception{
 	}
-	// 공연 문의 내역
+	// 티켓 삭제
+	public void myTicketDelete() throws Exception{
+	}
+	////////////////////////// 공연 문의 내역
+	// 공연 문의 페이지 출력
 	@RequestMapping(value = "mQnaList", method = RequestMethod.GET)
 	public void myQnaList() throws Exception{
 	}
-	// 내 글 확인
+	public void myQnaSelect() throws Exception{
+	}
+	////////////////////////// 내 글
+	// 내 글 페이지 출력
 	@RequestMapping(value = "mBoardList", method = RequestMethod.GET)
 	public void myWrite() throws Exception{
 	}
-	// 회원 탍퇴
+	// 내 글 선택
+	public void myWriteSelect() throws Exception{
+	}
+	////////////////////////// 회원 탈퇴
+	// 회원 탍퇴 페이지 출력
 	@RequestMapping(value = "mByeByeList", method = RequestMethod.GET)
 	public void myByeByeList() throws Exception{
+	}
+	// 회원 탈퇴 진행
+	@RequestMapping(value = "mByeBye", method = RequestMethod.POST)
+	public ModelAndView myByeBy(String id, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setDelete(id);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		session.invalidate();
+		return mv;
 	}
 }
 	

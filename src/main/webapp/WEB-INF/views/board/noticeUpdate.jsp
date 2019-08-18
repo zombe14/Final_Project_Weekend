@@ -91,7 +91,7 @@
 									</tr>
 
 									<tr>
-										<td class="td1"><label for="check">상단에 등록 하기</label></td>
+										<td class="td1"><label for="check">상단 등록</label></td>
 										<td><input type="checkbox" id="check" name="top"
 											value="${dto.top}"> 
 											<label for="check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 현재 개수 : </label>
@@ -208,10 +208,10 @@
 		});
 
 		//상단 배치 체크박스에 값 주기 ( 1: 등록하기 / 0: 등록안함)
-		if($('#top').val() == 1){
-			$('#top').attr('checked','checked')
+		if($('#check').val() == 1){
+			$('#check').attr('checked','checked')
 		}
-		$('#top').click(function() {
+		$('#check').click(function() {
 			if ($(this).is(':checked')) {
 				$(this).val(1);
 			} else {

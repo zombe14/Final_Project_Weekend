@@ -66,6 +66,7 @@ ul{
 }
 
 #container{
+	height:1500px;
 	margin: 0;
 	overflow: hidden;
 }
@@ -513,7 +514,7 @@ ul{
 /* body 칸 */
 .call_quick{
 	border: 1px solid #00d344;
-	height: 400px;
+	height: 1000px;
 	margin-bottom: 10px;
 	border-radius: 2px;
     background-color: white;

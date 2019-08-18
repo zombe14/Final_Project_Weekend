@@ -51,10 +51,35 @@ public class MemberService {
 		return result;
 	}
 	// 마이 페이지;
+	// 내 정보 수정
 	public int setUpdateMy(MemberDTO memberDTO) throws Exception{
 		int result = memberDAO.setUpdateMy(memberDTO);
 		return result; 
 	}
+	// 닉네임 중복여부(택수씨 코드 사용);
+	// 전화번호 중복여부;
+	public int getSelectPhoneMy(MemberDTO memberDTO) throws Exception{
+		int result = memberDAO.getSelectPhoneMy(memberDTO);
+		return result;
+	}
+	// 이메일 중복여부(택수씨 코드 사용);
+	public int getSelectEmailMy(MemberDTO memberDTO) throws Exception{
+		int result = memberDAO.getSelectEmailMy(memberDTO);
+		return result;
+	}
+	
+	// 비밀번호 수정;
+	// 본인 여부 확인;
+	public int getUpdateCheck(MemberDTO memberDTO) throws Exception{
+		int result = memberDAO.getUpdateCheck(memberDTO);
+		return result;
+	}
+	// pw 변경;
+	public int setUpdatePs(MemberDTO memberDTO) throws Exception{
+		int result = memberDAO.setUpdatePs(memberDTO);
+		return result;
+	}
+	
 	// 상혁 끝;
 	
 	

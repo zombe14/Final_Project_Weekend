@@ -58,12 +58,12 @@ public class FestiService {
 		return res;
 	}
 	
-	public List<FestiDTO> getList(PageMaker pageMaker, int category) throws Exception{
+	public List<FestiDTO> getList(PageMaker pageMaker) throws Exception{
+
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getList(pageMaker);
-		int totalCount = festiDAO.getCount();
 		pageMaker.makePage(totalCount);
-		pageMaker.setCategory(category);
 		
 		for(FestiDTO f : list) {
 			String num = f.getNum();
@@ -111,7 +111,7 @@ public class FestiService {
 	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getAllList(pageMaker);
-		int totalCount = festiDAO.getCount();
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makePage(totalCount);
 		return list;
 	}
