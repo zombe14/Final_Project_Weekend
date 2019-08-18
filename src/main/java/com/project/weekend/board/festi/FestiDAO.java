@@ -30,8 +30,8 @@ public class FestiDAO{
 		return SqlSession.selectList(NAMESPACE+"getList", pageMaker);
 	}
 	
-	public int getCount() throws Exception{
-		return SqlSession.selectOne(NAMESPACE+"getCount");
+	public int getCount(Integer category) throws Exception{
+		return SqlSession.selectOne(NAMESPACE+"getCount", category);
 	}
 	
 	public FestiDTO getSelect(String num) throws Exception{

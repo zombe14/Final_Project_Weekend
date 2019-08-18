@@ -113,6 +113,9 @@
 	<update id="setAnswer" parameterType="String">
 		update qna set answer = 1 where ref = #{ref} and step = 0
 	</update>
+	<update id="setAnswerDelete" parameterType="String">
+		update qna set answer = 0 where ref = #{ref} and step = 0
+	</update>
 	
 	
 </mapper>

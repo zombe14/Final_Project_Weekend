@@ -65,7 +65,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="">
+							<a href="${pageContext.request.contextPath}/open/openList">
 								<h4><i>티켓 소식</i> 알아보기</h4>
 								<p>티켓링크의<br>새로운 소식들을<br>빠르게 접해보세요.</p>
 								<img alt="" src="${pageContext.request.contextPath}/resources/images/callcenter/help4.png">

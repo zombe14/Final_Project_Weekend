@@ -13,13 +13,17 @@
 	margin-top: 30px;
 }
 
+.boardTile_write{
+	float: right;
+}
+
 .boardTile_write a{
 	background-color: #00d344;
     color: white;
     border: 1px solid white;
     padding: 10px 20px;
+    margin-right: 15px;
     float: right;
-    margin: 30px 15px;	
 }
 
 #container{

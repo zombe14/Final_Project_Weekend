@@ -76,7 +76,7 @@
 							<tr>
 								<td class="td1"><label for="files">첨부파일</label></td>
 								<td>
-									<button type="button" id="addFiles" value="파일 추가"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">항목 추가 </button>
+									<button type="button" id="addFiles" value="파일 추가"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일 추가 </button>
 									<div id="filesDiv">
 										<div>
 											<input type="file" class="filelist" name="filelist" style="display: inline-block;">

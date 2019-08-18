@@ -16,10 +16,15 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("member");
+		Object grade = session.getAttribute("grade");
 		boolean result=false;
 		
 		if(obj!=null) {
-			result=true;
+			if(grade.equals(3)) {
+				result=true;
+			}else {
+				response.sendRedirect("../");
+			}
 		}else {
 			response.sendRedirect("../member/memberLogin");
 		}

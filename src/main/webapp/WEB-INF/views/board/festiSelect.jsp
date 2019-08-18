@@ -146,7 +146,8 @@
 					</div>
 					<!-- 날짜 정하는 div -->
 					<div class="detail_info_right">
-						<input type="text" name="date" id="date1" size="12" />
+						<!-- <input type="text" name="date"  size="12" /> -->
+						<div id="date1"></div>
 						<dl class="doline_x">
 							<dt>예매가능 회차</dt>
 							<dd>
@@ -167,52 +168,59 @@
 					</div>
 				</div>
 			</div>
-
+			
 				<div class="festi_detail">
-						<c:import url="../inc/festi_detail.jsp"></c:import>
-				</div>
-		
-		<!-- 테스트용-------------------------------------------------------------- -->
-				
-				<!-- 지우기 -->
-				<div>
-					<ol>
-						<li>${dto.category}</li>
-						<li>${dto.price}</li>
-						<li>${dto.total}</li>
-						<li>${dto.startDate}</li>
-						<li>${dto.endDate}</li>
-						<li>${dto.local}</li>
-						<li>${dto.num}</li>
-						<li>${dto.title}</li>
-						<li>${dto.writer}</li>
-						<li>${dto.contents}</li>
-						<li>${dto.reg_date}</li>
-						<li>${dto.hit}</li>
-						<li>${dto.top}</li>
-						<li>${dto.age}</li>
-						<li>${dto.region}</li>						
-					</ol>
-				</div>
-				
-				<!-- 지우기 끝 -->
-				
-				<!-- 장소 지도 -->
-				<div>
-					<h2>공연장정보</h2>
-					<br>
-					<div>
-						<h3>위치</h3>
-						<div id="localMap" style="width: 100%; height: 500px;"></div>
+						<div class="festi_wrap">
+							<div class="festi_menu">
+								<button onclick="fnMove('1')">상세정보</button>
+								<button onclick="fnMove('2')">공연장정보</button>
+								<button onclick="fnMove('3')">질문하기</button>
+								<button onclick="fnMove('4')">관람후기</button>
+							</div>
+						</div>
+					<div id="div1" class="festi_wrap2">
+						<div class="festi_title">
+							<strong>상세정보</strong>
+							<br>
+						</div>
+						<div>
+							<ul>
+								<li>${dto.category}</li>
+								<li>${dto.price}</li>
+								<li>${dto.total}</li>
+								<li>${dto.startDate}</li>
+								<li>${dto.endDate}</li>
+								<li>${dto.local}</li>
+								<li>${dto.num}</li>
+								<li>${dto.title}</li>
+								<li>${dto.writer}</li>
+								<li>${dto.contents}</li>
+								<li>${dto.reg_date}</li>
+								<li>${dto.hit}</li>
+								<li>${dto.top}</li>
+								<li>${dto.age}</li>
+								<li>${dto.region}</li>
+							</ul>
+						</div>
 					</div>
-					<br>
-					<!-- 주변 맛집 -->
-					<div id="resta">
-						<h3>주변 식당</h3>
-						<div class="map_wrap">
-						    <div id="map2" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
-							<!-- 리스트 -->
-						    <div id="menu_wrap" class="bg_white">
+					<div id="div2" class="festi_wrap2">
+						<!-- 장소 지도 -->
+						<div class="festi_title">
+							<strong>공연장정보</strong>
+							<br>
+						</div>
+						<div class="festi_h4">
+							<img alt="" src="${pageContext.request.contextPath}/resources/images/location.png"><h4>위치</h4>
+						</div>
+							<div id="localMap" style="width: 100%; height: 500px;"></div>
+							<br>
+						<!-- 주변 맛집 -->
+						<div id="resta" class="festi_h4">
+							<img alt="" src="${pageContext.request.contextPath}/resources/images/location.png"><h4>주변 식당</h4>
+							<div class="map_wrap">
+						   		 <div id="map2" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
+								<!-- 리스트 -->
+						    	<div id="menu_wrap" class="bg_white">
 						        <div class="option">
 						            <div>
 						                <form onsubmit="searchPlaces(); return false;">
@@ -229,8 +237,8 @@
 					</div>
 					<br>
 					<!-- 주변 숙소 -->
-					<div id="hotel">
-						<h3>주변 숙소</h3>
+					<div id="hotel" class="festi_h4">
+						<img alt="" src="${pageContext.request.contextPath}/resources/images/location.png"><h4>주변 숙소</h4>
 						<div class="map_wrap">
 						    <div id="map3" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
 							<!-- 리스트 -->
@@ -251,72 +259,84 @@
 					</div>
 				</div>
 				<!-- 지도 끝 -->
-				
-				
-				
-				<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
-				
-				<%-- <c:if test="${member.grade > 1}"> --%> 
-				<%-- </c:if> --%>
-				
-				<!--  후기 -->
-				<table class="table">
-					<thead>
-						<th>NUM</th>
-						<th>TITLE</th>
-						<th>Writer</th>
-						<th>DATE</th>
-						<th>hit</th>
-					</thead>
-					<c:forEach items="${after}" var="i">
-						<tr title="${i.anum}" class="afterSel">
-							<td>${fn:substring(i.anum, 1,8)}</td>
-							<td>${i.title}</td>
-							<td>${i.writer}</td>
-							<td>${i.reg_date}</td>
-							<td>${i.hit}</td>
-						</tr>					
-					</c:forEach>
-				</table>
-				
+			
+			<div id="div3" class="festi_wrap2">
+				<div class="festi_title">
+					<strong>질문하기</strong>
+					<a href="../festiQna/fqnaWrite?num=${dto.num}">질문하기</a>
+				</div>
+				<div>
 				<!--  질문 -->
-				<a href="../festiQna/fqnaWrite?num=${dto.num}">질문하기</a>
-				<table class="table">
-					<thead>
-						<th>NUM</th>
-						<th>TITLE</th>
-						<th>Writer</th>
-						<th>DATE</th>
-						<th>상태</th>
-					</thead>
-					<c:forEach items="${qna}" var="i">
-						<tr title="${i.qnum}" class="qnaSel" id="${i.pw}">
-							<td>${fn:substring(i.qnum, 1,8)}</td>
-							<td>
-								<c:if test="${i.pw ne null}">
-									<c:if test="${i.depth eq '1'}">&nbsp;&nbsp;&nbsp;&nbsp;답변 : </c:if>비밀글입니다.
-								</c:if>
-								<c:if test="${i.pw eq null}">
-									<c:if test="${i.depth eq '1'}">&nbsp;&nbsp;&nbsp;&nbsp;답변 : </c:if>${i.title}
-								</c:if>
-							</td>
-							<td>
-								<c:if test="${i.pw eq null}">
-									${i.writer}
-								</c:if>
-								<c:if test="${i.pw ne null}">
-									${fn:substring(i.writer, 0, 3)}****
-								</c:if>
-							</td>
-							<td>${i.reg_date}</td>
-							<td><c:if test="${i.answer eq '0'}">답변대기중</c:if>
-								<c:if test="${i.answer eq '1'}">답변완료</c:if>
-							</td>
-						</tr>					
-					</c:forEach>
-				</table>
-   		</div>
-	</div>
+					<table class="table">
+						<thead>
+							<th>NUM</th>
+							<th>TITLE</th>
+							<th>Writer</th>
+							<th>DATE</th>
+							<th>상태</th>
+						</thead>
+						<c:forEach items="${qna}" var="i">
+							<tr title="${i.qnum}" class="qnaSel" id="${i.pw}">
+								<td>${fn:substring(i.qnum, 1,8)}</td>
+								<td>
+									<c:if test="${i.pw ne null}">
+										<c:if test="${i.depth eq '1'}">&nbsp;&nbsp;&nbsp;&nbsp;답변 : </c:if>비밀글입니다.
+									</c:if>
+									<c:if test="${i.pw eq null}">
+										<c:if test="${i.depth eq '1'}">&nbsp;&nbsp;&nbsp;&nbsp;답변 : </c:if>${i.title}
+									</c:if>
+								</td>
+								<td>
+									<c:if test="${i.pw eq null}">
+										${i.writer}
+									</c:if>
+									<c:if test="${i.pw ne null}">
+										${fn:substring(i.writer, 0, 3)}****
+									</c:if>
+								</td>
+								<td>${i.reg_date}</td>
+								<td><c:if test="${i.answer eq '0'}">답변대기중</c:if>
+									<c:if test="${i.answer eq '1'}">답변완료</c:if>
+								</td>
+							</tr>					
+						</c:forEach>
+					</table>
+					</div>
+					</div>
+					<div id="div4" class="festi_wrap2">
+						<div class="festi_title">
+							<strong>관람후기</strong>
+							<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
+						</div>
+						<div>
+				
+							<%-- <c:if test="${member.grade > 1}"> --%> 
+							<%-- </c:if> --%>
+
+						<!--  후기 -->
+						<table class="table">
+							<thead>
+								<th>NUM</th>
+								<th>TITLE</th>
+								<th>Writer</th>
+								<th>DATE</th>
+								<th>hit</th>
+							</thead>
+							<c:forEach items="${after}" var="i">
+								<tr title="${i.anum}" class="afterSel">
+									<td>${fn:substring(i.anum, 1,8)}</td>
+									<td>${i.title}</td>
+									<td>${i.writer}</td>
+									<td>${i.reg_date}</td>
+									<td>${i.hit}</td>
+								</tr>
+							</c:forEach>
+						</table>
+						</div>
+					</div>
+				</div>
+   			</div>
+		</div>
    <div id="footer">
       <c:import url="../inc/footer.jsp"></c:import>
    </div>
@@ -325,7 +345,7 @@
 	<!-- script -->
 	<!-- 지도 -->
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services"></script> -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript">
 	
 	/* 각 행 선택 시 select 페이지 이동 */
@@ -849,6 +869,12 @@
 	    infowindow3.setContent(content);
 	    infowindow3.open(map3, marker);
 	}
+	
+	// 원하는 태그로 스크롤 이동하기
+    function fnMove(seq){
+        var offset = $("#div" + seq).offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
 	
 </script>
 

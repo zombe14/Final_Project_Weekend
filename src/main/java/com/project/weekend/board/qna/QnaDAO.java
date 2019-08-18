@@ -64,6 +64,11 @@ public class QnaDAO{
 		return sqlSession.update(NAMESPACE+"setAnswer", ref);
 	}
 	
+	public int setAnswerDelete(String ref) throws Exception{
+		System.out.println("q d : "+ref);
+		return sqlSession.update(NAMESPACE+"setAnswerDelete", ref);
+	}
+	
 	public List<String> getSelectRef(String ref) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getSelectRef", ref);
 	}
