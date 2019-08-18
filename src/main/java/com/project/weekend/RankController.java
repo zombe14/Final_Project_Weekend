@@ -4,6 +4,9 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +21,6 @@ import com.project.weekend.util.PageMaker;
 public class RankController {
 	@Inject
 	private FestiService festiService;
-
 	@RequestMapping(value = "rank_festi")
 	public ModelAndView rank(PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -28,5 +30,4 @@ public class RankController {
 		mv.setViewName("/rank/rank_festi");
 		return mv;
 	}
-	
 }

@@ -44,12 +44,12 @@
   	      			</div>
   	      				<ul class="rank_menu">
   	      					<c:choose>
-  	      						<c:when test="${request.getParameter('category') eq '1'}">
+  	      						<c:when test="${param.category eq 1}">
 									<li><a href="${pageContext.request.contextPath}/rank/rank_festi?category=1" class="tab1 on">공연</a></li>
 									<li><a href="${pageContext.request.contextPath}/rank/rank_festi?category=2" class="tab2">축제</a></li>
 									<li><a href="${pageContext.request.contextPath}/rank/rank_festi?category=3" class="tab3">대학로</a></li>
   	      						</c:when>
-  	      						<c:when test="${request.getParameter('category') eq '2'}">
+  	      						<c:when test="${param.category eq 2}">
   	      							<li><a href="${pageContext.request.contextPath}/rank/rank_festi?category=1" class="tab1">공연</a></li>
 									<li><a href="${pageContext.request.contextPath}/rank/rank_festi?category=2" class="tab2 on">축제</a></li>
 									<li><a href="${pageContext.request.contextPath}/rank/rank_festi?category=3" class="tab3">대학로</a></li>
