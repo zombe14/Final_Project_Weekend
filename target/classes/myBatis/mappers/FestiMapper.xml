@@ -181,7 +181,12 @@
 	<!-- 랭킹 -->
 	<!-- 리스트 -->
 	<select id="getRankList" resultMap="festiResult" parameterType="FestiDTO">
-		select * from festi where category = #{category} and hit > 1 order by hit desc
+		select * from 
+		(select rownum R, F.* from 
+		(select num, title, startdate, enddate, reg_date, local, fnum, fname, oname
+		from festi full join files using(num)
+		where category = #{category} and hit > 1
+		order by hit desc) F)
 	</select>
 	<!-- 상혁 끝 -->
 </mapper>
