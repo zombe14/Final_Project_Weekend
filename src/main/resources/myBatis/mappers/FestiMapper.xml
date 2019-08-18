@@ -125,8 +125,8 @@
 	</select>
 	<!-- 글쓰기 -->
 	<insert id="setWeekRecoWrite" parameterType="FestiDTO">
-		insert into festi(num, title, writer, contents, reg_date, hit, region, category, local)
-		values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{region}, #{category}, #{local})
+		insert into festi(num, title, writer, contents, reg_date, hit, region, category)
+		values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{region}, 0)
 	</insert>
 	<!-- 글수정 -->
 	<update id="setWeekRecoUpdate" parameterType="FestiDTO">
@@ -167,18 +167,22 @@
 	</select>
 	<!-- 글 쓰기 -->
 	<insert id="setUserRecoWrite" parameterType="FestiDTO">
-		insert into festi(num, title, writer, contents, reg_date, hit, region, category)
+		insert into festi(num, title, writer, contents, reg_date, hit, category)
 		valuse(#{num},#{title}, #{writer}, #{contents}, sysdate, 0, #{region}, 4)
 	</insert>
 	<!-- 글 수정 -->
 	<update id="setUserRecoUpdate" parameterType="FestiDTO">
-		update festi set title = #{title}, contents = #{contents}, region=#{region} where num = #{num}
+		update festi set title = #{title}, contents = #{contents}, where num = #{num}
 	</update>
 	<!-- 글 삭제 -->
 	<delete id="setUserRecoDelete" parameterType="String">
 		delete festi where num = #{num}
 	</delete>
 	<!-- 랭킹 -->
+	<!-- 리스트 -->
+	<select id="getRankListSelect" resultMap="festiResult" parameterType="FestiDTO">
+		select * from festi where category = 1 and hit > 1 order by hit desc
+	</select>
 	
 	<!-- 상혁 끝 -->
 </mapper>
