@@ -113,14 +113,6 @@
 	</select>
 	<!-- W추천 -->
 	<!-- 유저추천 -->
-	<insert id="setWriteUser" parameterType="FestiDTO">
-		insert into festi(num, title, ) 
-	</insert>
-	INSERT INTO FESTI(NUM,
-		TITLE, WRITER, CONTENTS, REG_DATE, HIT, CATEGORY, PRICE, TOTAL,
-		STARTDATE, ENDDATE, LOCAL, TOP, AGE, REGION)
-		VALUES(#{num},#{title},#{writer},#{contents},sysdate,0,#{category},#{price},#{total},#{startDate},#{endDate},#{local},#{top},
-		#{age}, #{region})
 	<!-- 랭킹 -->
 	
 	<!-- 상혁 끝 -->
