@@ -87,10 +87,6 @@
 						</ul>
 					</c:if>
 				</div>
-				
-				<div class="boardwrite">
-						<button id="boardWrite">${boardTitle} 글쓰기</button>
-				</div>
   	      						<!-- 검색창 -->
 				<form action="./${board}List" class="search_form">
 					<select name="kind" class="search_select">
@@ -101,6 +97,9 @@
 					<input type="text" placeholder="" name="search" class="search_input">
 					<button id="searchButton">검색</button>
 				</form>
+				<div class="boardwrite">
+						<button id="boardWrite">${boardTitle} 글쓰기</button>
+				</div>
   	  	     	 </div>
       		</div>
     	</div>
