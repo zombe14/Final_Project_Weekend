@@ -23,8 +23,21 @@
       		<div class="conta">
   	      		<div class="week_wrap">
   	      			<div class="week_title">
-  	      				<strong> W추천 </strong>
+  	      				<strong> W 추천 </strong>
   	      			</div>
+  	      			<div class="week_box">
+  	      				<ul>
+  	      					<li>
+  	      						<strong>W 추천 게시판</strong>
+  	      					</li>
+  	      					<li>
+  	      						<p>
+  	      							▷ &nbsp;&nbsp;관리자 및  전문가들이 직접 다녀오고 추천 및 소개하는 게시판입니다.
+  	      						</p>
+  	      					</li>
+  	      				</ul>
+  	      			</div>
+  	      			
   	      			<div id="tableDiv">
 					<!-- notice list 테이블 -->
 					<table class="table">

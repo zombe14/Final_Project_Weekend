@@ -22,7 +22,7 @@
       		<div class="conta">
   	      		<div class="rank_wrap">
   	      			<div class="rank_title">
-  	      				<h3> 주말뭐해 Top100</h3>
+  	      				<strong> 주말뭐해 Top100</strong>
   	      			</div>
   	      			<div class="rank_box">
   	      				<ul>

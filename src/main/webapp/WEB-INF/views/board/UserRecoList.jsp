@@ -25,6 +25,19 @@
   	      			<div class="user_title">
   	      				<strong> 유저추천 </strong>
   	      			</div>
+  	      			<div class="user_box">
+  	      				<ul>
+  	      					<li>
+  	      						<strong>유저 추천 게시판</strong>
+  	      					</li>
+  	      					<li>
+  	      						<p>
+  	      							▷ &nbsp;&nbsp;이곳에 소개되어 있지 않은 전국 방방곡곡 축제들을 유저들끼리 서로 정보 공유하는 커뮤니티 공간입니다.
+  	      						</p>
+  	      					</li>
+  	      				</ul>
+  	      			</div>
+  	      			
   	      			<div id="tableDiv">
 					<!-- notice list 테이블 -->
 					<table class="table">
