@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,6 +42,8 @@ public class FestiController{
 	@RequestMapping(value = "festiWrite", method = RequestMethod.GET)
 	public ModelAndView setWrite() throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String num = "f"+festiService.getNum();
+		mv.addObject("num", num);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
 		mv.setViewName("board/festiWrite");
@@ -48,11 +51,10 @@ public class FestiController{
 	}
 	//write process - post
 	@RequestMapping(value = "festiWrite", method = RequestMethod.POST)
-	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, List<DatesDTO> datesDTOs, HttpSession session) throws Exception{ //, List<DatesDTO> datesDTOs
+	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{ //, List<DatesDTO> datesDTOs
 		ModelAndView mv = new ModelAndView();
 		String path = "board/boardTile";
-		System.out.println("con : "+datesDTOs.size());
-		int res = festiService.setWrite(festiDTO, filelist, datesDTOs, session);
+		int res = festiService.setWrite(festiDTO, filelist, session);
 		
 		if(res>0) {
 			path = "redirect:./festiSelect?num="+festiDTO.getNum();
@@ -61,6 +63,14 @@ public class FestiController{
 		}
 		mv.setViewName(path);
 		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "optionWrite", method = RequestMethod.POST)
+	public int setOptionWrite(DatesDTO datesDTO, HttpSession session) throws Exception{
+		int res = festiService.setOptionWrite(datesDTO, session);
+		System.out.println(res);
+		return res;
 	}
 	// list
 	@RequestMapping(value = "festiList", method = RequestMethod.GET)

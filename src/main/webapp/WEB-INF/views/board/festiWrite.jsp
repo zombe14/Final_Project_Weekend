@@ -136,32 +136,35 @@
 					
 				</tbody>
 				</table>
-
+				<input type="text" name=num value="${num}">
 				</form>
 				
-				<form id="datesOptionFrm" action="./optionWrite" method="post">
+				<!-- <form id="datesOptionFrm" action="./optionWrite" method="post"> -->
 				<div id="datesOptionDiv"> <!-- 카테고리 3 -->
-					<a class="btn btn-default" id="addOptions">옵션 추가하기</a>
-					
+					<div id="optionsDiv">
+						
+					</div>					
 					<div id="datesOption">
 						<div id="option1">
 							<div class="options">
 								<div class="dateDiv">
 									<label for="dates">날짜 </label>
-									<input type="date" name="reg_date" class="dates">
+									<input type="date" name="reg_date" class="dates" id="dates">
 								</div>
 								<div class="timeDiv">
 									<label for="time">시작시간</label>
-									<input type="text" name="time" class="time">
+									<input type="text" name="time" class="time" id="time">
 								</div>		
 								<div class="seatDiv">
 									<label for="seat">좌석</label>
-									<input type="number" name="seat" class="seat"><span> 석</span>
+									<input type="number" name="seat" class="seat" id="seat"><span> 석</span>
 								</div>
 								<div class="priceDiv">
 									<label for="price">가격</label>
-									<input type="number" name="price2" class="price"><span> 원</span>
+									<input type="number" name="price" class="price" id="price"><span> 원</span>
 								</div>
+								<input type="text" name="num" value="${num}" id="num">
+								<a id="writeOption">옵션등록</a>
 							</div>
 							<hr>
 							
@@ -169,7 +172,7 @@
 					</div>
 					
 				</div>
-				</form>
+			<!-- 	</form> -->
 				
 
 				<a id="test">date test</a>
@@ -225,10 +228,43 @@ $('#addOptions').click(function() {
 	var html = option
 	$('#datesOption').append(html);
 });
-	
+	$('#writeOption').click(function(){
+		var num = $('#num').val();
+		var reg_date = $('#dates').val();
+		var time = $('#time').val();
+		var seat = $('#seat').val();
+		var price = $('#price').val();
+		$.ajax({
+			url:'./optionWrite',
+			type:'POST',
+			data:{
+				num:num,
+				reg_date:reg_date,
+				time:time,
+				seat:seat,
+				price:price
+			},
+			success:function(data){
+				if(data == '1'){
+					var option = '';
+					option += '<p>'+num+' | '+reg_date+' | '+time+' | '+seat+' | '+price+'</p>';
+					$('#optionsDiv').append(option);
+					$('#dates').val('');
+					$('#time').val('');
+					$('#seat').val('');
+					$('#price').val('');
+				} else {
+					alert('실패');
+				}
+			},
+			error:function(e){
+				console.log(e);
+			}
+		});
+	});
 	
 	//$(this).last().val()
-	var min='';
+/* 	var min='';
 	var max='';
 	var endDate;
 	var startDate;
@@ -245,8 +281,7 @@ $('#addOptions').click(function() {
 			dates2 = new Date(dates2[0], dates2[1]-1, dates2[2]);
 			datesCompare.push(dates2);
 		}
-		//console.log(datesCompare);
-		/* endDate */
+	
 		var tmp1='';
 		var tmp2 = '';
 	
@@ -273,8 +308,8 @@ $('#addOptions').click(function() {
 		$('#startDate').val(startDate);
 		
 	});
-
-
+ */
+	
 
 /* 첨부 파일 관리 */
 // 개수 제한. 최대 5개까지.
@@ -437,6 +472,7 @@ $('#top').click(function(){
 
 	 $('#write').click(function() {
 		$('#frm').submit();
+		$('#datesOptionFrm').submit();
 		/* var title = $('#title').val() != '';
 		var writer = $('#writer').val() != '';
 		var contents = $('#contents').val() != '';

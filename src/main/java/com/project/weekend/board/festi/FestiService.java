@@ -47,15 +47,14 @@ public class FestiService {
 	@Inject
 	private DatesDAO datesDAO;
 
-	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, List<DatesDTO> datesDTOs, HttpSession session) throws Exception {
-		int num = festiDAO.getNum();
-		festiDTO.setNum("f"+num);
+	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
+		
 		int res = festiDAO.setWrite(festiDTO);
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 		for(MultipartFile f : filelist) {
 			if(f.getOriginalFilename().length()>0) {				
 				FileDTO fileDTO = new FileDTO();
-				fileDTO.setNum("f"+num);
+				fileDTO.setNum(festiDTO.getNum());
 				fileDTO.setOname(f.getOriginalFilename());
 				String fname = fileSaver.saveFile(realPath, f);
 				fileDTO.setFname(fname);
@@ -63,16 +62,13 @@ public class FestiService {
 			}
 		}
 		
-		System.out.println("ser : "+datesDTOs.size());
+		return res;
+	}
+	
+	public int setOptionWrite(DatesDTO datesDTO, HttpSession session) throws Exception{
+		int res = 0;
+		res = datesDAO.setWrite(datesDTO);			
 		
-		if(datesDTOs.size()>0) {
-			for(int i = 0 ; i<datesDTOs.size();i++) {
-				DatesDTO datesDTO = new DatesDTO();
-				datesDTO.setNum("f"+num);
-				datesDTO.setPrice(datesDTOs.get(i).getPrice());
-				datesDTO.setReg_date(datesDTOs.get(i).getReg_date());
-				datesDTO.setSeat(datesDTOs.get(i).getSeat());
-				datesDTO.setTime(datesDTOs.get(i).getTime());
 				/*
 				 * datesDTO.setPrice((Integer)datesDTOs.get(i).get("price2"));
 				 * datesDTO.setReg_date((Date)datesDTOs.get(i).get("reg_date"));
@@ -80,12 +76,9 @@ public class FestiService {
 				 * datesDTO.setTime((String)datesDTOs.get(i).get("time"));
 				 */
 				
-				res = datesDAO.setWrite(datesDTO);
-			}
-		}
-		
 		return res;
 	}
+	
 	public List<FestiDTO> getList(PageMaker pageMaker) throws Exception{
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makeRow();
