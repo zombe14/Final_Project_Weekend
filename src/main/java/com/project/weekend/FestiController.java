@@ -48,7 +48,7 @@ public class FestiController{
 	}
 	//write process - post
 	@RequestMapping(value = "festiWrite", method = RequestMethod.POST)
-	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, @RequestParam(value = "DatesDTO") List<DatesDTO> datesDTOs, HttpSession session) throws Exception{ //, List<DatesDTO> datesDTOs
+	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, List<DatesDTO> datesDTOs, HttpSession session) throws Exception{ //, List<DatesDTO> datesDTOs
 		ModelAndView mv = new ModelAndView();
 		String path = "board/boardTile";
 		System.out.println("con : "+datesDTOs.size());

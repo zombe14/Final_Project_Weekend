@@ -137,7 +137,9 @@
 				</tbody>
 				</table>
 
+				</form>
 				
+				<form id="datesOptionFrm" action="./optionWrite" method="post">
 				<div id="datesOptionDiv"> <!-- 카테고리 3 -->
 					<a class="btn btn-default" id="addOptions">옵션 추가하기</a>
 					
@@ -158,7 +160,7 @@
 								</div>
 								<div class="priceDiv">
 									<label for="price">가격</label>
-									<input type="number" name="price" class="price"><span> 원</span>
+									<input type="number" name="price2" class="price"><span> 원</span>
 								</div>
 							</div>
 							<hr>
@@ -167,15 +169,12 @@
 					</div>
 					
 				</div>
-				
+				</form>
 				
 
 				<a id="test">date test</a>
       		 	<a id="write" class="btn btn-default">등록</a>
 
-
-				
-			</form> 
   	      	</div>
       	</div>
     </div>
