@@ -16,19 +16,40 @@
 			var add = $("#add").text();
 			var emailAddress = $("#emailAddress").val();
 			var email = emailId + add + emailAddress;
-			alert(email);
-			console.log(email);
-			$.post("../myPage/mEmailCheck",{
+			$.post("../search/mailSearch",{
 				email : email
 			}, function (data) {
-					console.log(data);
 				if(data == 1){
-					alert("이제 이메일 인증번호를 보내면 된다!");
-				}else{
+					alert(email);
+					// 이메일의 존재여부를 확인 이제 인증번호를 보내면 된다.
+					$.post("../search/mailSending",{
+						email : email
+						}, function (data) {
+							if(data == 1){
+								alert("인증번호가 발송되었습니다.\n확인후 번호를 입력해주세요.");
+								}else{alert("인증번호 발송에 실패하였습니다.\다시 시도해주세요.");
+								}
+							}
+					)
+				}else{// 이메일이 없음을 확인. 다시 입력하게 해야한다.
 					alert("존재하지 않는 이메일 입니다.\n다시 확인해 주세요.");
+					$("#emailId").val('');
+					$("#emailAddress").val('');
 				}
 			}
 			)
+		})
+		$("#finalCheck").on("click", function(){
+			var Code = $("#emailCheckNumber").val();
+			$.post("../search/mailCheck",{
+				Code : Code
+			}, function (data) {
+				if(data == 1){
+					alert("이메일 인증이 완료되었습니다.");
+				}else{
+					alert("인증번호를 잘못 입력하셨습니다.\n다시 시도해주세요.");
+				}
+			})
 		})
 	})
 </script>
@@ -54,6 +75,7 @@
 		<input type="text" id ="emailCheckNumber" title="인증번호 입력" name="emailCheckNumber" placeholder="인증번호를 입력해 주세요.">
 		<button type="button" id="finalCheck">확인</button>
 		<div id="result_emailOk" class="result_font" style="color: green"></div>
+		<input type="text" id = "findId" val="${result.id}">
 	</form>
 
 </body>

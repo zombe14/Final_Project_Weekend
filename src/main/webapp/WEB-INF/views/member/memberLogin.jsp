@@ -38,8 +38,8 @@
 					
 					<div class="login_bot">
 						<a href="./memberAgree" class="lob">회원가입</a> <span class="log lob">|</span>
-						<a href="#" onclick="window.open('${pageContext.request.contextPath}/Search/IdSearch','아이디 찾기','width=700, height=500')" class="lob">아이디 찾기</a> <span class="log lob">|</span>
-						<a href="#" onclick="window.open('${pageContext.request.contextPath}/Search/PwSearch','아이디 찾기','width=700, height=500')" class="lob">비밀번호 찾기</a>
+						<a href="#" onclick="window.open('${pageContext.request.contextPath}/search/IdSearch','아이디 찾기','width=700, height=500')" class="lob">아이디 찾기</a> <span class="log lob">|</span>
+						<a href="#" onclick="window.open('${pageContext.request.contextPath}/search/PwSearch','아이디 찾기','width=700, height=500')" class="lob">비밀번호 찾기</a>
 					</div>
 					<div class="login_footer">
 						<div class="login_menu">

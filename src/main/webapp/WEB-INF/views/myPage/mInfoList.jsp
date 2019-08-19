@@ -222,13 +222,13 @@
 			},function(data){
 				if(data == 1){
 					// data가 1이다. 즉, 인증메일이 보내졌다.
-					alert("인증메일이 보내졌습니다.\n확인 후 번호를 입력해주세요.");
+					alert("인증번호가 발송되었습니다.\n확인후 번호를 입력해주세요.");
 					$("#eCheck2").hide();
 					$("#eCheck3").show();
 					$("#emailCheckNumber").show();
 				}else{
 					// data가 1이 아니다. 즉, 인증메일이 안보내졌다.
-					alert("인증에 실패하였습니다.\n번호를 다시 확인해 주세요.");
+					alert("인증번호 발송에 실파하였습니다.\n다시 시도해주세요.");
 				}
 			} // function 끝;
 			) // $.post 끝;
