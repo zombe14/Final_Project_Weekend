@@ -72,11 +72,14 @@
 						</thead>
 						<c:forEach items="${list}" var="list" varStatus="status">
 							<tr class="select">
-								<td class="td10">${status.count}</td>
-								<td class="td60">${list.title}</td>
+								<td class="td10"><p class="color_green">${status.count}</p></td>
+								<td class="td30">
+										<img alt="" src="${pageContext.request.contextPath}/resources/images/home/대박워터파크.jpg">
+									${list.title}
+								</td>
 								<td class="td10">아직 구현안됨</td>
 								<td class="td10">${list.reg_date} ~	${list.reg_date}</td>
-								<td class="td10">${list.local}</td>
+								<td class="td20">${list.local}</td>
 							</tr>
 						</c:forEach>
   	      			</table>
