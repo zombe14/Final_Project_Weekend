@@ -106,7 +106,7 @@ public class FestiController {
 		mv.addObject("dto", festiDTO);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
-		mv.setViewName("board/boardUpdate");
+		mv.setViewName("board/festiUpdate");
 		return mv;
 	}
 	

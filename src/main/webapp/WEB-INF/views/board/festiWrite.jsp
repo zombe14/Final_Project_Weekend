@@ -10,22 +10,13 @@
 
 <title>${boardTitle} Write</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/festiWrite.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <!-- 지도 -->
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services"></script>	
 <!-- date picker -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- date picker -->
-<style type="text/css">
-	#preview-img{
-		width: 300px;
-		height: auto;
-		border-radius: 4px;
-	}
-	.r{
-		color:red;
-	}
-</style>
 </head>
 <body>
    <div id="wrap">
@@ -34,8 +25,12 @@
       </div>
       <div id="container">
       	<div class="conta">
-  	      	
+  	      	<div class="fwrite_wrap">
+  	      		<div class="fwrite_title">
+  	      			<h3>${board}글쓰기</h3>
+  	      		</div>
       		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+
 				
 				<div>
 					<label for="title">제목<span class="r">*</span></label>
@@ -156,14 +151,16 @@
 				
 				
       		 	<a id="write" class="btn btn-default">등록</a>
+
+				
 			</form> 
-			
+  	      	</div>
       	</div>
-      </div>
-      <div id="footer">
-      <c:import url="../inc/footer.jsp"></c:import>
-      </div>
-   </div>
+    </div>
+    <div id="footer">
+    	<c:import url="../inc/footer.jsp"></c:import>
+	</div>
+</div>
    
 <!-- 지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 	
@@ -319,12 +316,12 @@ $('#top').click(function(){
 
 
 	/* category */
-	$('#daehakDiv').hide();
+	$('.daehakDiv').hide();
 	$('.category').click(function() {
 		if ($(this).val() == '3') {
-			$('#daehakDiv').show();
+			$('.daehakDiv').show();
 		} else {
-			$('#daehakDiv').hide();
+			$('.daehakDiv').hide();
 		}
 	});
 
