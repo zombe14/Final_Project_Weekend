@@ -1,5 +1,6 @@
 package com.project.weekend;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -46,15 +47,12 @@ public class FestiController {
 	
 	//write process - post
 	@RequestMapping(value = "festiWrite", method = RequestMethod.POST)
-	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{ //, List<DatesDTO> datesDTOs
+	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HashMap<String, Object> datesDTOs, HttpSession session) throws Exception{ //, List<DatesDTO> datesDTOs
 		ModelAndView mv = new ModelAndView();
 		String path = "board/boardTile";
-		int res = festiService.setWrite(festiDTO, filelist, session);
-		/*
-		for(DatesDTO d : datesDTOs) {
-		 res = datesService.setWrite(d, session);
-		}
-		*/
+		System.out.println("con : "+datesDTOs.size());
+		int res = festiService.setWrite(festiDTO, filelist, datesDTOs, session);
+		
 		if(res>0) {
 			path = "redirect:./festiSelect?num="+festiDTO.getNum();
 		} else {

@@ -16,6 +16,7 @@
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services"></script>	
 <!-- date picker -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+ 
 <!-- date picker -->
 </head>
 <body>
@@ -29,7 +30,7 @@
   	      		<div class="fwrite_title">
   	      			<h3>${board}글쓰기</h3>
   	      		</div>
-      		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+      		 <form action="./festiWrite" method="post" enctype="multipart/form-data" id="frm">
 
 				
 				<div>
@@ -75,36 +76,22 @@
 					<input type="radio" name="category" class="category" id="daehakro" value="3"> 3. 대학로 연극
 				</div>
 				
-				<div>
-					<label for="startDate">시작일<span class="r">*</span></label>
-					<input type="date" name="startDate" class="date">  
-				</div>
-				<div>
-					<label for="endDate">종료일<span class="r">*</span></label>
-					<input type="date" name="endDate" class="date">
-				</div>
-				<div id="daehakDiv">
-					<div>
-						<label for="price">가격</label>
-						<input type="number" name="price" value="0"><span>원</span>
-					</div>
-					<div>
-						<label for="total">좌석 </label>
-						<input type="number" name="total" value="0"><span>석</span>
-					</div>
-				</div>
+				
 				<div id="ageDiv">
 					<label for="age">연령제한<span class="r">*</span></label>
 					<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 전연령
 					<input type="radio" name="ageSel" class="age" id="teen" value="2"> 청소년 이상
 					<input type="radio" name="ageSel" class="age" id="adult" value="3"> 성인 이상
 					<input type="radio" name="ageSel" class="age" id="etc" value="4"> 기타
-					<input type="text" class="age" id="age" name="age" value="1">
 				</div>
 				<div>
 					<label for="local">지역<span class="r">*</span></label>
 					<input type="text" name="local1" id="local1" onclick="openMap()" style="width: 30%;">
 					<input type="text" name="local2" id="local2" placeholder="상세주소를 입력해주세요" readonly="readonly"  style="width: 20%;" >
+				
+				</div>
+				<div>
+				<label for="local">지역 확인<span class="r">*</span></label>
 					<input type="text" name="local" id="local" readonly="readonly"  style="width: 30%;" >
 					이 주소가 맞습니다.<span class="r">*</span> <input type="checkbox" id="localConfirm">
 					<input type="hidden" name="region" id="region">
@@ -117,14 +104,36 @@
 					<input type="checkbox" id="top" name="top" value="0">
 				</div>
 				</c:if>
-				
-				
 				<hr>
-				<div id="datesOptionDiv">
+				<div id="festiDatesDIV"><!-- 카테고리 1,2 -->
+					<div>
+						<label for="startDate">시작일<span class="r">*</span></label>
+						<input type="date" name="startDate" id="startDate" class="date">  
+					</div>
+					<div>
+						<label for="endDate">종료일<span class="r">*</span></label>
+						<input type="date" name="endDate" id="endDate" class="date">
+					</div>
+				</div>
+				
+				<div id="hiddenDiv">
+					<div>
+						<label for="price">가격</label>
+						<input type="hidden" name="price" value="0"><span>원</span>
+					</div>
+					<div>
+						<label for="total">좌석 </label>
+						<input type="hidden" name="total" value="0"><span>석</span>
+					</div>
+				</div>
+				 <hr>
+				
+				<div id="datesOptionDiv"> <!-- 카테고리 3 -->
 					<a class="btn btn-default" id="addOptions">옵션 추가하기</a>
+					
 					<div id="datesOption">
 						<div id="option1">
-							<div>
+							<div class="options">
 								<div class="dateDiv">
 									<label for="dates">날짜 </label>
 									<input type="date" name="reg_date" class="dates">
@@ -132,24 +141,26 @@
 								<div class="timeDiv">
 									<label for="time">시작시간</label>
 									<input type="text" name="time" class="time">
-								</div>				
+								</div>		
 								<div class="seatDiv">
 									<label for="seat">좌석</label>
-									<input type="number" name="seat" class="seat">
+									<input type="number" name="seat" class="seat"><span> 석</span>
 								</div>
 								<div class="priceDiv">
 									<label for="price">가격</label>
-									<input type="number" name="price" class="price">
+									<input type="number" name="price" class="price"><span> 원</span>
 								</div>
 							</div>
 							<hr>
+							
 						</div>
 					</div>
+					
 				</div>
 				
 				
 				
-				
+				<a id="test">date test</a>
       		 	<a id="write" class="btn btn-default">등록</a>
 
 				
@@ -168,13 +179,92 @@
 <script src="../resources/js/summernote.js"></script>
 <!-- script -->
 <script type="text/javascript">
+/* 시작일, 종료일 비교 */
+$('#endDate, #startDate').change(function(){
+	var startDate = $( '#startDate' ).val();
+    var startDateArr = startDate.split('-');
+      
+    var endDate = $( '#endDate' ).val();
+    var endDateArr = endDate.split('-');
+              
+    var startDateCompare = new Date(startDateArr[0], startDateArr[1]-1, startDateArr[2]);
+    var endDateCompare = new Date(endDateArr[0], endDateArr[1]-1, endDateArr[2]);
+      
+    if(startDateCompare.getTime() > endDateCompare.getTime()) {          
+        alert("시작날짜와 종료날짜를 확인해 주세요.");
+        $('#endDate').val('');
+        return;
+    }
+})
+
+
+$('#hiddenDiv').hide();
+$('#datesOptionDiv').hide();
+$('.category').click(function() {
+	if($(this).val() != 3){
+		$('#festiDatesDIV').show();
+		$('#datesOptionDiv').hide();
+	} else {
+		$('#festiDatesDIV').show();
+		$('#datesOptionDiv').show();
+	}
+});
 
 $('#addOptions').click(function() {
 	var option = $('#option1').html();
-	console.log(option)
 	var html = option
 	$('#datesOption').append(html);
 });
+	
+	
+	//$(this).last().val()
+	var min='';
+	var max='';
+	var endDate;
+	var startDate;
+	$('#datesOption').on('change','.dates',function(){
+		var dates = [];
+		var datesCompare = [];
+		
+		$('.dates').each(function(){
+			dates.push($(this).val());
+		})
+		for(var i = 0; i<dates.length;i++){
+			var dates2 = [];
+			dates2 = dates[i].split('-');
+			dates2 = new Date(dates2[0], dates2[1]-1, dates2[2]);
+			datesCompare.push(dates2);
+		}
+		//console.log(datesCompare);
+		/* endDate */
+		var tmp1='';
+		var tmp2 = '';
+	
+		if(datesCompare.length>1){
+			for(var i = 0;i<datesCompare.length;i++){
+				if(datesCompare[i]>max){
+					max = datesCompare[i];
+					endDate = dates[i];
+				} 
+				
+				if(datesCompare[i]<min){
+					min = datesCompare[i];
+					startDate = dates[i];
+				}
+
+			}
+		} else {
+			startDate = dates[0];
+			endDate = dates[0];
+			max = datesCompare[0];
+			min = datesCompare[0];
+		}
+		$('#endDate').val(endDate);
+		$('#startDate').val(startDate);
+		
+	});
+
+
 
 /* 첨부 파일 관리 */
 // 개수 제한. 최대 5개까지.
@@ -305,7 +395,6 @@ $('#top').click(function(){
   });
   
   $('#local2').blur(function() {
-	$('#local').val('');
 	if($('#local2').val() != ''){
 		var local = $('#local1').val()+"  "+$('#local2').val();
 		$('#local').val(local);
@@ -315,15 +404,7 @@ $('#top').click(function(){
 // 주소API 끝-----------------
 
 
-	/* category */
-	$('.daehakDiv').hide();
-	$('.category').click(function() {
-		if ($(this).val() == '3') {
-			$('.daehakDiv').show();
-		} else {
-			$('.daehakDiv').hide();
-		}
-	});
+	
 
 	$('.t').change(function() {
 		$('#category').val($(this).val());
@@ -344,8 +425,9 @@ $('#top').click(function(){
 	/* 가격상세 */
 	
 
-	$('#write').click(function() {
-		var title = $('#title').val() != '';
+	 $('#write').click(function() {
+		$('#frm').submit();
+		/* var title = $('#title').val() != '';
 		var writer = $('#writer').val() != '';
 		var contents = $('#contents').val() != '';
 		var category = $('#category').val() != '';
@@ -355,7 +437,7 @@ $('#top').click(function(){
 			$('#frm').submit();
 		} else {
 			alert('필수(*)를 모두 입력해주세요');
-		}
+		} */
 	});
 </script>
 </body>

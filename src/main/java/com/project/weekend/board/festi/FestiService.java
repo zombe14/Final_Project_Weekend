@@ -1,6 +1,7 @@
 package com.project.weekend.board.festi;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,6 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.festi.after.AfterDAO;
 import com.project.weekend.board.festi.after.AfterService;
+import com.project.weekend.board.festi.dates.DatesDAO;
+import com.project.weekend.board.festi.dates.DatesDTO;
+import com.project.weekend.board.festi.dates.DatesService;
 import com.project.weekend.board.festi.festiQna.FestiQnaDAO;
 import com.project.weekend.board.festi.festiQna.FestiQnaService;
 import com.project.weekend.file.FileDAO;
@@ -39,8 +43,10 @@ public class FestiService {
 	private AfterService afterService;
 	@Inject
 	private FestiQnaService festiQnaService;
+	@Inject
+	private DatesDAO datesDAO;
 
-	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
+	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HashMap<String,Object> datesDTOs, HttpSession session) throws Exception {
 		int num = festiDAO.getNum();
 		festiDTO.setNum("f"+num);
 		int res = festiDAO.setWrite(festiDTO);
@@ -55,6 +61,14 @@ public class FestiService {
 				res = fileDAO.setWrite(fileDTO);
 			}
 		}
+		System.out.println("ser : "+datesDTOs.size());
+		for(DatesDTO d : datesDTOs) {
+			if(d.getReg_date() != null) {
+				d.setNum("f"+num);
+				res = datesDAO.setWrite(d);
+			}
+		}
+		
 		return res;
 	}
 	
