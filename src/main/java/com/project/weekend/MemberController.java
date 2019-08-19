@@ -119,7 +119,17 @@ public class MemberController {
 		return mv;
 	}
 	@RequestMapping(value = "memberLogin", method = RequestMethod.GET)
-	public void getSelect(Model model,HttpSession session)throws Exception{}
+	public void getSelect(Model model,HttpSession session)throws Exception{
+		 System.out.println("들어옴");
+	        /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
+	        String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+	        System.out.println("들어옴");
+	        System.out.println("네이버:" + naverAuthUrl);
+	        
+	        //네이버 
+	        model.addAttribute("url", naverAuthUrl);
+		
+	}
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
 	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session,HttpServletRequest request,HttpServletResponse response ,@CookieValue(value = "mcookie",required = false)Cookie mcookie)throws Exception{

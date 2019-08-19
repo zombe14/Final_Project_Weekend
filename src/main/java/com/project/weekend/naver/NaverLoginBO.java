@@ -30,6 +30,7 @@ public class NaverLoginBO {
 		OAuth20Service oauthService = new ServiceBuilder().apiKey(CLIENT_ID).apiSecret(CLIENT_SECRET)
 				.callback(REDIRECT_URI).state(state) // 앞서 생성한 난수값을 인증 URL생성시 사용함
 				.build(NaverLoginApi.instance());
+		System.out.println("dd");
 		return oauthService.getAuthorizationUrl();
 	}
 
