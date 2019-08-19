@@ -79,6 +79,10 @@ public class FestiService {
 		return res;
 	}
 	
+	public int setOptionDelete(int dnum, HttpSession session) throws Exception{
+		return datesDAO.setDelete(dnum);
+	}
+	
 	public List<FestiDTO> getList(PageMaker pageMaker) throws Exception{
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makeRow();

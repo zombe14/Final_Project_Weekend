@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.weekend.board.comments.CommentsDTO;
 import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.board.festi.after.AfterDTO;
@@ -65,11 +66,25 @@ public class FestiController{
 		return mv;
 	}
 	
+	@RequestMapping(value = "optionList", method = RequestMethod.GET)
+	public ModelAndView getOptionList(String num, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<DatesDTO> list = datesService.getList(num, session);
+		mv.addObject("clist", list);
+		mv.setViewName("board/optionList");
+		return mv; 
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "optionDelete", method = RequestMethod.POST)
+	public int setOptionDelete(int dnum, HttpSession session) throws Exception{
+		return festiService.setOptionDelete(dnum, session);
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "optionWrite", method = RequestMethod.POST)
 	public int setOptionWrite(DatesDTO datesDTO, HttpSession session) throws Exception{
 		int res = festiService.setOptionWrite(datesDTO, session);
-		System.out.println(res);
 		return res;
 	}
 	// list

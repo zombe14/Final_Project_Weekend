@@ -136,7 +136,7 @@
 					
 				</tbody>
 				</table>
-				<input type="text" name=num value="${num}">
+				<input type="hidden" name=num value="${num}">
 				</form>
 				
 				<!-- <form id="datesOptionFrm" action="./optionWrite" method="post"> -->
@@ -163,7 +163,7 @@
 									<label for="price">가격</label>
 									<input type="number" name="price" class="price" id="price"><span> 원</span>
 								</div>
-								<input type="text" name="num" value="${num}" id="num">
+								<input type="hidden" name="num" value="${num}" id="num">
 								<a id="writeOption">옵션등록</a>
 							</div>
 							<hr>
@@ -223,11 +223,13 @@ $('.category').click(function() {
 	}
 });
 
+
 $('#addOptions').click(function() {
 	var option = $('#option1').html();
 	var html = option
 	$('#datesOption').append(html);
 });
+
 	$('#writeOption').click(function(){
 		var num = $('#num').val();
 		var reg_date = $('#dates').val();
@@ -246,8 +248,7 @@ $('#addOptions').click(function() {
 			},
 			success:function(data){
 				if(data == '1'){
-					var option = '';
-					option += '<p>'+num+' | '+reg_date+' | '+time+' | '+seat+' | '+price+'</p>';
+					getOptionsList();
 					$('#optionsDiv').append(option);
 					$('#dates').val('');
 					$('#time').val('');
@@ -261,6 +262,35 @@ $('#addOptions').click(function() {
 				console.log(e);
 			}
 		});
+	});
+	
+	function getOptionsList(){
+		$.ajax({
+			type:'GET',
+			url:'./optionsList',
+			data:{
+				num:'${num}'
+			},
+			success:function(data){
+				data = data.trim();    	
+				$('#optionsDiv').html(data);
+					
+			}
+		});
+	}
+	
+	$('#optionsDiv').on('click','.delOption',function(){
+		var check = confirm('삭제하시겠습니까?');
+		if(check){
+		
+			$.ajax({
+				url:'./optionDelete',
+				type:'POST',
+				data : {
+					
+				}
+			});
+		}
 	});
 	
 	//$(this).last().val()
