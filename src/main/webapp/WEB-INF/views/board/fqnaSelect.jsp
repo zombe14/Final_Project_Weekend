@@ -9,6 +9,7 @@
 <c:import url="../temp/boot.jsp"></c:import>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/boardSelect.css">
 <link rel="shortcut icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <style type="text/css">
@@ -24,24 +25,46 @@
 		</div>
 		<div id="container">
 			<div class="conta">
-				num : ${dto.num}
-				<br>
-				qnum : ${dto.qnum}
-				<br> 
-				title : ${dto.title} 
-				<br> 
-				writer : ${dto.writer} 
-				<br> 
-				reg_Date : ${dto.reg_date} 
-				<br>
-				
-				<br>
-				contents : ${dto.contents} 
-				<br> 
-				<br> 
+				<div class="fqna_wrap">
+					<div class="fqna_title">
+						<!-- 답변 달기 -->
+						<c:if test="${dto.answer eq 0}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
+							<a id="replyBtn" class="fqnaSelect_btn2">답변달기</a>
+						</c:if>
+  	      				<h3> 질문하기 </h3>
+  	      			</div>
+				<div class="tableDiv">
+						<table class="table" style="width: 100%">
+							<thead class="table_head">
+								<tr>
+									<th class="td1">
+										<div>${dto.num}</div>
+									</th>
+									<th class="td2">
+										<div>${dto.title}</div>
+									</th>
+									<th class="td1">
+										<div>${dto.writer}</div>
+									</th>
+									<th class="td1">
+										<div>${dto.reg_date}</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td colspan="5">
+										<div class="dt1">								
+											${dto.contents}
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</div>
 				
 				<c:forEach items="${dto.fileDTOs}" var="f">
-					<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
+					<input type="button" title="${f.fname}" class="down" value="${f.oname}" style="display: none;"> 
 				</c:forEach>
 				
 				<div style="display:none;">
@@ -52,12 +75,9 @@
 					</form>
 				</div>			
 				
-				<a id="list" title="${board}" class="${dto.num}">목록</a>
-				<a id="update" class="${board}">수정</a> 
-				<a id="delete" class="${board}">삭제</a>
-				<c:if test="${dto.answer eq 0}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
-					<a id="replyBtn" class="btn btn-default">답변달기</a>
-				</c:if>
+				<a id="list" title="${board}" class="${dto.num} fqnaSelect_btn">목록</a>
+				<a id="update" class="${board} fqnaSelect_btn">수정</a> 
+				<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
 
 				
 				<!-- 원글일때 -->
@@ -69,6 +89,7 @@
 					<input type="hidden" name="qnum" value="${dto.qnum}">
 				</form>
 			</div>
+		</div>
    </div>
    <div id="footer">
       <c:import url="../inc/footer.jsp"></c:import>

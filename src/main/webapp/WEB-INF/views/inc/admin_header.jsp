@@ -13,11 +13,12 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav" class="active">
-        <li><a href="${pageContext.request.contextPath}/admin/adminMain">관리자 메인</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/aUserList">유저관리</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/aNoticeList">게시판 관리</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/aEnjoyList">공연 관리</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin/aReserList">예약 관리</a></li>
+		<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/WeekReco/WeekRecoList"><i class="fa fa-home fa-fw"></i>W 추천</a></li>
+		<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiList?category=1"><i class="fa fa-home fa-fw"></i>공연</a></li>
+		<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiMain"><i class="fa fa-home fa-fw"></i>축제</a></li>
+		<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiList?category=3"><i class="fa fa-home fa-fw"></i>대학로</a></li>
+		<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/rank/rank_festi?category=1"><i class="fa fa-home fa-fw"></i>랭킹</a></li>
+		<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/UserReco/UserRecoList"><i class="fa fa-home fa-fw"></i>유저추천</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       	<!-- 관리자 로그아웃 -->

@@ -74,7 +74,7 @@
 							<tr class="select">
 								<td class="td10"><p class="color_green">${status.count}</p></td>
 								<td class="td30">
-										<img alt="" src="${pageContext.request.contextPath}/resources/images/home/대박워터파크.jpg">
+										<img alt="" src="${pageContext.request.contextPath}/resources/images/board/${list.fileDTOs[status.index].fname}">
 									${list.title}
 								</td>
 								<td class="td10">아직 구현안됨</td>
