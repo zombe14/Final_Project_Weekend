@@ -8,9 +8,9 @@
 <head>
 <meta charset="UTF-8">
 
-<title> 유저추천 </title>
+<title> W추천 </title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/userRecoList.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/weekRecoList.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/boardList.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 </head>
@@ -21,9 +21,9 @@
 		</div>
 		<div id="container">
       		<div class="conta">
-  	      		<div class="user_wrap">
-  	      			<div class="user_title">
-  	      				<strong> 유저추천 </strong>
+  	      		<div class="week_wrap">
+  	      			<div class="week_title">
+  	      				<strong> W추천 </strong>
   	      			</div>
   	      			<div id="tableDiv">
 					<!-- notice list 테이블 -->
