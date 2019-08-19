@@ -46,6 +46,12 @@
 				</ul>
 				<div class="call_cont">
 					<div class="board_h3">
+						<!-- 답변 달기 -->
+						<c:if test="${dto.answer eq 0 }">
+							<c:if test="${member.grade == 3}">
+								<a id="replyBtn" class="qnaSelect_btn2">답변달기</a>
+							</c:if>
+						</c:if>
 						<h3>${boardTitle} 게시판</h3>
 					</div>
 					<div class="call_wrap">
@@ -95,11 +101,14 @@
 				</div>			
 				
 				<a id="list" class="qnaSelect_btn" href="./qnaList">목록</a>
-				<a id="update" class="${board} qnaSelect_btn" href="./${board}Update?num=${dto.num}">수정</a> 
-				<a id="delete" class="${board} qnaSelect_btn">삭제</a>
-				<c:if test="${dto.answer eq 0}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
-					<a id="replyBtn" class="qnaSelect_btn">답변달기</a>
+				
+				<c:if test="${dto.step eq 0}">
+					<a id="update" class="${board} qnaSelect_btn" href="./qnaUpdate?num=${dto.num}">수정</a>
 				</c:if>
+				<c:if test="${dto.step eq 1}">
+					<a id="update" class="${board} qnaSelect_btn" href="./qnaReplyUpdate?num=${dto.num}">수정</a>
+				</c:if> 
+				<a id="delete" class="${board} qnaSelect_btn">삭제</a>
 
 				<!-- 원글일때 -->
 				<form action="./qnaDelete" id="deleteOriginFrm" method="post">

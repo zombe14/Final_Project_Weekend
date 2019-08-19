@@ -21,11 +21,7 @@
       	<div class="conta">
   	      	
       		 <form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
-				<c:if test="${board eq 'after'}">
-					<div>
-						<p>${originTitle} 후기</p>
-					</div>
-      		 	</c:if>
+				
 				<div>
 					<label for="title">제목<span>*</span></label>
 					<input type="text" name="title" value="${dto.title}">
@@ -34,19 +30,7 @@
 					<label for="writer">작성자<span>*</span></label>
 					<input type="text" name="writer" value="${dto.writer}" readonly="readonly">
 				</div>
-				<c:if test="${board eq 'festi'}">
-					<label for="files">썸네일</label>
-						<div id="thumbnailDiv">
-							<div>
-								<input type="file" class="filelist" id="thumbnail" name="filelist" style="display: inline-block" accept=".jpg, .png, .gif, .jpeg">
-								<p> &nbsp; &nbsp; ※  jpg, png, gif, jpeg 확장자만 업로드 가능합니다.</p>
-							</div>
-							<!-- 이미지 미리보기 -->
-							<div id="preview">
-								<img id="preview-img" src="#">
-							</div>
-						</div>
-				</c:if>
+				
 				<div>
 					<label for="contents">내용<span>*</span></label>
 					<textarea rows="" cols="" name="contents" id="contents">${dto.contents}</textarea>
@@ -62,72 +46,14 @@
 					</div>
 				</div>
 				
-				<c:if test="${board eq 'notice' or member.grade eq 3}">
+				
 					<div>
 						<label for="top">상단에 등록 하기</label>
 						<input type="checkbox" id="top" name="top" value="${dto.top}">
 					</div>
-				</c:if>
 				
-				<!-- 축제/공연 작성시에만 보이게 -->
-				<c:if test="${board eq 'festi'}">
-					<div>
-						<div>
-							<label for="category">대분류<span>*</span></label>
-								<input type="radio" name="firstCategory"> 축제							
-								<input type="radio" name="firstCategory"> 공연
-									<div id="">
-										<label for="writer">소분류<span>*</span></label>
-										<input type="radio" name="category" value="1"> 전시
-										<input type="radio" name="category" value="2"> 행사	
-										<input type="radio" name="category" value="3"> 레저
-									</div>
-
-									<div>
-										<label for="writer">소분류<span>*</span></label>
-										<input type="radio" name="category" value="4"> 지방 연극
-										<input type="radio" name="category" value="5"> 대학로 연극
-										<input type="radio" name="category" value="6"> 콘서트
-									</div>
-						</div>
-						<div>
-							<label for="startDate">시작일<span>*</span></label>
-							<input type="date" name="startDate" class="date" value="${dto.startDate}">  
-						</div>
-						<div>
-							<label for="endDate">종료일<span>*</span></label>
-							<input type="date" name="endDate" class="date" value="${dto.endDate}">
-						</div>
-						<div>
-							<label for="price">가격</label>
-							
-							<input type="number" name="price" value="${dto.price}"><span>원</span>
-						</div>
-						<div>
-							<label for="total">좌석 </label>
-							<input type="number" name="total" value="${dto.total}"><span>개</span>
-						</div>
-						<div>
-							<label for="local">지역<span>*</span></label>
-							<input type="text" name="local" id="local" onclick="openMap()" value="${dto.local}">
-							<div id="map" style="width:300px;height:300px;margin-top:10px;display:none">
-							</div>
-						</div>
-					</div>
-				</c:if>
-      		 	<c:if test="${board eq 'after'}">
-					<div>anum = ${originNum}
-	      		 		<input type="hidden" name="anum" value="${originNum}">
-					</div>
-					<div>
-						<label for="point">별점</label>
-						<input type="radio" name="point" value="1"> 1점
-						<input type="radio" name="point" value="2"> 2점
-						<input type="radio" name="point" value="3"> 3점
-						<input type="radio" name="point" value="4"> 4점
-						<input type="radio" name="point" value="5"> 5점
-					</div>
-      		 	</c:if>
+				
+				
 			
 				<input type="button" id="write" value="등록">
 			</form> 

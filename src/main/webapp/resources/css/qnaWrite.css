@@ -46,7 +46,7 @@ input:focus{
 .qnaWrite_btn{
 	background-color: white;
     color: black;
-    padding: 4px 15px;
+    padding: 6px 22px;
     float: right;
     border: 1px solid #adadad;
     cursor: pointer;
@@ -62,7 +62,7 @@ input:focus{
  .qnaUpdate_btn{
 	background-color: white;
     color: black;
-    padding: 4px 15px;
+    padding: 6px 22px;
     float: right;
     border: 1px solid #adadad;
     cursor: pointer;

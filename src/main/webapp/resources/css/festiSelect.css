@@ -33,6 +33,10 @@
     border-radius: 10px;
 }
 
+#delete{
+	cursor: pointer;
+}
+
 .festi_title a:hover{
 	background-color: #00d344;
 	border: 1px solid white;

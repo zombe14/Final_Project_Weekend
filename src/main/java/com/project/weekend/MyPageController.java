@@ -1,5 +1,7 @@
 ﻿package com.project.weekend;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -8,14 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.weekend.board.festi.FestiDTO;
+import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.member.MemberDTO;
 import com.project.weekend.member.MemberService;
+import com.project.weekend.util.PageMaker;
 
 @Controller
 @RequestMapping(value = "/myPage/")
 public class MyPageController {
 	@Inject
 	private MemberService memberService;
+	@Inject
+	private FestiService festiService;
 	////////////////////////// 마이 페이지 메인
 	@RequestMapping(value = "myMain")
 	public void myMain() throws Exception{
@@ -45,6 +52,28 @@ public class MyPageController {
 		mv.setViewName("./common/message");
 		return mv;
 	}
+	// 닉네임 중복 여부(택수씨 코드 사용);
+	// 전화번호 중복 여부;
+	@RequestMapping(value = "mPhoneCheck", method = RequestMethod.POST)
+	public ModelAndView myPhoneCheck(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		result = memberService.getSelectPhoneMy(memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		return mv;
+	}
+	// 이메일 중복 여부
+	@RequestMapping(value = "mEmailCheck", method = RequestMethod.POST)
+	public ModelAndView myMailCheck(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		result = memberService.getSelectEmailMy(memberDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		return mv;
+	}
+	// 이메일 인증(택수씨 코드 사용);
 	////////////////////////// 비밀번호 변경
 	// 비밀번호 변경 페이지 출력
 	@RequestMapping(value = "mPasswordList", method = RequestMethod.GET)
@@ -57,6 +86,7 @@ public class MyPageController {
 		int result = memberService.setUpdatePs(memberDTO);
 		mv.addObject("result", result);
 		mv.setViewName("./common/message");
+		session.invalidate();
 		return mv;
 	}
 	////////////////////////// 내 티켓 관리
@@ -77,7 +107,12 @@ public class MyPageController {
 	////////////////////////// 내 글
 	// 내 글 페이지 출력
 	@RequestMapping(value = "mBoardList", method = RequestMethod.GET)
-	public void myWrite() throws Exception{
+	public ModelAndView myWrite(FestiDTO festiDTO, PageMaker pageMaker) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<FestiDTO> list = festiService.getListMy(pageMaker);
+		mv.addObject("list", list);
+		mv.setViewName("myPage/mBoardList");
+		return mv;
 	}
 	// 내 글 선택
 	public void myWriteSelect() throws Exception{

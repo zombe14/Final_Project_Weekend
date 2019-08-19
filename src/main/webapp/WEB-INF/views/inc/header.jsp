@@ -69,17 +69,12 @@
 		<div class="collapse navbar-collapse">
 			<div class="nav_wrap">
 				<ul class="nav navbar-nav">
-					<li id="navbar-page" class="navp"><a href="#"><i
-							class="fa fa-home fa-fw"></i>W 추천</a></li>
-					<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiList?category=1"><i
-							class="fa fa-home fa-fw"></i>공연</a></li>
-							<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiMain"><i
-							class="fa fa-home fa-fw"></i>축제</a></li>
-					<li id="navbar-page" class="navp navp1"><a href="#"><i
-							class="fa fa-home fa-fw"></i>대학로</a></li>
-					<li id="navbar-page" class="navp navp1"><a href="#"><i
-							class="fa fa-home fa-fw"></i>랭킹</a></li>
-					<li id="navbar-page" class="navp"><a href="#"><i
+					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/WeekReco/WeekRecoList"><i class="fa fa-home fa-fw"></i>W 추천</a></li>
+					<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiList?category=1"><i class="fa fa-home fa-fw"></i>공연</a></li>
+					<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiMain"><i class="fa fa-home fa-fw"></i>축제</a></li>
+					<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/festi/festiList?category=3"><i class="fa fa-home fa-fw"></i>대학로</a></li>
+					<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/rank/rank_festi?category=1"><i class="fa fa-home fa-fw"></i>랭킹</a></li>
+					<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/UserReco/UserRecoList"><i
 							class="fa fa-home fa-fw"></i>유저추천</a></li>
 				</ul>
 			</div>
