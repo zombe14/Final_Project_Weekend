@@ -1,6 +1,7 @@
 package com.project.weekend;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
+import com.project.weekend.file.FileDTO;
 import com.project.weekend.util.PageMaker;
 
 @Controller
