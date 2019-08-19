@@ -192,6 +192,7 @@
 <script src="../resources/js/summernote.js"></script>
 <!-- script -->
 <script type="text/javascript">
+jQuery.ajaxSettings.traditional = true;
 /* 시작일, 종료일 비교 */
 $('#endDate, #startDate').change(function(){
 	var startDate = $( '#startDate' ).val();
