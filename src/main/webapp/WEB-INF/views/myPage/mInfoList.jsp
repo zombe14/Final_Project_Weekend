@@ -350,7 +350,7 @@
 		    					<input type="hidden" name="myemail">
 		    					<!-- 여기엔 내가 쓴 이메일 아이디가 온다. -->
 		    					<input type="text" class="form-control" title="이메일 아이디" id="emailId" name="emailId" maxlength="50">
-		    					<span class="from-control" id = "add">@</span>
+		    						<span class="from-control" id = "add">@</span>
 		    					<!-- 여기로 선택한 이메일 주소가 와야됨. -->
 		    					<input type="text" class="form-control" title="이메일 주소" readonly="readonly" id="emailAddress" name="emailAddress">
 			    				<select class = "form-control" id = "emailSelect" class="eSelect">

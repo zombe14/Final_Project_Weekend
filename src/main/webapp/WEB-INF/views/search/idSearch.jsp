@@ -17,7 +17,18 @@
 			var emailAddress = $("#emailAddress").val();
 			var email = emailId + add + emailAddress;
 			alert(email);
-			
+			console.log(email);
+			$.post("../myPage/mEmailCheck",{
+				email : email
+			}, function (data) {
+					console.log(data);
+				if(data == 1){
+					alert("이제 이메일 인증번호를 보내면 된다!");
+				}else{
+					alert("존재하지 않는 이메일 입니다.\n다시 확인해 주세요.");
+				}
+			}
+			)
 		})
 	})
 </script>
@@ -39,8 +50,10 @@
 				<option value = "paran.com">paran.com</option>
 				<option value = "etc"> 직접입력</option>
 			</select>
-		<button type="submit" id="emailCheck" class="emailCheck">인증번호 보내기</button>
-		<input type="text" id ="emailCheckNumber" name="emailCheckNumber" placeholder="인증번호를 입력해 주세요.">
+		<button type="button" id="emailCheck" class="emailCheck">인증번호 보내기</button>
+		<input type="text" id ="emailCheckNumber" title="인증번호 입력" name="emailCheckNumber" placeholder="인증번호를 입력해 주세요.">
+		<button type="button" id="finalCheck">확인</button>
+		<div id="result_emailOk" class="result_font" style="color: green"></div>
 	</form>
 
 </body>
