@@ -70,6 +70,7 @@ public class FestiController{
 	public ModelAndView getOptionList(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<DatesDTO> list = datesService.getList(num, session);
+		System.out.println(num);
 		mv.addObject("clist", list);
 		mv.setViewName("board/optionList");
 		return mv; 

@@ -6,7 +6,7 @@
 			<c:forEach items="${clist}" var="c">
 				 <div id = "${c.dnum}" class="optionListDiv">
 					<div>
-				    	${c.dnum} | ${c.reg_date} | ${c.time} | ${c.seat} | ${c.price} 
+				    	${c.num} | ${c.dnum} | ${c.reg_date} | ${c.time} | ${c.seat} | ${c.price} 
 			    	</div>
 			    	<span class="delete" title="${c.dnum}">X</span>
 			    </div>
@@ -17,12 +17,12 @@
 
 <script type="text/javascript">
 
-function getOptionsList(){
+/* function getOptionsList(){
 	$.ajax({
 		type:'GET',
 		url:'./optionList',
 		data:{
-			num:'${c.num}'
+			num:'${clist.num}'
 		},
 		success:function(data){
 			data = data.trim();    	
@@ -53,10 +53,8 @@ $('.delete').click(function() {
 		 });
 	 }
 });
+ */
 
-
-
- 
 </script>
 
 </body>

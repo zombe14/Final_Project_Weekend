@@ -163,7 +163,7 @@
 									<label for="price">가격</label>
 									<input type="number" name="price" class="price" id="price"><span> 원</span>
 								</div>
-								<input type="hidden" name="num" value="${num}" id="num">
+								<input type="text" name="num" value="${num}" id="num">
 								<a id="writeOption">옵션등록</a>
 							</div>
 							<hr>
@@ -229,7 +229,7 @@ $('#addOptions').click(function() {
 	var html = option
 	$('#datesOption').append(html);
 });
-
+	
 	$('#writeOption').click(function(){
 		var num = $('#num').val();
 		var reg_date = $('#dates').val();
@@ -249,7 +249,6 @@ $('#addOptions').click(function() {
 			success:function(data){
 				if(data == '1'){
 					getOptionsList();
-					$('#optionsDiv').append(option);
 					$('#dates').val('');
 					$('#time').val('');
 					$('#seat').val('');
@@ -265,33 +264,23 @@ $('#addOptions').click(function() {
 	});
 	
 	function getOptionsList(){
+		alert('${num}');
 		$.ajax({
 			type:'GET',
-			url:'./optionsList',
+			url:'./optionList',
 			data:{
 				num:'${num}'
 			},
 			success:function(data){
 				data = data.trim();    	
-				$('#optionsDiv').html(data);
-					
+				$('#optionsDiv').html(data);	
+			},
+			error:function(e){
+				console.log(e);
 			}
 		});
 	}
 	
-	$('#optionsDiv').on('click','.delOption',function(){
-		var check = confirm('삭제하시겠습니까?');
-		if(check){
-		
-			$.ajax({
-				url:'./optionDelete',
-				type:'POST',
-				data : {
-					
-				}
-			});
-		}
-	});
 	
 	//$(this).last().val()
 /* 	var min='';
