@@ -26,7 +26,7 @@
 			</div>
 		<div class="joinWrap">
 			<div>
-				<h3>간편 회원가입</h3>
+				<h3><a href="./memberJoin">간편 회원가입</a></h3>
 			</div>
 			<div>
 				<img id="kakaologin" class="btn" src="../resources/images/kakao_account_login_btn_medium_narrow.png">
