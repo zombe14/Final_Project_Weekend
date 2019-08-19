@@ -120,7 +120,7 @@
 							<a id="addFiles"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일추가</a>
 							<div id="files">
 								<input type="file" class="filelist" name="filelist" style="display: inline-block">
-								<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
+								<!-- <span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span> -->
 							</div>
 						</td>
 					</tr>
