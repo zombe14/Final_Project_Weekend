@@ -53,8 +53,17 @@ public class WeekRecoController{
 		return mv;
 	}
 	// 글쓰기;
-	@RequestMapping(value = "WeekRecoWrite", method = RequestMethod.POST)
+	// 글쓰기 폼으로;
+	@RequestMapping(value = "WeekRecoWrite", method = RequestMethod.GET)
 	public void setWrite() throws Exception{
+	}
+	// 글쓰기 진행;
+	@RequestMapping(value = "WeekRecoWrite", method = RequestMethod.POST)
+	public void setWrite(FestiDTO festiDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = festiService.setWeekRecoWrite(festiDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
 	}
 	// 글수정;
 	// 글수정 폼으로;

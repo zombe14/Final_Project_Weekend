@@ -190,15 +190,4 @@ public class FestiService {
 		}
 		return list;
 	}
-	/*
-	 * 
-	 * public List<FestiDTO> getList(PageMaker pageMaker) throws Exception{ int
-	 * totalCount = festiDAO.getCount(pageMaker.getCategory()); pageMaker.makeRow();
-	 * List<FestiDTO> list = festiDAO.getList(pageMaker);
-	 * pageMaker.makePage(totalCount); for(FestiDTO f : list) { String num =
-	 * f.getNum(); ArrayList<FileDTO> fileList =
-	 * (ArrayList<FileDTO>)fileDAO.getList(num); f.setFileDTOs(fileList); }
-	 * 
-	 * return list; }
-	 */
 }

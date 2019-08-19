@@ -125,8 +125,8 @@
 	</select>
 	<!-- 글쓰기 -->
 	<insert id="setWeekRecoWrite" parameterType="FestiDTO">
-		insert into festi(num, title, writer, contents, reg_date, hit, region, category)
-		values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{region}, 0)
+		insert into festi(num, title, writer, contents, reg_date, hit, category)
+		values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, 0)
 	</insert>
 	<!-- 글수정 -->
 	<update id="setWeekRecoUpdate" parameterType="FestiDTO">
@@ -168,7 +168,7 @@
 	<!-- 글 쓰기 -->
 	<insert id="setUserRecoWrite" parameterType="FestiDTO">
 		insert into festi(num, title, writer, contents, reg_date, hit, category)
-		valuse(#{num},#{title}, #{writer}, #{contents}, sysdate, 0, #{region}, 4)
+		values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, 4)
 	</insert>
 	<!-- 글 수정 -->
 	<update id="setUserRecoUpdate" parameterType="FestiDTO">
