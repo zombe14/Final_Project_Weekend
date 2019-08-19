@@ -25,7 +25,6 @@ public class FestiPageInterceptor extends HandlerInterceptorAdapter {
 		boolean result=false;
 		FestiService festiService = new FestiService();
 		String num = request.getParameter("num");
-		FestiDTO festiDTO = festiService.getSelectId(num);
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("memberId");
 		Object grade = session.getAttribute("grade");
