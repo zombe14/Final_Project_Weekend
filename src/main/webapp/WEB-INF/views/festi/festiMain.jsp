@@ -40,6 +40,58 @@
 <a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="../resources/images/home/위로.png"></a>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15"></script>
 <script>
+	$('#map').on('click','#daum-maps-shape-0',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=제주';
+	});
+	$('#map').on('click','#daum-maps-shape-3',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=전남';
+	});
+	$('#map').on('click','#daum-maps-shape-12',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=광주';
+	});
+	$('#map').on('click','#daum-maps-shape-4',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=전북';
+	});
+	$('#map').on('click','#daum-maps-shape-1',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=경남';
+	});
+	$('#map').on('click','#daum-maps-shape-16',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=부산';
+	});
+	$('#map').on('click','#daum-maps-shape-10',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=울산';
+	});
+	$('#map').on('click','#daum-maps-shape-15',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=대구';
+	});
+	$('#map').on('click','#daum-maps-shape-2',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=경북';
+	});
+	$('#map').on('click','#daum-maps-shape-6',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=충북';
+	});
+	$('#map').on('click','#daum-maps-shape-9',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=세종';
+	});
+	$('#map').on('click','#daum-maps-shape-11',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=대전';
+	});
+	$('#map').on('click','#daum-maps-shape-5',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=충남';
+	});
+	$('#map').on('click','#daum-maps-shape-14',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=인천';
+	});
+	$('#map').on('click','#daum-maps-shape-17',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=서울';
+	});
+	$('#map').on('click','#daum-maps-shape-8',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=경기';
+	});
+	$('#map').on('click','#daum-maps-shape-7',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=강원';
+	});
+	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = { 
     		center: new kakao.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
@@ -150,14 +202,13 @@
            polygon.setOptions({fillColor: '#09f'});
    
            customOverlay.setContent('<div class="area">' + name + '</div>');
-        
+           
            customOverlay.setPosition(mouseEvent.latLng); 
            customOverlay.setMap(map);
        });
 
        // 다각형에 mousemove 이벤트를 등록하고 이벤트가 발생하면 커스텀 오버레이의 위치를 변경합니다 
        kakao.maps.event.addListener(polygon, 'mousemove', function(mouseEvent) {
-        
            customOverlay.setPosition(mouseEvent.latLng); 
        });
 
@@ -169,17 +220,17 @@
        }); 
 
        // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
-        kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
-        	location.href = '${pageContext.request.contextPath}/festi/festiList?category=1';
-           /* var content = '<div class="info">' + 
+         /* kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
+        	//location.href = '${pageContext.request.contextPath}/festi/festiList?category=1';
+             var content = '<div class="info">' + 
                        '   <div class="title">' + name + '</div>' +
                        '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' +
                        '</div>';
 
            infowindow.setContent(content); 
            infowindow.setPosition(mouseEvent.latLng); 
-           infowindow.setMap(map); */
-       }); 
+           infowindow.setMap(map);  
+       });   */
        }
 
 
@@ -214,8 +265,7 @@
        // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
        kakao.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
            polygon.setOptions({fillColor: '#09f'});
-   
-           customOverlay.setContent('<div class="area">' + name + '</div>');
+           customOverlay.setContent('<div class="area">' + area.name + '</div>');
         
            customOverlay.setPosition(mouseEvent.latLng); 
            customOverlay.setMap(map);
@@ -235,17 +285,17 @@
        }); 
 
        // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
-        kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
-        	location.href = '${pageContext.request.contextPath}/festi/festiList?category=1';
-           /* var content = '<div class="info">' + 
+        /*  kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
+        	 // location.href = '${pageContext.request.contextPath}/festi/festiList?category=1';
+            var content = '<div class="info">' + 
                        '   <div class="title">' + name + '</div>' +
                        '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' +
                        '</div>';
 
            infowindow.setContent(content); 
            infowindow.setPosition(mouseEvent.latLng); 
-           infowindow.setMap(map); */
-       }); 
+           infowindow.setMap(map); 
+       });   */
        });
        
    }

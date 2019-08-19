@@ -23,7 +23,7 @@ import com.project.weekend.util.PageMaker;
 
 @Controller
 @RequestMapping(value = "/festi/")
-public class FestiController {
+public class FestiController{
 	
 	@Inject
 	private FestiService festiService;
@@ -43,7 +43,6 @@ public class FestiController {
 		mv.setViewName("board/festiWrite");
 		return mv;
 	}
-	
 	//write process - post
 	@RequestMapping(value = "festiWrite", method = RequestMethod.POST)
 	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{ //, List<DatesDTO> datesDTOs
@@ -63,7 +62,6 @@ public class FestiController {
 		mv.setViewName(path);
 		return mv;
 	}
-	
 	// list
 	@RequestMapping(value = "festiList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker) throws Exception{
@@ -72,11 +70,12 @@ public class FestiController {
 		mv.addObject("list", list);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
+		mv.addObject("region", pageMaker.getRegion());
+		mv.addObject("category", pageMaker.getCategory());
 		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/boardTile");
 		return mv;
 	}
-	
 	// select
 	@RequestMapping(value = "festiSelect", method = RequestMethod.GET)
 	public ModelAndView getSelect(String num, PageMaker pageMaker) throws Exception{
@@ -95,7 +94,6 @@ public class FestiController {
 
 		return mv;
 	}
-	
 	// update-form
 	@RequestMapping(value = "festiUpdate", method = RequestMethod.GET)
 	public ModelAndView setUpdate(String num) throws Exception{
@@ -104,10 +102,9 @@ public class FestiController {
 		mv.addObject("dto", festiDTO);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
-		mv.setViewName("board/boardUpdate");
+		mv.setViewName("board/festiUpdate");
 		return mv;
 	}
-	
 	//update-process
 	@RequestMapping(value = "festiUpdate", method = RequestMethod.POST)
 	public ModelAndView setUpdate(FestiDTO festiDTO, HttpSession session) throws Exception{
@@ -116,7 +113,6 @@ public class FestiController {
 		mv.setViewName("redirect:./festiSelect?num="+festiDTO.getNum());
 		return mv;
 	}
-	
 	@RequestMapping(value = "festiDelete", method = RequestMethod.POST)
 	public String setDelete(String num,  HttpSession session) throws Exception{
 		int category = festiService.getSelect(num).getCategory();
@@ -129,8 +125,11 @@ public class FestiController {
 		}
 		return path;
 	}
-	
 	//festiMain
 	@RequestMapping(value = "festiMain")
 	public void festiMain() throws Exception{};
 }
+
+
+
+

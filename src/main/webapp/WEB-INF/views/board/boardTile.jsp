@@ -32,7 +32,7 @@
 					</form>
 				</div> --%>
 				<div class="festi_header">
-					<strong>전체</strong>
+					<strong><c:if test="${category ne 2}">전체</c:if><c:if test="${category eq 2}">${region}</c:if></strong>
 					<div class="boardTile_write">
 						<a href="./${board}Write">${boardTitle} 글쓰기</a>
 					</div>

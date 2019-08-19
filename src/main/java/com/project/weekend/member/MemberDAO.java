@@ -44,10 +44,14 @@ public class MemberDAO {
 	}
 	// 닉네임 중복 확인(택수씨 코드 사용);
 	// 전화번호 중복 확인;
-	public int getSelectPhone(MemberDTO memberDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getSelectPhone", memberDTO);
+	public int getSelectPhoneMy(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSelectPhoneMy", memberDTO);
 	}
-	// 이메일 중복 확인(택수씨 코드 사용);
+	// 이메일 중복 확인
+	public int getSelectEmailMy(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSelectEmailMy", memberDTO);
+	}
+	// 이메일 인증(택수씨 코드 사용);
 	// 비밀번호 수정;
 	public int getUpdateCheck(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getUpdateCheck", memberDTO);
