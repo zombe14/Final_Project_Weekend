@@ -43,6 +43,9 @@
 				</ul>
 				<div class="call_cont">
 				<div class="board_h3">
+				<div class="boardwrite">
+						<button id="boardWrite">${boardTitle} 글쓰기</button>
+				</div>
 				<h3>${boardTitle} 게시판</h3>
 				</div>
 				
@@ -120,9 +123,7 @@
 						</ul>
 					</c:if>
 				</div>
-				<div class="boardwrite">
-						<button id="boardWrite">${boardTitle} 글쓰기</button>
-				</div>
+				
 								<!-- 검색창 -->
 				<form action="./${board}List" class="search_form">
 					<select name="kind" class="search_select">
