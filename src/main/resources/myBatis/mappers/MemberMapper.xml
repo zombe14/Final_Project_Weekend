@@ -93,7 +93,7 @@
 	<!-- 이메일 중복체크 -->
 	<select id="getSelectEmailMy" parameterType="MemberDTO" resultType="Integer">
 		select count(*) from member where email = #{email}
-	</select> 
+	</select>
 	<!--(택수씨 코드 사용) -->
 	<!-- 상혁끝 -->
 	<select id="getSelectkakao" resultMap="member" parameterType="MemberDTO">

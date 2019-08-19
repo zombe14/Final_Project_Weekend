@@ -61,6 +61,15 @@
 				<beans:ref bean="myPageInterceptor"/>
 			</interceptor>
 		</interceptors>
+		
+	<beans:bean id="festiPageInterceptor" class="com.project.weekend.interceptor.FestiPageInterceptor" />
+		<interceptors>
+			<interceptor>
+				<mapping path="/festi/festiUpdate"/>
+				<beans:ref bean="festiPageInterceptor"/>
+			</interceptor>
+		</interceptors>
+
 	
 	<context:component-scan base-package="com.project.weekend" />
 	

@@ -113,6 +113,9 @@ public class FestiDAO{
 	}
 	// 상혁 끝;
 	
+	public String getSelectId(String num)throws Exception{
+		return SqlSession.selectOne(NAMESPACE+"getSelectId", num);
+	}
 
 }
 

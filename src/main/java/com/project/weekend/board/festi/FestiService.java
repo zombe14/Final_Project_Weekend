@@ -45,7 +45,12 @@ public class FestiService {
 	private FestiQnaService festiQnaService;
 	@Inject
 	private DatesDAO datesDAO;
-
+	
+	public String getSelectId(String num)throws Exception{
+		num = festiDAO.getSelectId(num);
+		return num;
+	}
+	
 	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HashMap<String,Object> datesDTOs, HttpSession session) throws Exception {
 		int num = festiDAO.getNum();
 		festiDTO.setNum("f"+num);

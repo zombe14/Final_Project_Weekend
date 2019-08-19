@@ -31,9 +31,7 @@
 						<button type="submit" id="Login" class="lgbtn">로그인</button>
 					</form>
 					
-					<div>
-						<img id="kakaologin" class="btn" src="../resources/images/kakao_account_login_btn_medium_narrow.png">
-					</div>
+				
 					
 					
 					<div class="login_bot">
@@ -57,49 +55,5 @@
     </div>	
 </div>
 
-<script type='text/javascript'>
-	
-    Kakao.init('fa1849bdb6305a08ea8baf674234b306');
-    // 카카오 로그인 버튼을 생성합니다.
-    
-    $("#kakaologin").click(function() {
-    	Kakao.Auth.loginForm({
-    		//login이 성공했을때
-    		success : function(authObj){
-    			location.href="./getInfo?access_token="+authObj.access_token;
-    		},
-    		//login이 실패했을때
-    		fail : function(errorObj){
-    			alert(errorObj);
-    		}
-    	});
-	});
-	
-	$("#logout").click(function() {
-		location.href="./kakaoLogout";
-	});
-
-    
-    //로그아웃
-    function logout() {
-    	
-    	
-	   Kakao.Auth.logout(function() {
-			alert("logout");
-			
-		}); 
-		
-	}
-    
-    //현재상태
-   function status() {
-	Kakao.Auth.getStatus(function(statusObj) {
-		console.log(statusObj);
-	});
-	
-}
-    
-  //]]>
-</script>
 </body>
 </html>

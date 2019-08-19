@@ -189,4 +189,10 @@
 		order by hit desc) F)
 	</select>
 	<!-- 상혁 끝 -->
+	<select id="getSelectId" resultType="FestiDTO" parameterType="FestiDTO">
+		select id from festi where num=#{num}
+	</select>
+	
+	
+	
 </mapper>
