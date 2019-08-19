@@ -1,5 +1,6 @@
 package com.project.weekend.board.festi;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +47,7 @@ public class FestiService {
 	@Inject
 	private DatesDAO datesDAO;
 
-	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HashMap<String,Object> datesDTOs, HttpSession session) throws Exception {
+	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, List<DatesDTO> datesDTOs, HttpSession session) throws Exception {
 		int num = festiDAO.getNum();
 		festiDTO.setNum("f"+num);
 		int res = festiDAO.setWrite(festiDTO);
@@ -61,11 +62,25 @@ public class FestiService {
 				res = fileDAO.setWrite(fileDTO);
 			}
 		}
+		
 		System.out.println("ser : "+datesDTOs.size());
-		for(DatesDTO d : datesDTOs) {
-			if(d.getReg_date() != null) {
-				d.setNum("f"+num);
-				res = datesDAO.setWrite(d);
+		
+		if(datesDTOs.size()>0) {
+			for(int i = 0 ; i<datesDTOs.size();i++) {
+				DatesDTO datesDTO = new DatesDTO();
+				datesDTO.setNum("f"+num);
+				datesDTO.setPrice(datesDTOs.get(i).getPrice());
+				datesDTO.setReg_date(datesDTOs.get(i).getReg_date());
+				datesDTO.setSeat(datesDTOs.get(i).getSeat());
+				datesDTO.setTime(datesDTOs.get(i).getTime());
+				/*
+				 * datesDTO.setPrice((Integer)datesDTOs.get(i).get("price2"));
+				 * datesDTO.setReg_date((Date)datesDTOs.get(i).get("reg_date"));
+				 * datesDTO.setSeat((Integer)datesDTOs.get(i).get("seat"));
+				 * datesDTO.setTime((String)datesDTOs.get(i).get("time"));
+				 */
+				
+				res = datesDAO.setWrite(datesDTO);
 			}
 		}
 		

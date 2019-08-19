@@ -72,10 +72,11 @@
 					</tr>
 					<tr>
 						<td class="td1"><label for="startDate">시작일<span class="r">*</span></label></td>
-						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="startDate" class="date"></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="startDate" class="date" id="startDate"></td>
 					</tr>
 					<tr>
-						<td class="td1"><label for="endDate">종료일<span class="r">*</span></label></td>							<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="endDate" class="date"></td>
+						<td class="td1"><label for="endDate">종료일<span class="r">*</span></label></td>							
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="endDate" class="date" id="endDate"></td>
 					</tr>
 					<tr class="daehakDiv">
 						<td class="td1"><label for="price">가격</label></td>
@@ -132,14 +133,7 @@
 						</td>
 					</tr>
 					</c:if>
-					<tr>
-					<td>
-					</td>
-					<td>
 					
-				
-					</td>
-					</tr>
 				</tbody>
 				</table>
 
