@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberLogin.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/memberLogin.js?ver=2"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
    <div id="wrap">
@@ -29,6 +30,12 @@
 						</div>
 						<button type="submit" id="Login" class="lgbtn">로그인</button>
 					</form>
+					
+					<div>
+						<img id="kakaologin" class="btn" src="../resources/images/kakao_account_login_btn_medium_narrow.png">
+					</div>
+					
+					
 					<div class="login_bot">
 						<a href="./memberAgree" class="lob">회원가입</a> <span class="log lob">|</span>
 						<a href="#" class="lob">비밀번호 찾기</a> <span class="log lob">|</span>
@@ -49,5 +56,50 @@
       	</div>
     </div>	
 </div>
+
+<script type='text/javascript'>
+	
+    Kakao.init('fa1849bdb6305a08ea8baf674234b306');
+    // 카카오 로그인 버튼을 생성합니다.
+    
+    $("#kakaologin").click(function() {
+    	Kakao.Auth.loginForm({
+    		//login이 성공했을때
+    		success : function(authObj){
+    			location.href="./getInfo?access_token="+authObj.access_token;
+    		},
+    		//login이 실패했을때
+    		fail : function(errorObj){
+    			alert(errorObj);
+    		}
+    	});
+	});
+	
+	$("#logout").click(function() {
+		location.href="./kakaoLogout";
+	});
+
+    
+    //로그아웃
+    function logout() {
+    	
+    	
+	   Kakao.Auth.logout(function() {
+			alert("logout");
+			
+		}); 
+		
+	}
+    
+    //현재상태
+   function status() {
+	Kakao.Auth.getStatus(function(statusObj) {
+		console.log(statusObj);
+	});
+	
+}
+    
+  //]]>
+</script>
 </body>
 </html>

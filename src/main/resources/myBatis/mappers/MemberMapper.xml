@@ -88,7 +88,9 @@
 	<delete id="setDeleteMy" parameterType="MemberDTO">
 	</delete>
 	<!-- 상혁끝 -->
-	
+	<select id="getSelectkakao" resultMap="member" parameterType="MemberDTO">
+		select * from member where id=#{id}
+	</select>
 	<select id="getSelect" resultMap="member" parameterType="MemberDTO">
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
