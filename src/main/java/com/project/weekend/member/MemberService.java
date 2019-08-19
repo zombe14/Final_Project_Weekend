@@ -1,11 +1,17 @@
 ﻿package com.project.weekend.member;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -115,6 +121,9 @@ public class MemberService {
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelect(memberDTO);
 	}
+	public MemberDTO getSelectkakao(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getSelectkakao(memberDTO);
+	}
 	public MemberDTO getSelectCount(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getSelectCount(memberDTO);
 	}
@@ -130,6 +139,124 @@ public class MemberService {
 	public MemberDTO getjumin(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getjumin(memberDTO);
 	}
+	
+	//탈퇴
+		public void kakaoDelete(MemberDTO memberDTO)throws Exception{
+			URL url=null;
+			HttpURLConnection con = null;
+			String header="Bearer ";
+			String kakaoUrl="https://kapi.kakao.com/v1/user/unlink";
+			header=header+memberDTO.getAccess_token();
+			
+			url = new URL(kakaoUrl);
+			con = (HttpURLConnection)url.openConnection();
+			con.setRequestMethod("GET");
+			con.addRequestProperty("Authorization", header);
+			int resultcode = con.getResponseCode();
+			System.out.println(resultcode);
+			System.out.println(memberDTO.getAccess_token());
+		}
+		
+		
+		//로그아웃(token 해제)
+		public void kakaoLogout(MemberDTO memberDTO)throws Exception{
+			URL url=null;
+			HttpURLConnection con = null;
+			String header="Bearer ";
+			String kakaoUrl="https://kapi.kakao.com/v1/user/logout";
+			header=header+memberDTO.getAccess_token();
+			
+			url = new URL(kakaoUrl);
+			con = (HttpURLConnection)url.openConnection();
+			con.setRequestMethod("GET");
+			con.addRequestProperty("Authorization", header);
+		}
+		
+		
+		
+		//로그인 성공시 사용자 정보를 가져오기
+		public MemberDTO getInfo(String access_token) throws Exception {
+			URL url=null;
+			HttpURLConnection con = null;
+			String header="Bearer ";
+			String kakaoUrl="https://kapi.kakao.com/v2/user/me";
+			header=header+access_token;
+			
+			url = new URL(kakaoUrl);
+			con = (HttpURLConnection)url.openConnection();
+			con.setRequestMethod("GET");
+			con.addRequestProperty("Authorization", header);
+			
+			int resultCode = con.getResponseCode();
+			BufferedReader br= null;
+			MemberDTO memberDTO=null;
+			if(resultCode==200) {
+				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				memberDTO = new MemberDTO();
+				
+				String resultMessage=null;
+				StringBuffer sb = new StringBuffer();
+				while( (resultMessage=br.readLine()) != null) {
+					sb.append(resultMessage);
+				}
+				JSONParser jsonParser = new JSONParser();
+				JSONObject js = (JSONObject)jsonParser.parse(sb.toString());
+				JSONObject js2 = (JSONObject)js.get("properties");
+				JSONObject js3 = (JSONObject)js.get("kakao_account");
+				memberDTO.setId(js.get("id").toString());
+				memberDTO.setEmail(js3.get("email").toString());
+				memberDTO.setNickname(js2.get("nickname").toString());
+				memberDTO.setAccess_token(access_token);
+				
+			}else {
+				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			}
+			
+			br.close();
+			
+			return memberDTO;
+		}
+		
+		public MemberDTO getInfo1(String access_token) throws Exception {
+			URL url=null;
+			HttpURLConnection con = null;
+			String header="Bearer ";
+			String kakaoUrl="https://kapi.kakao.com/v2/user/me";
+			header=header+access_token;
+			url = new URL(kakaoUrl);
+			con = (HttpURLConnection)url.openConnection();
+			con.setRequestMethod("GET");
+			con.addRequestProperty("Authorization", header);
+			
+			int resultCode = con.getResponseCode();
+			BufferedReader br= null;
+			MemberDTO memberDTO=null;
+			if(resultCode==200) {
+				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				memberDTO = new MemberDTO();
+				
+				String resultMessage=null;
+				StringBuffer sb = new StringBuffer();
+				while( (resultMessage=br.readLine()) != null) {
+					sb.append(resultMessage);
+				}
+				JSONParser jsonParser = new JSONParser();
+				JSONObject js = (JSONObject)jsonParser.parse(sb.toString());
+				JSONObject js2 = (JSONObject)js.get("properties");
+				JSONObject js3 = (JSONObject)js.get("kakao_account");
+				memberDTO.setId(js.get("id").toString());
+				memberDTO.setEmail(js3.get("email").toString());
+				memberDTO.setName(js2.get("nickname").toString());
+				memberDTO.setAccess_token(access_token);
+			}else {
+				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			}
+			
+			br.close();
+			
+			return memberDTO;
+		}
+	
 	
 	
 	

@@ -99,4 +99,7 @@ public class MemberDAO {
 	public MemberDTO getjumin(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getjumin", memberDTO);
 	}
+	public MemberDTO getSelectkakao(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSelectkakao", memberDTO);
+	}
 }

@@ -28,6 +28,7 @@ label{
 .fwrite_wrap{
 	background-color: white;
 	padding: 30px 30px 50px;
+	border: 1px solid #dedede;
 }
 
 .fwrite_title{
@@ -118,8 +119,15 @@ input{
 	margin-right: 6px;
 }
 
+.pwpw{
+	width: 300px;
+}
 	
-/* input[type=radio] { display:none; }
+
+ input[type=radio] { display:none; } 
+
+
+
 
 input[type=radio] + label { 
 	display: inline-block; 
@@ -131,7 +139,10 @@ input[type=radio] + label {
 
 input[type=radio]:checked + label { 
 	 background: url("../images/checkbox/checkbox_on.png") left/15px no-repeat;
- } */
+ }
+  input[type=checkbox] { display:none; } 
+
+ 
 
 input[type=radio   ]:not(old){
   width   : 28px;
@@ -155,6 +166,7 @@ input[type=radio]:not(old):checked + label{
 
 input[type=checkbox] { display:none; }
 
+
 input[type=checkbox] + label { 
 	display: inline-block; 
 	cursor: pointer; 
@@ -166,3 +178,8 @@ input[type=checkbox] + label {
 input[type=checkbox]:checked + label { 
 	 background: url("../images/checkbox/checkbox_on.png") left/15px no-repeat;
  }
+
+
+.textarea_fqna{
+	padding: 30px;
+}
