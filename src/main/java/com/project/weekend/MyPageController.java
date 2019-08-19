@@ -66,6 +66,7 @@ public class MyPageController {
 	// 이메일 중복 여부
 	@RequestMapping(value = "mEmailCheck", method = RequestMethod.POST)
 	public ModelAndView myMailCheck(MemberDTO memberDTO) throws Exception{
+		System.out.println("여기 와야되는데??");
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
 		result = memberService.getSelectEmailMy(memberDTO);

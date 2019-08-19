@@ -95,6 +95,10 @@
 		select count(*) from member where email = #{email}
 	</select> 
 	<!--(택수씨 코드 사용) -->
+	<!-- 아이디/ 비밀번호 찾기 -->
+	<select id="getSelectMyIdPw" parameterType="MemberDTO" resultType="MemberDTO">
+		select id, pw from member where email = #{email}
+	</select>
 	<!-- 상혁끝 -->
 	<select id="getSelectkakao" resultMap="member" parameterType="MemberDTO">
 		select * from member where id=#{id}

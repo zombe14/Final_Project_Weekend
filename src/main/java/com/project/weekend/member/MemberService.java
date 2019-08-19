@@ -85,7 +85,11 @@ public class MemberService {
 		int result = memberDAO.setUpdatePs(memberDTO);
 		return result;
 	}
-	
+	// 아이디/ 비밀번호 찾기;
+	public MemberDTO getSelectMyIdPw(MemberDTO memberDTO) throws Exception{
+		MemberDTO result = memberDAO.getSelectMyIdPw(memberDTO);
+		return result;
+	}
 	// 상혁 끝;
 	
 	

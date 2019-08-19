@@ -59,6 +59,11 @@ public class MemberDAO {
 	public int setUpdatePs(MemberDTO memberDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setUpdatePs", memberDTO);
 	}
+	// 아이디/ 비밀번호 찾기;
+	public MemberDTO getSelectMyIdPw(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSelectMyIdPw", memberDTO);
+	}
+	
 	// 상혁 끝;
 	
 	public MemberDTO getNickname(MemberDTO memberDTO)throws Exception{
