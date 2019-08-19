@@ -193,6 +193,7 @@
 <!-- script -->
 <script type="text/javascript">
 jQuery.ajaxSettings.traditional = true;
+$.ajaxSettings.traditional = true;
 /* 시작일, 종료일 비교 */
 $('#endDate, #startDate').change(function(){
 	var startDate = $( '#startDate' ).val();
@@ -265,7 +266,6 @@ $('#addOptions').click(function() {
 	});
 	
 	function getOptionsList(){
-		alert('${num}');
 		$.ajax({
 			type:'GET',
 			url:'./optionList',
