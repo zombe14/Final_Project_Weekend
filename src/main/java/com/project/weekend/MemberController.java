@@ -244,7 +244,7 @@ public class MemberController {
 		if(memberDTO==null) {
 			mv.setViewName("common/messageMove");
 			mv.addObject("message", message);
-			mv.addObject("path", "member/memberAgree");
+			mv.addObject("path", "./memberAgree");
 			return mv;
 		}
 		session.setAttribute("grade", memberDTO.getGrade());
