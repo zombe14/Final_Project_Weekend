@@ -119,6 +119,9 @@ input{
 	margin-right: 6px;
 }
 
+.pwpw{
+	width: 300px;
+}
 	
 /* input[type=radio] { display:none; }
 
@@ -167,3 +170,8 @@ input[type=checkbox] + label {
 input[type=checkbox]:checked + label { 
 	 background: url("../images/checkbox/checkbox_on.png") left/15px no-repeat;
  }
+
+
+.textarea_fqna{
+	padding: 30px;
+}

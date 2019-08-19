@@ -1,4 +1,9 @@
-.boardSelect_btn{
+
+#container{
+	background-color: #f5f6f7;
+}
+
+.boardSelect_btn, .fqnaSelect_btn{
 	padding: 6px 22px;
     background-color: white;
     font-size: 12px;
@@ -6,6 +11,16 @@
     cursor: pointer;
     border-radius: 10px;
     margin: 20px 3px;
+    border: 1px solid #adadad;
+}
+
+.fqnaSelect_btn2{
+	padding: 6px 22px;
+    background-color: white;
+    font-size: 12px;
+    float: right;
+    cursor: pointer;
+    border-radius: 10px;
     border: 1px solid #adadad;
 }
 
@@ -37,7 +52,35 @@
 	background-color: #f5f6f7;
 }
 
+.fqna_title{
+	padding-bottom: 30px;
+	border-bottom: 1px solid #999;
+	margin-bottom: 30px;
+}
+
+.fqna_wrap{
+	background-color: white;
+    padding: 30px 50px 70px;
+    border: 1px solid #dedede;
+}
+
 .boardSelect_btn:hover{
+	background-color: #00d344;
+	border: 1px solid white;
+	color: white;
+}
+
+.fqnaSelect_btn, .fqnaSelect_btn2{
+	background-color: white;
+    color: black;
+    padding: 6px 22px;
+    float: right;
+    border: 1px solid #adadad;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.fqnaSelect_btn:hover, .fqnaSelect_btn2:hover{
 	background-color: #00d344;
 	border: 1px solid white;
 	color: white;

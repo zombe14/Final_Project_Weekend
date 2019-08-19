@@ -197,6 +197,23 @@
 	margin-right: 5px;
 }
 
+table thead th{
+	text-align: center;
+}
+
+.th1{
+	width: 10%;
+	text-align: center;
+}
+
+.th2{
+	width: 30%;
+}
+
+.festiqna_title, .festiafter_title{
+	cursor: pointer;
+}
+
 .festi_menu li:first-child{
 	margin:0 -9px;
 }
