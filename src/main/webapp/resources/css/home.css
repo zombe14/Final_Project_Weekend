@@ -68,6 +68,7 @@ ul{
 #container{
 	margin: 0;
 	overflow: hidden;
+	min-height: 59%;
 }
 #footer{
 	

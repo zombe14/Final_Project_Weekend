@@ -71,38 +71,28 @@ public class FestiService {
 		
 		return res;
 	}
-	
 	public List<FestiDTO> getList(PageMaker pageMaker) throws Exception{
-
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getList(pageMaker);
 		pageMaker.makePage(totalCount);
-		
 		for(FestiDTO f : list) {
 			String num = f.getNum();
 			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);
 			f.setFileDTOs(fileList);
 		}
-		
 		return list;
 	}
-	
 	public FestiDTO getSelect(String num) throws Exception{
-
 		FestiDTO festiDTO = festiDAO.getSelect(num);
 		ArrayList<FileDTO> fileDTOs = (ArrayList<FileDTO>)fileDAO.getList(num);
 		festiDTO.setFileDTOs(fileDTOs);
-
 		return festiDTO;
 	}
-	
 	public int setUpdate(FestiDTO festiDTO, HttpSession session) throws Exception{
 		int res = festiDAO.setUpdate(festiDTO);
-		
 		return res;
 	}
-	
 	public int setDelete(String num, HttpSession session) throws Exception{
 		int res = 0;
 		res = festiDAO.setDelete(num);
@@ -114,14 +104,13 @@ public class FestiService {
 				res = fileService.setDelete(fileDTO, "board", session);
 			}
 		}
-		
 		return res;
 	}
-	
 	public int getNum() throws Exception{
 		return festiDAO.getNum();
 	}
 	// 상혁
+	// 관리자 모드;
 	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getAllList(pageMaker);
@@ -129,5 +118,85 @@ public class FestiService {
 		pageMaker.makePage(totalCount);
 		return list;
 	}
-
+	// 내글 불러오기
+	public List<FestiDTO> getListMy(PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getListMy(pageMaker);
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makePage(totalCount);
+		return list;
+	}
+	// w 추천;
+	// 리스트;
+	public List<FestiDTO> getWeekRecoList(PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getWeekRecoList(pageMaker);
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makePage(totalCount);
+		return list;
+	}
+	// 글선택;
+	public FestiDTO getWeekRecoSelect(String num) throws Exception{
+		FestiDTO festiDTO = festiDAO.getWeekRecoSelect(num);
+		return festiDTO;
+	}
+	// 글쓰기;
+	public int setWeekRecoWrite(FestiDTO festiDTO) throws Exception{
+		int result = 0;
+		result = festiDAO.setWeekRecoWrite(festiDTO);
+		return result;
+	} 
+	// 글수정;
+	public int setWeekRecoUpdate(FestiDTO festiDTO) throws Exception{
+		int result = 0;
+		result = festiDAO.setWeekRecoUpdate(festiDTO);
+		return result;
+	}
+	// 글삭제;
+	public int setWeekRecoDelete(String num) throws Exception{
+		int result = 0;
+		result = festiDAO.setWeekRecoDelete(num);
+		return result;
+	}
+	// 유저 추천;
+	// 리스트;
+	public List<FestiDTO> getUserRecoList(PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getUserRecoList(pageMaker);
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makePage(totalCount);
+		return list;
+	}
+	// 글선택;
+	public FestiDTO getUserRecoSelect(String num) throws Exception{
+		FestiDTO festiDTO = festiDAO.getSelect(num);
+		return festiDTO;
+	}
+	// 글쓰기;
+	public int setUserRecoWrite(FestiDTO festiDTO) throws Exception{
+		int result = 0;
+		result  = festiDAO.setUserRecoWrite(festiDTO);
+		return result;
+	}
+	// 글수정;
+	public int setUserRecoUpdate(FestiDTO festiDTO) throws Exception{
+		int result = 0;
+		result = festiDAO.setUserRecoUpdate(festiDTO);
+		return result;
+	}
+	// 글삭제;
+	public int setUserRecoDelete(String num) throws Exception{
+		int result = 0;
+		result = festiDAO.setUserRecoDelete(num);
+		return result;
+	}
+	// 랭크;
+	// 리스트;
+	public List<FestiDTO> getRankList(PageMaker pageMaker) throws Exception{
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getRankList(pageMaker);
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makePage(totalCount);
+		return list;
+	}
 }

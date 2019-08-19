@@ -119,7 +119,11 @@ input{
 }
 
 	
-/* input[type=radio] { display:none; } */
+
+ input[type=radio] { display:none; } 
+
+
+
 
 input[type=radio] + label { 
 	display: inline-block; 
@@ -132,8 +136,32 @@ input[type=radio] + label {
 input[type=radio]:checked + label { 
 	 background: url("../images/checkbox/checkbox_on.png") left/15px no-repeat;
  }
+  input[type=checkbox] { display:none; } 
+
  
-/* input[type=checkbox] { display:none; } */
+
+input[type=radio   ]:not(old){
+  width   : 28px;
+  margin  : 0;
+  padding : 0;
+  opacity : 0;
+}
+
+input[type=radio   ]:not(old) + label{
+  display      : inline-block;
+  margin-left  : -28px;
+  padding-left : 28px;
+  background   : url('../images/checks.png') no-repeat 0 0;
+  line-height  : 24px;
+}
+
+input[type=radio]:not(old):checked + label{
+  background-position : 0 -48px;
+}
+
+
+input[type=checkbox] { display:none; }
+
 
 input[type=checkbox] + label { 
 	display: inline-block; 

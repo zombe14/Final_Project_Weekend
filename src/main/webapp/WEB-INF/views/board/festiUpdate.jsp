@@ -25,96 +25,150 @@
       </div>
       <div id="container">
       	<div class="conta">
-  	      	
-      		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+  	      	<div class="fwrite_wrap">
+  	      		<div class="fwrite_title">
+  	      			<h3>${board}글수정</h3>
+  	      		</div>
+      		 <form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
+      		 	<table class="table table-bordered">
+      		 	<tbody>
+					<tr>
+						<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="title" id="title" style="width: 96%" value="${dto.title }"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}memberNick" readonly="readonly" id="writer" style="width: 40%"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="contents">내용<span class="r">*</span></label></td>
+						<td><textarea rows="" cols="" name="contents" id="contents">${dto.contents }</textarea></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="category">카테고리<span class="r">*</span></label></td>
+						<td>
+								<input type="radio" name="category" class="category" id="show" checked="checked" value="1">
+								<label for="show">공연</label>
+								<input type="radio" name="category" class="category" id="festival" value="2">
+								<label for="festival">축제</label>						
+								<input type="radio" name="category" class="category" id="daehakro" value="3">
+								<label for="daehakro">대학로 연극</label>
+						</td>
+					</tr>
+					<tr id="ageDiv">
+						<td class="td1"><label for="age">연령제한<span class="r">*</span></label></td>
+						<td>
+							<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 
+							<label for="all">전연령</label>
+							<input type="radio" name="ageSel" class="age" id="teen" value="2">
+							<label for="teen">청소년 이상</label>
+							<input type="radio" name="ageSel" class="age" id="adult" value="3">
+							<label for="adult">성인 이상</label>
+							<input type="radio" name="ageSel" class="age" id="etc" value="4">
+							<label for="etc">기타</label>
+							<input type="text" class="age" id="age" name="age" value="1">
+						</td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="startDate">시작일<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="startDate" class="date"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="endDate">종료일<span class="r">*</span></label></td>							<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="endDate" class="date"></td>
+					</tr>
+					<tr class="daehakDiv">
+						<td class="td1"><label for="price">가격</label></td>
+						<td><input type="number" name="price" value="0"><span>&nbsp; &nbsp;원</span></td>
+					</tr>
+					<tr class="daehakDiv">
+						<td class="td1"><label for="total">좌석 </label></td>
+						<td><input type="number" name="total" value="0"><span>&nbsp; &nbsp;석</span></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="local">지역<span class="r">*</span></label></td>
+						<td>
+							<img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/location.png">
+							<input type="text" name="local1" id="local1" onclick="openMap()" style="width: 50%;">
+							<input type="text" name="local2" id="local2" placeholder="상세주소를 입력해주세요" readonly="readonly"  style="width: 45%;" >
+							<br>
+							<img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/location.png">								<input type="text" name="local" id="local" readonly="readonly"  style="width: 73%;" >
+							<input type="checkbox" id="localConfirm">
+							<label for="localConfirm" class="localConfirm">이 주소가 맞습니다.</label>
+							<input type="hidden" name="region" id="region">
+							<div id="map" style="width:100%;height:500px;margin-top:10px;display:none"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="files">썸네일</label><span class="r">*</span></td>
+						<td>
+							<div id="thumbnailDiv">
+								<div id="thumbnailSelectDiv">
+									<input type="file" class="filelist" id="thumbnail" name="filelist" style="display: inline-block" accept=".jpg, .png, .gif, .jpeg">
+									<span style="color: red">※  jpg, png, gif, jpeg 확장자만 업로드 가능합니다.</span>
+								</div>
+								<!-- 이미지 미리보기 -->
+								<div id="preview">
+									<img id="preview-img" src="#">
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="files">첨부파일</label></td>
+						<td>
+							<a id="addFiles"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일추가</a>
+							<div id="files">
+								<input type="file" class="filelist" name="filelist" style="display: inline-block">
+								<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
+							</div>
+						</td>
+					</tr>
+					<c:if test="${member.grade eq 3}">
+					<tr>
+						<td class="td1"><label for="top">상단 등록</label></td>
+						<td><input type="checkbox" id="top" name="top" value="0">
+						<label for="top">등록</label>
+						</td>
+					</tr>
+					</c:if>
+				</tbody>
+				</table>
 				
-				<div>
-					<label for="title">제목<span class="r">*</span></label>
-					<input type="text" name="title" id="title">
-				</div>
-				<div>
-					<label for="writer">작성자<span class="r">*</span></label>
-					<input type="text" name="writer" value="${member.nickname}memberNick" readonly="readonly" id="writer">
-				</div>
-			
-				<div>
-					<label for="contents">내용<span class="r">*</span></label>
-					<textarea rows="" cols="" name="contents" id="contents"></textarea>
-				</div>
-				<div>
-				<label for="files">썸네일</label><span>&nbsp; &nbsp; ※  jpg, png, gif, jpeg 확장자만 업로드 가능합니다.</span>
-					<div id="thumbnailDiv">
-						<div id="thumbnailSelectDiv">
-							<input type="file" class="filelist" id="thumbnail" name="filelist" style="display: inline-block" accept=".jpg, .png, .gif, .jpeg">
-							
-						</div>
-						<!-- 이미지 미리보기 -->
-						<div id="preview">
-							<img id="preview-img" src="#">
-						</div>
-					</div>
-				</div>
-				<div>
-					<label for="files">첨부파일</label>
-					<a id="addFiles">파일추가</a>
-					<div id="files">
-						<div>
-							<input type="file" class="filelist" name="filelist" style="display: inline-block">
-							<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
+				<hr>
+				<div id="datesOptionDiv">
+					<a class="btn btn-default" id="addOptions">옵션 추가하기</a>
+					<div id="datesOption">
+						<div id="option1">
+							<div>
+								<div class="dateDiv">
+									<label for="dates">날짜 </label>
+									<input type="date" name="reg_date" class="dates">
+								</div>
+								<div class="timeDiv">
+									<label for="time">시작시간</label>
+									<input type="text" name="time" class="time">
+								</div>				
+								<div class="seatDiv">
+									<label for="seat">좌석</label>
+									<input type="number" name="seat" class="seat">
+								</div>
+								<div class="priceDiv">
+									<label for="price">가격</label>
+									<input type="number" name="price" class="price">
+								</div>
+							</div>
+							<hr>
 						</div>
 					</div>
-				</div>				
-				<div>
-					<label for="category">카테고리<span class="r">*</span></label>
-					<input type="radio" name="category" class="category" id="show" checked="checked" value="1"> 공연
-					<input type="radio" name="category" class="category" id="festival" value="2"> 축제						
-					<input type="radio" name="category" class="category" id="daehakro" value="3"> 대학로 연극
 				</div>
-				<div>
-					<label for="startDate">시작일<span class="r">*</span></label>
-					<input type="date" name="startDate" class="date">  
-				</div>
-				<div>
-					<label for="endDate">종료일<span class="r">*</span></label>
-					<input type="date" name="endDate" class="date">
-				</div>
-				<div id="daehakDiv">
-					<div>
-						<label for="price">가격</label>
-						<input type="number" name="price" value="0"><span>원</span>
-					</div>
-					<div>
-						<label for="total">좌석 </label>
-						<input type="number" name="total" value="0"><span>석</span>
-					</div>
-				</div>
-				<div id="ageDiv">
-					<label for="age">연령제한<span class="r">*</span></label>
-					<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 전연령
-					<input type="radio" name="ageSel" class="age" id="teen" value="2"> 청소년 이상
-					<input type="radio" name="ageSel" class="age" id="adult" value="3"> 성인 이상
-					<input type="radio" name="ageSel" class="age" id="etc" value="4"> 기타
-					<input type="text" class="age" id="age" name="age" value="1">
-				</div>
-				<div>
-					<label for="local">지역<span class="r">*</span></label>
-					<input type="text" name="local1" id="local1" onclick="openMap()" style="width: 30%;">
-					<input type="text" name="local2" id="local2" placeholder="상세주소를 입력해주세요" readonly="readonly"  style="width: 20%;" >
-					<input type="text" name="local" id="local" readonly="readonly"  style="width: 30%;" >
-					이 주소가 맞습니다.<span class="r">*</span> <input type="checkbox" id="localConfirm">
-					<input type="hidden" name="region" id="region">
-					<div id="map" style="width:100%;height:500px;margin-top:10px;display:none">
-					</div>
-				</div>
-				<%-- <c:if test="${member.grade eq 3}">  추가하기 --%>
-				<div>
-					<label for="top">상단에 등록 하기</label>
-					<input type="checkbox" id="top" name="top" value="0">
-				</div>
-				<%-- </c:if> --%>
 				
-      		 	<a id="write" class="btn btn-default">등록</a>
+				
+				
+      		 	<a id="write" class="festiWrite_btn">등록</a>
+
+				
 			</form> 
+  	      	</div>
 			
       	</div>
       </div>

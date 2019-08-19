@@ -48,6 +48,7 @@
 							// 사용하겠다고 누른 경우;
 							$("#nickname").prop('readonly', true);
 							$("#nCheck").hide();
+							result_nicknameOk.innerHTML='중복확인이 완료되었습니다.';
 							nCheck = true;
 						}else{
 							// 사용안하겠다고 누른경우;
@@ -59,7 +60,6 @@
 				) // 기존 닉네임이랑 다른데 중복체크를 누른 경우 끝;
 			} // 기존 닉네임 일치 여부 확인 끝;
 		})// 닉네임 중복확인 끝;
-
 		/////////////////////////////// 전화번호 변경;
 		// 기존 전화번호 보관;
 		var oPhone = $("#phone").val();
@@ -97,6 +97,7 @@
 							// 확인된 전화번호를 사용하겠다는 코드;
 							$("#phone").prop('readonly', true);
 							$("#pCheck").hide();
+							result_phoneOk.innerHTML = '중복확인이 완료되었습니다.';
 							pCheck = true;
 						}else{
 							// 확인된 전화번호를 사용하지 않겠다는 코드;
@@ -108,9 +109,6 @@
 				) // 중복확인 post 끝;
 			} // 기존 전화번호 일치 여부 확인 끝;
 		}) // 전화번호 중복확인 끝;
-		
-		
-		
 		/////////////////////////////// 이메일 변경;
 		// 이메일로 온 번호로 마지막 인증하는 버튼 숨겨놓기;
 		$("#eCheck3").hide();
@@ -137,6 +135,23 @@
 		var eCheck = false;
 		// 인증시 사용할 이메일;
 		var email = "";
+		// 이메일 select 이벤트시 설정;
+		$("#emailSelect").on("change", function(){
+			// select에서 선택한 값을 이메일 주소로 사용하기 위해 eAddressChange에 넣는다;
+			var eAddressChange = $("#emailSelect option:selected").val();
+			// ""인지 주소를 선택했는지 확인하기 위한 if를 돌린다;
+			if (eAddressChange == 'etc'){
+				// etc 즉 이메일을 직접 입력하겠다는 의도 고로 입력창의 readOnly를 푼다;
+				$("#emailAddress").prop('readonly', false);
+				// 주소창을 초기화 시킨다;
+				$("#emailAddress").val('');
+			}else if(eAddressChange == ""){
+				// 그냥 기존의 이메일을 쓰겠다는 의도 걍 아무것도 하지 말고 냅두자!;
+			}else{
+				// 새로 입력한 주소가 들어왔음, 고로 emailAddress에 넣어주는 코드를 쓴다;
+				var a = $("#emailAddress").val(eAddressChange);
+			}
+		});
 		$("#eCheck").on("click", function () {
 			// 중복체크 클릭시 이메일 완성;
 			// 입력한 ID를 받아온다;
@@ -230,6 +245,7 @@
 					$("#eCheck3").hide();
 					$("#emailCheckNumber").hide();
 					result_emailOk.innerHTML = '이메일 인증이 완료되었습니다.';
+					result_emailOk.innerHTML = '중복확인이 완료되었습니다.';
 					eCheck = true;
 						}else{
 					// 인증번호가 틀렸을때 코드;
@@ -336,23 +352,21 @@
 		    					<input type="text" class="form-control" title="이메일 아이디" id="emailId" name="emailId" maxlength="50">
 		    					<span class="from-control" id = "add">@</span>
 		    					<!-- 여기로 선택한 이메일 주소가 와야됨. -->
-		    					<input type="text" class="form-control" title="이메일 주소" id="emailAddress" name="emailAddress">
-		    					<div class="form-control" id = "emailSelect">
-			    					<select>
-			    						<option value="">선택해주세요</option>
-			    							<option value="naver.com">naver.com</option>
-											<option value="hanmail.net">hanmail.net</option>
-											<option value="gmail.com">gmail.com</option>
-											<option value="nate.com">nate.com</option>
-											<option value="hotmail.com">hotmail.com</option>
-											<option value="dreamwiz.com">dreamwiz.com</option>
-											<option value="freechal.com">freechal.com</option>
-											<option value="hanmir.com">hanmir.com</option>
-											<option value="korea.com">korea.com</option>
-											<option value="paran.com">paran.com</option>
-											<option value="etc"> 직접입력</option>
-		    						</select>
-		    					</div>
+		    					<input type="text" class="form-control" title="이메일 주소" readonly="readonly" id="emailAddress" name="emailAddress">
+			    				<select class = "form-control" id = "emailSelect" class="eSelect">
+			    						<option value = "">선택해주세요</option>
+										<option value = "naver.com">naver.com</option>
+										<option value = "hanmail.net">hanmail.net</option>
+										<option value = "gmail.com">gmail.com</option>
+										<option value = "nate.com">nate.com</option>
+										<option value = "hotmail.com">hotmail.com</option>
+										<option value = "dreamwiz.com">dreamwiz.com</option>
+										<option value = "freechal.com">freechal.com</option>
+										<option value = "hanmir.com">hanmir.com</option>
+										<option value = "korea.com">korea.com</option>
+										<option value = "paran.com">paran.com</option>
+										<option value = "etc"> 직접입력</option>
+		    					</select>
 		    					<button type="button" class="btn btn-default" id="eCheck">중복확인</button>
 		    					<button type="button" class="btn btn-default" id="eCheck2">인증코드 보내기</button>
 		    					<input type="text" class="form-control" title="인증번호 입력" placeholder="번호를 입력해 주세요." id="emailCheckNumber">
