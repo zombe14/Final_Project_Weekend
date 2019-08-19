@@ -100,7 +100,7 @@
 					<button id="searchButton">검색</button>
 				</form>
 				<div class="boardwrite">
-						<button id="boardWrite">${boardTitle} 글쓰기</button>
+						<a id="write" class="festiWrite_btn" href="./UserRecoWrite">글쓰기</a>
 				</div>
   	  	     	 </div>
       		</div>
@@ -110,14 +110,12 @@
 		</div>
 	</div>
 <script type="text/javascript">
-
 		/* 테이블의 num 앞에 구분 문자 안보이게 */
 		$('.selectRow').each(function() {
 			var num = $(this).attr('id');
 			num = num.substring(1);
 			$(this).children('p').append(num);
 		});
-		
 	</script>
 </body>
 </html>

@@ -161,6 +161,8 @@ public class FestiService {
 	// 글쓰기;
 	public int setUserRecoWrite(FestiDTO festiDTO) throws Exception{
 		int result = 0;
+		int num = festiDAO.getNum();
+		festiDTO.setNum("f"+num);
 		result  = festiDAO.setUserRecoWrite(festiDTO);
 		return result;
 	}

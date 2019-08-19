@@ -156,17 +156,6 @@ public class AdminController {
 		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
-		ModelAndView mv = new ModelAndView();
-	// recommend;
-	public ModelAndView adminRecommend() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		return mv;
-	}
-	// rank;
-	public ModelAndView adminRankList() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		return mv;
-	}
 	//----------------------------------- Enjoy 관리 -----------------------------------//
 	// 공연/축제 전체 목록(완성)
 	@RequestMapping(value = "aEnjoyList", method = RequestMethod.GET)

@@ -55,7 +55,14 @@ public class WeekRecoController{
 	// 글쓰기;
 	// 글쓰기 폼으로;
 	@RequestMapping(value = "WeekRecoWrite", method = RequestMethod.GET)
-	public void setWrite() throws Exception{
+	public ModelAndView setWrite() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		FestiDTO festiDTO = new FestiDTO();
+		int num = festiService.getNum();
+		festiDTO.setNum("f"+num);
+		mv.addObject("num", festiDTO.getNum());
+		mv.setViewName("board/WeekRecoWrite");
+		return mv;
 	}
 	// 글쓰기 진행;
 	@RequestMapping(value = "WeekRecoWrite", method = RequestMethod.POST)
