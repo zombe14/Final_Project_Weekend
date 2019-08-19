@@ -242,6 +242,7 @@ public class MemberController {
 		memberDTO = memberService.getSelectkakao(memberDTO);
 		String message="가입된 회원이 아닙니다.";
 		if(memberDTO==null) {
+			message="가입 가능한 아이디입니다.";
 			mv.setViewName("common/messageMove");
 			mv.addObject("message", message);
 			mv.addObject("path", "./memberAgree");
