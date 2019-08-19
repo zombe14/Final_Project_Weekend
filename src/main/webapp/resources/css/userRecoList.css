@@ -1,0 +1,16 @@
+#container{
+	background-color: #f5f6f7;
+}
+
+.user_wrap{
+	background-color: white;
+    padding: 30px 30px 50px;
+}
+
+.user_title{
+	padding-bottom: 30px;
+    border-bottom: 2px solid #999;
+    margin-bottom: 30px;
+    font-size: 25px;
+    height: 50px;
+}
