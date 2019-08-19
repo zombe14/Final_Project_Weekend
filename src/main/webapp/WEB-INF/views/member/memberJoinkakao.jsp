@@ -136,6 +136,7 @@
 							
 							<tr>
 								<th scope="row">
+								<span class="essential">*</span>
 									프로필사진
 								</th>
 								<td>

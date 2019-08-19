@@ -256,10 +256,23 @@ public class MemberController {
 		return mv;
 	}
 	@RequestMapping(value = "getInfo1")
-	public String getInfo(String access_token, HttpSession session,String id)throws Exception{
+	public ModelAndView getInfo(String access_token, HttpSession session,String id)throws Exception{
+		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO = memberService.getInfo1(access_token);
-		session.setAttribute("memberkakao", memberDTO);
-		return "redirect:./memberJoinkakao";
+		MemberDTO memberID = memberService.getId(memberDTO);
+		String message = "가입 가능한 아이디입니다.";
+		if(memberID==null) {
+			session.setAttribute("memberkakao", memberDTO);
+			mv.setViewName("common/messageMove");
+			mv.addObject("message", message);
+			mv.addObject("path", "./memberJoinkakao");
+		}else {
+			message="이미 가입된 아이디입니다.";
+			mv.setViewName("common/messageMove");
+			mv.addObject("message", message);
+			mv.addObject("path", "./memberLogin");
+		}
+		return mv;
 	}
 	
 	

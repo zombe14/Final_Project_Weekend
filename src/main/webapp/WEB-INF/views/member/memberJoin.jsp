@@ -230,7 +230,7 @@
 							</tr>
 							<tr>
 								<th scope="row">
-									프로필사진
+									<span class="essential">*</span>프로필사진
 								</th>
 								<td>
 									<input type="file" name="photo">
