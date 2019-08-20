@@ -16,7 +16,7 @@ public class UserRecoWriterInterceptor extends HandlerInterceptorAdapter {
 		// TODO Auto-generated method stub
 		boolean result=false;
 		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("memberNickname");
+		Object obj = session.getAttribute("member");
 		Object grade = session.getAttribute("grade");
 		if(obj!=null) {
 			if(grade.equals(1)) {

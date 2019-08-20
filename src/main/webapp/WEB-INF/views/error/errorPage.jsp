@@ -15,7 +15,6 @@
 		<h2>에러 페이지입니다.</h2>
 	</div>
 
-
 <%--     <c:if test="${requestScope['javax.servlet.error.status_code'] == 400}">
         <center><p>400 에러가 발생했습니다.</p></center>
     </c:if>
