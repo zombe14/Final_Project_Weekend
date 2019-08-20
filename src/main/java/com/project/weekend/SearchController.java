@@ -132,7 +132,6 @@ public class SearchController {
 	// 비밀번호 변경하기;
 	@RequestMapping(value = "pwResult", method = RequestMethod.POST)
 	public ModelAndView pwResult(MemberDTO memberDTO) throws Exception{
-		System.out.println("비변 컨트롤러 도착");
 		ModelAndView mv = new ModelAndView();
 		int pwResult = 0;
 		pwResult = memberService.setUpdateMyPw(memberDTO);

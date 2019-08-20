@@ -65,7 +65,6 @@
 		var oPhone = $("#phone").val();
 		// 전화번호 확인 여부;
 		var pCheck = false;
-		
 		$("#pCheck").on("click", function () {
 			var phone = $("#phone").val();
 			if(phone == oPhone){

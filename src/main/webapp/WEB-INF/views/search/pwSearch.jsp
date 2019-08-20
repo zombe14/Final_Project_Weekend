@@ -77,19 +77,38 @@
 				}
 			})
 		})
+		// 새 비밀번호 조건 충족 확인;
+		$("#changePw").blur(function (){
+			var nPw = $("#changePw").val();
+			var ncPw = $("#checkPw").val();
+			var pattern1 = /[0-9]/;
+			var pattern2 = /[a-zA-Z]/;
+			var pattern3 = /[~!@\#$%<>^&*()_+-]/;
+			// 비밀번호 길이 확인;
+			if(nPw.length < 8 || nPw.length > 12){
+				result_emailNo.innerHTML = "비밀번호는 8~12자로 설정해야 합니다.";
+				nPw = $("#changePw").val('');
+				event.stiplmmediatePropagation();
+			// 특수문자 조건 확인;
+			}else if(!pattern1.test(nPw) || !pattern2.test(nPw)	|| !pattern3.test(nPw)){
+				result_emailNo.innerHTML = "비밀번호는 대문자, 소문자, 숫자, 특수문자 3가지가 포함되야 합니다";
+				nPw = $("#changePw").val('');
+				event.stiplmmediatePropagation();
+			}
+			result_emailNo.innerHTML = "";
+			result_emailOk.innerHTML = "입력완료 되었습니다.";
+		});// npw focus 끝;
+		
 		$("#pwInsert").on("click", function(){
 			var id = $("#changePwId").val();
 			var nPw = $("#changePw").val();
 			var ncPw = $("#checkPw").val();
-			alert(id);
-			alert(nPw);
 			if(nPw !== ncPw){
 				alert("입력하신 두 비밀번호가 다릅니다.\n다시 입력해주세요.");
 				$("#changePw").val('');
 				$("#checkPw").val('');
 			}else{
 				var email = $("#emailId").val() + $("#add").text() + $("#emailAddress").val();
-				alert(email);
 				$.post("./pwResult", {
 					id : id,
 					pw : nPw,
@@ -102,6 +121,9 @@
 					}
 				})
 			}
+		})
+		$("#closeWindow").on("click", function () {
+			window.close();
 		})
 	})
 </script>
@@ -128,10 +150,11 @@
 		<input type="text" id ="emailCheckNumber" title="인증번호 입력" name="emailCheckNumber" placeholder="인증번호를 입력해 주세요.">
 		<button type="button" id="finalCheck">확인</button>
 		<input type="password" id = "changePw" placeholder="변경할 비밀번호를 입력.">
+		<div id="result_emailNo" class="result_font" style="color: red"></div>
+		<div id="result_emailOk" class="result_font" style="color: green"></div>
 		<input type="password" id = "checkPw" placeholder="비밀번호를 다시 한번 입력.">
 		<button type="button" id = "pwInsert">확인</button>
-		<div id="result_emailOk" class="result_font" style="color: green"></div>
 	</form>
-
+	<button type="button" id="closeWindow">닫기</button>
 </body>
 </html>

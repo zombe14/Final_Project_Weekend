@@ -76,6 +76,9 @@
 				}
 			})
 		})
+		$("#closeWindow").on("click", function () {
+			window.close();
+		})
 	})
 </script>
 	<form>
@@ -100,6 +103,7 @@
 		<input type="text" id ="emailCheckNumber" title="인증번호 입력" name="emailCheckNumber" placeholder="인증번호를 입력해 주세요.">
 		<button type="button" id="finalCheck">확인</button>
 	</form>
+	<button type="button" id="closeWindow">닫기</button>
 
 </body>
 </html>
