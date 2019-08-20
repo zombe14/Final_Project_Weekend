@@ -72,5 +72,5 @@ public class QnaDAO{
 	public List<String> getSelectRef(String ref) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getSelectRef", ref);
 	}
-	
+
 }

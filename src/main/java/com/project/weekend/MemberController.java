@@ -43,7 +43,6 @@ public class MemberController {
 	@RequestMapping(value = "getjumin", method = RequestMethod.POST)
 	@ResponseBody
 	public int getjumin(MemberDTO memberDTO)throws Exception{
-		System.out.println("getjuminpost");
 		memberDTO = memberService.getjumin(memberDTO);
 		int result=0;
 		if(memberDTO==null) {

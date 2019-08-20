@@ -171,7 +171,7 @@
 				var input = prompt('비밀번호를입력해주세요');
 				if(input != null){
 					if(pw == input){
-						location.href = "./${board}Select?num="+num;
+						location.href = "./${board}Select?num="+num+"&pw="+pw;
 					} else {
 						alert('비밀번호가 틀렸습니다.');
 						password(pw,num);
