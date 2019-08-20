@@ -70,13 +70,13 @@
 			</interceptor>
 		</interceptors>
 		
-	<beans:bean id="writeInterceptor" class="com.project.weekend.interceptor.WriteInterceptor"/>
+	<!-- <beans:bean id="writeInterceptor" class="com.project.weekend.interceptor.WriteInterceptor"/>
 		<interceptors>
 			<interceptor>
 				<mapping path="/festi/festiWrite"/>
 				<beans:ref bean="writeInterceptor"/>
 			</interceptor>
-		</interceptors>
+		</interceptors> -->
 		
 	<beans:bean id="deleteInterceptor" class="com.project.weekend.interceptor.DeleteInterceptor"/>	
 		<interceptors>
