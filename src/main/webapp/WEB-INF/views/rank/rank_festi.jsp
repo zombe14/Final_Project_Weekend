@@ -78,7 +78,7 @@
 									${list.title}
 								</td>
 								<td class="td10">아직 구현안됨</td>
-								<td class="td10">${list.reg_date} ~	${list.reg_date}</td>
+								<td class="td10">${list.startDate} ~	${list.endDate}</td>
 								<td class="td20">${list.local}</td>
 							</tr>
 						</c:forEach>
