@@ -155,6 +155,7 @@
 								</select>
 							</dd>
 						</dl>
+						<c:if test="${dto.category eq 3}">
 						<div id="selected">
 							
 						</div>
@@ -173,7 +174,8 @@
 								<a class="optiondates" title="${o.reg_date}"></a>
 							</c:forEach>
 						</div>
-						
+						</c:if>
+						<c:if test="${dto.writer eq member.nickname}">
 						<div class="admin_button">
 							<a href="./${board}Update?num=${dto.num}">수정</a> 
 							<a id="delete">삭제</a>
@@ -181,6 +183,7 @@
 								<input type="hidden" name="num" value="${dto.num}">
 							</form>
 						</div>
+						</c:if>
 					</div>
 				</div>
 			</div>
@@ -349,7 +352,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript">
 	
-	/* 옵션 날짜 넣기 */
+	/* 옵션 날짜 넣기    - 카테고리 3만*/
 	var disabledDays = [];
 	$('.optiondates').each(function(){
 		var date2 = [];
