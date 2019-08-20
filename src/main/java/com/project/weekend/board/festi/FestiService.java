@@ -1,4 +1,4 @@
-package com.project.weekend.board.festi;
+﻿package com.project.weekend.board.festi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +45,9 @@ public class FestiService {
 	private FestiQnaService festiQnaService;
 	@Inject
 	private DatesDAO datesDAO;
+	
 
+	
 	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HashMap<String,Object> datesDTOs, HttpSession session) throws Exception {
 		int num = festiDAO.getNum();
 		festiDTO.setNum("f"+num);
@@ -206,4 +208,9 @@ public class FestiService {
 		}
 		return list;
 	}
+
+	
+	
+	
+	
 }

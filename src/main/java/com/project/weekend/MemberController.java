@@ -43,7 +43,6 @@ public class MemberController {
 	@RequestMapping(value = "getjumin", method = RequestMethod.POST)
 	@ResponseBody
 	public int getjumin(MemberDTO memberDTO)throws Exception{
-		System.out.println("getjuminpost");
 		memberDTO = memberService.getjumin(memberDTO);
 		int result=0;
 		if(memberDTO==null) {
@@ -131,13 +130,14 @@ public class MemberController {
 			message="로그인 실패";
 			if(result==1) {	
 				if(memberDTO != null) {
-					if(memberDTO.getCount()>6) {
+					if(memberDTO.getCount()>5) {
 						message = "로그인 횟수 제한";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
 						mv.addObject("path", "../");
 					}else {
 						session.setAttribute("member", memberDTO);
+						session.setAttribute("memberNickname", memberDTO.getNickname());
 						session.setAttribute("grade", memberDTO.getGrade());
 						int zero = memberService.setUpdatezero(memberDTO);
 						message = "로그인 성공";	
@@ -164,7 +164,7 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		String memberAgree = "member";
 		session.setAttribute("memberAgree", memberAgree);
-		return "redirect:./memberJoin1";
+		return "redirect:./memberJoin";
 	}
 	/*
 	 * @RequestMapping(value = "memberAgree2", method = RequestMethod.GET) public
@@ -190,91 +190,63 @@ public class MemberController {
 	
 	
 	
-	
-	@RequestMapping(value="kakaoLogin")
-	public void kakaoLogin()throws Exception{}
-	
-	@RequestMapping(value="memberJoinkakao", method = RequestMethod.GET)
-	public void kakakoJoin()throws Exception{}
-	@RequestMapping(value = "memberJoinkakao", method = RequestMethod.POST)
-	public ModelAndView kakaoJoin(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		MemberDTO getId = memberService.getId(memberDTO);
-		memberDTO.setPw("1234");
-		String message="회원가입 실패";
-		if(getId!=null) {
-			message="이미 존재하는 아이디입니다.";
-			mv.setViewName("common/messageMove");
-			mv.addObject("message", message);
-			mv.addObject("path", "member/memberJoin");
-		}else {
-			int result = memberService.setWrite(memberDTO, photo, session);
-			if(result>0) {
-				message="회원가입 성공";
-			}
-			mv.setViewName("common/messageMove");
-			mv.addObject("message", message);
-			mv.addObject("path", "../");
-			}
-
-		return mv;
-	}
-	@RequestMapping(value = "kakaoDelete")
-	public String kakaoDelete(HttpSession session)throws Exception{
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		memberService.kakaoDelete(memberDTO);
-		session.invalidate();
-		return "redirect:../";
-	}
-	
-	@RequestMapping(value = "kakaoLogout")
-	public String kakaoLogout(HttpSession session)throws Exception{
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		memberService.kakaoLogout(memberDTO);
-		session.invalidate();
-		return "redirect:../";
-	}
-	
-	@RequestMapping(value = "getInfo")
-	public ModelAndView getInfo(String access_token, HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		MemberDTO memberDTO = memberService.getInfo(access_token);
-		memberDTO = memberService.getSelectkakao(memberDTO);
-		String message="가입된 회원이 아닙니다.";
-		if(memberDTO==null) {
-			mv.setViewName("common/messageMove");
-			mv.addObject("message", message);
-			mv.addObject("path", "member/memberAgree");
-			return mv;
-		}
-		session.setAttribute("grade", memberDTO.getGrade());
-		session.setAttribute("member", memberDTO);
-		message="로그인 성공";
-		mv.setViewName("common/messageMove");
-		mv.addObject("message", message);
-		mv.addObject("path", "../");
-		return mv;
-	}
-	@RequestMapping(value = "getInfo1")
-	public ModelAndView getInfo(String access_token, HttpSession session,String id)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		MemberDTO memberDTO = memberService.getInfo1(access_token);
-		MemberDTO memberID = memberService.getId(memberDTO);
-		String message = "가입 가능한 아이디입니다.";
-		if(memberID==null) {
-			session.setAttribute("memberkakao", memberDTO);
-			mv.setViewName("common/messageMove");
-			mv.addObject("message", message);
-			mv.addObject("path", "./memberJoinkakao");
-		}else {
-			message="이미 가입된 아이디입니다.";
-			mv.setViewName("common/messageMove");
-			mv.addObject("message", message);
-			mv.addObject("path", "./memberLogin");
-		}
-		return mv;
-	}
-	
+	/*
+	 * @RequestMapping(value="kakaoLogin") public void kakaoLogin()throws
+	 * Exception{}
+	 * 
+	 * @RequestMapping(value="memberJoinkakao", method = RequestMethod.GET) public
+	 * void kakakoJoin()throws Exception{}
+	 * 
+	 * @RequestMapping(value = "memberJoinkakao", method = RequestMethod.POST)
+	 * public ModelAndView kakaoJoin(MemberDTO memberDTO, MultipartFile photo,
+	 * HttpSession session,BindingResult bindingResult)throws Exception{
+	 * ModelAndView mv = new ModelAndView(); MemberDTO getId =
+	 * memberService.getId(memberDTO); memberDTO.setPw("1234"); String
+	 * message="회원가입 실패"; if(getId!=null) { message="이미 존재하는 아이디입니다.";
+	 * mv.setViewName("common/messageMove"); mv.addObject("message", message);
+	 * mv.addObject("path", "member/memberJoin"); }else { int result =
+	 * memberService.setWrite(memberDTO, photo, session); if(result>0) {
+	 * message="회원가입 성공"; } mv.setViewName("common/messageMove");
+	 * mv.addObject("message", message); mv.addObject("path", "../"); }
+	 * 
+	 * return mv; }
+	 * 
+	 * @RequestMapping(value = "kakaoDelete") public String kakaoDelete(HttpSession
+	 * session)throws Exception{ MemberDTO memberDTO =
+	 * (MemberDTO)session.getAttribute("member");
+	 * memberService.kakaoDelete(memberDTO); session.invalidate(); return
+	 * "redirect:../"; }
+	 * 
+	 * @RequestMapping(value = "kakaoLogout") public String kakaoLogout(HttpSession
+	 * session)throws Exception{ MemberDTO memberDTO =
+	 * (MemberDTO)session.getAttribute("member");
+	 * memberService.kakaoLogout(memberDTO); session.invalidate(); return
+	 * "redirect:../"; }
+	 */
+	/*
+	 * @RequestMapping(value = "getInfo") public ModelAndView getInfo(String
+	 * access_token, HttpSession session)throws Exception{ ModelAndView mv = new
+	 * ModelAndView(); MemberDTO memberDTO = memberService.getInfo(access_token);
+	 * memberDTO = memberService.getSelectkakao(memberDTO); String
+	 * message="가입된 회원이 아닙니다."; if(memberDTO==null) { message="가입 가능한 아이디입니다.";
+	 * mv.setViewName("common/messageMove"); mv.addObject("message", message);
+	 * mv.addObject("path", "./memberAgree"); return mv; }
+	 * session.setAttribute("grade", memberDTO.getGrade());
+	 * session.setAttribute("member", memberDTO); message="로그인 성공";
+	 * mv.setViewName("common/messageMove"); mv.addObject("message", message);
+	 * mv.addObject("path", "../"); return mv; }
+	 * 
+	 * @RequestMapping(value = "getInfo1") public ModelAndView getInfo(String
+	 * access_token, HttpSession session,String id)throws Exception{ ModelAndView mv
+	 * = new ModelAndView(); MemberDTO memberDTO =
+	 * memberService.getInfo1(access_token); MemberDTO memberID =
+	 * memberService.getId(memberDTO); String message = "가입 가능한 아이디입니다.";
+	 * if(memberID==null) { session.setAttribute("memberkakao", memberDTO);
+	 * mv.setViewName("common/messageMove"); mv.addObject("message", message);
+	 * mv.addObject("path", "./memberJoinkakao"); }else { message="이미 가입된 아이디입니다.";
+	 * mv.setViewName("common/messageMove"); mv.addObject("message", message);
+	 * mv.addObject("path", "./memberLogin"); } return mv; }
+	 */
 	
 	
 	

@@ -203,8 +203,6 @@
 												
 													<option value="paran.com">paran.com</option>
 												
-													<option value="etc"> 직접입력</option>
-												
 											</select>
 										</div>
 										<input type="hidden" id="email" name="email" title="email">

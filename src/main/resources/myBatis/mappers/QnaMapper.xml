@@ -117,5 +117,10 @@
 		update qna set answer = 0 where ref = #{ref} and step = 0
 	</update>
 	
+	<select id="getSelectPw" resultType="QnaDTO" parameterType="QnaDTO">
+		select * from qna where num=#{num} and pw=#{pw}
+	</select>
+
+	
 	
 </mapper>
