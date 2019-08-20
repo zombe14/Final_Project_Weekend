@@ -2,13 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-		<div id="optionList">
+		<div id="optionList" >
 			<c:forEach items="${clist}" var="c">
 				 <div id = "${c.dnum}" class="optionListDiv">
 					<div>
 				    	${c.num} | ${c.dnum} | ${c.reg_date} | ${c.time} | ${c.seat} | ${c.price} 
+				    	<span class="delete" title="${c.dnum}">X</span>
 			    	</div>
-			    	<span class="delete" title="${c.dnum}">X</span>
 			    </div>
 		   	</c:forEach>
 		</div>
@@ -17,12 +17,12 @@
 
 <script type="text/javascript">
 
-/* function getOptionsList(){
+function getOptionsList(){
 	$.ajax({
 		type:'GET',
 		url:'./optionList',
 		data:{
-			num:'${clist.num}'
+			num:'${num}'
 		},
 		success:function(data){
 			data = data.trim();    	
@@ -53,7 +53,7 @@ $('.delete').click(function() {
 		 });
 	 }
 });
- */
+
 
 </script>
 

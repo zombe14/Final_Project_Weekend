@@ -71,7 +71,9 @@ public class FestiController{
 		ModelAndView mv = new ModelAndView();
 		List<DatesDTO> list = datesService.getList(num, session);
 		System.out.println(num);
+		System.out.println(list.size());
 		mv.addObject("clist", list);
+		mv.addObject("num",num);
 		mv.setViewName("board/optionList");
 		return mv; 
 	}

@@ -192,8 +192,9 @@
 <script src="../resources/js/summernote.js"></script>
 <!-- script -->
 <script type="text/javascript">
-jQuery.ajaxSettings.traditional = true;
-$.ajaxSettings.traditional = true;
+
+$('.daehakDiv').hide();
+
 /* 시작일, 종료일 비교 */
 $('#endDate, #startDate').change(function(){
 	var startDate = $( '#startDate' ).val();
@@ -266,13 +267,17 @@ $('#addOptions').click(function() {
 	});
 	
 	function getOptionsList(){
+		jQuery.ajaxSettings.traditional = true;
+		$.ajaxSettings.traditional = true;
+		var num = "${num}";
 		$.ajax({
 			type:'GET',
 			url:'./optionList',
 			data:{
-				num:'${num}'
+				num:num
 			},
 			success:function(data){
+				console.log(data);
 				data = data.trim();    	
 				$('#optionsDiv').html(data);	
 			},
