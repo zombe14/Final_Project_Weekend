@@ -112,6 +112,7 @@ public class FestiDAO{
 		return SqlSession.selectList(NAMESPACE+"getRankList", pageMaker);
 	}
 	// 상혁 끝;
-
+	
+	
 }
 

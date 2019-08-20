@@ -189,7 +189,6 @@
 		order by hit desc) F)
 	</select>
 	<!-- 상혁 끝 -->
-	
-	
+
 	
 </mapper>
