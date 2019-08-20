@@ -159,7 +159,7 @@
 						</dl>
 						<div class="reserve_button"><a href="#">예매하기</a></div>
 						<div class="admin_button">
-							<a href="./${board}Update?num=${dto.num}">수정</a> 
+							<a href="./${board}Update?num=${dto.num}&writer=${dto.writer}">수정</a> 
 							<a id="delete">삭제</a>
 							<form action="./festiDelete" id="festiDeleteFrm" method="post">
 								<input type="hidden" name="num" value="${dto.num}">

@@ -40,7 +40,7 @@
 				<div class="col-12">
 					<c:forEach items="${list}" var="i">
 						<div class="col-sm-3">
-						<a href="./${board}Select?num=${i.num}">
+						<a href="./${board}Select?num=${i.num}&writer=${i.writer}">
 							<div class="board_img">
 								<div>
 									<img alt="${i.fileDTOs[0].oname}" src="../resources/images/board/${i.fileDTOs[0].fname}">

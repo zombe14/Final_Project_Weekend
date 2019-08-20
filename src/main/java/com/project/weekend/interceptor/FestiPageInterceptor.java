@@ -25,13 +25,18 @@ public class FestiPageInterceptor extends HandlerInterceptorAdapter {
 		boolean result=false;
 		FestiService festiService = new FestiService();
 		String num = request.getParameter("num");
-		System.out.println(num);
+		String writer = request.getParameter("writer");
+		
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("memberId");
 		Object grade = session.getAttribute("grade");
 		if(obj!=null) {
 			if(grade.equals(2)){
-				result=true;
+				if(obj.equals(writer)) {
+					result=true;
+				}else {
+					response.sendRedirect("./festiSelect?num="+num+"&writer="+writer);
+				}
 			}else {
 				response.sendRedirect("../festi/festiList?category=1");
 			}
