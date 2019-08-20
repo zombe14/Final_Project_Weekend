@@ -158,6 +158,8 @@
 							</dd>
 						</dl>
 						<div class="reserve_button"><a href="#">예매하기</a></div>
+						<c:choose>
+						<c:when test="${member.grade eq '2' }">
 						<div class="admin_button">
 							<a href="./${board}Update?num=${dto.num}&writer=${dto.writer}">수정</a> 
 							<a id="delete">삭제</a>
@@ -166,6 +168,8 @@
 								<input type="hidden" name="writer" value="${dto.writer}">
 							</form>
 						</div>
+						</c:when>
+						</c:choose>
 					</div>
 				</div>
 			</div>
