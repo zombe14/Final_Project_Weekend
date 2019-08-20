@@ -37,7 +37,7 @@ public class UpdatePageInterceptor extends HandlerInterceptorAdapter {
 					response.sendRedirect("../festi/festiSelect?num="+num);
 				}
 			}else {
-				response.sendRedirect("../festi/festiList?category=1");
+				response.sendRedirect("../");
 			}
 		}else {
 			response.sendRedirect("../member/memberLogin");
