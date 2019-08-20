@@ -167,7 +167,12 @@
 							<input type="text" name="total_amount" id="to">
 							<input type="text" name="show_times" id="sh">
 						</form>
-						
+						<!-- 날짜 옵션에 필요한거 -->
+						<div>
+							<c:forEach items="${option}" var="o">
+								<a class="optiondates" title="${o.reg_date}"></a>
+							</c:forEach>
+						</div>
 						
 						<div class="admin_button">
 							<a href="./${board}Update?num=${dto.num}">수정</a> 
@@ -195,30 +200,9 @@
 							<br>
 						</div>
 						<div>
-							<ul>
-								
-								<li>${dto.local}</li>
-								<li>${dto.contents}</li>																
-							</ul>
-							
-							<div>
-								<c:forEach items="${option}" var="o">
-									<a class="optiondates" title="${o.reg_date}"></a>
-								</c:forEach>
-							</div>
-							<ul>
-							<c:forEach items="${option}" var="o" varStatus="i">
-								<li>------------------------</li>
-								<h5>옵션 ${i.count}</h5>
-								<li>pk : ${o.dnum}</li>
-								<li>fk : ${o.num}</li>
-								<li>날짜 : ${o.reg_date}</li>
-								<li>시간 : ${o.time}</li>
-								<li>좌석 : ${o.seat}</li>
-								<li>가격 : ${o.price}</li>
-							</c:forEach>
-							</ul>
+							${dto.contents}
 						</div>
+						
 					</div>
 					<div id="div2" class="festi_wrap2">
 						<!-- 장소 지도 -->
