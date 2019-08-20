@@ -46,6 +46,12 @@
 			}, function (data) {
 				if(data == 1){
 					alert("이메일 인증이 완료되었습니다.");
+					$.post("./IdSearch",{
+						email : email
+					}, function (){
+						alert("아이디 찾기가 완료되었습니다.")
+						$("#findId").show();
+					})
 				}else{
 					alert("인증번호를 잘못 입력하셨습니다.\n다시 시도해주세요.");
 				}
