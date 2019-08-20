@@ -185,21 +185,21 @@
 						</div>
 						<div>
 							<ul>
-								<li>${dto.category}</li>
-								<li>${dto.price}</li>
-								<li>${dto.total}</li>
-								<li>${dto.startDate}</li>
-								<li>${dto.endDate}</li>
+								
 								<li>${dto.local}</li>
-								<li>${dto.num}</li>
-								<li>${dto.title}</li>
-								<li>${dto.writer}</li>
-								<li>${dto.contents}</li>
-								<li>${dto.reg_date}</li>
-								<li>${dto.hit}</li>
-								<li>${dto.top}</li>
-								<li>${dto.age}</li>
-								<li>${dto.region}</li>
+								<li>${dto.contents}</li>																
+							</ul>
+							<h3>옵션</h3>
+							<ul>
+							<c:forEach items="${option}" var="o">
+								<li>pk : ${o.dnum}</li>
+								<li>fk : ${o.num}</li>
+								<li>날짜 : ${o.reg_date}</li>
+								<li>시간 : ${o.time}</li>
+								<li>좌석 : ${o.seat}</li>
+								<li>가격 : ${o.price}</li>
+								<li>------------------------</li>
+							</c:forEach>
 							</ul>
 						</div>
 					</div>

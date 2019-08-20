@@ -44,7 +44,7 @@ public class DatesService {
 		return datesDTO;
 	}
 	
-	public List<DatesDTO> getList(String num, HttpSession session) throws Exception{
+	public List<DatesDTO> getList(String num) throws Exception{
 		List<DatesDTO> list = new ArrayList<DatesDTO>();
 		list = datesDAO.getList(num);
 		return list;

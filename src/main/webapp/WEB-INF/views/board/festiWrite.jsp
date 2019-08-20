@@ -18,6 +18,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
  
 <!-- date picker -->
+<style type="text/css">
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+</style>
 </head>
 <body>
    <div id="wrap">
@@ -139,43 +146,41 @@
 				<input type="hidden" name=num value="${num}">
 				</form>
 				
-				<!-- <form id="datesOptionFrm" action="./optionWrite" method="post"> -->
-				<div id="datesOptionDiv"> <!-- 카테고리 3 -->
+				
+				<div id="datesOptionDiv"> <!-- 카테고리 3 -->				
+				<table class="table table">
+					<tr>
+						<td><label for="dates">날짜 </label></td>
+						<td><label for="time">시작시간</label></td>
+						<td><label for="seat">좌석</label></td>
+						<td><label for="price">가격</label></td>
+						<td><input type="hidden" name="num" value="${num}" id="num"></td>
+					</tr>
+					<tr>
+						<td><div class="dateDiv">
+								<input type="date" name="reg_date" class="dates" id="dates">
+							</div>
+						</td>
+						<td><div class="timeDiv">
+								<input type="text" name="time" class="time" id="time">
+							</div>
+						</td>
+						<td><div class="seatDiv">
+								<input type="number" name="seat" class="seat" id="seat"><span> 석</span>
+							</div>
+						</td>
+						<td><div class="priceDiv">
+								<input type="number" name="price" class="price" id="price"><span> 원</span>
+							</div>
+						</td>
+						<td><a id="writeOption">옵션등록</a></td>
+					</tr>
+				</table>
 					<div id="optionsDiv">
 						
-					</div>					
-					<div id="datesOption">
-						<div id="option1">
-							<div class="options">
-								<div class="dateDiv">
-									<label for="dates">날짜 </label>
-									<input type="date" name="reg_date" class="dates" id="dates">
-								</div>
-								<div class="timeDiv">
-									<label for="time">시작시간</label>
-									<input type="text" name="time" class="time" id="time">
-								</div>		
-								<div class="seatDiv">
-									<label for="seat">좌석</label>
-									<input type="number" name="seat" class="seat" id="seat"><span> 석</span>
-								</div>
-								<div class="priceDiv">
-									<label for="price">가격</label>
-									<input type="number" name="price" class="price" id="price"><span> 원</span>
-								</div>
-								<input type="text" name="num" value="${num}" id="num">
-								<a id="writeOption">옵션등록</a>
-							</div>
-							<hr>
-							
-						</div>
-					</div>
-					
+					</div>		
 				</div>
-			<!-- 	</form> -->
-				
 
-				<a id="test">date test</a>
       		 	<a id="write" class="btn btn-default">등록</a>
 
   	      	</div>
@@ -214,24 +219,18 @@ $('#endDate, #startDate').change(function(){
 })
 
 
-$('#hiddenDiv').hide();
-//$('#datesOptionDiv').hide();
+$('#datesOptionDiv').hide();
 $('.category').click(function() {
 	if($(this).val() != 3){
 		$('#festiDatesDIV').show();
 		$('#datesOptionDiv').hide();
 	} else {
-		$('#festiDatesDIV').show();
+		$('#festiDatesDIV').hide();
 		$('#datesOptionDiv').show();
+		$('#optionsDiv').empty();
 	}
 });
 
-
-$('#addOptions').click(function() {
-	var option = $('#option1').html();
-	var html = option
-	$('#datesOption').append(html);
-});
 	
 	$('#writeOption').click(function(){
 		var num = $('#num').val();

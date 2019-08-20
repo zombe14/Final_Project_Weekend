@@ -69,7 +69,7 @@ public class FestiController{
 	@RequestMapping(value = "optionList", method = RequestMethod.GET)
 	public ModelAndView getOptionList(String num, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<DatesDTO> list = datesService.getList(num, session);
+		List<DatesDTO> list = datesService.getList(num);
 		System.out.println(num);
 		System.out.println(list.size());
 		mv.addObject("clist", list);
@@ -113,6 +113,8 @@ public class FestiController{
 		pageMaker.setNum(num);
 		List<AfterDTO> afterlist = afterService.getList(pageMaker);
 		List<FestiQnaDTO> qnalist = festiQnaService.getList(pageMaker);
+		List<DatesDTO> dateslist = datesService.getList(num);
+		mv.addObject("option", dateslist);
 		mv.addObject("qna", qnalist);
 		mv.addObject("after", afterlist);
 		mv.addObject("dto", festiDTO);

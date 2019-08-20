@@ -1,17 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
 
-		<div id="optionList" >
-			<c:forEach items="${clist}" var="c">
-				 <div id = "${c.dnum}" class="optionListDiv">
-					<div>
-				    	${c.num} | ${c.dnum} | ${c.reg_date} | ${c.time} | ${c.seat} | ${c.price} 
-				    	<span class="delete" title="${c.dnum}">X</span>
-			    	</div>
-			    </div>
-		   	</c:forEach>
-		</div>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+</style>
+		
+		<table class="table" id="optionList">
+			<thead>
+				<th>번호</th>
+				<th>날짜</th>
+				<th>시간</th>
+				<th>좌석</th>
+				<th>가격</th>
+				<th>삭제</th>
+			</thead>
+			<c:forEach items="${clist}" var="c" varStatus="i">
+			<tr>
+				<td>${i.count}</td>
+				<td>${c.reg_date}</td>
+				<td>${c.time}</td>
+				<td>${c.seat}</td>
+				<td>${c.price}</td>
+				<td><a class="glyphicon glyphicon-remove delete" title="${c.dnum}" style="display: inline-block"></a></td>
+			</tr>
+			</c:forEach>
+		</table>
 		
 		
 
