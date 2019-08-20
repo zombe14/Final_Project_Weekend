@@ -15,7 +15,6 @@
 		var email = "";
 		$("#emailCheckNumber").hide();
 		$("#finalCheck").hide();
-		$("#changePwId").hide();
 		$("#changePw").hide();
 		$("#checkPw").hide();
 		$("#pwInsert").hide();
@@ -37,6 +36,7 @@
 								$("#emailCheck").hide();
 								$("#emailCheckNumber").show();
 								$("#finalCheck").show();
+								$("#changePwId").prop('readonly', true);
 								$("#emailId").prop('readonly', true);
 								$("#emailAddress").prop('readonly', true);
 								}else{
@@ -53,6 +53,7 @@
 			)
 		})
 		$("#finalCheck").on("click", function(){
+			var id = $("#changePwId").val();
 			var emailId = $("#emailId").val();
 			var add = $("#add").text();
 			var emailAddress = $("#emailAddress").val();
@@ -64,9 +65,9 @@
 			}, function (data) {
 				if(data == 1){
 					alert("이메일 인증이 완료되었습니다.\n사용하실 새 비밀번호를 입력해 주세요.");
+					$("#changePwId").hide();
 					$("#emailCheckNumber").hide();
 					$("#finalCheck").hide();
-					$("#changePwId").show();
 					$("#pwInsert").show();
 					$("#changePw").show();
 					$("#checkPw").show();
@@ -80,12 +81,15 @@
 			var id = $("#changePwId").val();
 			var nPw = $("#changePw").val();
 			var ncPw = $("#checkPw").val();
+			alert(id);
+			alert(nPw);
 			if(nPw !== ncPw){
 				alert("입력하신 두 비밀번호가 다릅니다.\n다시 입력해주세요.");
 				$("#changePw").val('');
 				$("#checkPw").val('');
 			}else{
 				var email = $("#emailId").val() + $("#add").text() + $("#emailAddress").val();
+				alert(email);
 				$.post("./pwResult", {
 					id : id,
 					pw : nPw,
@@ -102,6 +106,7 @@
 	})
 </script>
 	<form>
+		<input type="text" id = "changePwId" placeholder="아이디를  입력.">
 		<input type="text" class="form-control" title="이메일 아이디" placeholder="회원가입당시 이메일 주소" id="emailId" name="emailId" maxlength="50">
 			<span class="from-control" id = "add">@</span>
 		<input type="text" class="form-control" title="이메일 주소" id="emailAddress" name="emailAddress">
@@ -122,7 +127,6 @@
 		<button type="button" id="emailCheck" class="emailCheck">인증번호 보내기</button>
 		<input type="text" id ="emailCheckNumber" title="인증번호 입력" name="emailCheckNumber" placeholder="인증번호를 입력해 주세요.">
 		<button type="button" id="finalCheck">확인</button>
-		<input type="password" id = "changePwId" placeholder="아이디를  입력.">
 		<input type="password" id = "changePw" placeholder="변경할 비밀번호를 입력.">
 		<input type="password" id = "checkPw" placeholder="비밀번호를 다시 한번 입력.">
 		<button type="button" id = "pwInsert">확인</button>
