@@ -1,4 +1,4 @@
-﻿package com.project.weekend.board.festi;
+package com.project.weekend.board.festi;
 
 import java.util.ArrayList;
 import java.util.HashMap;

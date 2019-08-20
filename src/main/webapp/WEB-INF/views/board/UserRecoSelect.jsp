@@ -13,7 +13,7 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <style type="text/css">
-	#replyContents{
+	#commentsContents{
 		resize: none;
 	}
 </style>
@@ -27,7 +27,7 @@
 			<div class="conta">
 				<div class="fqna_wrap">
 					<div class="fqna_title">
-  	      				<h3> 유저추천 글쓰기 </h3>
+  	      				<h3> 유저추천 글 내용 </h3>
   	      			</div>
 				<div class="tableDiv">
 						<table class="table" style="width: 100%">
@@ -58,6 +58,29 @@
 							</tbody>
 						</table>
 						</div>
+						
+				<!-- ------------------------------------------ 댓글 ------------------------------------------ -->
+				
+				
+				<div id="commentsList">
+					
+				</div>
+				<div id="commentsWriteDiv">
+					<form action="./${board}commentsWrite" method="post" id="commentsFrm">
+						<input type="hidden" id="num" name="num" value="${dto.anum}">
+						<strong><span>댓글(</span><span id="cCnt">${cCnt}</span>)</strong>
+						<div class="comments_name">				
+							<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
+						</div>
+						<div style="display: inline-block;">
+							<textarea rows="3" cols="120" id="commentsContents" style="resize: none;"></textarea>
+						</div>
+						<div style="display: inline-block;">
+							<a class="btn" id="commentsWrite">댓글등록</a>
+						</div>
+					</form>
+				</div>		
+					
 				
 				<a id="list" title="${board}" class="${list.num} fqnaSelect_btn">목록</a>
 				<a id="update" class="${board} fqnaSelect_btn">수정</a> 
@@ -94,6 +117,39 @@
 		location.href = "./UserRecoList";
 	});
 	
+	
+	 getCommentsList();
+	/* 댓글 등록하기 - ajax */
+	$('#commentsWrite').click(function() {
+		var writer = $('#writer').val();
+		var contents = $('#commentsContents').val();
+		var num = '${dto.anum}';
+		if(contents == ''){
+			alert('내용을 입력해주세요');
+		} else {
+			$.ajax({
+				type:'POST',
+				url:'./commentsWrite',
+				data:{
+					writer:writer,
+					contents:contents,
+					num:num
+				},
+				success:function(data){
+	
+					if(data == '1'){
+						getCommentsList();
+						$('#commentsContents').val('');
+					} else {
+						alert('다시 작성해주세요');
+					}
+				},
+				error:function(data){
+					console.log(data);
+				}
+			});
+		}
+	});
 	
 </script>
 </body>
