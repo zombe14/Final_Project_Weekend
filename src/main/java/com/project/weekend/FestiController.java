@@ -117,6 +117,7 @@ public class FestiController{
 		List<FestiQnaDTO> qnalist = festiQnaService.getList(pageMaker);
 		List<DatesDTO> dateslist = datesService.getList(num);
 		mv.addObject("option", dateslist);
+
 		mv.addObject("qna", qnalist);
 		mv.addObject("after", afterlist);
 		mv.addObject("dto", festiDTO);
@@ -126,6 +127,14 @@ public class FestiController{
 
 		return mv;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getOptions", method = RequestMethod.POST)
+	public List<DatesDTO> getOptions(DatesDTO datesDTO) throws Exception{
+		List<DatesDTO> list = datesService.getOptions(datesDTO);
+		return list;		
+	}
+	
 	// update-form
 	@RequestMapping(value = "festiUpdate", method = RequestMethod.GET)
 	public ModelAndView setUpdate(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{

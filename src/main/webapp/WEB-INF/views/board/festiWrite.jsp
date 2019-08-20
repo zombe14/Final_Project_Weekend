@@ -162,7 +162,7 @@ table {
 							</div>
 						</td>
 						<td><div class="timeDiv">
-								<input type="text" name="time" class="time" id="time">
+								<input type="text" name="time" class="time" id="time" placeholder="ex)15:00">
 							</div>
 						</td>
 						<td><div class="seatDiv">

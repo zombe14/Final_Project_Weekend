@@ -49,4 +49,9 @@ public class DatesService {
 		list = datesDAO.getList(num);
 		return list;
 	}
+	
+	public List<DatesDTO> getOptions(DatesDTO datesDTO) throws Exception{
+		List<DatesDTO> list = datesDAO.getOptions(datesDTO);
+		return list;
+	}
 }

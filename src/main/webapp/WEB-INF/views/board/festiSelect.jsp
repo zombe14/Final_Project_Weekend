@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
+<!-- <script src="./jquery-ui-1.12.1/datepicker-ko.js"></script> -->
 <script type="text/javascript" src="../resources/js/calendar.js"></script>
 <style type="text/css">
 #menu_wrap3 {
@@ -151,10 +151,10 @@
 						<dl class="doline_x">
 							<dt>예매가능 회차</dt>
 							<dd>
+								
 								<select class="festi_select">
-									<option>10:00</option>
-									<option>11:00</option>
 								</select>
+								
 							</dd>
 						</dl>
 						<div class="reserve_button"><a href="#">예매하기</a></div>
@@ -189,16 +189,22 @@
 								<li>${dto.local}</li>
 								<li>${dto.contents}</li>																
 							</ul>
-							<h3>옵션</h3>
+							
+							<div>
+								<c:forEach items="${option}" var="o">
+									<a class="optiondates" title="${o.reg_date}"></a>
+								</c:forEach>
+							</div>
 							<ul>
-							<c:forEach items="${option}" var="o">
+							<c:forEach items="${option}" var="o" varStatus="i">
+								<li>------------------------</li>
+								<h5>옵션 ${i.count}</h5>
 								<li>pk : ${o.dnum}</li>
 								<li>fk : ${o.num}</li>
 								<li>날짜 : ${o.reg_date}</li>
 								<li>시간 : ${o.time}</li>
 								<li>좌석 : ${o.seat}</li>
 								<li>가격 : ${o.price}</li>
-								<li>------------------------</li>
 							</c:forEach>
 							</ul>
 						</div>
@@ -348,6 +354,74 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript">
 	
+	/* 옵션 날짜 넣기 */
+	var disabledDays = [];
+	$('.optiondates').each(function(){
+		var date2 = [];
+		var date = $(this).attr('title');
+		date = date.toString();
+		disabledDays.push(date);
+	});
+	
+
+	$("#date1").datepicker({
+		dateFormat : 'yy-mm-dd',
+		beforeShowDay : disableAllTheseDays,
+		onSelect : function(date){
+			var num = '${dto.num}';
+			var reg_date = date;
+			$.ajax({
+				url:'./getOptions',
+				type:'POST',
+				data:{
+					num:num,
+					reg_date:reg_date
+				},
+				success:function(data){
+					var timesHtml = '<option hidden="true">날짜를 선택해주세요</option>';
+					for(var i = 0;i<data.length;i++){
+						time = data[i].time;
+						timesHtml += '<option class="timeList" id="'+data[i].seat+'" title="'+data[i].price+'" value = "'+data[i].dnum+'" name="selTime">'+time+'</option>';
+					}
+					$('.festi_select').html(timesHtml);
+				},
+				error:function(e){
+					console.log(e);
+				}
+			})
+		}
+	});
+	
+	$('.festi_select').change(function(){
+		var dnum = $(this).val();
+		$('#'+dnum)
+		$('.timeList').each(function(){
+			
+		});
+		var dnum = $(this).attr('id');
+		var price = $(this).attr('title');
+		var seat = $(this).val();
+		console.log(dnum, price, seat);
+	});
+	
+	//console.log(disabledDays);
+
+	function disableAllTheseDays(date) {
+		var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+		for (i = 0; i < disabledDays.length; i++) {
+			if(m<10){
+				if ($.inArray(y + '-0' + (m + 1) + '-' + d, disabledDays) != -1) {
+					return [ true ];
+				}
+			} else {
+				if ($.inArray(y + '-' + (m + 1) + '-' + d, disabledDays) != -1) {
+					return [ true ];
+				}	
+			}
+		}
+		return [ false ];
+	}
+
 	/* 각 행 선택 시 select 페이지 이동 */
 	$('.qnaSel').click(function() {
 		var pw = $(this).attr('id');
