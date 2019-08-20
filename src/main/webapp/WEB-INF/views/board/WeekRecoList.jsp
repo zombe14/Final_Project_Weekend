@@ -23,7 +23,7 @@
       		<div class="conta">
   	      		<div class="week_wrap">
   	      			<div class="week_title">
-  	      				<strong> W 추천 </strong>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/reco.png"><strong> W 추천 </strong>
   	      			</div>
   	      			<div class="week_box">
   	      				<ul>

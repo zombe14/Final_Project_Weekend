@@ -111,11 +111,11 @@
 }
 
 #boardWrite{
-	height: 31px;
+	height: 40px;
 	background-color: white;
     color: black;
     border: 1px solid #adadad;
-    width: 90px;
+    width: 100px;
 	border-radius: 10px;
 }
 
