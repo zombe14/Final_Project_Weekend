@@ -25,10 +25,8 @@ import com.project.weekend.util.PageMaker;
 @Controller
 @RequestMapping(value = "/UserReco/")
 public class UserRecoController{
-	
 	@Inject
 	private FestiService festiService;
-	
 	// 리스트 출력;
 	@RequestMapping(value = "UserRecoList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker) throws Exception{
@@ -49,8 +47,27 @@ public class UserRecoController{
 		return mv;
 	}
 	// 글쓰기;
+	// 글쓰기 폼으로 이동;
+	@RequestMapping(value = "UserRecoWrite", method = RequestMethod.GET)
+	public ModelAndView setWrite() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		FestiDTO festiDTO = new FestiDTO();
+		int num = festiService.getNum();
+		festiDTO.setNum("f"+num);
+		mv.addObject("num", festiDTO.getNum());
+		mv.addObject("board", "UserReco");
+		mv.setViewName("/board/UserRecoWrite");
+		return mv;
+	}
+	// 글쓰기 진행;
 	@RequestMapping(value = "UserRecoWrite", method = RequestMethod.POST)
-	public void setWrite() throws Exception{}
+	public ModelAndView setWrite(FestiDTO festiDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = festiService.setUserRecoWrite(festiDTO);
+		mv.addObject("result", result);
+		mv.setViewName("./common/message");
+		return mv;
+	}
 	// 글수정;
 	// 글수정 폼으로;
 	@RequestMapping(value = "UserRecoUpdate", method = RequestMethod.GET)

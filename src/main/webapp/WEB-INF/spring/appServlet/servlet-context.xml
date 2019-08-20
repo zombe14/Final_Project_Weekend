@@ -61,6 +61,38 @@
 				<beans:ref bean="myPageInterceptor"/>
 			</interceptor>
 		</interceptors>
+		
+	<beans:bean id="updatePageInterceptor" class="com.project.weekend.interceptor.UpdatePageInterceptor" />
+		<interceptors>
+			<interceptor>
+				<mapping path="/festi/festiUpdate"/>
+				<beans:ref bean="updatePageInterceptor"/>
+			</interceptor>
+		</interceptors>
+		
+	<beans:bean id="writeInterceptor" class="com.project.weekend.interceptor.WriteInterceptor"/>
+		<interceptors>
+			<interceptor>
+				<mapping path="/festi/festiWrite"/>
+				<beans:ref bean="writeInterceptor"/>
+			</interceptor>
+		</interceptors>
+		
+	<beans:bean id="deleteInterceptor" class="com.project.weekend.interceptor.DeleteInterceptor"/>	
+		<interceptors>
+			<interceptor>
+				<mapping path="/festi/festiDelete"/>
+				<beans:ref bean="deleteInterceptor"/>
+			</interceptor>
+		</interceptors>
+		
+	<beans:bean id="userRecoWriteInterceptor" class="com.project.weekend.interceptor.UserRecoWriterInterceptor"/>
+		<interceptors>
+			<interceptor>
+				<mapping path="/UserReco/UserRecoWrite"/>
+				<beans:ref bean="userRecoWriteInterceptor"/>
+			</interceptor>
+		</interceptors>
 	
 	<context:component-scan base-package="com.project.weekend" />
 	

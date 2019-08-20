@@ -159,10 +159,11 @@
 						</dl>
 						<div class="reserve_button"><a href="#">예매하기</a></div>
 						<div class="admin_button">
-							<a href="./${board}Update?num=${dto.num}">수정</a> 
+							<a href="./${board}Update?num=${dto.num}&writer=${dto.writer}">수정</a> 
 							<a id="delete">삭제</a>
 							<form action="./festiDelete" id="festiDeleteFrm" method="post">
 								<input type="hidden" name="num" value="${dto.num}">
+								<input type="hidden" name="writer" value="${dto.writer}">
 							</form>
 						</div>
 					</div>
@@ -275,16 +276,16 @@
 				<!--  질문 -->
 					<table class="table">
 						<thead>
-							<th>NUM</th>
-							<th>TITLE</th>
-							<th>Writer</th>
-							<th>DATE</th>
-							<th>상태</th>
+							<th class="th1">NUM</th>
+							<th class="th2">TITLE</th>
+							<th class="th1">Writer</th>
+							<th class="th1">DATE</th>
+							<th class="th1">상태</th>
 						</thead>
 						<c:forEach items="${qna}" var="i">
 							<tr title="${i.qnum}" class="qnaSel" id="${i.pw}">
-								<td>${fn:substring(i.qnum, 1,8)}</td>
-								<td>
+								<td class="th1">${fn:substring(i.qnum, 1,8)}</td>
+								<td class="festiqna_title th2">
 									<c:if test="${i.pw ne null}">
 										<c:if test="${i.depth eq '1'}">&nbsp;&nbsp;&nbsp;&nbsp;답변 : </c:if>비밀글입니다.
 									</c:if>
@@ -292,7 +293,7 @@
 										<c:if test="${i.depth eq '1'}">&nbsp;&nbsp;&nbsp;&nbsp;답변 : </c:if>${i.title}
 									</c:if>
 								</td>
-								<td>
+								<td class="th1">
 									<c:if test="${i.pw eq null}">
 										${i.writer}
 									</c:if>
@@ -300,8 +301,8 @@
 										${fn:substring(i.writer, 0, 3)}****
 									</c:if>
 								</td>
-								<td>${i.reg_date}</td>
-								<td><c:if test="${i.answer eq '0'}">답변대기중</c:if>
+								<td class="th1">${i.reg_date}</td>
+								<td class="th1"><c:if test="${i.answer eq '0'}">답변대기중</c:if>
 									<c:if test="${i.answer eq '1'}">답변완료</c:if>
 								</td>
 							</tr>					
@@ -322,19 +323,19 @@
 						<!--  후기 -->
 						<table class="table">
 							<thead>
-								<th>NUM</th>
-								<th>TITLE</th>
-								<th>Writer</th>
-								<th>DATE</th>
-								<th>hit</th>
+								<th class="th1">NUM</th>
+								<th class="th2">TITLE</th>
+								<th class="th1">Writer</th>
+								<th class="th1">DATE</th>
+								<th class="th1">hit</th>
 							</thead>
 							<c:forEach items="${after}" var="i">
 								<tr title="${i.anum}" class="afterSel">
-									<td>${fn:substring(i.anum, 1,8)}</td>
-									<td>${i.title}</td>
-									<td>${i.writer}</td>
-									<td>${i.reg_date}</td>
-									<td>${i.hit}</td>
+									<td class="th1">${fn:substring(i.anum, 1,8)}</td>
+									<td class="festiafter_title th2">${i.title}</td>
+									<td class="th1">${i.writer}</td>
+									<td class="th1">${i.reg_date}</td>
+									<td class="th1">${i.hit}</td>
 								</tr>
 							</c:forEach>
 						</table>

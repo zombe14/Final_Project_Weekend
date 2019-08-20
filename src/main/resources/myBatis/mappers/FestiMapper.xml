@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="FestiMapper">
@@ -42,7 +42,7 @@
 		resultMap="festiResult">
 		SELECT * FROM
 		(SELECT ROWNUM R, F.* FROM
-		(SELECT NUM, TITLE, STARTDATE, ENDDATE, LOCAL, region
+		(SELECT NUM, TITLE,WRITER, STARTDATE, ENDDATE, LOCAL, region
 		FROM FESTI FULL JOIN FILES USING(NUM)
 		WHERE CATEGORY = #{category}
 		<choose>
@@ -129,8 +129,8 @@
 	</select>
 	<!-- 글쓰기 -->
 	<insert id="setWeekRecoWrite" parameterType="FestiDTO">
-		insert into festi(num, title, writer, contents, reg_date, hit, region, category)
-		values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{region}, 0)
+		insert into festi(num, title, writer, contents, reg_date, hit, category)
+		values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, 0)
 	</insert>
 	<!-- 글수정 -->
 	<update id="setWeekRecoUpdate" parameterType="FestiDTO">
@@ -172,7 +172,7 @@
 	<!-- 글 쓰기 -->
 	<insert id="setUserRecoWrite" parameterType="FestiDTO">
 		insert into festi(num, title, writer, contents, reg_date, hit, category)
-		valuse(#{num},#{title}, #{writer}, #{contents}, sysdate, 0, #{region}, 4)
+		values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, 4)
 	</insert>
 	<!-- 글 수정 -->
 	<update id="setUserRecoUpdate" parameterType="FestiDTO">
@@ -185,7 +185,14 @@
 	<!-- 랭킹 -->
 	<!-- 리스트 -->
 	<select id="getRankList" resultMap="festiResult" parameterType="FestiDTO">
-		select * from festi where category = #{category} and hit > 1 order by hit desc
+		select * from 
+		(select rownum R, F.* from 
+		(select num, title, startdate, enddate, reg_date, local, fnum, fname, oname
+		from festi full join files using(num)
+		where category = #{category} and hit > 1
+		order by hit desc) F)
 	</select>
 	<!-- 상혁 끝 -->
+
+	
 </mapper>

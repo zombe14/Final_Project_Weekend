@@ -1,4 +1,4 @@
-package com.project.weekend.board.festi;
+﻿package com.project.weekend.board.festi;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -51,9 +51,8 @@ public class FestiService {
 	private FestiQnaService festiQnaService;
 	@Inject
 	private DatesDAO datesDAO;
-
+	
 	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
-		
 		int res = festiDAO.setWrite(festiDTO);
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 		for(MultipartFile f : filelist) {
@@ -218,6 +217,8 @@ public class FestiService {
 	// 글쓰기;
 	public int setUserRecoWrite(FestiDTO festiDTO) throws Exception{
 		int result = 0;
+		int num = festiDAO.getNum();
+		festiDTO.setNum("f"+num);
 		result  = festiDAO.setUserRecoWrite(festiDTO);
 		return result;
 	}
@@ -240,6 +241,16 @@ public class FestiService {
 		List<FestiDTO> list = festiDAO.getRankList(pageMaker);
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makePage(totalCount);
+		for(FestiDTO f : list) {
+			String num = f.getNum();
+			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);
+			f.setFileDTOs(fileList);
+		}
 		return list;
 	}
+
+	
+	
+	
+	
 }

@@ -98,7 +98,8 @@
 					<button id="searchButton">검색</button>
 				</form>
 				<div class="boardwrite">
-						<button id="boardWrite">${boardTitle} 글쓰기</button>
+						<button id="boardWrite" href="./WeekRecoWrite">${boardTitle} 글쓰기</button>
+						<a href = "./WeekRecoWrite">글쓰기</a>
 				</div>
   	  	     	 </div>
       		</div>

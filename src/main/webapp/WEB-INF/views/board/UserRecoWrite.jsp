@@ -14,6 +14,31 @@
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 </head>
 <body>
+<script type="text/javascript">
+	$(function () {
+		$(".festiWrite_btn").on("click", function () {
+			var num = $("#num").val();
+			var writer = $("#writer").val();
+			var title = $("#title").val();
+			var contents = $("#contents").val();
+			$.post("./UserRecoWrite", {
+					num : num,
+					writer : writer,
+					title : title,
+					contents : contents
+					}, function (data) {
+						if(data == 1){
+							alert("글이 등록되었습니다.");							
+							location.href="./UserRecoList";
+						}else{
+							alert("글 등록이 실패했습니다. 다시 확인해주세요.");
+							location.href="./UserRecoList";
+						}
+					} //function 끝;
+					) // .post 끝;
+		}) //.festiWrite_btn 종료;
+	})// sc 종료;
+</script>
    <div id="wrap">
       <div id="header">
       <c:import url="../inc/header.jsp"></c:import>
@@ -33,7 +58,7 @@
 					</tr>
 					<tr>
 						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
-						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}memberNick" readonly="readonly" id="writer" style="width: 40%"></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}" readonly="readonly" id="writer" style="width: 40%"></td>
 					</tr>
 					<tr>
 						<td class="td1"><label for="contents">내용<span class="r">*</span></label></td>
@@ -50,11 +75,9 @@
 						</td>
 					</tr>
 				</tbody>
-				</table>	
-				
+				</table>
+				<input type="hidden" id ="num" name="num" value="${num}">
       		 	<a id="write" class="festiWrite_btn">등록</a>
-
-				
 			</form> 
   	      	</div>
       	</div>

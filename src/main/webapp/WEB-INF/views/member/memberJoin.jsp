@@ -203,8 +203,6 @@
 												
 													<option value="paran.com">paran.com</option>
 												
-													<option value="etc"> 직접입력</option>
-												
 											</select>
 										</div>
 										<input type="hidden" id="email" name="email" title="email">
@@ -230,7 +228,7 @@
 							</tr>
 							<tr>
 								<th scope="row">
-									프로필사진
+									<span class="essential">*</span>프로필사진
 								</th>
 								<td>
 									<input type="file" name="photo">
