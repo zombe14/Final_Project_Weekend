@@ -6,12 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.weekend.board.BoardDTO;
 import com.project.weekend.board.festi.after.AfterDAO;
 import com.project.weekend.board.festi.after.AfterService;
 import com.project.weekend.board.festi.dates.DatesDAO;
@@ -19,6 +23,7 @@ import com.project.weekend.board.festi.dates.DatesDTO;
 import com.project.weekend.board.festi.dates.DatesService;
 import com.project.weekend.board.festi.festiQna.FestiQnaDAO;
 import com.project.weekend.board.festi.festiQna.FestiQnaService;
+import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.file.FileService;
@@ -95,12 +100,38 @@ public class FestiService {
 		}
 		return list;
 	}
-	public FestiDTO getSelect(String num) throws Exception{
+	public FestiDTO getSelect(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		FestiDTO festiDTO = festiDAO.getSelect(num);
 		ArrayList<FileDTO> fileDTOs = (ArrayList<FileDTO>)fileDAO.getList(num);
 		festiDTO.setFileDTOs(fileDTOs);
+		if(festiDTO.getFileDTOs().size()==1) {
+			if(festiDTO.getFileDTOs().get(0).getFname()==null) {
+				festiDTO.setFileDTOs(new ArrayList<FileDTO>());
+			}
+		}
+		
+	
+			// 쿠키를 이용해서 ajax, 새로고침 시 조회수 증가 방지
+			boolean isGet = false;
+			Cookie[] cookies = request.getCookies();
+			if(cookies != null) {
+				for(Cookie c:cookies) {
+					if(c.getName().equals(num)) {
+						isGet=true;
+					}
+				}
+			}
+			if(!isGet) {
+				festiDAO.setHitUpdate(num);
+				Cookie c = new Cookie(num, num);
+				c.setMaxAge(30*60); // 30분
+				response.addCookie(c);
+			}
+					
+		
 		return festiDTO;
 	}
+	
 	public int setUpdate(FestiDTO festiDTO, HttpSession session) throws Exception{
 		int res = festiDAO.setUpdate(festiDTO);
 		return res;

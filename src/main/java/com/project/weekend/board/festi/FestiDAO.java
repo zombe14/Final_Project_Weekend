@@ -53,6 +53,10 @@ public class FestiDAO{
 		return SqlSession.delete(NAMESPACE+"setDelete", num);
 	}
 	
+	public int setHitUpdate(String num) throws Exception{
+		return SqlSession.update(NAMESPACE+"setHitUpdate", num);
+	}
+	
 	// 상혁;
 	// 관리자용;
 	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{

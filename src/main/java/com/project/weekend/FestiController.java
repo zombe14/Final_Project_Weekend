@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -106,10 +108,10 @@ public class FestiController{
 	}
 	// select
 	@RequestMapping(value = "festiSelect", method = RequestMethod.GET)
-	public ModelAndView getSelect(String num, PageMaker pageMaker) throws Exception{
+	public ModelAndView getSelect(String num, PageMaker pageMaker, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 
 		ModelAndView mv = new ModelAndView();
-		FestiDTO festiDTO = festiService.getSelect(num);
+		FestiDTO festiDTO = festiService.getSelect(num, session, request,response);
 		pageMaker.setNum(num);
 		List<AfterDTO> afterlist = afterService.getList(pageMaker);
 		List<FestiQnaDTO> qnalist = festiQnaService.getList(pageMaker);
@@ -126,9 +128,9 @@ public class FestiController{
 	}
 	// update-form
 	@RequestMapping(value = "festiUpdate", method = RequestMethod.GET)
-	public ModelAndView setUpdate(String num) throws Exception{
+	public ModelAndView setUpdate(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		FestiDTO festiDTO = festiService.getSelect(num);
+		FestiDTO festiDTO = festiService.getSelect(num, session, request,response);
 		mv.addObject("dto", festiDTO);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
@@ -144,8 +146,8 @@ public class FestiController{
 		return mv;
 	}
 	@RequestMapping(value = "festiDelete", method = RequestMethod.POST)
-	public String setDelete(String num,  HttpSession session) throws Exception{
-		int category = festiService.getSelect(num).getCategory();
+	public String setDelete(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		int category = festiService.getSelect(num,session,request,response).getCategory();
 		int res = festiService.setDelete(num, session);
 		String path = "redirect:./festiSelect?num="+num;
 		if (res>0) {
