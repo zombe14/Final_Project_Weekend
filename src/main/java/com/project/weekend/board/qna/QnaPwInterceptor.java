@@ -15,7 +15,12 @@ public class QnaPwInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		boolean res = false;
 		HttpSession session = request.getSession();
+		QnaService qnaService = new QnaService();
 		Object member = session.getAttribute("member");
+		String num = request.getParameter("num");
+		String pw = request.getParameter("pw");
+		System.out.println(num);
+		System.out.println(pw);
 		if(member == null) {
 			response.sendRedirect("../member/memberLogin");
 		} else {

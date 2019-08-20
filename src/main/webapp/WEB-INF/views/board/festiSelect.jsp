@@ -163,6 +163,7 @@
 							<a id="delete">삭제</a>
 							<form action="./festiDelete" id="festiDeleteFrm" method="post">
 								<input type="hidden" name="num" value="${dto.num}">
+								<input type="hidden" name="writer" value="${dto.writer}">
 							</form>
 						</div>
 					</div>

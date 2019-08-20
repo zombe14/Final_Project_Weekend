@@ -117,5 +117,8 @@
 		update qna set answer = 0 where ref = #{ref} and step = 0
 	</update>
 	
+
+
+	
 	
 </mapper>

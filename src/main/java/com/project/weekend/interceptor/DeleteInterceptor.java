@@ -13,7 +13,7 @@ import com.project.weekend.board.festi.FestiService;
 
 
 
-public class FestiPageInterceptor extends HandlerInterceptorAdapter {
+public class DeleteInterceptor extends HandlerInterceptorAdapter {
 	
 	@Inject
 	private FestiService festiService;
@@ -23,26 +23,24 @@ public class FestiPageInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		// TODO Auto-generated method stub
 		boolean result=false;
-		FestiService festiService = new FestiService();
-		String num = request.getParameter("num");
 		String writer = request.getParameter("writer");
+		String num = request.getParameter("num");
 		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("memberId");
+		Object obj = session.getAttribute("memberNickname");
 		Object grade = session.getAttribute("grade");
 		if(obj!=null) {
 			if(grade.equals(2)){
 				if(obj.equals(writer)) {
-					result=true;
+					result= true;
 				}else {
-					response.sendRedirect("./festiSelect?num="+num+"&writer="+writer);
+					response.sendRedirect("../festi/festiSelect?num="+num);
 				}
 			}else {
-				response.sendRedirect("../festi/festiList?category=1");
+				response.sendRedirect("../festi/festiSelect?num="+num);
 			}
 		}else {
-			response.sendRedirect("../member/memberLogin");
+			response.sendRedirect("../festi/festiSelect?num="+num);
 		}
-		
 		return result;
 	}
 

@@ -138,7 +138,7 @@ public class MemberController {
 						mv.addObject("path", "../");
 					}else {
 						session.setAttribute("member", memberDTO);
-						session.setAttribute("memberId", memberDTO.getId());
+						session.setAttribute("memberNickname", memberDTO.getNickname());
 						session.setAttribute("grade", memberDTO.getGrade());
 						int zero = memberService.setUpdatezero(memberDTO);
 						message = "로그인 성공";	
