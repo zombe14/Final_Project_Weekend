@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 <!DOCTYPE html>
 <html>
@@ -11,6 +10,11 @@
 <body>
 <script type="text/javascript">
 	$(function () {
+		var emailId = "";
+		var emailAddress = "";
+		var email = "";
+		$("#emailCheckNumber").hide();
+		$("#finalCheck").hide();
 		$("#emailCheck").on("click", function () {
 			var emailId = $("#emailId").val();
 			var add = $("#add").text();
@@ -20,14 +24,19 @@
 				email : email
 			}, function (data) {
 				if(data == 1){
-					alert(email);
 					// 이메일의 존재여부를 확인 이제 인증번호를 보내면 된다.
 					$.post("../search/mailSending",{
 						email : email
 						}, function (data) {
 							if(data == 1){
 								alert("인증번호가 발송되었습니다.\n확인후 번호를 입력해주세요.");
-								}else{alert("인증번호 발송에 실패하였습니다.\다시 시도해주세요.");
+								$("#emailCheck").hide();
+								$("#emailCheckNumber").show();
+								$("#finalCheck").show();
+								$("#emailId").prop('readonly', true);
+								$("#emailAddress").prop('readonly', true);
+								}else{
+									alert("인증번호 발송에 실패하였습니다.\다시 시도해주세요.");
 								}
 							}
 					)
@@ -40,17 +49,27 @@
 			)
 		})
 		$("#finalCheck").on("click", function(){
+			var emailId = $("#emailId").val();
+			var add = $("#add").text();
+			var emailAddress = $("#emailAddress").val();
+			var email = emailId + add + emailAddress;
 			var Code = $("#emailCheckNumber").val();
+			$("#emailCheckNumber").prop('readonly', true);
 			$.post("../search/mailCheck",{
 				Code : Code
 			}, function (data) {
 				if(data == 1){
 					alert("이메일 인증이 완료되었습니다.");
-					$.post("./IdSearch",{
+					$.post("./idResult",{
+						Code : Code,
 						email : email
-					}, function (){
-						alert("아이디 찾기가 완료되었습니다.")
-						$("#findId").show();
+					}, function (data){
+						if(data == 1){
+							alert("아이디가 이메일로 발송되었습니다.")
+							// 여기서 이제 윈도우창을 닫고싶다.
+						}else{
+							alert("이메일 발송에 실패하였습니다.\n다시 시도해 주세요.")
+						}
 					})
 				}else{
 					alert("인증번호를 잘못 입력하셨습니다.\n다시 시도해주세요.");
@@ -80,8 +99,6 @@
 		<button type="button" id="emailCheck" class="emailCheck">인증번호 보내기</button>
 		<input type="text" id ="emailCheckNumber" title="인증번호 입력" name="emailCheckNumber" placeholder="인증번호를 입력해 주세요.">
 		<button type="button" id="finalCheck">확인</button>
-		<div id="result_emailOk" class="result_font" style="color: green"></div>
-		<input type="text" id = "findId" val="${result.id}">
 	</form>
 
 </body>
