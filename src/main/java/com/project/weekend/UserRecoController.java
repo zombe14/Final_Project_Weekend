@@ -74,8 +74,8 @@ public class UserRecoController{
 	public ModelAndView setUpdate(String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		FestiDTO festiDTO = festiService.getUserRecoSelect(num);
-		mv.addObject("board", festiDTO);
-		mv.setViewName("board/userRecoUpdate");
+		mv.addObject("list", festiDTO);
+		mv.setViewName("board/UserRecoUpdate");
 		return mv;
 	}
 	// 글수정 진행;
@@ -91,9 +91,16 @@ public class UserRecoController{
 	@RequestMapping(value = "UserRecoDelete", method = RequestMethod.POST)
 	public ModelAndView setDelete(String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String path = "./UserRecoSelect?num="+num;
+		String message = "유저오픈 글을 삭제하지 못했습니다.";
 		int result = festiService.setUserRecoDelete(num);
-		mv.addObject("result", result);
-		mv.setViewName("./common/message");
+		if(result>0) {
+			path = "../UserReco/UserRecoList";
+			message="유저오픈 글을 삭제하였습니다.";
+		}
+		mv.addObject("message", message);
+		mv.addObject("path", path);
+		mv.setViewName("./common/messageMove");
 		return mv;
 	}
 }
