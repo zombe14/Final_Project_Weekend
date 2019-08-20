@@ -222,10 +222,8 @@ $('#endDate, #startDate').change(function(){
 $('#datesOptionDiv').hide();
 $('.category').click(function() {
 	if($(this).val() != 3){
-		$('#festiDatesDIV').show();
 		$('#datesOptionDiv').hide();
 	} else {
-		$('#festiDatesDIV').hide();
 		$('#datesOptionDiv').show();
 		$('#optionsDiv').empty();
 	}

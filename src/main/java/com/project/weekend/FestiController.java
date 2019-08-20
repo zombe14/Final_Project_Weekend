@@ -131,6 +131,8 @@ public class FestiController{
 	public ModelAndView setUpdate(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		FestiDTO festiDTO = festiService.getSelect(num, session, request,response);
+		List<DatesDTO> list = datesService.getList(num);
+		mv.addObject("option", list);
 		mv.addObject("dto", festiDTO);
 		mv.addObject("board", "festi");
 		mv.addObject("boardTitle", "Festival");
