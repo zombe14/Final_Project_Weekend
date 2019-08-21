@@ -151,13 +151,31 @@
 						<dl class="doline_x">
 							<dt>예매가능 회차</dt>
 							<dd>
-								
 								<select class="festi_select">
 								</select>
-								
 							</dd>
 						</dl>
-						<div class="reserve_button"><a href="#">예매하기</a></div>
+						<c:if test="${dto.category eq 3}">
+						<div id="selected">
+							
+						</div>
+						<div class="reserve_button"><a id="reserve">예매하기</a></div>
+						<form action="../pay/orderRequest" method="post" id="payFrm">
+							<input type="text" name="parter_user_id" value="${member.id}">
+							<input type="text" name="item_name" value="${dto.title}">
+							<input type="text" name="item_num" value="${dto.num}">
+							<input type="text" name="quantity" value="" id="qu">
+							<input type="text" name="total_amount" id="to">
+							<input type="text" name="show_times" id="sh">
+						</form>
+						<!-- 날짜 옵션에 필요한거 -->
+						<div>
+							<c:forEach items="${option}" var="o">
+								<a class="optiondates" title="${o.reg_date}"></a>
+							</c:forEach>
+						</div>
+						</c:if>
+						<c:if test="${dto.writer eq member.nickname}">
 						<div class="admin_button">
 							<a href="./${board}Update?num=${dto.num}&writer=${dto.writer}">수정</a> 
 							<a id="delete">삭제</a>
@@ -166,6 +184,7 @@
 								<input type="hidden" name="writer" value="${dto.writer}">
 							</form>
 						</div>
+						</c:if>
 					</div>
 				</div>
 			</div>
@@ -185,30 +204,9 @@
 							<br>
 						</div>
 						<div>
-							<ul>
-								
-								<li>${dto.local}</li>
-								<li>${dto.contents}</li>																
-							</ul>
-							
-							<div>
-								<c:forEach items="${option}" var="o">
-									<a class="optiondates" title="${o.reg_date}"></a>
-								</c:forEach>
-							</div>
-							<ul>
-							<c:forEach items="${option}" var="o" varStatus="i">
-								<li>------------------------</li>
-								<h5>옵션 ${i.count}</h5>
-								<li>pk : ${o.dnum}</li>
-								<li>fk : ${o.num}</li>
-								<li>날짜 : ${o.reg_date}</li>
-								<li>시간 : ${o.time}</li>
-								<li>좌석 : ${o.seat}</li>
-								<li>가격 : ${o.price}</li>
-							</c:forEach>
-							</ul>
+							${dto.contents}
 						</div>
+						
 					</div>
 					<div id="div2" class="festi_wrap2">
 						<!-- 장소 지도 -->
@@ -355,7 +353,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript">
 	
-	/* 옵션 날짜 넣기 */
+	/* 옵션 날짜 넣기    - 카테고리 3만*/
 	var disabledDays = [];
 	$('.optiondates').each(function(){
 		var date2 = [];
@@ -364,13 +362,14 @@
 		disabledDays.push(date);
 	});
 	
-
+	var show_times = '';
 	$("#date1").datepicker({
 		dateFormat : 'yy-mm-dd',
 		beforeShowDay : disableAllTheseDays,
 		onSelect : function(date){
 			var num = '${dto.num}';
 			var reg_date = date;
+			show_times = date;
 			$.ajax({
 				url:'./getOptions',
 				type:'POST',
@@ -379,10 +378,11 @@
 					reg_date:reg_date
 				},
 				success:function(data){
-					var timesHtml = '<option hidden="true">날짜를 선택해주세요</option>';
+					var timesHtml = '<option hidden="true">시간을 선택해주세요</option>';
 					for(var i = 0;i<data.length;i++){
 						time = data[i].time;
-						timesHtml += '<option class="timeList" id="'+data[i].seat+'" title="'+data[i].price+'" value = "'+data[i].dnum+'" name="selTime">'+time+'</option>';
+						show_times += '-'+time;
+						timesHtml += '<option class="timeList" id="'+data[i].dnum+'" value = "'+data[i].dnum+'" name="selTime">'+time+'</option>';
 					}
 					$('.festi_select').html(timesHtml);
 				},
@@ -393,19 +393,33 @@
 		}
 	});
 	
+	var tPrice = 0;
 	$('.festi_select').change(function(){
 		var dnum = $(this).val();
-		$('#'+dnum)
-		$('.timeList').each(function(){
-			
+		$.ajax({
+			url:'./getSelectOption',
+			type:'POST',
+			data:{
+				dnum:dnum
+			},
+			success:function(data){
+				var selected = '';
+				tPrice = data.price;
+				selected += '<table class="table" style="width:100%;"><tr><td>좌석</td><td>'+data.seat+'석</td></tr><tr><td>가격</td><td id="price" value="'+data.price+'">'+data.price+'원</td></tr>'
+				selected += '<tr><td>매수</td><td><input type="number" value="1" id="amount" min="1" style="width:30%;" onchange="totalPrice()"></td></tr>'
+				selected += '<tr><td>총액</td><td id="total">'+data.price*1+'</td></tr></table>'
+				$('#selected').html(selected);
+			},
+			error:function(e){
+				console.log(e);
+			}
 		});
-		var dnum = $(this).attr('id');
-		var price = $(this).attr('title');
-		var seat = $(this).val();
-		console.log(dnum, price, seat);
 	});
 	
-	//console.log(disabledDays);
+	function totalPrice(){
+		var total = $('#amount').val()*tPrice;
+		$('#total').html(total);	
+	}
 
 	function disableAllTheseDays(date) {
 		var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
@@ -422,6 +436,16 @@
 		}
 		return [ false ];
 	}
+	
+	$('#payFrm').hide();
+	$('#reserve').click(function() {
+		var qu = $('#amount').val();
+		$('#qu').val(qu);
+		var to = $('#total').html();
+		$('#to').val(to);
+		var sh = show_times;
+		$('#sh').val(sh);
+	});
 
 	/* 각 행 선택 시 select 페이지 이동 */
 	$('.qnaSel').click(function() {

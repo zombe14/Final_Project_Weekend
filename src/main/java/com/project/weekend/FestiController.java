@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -133,6 +134,13 @@ public class FestiController{
 	public List<DatesDTO> getOptions(DatesDTO datesDTO) throws Exception{
 		List<DatesDTO> list = datesService.getOptions(datesDTO);
 		return list;		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getSelectOption", method = RequestMethod.POST)
+	public DatesDTO getSelectOption(int dnum, HttpSession session) throws Exception{
+		DatesDTO datesDTO = datesService.getSelect(dnum, session);
+		return datesDTO;
 	}
 	
 	// update-form

@@ -32,10 +32,12 @@
 					</form>
 				</div> --%>
 				<div class="festi_header">
-					<strong><c:if test="${category ne 2}">전체</c:if><c:if test="${category eq 2}">${region}</c:if></strong>
-					<div class="boardTile_write">
-						<a href="./${board}Write">${boardTitle} 글쓰기</a>
-					</div>
+					<strong><c:if test="${category eq 1}">전국 공연</c:if><c:if test="${category eq 2}">${region} 축제</c:if><c:if test="${category eq 3}">대학로 공연</c:if></strong>
+					<c:if test="${member.grade gt 1}">
+						<div class="boardTile_write">
+							<a href="./${board}Write">${boardTitle} 글쓰기</a>
+						</div>
+					</c:if>
 				</div>
 				<div class="col-12">
 					<c:forEach items="${list}" var="i">
