@@ -23,7 +23,7 @@
       		<div class="conta">
   	      		<div class="user_wrap">
   	      			<div class="user_title">
-  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/reco.png"><strong> 유저추천 </strong>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png"><strong> 유저추천 </strong>
   	      			</div>
   	      			<div class="user_box">
   	      				<ul>

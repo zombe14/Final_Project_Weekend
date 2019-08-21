@@ -53,7 +53,7 @@
 								<a id="replyBtn" class="qnaSelect_btn2">답변달기</a>
 							</c:if>
 						</c:if>
-						<h3>${boardTitle} 게시판</h3>
+						<img alt="" src="${pageContext.request.contextPath}/resources/images/qa.png" class="titleimg"><h3>${boardTitle} 게시판</h3>
 					</div>
 					<div class="call_wrap">
 						<div class="tableDiv">

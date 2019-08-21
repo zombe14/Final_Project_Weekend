@@ -91,6 +91,12 @@
 	color: white;
 }
 
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+}
+
 #commentsWrite{
 	border: 1px solid #dedede;
     padding: 16px 20px;
