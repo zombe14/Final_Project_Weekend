@@ -87,7 +87,7 @@
 	</select>
 	
 	<update id="setUpdate" parameterType="QnaDTO">
-		UPDATE QNA SET TITLE = #{title}, CONTENTS = #{contents} WHERE NUM = #{num}
+		UPDATE QNA SET TITLE = #{title}, CONTENTS = #{contents}, pw = #{pw} WHERE NUM = #{num}
 	</update>
 	
 	<delete id="setDelete" parameterType="String">
@@ -116,6 +116,11 @@
 	<update id="setAnswerDelete" parameterType="String">
 		update qna set answer = 0 where ref = #{ref} and step = 0
 	</update>
+	
+	<select id="getSelectPw" resultType="QnaDTO" parameterType="QnaDTO">
+		select * from qna where num=#{num} and pw=#{pw}
+	</select>
+
 	
 	
 </mapper>

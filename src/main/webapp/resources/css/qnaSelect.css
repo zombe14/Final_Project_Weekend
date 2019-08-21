@@ -3,13 +3,30 @@
 	}
 
 .qnaSelect_btn{
-	padding: 4px 15px;
+	padding: 6px 22px;
     background-color: white;
     font-size: 12px;
     float: right;
     cursor: pointer;
     border-radius: 10px;
     margin: 20px 3px;
+    border: 1px solid #adadad;
+}
+
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+}
+
+.qnaSelect_btn2{
+	padding: 6px 22px;
+    background-color: white;
+    font-size: 12px;
+    float: right;
+    cursor: pointer;
+    border-radius: 10px;
+    /* margin: 20px 3px; */
     border: 1px solid #adadad;
 }
 

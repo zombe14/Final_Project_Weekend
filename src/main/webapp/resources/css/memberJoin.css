@@ -67,12 +67,20 @@ input{
     color: #00d344;
     font-style: normal;
 }
-.joinWrap .tableBox table {
+.joinWrap .tableBox .table1 {
     width: 100%;
     position: relative;
 	table-layout: fixed;
     border-top: 1px solid #b6bdc7;
 }
+
+.joinWrap .tableBox .table2 {
+    width: 100%;
+    position: relative;
+	table-layout: fixed;
+    border-bottom: 1px solid #b6bdc7;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -250,11 +258,13 @@ select {
 }
 #emailCheck{
     border: 1px solid white;
-    padding: 10px 20px;
+    padding: 10px 12px;
     background: #00d344;
     color: white;	
     font-size: 14px;
     margin: 0 5px;
+    margin-top: 10px;
+    float: right;
 }
 #emailCodeCheck{
     border: 1px solid white;
@@ -264,6 +274,7 @@ select {
     font-size: 14px;
     margin: 0 5px;
 }
+
 #juminnum{
     border: 1px solid white;
     padding: 10px 20px;

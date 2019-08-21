@@ -27,41 +27,7 @@
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver"> 
 		<beans:property name="order" value="0"/> 
 	</beans:bean>
-	
-<!--Interceptor -->
-	<beans:bean id="memberJoinInterceptor" class="com.project.weekend.interceptor.MemberJoinInterceptor" />
- 	<interceptors>
-		<interceptor>
-			<mapping path="/member/memberJoin"/>
-			<beans:ref bean="memberJoinInterceptor"/>
-		</interceptor>
-	</interceptors>
 
-	<beans:bean id="memberInterceptor" class="com.project.weekend.interceptor.MemberInterceptor" />
-		<interceptors>
-			<interceptor>
-				<mapping path="/member/memberAgree"/>
-				<mapping path="/member/memberLogin"/>
-				<beans:ref bean="memberInterceptor"/>
-			</interceptor>
-		</interceptors>
-			
-	<beans:bean id="adminInterceptor" class="com.project.weekend.interceptor.AdminInterceptor" />
- 	<interceptors>
-		<interceptor>
-			<mapping path="/admin/*"/>
-			<beans:ref bean="adminInterceptor"/>
-		</interceptor>
-	</interceptors>
-	 
-	<beans:bean id="myPageInterceptor" class="com.project.weekend.interceptor.MyPageInterceptor"/>
-		<interceptors>
-			<interceptor>
-				<mapping path="/myPage/*"/>
-				<beans:ref bean="myPageInterceptor"/>
-			</interceptor>
-		</interceptors>
-	
 	<context:component-scan base-package="com.project.weekend" />
 	
 	<!-- 난슬 -->

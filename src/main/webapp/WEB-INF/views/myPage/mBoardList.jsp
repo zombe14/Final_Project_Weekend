@@ -25,6 +25,15 @@
 						<td>시간</td>
 						<td>조회수</td>
 					</tr>
+						<c:forEach items="${list}" var="list">
+							<tr>
+								<td class="td10 selectRow" id="${list.num}">중요</td>
+								<td>${list.title}</td>
+								<td class="td10">${list.writer}</td>
+								<td class="td10">${list.reg_date}</td>
+								<td class="td10">${list.hit}</td>
+							</tr>
+						</c:forEach>
 				</table>
 			</div>
 		</div>

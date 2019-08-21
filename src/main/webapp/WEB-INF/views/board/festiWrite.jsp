@@ -16,7 +16,15 @@
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services"></script>	
 <!-- date picker -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+ 
 <!-- date picker -->
+<style type="text/css">
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+</style>
 </head>
 <body>
    <div id="wrap">
@@ -27,133 +35,158 @@
       	<div class="conta">
   	      	<div class="fwrite_wrap">
   	      		<div class="fwrite_title">
-  	      			<h3>${board}글쓰기</h3>
+  	      			<img alt="" src="${pageContext.request.contextPath}/resources/images/festi1.png" class="titleimg"><h3>${board}글쓰기</h3>
   	      		</div>
-      		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
 
-				
-				<div>
-					<label for="title">제목<span class="r">*</span></label>
-					<input type="text" name="title" id="title">
-				</div>
-				<div>
-					<label for="writer">작성자<span class="r">*</span></label>
-					<input type="text" name="writer" value="${member.nickname}memberNick" readonly="readonly" id="writer">
-				</div>
-			
-				<div>
-					<label for="contents">내용<span class="r">*</span></label>
-					<textarea rows="" cols="" name="contents" id="contents"></textarea>
-				</div>
-				<div>
-				<label for="files">썸네일</label><span>&nbsp; &nbsp; ※  jpg, png, gif, jpeg 확장자만 업로드 가능합니다.</span>
-					<div id="thumbnailDiv">
-						<div id="thumbnailSelectDiv">
-							<input type="file" class="filelist" id="thumbnail" name="filelist" style="display: inline-block" accept=".jpg, .png, .gif, .jpeg">
-							
-						</div>
-						<!-- 이미지 미리보기 -->
-						<div id="preview">
-							<img id="preview-img" src="#">
-						</div>
-					</div>
-				</div>
-				<div>
-					<label for="files">첨부파일</label>
-					<a id="addFiles">파일추가</a>
-					<div id="files">
-						<div>
-							<input type="file" class="filelist" name="filelist" style="display: inline-block">
-							<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
-						</div>
-					</div>
-				</div>				
-				<div>
-					<label for="category">카테고리<span class="r">*</span></label>
-					<input type="radio" name="category" class="category" id="show" checked="checked" value="1"> 1.공연
-					<input type="radio" name="category" class="category" id="festival" value="2"> 2. 축제						
-					<input type="radio" name="category" class="category" id="daehakro" value="3"> 3. 대학로 연극
-				</div>
-				
-				<div>
-					<label for="startDate">시작일<span class="r">*</span></label>
-					<input type="date" name="startDate" class="date">  
-				</div>
-				<div>
-					<label for="endDate">종료일<span class="r">*</span></label>
-					<input type="date" name="endDate" class="date">
-				</div>
-				<div id="daehakDiv">
-					<div>
-						<label for="price">가격</label>
-						<input type="number" name="price" value="0"><span>원</span>
-					</div>
-					<div>
-						<label for="total">좌석 </label>
-						<input type="number" name="total" value="0"><span>석</span>
-					</div>
-				</div>
-				<div id="ageDiv">
-					<label for="age">연령제한<span class="r">*</span></label>
-					<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 전연령
-					<input type="radio" name="ageSel" class="age" id="teen" value="2"> 청소년 이상
-					<input type="radio" name="ageSel" class="age" id="adult" value="3"> 성인 이상
-					<input type="radio" name="ageSel" class="age" id="etc" value="4"> 기타
-					<input type="text" class="age" id="age" name="age" value="1">
-				</div>
-				<div>
-					<label for="local">지역<span class="r">*</span></label>
-					<input type="text" name="local1" id="local1" onclick="openMap()" style="width: 30%;">
-					<input type="text" name="local2" id="local2" placeholder="상세주소를 입력해주세요" readonly="readonly"  style="width: 20%;" >
-					<input type="text" name="local" id="local" readonly="readonly"  style="width: 30%;" >
-					이 주소가 맞습니다.<span class="r">*</span> <input type="checkbox" id="localConfirm">
-					<input type="hidden" name="region" id="region">
-					<div id="map" style="width:100%;height:500px;margin-top:10px;display:none">
-					</div>
-				</div>
-				<c:if test="${member.grade eq 3}">
-				<div>
-					<label for="top">상단에 등록 하기</label>
-					<input type="checkbox" id="top" name="top" value="0">
-				</div>
-				</c:if>
-				
-				
-				<hr>
-				<div id="datesOptionDiv">
-					<a class="btn btn-default" id="addOptions">옵션 추가하기</a>
-					<div id="datesOption">
-						<div id="option1">
-							<div>
-								<div class="dateDiv">
-									<label for="dates">날짜 </label>
-									<input type="date" name="reg_date" class="dates">
+      		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
+      		 	<table class="table table-bordered">
+      		 	<tbody>
+					<tr>
+						<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="title" id="title" style="width: 96%"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}" readonly="readonly" id="writer" style="width: 40%"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="contents">내용<span class="r">*</span></label></td>
+						<td><textarea rows="" cols="" name="contents" id="contents"></textarea></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="category">카테고리<span class="r">*</span></label></td>
+						<td>
+								<input type="radio" name="category" class="category" id="show" checked="checked" value="1">
+								<label for="show">공연</label>
+								<input type="radio" name="category" class="category" id="festival" value="2">
+								<label for="festival">축제</label>						
+								<input type="radio" name="category" class="category" id="daehakro" value="3">
+								<label for="daehakro">대학로 연극</label>
+						</td>
+					</tr>
+					<tr id="ageDiv">
+						<td class="td1"><label for="age">연령제한<span class="r">*</span></label></td>
+						<td>
+							<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 
+							<label for="all">전연령</label>
+							<input type="radio" name="ageSel" class="age" id="teen" value="2">
+							<label for="teen">청소년 이상</label>
+							<input type="radio" name="ageSel" class="age" id="adult" value="3">								<label for="adult">성인 이상</label>
+							<input type="radio" name="ageSel" class="age" id="etc" value="4">
+							<label for="etc">기타</label>
+							<input type="text" class="age" id="age" name="age" value="1">
+						</td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="startDate">시작일<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="startDate" class="date" id="startDate"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="endDate">종료일<span class="r">*</span></label></td>							
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="endDate" class="date" id="endDate"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="price">가격</label></td>
+						<td><input type="number" name="price" value="0"><span>&nbsp; &nbsp;원</span></td>
+					</tr>
+					<tr class="daehakDiv">
+						<td class="td1"><label for="total">좌석 </label></td>
+						<td><input type="number" name="total" value="0"><span>&nbsp; &nbsp;석</span></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="local">지역<span class="r">*</span></label></td>
+						<td>
+							<img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/location.png">
+							<input type="text" name="local1" id="local1" onclick="openMap()" style="width: 50%;">
+							<input type="text" name="local2" id="local2" placeholder="상세주소를 입력해주세요" readonly="readonly"  style="width: 45%;" >
+							<br>
+							<img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/location.png">								<input type="text" name="local" id="local" readonly="readonly"  style="width: 73%;" >
+							<input type="checkbox" id="localConfirm">
+							<label for="localConfirm" class="localConfirm">이 주소가 맞습니다.</label>
+							<input type="hidden" name="region" id="region">
+							<div id="map" style="width:100%;height:500px;margin-top:10px;display:none"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="files">썸네일</label><span class="r">*</span></td>
+						<td>
+							<div id="thumbnailDiv">
+								<div id="thumbnailSelectDiv">
+									<input type="file" class="filelist" id="thumbnail" name="filelist" style="display: inline-block" accept=".jpg, .png, .gif, .jpeg">
+									<span style="color: red">※  jpg, png, gif, jpeg 확장자만 업로드 가능합니다.</span>
 								</div>
-								<div class="timeDiv">
-									<label for="time">시작시간</label>
-									<input type="text" name="time" class="time">
-								</div>				
-								<div class="seatDiv">
-									<label for="seat">좌석</label>
-									<input type="number" name="seat" class="seat">
-								</div>
-								<div class="priceDiv">
-									<label for="price">가격</label>
-									<input type="number" name="price" class="price">
+								<!-- 이미지 미리보기 -->
+								<div id="preview">
+									<img id="preview-img" src="#">
 								</div>
 							</div>
-							<hr>
-						</div>
-					</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="files">첨부파일</label></td>
+						<td>
+							<a id="addFiles"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일추가</a>
+							<div id="files">
+								<input type="file" class="filelist" name="filelist" style="display: inline-block">
+								<!-- <span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span> -->
+							</div>
+						</td>
+					</tr>
+					<c:if test="${member.grade eq 3}">
+					<tr>
+						<td class="td1"><label for="top">상단 등록</label></td>
+						<td><input type="checkbox" id="top" name="top" value="0">
+						<label for="top">등록</label>
+						</td>
+					</tr>
+					</c:if>
+					
+				</tbody>
+				</table>
+				<input type="hidden" name=num value="${num}">
+				</form>
+				
+				
+				<div id="datesOptionDiv"> <!-- 카테고리 3 -->				
+				<table class="table table">
+					<tr>
+						<td><label for="dates">날짜 </label></td>
+						<td><label for="time">시작시간</label></td>
+						<td><label for="seat">좌석</label></td>
+						<td><label for="price">가격</label></td>
+						<td><input type="hidden" name="num" value="${num}" id="num"></td>
+					</tr>
+					<tr>
+						<td><div class="dateDiv">
+								<input type="date" name="reg_date" class="dates" id="dates">
+							</div>
+						</td>
+						<td><div class="timeDiv">
+								<input type="text" name="time" class="time" id="time" placeholder="ex)15:00">
+							</div>
+						</td>
+						<td><div class="seatDiv">
+								<input type="number" name="seat" class="seat" id="seat"><span> 석</span>
+							</div>
+						</td>
+						<td><div class="priceDiv">
+								<input type="number" name="price" class="price" id="price"><span> 원</span>
+							</div>
+						</td>
+						<td>
+							<div class="writeOption">
+							<a id="writeOption">옵션등록</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+					<div id="optionsDiv">
+						
+					</div>		
 				</div>
-				
-				
-				
-				
-      		 	<a id="write" class="btn btn-default">등록</a>
 
-				
-			</form> 
+      		 	<a id="write" class="festiWrite_btn">등록</a>
+
   	      	</div>
       	</div>
     </div>
@@ -169,12 +202,140 @@
 <!-- script -->
 <script type="text/javascript">
 
-$('#addOptions').click(function() {
-	var option = $('#option1').html();
-	console.log(option)
-	var html = option
-	$('#datesOption').append(html);
+$('.daehakDiv').hide();
+
+/* 시작일, 종료일 비교 */
+$('#endDate, #startDate').change(function(){
+	var startDate = $( '#startDate' ).val();
+    var startDateArr = startDate.split('-');
+      
+    var endDate = $( '#endDate' ).val();
+    var endDateArr = endDate.split('-');
+              
+    var startDateCompare = new Date(startDateArr[0], startDateArr[1]-1, startDateArr[2]);
+    var endDateCompare = new Date(endDateArr[0], endDateArr[1]-1, endDateArr[2]);
+      
+    if(startDateCompare.getTime() > endDateCompare.getTime()) {          
+        alert("시작날짜와 종료날짜를 확인해 주세요.");
+        $('#endDate').val('');
+        return;
+    }
+})
+
+
+$('#datesOptionDiv').hide();
+$('.category').click(function() {
+	if($(this).val() != 3){
+		$('#datesOptionDiv').hide();
+	} else {
+		$('#datesOptionDiv').show();
+		$('#optionsDiv').empty();
+	}
 });
+
+	
+	$('#writeOption').click(function(){
+		var num = $('#num').val();
+		var reg_date = $('#dates').val();
+		var time = $('#time').val();
+		var seat = $('#seat').val();
+		var price = $('#price').val();
+		$.ajax({
+			url:'./optionWrite',
+			type:'POST',
+			data:{
+				num:num,
+				reg_date:reg_date,
+				time:time,
+				seat:seat,
+				price:price
+			},
+			success:function(data){
+				if(data == '1'){
+					getOptionsList();
+					$('#dates').val('');
+					$('#time').val('');
+					$('#seat').val('');
+					$('#price').val('');
+				} else {
+					alert('실패');
+				}
+			},
+			error:function(e){
+				console.log(e);
+			}
+		});
+	});
+	
+	function getOptionsList(){
+		jQuery.ajaxSettings.traditional = true;
+		$.ajaxSettings.traditional = true;
+		var num = "${num}";
+		$.ajax({
+			type:'GET',
+			url:'./optionList',
+			data:{
+				num:num
+			},
+			success:function(data){
+				console.log(data);
+				data = data.trim();    	
+				$('#optionsDiv').html(data);	
+			},
+			error:function(e){
+				console.log(e);
+			}
+		});
+	}
+	
+	
+	//$(this).last().val()
+/* 	var min='';
+	var max='';
+	var endDate;
+	var startDate;
+	$('#datesOption').on('change','.dates',function(){
+		var dates = [];
+		var datesCompare = [];
+		
+		$('.dates').each(function(){
+			dates.push($(this).val());
+		})
+		for(var i = 0; i<dates.length;i++){
+			var dates2 = [];
+			dates2 = dates[i].split('-');
+			dates2 = new Date(dates2[0], dates2[1]-1, dates2[2]);
+			datesCompare.push(dates2);
+		}
+	
+		var tmp1='';
+		var tmp2 = '';
+	
+		if(datesCompare.length>1){
+			for(var i = 0;i<datesCompare.length;i++){
+				if(datesCompare[i]>max){
+					max = datesCompare[i];
+					endDate = dates[i];
+				} 
+				
+				if(datesCompare[i]<min){
+					min = datesCompare[i];
+					startDate = dates[i];
+				}
+
+			}
+		} else {
+			startDate = dates[0];
+			endDate = dates[0];
+			max = datesCompare[0];
+			min = datesCompare[0];
+		}
+		$('#endDate').val(endDate);
+		$('#startDate').val(startDate);
+		
+	});
+ */
+	
 
 /* 첨부 파일 관리 */
 // 개수 제한. 최대 5개까지.
@@ -305,7 +466,6 @@ $('#top').click(function(){
   });
   
   $('#local2').blur(function() {
-	$('#local').val('');
 	if($('#local2').val() != ''){
 		var local = $('#local1').val()+"  "+$('#local2').val();
 		$('#local').val(local);
@@ -315,15 +475,7 @@ $('#top').click(function(){
 // 주소API 끝-----------------
 
 
-	/* category */
-	$('.daehakDiv').hide();
-	$('.category').click(function() {
-		if ($(this).val() == '3') {
-			$('.daehakDiv').show();
-		} else {
-			$('.daehakDiv').hide();
-		}
-	});
+	
 
 	$('.t').change(function() {
 		$('#category').val($(this).val());
@@ -344,8 +496,10 @@ $('#top').click(function(){
 	/* 가격상세 */
 	
 
-	$('#write').click(function() {
-		var title = $('#title').val() != '';
+	 $('#write').click(function() {
+		$('#frm').submit();
+		$('#datesOptionFrm').submit();
+		/* var title = $('#title').val() != '';
 		var writer = $('#writer').val() != '';
 		var contents = $('#contents').val() != '';
 		var category = $('#category').val() != '';
@@ -355,7 +509,7 @@ $('#top').click(function(){
 			$('#frm').submit();
 		} else {
 			alert('필수(*)를 모두 입력해주세요');
-		}
+		} */
 	});
 </script>
 </body>

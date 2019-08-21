@@ -1,4 +1,4 @@
-+<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="../temp/boot.jsp"></c:import>
@@ -19,6 +19,9 @@
 	<div id="container">
 		<div class="conta">
 			<div class="map_wrap">
+				<div class="festimap_title">
+  	      			<img alt="" src="${pageContext.request.contextPath}/resources/images/worldwide.png"><strong> 전국 시도 선택 </strong>
+  	      		</div>
 				<div id="map" class="map" style="width:100%;height:100%; position: relative; overflow:hidden;"></div>
 				<!-- 지도타입 컨트롤 div 입니다 -->
     			<div class="custom_typecontrol radius_border">
@@ -98,8 +101,10 @@
     		level: 13 // 지도의 확대 레벨
 		};
 
-	var map = new kakao.maps.Map(mapContainer, mapOption);
-		
+	var map = new kakao.maps.Map(mapContainer, mapOption),
+    customOverlay = new kakao.maps.CustomOverlay({}),
+    infowindow = new kakao.maps.InfoWindow({removable: true});
+	
 	
 	//지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
 	function setMapType(maptype) { 
@@ -202,7 +207,7 @@
            polygon.setOptions({fillColor: '#09f'});
    
            customOverlay.setContent('<div class="area">' + name + '</div>');
-        
+           
            customOverlay.setPosition(mouseEvent.latLng); 
            customOverlay.setMap(map);
        });
@@ -220,17 +225,17 @@
        }); 
 
        // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
-        kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
+         /* kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
         	//location.href = '${pageContext.request.contextPath}/festi/festiList?category=1';
-           /* var content = '<div class="info">' + 
+             var content = '<div class="info">' + 
                        '   <div class="title">' + name + '</div>' +
                        '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' +
                        '</div>';
 
            infowindow.setContent(content); 
            infowindow.setPosition(mouseEvent.latLng); 
-           infowindow.setMap(map); */
-       }); 
+           infowindow.setMap(map);  
+       });   */
        }
 
 
@@ -265,7 +270,6 @@
        // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
        kakao.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
            polygon.setOptions({fillColor: '#09f'});
-   
            customOverlay.setContent('<div class="area">' + name + '</div>');
         
            customOverlay.setPosition(mouseEvent.latLng); 
@@ -286,17 +290,17 @@
        }); 
 
        // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다 
-        kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
-        	location.href = '${pageContext.request.contextPath}/festi/festiList?category=1';
-           /* var content = '<div class="info">' + 
+        /*  kakao.maps.event.addListener(polygon, 'click', function(mouseEvent) {
+        	 // location.href = '${pageContext.request.contextPath}/festi/festiList?category=1';
+            var content = '<div class="info">' + 
                        '   <div class="title">' + name + '</div>' +
                        '   <div class="size">총 면적 : 약 ' + Math.floor(polygon.getArea()) + ' m<sup>2</sup></area>' +
                        '</div>';
 
            infowindow.setContent(content); 
            infowindow.setPosition(mouseEvent.latLng); 
-           infowindow.setMap(map); */
-       }); 
+           infowindow.setMap(map); 
+       });   */
        });
        
    }

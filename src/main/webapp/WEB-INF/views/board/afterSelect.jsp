@@ -9,6 +9,7 @@
 <c:import url="../temp/boot.jsp"></c:import>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/home.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/boardSelect.css">
 <link rel="shortcut icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <style type="text/css">
@@ -24,22 +25,45 @@
 		</div>
 		<div id="container">
 			<div class="conta">
-				num : ${dto.num} 
-				<br> 
-				title : ${dto.title} 
-				<br> 
-				writer : ${dto.writer} 
-				<br> 
-				reg_Date : ${dto.reg_date} 
-				<br>
-				hit : ${dto.hit} 
-				<br>
-				contents : ${dto.contents} 
-				<br> 
-				<br> 
+				<div class="fqna_wrap">
+					<div class="fqna_title">
+  	      				<h3> 후기보기 </h3>
+  	      			</div>
+				<div class="tableDiv">
+					<table class="table" style="width: 100%">
+							<thead class="table_head">
+								<tr>
+									<th class="td1">
+										<div>${dto.num}</div>
+									</th>
+									<th class="td2">
+										<div>${dto.title}</div>
+									</th>
+									<th class="td1">
+										<div>${dto.writer}</div>
+									</th>
+									<th class="td1">
+										<div>${dto.reg_date}</div>
+									</th>
+									<th class="td1">
+										<div>${dto.hit}</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td colspan="5">
+										<div class="dt1">								
+											${dto.contents}
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				
 				<c:forEach items="${dto.fileDTOs}" var="f">
-					<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
+					<input type="button" title="${f.fname}" class="down" value="${f.oname}" style="display: none;"> 
 				</c:forEach>
 				
 				<div style="display:none;">
@@ -49,40 +73,36 @@
 						<input type="text" name="board" value="board">
 					</form>
 				</div>			
-				
-				<a id="list" title="${board}" class="${dto.num}">목록</a>
-				<a id="update" class="${board}">수정</a> 
-				<a id="delete" class="${board}">삭제</a>
-				
 
 				<form action="./${board}Delete" id="deleteFrm" method="post">
-					
 						<input type="hidden" class="anum" id = "${dto.anum}" name="anum" value="${dto.anum}">
-							
 				</form>
 				<!-- ------------------------------------------ 댓글 ------------------------------------------ -->
-				<hr>
+				
+				
+				<div id="commentsList">
+					
+				</div>
 				<div id="commentsWriteDiv">
 					<form action="./${board}commentsWrite" method="post" id="commentsFrm">
 						<input type="hidden" id="num" name="num" value="${dto.anum}">
 						<strong><span>댓글(</span><span id="cCnt">${cCnt}</span>)</strong>
-						<div>				
+						<div class="comments_name">				
 							<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
 						</div>
 						<div style="display: inline-block;">
-							<textarea rows="3" cols="100" id="commentsContents" style="resize: none;"></textarea>
+							<textarea rows="3" cols="120" id="commentsContents" style="resize: none;"></textarea>
 						</div>
 						<div style="display: inline-block;">
 							<a class="btn" id="commentsWrite">댓글등록</a>
 						</div>
 					</form>
 				</div>
-				<hr>
-				<div id="commentsList">
-					
-				</div>
-					
+				<a id="list" title="${board}" class="${dto.num} fqnaSelect_btn">목록</a>
+				<a id="update" class="${board} fqnaSelect_btn">수정</a> 
+				<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
 			</div>
+		</div>
    </div>
    <div id="footer">
       <c:import url="../inc/footer.jsp"></c:import>
@@ -176,7 +196,7 @@
 		var board = $(this).attr('title');
 		var num = $(this).attr('class');
 		if(board == 'after'){
-			list = "../festi/festiSelect?num="+num;		
+			list = "../festi/festiSelect?num=${dto.num}";		
 		} else if (board == 'notice'||'qna'){
 			list = "./"+board+"List";
 		}

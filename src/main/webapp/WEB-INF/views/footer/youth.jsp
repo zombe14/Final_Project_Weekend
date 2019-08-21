@@ -19,8 +19,8 @@
 	<div id="container">
 		<div class="conta">
 				<ul class="front_tab">
-					<li class="on"><a href="${pageContext.request.contextPath}/footer/personalInformation" class="tab1">개인정보처리방침</a></li>
-					<li><a href="${pageContext.request.contextPath}/footer/youth" class="tab2">청소년보호정책</a></li>
+					<li><a href="${pageContext.request.contextPath}/footer/personalInformation" class="tab1">개인정보처리방침</a></li>
+					<li><a href="${pageContext.request.contextPath}/footer/youth" class="tab2 on">청소년보호정책</a></li>
 					<li><a href="${pageContext.request.contextPath}/footer/use" class="tab3">이용약관</a></li>
 				</ul>
 				<div class="tit">

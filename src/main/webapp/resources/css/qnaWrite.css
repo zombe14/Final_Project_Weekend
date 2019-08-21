@@ -11,6 +11,12 @@
 	background: #f5f6f7;
 	}
 	
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+}
+	
 .pencil{
 	width: 20px;
 	margin-right: 10px;
@@ -46,7 +52,7 @@ input:focus{
 .qnaWrite_btn{
 	background-color: white;
     color: black;
-    padding: 4px 15px;
+    padding: 6px 22px;
     float: right;
     border: 1px solid #adadad;
     cursor: pointer;
@@ -62,7 +68,7 @@ input:focus{
  .qnaUpdate_btn{
 	background-color: white;
     color: black;
-    padding: 4px 15px;
+    padding: 6px 22px;
     float: right;
     border: 1px solid #adadad;
     cursor: pointer;

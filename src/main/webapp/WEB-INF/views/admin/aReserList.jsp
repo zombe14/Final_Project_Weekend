@@ -9,7 +9,7 @@
 <!-- 관리자용 bootstrap -->
 <c:import url="../temp/adminBoot.jsp" />
 <!-- 관리자용 css -->
-<c:import url="../../../resources/css/adminBoard.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminBoard.css">
 </head>
 <body>
 <div class="totalBody">

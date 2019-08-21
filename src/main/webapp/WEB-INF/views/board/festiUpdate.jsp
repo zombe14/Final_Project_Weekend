@@ -25,96 +25,160 @@
       </div>
       <div id="container">
       	<div class="conta">
-  	      	
-      		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
-				
-				<div>
-					<label for="title">제목<span class="r">*</span></label>
-					<input type="text" name="title" id="title">
-				</div>
-				<div>
-					<label for="writer">작성자<span class="r">*</span></label>
-					<input type="text" name="writer" value="${member.nickname}memberNick" readonly="readonly" id="writer">
-				</div>
-			
-				<div>
-					<label for="contents">내용<span class="r">*</span></label>
-					<textarea rows="" cols="" name="contents" id="contents"></textarea>
-				</div>
-				<div>
-				<label for="files">썸네일</label><span>&nbsp; &nbsp; ※  jpg, png, gif, jpeg 확장자만 업로드 가능합니다.</span>
-					<div id="thumbnailDiv">
-						<div id="thumbnailSelectDiv">
-							<input type="file" class="filelist" id="thumbnail" name="filelist" style="display: inline-block" accept=".jpg, .png, .gif, .jpeg">
+  	      	<div class="fwrite_wrap">
+  	      		<div class="fwrite_title">
+  	      			<img alt="" src="${pageContext.request.contextPath}/resources/images/festi1.png" class="titleimg"><h3>${board}글수정</h3>
+  	      		</div>
+      		 <form action="./festiUpdate" method="post" enctype="multipart/form-data" id="frm">
+      		 	<table class="table table-bordered">
+      		 	<tbody>
+					<tr>
+						<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="title" id="title" style="width: 96%" value="${dto.title }"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}" readonly="readonly" id="writer" style="width: 40%"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="contents">내용<span class="r">*</span></label></td>
+						<td><textarea rows="" cols="" name="contents" id="contents">${dto.contents }</textarea></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="category">카테고리<span class="r">*</span></label></td>
+						<td>
+								<input type="radio" name="category" class="category" id="show" checked="checked" value="1">
+								<label for="show">공연</label>
+								<input type="radio" name="category" class="category" id="festival" value="2">
+								<label for="festival">축제</label>						
+								<input type="radio" name="category" class="category" id="daehakro" value="3">
+								<label for="daehakro">대학로 연극</label>
+						</td>
+					</tr>
+					<tr id="ageDiv">
+						<td class="td1"><label for="age">연령제한<span class="r">*</span></label></td>
+						<td>
+							<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 
+							<label for="all">전연령</label>
+							<input type="radio" name="ageSel" class="age" id="teen" value="2">
+							<label for="teen">청소년 이상</label>
+							<input type="radio" name="ageSel" class="age" id="adult" value="3">
+							<label for="adult">성인 이상</label>
+							<input type="radio" name="ageSel" class="age" id="etc" value="4">
+							<label for="etc">기타</label>
+							<input type="text" class="age" id="age" name="age" value="1">
+						</td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="startDate">시작일<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png">
+						<input type="date" name="startDate" class="date" value="${dto.startDate}"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="endDate">종료일<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png">
+						<input type="date" name="endDate" class="date" value="${dto.endDate}"></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="price">가격</label></td>
+						<td><input type="number" name="price" value="${dto.price}"><span>&nbsp; &nbsp;원</span></td>
+					</tr>
+					<tr class="daehakDiv">
+						<td class="td1"><label for="total">좌석 </label></td>
+						<td><input type="number" name="total" value="${dto.total}"><span>&nbsp; &nbsp;석</span></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="local">지역<span class="r">*</span></label></td>
+						<td>
+							<img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/location.png">
+							<input type="text" name="local1" id="local1" onclick="openMap()" style="width: 50%;">
+							<input type="text" name="local2" id="local2" placeholder="상세주소를 입력해주세요" readonly="readonly"  style="width: 45%;" >
+							<br>
+							<img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/location.png">								
+							<input type="text" name="local" id="local" readonly="readonly"  style="width: 73%;" value="${dto.local}">
+							<input type="checkbox" id="localConfirm">
+							<label for="localConfirm" class="localConfirm">이 주소가 맞습니다.</label>
+							<input type="hidden" name="region" id="region" value="${dto.region}">
+							<div id="map" style="width:100%;height:500px;margin-top:10px;display:none"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="files">썸네일</label><span class="r">*</span></td>
+						<td>
+							<div id="thumbnailDiv">
+								<div id="thumbnailSelectDiv">
+									<input type="file" class="filelist" id="thumbnail" name="filelist" style="display: inline-block" accept=".jpg, .png, .gif, .jpeg">
+									<span style="color: red">※  jpg, png, gif, jpeg 확장자만 업로드 가능합니다.</span>
+								</div>
+								<!-- 이미지 미리보기 -->
 							
-						</div>
-						<!-- 이미지 미리보기 -->
-						<div id="preview">
-							<img id="preview-img" src="#">
-						</div>
-					</div>
-				</div>
-				<div>
-					<label for="files">첨부파일</label>
-					<a id="addFiles">파일추가</a>
-					<div id="files">
-						<div>
-							<input type="file" class="filelist" name="filelist" style="display: inline-block">
-							<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
-						</div>
-					</div>
-				</div>				
-				<div>
-					<label for="category">카테고리<span class="r">*</span></label>
-					<input type="radio" name="category" class="category" id="show" checked="checked" value="1"> 공연
-					<input type="radio" name="category" class="category" id="festival" value="2"> 축제						
-					<input type="radio" name="category" class="category" id="daehakro" value="3"> 대학로 연극
-				</div>
-				<div>
-					<label for="startDate">시작일<span class="r">*</span></label>
-					<input type="date" name="startDate" class="date">  
-				</div>
-				<div>
-					<label for="endDate">종료일<span class="r">*</span></label>
-					<input type="date" name="endDate" class="date">
-				</div>
-				<div id="daehakDiv">
-					<div>
-						<label for="price">가격</label>
-						<input type="number" name="price" value="0"><span>원</span>
-					</div>
-					<div>
-						<label for="total">좌석 </label>
-						<input type="number" name="total" value="0"><span>석</span>
-					</div>
-				</div>
-				<div id="ageDiv">
-					<label for="age">연령제한<span class="r">*</span></label>
-					<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 전연령
-					<input type="radio" name="ageSel" class="age" id="teen" value="2"> 청소년 이상
-					<input type="radio" name="ageSel" class="age" id="adult" value="3"> 성인 이상
-					<input type="radio" name="ageSel" class="age" id="etc" value="4"> 기타
-					<input type="text" class="age" id="age" name="age" value="1">
-				</div>
-				<div>
-					<label for="local">지역<span class="r">*</span></label>
-					<input type="text" name="local1" id="local1" onclick="openMap()" style="width: 30%;">
-					<input type="text" name="local2" id="local2" placeholder="상세주소를 입력해주세요" readonly="readonly"  style="width: 20%;" >
-					<input type="text" name="local" id="local" readonly="readonly"  style="width: 30%;" >
-					이 주소가 맞습니다.<span class="r">*</span> <input type="checkbox" id="localConfirm">
-					<input type="hidden" name="region" id="region">
-					<div id="map" style="width:100%;height:500px;margin-top:10px;display:none">
-					</div>
-				</div>
-				<%-- <c:if test="${member.grade eq 3}">  추가하기 --%>
-				<div>
-					<label for="top">상단에 등록 하기</label>
-					<input type="checkbox" id="top" name="top" value="0">
-				</div>
-				<%-- </c:if> --%>
+								<div id="preview">
+									<img id="preview-img" src="${pageContext.request.contextPath}/resources/images/board/${dto.fileDTOs[0].fname}">
+								</div>
+							</div>
+						</td>
+					</tr>
+					<%-- <tr>
+						<td class="td1"><label for="files">첨부파일</label></td>
+						<td>
+							<a id="addFiles"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일추가</a>
+							<div id="files">
+								<input type="file" class="filelist" name="filelist" style="display: inline-block">
+							</div>
+						</td>
+					</tr> --%>
+					<c:if test="${member.grade eq 3}">
+					<tr>
+						<td class="td1"><label for="top">상단 등록</label></td>
+						<td><input type="checkbox" id="top" name="top" value="0">
+						<label for="top">등록</label>
+						</td>
+					</tr>
+					</c:if>
+				</tbody>
+				</table>
+				<input type="hidden" name="num" value="${dto.num}">
+				</form> 
 				
-      		 	<a id="write" class="btn btn-default">등록</a>
-			</form> 
+				<div id="datesOptionDiv"> <!-- 카테고리 3 -->				
+				<table class="table table">
+					<tr>
+						<td><label for="dates">날짜 </label></td>
+						<td><label for="time">시작시간</label></td>
+						<td><label for="seat">좌석</label></td>
+						<td><label for="price">가격</label></td>
+						<td><input type="text" name="num" value="${dto.num}" id="num"></td>
+					</tr>
+					<tr>
+						<td><div class="dateDiv">
+								<input type="date" name="reg_date" class="dates" id="dates">
+							</div>
+						</td>
+						<td><div class="timeDiv">
+								<input type="text" name="time" class="time" id="time">
+							</div>
+						</td>
+						<td><div class="seatDiv">
+								<input type="number" name="seat" class="seat" id="seat"><span> 석</span>
+							</div>
+						</td>
+						<td><div class="priceDiv">
+								<input type="number" name="price" class="price" id="price"><span> 원</span>
+							</div>
+						</td>
+						<td><a id="writeOption">옵션등록</a></td>
+					</tr>
+				</table>
+					<div id="optionsDiv">
+						
+					</div>		
+				</div>
+
+      		 	<a id="write" class="festiWrite_btn">등록</a>
+
+				
+			
+  	      	</div>
 			
       	</div>
       </div>
@@ -129,6 +193,80 @@
 <script src="../resources/js/summernote.js"></script>
 <!-- script -->
 <script type="text/javascript">
+
+$('.daehakDiv').hide();
+
+if('${dto.category}' == '3'){
+	$('#datesOptionDiv').show();
+} else {
+	$('#datesOptionDiv').hide();
+}
+
+$('.category').click(function() {
+	if($(this).val() != 3){
+		$('#datesOptionDiv').hide();
+	} else {
+		$('#datesOptionDiv').show();
+		$('#optionsDiv').empty();
+	}
+});
+
+getOptionsList();
+$('#writeOption').click(function(){
+	var num = $('#num').val();
+	var reg_date = $('#dates').val();
+	var time = $('#time').val();
+	var seat = $('#seat').val();
+	var price = $('#price').val();
+	$.ajax({
+		url:'./optionWrite',
+		type:'POST',
+		data:{
+			num:num,
+			reg_date:reg_date,
+			time:time,
+			seat:seat,
+			price:price
+		},
+		success:function(data){
+			if(data == '1'){
+				getOptionsList();
+				$('#dates').val('');
+				$('#time').val('');
+				$('#seat').val('');
+				$('#price').val('');
+			} else {
+				alert('실패');
+			}
+		},
+		error:function(e){
+			console.log(e);
+		}
+	});
+});
+
+function getOptionsList(){
+	jQuery.ajaxSettings.traditional = true;
+	$.ajaxSettings.traditional = true;
+	var num = "${dto.num}";
+	$.ajax({
+		type:'GET',
+		url:'./optionList',
+		data:{
+			num:num
+		},
+		success:function(data){
+			console.log(data);
+			data = data.trim();    	
+			$('#optionsDiv').html(data);	
+		},
+		error:function(e){
+			console.log(e);
+		}
+	});
+}
+
+
 
 /* 첨부 파일 관리 */
 // 개수 제한. 최대 5개까지.
@@ -173,7 +311,7 @@ $('#top').click(function(){
 
 
 //썸네일
-	$("#preview").hide();
+	//$("#preview").hide();
 	function readURL(input) {
 		 
 	    if (input.files && input.files[0]) {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,13 @@
 				</ul>
 				<div class="call_cont">
 					<div class="board_h3">
-						<h3>${boardTitle} 게시판</h3>
+						<!-- 답변 달기 -->
+						<c:if test="${dto.answer eq 0 }">
+							<c:if test="${member.grade == 3}">
+								<a id="replyBtn" class="qnaSelect_btn2">답변달기</a>
+							</c:if>
+						</c:if>
+						<img alt="" src="${pageContext.request.contextPath}/resources/images/qa.png" class="titleimg"><h3>${boardTitle} 게시판</h3>
 					</div>
 					<div class="call_wrap">
 						<div class="tableDiv">
@@ -54,7 +61,7 @@
 							<thead class="table_head">
 								<tr>
 									<th class="td1">
-										<div>${dto.num}</div>
+										<div>${fn:substring(dto.num, 1,9)}</div>
 									</th>
 									<th class="td2">
 										<div>${dto.title}</div>
@@ -103,11 +110,6 @@
 					<a id="update" class="${board} qnaSelect_btn" href="./qnaReplyUpdate?num=${dto.num}">수정</a>
 				</c:if> 
 				<a id="delete" class="${board} qnaSelect_btn">삭제</a>
-				<c:if test="${dto.answer eq 0 }">
-					<c:if test="${member.grade == 3}">
-						<a id="replyBtn" class="qnaSelect_btn">답변달기</a>
-					</c:if>
-				</c:if>
 
 				<!-- 원글일때 -->
 				<form action="./qnaDelete" id="deleteOriginFrm" method="post">

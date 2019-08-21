@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CalendarMapper">
+	<insert id="addCalendar" parameterType="CalendarDTO">
+		insert into google_calendar values(
+			#{eid}, #{board}, #{sdate}, #{stime}, #{edate},
+			#{etime},#{summary}
+		)
+	</insert>
+	
+	<update id="updateCalendar" parameterType="CalendarDTO">
+		update google_calendar set board=#{board},
+		sdate=#{sdate}, stime=#{stime}, edate=#{edate},
+		dtime=#{etime}, summary=#{summary}
+		where eid = #{eid}
+	</update>
+	
+	<delete id="deleteCalendar" parameterType="String">
+		delete google_calendar where board=#{board}
+	</delete>
+	
+	
+	<select id="selectEid" resultType="String" parameterType="String">
+	      select eid from google_calendar where board = #{board}
+	   </select>
+	
+</mapper>

@@ -43,7 +43,10 @@
 				</ul>
 				<div class="call_cont">
 				<div class="board_h3">
-				<h3>${boardTitle} 게시판</h3>
+				<div class="boardwrite">
+						<button id="boardWrite">${boardTitle} 글쓰기</button>
+				</div>
+				<img alt="" src="${pageContext.request.contextPath}/resources/images/qa.png" class="titleimg"><h3>${boardTitle} 게시판</h3>
 				</div>
 				
 				<%-- </c:if> --%>
@@ -61,25 +64,26 @@
 							<th class="td10">조회수</th>
 							<th class="td07">답변</th>
 						</thead>
-
-		
+						
 						<c:forEach items="${list}" var="list">
-							<tr class="select" title="${list.pw}" id="${list.num}">
+							<tr class="select" title="${list.pw}" id="${list.num}" name="${list.writer}">
 								<td class="selectRow td10">${fn:substring(list.num, 1,9)}</td>
-								<c:if test="${list.pw eq null }">
-									<td>
-										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
-										${list.title}
-									</td>
-									<td class="td10">${list.writer}</td>
-								</c:if>
-								<c:if test="${list.pw ne null}">
-									<td>
-										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
-										비밀글입니다.
-									</td>
-									<td>${fn:substring(list.writer, 0, 3)}****</td>
-								</c:if>
+								<c:choose>
+									<c:when test="${list.pw eq null or list.writer eq member.nickname or member.grade eq 3}">
+										<td>
+											<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
+											${list.title}
+										</td>
+										<td class="td10">${list.writer}</td>
+									</c:when>
+									<c:otherwise>
+										<td>
+											<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
+											비밀글입니다.
+										</td>
+										<td class="td10">${fn:substring(list.writer, 0, 3)}****</td>
+									</c:otherwise>
+								</c:choose>
 								
 								<td class="td10">${list.reg_date}</td>
 								<td class="td10">${list.hit}</td>
@@ -120,9 +124,7 @@
 						</ul>
 					</c:if>
 				</div>
-				<div class="boardwrite">
-						<button id="boardWrite">${boardTitle} 글쓰기</button>
-				</div>
+				
 								<!-- 검색창 -->
 				<form action="./${board}List" class="search_form">
 					<select name="kind" class="search_select">
@@ -157,27 +159,32 @@
 
 		
 		/* 각 행 선택 시 select 페이지 이동 */
+		/* 비밀번호 틀렸을 때 다시 프롬프트 창 띄우게 */
 		$('.select').click(function() {
 			var pw = $(this).attr('title');
 			var num = $(this).attr('id');
-			/* 비밀번호 틀렸을 때 다시 프롬프트 창 띄우게 */
-			password(pw,num);
+			var writer = $(this).attr('name');
+			if(writer=='${member.nickname}'){
+				location.href = "./${board}Select?num="+num;
+			} else {
+				password(pw,num);
+			}
 		});
 		
 		function password(pw,num) {
 			/* 비밀글이거나   ( 작성자 본인일때 조건 추가하기) */
-			if(pw != "" ){
+			if(pw == "" || '${member.grade}' == 3){
+				location.href = "./${board}Select?num="+num;
+			} else {
 				var input = prompt('비밀번호를입력해주세요');
 				if(input != null){
 					if(pw == input){
-						location.href = "./${board}Select?num="+num;
+						location.href = "./${board}Select?num="+num+"&pw="+pw;
 					} else {
 						alert('비밀번호가 틀렸습니다.');
 						password(pw,num);
 					}
 				}				
-			} else {
-				location.href = "./${board}Select?num="+num;
 			}
 		} 
 		

@@ -15,7 +15,13 @@
 	width: 20px;
 	margin-right: 10px;
 	}
-	
+
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+}
+
 .write_title input{
 	width: 95%;
 	height: 30px;
@@ -50,7 +56,7 @@ input:focus{
 .noticeWrite_btn{
 	background-color: white;
     color: black;
-    padding: 4px 15px;
+    padding: 6px 22px;
     float: right;
     border: 1px solid #adadad;
     cursor: pointer;

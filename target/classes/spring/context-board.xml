@@ -28,7 +28,6 @@
 	
 	<bean class="com.project.weekend.board.qna.QnaCLInterceptor" id="qnaCLInterceptor"/>	<!-- 작성, 리스트 : 1, 2, 3 -->
 	<bean class="com.project.weekend.board.qna.QnaReplyInterceptor" id="qnaReplyInterceptor"/>	<!-- 답변 작성, 수정, 삭제 : 3 -->
-	<bean class="com.project.weekend.board.qna.QnaPwInterceptor" id="qnaPwInterceptor"/>
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/qna/qnaWrite"/>
@@ -43,7 +42,13 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
-	
+	<bean class="com.project.weekend.board.qna.QnaPwInterceptor" id="qnaPwInterceptor"/>
+		<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/qna/qnaSelect"/>
+			<ref bean="qnaPwInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	<!-- notice -->
 	<bean class="com.project.weekend.board.notice.NoticeDTO" id="noticeDTO" />
 	<bean class="com.project.weekend.board.notice.NoticeDAOImpl" id="noticeDAO" />

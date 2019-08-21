@@ -31,5 +31,9 @@ public class FileDAO {
 	public List<FileDTO> getList(String num) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", num);
 	}
+	/*
+	 * public int setUpdate(FileDTO fileDTO) throws Exception{ return
+	 * sqlSession.update(NAMESPACE+"setUpdate", fileDTO); }
+	 */
 
 }

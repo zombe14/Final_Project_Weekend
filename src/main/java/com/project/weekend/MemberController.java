@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.weekend.member.MemberDAO;
 import com.project.weekend.member.MemberDTO;
 import com.project.weekend.member.MemberService;
 
@@ -42,7 +43,6 @@ public class MemberController {
 	@RequestMapping(value = "getjumin", method = RequestMethod.POST)
 	@ResponseBody
 	public int getjumin(MemberDTO memberDTO)throws Exception{
-		System.out.println("getjuminpost");
 		memberDTO = memberService.getjumin(memberDTO);
 		int result=0;
 		if(memberDTO==null) {
@@ -127,20 +127,21 @@ public class MemberController {
 				mv.addObject("path", "./memberLogin");
 			}else {
 			memberDTO = memberService.getSelect(memberDTO);
-			message="로그인 실패";
+			message="아이디나 비밀번호를 확인해 주십시오";
 			if(result==1) {	
 				if(memberDTO != null) {
-					if(memberDTO.getCount()>6) {
-						message = "로그인 횟수 제한";	
+					if(memberDTO.getCount()>5) {
+						message = "로그인 횟수 제한에 걸렸습니다. 아이디찾기로 인증바랍니다.";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
-						mv.addObject("path", "../");
+						mv.addObject("path", "./memberLogin");
 					}else {
 						session.setAttribute("member", memberDTO);
+						session.setAttribute("memberNickname", memberDTO.getNickname());
 						session.setAttribute("grade", memberDTO.getGrade());
 						int zero = memberService.setUpdatezero(memberDTO);
-						message = "로그인 성공";	
-						mv.setViewName("common/messageMove");
+						message = "로그인 성공";
+						mv.setViewName("common/messageMove2");
 						mv.addObject("message", message);
 						mv.addObject("path", "../");
 					}
@@ -164,20 +165,7 @@ public class MemberController {
 		String memberAgree = "member";
 		session.setAttribute("memberAgree", memberAgree);
 		return "redirect:./memberJoin";
-		
 	}
-	/*
-	 * @RequestMapping(value = "memberAgree2", method = RequestMethod.GET) public
-	 * void getAgree2()throws Exception{}
-	 * 
-	 * @RequestMapping(value = "memberAgree2", method = RequestMethod.POST) public
-	 * String getAgree2(HttpSession session,MemberDTO memberDTO)throws Exception{
-	 * session.setAttribute("memberEmail", memberDTO.getEmail());
-	 * session.setAttribute("memberPhone", memberDTO.getPhone()); ModelAndView mv =
-	 * new ModelAndView(); String memberAgree2 = "member2";
-	 * session.setAttribute("memberAgree2", memberAgree2); return
-	 * "redirect:./memberJoin"; }
-	 */
 	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
 	public String logout(String id, HttpSession session, MemberDTO memberDTO)throws Exception{
 		
@@ -185,7 +173,8 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:../";
 	}
-	
-	
+	@RequestMapping(value = "memberJoin1", method = RequestMethod.GET)
+	public void getJoin1()throws Exception{}
+
 
 }

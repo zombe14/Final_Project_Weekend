@@ -54,15 +54,14 @@
 					<!-- notice list 테이블 -->
 					<table class="table">
 						<thead class="table_head">
+						<tr>
 							<th class="td10">번호</th>
 							<th class="td60">제목</th>
 							<th class="td10">작성자</th>
 							<th class="td10">작성일</th>
 							<th class="td10">조회수</th>
+						</tr>
 						</thead>
-
-
-						
 						<c:forEach items="${list}" var="list">
 							<tr class="select">
 								<td class="selectRow" id="${list.anum}">${fn:substring(list.anum, 1,8)}</td>

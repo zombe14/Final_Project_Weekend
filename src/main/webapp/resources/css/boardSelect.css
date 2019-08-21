@@ -1,11 +1,36 @@
-.boardSelect_btn{
-	padding: 4px 15px;
+
+#container{
+	background-color: #f5f6f7;
+}
+
+.boardSelect_btn, .fqnaSelect_btn{
+	padding: 6px 22px;
     background-color: white;
     font-size: 12px;
     float: right;
     cursor: pointer;
     border-radius: 10px;
     margin: 20px 3px;
+    border: 1px solid #adadad;
+}
+
+.fqna_title h3{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.fqna_title strong{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.fqnaSelect_btn2{
+	padding: 6px 22px;
+    background-color: white;
+    font-size: 12px;
+    float: right;
+    cursor: pointer;
+    border-radius: 10px;
     border: 1px solid #adadad;
 }
 
@@ -37,8 +62,76 @@
 	background-color: #f5f6f7;
 }
 
+.fqna_title{
+	padding-bottom: 30px;
+	border-bottom: 1px solid #999;
+	margin-bottom: 30px;
+}
+
+.fqna_wrap{
+	background-color: white;
+    padding: 30px 50px 70px;
+    border: 1px solid #dedede;
+}
+
 .boardSelect_btn:hover{
 	background-color: #00d344;
 	border: 1px solid white;
 	color: white;
+}
+
+.fqnaSelect_btn, .fqnaSelect_btn2{
+	background-color: white;
+    color: black;
+    padding: 6px 22px;
+    float: right;
+    border: 1px solid #adadad;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.fqnaSelect_btn:hover, .fqnaSelect_btn2:hover{
+	background-color: #00d344;
+	border: 1px solid white;
+	color: white;
+}
+
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+}
+
+#commentsWrite{
+	border: 1px solid #dedede;
+    padding: 16px 20px;
+    float: left;
+    background-color: white;
+}
+
+#commentsList{
+    background-color: #f5f6f7;
+    padding: 10px 20px;
+}
+
+#commentsList hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+#commentsList a{
+	float: right;
+	padding: 5px;
+	margin-top: -20px;
+}
+
+#commentsWriteDiv{
+    padding: 0 30px 15px;
+    background-color: #f5f6f7;
+}
+
+.comments_name{
+	padding: 5px 0;
 }
