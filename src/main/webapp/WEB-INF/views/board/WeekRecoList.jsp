@@ -97,9 +97,11 @@
 					<input type="text" placeholder="" name="search" class="search_input">
 					<button id="searchButton">검색</button>
 				</form>
+				<c:if test="${member.grade eq 3}">
 				<div class="boardwrite">
 						<a id="write" class="userRecoList_btn" href="./WeekRecoWrite">글쓰기</a>
 				</div>
+				</c:if>
   	  	     	 </div>
       		</div>
     	</div>

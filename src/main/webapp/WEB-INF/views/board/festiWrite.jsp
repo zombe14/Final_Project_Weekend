@@ -85,7 +85,7 @@ table {
 						<td class="td1"><label for="endDate">종료일<span class="r">*</span></label></td>							
 						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="endDate" class="date" id="endDate"></td>
 					</tr>
-					<tr class="daehakDiv">
+					<tr>
 						<td class="td1"><label for="price">가격</label></td>
 						<td><input type="number" name="price" value="0"><span>&nbsp; &nbsp;원</span></td>
 					</tr>

@@ -9,20 +9,26 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 
 
-public class WriteInterceptor extends HandlerInterceptorAdapter {
+public class UserRecoDeleteInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
+		boolean result=false;
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("member");
 		Object grade = session.getAttribute("grade");
-		boolean result=false;
+		Object nickname = session.getAttribute("memberNickname");
+		String writer = request.getParameter("writer");
 		if(obj!=null) {
-			if(grade.equals(2)||grade.equals(3)) {
-				result=true;
+			if(grade.equals(1)) {
+				if(nickname.equals(writer)) {
+					result= true;
+				}else {
+					response.sendRedirect("../UserReco/UserRecoList");
+				}
 			}else {
-				response.sendRedirect("../");
+				response.sendRedirect("../UserReco/UserRecoList");
 			}
 		}else {
 			response.sendRedirect("../member/memberLogin");
