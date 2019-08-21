@@ -267,12 +267,12 @@ select {
     float: right;
 }
 #emailCodeCheck{
-    border: 1px solid white;
+    border: 1px solid #dedede;
     padding: 10px 20px;
-    background: #00d344;
-    color: white;	
+    background: #white;
+    color: black;	
     font-size: 14px;
-    margin: 0 5px;
+    margin: 10px 5px 1px 0px;
 }
 #juminnum{
     border: 1px solid white;
