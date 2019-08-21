@@ -10,7 +10,7 @@
 .festi_wrap2{
 	border: 1px solid #757575;
 	/* margin-top: 30px; */
-	padding: 30px;
+	padding: 50px 70px;
 }
 
 .festi_wrap2 strong{
@@ -50,6 +50,7 @@
 .festi_h4 img{
 	width: 20px;
     float: left;
+    margin-right: 10px;
 }
 
 .festi_top, .festi_detail{
@@ -59,10 +60,17 @@
 	border: 1px solid #dedede;
 }
 
-.bx_title img{
+.bx_title .img2{
 	width: 24px;
 	float: right;
 	margin: 10px;
+}
+
+.titleimg2{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+    margin-top: 6px;
 }
 
 .detail_info_right{
@@ -89,7 +97,7 @@
 .bx_title{
 	font-size: 26px;
 	padding-bottom: 30px;
-	border-bottom: 2px solid #999;
+	border-bottom: 1px solid #999;
 }
 
 .detail_info{
@@ -117,7 +125,7 @@
 
 .btc_info dl{
 	padding: 20px;
-	border-bottom: 2px solid #999;
+	border-bottom: 1px solid #999;
 }
 
 .bit{
@@ -219,3 +227,7 @@ table thead th{
 }
 
 .festi_menu li a:hover{color: white; background-color: #757575;}
+
+#hotel, #resta{
+	margin-top: 40px;
+}

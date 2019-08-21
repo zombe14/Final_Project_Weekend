@@ -17,6 +17,7 @@
 		<typeAlias type="com.project.weekend.board.open.OpenDTO" alias="OpenDTO"/>
 		<!-- 선영 -->
 		<typeAlias type="com.project.weekend.pay.PayVO" alias="PayVO" />
+		<typeAlias type="com.project.weekend.calendar.GoogleCalendarDTO" alias="CalendarDTO"/>
 
 		<!-- 공통 -->
 		<typeAlias type="java.lang.Integer" alias="Integer"/>

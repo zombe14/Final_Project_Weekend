@@ -14,6 +14,16 @@
     border: 1px solid #adadad;
 }
 
+.fqna_title h3{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.fqna_title strong{
+	font-size: 25px;
+	font-weight: bold;
+}
+
 .fqnaSelect_btn2{
 	padding: 6px 22px;
     background-color: white;
@@ -84,6 +94,12 @@
 	background-color: #00d344;
 	border: 1px solid white;
 	color: white;
+}
+
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
 }
 
 #commentsWrite{

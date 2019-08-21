@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JacksonInject.Value;
+import com.project.weekend.board.comments.CommentsService;
 import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.board.festi.after.AfterDTO;
@@ -27,11 +28,14 @@ import com.project.weekend.util.PageMaker;
 public class UserRecoController{
 	@Inject
 	private FestiService festiService;
+	@Inject
+	private CommentsService commentsService;
+
 	// 리스트 출력;
 	@RequestMapping(value = "UserRecoList", method = RequestMethod.GET)
-	public ModelAndView getList(PageMaker pageMaker) throws Exception{
+	public ModelAndView getList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<FestiDTO> list = festiService.getUserRecoList(pageMaker);
+		List<FestiDTO> list = festiService.getUserRecoList(pageMaker, session);
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/UserRecoList");
@@ -39,9 +43,11 @@ public class UserRecoController{
 	}
 	// 글선택
 	@RequestMapping(value = "UserRecoSelect", method = RequestMethod.GET)
-	public ModelAndView getSelect(String num) throws Exception{
+	public ModelAndView getSelect(String num, PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		FestiDTO festiDTO = festiService.getUserRecoSelect(num);
+		int cCnt = commentsService.getAmount(pageMaker);
+		mv.addObject("cCnt",cCnt);
 		mv.addObject("list", festiDTO);
 		mv.setViewName("board/UserRecoSelect");
 		return mv;
@@ -74,26 +80,34 @@ public class UserRecoController{
 	public ModelAndView setUpdate(String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		FestiDTO festiDTO = festiService.getUserRecoSelect(num);
-		mv.addObject("board", festiDTO);
-		mv.setViewName("board/userRecoUpdate");
+		mv.addObject("list", festiDTO);
+		mv.setViewName("board/UserRecoUpdate");
 		return mv;
 	}
 	// 글수정 진행;
 	@RequestMapping(value = "UserRecoUpdate", method = RequestMethod.POST)
 	public ModelAndView setUpdate(FestiDTO festiDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String path = "redirect:./UserRecoSelect?num="+festiDTO.getNum();
 		int result = festiService.setUserRecoUpdate(festiDTO);
 		mv.addObject("result", result);
-		mv.setViewName("./common/message");
+		mv.setViewName(path);
 		return mv;
 	} 
 	// 글삭제;
 	@RequestMapping(value = "UserRecoDelete", method = RequestMethod.POST)
 	public ModelAndView setDelete(String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String path = "./UserRecoSelect?num="+num;
+		String message = "유저오픈 글을 삭제하지 못했습니다.";
 		int result = festiService.setUserRecoDelete(num);
-		mv.addObject("result", result);
-		mv.setViewName("./common/message");
+		if(result>0) {
+			path = "../UserReco/UserRecoList";
+			message="유저오픈 글을 삭제하였습니다.";
+		}
+		mv.addObject("message", message);
+		mv.addObject("path", path);
+		mv.setViewName("./common/messageMove");
 		return mv;
 	}
 }

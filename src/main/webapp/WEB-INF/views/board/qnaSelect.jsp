@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +53,7 @@
 								<a id="replyBtn" class="qnaSelect_btn2">답변달기</a>
 							</c:if>
 						</c:if>
-						<h3>${boardTitle} 게시판</h3>
+						<img alt="" src="${pageContext.request.contextPath}/resources/images/qa.png" class="titleimg"><h3>${boardTitle} 게시판</h3>
 					</div>
 					<div class="call_wrap">
 						<div class="tableDiv">
@@ -60,7 +61,7 @@
 							<thead class="table_head">
 								<tr>
 									<th class="td1">
-										<div>${dto.num}</div>
+										<div>${fn:substring(dto.num, 1,9)}</div>
 									</th>
 									<th class="td2">
 										<div>${dto.title}</div>

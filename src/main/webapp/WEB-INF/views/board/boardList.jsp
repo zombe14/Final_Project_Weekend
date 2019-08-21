@@ -47,7 +47,7 @@
 						<button id="boardWrite" value="${board}">${boardTitle} 글쓰기</button>
 					</c:if>
 				</div>
-				<h3>${boardTitle} 게시판</h3>
+				<img alt="" src="${pageContext.request.contextPath}/resources/images/reco.png" class="titleimg"><h3>${boardTitle} 게시판</h3>
 				</div>
 				
 				<%-- </c:if> --%>
@@ -70,7 +70,7 @@
 							<c:forEach items="${top}" var="top">
 								<tr title="${top.num}" class="select mark">
 									<td class="td10 selectRow" id="${top.num}">중요</td>
-									<td>${top.title}</td>
+									<td style="text-overflow: ellipsis;">${top.title}</td>
 									<td class="td10">${top.writer}</td>
 									<td class="td10">${top.reg_date}</td>
 									<td class="td10">${top.hit}</td>
@@ -82,18 +82,8 @@
 						<!-- 일반 공지 리스트 -->
 						<c:forEach items="${list}" var="list">
 							<tr class="select">
-								<c:if test="${board eq 'notice' or board eq 'qna'}">
-									<td class="selectRow td10" id="${list.num}"><p></p></td>
-								</c:if>
-								<c:if test="${board eq 'after' or board eq 'afterAll'}">
-									<td class="selectRow" id="${list.anum}"></td>
-								</c:if>
-								<td>
-									<c:if test="${board eq 'qna'}">
-										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;답변 : </c:forEach>
-									</c:if>
-										${list.title}									
-								</td>
+								<td class="selectRow td10" id="${list.num}"><p></p></td>
+								<td>${list.title}</td>
 								<td class="td10">${list.writer}</td>
 								<td class="td10">${list.reg_date}</td>
 								<td class="td10">${list.hit}</td>

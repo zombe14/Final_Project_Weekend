@@ -10,6 +10,24 @@
 <body>
 <script type="text/javascript">
 	$(function () {
+		$("#emailAddress").prop('readonly', true);
+		// 이메일 select 이벤트시 설정;
+		$("#emailSelect").on("change", function(){
+			// select에서 선택한 값을 이메일 주소로 사용하기 위해 eAddressChange에 넣는다;
+			var eAddressChange = $("#emailSelect option:selected").val();
+			// ""인지 주소를 선택했는지 확인하기 위한 if를 돌린다;
+			if (eAddressChange == 'etc'){
+				// etc 즉 이메일을 직접 입력하겠다는 의도 고로 입력창의 readOnly를 푼다;
+				$("#emailAddress").prop('readonly', false);
+				// 주소창을 초기화 시킨다;
+				$("#emailAddress").val('');
+			}else if(eAddressChange == ""){
+				// 그냥 기존의 이메일을 쓰겠다는 의도 걍 아무것도 하지 말고 냅두자!;
+			}else{
+				// 새로 입력한 주소가 들어왔음, 고로 emailAddress에 넣어주는 코드를 쓴다;
+				var a = $("#emailAddress").val(eAddressChange);
+			}
+		});
 		var emailId = "";
 		var emailAddress = "";
 		var email = "";

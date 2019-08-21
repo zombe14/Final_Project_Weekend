@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.file.FileDTO;
 
-// num, title, writer, contents, reg_date, hit, 
-// category, price, total, startDate, endDate, local,	+ fileDTOs
-// top
 public class FestiDTO{
 	private int category;	// 1-전시, 2-행사, 3-레저
 	

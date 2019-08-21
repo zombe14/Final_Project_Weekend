@@ -61,16 +61,18 @@ public class WeekRecoController{
 		int num = festiService.getNum();
 		festiDTO.setNum("f"+num);
 		mv.addObject("num", festiDTO.getNum());
-		mv.setViewName("board/WeekRecoWrite");
+		mv.addObject("board", "WeekReco");
+		mv.setViewName("/board/WeekRecoWrite");
 		return mv;
 	}
 	// 글쓰기 진행;
 	@RequestMapping(value = "WeekRecoWrite", method = RequestMethod.POST)
-	public void setWrite(FestiDTO festiDTO) throws Exception{
+	public ModelAndView setWrite(FestiDTO festiDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = festiService.setWeekRecoWrite(festiDTO);
 		mv.addObject("result", result);
 		mv.setViewName("./common/message");
+		return mv;
 	}
 	// 글수정;
 	// 글수정 폼으로;
@@ -95,9 +97,16 @@ public class WeekRecoController{
 	@RequestMapping(value = "WeekRecoDelete", method = RequestMethod.POST)
 	public ModelAndView setDelete(String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String path = "./WeekRecoSelect?num="+num;
+		String message = "W 추천 글을 삭제하지 못했습니다.";
 		int result = festiService.setWeekRecoDelete(num);
-		mv.addObject("result", result);
-		mv.setViewName("./common/message");
+		if(result>0) {
+			path = "../WeekReco/WeekRecoList";
+			message="W 추천 글을 삭제하였습니다.";
+		}
+		mv.addObject("message", message);
+		mv.addObject("path", path);
+		mv.setViewName("./common/messageMove");
 		return mv;
 	}
 }

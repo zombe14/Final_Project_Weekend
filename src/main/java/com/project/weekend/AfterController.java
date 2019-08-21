@@ -39,9 +39,9 @@ public class AfterController {
 	private CommentsService commentsService;
 
 	@RequestMapping(value = "afterWrite", method = RequestMethod.GET)
-	public ModelAndView setWrite(String num, HttpSession session) throws Exception {
+	public ModelAndView setWrite(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		String title = festiService.getSelect(num).getTitle();
+		String title = festiService.getSelect(num, session, request,response).getTitle();
 		mv.addObject("originNum", num);
 		mv.addObject("originTitle", title);
 		mv.addObject("board", "after");

@@ -3,6 +3,8 @@ package com.project.weekend;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -31,9 +33,9 @@ public class FestiQnaController {
 	private static final String boardTitle = "FestiQna";
 
 	@RequestMapping(value = "fqnaWrite", method = RequestMethod.GET)
-	public ModelAndView setWrite(String num) throws Exception{
+	public ModelAndView setWrite(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		FestiDTO festiDTO = festiService.getSelect(num);
+		FestiDTO festiDTO = festiService.getSelect(num, session,request,response);
 		mv.addObject("origin", festiDTO);
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);

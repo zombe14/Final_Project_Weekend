@@ -29,6 +29,10 @@ public class DeleteInterceptor extends HandlerInterceptorAdapter {
 		Object obj = session.getAttribute("memberNickname");
 		Object grade = session.getAttribute("grade");
 		if(obj!=null) {
+			if(grade.equals(3)) {
+				result=true;
+				return result;
+			}else {
 			if(grade.equals(2)){
 				if(obj.equals(writer)) {
 					result= true;
@@ -38,6 +42,7 @@ public class DeleteInterceptor extends HandlerInterceptorAdapter {
 			}else {
 				response.sendRedirect("../festi/festiSelect?num="+num);
 			}
+		}
 		}else {
 			response.sendRedirect("../festi/festiSelect?num="+num);
 		}

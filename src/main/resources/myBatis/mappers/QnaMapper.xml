@@ -87,7 +87,7 @@
 	</select>
 	
 	<update id="setUpdate" parameterType="QnaDTO">
-		UPDATE QNA SET TITLE = #{title}, CONTENTS = #{contents} WHERE NUM = #{num}
+		UPDATE QNA SET TITLE = #{title}, CONTENTS = #{contents}, pw = #{pw} WHERE NUM = #{num}
 	</update>
 	
 	<delete id="setDelete" parameterType="String">
