@@ -176,7 +176,7 @@
 							</c:forEach>
 						</div>
 						</c:if>
-						<c:if test="${dto.writer eq member.nickname}">
+						<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
 
 						<div class="admin_button">
 							<a href="./${board}Update?num=${dto.num}&writer=${dto.writer}">수정</a> 
