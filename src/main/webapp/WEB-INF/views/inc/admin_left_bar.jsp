@@ -11,6 +11,8 @@
 			</c:when>
 			<c:when test="${board eq 'Reser'}">
 				<li><a href="${pageContext.request.contextPath}/admin/aReserList">전체 예약</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/aReserList">공연 예약</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/aReserList">대학로 예약</a></li>
 			</c:when>
 			<c:when test="${board eq 'Enjoy'}">
 				<li><a href="#">전체</a></li>
@@ -18,6 +20,7 @@
 				<li><a href="${pageContext.request.contextPath}/admin/aShowList">공연</a></li>
 				<li><a href="${pageContext.request.contextPath}/admin/aRecommendList">대학로</a></li>
 				<li><a href="${pageContext.request.contextPath}/admin/aRecommendList">관리자 추천</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/aRecommendList">유저 추천</a></li>
 			</c:when>
 			<c:otherwise>
 				<li><a href="${pageContext.request.contextPath}/admin/aNoticeList">공지사항</a></li>

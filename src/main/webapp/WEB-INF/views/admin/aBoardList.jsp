@@ -11,8 +11,7 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
 <!-- 관리자 보드용 css 가져옴 -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/css/adminBoard.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminBoard.css">
 </head>
 <body>
 	<script type="text/javascript">

@@ -36,7 +36,7 @@
 					GRADE LIKE '%'||#{search}||'%'
 				</when>
 				<otherwise>
-					NICKNAME|NAME|GRADE LIKE '%'||#{search}||'%'
+					ID|NAME|GRADE LIKE '%'||#{search}||'%'
 				</otherwise>
 			</choose>
 				ORDER BY reg_date DESC) M)
