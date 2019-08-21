@@ -30,7 +30,7 @@
 					<tr>
 						<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
 						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png">
-							<input type="text" name="title" id="title" style="width: 95.8%"></td>							
+							<input type="text" name="title" id="title" style="width: 95.6%"></td>							
 					</tr>
       		 		<tr>
 						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
