@@ -25,7 +25,8 @@ public class PayController {
 	private OrderService orderService;
 
 	@RequestMapping(value = "orderRequest")
-	public String payment() throws Exception{
+	public String payment(PayVO payVO, HttpSession session) throws Exception{
+		session.setAttribute("vo", payVO);
 		return "./pay/payment";
 	}
 

@@ -103,7 +103,7 @@
 				});
 				
 				if(check == 3){
-					location.href = "./payment?item_name=${vo.item_name}&total_amount=${vo.total_amount}&quantity=${vo.quantity}&partner_user_id=${member.id}&item_num=${vo.item_num}&show_times=${show_times}";
+					location.href = "./payment?item_name=${vo.item_name}&total_amount=${vo.total_amount}&quantity=${vo.quantity}&partner_user_id=${member.id}&item_num=${vo.item_num}&show_times=${vo.show_times}";
 				}else{
 					$(".check").each(function() {
 						if($(this).prop("checked") == false){
