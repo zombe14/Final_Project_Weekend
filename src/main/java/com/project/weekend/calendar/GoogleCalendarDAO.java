@@ -22,4 +22,9 @@ public class GoogleCalendarDAO {
 	public int deleteCalendar(String board) throws Exception{
 		return sqlSession.delete(NAMESPACE+"deleteCalendar", board);
 	}
+	
+	public String selectEid(String board) throws Exception{
+	      return sqlSession.selectOne(NAMESPACE+"selectEid", board);
+	   }
+
 }
