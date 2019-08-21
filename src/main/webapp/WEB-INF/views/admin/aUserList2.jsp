@@ -104,24 +104,15 @@
 					</h4>
 					<hr>
 					<!-- 검색창 -->
-					<div>
-						<form class="form-inline" action="./a${board}List">
-							<div class="form-group col-xs-2">
-								<select class="form-control" name="kind">
-									<option value="1">ID</option>
-									<option value="2">NAME</option>
-									<option value="3">GRADE</option>
-								</select>
-							</div>
-							<div class="form-group col-xs-2">
-								<input type="text" class="form-control" value="${pager.search}" name="search">
-							</div>
-							<div class="form-group col-xs-2">
-								<button class="form-control">Search</button>
-							</div>
-
-						</form>
-					</div>
+				<form action="./a${board}List" class="search_form">
+					<select name="kind" class="search_select">
+						<option value="0">아이디</option>
+						<option value="1">이름</option>
+						<option value="2">등급</option>
+					</select> 
+					<input type="text" placeholder="" name="search" class="search_input">
+					<button id="searchButton">검색</button>
+				</form>
 					<div class="container col-sm-12">
 						<table class="table table-hover">
 							<tr>
