@@ -88,8 +88,9 @@ public class AdminController {
 		return mv;
 	}
 	//----------------------------------- board 관리; -----------------------------------//
-	////////////// notice board; //////////////
-	// notice List(완성)
+	// 종류별 게시글 가져오기;
+	//////////////notice table; //////////////
+	// 공지사항 리스트(완성)
 	@RequestMapping(value = "aNoticeList", method = RequestMethod.GET) 
 	public ModelAndView adminNoticeList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView(); 
@@ -110,7 +111,27 @@ public class AdminController {
 		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
-	//////////////QnA board; //////////////
+	// w추천, 유저추천, 공연, 축제, 대학로;
+	//////////////festi table; //////////////
+	// w 추천 리스트;
+	@RequestMapping(value = "aWeekRecoList", method = RequestMethod.GET)
+	public ModelAndView adminWeekRecoList(PageMaker pageMaker, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<FestiDTO> list = festiService.getBoardList(pageMaker, session);
+		mv.addObject("list", list);
+		mv.addObject("board", "WeekReco");
+		mv.setViewName("admin/aBoardList");
+		return mv;
+	}
+	// w 추천 삭제;
+	public ModelAndView adminWeekRecoDelete(String num, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = festiService.setDelete(num, session);
+		mv.addObject("board", "WeekReco");
+		mv.setViewName("admin/aBoardList");
+		return mv;
+	}
+	//////////////QnA table; //////////////
 	// QnaList(완성)
 	@RequestMapping(value = "aQnaList", method = RequestMethod.GET)
 	public ModelAndView adminQnaList(PageMaker pageMaker, HttpSession session) throws Exception{
@@ -157,18 +178,6 @@ public class AdminController {
 		return mv;
 	}
 	//----------------------------------- Enjoy 관리 -----------------------------------//
-	// 공연/축제 전체 목록(완성)
-	@RequestMapping(value = "aEnjoyList", method = RequestMethod.GET)
-	public ModelAndView adminEnjoyList(PageMaker pageMaker) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<FestiDTO> list = festiService.getAllList(pageMaker);
-		mv.addObject("title", "Enjoy");
-		mv.addObject("board", "Enjoy");
-		mv.addObject("list", list);
-		mv.addObject("pager", pageMaker);
-		mv.setViewName("admin/aBoardList");
-		return mv;
-	}
 	// show;
 	public ModelAndView adminShowList() throws Exception{
 		ModelAndView mv = new ModelAndView();

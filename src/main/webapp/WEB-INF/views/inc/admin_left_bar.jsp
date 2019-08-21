@@ -12,9 +12,9 @@
 			<c:when test="${board eq 'Notice'}">
 				<li><a href="${pageContext.request.contextPath}/admin/aNoticeList">공지사항</a></li>
 				<li><a href="${pageContext.request.contextPath}/admin/aWeekRecoList">W 추천</a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/aFestiAfterList?category=1">공연 후기??</a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/aShowAfterList?category=2">축제 후기??</a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/aShowAfterList?category=3">대학로 후기??</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/aFestiAfterList?category=1">공연 후기</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/aShowAfterList?category=2">축제 후기</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/aShowAfterList?category=3">대학로 후기</a></li>
 				<li><a href="${pageContext.request.contextPath}/admin/aFestiList">유저 추천</a></li>
 				<li><a href="${pageContext.request.contextPath}/admin/aQnaList">QnA</a></li>
 			</c:when>

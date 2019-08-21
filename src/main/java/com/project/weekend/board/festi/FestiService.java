@@ -155,10 +155,12 @@ public class FestiService {
 	
 	
 	// 상혁
-	// 관리자 모드;
-	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
+	// 관리자 용;
+	// 종류별 게시글 가져오기;
+	// w추천, 유저추천, 공연, 축제, 대학로;
+	public List<FestiDTO> getBoardList(PageMaker pageMaker, HttpSession session) throws Exception{
 		pageMaker.makeRow();
-		List<FestiDTO> list = festiDAO.getAllList(pageMaker);
+		List<FestiDTO> list = festiDAO.getBoardList(pageMaker, session);
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makePage(totalCount);
 		return list;

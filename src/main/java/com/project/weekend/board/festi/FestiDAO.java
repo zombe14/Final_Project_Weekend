@@ -64,8 +64,10 @@ public class FestiDAO{
 	
 	// 상혁;
 	// 관리자용;
-	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
-		return SqlSession.selectList(NAMESPACE+"getAllList", pageMaker);
+	// 종류별 게시글 가져오기;
+	// w추천, 유저추천, 공연, 축제, 대학로;
+	public List<FestiDTO> getBoardList(PageMaker pageMaker, HttpSession session){
+		return SqlSession.selectList(NAMESPACE+"getBoardList", pageMaker);
 	}
 	// 내가 쓴 글 가져오기;
 	// 2레벨;
