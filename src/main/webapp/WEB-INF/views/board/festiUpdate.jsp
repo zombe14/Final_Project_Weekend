@@ -38,7 +38,7 @@
 					</tr>
 					<tr>
 						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
-						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}memberNick" readonly="readonly" id="writer" style="width: 40%"></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}" readonly="readonly" id="writer" style="width: 40%"></td>
 					</tr>
 					<tr>
 						<td class="td1"><label for="contents">내용<span class="r">*</span></label></td>
@@ -79,7 +79,7 @@
 						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png">
 						<input type="date" name="endDate" class="date" value="${dto.endDate}"></td>
 					</tr>
-					<tr class="daehakDiv">
+					<tr>
 						<td class="td1"><label for="price">가격</label></td>
 						<td><input type="number" name="price" value="0"><span>&nbsp; &nbsp;원</span></td>
 					</tr>
