@@ -82,9 +82,10 @@ public class UserRecoController{
 	@RequestMapping(value = "UserRecoUpdate", method = RequestMethod.POST)
 	public ModelAndView setUpdate(FestiDTO festiDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String path = "redirect:./UserRecoSelect?num="+festiDTO.getNum();
 		int result = festiService.setUserRecoUpdate(festiDTO);
 		mv.addObject("result", result);
-		mv.setViewName("./common/message");
+		mv.setViewName(path);
 		return mv;
 	} 
 	// 글삭제;

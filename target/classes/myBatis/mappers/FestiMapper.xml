@@ -172,7 +172,7 @@
 	</insert>
 	<!-- 글 수정 -->
 	<update id="setUserRecoUpdate" parameterType="FestiDTO">
-		update festi set title = #{title}, contents = #{contents}, where num = #{num}
+		update festi set title = #{title}, contents = #{contents} where num = #{num}
 	</update>
 	<!-- 글 삭제 -->
 	<delete id="setUserRecoDelete" parameterType="String">

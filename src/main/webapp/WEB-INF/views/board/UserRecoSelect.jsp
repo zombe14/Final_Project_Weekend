@@ -27,7 +27,7 @@
 			<div class="conta">
 				<div class="fqna_wrap">
 					<div class="fqna_title">
-  	      				<h3> 유저추천 글 내용 </h3>
+  	      				<strong> 유저추천 글 내용 </strong>
   	      			</div>
 				<div class="tableDiv">
 						<table class="table" style="width: 100%">
@@ -110,7 +110,12 @@
 			}
 	});
 	
-
+	/* 글 수정 */
+	$('#update').click(function() {
+		var board = $(this).attr('class');
+		var num = $('.num').attr('id');
+		location.href="./UserRecoUpdate?num="+num;
+	});
 	
 	/* 목록 */
 	$('#list').click(function() {
