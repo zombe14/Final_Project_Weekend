@@ -31,6 +31,9 @@ public class UpdatePageInterceptor extends HandlerInterceptorAdapter {
 		Object nickname = session.getAttribute("memberNickname");
 		Object grade = session.getAttribute("grade");
 		if(obj!=null) {
+			if(grade.equals(3)) {
+				result=true;
+			}
 			if(grade.equals(2)){
 				if(nickname.equals(writer)) {
 					result=true;
