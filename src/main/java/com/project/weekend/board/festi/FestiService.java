@@ -1,4 +1,4 @@
-﻿package com.project.weekend.board.festi;
+package com.project.weekend.board.festi;
 
 import java.sql.Date;
 import java.util.ArrayList;

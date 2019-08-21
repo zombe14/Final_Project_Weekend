@@ -19,6 +19,9 @@
 	<div id="container">
 		<div class="conta">
 			<div class="map_wrap">
+				<div class="festimap_title">
+  	      			<img alt="" src="${pageContext.request.contextPath}/resources/images/worldwide.png"><strong> 전국 시도 선택 </strong>
+  	      		</div>
 				<div id="map" class="map" style="width:100%;height:100%; position: relative; overflow:hidden;"></div>
 				<!-- 지도타입 컨트롤 div 입니다 -->
     			<div class="custom_typecontrol radius_border">

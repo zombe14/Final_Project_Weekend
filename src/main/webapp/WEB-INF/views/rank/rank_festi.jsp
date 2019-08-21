@@ -22,7 +22,7 @@
       		<div class="conta">
   	      		<div class="rank_wrap">
   	      			<div class="rank_title">
-  	      				<strong> 주말뭐해 Top100</strong>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/rank.png"><strong> 주말뭐해 Top100</strong>
   	      			</div>
   	      			<div class="rank_box">
   	      				<ul>
