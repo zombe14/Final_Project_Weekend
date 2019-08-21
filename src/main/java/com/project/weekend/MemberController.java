@@ -127,7 +127,7 @@ public class MemberController {
 				mv.addObject("path", "./memberLogin");
 			}else {
 			memberDTO = memberService.getSelect(memberDTO);
-			message="로그인 실패";
+			message="아이디나 비밀번호를 확인해 주십시오";
 			if(result==1) {	
 				if(memberDTO != null) {
 					if(memberDTO.getCount()>5) {
