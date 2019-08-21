@@ -15,18 +15,17 @@ public class WriteInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		Object obj = session.getAttribute("memberNickname");
+		Object obj = session.getAttribute("member");
 		Object grade = session.getAttribute("grade");
 		boolean result=false;
-		System.out.println(obj);
 		if(obj!=null) {
 			if(grade.equals(2)) {
 				result=true;
 			}else {
-				response.sendRedirect("../festi/festiList?category=1");
+				response.sendRedirect("../");
 			}
 		}else {
-			response.sendRedirect("../festi/festiList?category=1");
+			response.sendRedirect("../member/memberLogin");
 		}
 		
 		

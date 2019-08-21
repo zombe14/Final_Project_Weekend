@@ -98,8 +98,10 @@
     		level: 13 // 지도의 확대 레벨
 		};
 
-	var map = new kakao.maps.Map(mapContainer, mapOption);
-		
+	var map = new kakao.maps.Map(mapContainer, mapOption),
+    customOverlay = new kakao.maps.CustomOverlay({}),
+    infowindow = new kakao.maps.InfoWindow({removable: true});
+	
 	
 	//지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
 	function setMapType(maptype) { 
@@ -265,7 +267,7 @@
        // 지역명을 표시하는 커스텀오버레이를 지도위에 표시합니다
        kakao.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
            polygon.setOptions({fillColor: '#09f'});
-           customOverlay.setContent('<div class="area">' + area.name + '</div>');
+           customOverlay.setContent('<div class="area">' + name + '</div>');
         
            customOverlay.setPosition(mouseEvent.latLng); 
            customOverlay.setMap(map);

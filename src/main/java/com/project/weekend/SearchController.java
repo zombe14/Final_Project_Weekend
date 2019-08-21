@@ -130,7 +130,7 @@ public class SearchController {
 		return mv;
 	}
 	// 비밀번호 변경하기;
-	@RequestMapping(value = "pwResult", method = RequestMethod.GET)
+	@RequestMapping(value = "pwResult", method = RequestMethod.POST)
 	public ModelAndView pwResult(MemberDTO memberDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int pwResult = 0;
