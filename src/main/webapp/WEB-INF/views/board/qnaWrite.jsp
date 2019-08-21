@@ -51,7 +51,7 @@
 					<li class="cmenu8"><a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
 				</ul>
 				<div class="call_cont">
-					<h3>${boardTitle} 글쓰기</h3>
+					<img alt="" src="${pageContext.request.contextPath}/resources/images/qa.png" class="titleimg"><h3>${boardTitle} 글쓰기</h3>
 					<div class="call_wrap">
 				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
 				 <c:if test="${board eq 'qnaReply'}">

@@ -22,14 +22,14 @@
       	<div class="conta">
   	      	<div class="fwrite_wrap">
   	      		<div class="fwrite_title">
-  	      			<h3>W 추천 글쓰기</h3>
+  	      			<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png" class="titleimg"><h3>W 추천 글쓰기</h3>
   	      		</div>
       		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
       		 	<table class="table table-bordered">
       		 	<tbody>
 					<tr>
 						<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
-						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="title" id="title" style="width: 96%"></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="title" id="title" style="width: 95.6%"></td>
 					</tr>
 					<tr>
 						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>

@@ -13,6 +13,12 @@
     border: 1px solid #adadad;
 }
 
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+}
+
 .qnaSelect_btn2{
 	padding: 6px 22px;
     background-color: white;

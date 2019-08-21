@@ -71,14 +71,18 @@
 	border: 1px solid white;
 	color: white;
 }
-	
+
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+}
 .table{	
 	margin-bottom: 0px;
 }
 
 .td60 {
 	width: 40%;
-	text-align: center;
 }
 
 .td33{

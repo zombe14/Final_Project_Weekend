@@ -27,7 +27,7 @@
 			<div class="conta">
 				<div class="fqna_wrap">
 					<div class="fqna_title">
-  	      				<h3> W 추천 글쓰기 </h3>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png" class="titleimg"><h3> W 추천 글쓰기 </h3>
   	      			</div>
 				<div class="tableDiv">
 						<table class="table" style="width: 100%">

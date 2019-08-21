@@ -46,7 +46,7 @@
 				<div class="boardwrite">
 						<button id="boardWrite">${boardTitle} 글쓰기</button>
 				</div>
-				<h3>${boardTitle} 게시판</h3>
+				<img alt="" src="${pageContext.request.contextPath}/resources/images/qa.png" class="titleimg"><h3>${boardTitle} 게시판</h3>
 				</div>
 				
 				<%-- </c:if> --%>

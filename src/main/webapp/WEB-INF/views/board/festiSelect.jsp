@@ -109,8 +109,8 @@
 				<!-- 축제 핵심 내용 -->
 				<div class="festi_wrap">
 					<div class="bx_title">
-					<strong>${dto.title}</strong>
-					<a href="./${board}List?category=${dto.category}"><img alt="리스트 아이콘" src="../resources/images/festi/list.png"> </a>
+					<img alt="" src="${pageContext.request.contextPath}/resources/images/festi1.png" class="titleimg2"><strong>${dto.title}</strong>
+					<a href="./${board}List?category=${dto.category}"><img alt="리스트 아이콘" src="../resources/images/festi/list.png" class="img2"> </a>
 					</div>
 					<div class="detail_info">
 						<div class="bx_img">
@@ -181,8 +181,6 @@
 								<a class="optiondates" title="${o.reg_date}"></a>
 							</c:forEach>
 						</div>
-
-						
 
 						<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
 
