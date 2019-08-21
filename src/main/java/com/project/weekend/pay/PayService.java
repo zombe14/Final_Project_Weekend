@@ -99,8 +99,8 @@ public class PayService implements ResponseErrorHandler{
 		return response;
 	}
 	
-	public int updateToken(String partner_order_id, String pg_token) throws Exception{
-		return payDAO.updateToken(pg_token, partner_order_id);
+	public int updateToken(PayVO payVO) throws Exception{
+		return payDAO.updateToken(payVO);
 	}
 	
 	public PayVO selectOne(String partner_order_id) throws Exception{

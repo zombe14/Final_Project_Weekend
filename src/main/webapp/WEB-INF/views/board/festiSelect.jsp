@@ -148,6 +148,7 @@
 					<div class="detail_info_right">
 						<!-- <input type="text" name="date"  size="12" /> -->
 						<div id="date1"></div>
+						
 						<dl class="doline_x">
 							<dt>예매가능 회차</dt>
 							<dd>
@@ -155,11 +156,13 @@
 								</select>
 							</dd>
 						</dl>
-
-						<c:if test="${dto.category eq 3}">
+						
+						<!-- 선택한 날짜, 시간, 좌석, 가격 + 매수선택, 총가격  -->
 						<div id="selected">
 							
 						</div>
+						
+						
 						<div class="reserve_button"><a id="reserve">예매하기</a></div>
 						<form action="../pay/orderRequest" method="post" id="payFrm">
 							<input type="text" name="parter_user_id" value="${member.id}">
@@ -169,17 +172,24 @@
 							<input type="text" name="total_amount" id="to">
 							<input type="text" name="show_times" id="sh">
 						</form>
+				
+					
+						
 						<!-- 날짜 옵션에 필요한거 -->
 						<div>
 							<c:forEach items="${option}" var="o">
 								<a class="optiondates" title="${o.reg_date}"></a>
 							</c:forEach>
 						</div>
-						</c:if>
+
+						
+						${dto.writer}, ${member.nickname}
+
 						<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
 
+
 						<div class="admin_button">
-							<a href="./${board}Update?num=${dto.num}&writer=${dto.writer}">수정</a> 
+							<a href="./festiUpdate?num=${dto.num}&writer=${dto.writer}">수정</a> 
 							<a id="delete">삭제</a>
 							<form action="./festiDelete" id="festiDeleteFrm" method="post">
 								<input type="hidden" name="num" value="${dto.num}">
@@ -225,7 +235,7 @@
 							<br>
 						<!-- 주변 맛집 -->
 						<div id="resta" class="festi_h4">
-							<img alt="" src="${pageContext.request.contextPath}/resources/images/location.png"><h4>주변 식당</h4>
+							<img alt="" src="${pageContext.request.contextPath}/resources/images/cook.png"><h4>주변 식당</h4>
 							<div class="map_wrap">
 						   		 <div id="map2" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
 								<!-- 리스트 -->
@@ -247,7 +257,7 @@
 					<br>
 					<!-- 주변 숙소 -->
 					<div id="hotel" class="festi_h4">
-						<img alt="" src="${pageContext.request.contextPath}/resources/images/location.png"><h4>주변 숙소</h4>
+						<img alt="" src="${pageContext.request.contextPath}/resources/images/hotel.png"><h4>주변 숙소</h4>
 						<div class="map_wrap">
 						    <div id="map3" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
 							<!-- 리스트 -->
@@ -357,98 +367,123 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript">
 	
+
 	/* 옵션 날짜 넣기    - 카테고리 3만*/
-	var disabledDays = [];
-	$('.optiondates').each(function(){
-		var date2 = [];
-		var date = $(this).attr('title');
-		date = date.toString();
-		disabledDays.push(date);
-	});
-	
-	var show_times = '';
-	$("#date1").datepicker({
-		dateFormat : 'yy-mm-dd',
-		beforeShowDay : disableAllTheseDays,
-		onSelect : function(date){
-			var num = '${dto.num}';
-			var reg_date = date;
-			show_times = date;
+	if('${dto.category}' == '3'){
+		var disabledDays = [];
+		$('.optiondates').each(function(){
+			var date2 = [];
+			var date = $(this).attr('title');
+			date = date.toString();
+			disabledDays.push(date);
+		});
+		
+		var show_times = '';
+		$("#date1").datepicker({
+			dateFormat : 'yy-mm-dd',
+			beforeShowDay : disableAllTheseDays,
+			onSelect : function(date){
+				var num = '${dto.num}';
+				var reg_date = date;
+				show_times = date;
+				$.ajax({
+					url:'./getOptions',
+					type:'POST',
+					data:{
+						num:num,
+						reg_date:reg_date
+					},
+					success:function(data){
+						var timesHtml = '<option hidden="true" id="non">시간을 선택해주세요</option>';
+						for(var i = 0;i<data.length;i++){
+							time = data[i].time;
+							show_times += '-'+time;
+							timesHtml += '<option class="timeList" id="'+data[i].dnum+'" value = "'+data[i].dnum+'" name="selTime">'+time+'</option>';
+						}
+						$('.festi_select').html(timesHtml);
+					},
+					error:function(e){
+						console.log(e);
+					}
+				})
+			}
+		});
+		
+		var tPrice = 0;
+		$('.festi_select').change(function(){
+			var dnum = $(this).val();
 			$.ajax({
-				url:'./getOptions',
+				url:'./getSelectOption',
 				type:'POST',
 				data:{
-					num:num,
-					reg_date:reg_date
+					dnum:dnum
 				},
 				success:function(data){
-					var timesHtml = '<option hidden="true">시간을 선택해주세요</option>';
-					for(var i = 0;i<data.length;i++){
-						time = data[i].time;
-						show_times += '-'+time;
-						timesHtml += '<option class="timeList" id="'+data[i].dnum+'" value = "'+data[i].dnum+'" name="selTime">'+time+'</option>';
-					}
-					$('.festi_select').html(timesHtml);
+					var selected = '';
+					tPrice = data.price;
+					selected += '<table class="table" style="width:100%;"><tr><td>좌석</td><td>'+data.seat+'석</td></tr><tr><td>가격</td><td id="price" value="'+data.price+'">'+data.price+'원</td></tr>'
+					selected += '<tr><td>매수</td><td><input type="number" value="1" id="amount" min="1" style="width:30%;" onchange="totalPrice()"></td></tr>'
+					selected += '<tr><td>총액</td><td id="total">'+data.price*1+'</td></tr></table>'
+					$('#selected').html(selected);
 				},
 				error:function(e){
 					console.log(e);
 				}
-			})
-		}
-	});
-	
-	var tPrice = 0;
-	$('.festi_select').change(function(){
-		var dnum = $(this).val();
-		$.ajax({
-			url:'./getSelectOption',
-			type:'POST',
-			data:{
-				dnum:dnum
-			},
-			success:function(data){
-				var selected = '';
-				tPrice = data.price;
-				selected += '<table class="table" style="width:100%;"><tr><td>좌석</td><td>'+data.seat+'석</td></tr><tr><td>가격</td><td id="price" value="'+data.price+'">'+data.price+'원</td></tr>'
-				selected += '<tr><td>매수</td><td><input type="number" value="1" id="amount" min="1" style="width:30%;" onchange="totalPrice()"></td></tr>'
-				selected += '<tr><td>총액</td><td id="total">'+data.price*1+'</td></tr></table>'
-				$('#selected').html(selected);
-			},
-			error:function(e){
-				console.log(e);
-			}
+			});
 		});
-	});
-	
-	function totalPrice(){
-		var total = $('#amount').val()*tPrice;
-		$('#total').html(total);	
-	}
-
-	function disableAllTheseDays(date) {
-		var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
-		for (i = 0; i < disabledDays.length; i++) {
-			if(m<10){
-				if ($.inArray(y + '-0' + (m + 1) + '-' + d, disabledDays) != -1) {
-					return [ true ];
-				}
-			} else {
-				if ($.inArray(y + '-' + (m + 1) + '-' + d, disabledDays) != -1) {
-					return [ true ];
-				}	
-			}
+		
+		function totalPrice(){
+			var total = $('#amount').val()*tPrice;
+			$('#total').html(total);	
 		}
-		return [ false ];
+	
+		function disableAllTheseDays(date) {
+			var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+			for (i = 0; i < disabledDays.length; i++) {
+				if(m<10){
+					if ($.inArray(y + '-0' + (m + 1) + '-' + d, disabledDays) != -1) {
+						return [ true ];
+					}
+				} else {
+					if ($.inArray(y + '-' + (m + 1) + '-' + d, disabledDays) != -1) {
+						return [ true ];
+					}	
+				}
+			}
+			return [ false ];
+		}
+	} else {
+		$("#date1").datepicker({
+			dateFormat : 'yy-mm-dd',
+			minDate : new Date("${dto.startDate}"),
+			maxDate : new Date("${dto.endDate}")
+		});
 	}
 	
 	$('#payFrm').hide();
+	
+	if('${dto.category}' != '3'){
+		$('#reserve').hide();
+	}
+	
 	$('#reserve').click(function() {
-		var qu = $('#amount').val();
-		$('#qu').val(qu);
-		var to = $('#total').html();
-		$('#to').val(to);
-		var sh = show_times;
-		$('#sh').val(sh);
+	
+		if('${member.grade}' > 0){
+			if($('.festi_select').val() == '시간을 선택해주세요'){
+				alert('시간을 선택해주세요');
+			} else {
+				var qu = $('#amount').val();
+				$('#qu').val(qu);
+				var to = $('#total').html();
+				$('#to').val(to);
+				var sh = show_times;
+				$('#sh').val(sh);
+				$('#payFrm').submit();
+			}
+		} else {
+			alert('로그인이 필요한 서비스입니다.');
+		}
+	
 	});
 
 	/* 각 행 선택 시 select 페이지 이동 */
@@ -503,6 +538,7 @@
 	});
 	
 	
+	/*------------------------------ 끝까지 지도 스크립트!!------------------------- */
 	
 	/* 행사 위치 */
 	var mapContainer1 = document.getElementById('localMap'), // 지도를 표시할 div 

@@ -105,6 +105,13 @@
 		ORDER BY NUM DESC) F) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
+	
+	<!-- 평점 평균 -->
+	<select id="getPointAvg" parameterType="PageMaker" resultType="java.lang.Double">
+		select round(sum(nvl(after.point,1))/count(after.anum),1) from after inner join festi using(num) where festi.category = #{category} and num = #{num}
+	</select>
+	
+	
 	<!-- 상혁시작 -->
 	
 	<!-- 2레벨 -->
@@ -176,7 +183,7 @@
 	</insert>
 	<!-- 글 수정 -->
 	<update id="setUserRecoUpdate" parameterType="FestiDTO">
-		update festi set title = #{title}, contents = #{contents}, where num = #{num}
+		update festi set title = #{title}, contents = #{contents} where num = #{num}
 	</update>
 	<!-- 글 삭제 -->
 	<delete id="setUserRecoDelete" parameterType="String">
