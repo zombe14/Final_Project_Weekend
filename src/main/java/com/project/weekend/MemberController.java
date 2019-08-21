@@ -140,8 +140,8 @@ public class MemberController {
 						session.setAttribute("memberNickname", memberDTO.getNickname());
 						session.setAttribute("grade", memberDTO.getGrade());
 						int zero = memberService.setUpdatezero(memberDTO);
-						message = "로그인 성공";	
-						mv.setViewName("common/messageMove");
+						message = "로그인 성공";
+						mv.setViewName("common/messageMove2");
 						mv.addObject("message", message);
 						mv.addObject("path", "../");
 					}
