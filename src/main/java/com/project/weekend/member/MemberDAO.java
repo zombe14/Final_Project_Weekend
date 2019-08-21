@@ -3,6 +3,7 @@
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 import javax.xml.stream.events.Namespace;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,7 +20,7 @@ public class MemberDAO {
 	// 상혁;
 	// 관리자;
 	// 리스트;
-	public List<MemberDTO> getList(PageMaker pageMaker) throws Exception{
+	public List<MemberDTO> getList(HttpSession session, PageMaker pageMaker) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", pageMaker);
 	}
 	public int getTotalCount(PageMaker pageMaker) throws Exception{
