@@ -160,7 +160,7 @@
 						<div id="selected">
 							
 						</div>
-						<c:if test="${member.grade gt 0}">
+						
 						<div class="reserve_button"><a id="reserve">예매하기</a></div>
 						<form action="../pay/orderRequest" method="post" id="payFrm">
 							<input type="text" name="parter_user_id" value="${member.id}">
@@ -170,7 +170,7 @@
 							<input type="text" name="total_amount" id="to">
 							<input type="text" name="show_times" id="sh">
 						</form>
-						</c:if>
+						
 						<!-- 날짜 옵션에 필요한거 -->
 						<div>
 							<c:forEach items="${option}" var="o">
@@ -357,7 +357,7 @@
 	<script type="text/javascript">
 	
 	/* 옵션 날짜 넣기    - 카테고리 3만*/
-	if('${category}' == '3'){
+	if('${dto.category}' == '3'){
 		var disabledDays = [];
 		$('.optiondates').each(function(){
 			var date2 = [];

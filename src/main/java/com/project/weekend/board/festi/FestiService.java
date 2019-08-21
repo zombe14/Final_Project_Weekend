@@ -254,6 +254,7 @@ public class FestiService {
 
 	
 	// 난슬
+	/*
 	public List<AfterDTO> getPointAvg(PageMaker pageMaker) throws Exception{
 		List<FestiDTO> list = festiDAO.getRankList(pageMaker);
 		List<AfterDTO> avglist = new ArrayList<AfterDTO>();
@@ -270,6 +271,7 @@ public class FestiService {
 		}
 		return avglist;
 	}
+	*/
 	
 	
 	
