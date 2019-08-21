@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JacksonInject.Value;
+import com.project.weekend.board.comments.CommentsService;
 import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.board.festi.after.AfterDTO;
@@ -27,6 +28,9 @@ import com.project.weekend.util.PageMaker;
 public class UserRecoController{
 	@Inject
 	private FestiService festiService;
+	@Inject
+	private CommentsService commentsService;
+	
 	// 리스트 출력;
 	@RequestMapping(value = "UserRecoList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker) throws Exception{
@@ -39,9 +43,11 @@ public class UserRecoController{
 	}
 	// 글선택
 	@RequestMapping(value = "UserRecoSelect", method = RequestMethod.GET)
-	public ModelAndView getSelect(String num) throws Exception{
+	public ModelAndView getSelect(String num, PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		FestiDTO festiDTO = festiService.getUserRecoSelect(num);
+		int cCnt = commentsService.getAmount(pageMaker);
+		mv.addObject("cCnt",cCnt);
 		mv.addObject("list", festiDTO);
 		mv.setViewName("board/UserRecoSelect");
 		return mv;

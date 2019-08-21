@@ -14,7 +14,7 @@
       	<div class="conta">
 			<div class="error_wrap">
 				<div class="error_logo">
-					<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/error.png"></a>
+					<img alt="" src="${pageContext.request.contextPath}/resources/images/error.png"></a>
 				</div>
 				<div class="error_title">
 					<strong>고객님, 불편을 드려 죄송합니다.</strong>
@@ -25,7 +25,7 @@
 				</div>	
 
 				<div class="btn">
-				<a href="./" class="home_btn">Go Home</a>
+				<a href="${pageContext.request.contextPath}/." class="home_btn">Go Home</a>
 				</div>
 				
 			</div>
