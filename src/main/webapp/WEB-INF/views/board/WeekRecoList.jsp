@@ -23,7 +23,7 @@
       		<div class="conta">
   	      		<div class="week_wrap">
   	      			<div class="week_title">
-  	      				<strong> W 추천 </strong>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/reco.png"><strong> W 추천 </strong>
   	      			</div>
   	      			<div class="week_box">
   	      				<ul>
@@ -98,8 +98,7 @@
 					<button id="searchButton">검색</button>
 				</form>
 				<div class="boardwrite">
-						<button id="boardWrite" href="./WeekRecoWrite">${boardTitle} 글쓰기</button>
-						<a href = "./WeekRecoWrite">글쓰기</a>
+						<a id="write" class="userRecoList_btn" href="./WeekRecoWrite">글쓰기</a>
 				</div>
   	  	     	 </div>
       		</div>
@@ -115,6 +114,12 @@
 			var num = $(this).attr('id');
 			num = num.substring(1);
 			$(this).children('p').append(num);
+		});
+		
+		/* 각 행 선택 시 select 페이지 이동 */
+		$('.select').click(function() {
+			var num = $(this).children('.selectRow').attr('id');
+			location.href = "./WeekRecoSelect?num="+num;
 		});
 		
 	</script>

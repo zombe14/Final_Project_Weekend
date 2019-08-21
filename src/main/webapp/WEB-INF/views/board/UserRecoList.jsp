@@ -23,7 +23,7 @@
       		<div class="conta">
   	      		<div class="user_wrap">
   	      			<div class="user_title">
-  	      				<strong> 유저추천 </strong>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/reco.png"><strong> 유저추천 </strong>
   	      			</div>
   	      			<div class="user_box">
   	      				<ul>
@@ -100,7 +100,7 @@
 					<button id="searchButton">검색</button>
 				</form>
 				<div class="boardwrite">
-						<a id="write" class="festiWrite_btn" href="./UserRecoWrite">글쓰기</a>
+						<a id="write" class="userRecoList_btn" href="./UserRecoWrite">글쓰기</a>
 				</div>
   	  	     	 </div>
       		</div>
@@ -116,6 +116,14 @@
 			num = num.substring(1);
 			$(this).children('p').append(num);
 		});
+		
+		/* 각 행 선택 시 select 페이지 이동 */
+		$('.select').click(function() {
+			var num = $(this).children('.selectRow').attr('id');
+			location.href = "./UserRecoSelect?num="+num;
+		});
+		
+	
 	</script>
 </body>
 </html>
