@@ -27,6 +27,8 @@ import com.project.weekend.board.festi.dates.DatesDTO;
 import com.project.weekend.board.festi.dates.DatesService;
 import com.project.weekend.board.festi.festiQna.FestiQnaDTO;
 import com.project.weekend.board.festi.festiQna.FestiQnaService;
+import com.project.weekend.calendar.GoogleCalendarDTO;
+import com.project.weekend.calendar.GoogleCalendarService;
 import com.project.weekend.util.PageMaker;
 
 @Controller
@@ -41,6 +43,8 @@ public class FestiController{
 	private FestiQnaService festiQnaService;
 	@Inject
 	private DatesService datesService;
+	@Inject
+	private GoogleCalendarService googleCalendarService;
 	
 	//write form - get
 	@RequestMapping(value = "festiWrite", method = RequestMethod.GET)
@@ -59,7 +63,12 @@ public class FestiController{
 		ModelAndView mv = new ModelAndView();
 		String path = "board/boardTile";
 		int res = festiService.setWrite(festiDTO, filelist, session);
-		
+		GoogleCalendarDTO googleCalendarDTO = new GoogleCalendarDTO();
+		googleCalendarDTO.setBoard(festiDTO.getNum());
+		googleCalendarDTO.setSdate(festiDTO.getStartDate().toString());
+		googleCalendarDTO.setEdate(festiDTO.getEndDate().toString());
+		googleCalendarDTO.setSummary(festiDTO.getTitle());
+		googleCalendarService.calendarEventAdd(googleCalendarDTO);
 		if(res>0) {
 			path = "redirect:./festiSelect?num="+festiDTO.getNum();
 		} else {
@@ -161,6 +170,12 @@ public class FestiController{
 	public ModelAndView setUpdate(FestiDTO festiDTO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int res = festiService.setUpdate(festiDTO, session);
+		GoogleCalendarDTO googleCalendarDTO = new GoogleCalendarDTO();
+		googleCalendarDTO.setBoard(festiDTO.getNum());
+		googleCalendarDTO.setSdate(festiDTO.getStartDate().toString());
+		googleCalendarDTO.setEdate(festiDTO.getEndDate().toString());
+		googleCalendarDTO.setSummary(festiDTO.getTitle());
+		googleCalendarService.calendarEventModify(googleCalendarDTO);
 		mv.setViewName("redirect:./festiSelect?num="+festiDTO.getNum());
 		return mv;
 	}
@@ -168,6 +183,9 @@ public class FestiController{
 	public String setDelete(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		int category = festiService.getSelect(num,session,request,response).getCategory();
 		int res = festiService.setDelete(num, session);
+		GoogleCalendarDTO googleCalendarDTO = new GoogleCalendarDTO();
+		googleCalendarDTO.setBoard(num);
+		googleCalendarService.calendarEventRemoveOne(googleCalendarDTO);
 		String path = "redirect:./festiSelect?num="+num;
 		if (res>0) {
 			path = "redirect:./festiList?category="+category;
