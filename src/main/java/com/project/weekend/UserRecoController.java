@@ -30,7 +30,7 @@ public class UserRecoController{
 	private FestiService festiService;
 	@Inject
 	private CommentsService commentsService;
-	
+
 	// 리스트 출력;
 	@RequestMapping(value = "UserRecoList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker) throws Exception{
