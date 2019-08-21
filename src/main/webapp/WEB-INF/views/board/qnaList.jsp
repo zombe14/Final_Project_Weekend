@@ -64,25 +64,26 @@
 							<th class="td10">조회수</th>
 							<th class="td07">답변</th>
 						</thead>
-
-		
+						
 						<c:forEach items="${list}" var="list">
-							<tr class="select" title="${list.pw}" id="${list.num}">
+							<tr class="select" title="${list.pw}" id="${list.num}" name="${list.writer}">
 								<td class="selectRow td10">${fn:substring(list.num, 1,9)}</td>
-								<c:if test="${list.pw eq null }">
-									<td>
-										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
-										${list.title}
-									</td>
-									<td class="td10">${list.writer}</td>
-								</c:if>
-								<c:if test="${list.pw ne null}">
-									<td>
-										<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
-										비밀글입니다.
-									</td>
-									<td>${fn:substring(list.writer, 0, 3)}****</td>
-								</c:if>
+								<c:choose>
+									<c:when test="${list.pw eq null or list.writer eq member.nickname or member.grade eq 3}">
+										<td>
+											<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
+											${list.title}
+										</td>
+										<td class="td10">${list.writer}</td>
+									</c:when>
+									<c:otherwise>
+										<td>
+											<c:forEach begin="1" end="${list.depth}">&nbsp;&nbsp;&nbsp;답변 : </c:forEach>
+											비밀글입니다.
+										</td>
+										<td class="td10">${fn:substring(list.writer, 0, 3)}****</td>
+									</c:otherwise>
+								</c:choose>
 								
 								<td class="td10">${list.reg_date}</td>
 								<td class="td10">${list.hit}</td>
@@ -158,11 +159,16 @@
 
 		
 		/* 각 행 선택 시 select 페이지 이동 */
+		/* 비밀번호 틀렸을 때 다시 프롬프트 창 띄우게 */
 		$('.select').click(function() {
 			var pw = $(this).attr('title');
 			var num = $(this).attr('id');
-			/* 비밀번호 틀렸을 때 다시 프롬프트 창 띄우게 */
-			password(pw,num);
+			var writer = $(this).attr('name');
+			if(writer=='${member.nickname}'){
+				location.href = "./${board}Select?num="+num;
+			} else {
+				password(pw,num);
+			}
 		});
 		
 		function password(pw,num) {

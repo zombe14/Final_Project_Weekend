@@ -1,23 +1,30 @@
 package com.project.weekend.board.festi;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.weekend.board.BoardDTO;
 import com.project.weekend.board.festi.after.AfterDAO;
+import com.project.weekend.board.festi.after.AfterDTO;
 import com.project.weekend.board.festi.after.AfterService;
 import com.project.weekend.board.festi.dates.DatesDAO;
 import com.project.weekend.board.festi.dates.DatesDTO;
 import com.project.weekend.board.festi.dates.DatesService;
 import com.project.weekend.board.festi.festiQna.FestiQnaDAO;
 import com.project.weekend.board.festi.festiQna.FestiQnaService;
+import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.file.FileService;
@@ -46,33 +53,41 @@ public class FestiService {
 	@Inject
 	private DatesDAO datesDAO;
 	
-
-	
-	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HashMap<String,Object> datesDTOs, HttpSession session) throws Exception {
-		int num = festiDAO.getNum();
-		festiDTO.setNum("f"+num);
+	public int setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception {
 		int res = festiDAO.setWrite(festiDTO);
 		String realPath = session.getServletContext().getRealPath("/resources/images/board");
 		for(MultipartFile f : filelist) {
 			if(f.getOriginalFilename().length()>0) {				
 				FileDTO fileDTO = new FileDTO();
-				fileDTO.setNum("f"+num);
+				fileDTO.setNum(festiDTO.getNum());
 				fileDTO.setOname(f.getOriginalFilename());
 				String fname = fileSaver.saveFile(realPath, f);
 				fileDTO.setFname(fname);
 				res = fileDAO.setWrite(fileDTO);
 			}
 		}
-		System.out.println("ser : "+datesDTOs.size());
-		for(DatesDTO d : datesDTOs) {
-			if(d.getReg_date() != null) {
-				d.setNum("f"+num);
-				res = datesDAO.setWrite(d);
-			}
-		}
 		
 		return res;
 	}
+	
+	public int setOptionWrite(DatesDTO datesDTO, HttpSession session) throws Exception{
+		int res = 0;
+		res = datesDAO.setWrite(datesDTO);			
+		
+				/*
+				 * datesDTO.setPrice((Integer)datesDTOs.get(i).get("price2"));
+				 * datesDTO.setReg_date((Date)datesDTOs.get(i).get("reg_date"));
+				 * datesDTO.setSeat((Integer)datesDTOs.get(i).get("seat"));
+				 * datesDTO.setTime((String)datesDTOs.get(i).get("time"));
+				 */
+				
+		return res;
+	}
+	
+	public int setOptionDelete(int dnum, HttpSession session) throws Exception{
+		return datesDAO.setDelete(dnum);
+	}
+	
 	public List<FestiDTO> getList(PageMaker pageMaker) throws Exception{
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makeRow();
@@ -85,12 +100,38 @@ public class FestiService {
 		}
 		return list;
 	}
-	public FestiDTO getSelect(String num) throws Exception{
+	public FestiDTO getSelect(String num, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		FestiDTO festiDTO = festiDAO.getSelect(num);
 		ArrayList<FileDTO> fileDTOs = (ArrayList<FileDTO>)fileDAO.getList(num);
 		festiDTO.setFileDTOs(fileDTOs);
+		if(festiDTO.getFileDTOs().size()==1) {
+			if(festiDTO.getFileDTOs().get(0).getFname()==null) {
+				festiDTO.setFileDTOs(new ArrayList<FileDTO>());
+			}
+		}
+		
+	
+			// 쿠키를 이용해서 ajax, 새로고침 시 조회수 증가 방지
+			boolean isGet = false;
+			Cookie[] cookies = request.getCookies();
+			if(cookies != null) {
+				for(Cookie c:cookies) {
+					if(c.getName().equals(num)) {
+						isGet=true;
+					}
+				}
+			}
+			if(!isGet) {
+				festiDAO.setHitUpdate(num);
+				Cookie c = new Cookie(num, num);
+				c.setMaxAge(30*60); // 30분
+				response.addCookie(c);
+			}
+					
+		
 		return festiDTO;
 	}
+	
 	public int setUpdate(FestiDTO festiDTO, HttpSession session) throws Exception{
 		int res = festiDAO.setUpdate(festiDTO);
 		return res;
@@ -111,6 +152,8 @@ public class FestiService {
 	public int getNum() throws Exception{
 		return festiDAO.getNum();
 	}
+	
+	
 	// 상혁
 	// 관리자 모드;
 	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
@@ -210,6 +253,25 @@ public class FestiService {
 	}
 
 	
+	// 난슬
+	/*
+	public List<AfterDTO> getPointAvg(PageMaker pageMaker) throws Exception{
+		List<FestiDTO> list = festiDAO.getRankList(pageMaker);
+		List<AfterDTO> avglist = new ArrayList<AfterDTO>();
+		for(FestiDTO f : list) {
+			String num = f.getNum();
+			int category = f.getCategory();
+			pageMaker.setNum(num);
+			pageMaker.setCategory(category);
+			Double avg = festiDAO.getPointAvg(pageMaker);
+			AfterDTO afterDTO = new AfterDTO();
+			afterDTO.setNum(num);
+			afterDTO.setAvg(avg);
+			avglist.add(afterDTO);
+		}
+		return avglist;
+	}
+	*/
 	
 	
 	

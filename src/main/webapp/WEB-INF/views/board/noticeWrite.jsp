@@ -55,7 +55,7 @@
 							</tr>
 							<tr class="write_writer">
 								<td  class="td1"><label for="writer">작성자 <span class="r"> *</span></label></td>
-								<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}memberNickname" readonly="readonly" class="required" id="writer"></td>
+								<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}" readonly="readonly" class="required" id="writer"></td>
 							</tr>
 							<tr>
 								<td  class="td1"><label for="contents">내용 <span class="r"> *</span></label></td>

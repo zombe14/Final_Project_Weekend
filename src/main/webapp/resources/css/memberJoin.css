@@ -258,7 +258,7 @@ select {
 }
 #emailCheck{
     border: 1px solid white;
-    padding: 10px 20px;
+    padding: 10px 12px;
     background: #00d344;
     color: white;	
     font-size: 14px;
@@ -267,13 +267,14 @@ select {
     float: right;
 }
 #emailCodeCheck{
-    border: 1px solid #dedede;
+    border: 1px solid white;
     padding: 10px 20px;
-    background: #white;
-    color: black;	
+    background: #00d344;
+    color: white;	
     font-size: 14px;
-    margin: 10px 5px 1px 0px;
+    margin: 0 5px;
 }
+
 #juminnum{
     border: 1px solid white;
     padding: 10px 20px;

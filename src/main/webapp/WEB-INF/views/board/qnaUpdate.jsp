@@ -215,12 +215,13 @@
 	/* 첨부 파일 관리 끝 */
 	// 오픈/비밀 유지
 		if('${board}'== 'qna'){
-			if($('#pw').val() == ""){
+			if('${dto.pw}' == ""){
 				$('#nonSecret').prop('checked',true);
 				$('#pw').val('');
 				$('#pw').hide();
 			} else {
 				$('#secret').prop('checked',true);
+				$('#pw').val('${dto.pw}');
 			}
 			
 			$('.pwSel').click(function(){

@@ -75,9 +75,13 @@
 	</update>
 
 	<delete id="setDelete" parameterType="String">
-		DELETE FESTI WHERE NUM =
-		#{num}
+		DELETE FESTI WHERE NUM = #{num}
 	</delete>
+	
+	<update id="setHitUpdate" parameterType="String">
+		update festi set hit = hit+1 where num = #{num}
+	</update>
+	
 	<!-- 상혁 -->
 	<select id="getAllList" parameterType="PageMaker" resultMap="festiResult">
 		SELECT * FROM 
@@ -101,6 +105,13 @@
 		ORDER BY NUM DESC) F) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
+	
+	<!-- 평점 평균 -->
+	<select id="getPointAvg" parameterType="PageMaker" resultType="java.lang.Double">
+		select round(sum(nvl(after.point,1))/count(after.anum),1) from after inner join festi using(num) where festi.category = #{category} and num = #{num}
+	</select>
+	
+	
 	<!-- 상혁시작 -->
 	
 	<!-- 2레벨 -->
