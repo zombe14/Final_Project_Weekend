@@ -1,6 +1,5 @@
 package com.project.weekend.interceptor;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -8,38 +7,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.project.weekend.board.festi.FestiDTO;
-import com.project.weekend.board.festi.FestiService;
 
 
-
-public class UpdatePageInterceptor extends HandlerInterceptorAdapter {
-	
-	@Inject
-	private FestiService festiService;
-	
+public class WeekRecoInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// TODO Auto-generated method stub
-		boolean result=false;
-		FestiService festiService = new FestiService();
-		String num = request.getParameter("num");
-		String writer = request.getParameter("writer");
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("member");
-		Object nickname = session.getAttribute("memberNickname");
 		Object grade = session.getAttribute("grade");
+		boolean result=false;
 		if(obj!=null) {
 			if(grade.equals(3)) {
 				result=true;
-			}
-			if(grade.equals(2)){
-				if(nickname.equals(writer)) {
-					result=true;
-				}else {
-					response.sendRedirect("../festi/festiSelect?num="+num);
-				}
 			}else {
 				response.sendRedirect("../");
 			}

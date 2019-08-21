@@ -30,11 +30,12 @@ public class UserRecoController{
 	private FestiService festiService;
 	@Inject
 	private CommentsService commentsService;
+
 	// 리스트 출력;
 	@RequestMapping(value = "UserRecoList", method = RequestMethod.GET)
-	public ModelAndView getList(PageMaker pageMaker) throws Exception{
+	public ModelAndView getList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<FestiDTO> list = festiService.getUserRecoList(pageMaker);
+		List<FestiDTO> list = festiService.getUserRecoList(pageMaker, session);
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/UserRecoList");

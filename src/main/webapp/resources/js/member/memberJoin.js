@@ -350,6 +350,8 @@ $(function() {
         var jumin1 = jumins3;
         var fmt = RegExp(/^\d{6}[1234]\d{6}$/) //포멧 설정 
 		var buf = new Array(13); //주민번호 유효성 검사
+        
+       /* 현재 시간을 가져오기위함*/
 		var date = new Date();
 		var year = date.getFullYear();
 		var month = (date.getMonth() + 1);

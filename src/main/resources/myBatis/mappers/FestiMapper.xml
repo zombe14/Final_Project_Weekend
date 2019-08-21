@@ -124,7 +124,7 @@
 	<select id="getWeekRecoList" parameterType="pageMaker" resultType="FestiDTO">
 		select * from
 		(select rownum R, F.* from
-		(select num, title, local, region
+		(select num, writer,title, local, region
 		from festi full join files using(num)
 		where category = 0
 		order by num desc) F)

@@ -173,7 +173,9 @@
 		
 		function password(pw,num) {
 			/* 비밀글이거나   ( 작성자 본인일때 조건 추가하기) */
-			if(pw != "" ){
+			if(pw == "" || '${member.grade}' == 3){
+				location.href = "./${board}Select?num="+num;
+			} else {
 				var input = prompt('비밀번호를입력해주세요');
 				if(input != null){
 					if(pw == input){
@@ -183,8 +185,6 @@
 						password(pw,num);
 					}
 				}				
-			} else {
-				location.href = "./${board}Select?num="+num;
 			}
 		} 
 		

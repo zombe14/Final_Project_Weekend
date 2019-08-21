@@ -83,13 +83,14 @@
 					
 				
 				<a id="list" title="${board}" class="${list.num} fqnaSelect_btn">목록</a>
+				<c:if test="${list.writer eq member.nickname }">
 				<a id="update" class="${board} fqnaSelect_btn">수정</a> 
 				<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
-				
+				</c:if>
 				<form action="./UserRecoDelete" id="deleteFrm" method="post">
 				
 					<input type="hidden" class="num" id = "${list.num}" name="num" value="${list.num}">
-				
+					<input type="hidden" class="writer" id = "${list.writer}" name="writer" value="${list.writer}">
 				</form>
 				
 			</div>
@@ -114,7 +115,8 @@
 	$('#update').click(function() {
 		var board = $(this).attr('class');
 		var num = $('.num').attr('id');
-		location.href="./UserRecoUpdate?num="+num;
+		var writer = $(".writer").val();
+		location.href="./UserRecoUpdate?num="+num+"&writer="+writer;
 	});
 	
 	/* 목록 */

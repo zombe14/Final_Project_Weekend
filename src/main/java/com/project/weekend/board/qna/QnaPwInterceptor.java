@@ -15,6 +15,7 @@ public class QnaPwInterceptor extends HandlerInterceptorAdapter {
 	private QnaDAO qnaDAO;
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+		/*
 		boolean res = false;
 		HttpSession session = request.getSession();
 		QnaService qnaService = new QnaService();
@@ -38,6 +39,8 @@ public class QnaPwInterceptor extends HandlerInterceptorAdapter {
 			}
 		}
 		return res;
+		*/
+		return true;
 	}
 	
 	
