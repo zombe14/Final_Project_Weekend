@@ -127,12 +127,12 @@
 								<dt class="bit">총 좌석</dt>
 								<dd class="bid">${dto.total} 좌석</dd>
 							</dl>
-							
 							<div class="btc_file">
+							<%-- 
 							<em>파일 다운로드 : </em>
 							<c:forEach items="${dto.fileDTOs}" var="f">
 								<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
-							</c:forEach>
+							</c:forEach> --%>
 								<!-- ajax 파일 다운로드 -->
 							<div style="display:none;">
 								<form action="../ajax/fileDownload" method="post" id="downForm">
