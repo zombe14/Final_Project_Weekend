@@ -182,10 +182,10 @@
 							</c:forEach>
 						</div>
 						
-						
+						${dto.writer}, ${member.nickname}
 						<c:if test="${dto.writer eq member.nickname}">
 						<div class="admin_button">
-							<a href="./${board}Update?num=${dto.num}&writer=${dto.writer}">수정</a> 
+							<a href="./festiUpdate?num=${dto.num}&writer=${dto.writer}">수정</a> 
 							<a id="delete">삭제</a>
 							<form action="./festiDelete" id="festiDeleteFrm" method="post">
 								<input type="hidden" name="num" value="${dto.num}">
