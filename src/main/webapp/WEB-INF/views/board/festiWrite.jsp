@@ -35,7 +35,7 @@ table {
       	<div class="conta">
   	      	<div class="fwrite_wrap">
   	      		<div class="fwrite_title">
-  	      			<h3>${board}글쓰기</h3>
+  	      			<img alt="" src="${pageContext.request.contextPath}/resources/images/festi1.png" class="titleimg"><h3>${board}글쓰기</h3>
   	      		</div>
 
       		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
@@ -173,7 +173,11 @@ table {
 								<input type="number" name="price" class="price" id="price"><span> 원</span>
 							</div>
 						</td>
-						<td><a id="writeOption">옵션등록</a></td>
+						<td>
+							<div class="writeOption">
+							<a id="writeOption">옵션등록</a>
+							</div>
+						</td>
 					</tr>
 				</table>
 					<div id="optionsDiv">
@@ -181,7 +185,7 @@ table {
 					</div>		
 				</div>
 
-      		 	<a id="write" class="btn btn-default">등록</a>
+      		 	<a id="write" class="festiWrite_btn">등록</a>
 
   	      	</div>
       	</div>

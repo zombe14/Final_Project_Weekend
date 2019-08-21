@@ -125,7 +125,18 @@ input{
 	width: 20px;
 	margin-right: 10px;
 }
-	
+
+#writeOption{
+	padding: 5px 10px;
+	background-color: #00d344;
+	color: white;
+	cursor: pointer;
+}
+
+.writeOption{
+	margin-top: 7px;
+}
+
 .localConfirm{
 	margin-left: 20px;
 }

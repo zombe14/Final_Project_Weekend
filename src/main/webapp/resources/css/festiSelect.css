@@ -60,10 +60,17 @@
 	border: 1px solid #dedede;
 }
 
-.bx_title img{
+.bx_title .img2{
 	width: 24px;
 	float: right;
 	margin: 10px;
+}
+
+.titleimg2{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+    margin-top: 6px;
 }
 
 .detail_info_right{
