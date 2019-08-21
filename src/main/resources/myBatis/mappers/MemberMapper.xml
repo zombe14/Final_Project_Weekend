@@ -26,17 +26,17 @@
 			(SELECT ROWNUM R, M.* FROM 
 			(SELECT * FROM MEMBER WHERE 
 			<choose>
-				<when test="kind = 1">
+				<when test="kind == 0">
 					ID LIKE '%'||#{search}||'%'
 				</when>
-				<when test="kind = 2">
+				<when test="kind == 1">
 					NAME LIKE '%'||#{search}||'%'
 				</when>
-				<when test="kind = 3">
+				<when test="kind == 2">
 					GRADE LIKE '%'||#{search}||'%'
 				</when>
 				<otherwise>
-					ID|NAME|GRADE LIKE '%'||#{search}||'%'
+					ID||NAME||GRADE LIKE '%'||#{search}||'%'
 				</otherwise>
 			</choose>
 				ORDER BY reg_date DESC) M)
@@ -46,17 +46,17 @@
 	<select id="getTotalCount" resultType="Integer" parameterType="PageMaker">
 		SELECT COUNT(ID) FROM MEMBER WHERE
 		<choose>
-			<when test="kind = 1">
+			<when test="kind == 0">
 				ID LIKE '%'||#{search}||'%'
 			</when>
-			<when test="kind = 2">
+			<when test="kind == 1">
 				NAME LIKE '%'||#{search}||'%'
 			</when>
-			<when test="kind = 3">
+			<when test="kind == 2">
 				GRADE LIKE '%'||#{search}||'%'
 			</when>
 			<otherwise>
-				NICKNAME|NAME|GRADE LIKE '%'||#{search}||'%'
+				NICKNAME||NAME||GRADE LIKE '%'||#{search}||'%'
 			</otherwise>
 		</choose>
 	</select>

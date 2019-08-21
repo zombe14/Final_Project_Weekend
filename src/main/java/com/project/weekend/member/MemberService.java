@@ -34,9 +34,9 @@ public class MemberService {
 	// 관리자;
 	// 리스트
 	public List<MemberDTO> getList(HttpSession session, PageMaker pageMaker) throws Exception{
-		pageMaker.makeRow();
-		List<MemberDTO> list = memberDAO.getList(pageMaker);
 		int totalCount = memberDAO.getTotalCount(pageMaker);
+		pageMaker.makeRow();
+		List<MemberDTO> list = memberDAO.getList(session, pageMaker);
 		pageMaker.makePage(totalCount);
 		return list;
 	}

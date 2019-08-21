@@ -9,17 +9,16 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 
 
-public class WriteInterceptor extends HandlerInterceptorAdapter {
+public class WeekRecoInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("member");
 		Object grade = session.getAttribute("grade");
 		boolean result=false;
 		if(obj!=null) {
-			if(grade.equals(2)||grade.equals(3)) {
+			if(grade.equals(3)) {
 				result=true;
 			}else {
 				response.sendRedirect("../");
@@ -27,7 +26,6 @@ public class WriteInterceptor extends HandlerInterceptorAdapter {
 		}else {
 			response.sendRedirect("../member/memberLogin");
 		}
-		
 		
 		return result;
 	}

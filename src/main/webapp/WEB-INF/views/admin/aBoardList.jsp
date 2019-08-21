@@ -133,17 +133,23 @@
 								<select class="form-control" name="kind">
 									<c:choose>
 										<c:when test="${board eq 'User'}">
-											<option value="1">ID</option>
-											<option value="2">NAME</option>
-											<option value="3">GRADE</option>
+											<option value="0">아이디</option>
+											<option value="1">이름</option>
+											<option value="2">등급</option>
 										</c:when>
 										<c:when test="${board eq 'Notice'}">
-											<option class="k" value="1">제목</option>
-											<option class="k" value="2">내용</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+										</c:when>
+										<c:when test="${board eq 'Festi'}">
+											<option value="0">제목</option>
+											<option value="1">내용</option>
+											<option value="2">지역</option>
 										</c:when>
 										<c:otherwise>
-											<option class="k" value="1">제목</option>
-											<option class="k" value="2">내용</option>
+											<option value="0">제목</option>
+											<option value="1">닉네임</option>
+											<option value="2">내용</option>
 										</c:otherwise>
 									</c:choose>
 								</select>

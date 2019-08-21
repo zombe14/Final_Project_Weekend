@@ -60,9 +60,10 @@
 						</div>
 				
 				<a id="list" title="${board}" class="${list.num} fqnaSelect_btn">목록</a>
+				<c:if test="${member.grade eq 3 }">
 				<a id="update" class="${board} fqnaSelect_btn">수정</a> 
 				<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
-				
+				</c:if>
 				<form action="./WeekRecoDelete" id="deleteFrm" method="post">
 				
 					<input type="hidden" class="num" id = "${list.num}" name="num" value="${list.num}">
