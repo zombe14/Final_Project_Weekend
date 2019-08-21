@@ -95,7 +95,7 @@ public class FestiDAO{
 	}
 	// 유저 추천;
 	// 리스트;
-	public List<FestiDTO> getUserRecoList(PageMaker pageMaker) throws Exception{
+	public List<FestiDTO> getUserRecoList(PageMaker pageMaker, HttpSession session) throws Exception{
 		return SqlSession.selectList(NAMESPACE+"getUserRecoList", pageMaker);
 	}
 	// 글선택;

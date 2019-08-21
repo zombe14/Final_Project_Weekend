@@ -205,9 +205,9 @@ public class FestiService {
 	}
 	// 유저 추천;
 	// 리스트;
-	public List<FestiDTO> getUserRecoList(PageMaker pageMaker) throws Exception{
+	public List<FestiDTO> getUserRecoList(PageMaker pageMaker, HttpSession session) throws Exception{
 		pageMaker.makeRow();
-		List<FestiDTO> list = festiDAO.getUserRecoList(pageMaker);
+		List<FestiDTO> list = festiDAO.getUserRecoList(pageMaker, session);
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makePage(totalCount);
 		return list;
