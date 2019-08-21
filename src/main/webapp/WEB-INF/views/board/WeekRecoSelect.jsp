@@ -87,6 +87,12 @@
 			}
 	});
 	
+	/* 글 수정 */
+	$('#update').click(function() {
+		var board = $(this).attr('class');
+		var num = $('.num').attr('id');
+		location.href="./WeekRecoUpdate?num="+num;
+	});
 
 	
 	/* 목록 */

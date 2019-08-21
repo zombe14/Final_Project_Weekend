@@ -43,6 +43,7 @@
   	      			</table>
 
 						<input type="hidden" name="num" value="${list.num}">
+
 						<a id="write" class="festiWrite_btn">등록하기</a>
 				</form>
 				</div>
@@ -68,6 +69,5 @@ $('#write').click(function() {
 	}
 });
 </script>
-
 </body>
 </html>		
