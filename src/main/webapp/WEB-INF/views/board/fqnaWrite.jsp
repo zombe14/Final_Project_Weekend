@@ -42,7 +42,7 @@
 						</c:if>
 						<c:if test="${board eq 'fqnaReply'}">
 							<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png">
-							<input type="text" name="title" id="title" value="${origin.title} 답변입니다." style="width: 95.8%"></td>
+							<input type="text" name="title" id="title" value="${origin.title} 답변입니다." style="width: 95.6%"></td>
 						</c:if>
 					</tr>
 					<tr>
