@@ -67,7 +67,7 @@
 				</div>
 				<div id="commentsWriteDiv">
 					<form action="./${board}commentsWrite" method="post" id="commentsFrm">
-						<input type="hidden" id="num" name="num" value="${dto.anum}">
+						<input type="hidden" id="num" name="num" value="${dto.anum }">
 						<strong><span>댓글(</span><span id="cCnt">${cCnt}</span>)</strong>
 						<div class="comments_name">				
 							<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
@@ -130,8 +130,8 @@
 	$('#commentsWrite').click(function() {
 		var writer = $('#writer').val();
 		var contents = $('#commentsContents').val();
-		var num = '${dto.anum}';
-		if(contents == ''){
+		var num = '';
+		if(contents == 'dto.anum'){
 			alert('내용을 입력해주세요');
 		} else {
 			$.ajax({
@@ -157,6 +157,21 @@
 			});
 		}
 	});
+	
+	function getCommentsList(){
+		$.ajax({
+			type:'GET',
+			url:'./commentsList',
+			data:{
+				num:'${dto.anum}'
+			},
+			success:function(data){
+				data = data.trim();    	
+				$('#commentsList').html(data);
+					
+			}
+		});
+	}
 	
 </script>
 </body>
