@@ -21,13 +21,24 @@ label{
 	font-weight: normal;
 }
 
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+}
+
+.week_title img{
+	width: 25px;
+	margin-top: -5px;
+}
+
 .td1 label{
 	font-weight: bold;
 	/* padding-left: 10px; */
 }
 .fwrite_wrap{
 	background-color: white;
-	padding: 30px 30px 50px;
+	padding: 30px 50px 70px;
 	border: 1px solid #dedede;
 }
 

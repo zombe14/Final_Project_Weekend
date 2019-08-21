@@ -27,7 +27,7 @@
 			<div class="conta">
 				<div class="fqna_wrap">
 					<div class="fqna_title">
-  	      				<strong> 유저추천 글 내용 </strong>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png" class="titleimg"><h3> 유저추천 글 내용 </h3>
   	      			</div>
 				<div class="tableDiv">
 						<table class="table" style="width: 100%">
