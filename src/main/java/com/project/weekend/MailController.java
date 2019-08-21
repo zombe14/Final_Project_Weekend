@@ -33,7 +33,7 @@ public class MailController {
 	@RequestMapping(value = "mailSending",method = RequestMethod.POST)
 	@ResponseBody
 	public int mailSending(HttpServletRequest request,HttpSession session, MemberDTO memberDTO, String email)throws Exception{
-        int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
+        int ran = new Random().nextInt(100000) + 10000;
         int result = 0;
         memberDTO = memberService.getSelectEmail(memberDTO);
         if(memberDTO==null) {
@@ -41,7 +41,7 @@ public class MailController {
         session.setAttribute("joinCode", joinCode);
 	    String setfrom = "ts560593@gmail.com";         
 	    String tomail  = request.getParameter("email");     // 받는 사람 이메일
-	    String title   = "Weekend 회원 가입 인증이메일 입니다."; // 제목
+	    String title   = "Weekend 회원 가입 인증이메일 입니다."; 	// 제목
 	    String content = "회원 가입 코드는 '"+joinCode+"' 입니다.";   // 내용
 	    try {
 	      MimeMessage message = mailSender.createMimeMessage();

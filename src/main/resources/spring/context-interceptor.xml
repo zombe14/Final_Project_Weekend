@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--Interceptor -->
+	<beans:bean id="memberJoinInterceptor" class="com.project.weekend.interceptor.MemberJoinInterceptor" />
+ 	<interceptors>
+		<interceptor>
+			<mapping path="/member/memberJoin"/>
+			<beans:ref bean="memberJoinInterceptor"/>
+		</interceptor>
+	</interceptors>
+
+	<beans:bean id="memberInterceptor" class="com.project.weekend.interceptor.MemberInterceptor" />
+		<interceptors>
+			<interceptor>
+				<mapping path="/member/memberAgree"/>
+				<mapping path="/member/memberLogin"/>
+				<beans:ref bean="memberInterceptor"/>
+			</interceptor>
+		</interceptors>
+			
+	<beans:bean id="adminInterceptor" class="com.project.weekend.interceptor.AdminInterceptor" />
+ 	<interceptors>
+		<interceptor>
+			<mapping path="/admin/*"/>
+			<beans:ref bean="adminInterceptor"/>
+		</interceptor>
+	</interceptors>
+	 
+	<beans:bean id="myPageInterceptor" class="com.project.weekend.interceptor.MyPageInterceptor"/>
+		<interceptors>
+			<interceptor>
+				<mapping path="/myPage/*"/>
+				<beans:ref bean="myPageInterceptor"/>
+			</interceptor>
+		</interceptors>
+		
+	<beans:bean id="updatePageInterceptor" class="com.project.weekend.interceptor.UpdatePageInterceptor" />
+		<interceptors>
+			<interceptor>
+				<mapping path="/festi/festiUpdate"/>
+				<beans:ref bean="updatePageInterceptor"/>
+			</interceptor>
+		</interceptors>
+		
+	<beans:bean id="writeInterceptor" class="com.project.weekend.interceptor.WriteInterceptor"/>
+		<interceptors>
+			<interceptor>
+				<mapping path="/festi/festiWrite"/>
+				<beans:ref bean="writeInterceptor"/>
+			</interceptor>
+		</interceptors>
+		
+	<beans:bean id="deleteInterceptor" class="com.project.weekend.interceptor.DeleteInterceptor"/>	
+		<interceptors>
+			<interceptor>
+				<mapping path="/festi/festiDelete"/>
+				<beans:ref bean="deleteInterceptor"/>
+			</interceptor>
+		</interceptors>
+		
+	<beans:bean id="userRecoWriteInterceptor" class="com.project.weekend.interceptor.UserRecoWriterInterceptor"/>
+		<interceptors>
+			<interceptor>
+				<mapping path="/UserReco/UserRecoWrite"/>
+				<beans:ref bean="userRecoWriteInterceptor"/>
+			</interceptor>
+		</interceptors>
+	
+	<context:component-scan base-package="com.project.weekend" />
+</beans:beans>

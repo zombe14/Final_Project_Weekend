@@ -166,18 +166,6 @@ public class MemberController {
 		session.setAttribute("memberAgree", memberAgree);
 		return "redirect:./memberJoin";
 	}
-	/*
-	 * @RequestMapping(value = "memberAgree2", method = RequestMethod.GET) public
-	 * void getAgree2()throws Exception{}
-	 * 
-	 * @RequestMapping(value = "memberAgree2", method = RequestMethod.POST) public
-	 * String getAgree2(HttpSession session,MemberDTO memberDTO)throws Exception{
-	 * session.setAttribute("memberEmail", memberDTO.getEmail());
-	 * session.setAttribute("memberPhone", memberDTO.getPhone()); ModelAndView mv =
-	 * new ModelAndView(); String memberAgree2 = "member2";
-	 * session.setAttribute("memberAgree2", memberAgree2); return
-	 * "redirect:./memberJoin"; }
-	 */
 	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
 	public String logout(String id, HttpSession session, MemberDTO memberDTO)throws Exception{
 		
@@ -187,69 +175,6 @@ public class MemberController {
 	}
 	@RequestMapping(value = "memberJoin1", method = RequestMethod.GET)
 	public void getJoin1()throws Exception{}
-	
-	
-	
-	/*
-	 * @RequestMapping(value="kakaoLogin") public void kakaoLogin()throws
-	 * Exception{}
-	 * 
-	 * @RequestMapping(value="memberJoinkakao", method = RequestMethod.GET) public
-	 * void kakakoJoin()throws Exception{}
-	 * 
-	 * @RequestMapping(value = "memberJoinkakao", method = RequestMethod.POST)
-	 * public ModelAndView kakaoJoin(MemberDTO memberDTO, MultipartFile photo,
-	 * HttpSession session,BindingResult bindingResult)throws Exception{
-	 * ModelAndView mv = new ModelAndView(); MemberDTO getId =
-	 * memberService.getId(memberDTO); memberDTO.setPw("1234"); String
-	 * message="회원가입 실패"; if(getId!=null) { message="이미 존재하는 아이디입니다.";
-	 * mv.setViewName("common/messageMove"); mv.addObject("message", message);
-	 * mv.addObject("path", "member/memberJoin"); }else { int result =
-	 * memberService.setWrite(memberDTO, photo, session); if(result>0) {
-	 * message="회원가입 성공"; } mv.setViewName("common/messageMove");
-	 * mv.addObject("message", message); mv.addObject("path", "../"); }
-	 * 
-	 * return mv; }
-	 * 
-	 * @RequestMapping(value = "kakaoDelete") public String kakaoDelete(HttpSession
-	 * session)throws Exception{ MemberDTO memberDTO =
-	 * (MemberDTO)session.getAttribute("member");
-	 * memberService.kakaoDelete(memberDTO); session.invalidate(); return
-	 * "redirect:../"; }
-	 * 
-	 * @RequestMapping(value = "kakaoLogout") public String kakaoLogout(HttpSession
-	 * session)throws Exception{ MemberDTO memberDTO =
-	 * (MemberDTO)session.getAttribute("member");
-	 * memberService.kakaoLogout(memberDTO); session.invalidate(); return
-	 * "redirect:../"; }
-	 */
-	/*
-	 * @RequestMapping(value = "getInfo") public ModelAndView getInfo(String
-	 * access_token, HttpSession session)throws Exception{ ModelAndView mv = new
-	 * ModelAndView(); MemberDTO memberDTO = memberService.getInfo(access_token);
-	 * memberDTO = memberService.getSelectkakao(memberDTO); String
-	 * message="가입된 회원이 아닙니다."; if(memberDTO==null) { message="가입 가능한 아이디입니다.";
-	 * mv.setViewName("common/messageMove"); mv.addObject("message", message);
-	 * mv.addObject("path", "./memberAgree"); return mv; }
-	 * session.setAttribute("grade", memberDTO.getGrade());
-	 * session.setAttribute("member", memberDTO); message="로그인 성공";
-	 * mv.setViewName("common/messageMove"); mv.addObject("message", message);
-	 * mv.addObject("path", "../"); return mv; }
-	 * 
-	 * @RequestMapping(value = "getInfo1") public ModelAndView getInfo(String
-	 * access_token, HttpSession session,String id)throws Exception{ ModelAndView mv
-	 * = new ModelAndView(); MemberDTO memberDTO =
-	 * memberService.getInfo1(access_token); MemberDTO memberID =
-	 * memberService.getId(memberDTO); String message = "가입 가능한 아이디입니다.";
-	 * if(memberID==null) { session.setAttribute("memberkakao", memberDTO);
-	 * mv.setViewName("common/messageMove"); mv.addObject("message", message);
-	 * mv.addObject("path", "./memberJoinkakao"); }else { message="이미 가입된 아이디입니다.";
-	 * mv.setViewName("common/messageMove"); mv.addObject("message", message);
-	 * mv.addObject("path", "./memberLogin"); } return mv; }
-	 */
-	
-	
-	
-	
+
 
 }
