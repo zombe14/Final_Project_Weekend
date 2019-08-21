@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.weekend.board.BoardDTO;
 import com.project.weekend.board.festi.after.AfterDAO;
+import com.project.weekend.board.festi.after.AfterDTO;
 import com.project.weekend.board.festi.after.AfterService;
 import com.project.weekend.board.festi.dates.DatesDAO;
 import com.project.weekend.board.festi.dates.DatesDTO;
@@ -151,6 +152,8 @@ public class FestiService {
 	public int getNum() throws Exception{
 		return festiDAO.getNum();
 	}
+	
+	
 	// 상혁
 	// 관리자 모드;
 	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
@@ -250,6 +253,23 @@ public class FestiService {
 	}
 
 	
+	// 난슬
+	public List<AfterDTO> getPointAvg(PageMaker pageMaker) throws Exception{
+		List<FestiDTO> list = festiDAO.getRankList(pageMaker);
+		List<AfterDTO> avglist = new ArrayList<AfterDTO>();
+		for(FestiDTO f : list) {
+			String num = f.getNum();
+			int category = f.getCategory();
+			pageMaker.setNum(num);
+			pageMaker.setCategory(category);
+			Double avg = festiDAO.getPointAvg(pageMaker);
+			AfterDTO afterDTO = new AfterDTO();
+			afterDTO.setNum(num);
+			afterDTO.setAvg(avg);
+			avglist.add(afterDTO);
+		}
+		return avglist;
+	}
 	
 	
 	

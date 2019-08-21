@@ -19,6 +19,13 @@ public class AfterDTO {
 	private int step;
 	private int depth;
 	private ArrayList<FileDTO> fileDTOs;
+	private Double avg;
+	public Double getAvg() {
+		return avg;
+	}
+	public void setAvg(Double avg) {
+		this.avg = avg;
+	}
 	public String getAnum() {
 		return anum;
 	}

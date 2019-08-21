@@ -148,6 +148,7 @@
 					<div class="detail_info_right">
 						<!-- <input type="text" name="date"  size="12" /> -->
 						<div id="date1"></div>
+						<c:if test="${dto.category eq 3}">
 						<dl class="doline_x">
 							<dt>예매가능 회차</dt>
 							<dd>
@@ -155,7 +156,7 @@
 								</select>
 							</dd>
 						</dl>
-						<c:if test="${dto.category eq 3}">
+						
 						<div id="selected">
 							
 						</div>
@@ -356,90 +357,98 @@
 	<script type="text/javascript">
 	
 	/* 옵션 날짜 넣기    - 카테고리 3만*/
-	var disabledDays = [];
-	$('.optiondates').each(function(){
-		var date2 = [];
-		var date = $(this).attr('title');
-		date = date.toString();
-		disabledDays.push(date);
-	});
-	
-	var show_times = '';
-	$("#date1").datepicker({
-		dateFormat : 'yy-mm-dd',
-		beforeShowDay : disableAllTheseDays,
-		onSelect : function(date){
-			var num = '${dto.num}';
-			var reg_date = date;
-			show_times = date;
+	if('${category}' == '3'){
+		var disabledDays = [];
+		$('.optiondates').each(function(){
+			var date2 = [];
+			var date = $(this).attr('title');
+			date = date.toString();
+			disabledDays.push(date);
+		});
+		
+		var show_times = '';
+		$("#date1").datepicker({
+			dateFormat : 'yy-mm-dd',
+			beforeShowDay : disableAllTheseDays,
+			onSelect : function(date){
+				var num = '${dto.num}';
+				var reg_date = date;
+				show_times = date;
+				$.ajax({
+					url:'./getOptions',
+					type:'POST',
+					data:{
+						num:num,
+						reg_date:reg_date
+					},
+					success:function(data){
+						var timesHtml = '<option hidden="true">시간을 선택해주세요</option>';
+						for(var i = 0;i<data.length;i++){
+							time = data[i].time;
+							show_times += '-'+time;
+							timesHtml += '<option class="timeList" id="'+data[i].dnum+'" value = "'+data[i].dnum+'" name="selTime">'+time+'</option>';
+						}
+						$('.festi_select').html(timesHtml);
+					},
+					error:function(e){
+						console.log(e);
+					}
+				})
+			}
+		});
+		
+		var tPrice = 0;
+		$('.festi_select').change(function(){
+			var dnum = $(this).val();
 			$.ajax({
-				url:'./getOptions',
+				url:'./getSelectOption',
 				type:'POST',
 				data:{
-					num:num,
-					reg_date:reg_date
+					dnum:dnum
 				},
 				success:function(data){
-					var timesHtml = '<option hidden="true">시간을 선택해주세요</option>';
-					for(var i = 0;i<data.length;i++){
-						time = data[i].time;
-						show_times += '-'+time;
-						timesHtml += '<option class="timeList" id="'+data[i].dnum+'" value = "'+data[i].dnum+'" name="selTime">'+time+'</option>';
-					}
-					$('.festi_select').html(timesHtml);
+					var selected = '';
+					tPrice = data.price;
+					selected += '<table class="table" style="width:100%;"><tr><td>좌석</td><td>'+data.seat+'석</td></tr><tr><td>가격</td><td id="price" value="'+data.price+'">'+data.price+'원</td></tr>'
+					selected += '<tr><td>매수</td><td><input type="number" value="1" id="amount" min="1" style="width:30%;" onchange="totalPrice()"></td></tr>'
+					selected += '<tr><td>총액</td><td id="total">'+data.price*1+'</td></tr></table>'
+					$('#selected').html(selected);
 				},
 				error:function(e){
 					console.log(e);
 				}
-			})
-		}
-	});
-	
-	var tPrice = 0;
-	$('.festi_select').change(function(){
-		var dnum = $(this).val();
-		$.ajax({
-			url:'./getSelectOption',
-			type:'POST',
-			data:{
-				dnum:dnum
-			},
-			success:function(data){
-				var selected = '';
-				tPrice = data.price;
-				selected += '<table class="table" style="width:100%;"><tr><td>좌석</td><td>'+data.seat+'석</td></tr><tr><td>가격</td><td id="price" value="'+data.price+'">'+data.price+'원</td></tr>'
-				selected += '<tr><td>매수</td><td><input type="number" value="1" id="amount" min="1" style="width:30%;" onchange="totalPrice()"></td></tr>'
-				selected += '<tr><td>총액</td><td id="total">'+data.price*1+'</td></tr></table>'
-				$('#selected').html(selected);
-			},
-			error:function(e){
-				console.log(e);
-			}
+			});
 		});
-	});
-	
-	function totalPrice(){
-		var total = $('#amount').val()*tPrice;
-		$('#total').html(total);	
-	}
-
-	function disableAllTheseDays(date) {
-		var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
-		for (i = 0; i < disabledDays.length; i++) {
-			if(m<10){
-				if ($.inArray(y + '-0' + (m + 1) + '-' + d, disabledDays) != -1) {
-					return [ true ];
-				}
-			} else {
-				if ($.inArray(y + '-' + (m + 1) + '-' + d, disabledDays) != -1) {
-					return [ true ];
-				}	
-			}
+		
+		function totalPrice(){
+			var total = $('#amount').val()*tPrice;
+			$('#total').html(total);	
 		}
-		return [ false ];
+	
+		function disableAllTheseDays(date) {
+			var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+			for (i = 0; i < disabledDays.length; i++) {
+				if(m<10){
+					if ($.inArray(y + '-0' + (m + 1) + '-' + d, disabledDays) != -1) {
+						return [ true ];
+					}
+				} else {
+					if ($.inArray(y + '-' + (m + 1) + '-' + d, disabledDays) != -1) {
+						return [ true ];
+					}	
+				}
+			}
+			return [ false ];
+		}
+	} else {
+		$("#date1").datepicker({
+			dateFormat : 'yy-mm-dd',
+			minDate : new Date("${dto.startDate}"),
+			maxDate : new Date("${dto.endDate}")
+		});
 	}
 	
-	//$('#payFrm').hide();
+	$('#payFrm').hide();
 	$('#reserve').click(function() {
 		var qu = $('#amount').val();
 		$('#qu').val(qu);
@@ -502,6 +511,7 @@
 	});
 	
 	
+	/*------------------------------ 끝까지 지도 스크립트!!------------------------- */
 	
 	/* 행사 위치 */
 	var mapContainer1 = document.getElementById('localMap'), // 지도를 표시할 div 
