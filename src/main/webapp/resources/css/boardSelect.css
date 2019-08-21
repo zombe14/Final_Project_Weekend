@@ -85,3 +85,37 @@
 	border: 1px solid white;
 	color: white;
 }
+
+#commentsWrite{
+	border: 1px solid #dedede;
+    padding: 16px 20px;
+    float: left;
+    background-color: white;
+}
+
+#commentsList{
+    background-color: #f5f6f7;
+    padding: 10px 20px;
+}
+
+#commentsList hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+#commentsList a{
+	float: right;
+	padding: 5px;
+	margin-top: -20px;
+}
+
+#commentsWriteDiv{
+    padding: 0 30px 15px;
+    background-color: #f5f6f7;
+}
+
+.comments_name{
+	padding: 5px 0;
+}

@@ -18,6 +18,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
  
 <!-- date picker -->
+<style type="text/css">
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+</style>
 </head>
 <body>
    <div id="wrap">
@@ -72,10 +79,11 @@
 					</tr>
 					<tr>
 						<td class="td1"><label for="startDate">시작일<span class="r">*</span></label></td>
-						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="startDate" class="date"></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="startDate" class="date" id="startDate"></td>
 					</tr>
 					<tr>
-						<td class="td1"><label for="endDate">종료일<span class="r">*</span></label></td>							<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="endDate" class="date"></td>
+						<td class="td1"><label for="endDate">종료일<span class="r">*</span></label></td>							
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/calendar.png"><input type="date" name="endDate" class="date" id="endDate"></td>
 					</tr>
 					<tr class="daehakDiv">
 						<td class="td1"><label for="price">가격</label></td>
@@ -132,56 +140,49 @@
 						</td>
 					</tr>
 					</c:if>
-					<tr>
-					<td>
-					</td>
-					<td>
 					
-				
-					</td>
-					</tr>
 				</tbody>
 				</table>
-
+				<input type="hidden" name=num value="${num}">
+				</form>
 				
-				<div id="datesOptionDiv"> <!-- 카테고리 3 -->
-					<a class="btn btn-default" id="addOptions">옵션 추가하기</a>
-					
-					<div id="datesOption">
-						<div id="option1">
-							<div class="options">
-								<div class="dateDiv">
-									<label for="dates">날짜 </label>
-									<input type="date" name="reg_date" class="dates">
-								</div>
-								<div class="timeDiv">
-									<label for="time">시작시간</label>
-									<input type="text" name="time" class="time">
-								</div>		
-								<div class="seatDiv">
-									<label for="seat">좌석</label>
-									<input type="number" name="seat" class="seat"><span> 석</span>
-								</div>
-								<div class="priceDiv">
-									<label for="price">가격</label>
-									<input type="number" name="price" class="price"><span> 원</span>
-								</div>
+				
+				<div id="datesOptionDiv"> <!-- 카테고리 3 -->				
+				<table class="table table">
+					<tr>
+						<td><label for="dates">날짜 </label></td>
+						<td><label for="time">시작시간</label></td>
+						<td><label for="seat">좌석</label></td>
+						<td><label for="price">가격</label></td>
+						<td><input type="hidden" name="num" value="${num}" id="num"></td>
+					</tr>
+					<tr>
+						<td><div class="dateDiv">
+								<input type="date" name="reg_date" class="dates" id="dates">
 							</div>
-							<hr>
-							
-						</div>
-					</div>
-					
+						</td>
+						<td><div class="timeDiv">
+								<input type="text" name="time" class="time" id="time" placeholder="ex)15:00">
+							</div>
+						</td>
+						<td><div class="seatDiv">
+								<input type="number" name="seat" class="seat" id="seat"><span> 석</span>
+							</div>
+						</td>
+						<td><div class="priceDiv">
+								<input type="number" name="price" class="price" id="price"><span> 원</span>
+							</div>
+						</td>
+						<td><a id="writeOption">옵션등록</a></td>
+					</tr>
+				</table>
+					<div id="optionsDiv">
+						
+					</div>		
 				</div>
-				
-				
 
-				<a id="test">date test</a>
       		 	<a id="write" class="btn btn-default">등록</a>
 
-
-				
-			</form> 
   	      	</div>
       	</div>
     </div>
@@ -196,6 +197,9 @@
 <script src="../resources/js/summernote.js"></script>
 <!-- script -->
 <script type="text/javascript">
+
+$('.daehakDiv').hide();
+
 /* 시작일, 종료일 비교 */
 $('#endDate, #startDate').change(function(){
 	var startDate = $( '#startDate' ).val();
@@ -215,27 +219,74 @@ $('#endDate, #startDate').change(function(){
 })
 
 
-$('#hiddenDiv').hide();
-//$('#datesOptionDiv').hide();
+$('#datesOptionDiv').hide();
 $('.category').click(function() {
 	if($(this).val() != 3){
-		$('#festiDatesDIV').show();
 		$('#datesOptionDiv').hide();
 	} else {
-		$('#festiDatesDIV').show();
 		$('#datesOptionDiv').show();
+		$('#optionsDiv').empty();
 	}
 });
 
-$('#addOptions').click(function() {
-	var option = $('#option1').html();
-	var html = option
-	$('#datesOption').append(html);
-});
+	
+	$('#writeOption').click(function(){
+		var num = $('#num').val();
+		var reg_date = $('#dates').val();
+		var time = $('#time').val();
+		var seat = $('#seat').val();
+		var price = $('#price').val();
+		$.ajax({
+			url:'./optionWrite',
+			type:'POST',
+			data:{
+				num:num,
+				reg_date:reg_date,
+				time:time,
+				seat:seat,
+				price:price
+			},
+			success:function(data){
+				if(data == '1'){
+					getOptionsList();
+					$('#dates').val('');
+					$('#time').val('');
+					$('#seat').val('');
+					$('#price').val('');
+				} else {
+					alert('실패');
+				}
+			},
+			error:function(e){
+				console.log(e);
+			}
+		});
+	});
+	
+	function getOptionsList(){
+		jQuery.ajaxSettings.traditional = true;
+		$.ajaxSettings.traditional = true;
+		var num = "${num}";
+		$.ajax({
+			type:'GET',
+			url:'./optionList',
+			data:{
+				num:num
+			},
+			success:function(data){
+				console.log(data);
+				data = data.trim();    	
+				$('#optionsDiv').html(data);	
+			},
+			error:function(e){
+				console.log(e);
+			}
+		});
+	}
 	
 	
 	//$(this).last().val()
-	var min='';
+/* 	var min='';
 	var max='';
 	var endDate;
 	var startDate;
@@ -252,8 +303,7 @@ $('#addOptions').click(function() {
 			dates2 = new Date(dates2[0], dates2[1]-1, dates2[2]);
 			datesCompare.push(dates2);
 		}
-		//console.log(datesCompare);
-		/* endDate */
+	
 		var tmp1='';
 		var tmp2 = '';
 	
@@ -280,8 +330,8 @@ $('#addOptions').click(function() {
 		$('#startDate').val(startDate);
 		
 	});
-
-
+ */
+	
 
 /* 첨부 파일 관리 */
 // 개수 제한. 최대 5개까지.
@@ -444,6 +494,7 @@ $('#top').click(function(){
 
 	 $('#write').click(function() {
 		$('#frm').submit();
+		$('#datesOptionFrm').submit();
 		/* var title = $('#title').val() != '';
 		var writer = $('#writer').val() != '';
 		var contents = $('#contents').val() != '';

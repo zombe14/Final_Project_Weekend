@@ -36,4 +36,9 @@ public class DatesDAO {
 	public List<DatesDTO> getList(String num) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", num);
 	}
+	
+	public List<DatesDTO> getOptions(DatesDTO datesDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getOptions", datesDTO);
+	}
+
 }

@@ -75,9 +75,13 @@
 	</update>
 
 	<delete id="setDelete" parameterType="String">
-		DELETE FESTI WHERE NUM =
-		#{num}
+		DELETE FESTI WHERE NUM = #{num}
 	</delete>
+	
+	<update id="setHitUpdate" parameterType="String">
+		update festi set hit = hit+1 where num = #{num}
+	</update>
+	
 	<!-- 상혁 -->
 	<select id="getAllList" parameterType="PageMaker" resultMap="festiResult">
 		SELECT * FROM 

@@ -11,70 +11,83 @@
 <title>${boardTitle} Write</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-
-<style type="text/css">
-	.r{
-		color: red;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/festiWrite.css">
 </head>
 <body>
    <div id="wrap">
       <div id="header">
-      <c:import url="../inc/header.jsp"></c:import>
+      	<c:import url="../inc/header.jsp"></c:import>
       </div>
       <div id="container">
-      	<div class="inner">
-  	      	
+      	<div class="conta">
+  	      	<div class="fwrite_wrap">
+				<div class="fwrite_title">
+  	      			<h3>${board}글수정</h3>
+  	      		</div>
       		 <form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
-			      		 	
-				<div>
-					<label for="title">제목<span class="r">*</span></label>
-					<input type="text" name="title" id="title" value="${dto.title}">
-				</div>
-				<div>
-					<label for="writer">작성자<span class="r">*</span></label>
-					<input type="text" name="writer" value="${dto.writer}" id="writer" readonly="readonly">
-				</div>
-				
-				<div>
-					<label for="contents">내용<span class="r">*</span></label>
-					<textarea rows="" cols="" name="contents" id="contents">${dto.contents}</textarea>
-				</div>
-				<div>
-					<label for="files">첨부파일</label>
-					<a id="addFiles">파일추가</a>
-					<div id="filed">
-						<input type="hidden" id="fileCount" value="${dto.fileDTOs.size()}">
-						<c:forEach items="${dto.fileDTOs}" var="f">
-							<c:if test="${f.oname ne null}">
-								<div class="fileDTOsDiv">
-									<p style="display: inline-block;">${f.oname}</p>
-									<span class="glyphicon glyphicon-remove deleteFile" id="${f.fnum}" title="${f.fname}" style="display: inline-block;"></span>
-								</div> 
-							</c:if>
-						</c:forEach>
-					</div>
-					<hr>
-					<div id="files">
+			    <table class="table table-bordered">
+      		 		<tbody>
+					<tr>
+						<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png">
+							<input type="text" name="title" id="title" value="${dto.title}" style="width: 95.8%"></td>							
+					</tr>
+			    	<tr>
+						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}memberNick" readonly="readonly" id="writer" style="width: 40%"></td>
+					</tr>
+			     	<tr>
+						<td class="td1"><label for="contents">내용<span class="r">*</span></label></td>
+						<td><textarea rows="" cols="" name="contents" id="contents">
+						${dto.contents}</textarea></td>
+					</tr>
+					<tr>
+						<td class="td1"><label for="files">첨부파일</label></td>
+						<td>
+							<a id="addFiles"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일추가</a>
+							<div id="filed">
+								<input type="hidden" id="fileCount" value="${dto.fileDTOs.size()}">
+									<c:forEach items="${dto.fileDTOs}" var="f">
+									<c:if test="${f.oname ne null}">
+										<div class="fileDTOsDiv">
+											<p style="display: inline-block;">${f.oname}</p>
+											<span class="glyphicon glyphicon-remove deleteFile" id="${f.fnum}" title="${f.fname}" style="display: inline-block;"></span>
+										</div> 
+									</c:if>
+									</c:forEach>
+							</div>
+							<div id="files">
 						
-					</div>
-				</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td1">
+							<label for="point">별점<span class="r">*</span></label>
+						</td>
+						<td>
+							<input type="radio" name="point" value="1" class="point" id="p1"> 
+							<label for="p1">싫어요</label>
+							<input type="radio" name="point" value="2" class="point" id="p2"> 
+							<label for="p2">별로에요</label>
+							<input type="radio" name="point" value="3" class="point" id="p3">
+							<label for="p3">보통이에요</label>
+							<input type="radio" name="point" value="4" class="point" id="p4"> 
+							<label for="p4">재미있어요</label>
+							<input type="radio" name="point" value="5" class="point" id="p5"> 
+							<label for="p5">훌륭해요</label>
+						</td>
+					</tr>
+			
 				
 					<div>
 	      		 		<input type="hidden" name="anum" value="${dto.anum}"> 
 	      		 		<input type="hidden" name="num" value="${dto.num}">
 					</div>
-					<div>
-						<label for="point">별점<span class="r">*</span></label>
-						<input type="radio" name="point" value="1" class="point"> 싫어요
-						<input type="radio" name="point" value="2" class="point"> 별로에요
-						<input type="radio" name="point" value="3" class="point"> 보통이에요
-						<input type="radio" name="point" value="4" class="point"> 재미있어요
-						<input type="radio" name="point" value="5" class="point"> 훌륭해요
-					</div>
+				</tbody>
+      		 </table>
       		 	
-				<a id="write" class="btn btn-default">등록</a>
+				<a id="write" class="festiWrite_btn">등록</a>
 			</form> 
 			
       	</div>
