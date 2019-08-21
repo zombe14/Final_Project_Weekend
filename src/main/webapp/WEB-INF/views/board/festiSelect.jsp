@@ -182,9 +182,6 @@
 							</c:forEach>
 						</div>
 
-						
-						${dto.writer}, ${member.nickname}
-
 						<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
 
 
