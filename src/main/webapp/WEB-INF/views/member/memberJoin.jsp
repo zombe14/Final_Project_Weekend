@@ -8,10 +8,10 @@
 <meta charset="utf-8">
   <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css?ver=1">
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
      <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=1"></script>
+  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=7"></script>
 <title>Weekend - 회원가입</title>
 
 </head>
@@ -242,8 +242,6 @@
 			<div class="essentiaDataWrap">
 			</div>
 
-			 <input type="hidden" value="${memberEmail }" name="email" id="email">
-			 <input type="hidden" value="${memberPhone }" name="phone" id="phone">
 				<div id="final_button">
 					<button type="button" class="certifyButtonWrap_final certifyButtonWrap jnbtn">
 							회원가입

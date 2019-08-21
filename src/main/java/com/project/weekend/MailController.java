@@ -30,23 +30,18 @@ public class MailController {
 	private MailService mailService;
 	@Inject
 	private MemberService memberService;
-	@RequestMapping(value = "/mailSending",method = RequestMethod.POST)
+	@RequestMapping(value = "mailSending",method = RequestMethod.POST)
 	@ResponseBody
-	public int mailSending(HttpServletRequest request,HttpSession session, MemberDTO memberDTO){
-        int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
+	public int mailSending(HttpServletRequest request,HttpSession session, MemberDTO memberDTO, String email)throws Exception{
+        int ran = new Random().nextInt(100000) + 10000;
         int result = 0;
-        try {
-			memberDTO = memberService.getSelectEmail(memberDTO);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+        memberDTO = memberService.getSelectEmail(memberDTO);
         if(memberDTO==null) {
         String joinCode = String.valueOf(ran);
         session.setAttribute("joinCode", joinCode);
 	    String setfrom = "ts560593@gmail.com";         
 	    String tomail  = request.getParameter("email");     // 받는 사람 이메일
-	    String title   = "Weekend 회원 가입 인증이메일 입니다."; // 제목
+	    String title   = "Weekend 회원 가입 인증이메일 입니다."; 	// 제목
 	    String content = "회원 가입 코드는 '"+joinCode+"' 입니다.";   // 내용
 	    try {
 	      MimeMessage message = mailSender.createMimeMessage();

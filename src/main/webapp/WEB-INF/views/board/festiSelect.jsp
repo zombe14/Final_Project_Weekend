@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -181,9 +181,13 @@
 								<a class="optiondates" title="${o.reg_date}"></a>
 							</c:forEach>
 						</div>
+
 						
 						${dto.writer}, ${member.nickname}
-						<c:if test="${dto.writer eq member.nickname}">
+
+						<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
+
+
 						<div class="admin_button">
 							<a href="./festiUpdate?num=${dto.num}&writer=${dto.writer}">수정</a> 
 							<a id="delete">삭제</a>
@@ -192,7 +196,9 @@
 								<input type="hidden" name="writer" value="${dto.writer}">
 							</form>
 						</div>
+
 						</c:if>
+
 					</div>
 				</div>
 			</div>
