@@ -76,7 +76,7 @@ public class FestiDAO{
 	}
 	// w추천;
 	// 리스트;
-	public List<FestiDTO> getWeekRecoList(PageMaker pageMaker) throws Exception{
+	public List<FestiDTO> getWeekRecoList(HttpSession session, PageMaker pageMaker) throws Exception{
 		return SqlSession.selectList(NAMESPACE+"getWeekRecoList", pageMaker);
 	}
 	// 글선택;

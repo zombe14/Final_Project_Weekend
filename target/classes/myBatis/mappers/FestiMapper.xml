@@ -86,7 +86,7 @@
 	<!-- 관리자 페이지 -->
 	<!-- 종류별 게시글 가져오기 -->
 	<!-- festi table -->
-	<!-- 공지, w추천, 유저추천, 공연, 축제, 대학로 -->
+	<!-- w추천, 유저추천, 공연, 축제, 대학로 -->
 	<select id="getBoardList" parameterType="PageMaker" resultType="FestiDTO">
 		select * from 
 		(select rownum R, F.* from

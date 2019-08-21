@@ -28,6 +28,7 @@ import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.file.FileService;
+import com.project.weekend.member.MemberDTO;
 import com.project.weekend.util.FileSaver;
 import com.project.weekend.util.PageMaker;
 
@@ -158,27 +159,27 @@ public class FestiService {
 	// 관리자 용;
 	// 종류별 게시글 가져오기;
 	// w추천, 유저추천, 공연, 축제, 대학로;
-	public List<FestiDTO> getBoardList(PageMaker pageMaker, HttpSession session) throws Exception{
+	public List<FestiDTO> getBoardList(HttpSession session, PageMaker pageMaker) throws Exception{
+		 int totalCount = festiDAO.getCount(pageMaker.getCategory()) ;
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getBoardList(pageMaker, session);
-		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makePage(totalCount);
 		return list;
 	}
 	// 내글 불러오기
 	public List<FestiDTO> getListMy(PageMaker pageMaker) throws Exception{
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getListMy(pageMaker);
-		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makePage(totalCount);
 		return list;
 	}
 	// w 추천;
 	// 리스트;
-	public List<FestiDTO> getWeekRecoList(PageMaker pageMaker) throws Exception{
+	public List<FestiDTO> getWeekRecoList(HttpSession session, PageMaker pageMaker) throws Exception{
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getWeekRecoList(pageMaker);
-		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makePage(totalCount);
 		return list;
 	}

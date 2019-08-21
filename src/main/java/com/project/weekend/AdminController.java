@@ -117,9 +117,11 @@ public class AdminController {
 	@RequestMapping(value = "aWeekRecoList", method = RequestMethod.GET)
 	public ModelAndView adminWeekRecoList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<FestiDTO> list = festiService.getBoardList(pageMaker, session);
-		mv.addObject("list", list);
+		List<FestiDTO> list = festiService.getWeekRecoList(pageMaker, session);
+		mv.addObject("title", "w 추천");
 		mv.addObject("board", "WeekReco");
+		mv.addObject("list", list);
+		mv.addObject("pager", pageMaker);
 		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
