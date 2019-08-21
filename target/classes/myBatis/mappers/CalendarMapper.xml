@@ -15,11 +15,17 @@
 	<update id="updateCalendar" parameterType="CalendarDTO">
 		update google_calendar set board=#{board},
 		sdate=#{sdate}, stime=#{stime}, edate=#{edate},
-		etime=#{etime}, summary=#{summary}
+		dtime=#{etime}, summary=#{summary}
 		where eid = #{eid}
 	</update>
 	
 	<delete id="deleteCalendar" parameterType="String">
 		delete google_calendar where board=#{board}
 	</delete>
+	
+	
+	<select id="selectEid" resultType="String" parameterType="String">
+	      select eid from google_calendar where board = #{board}
+	   </select>
+	
 </mapper>
