@@ -25,7 +25,11 @@
 	</select>
 	
 	<select id="getList" parameterType="String" resultType="DatesDTO">
-		select * from dates where num = #{num} order by reg_date desc
+		select * from dates where num = #{num} order by reg_date asc, time asc
+	</select>
+	
+	<select id="getOptions" parameterType="DatesDTO" resultType="DatesDTO">
+		select * from dates where num = #{num} and reg_date = #{reg_date}
 	</select>
 	
 </mapper>

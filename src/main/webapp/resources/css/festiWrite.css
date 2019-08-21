@@ -46,6 +46,23 @@ input{
 	outline: none;
 }
 
+.userRecoWrite_btn{
+	background-color: white;
+    color: black;
+    padding: 10px 30px;
+    float: right;
+    border: 1px solid #adadad;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.userRecoWrite_btn:hover{
+	background-color: #00d344;
+	border: 1px solid white;
+	color: white;
+}
+
+
 .festiWrite_btn{
 	background-color: white;
     color: black;
@@ -122,36 +139,15 @@ input{
 .pwpw{
 	width: 300px;
 }
-	
 
- input[type=radio] { display:none; } 
-
-
-
-
-input[type=radio] + label { 
-	display: inline-block; 
-	cursor: pointer; 
-	line-height: 22px;  
-	background: url('../images/checkbox/checkbox_off.png') left/15px no-repeat; 
-	padding: 0 20px;
-}
-
-input[type=radio]:checked + label { 
-	 background: url("../images/checkbox/checkbox_on.png") left/15px no-repeat;
- }
-  input[type=checkbox] { display:none; } 
-
- 
-
-input[type=radio   ]:not(old){
+input[type=radio]:not(old){
   width   : 28px;
   margin  : 0;
   padding : 0;
   opacity : 0;
 }
 
-input[type=radio   ]:not(old) + label{
+input[type=radio]:not(old) + label{
   display      : inline-block;
   margin-left  : -28px;
   padding-left : 28px;

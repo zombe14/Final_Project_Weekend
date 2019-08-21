@@ -17,10 +17,7 @@ public class PayDAO {
 		return sqlSession.insert(NAMESPACE+"payment", payVO);
 	}
 	
-	public int updateToken(String pg_token, String partner_order_id) throws Exception{
-		PayVO payVO = new PayVO();
-		payVO.setPartner_order_id(partner_order_id);
-		payVO.setPg_token(pg_token);
+	public int updateToken(PayVO payVO) throws Exception{
 		return sqlSession.update(NAMESPACE+"updateToken", payVO);
 	}
 	

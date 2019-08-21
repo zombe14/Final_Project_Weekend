@@ -7,7 +7,7 @@
 	<insert id="payment" parameterType="PayVO">
 		insert into payment values(
 			#{tid}, #{partner_order_id}, #{partner_user_id},
-			null, #{total_amount}, #{total_amount}, 2
+			null, #{total_amount}, #{total_amount}, 2, #{show_times}
 		)
 	</insert>
 	

@@ -28,10 +28,11 @@ public class UpdatePageInterceptor extends HandlerInterceptorAdapter {
 		String writer = request.getParameter("writer");
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("member");
+		Object nickname = session.getAttribute("memberNickname");
 		Object grade = session.getAttribute("grade");
 		if(obj!=null) {
 			if(grade.equals(2)){
-				if(obj.equals(writer)) {
+				if(nickname.equals(writer)) {
 					result=true;
 				}else {
 					response.sendRedirect("../festi/festiSelect?num="+num);
