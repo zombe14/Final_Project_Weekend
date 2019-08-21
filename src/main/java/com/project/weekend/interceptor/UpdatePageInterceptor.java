@@ -30,8 +30,6 @@ public class UpdatePageInterceptor extends HandlerInterceptorAdapter {
 		Object obj = session.getAttribute("member");
 		Object nickname = session.getAttribute("memberNickname");
 		Object grade = session.getAttribute("grade");
-		System.out.println(writer);
-		System.out.println(nickname);
 		if(obj!=null) {
 			if(grade.equals(2)){
 				if(nickname.equals(writer)) {
