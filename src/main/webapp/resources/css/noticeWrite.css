@@ -15,7 +15,13 @@
 	width: 20px;
 	margin-right: 10px;
 	}
-	
+
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+}
+
 .write_title input{
 	width: 95%;
 	height: 30px;

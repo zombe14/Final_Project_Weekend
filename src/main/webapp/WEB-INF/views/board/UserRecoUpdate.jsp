@@ -21,7 +21,7 @@
       	<div class="conta">
   	      	<div class="fwrite_wrap">
   	      		<div class="fwrite_title">
-  	      			<h3>유저추천 글수정</h3>
+  	      			<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png" class="titleimg"><h3>유저추천 글수정</h3>
   	      		</div>
   	      		<form action="./UserRecoUpdate" method="post" enctype="multipart/form-data" id="frm">
 					<table class="table table-bordered">
@@ -29,7 +29,7 @@
 							<td class="td1"><label for="title">제목 <span class="r">*</span></label></td>
 							<td>
 								<img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png">
-								<input type="text" name="title" class="required" id="title" value="${list.title}" style="width: 95.8%">
+								<input type="text" name="title" class="required" id="title" value="${list.title}" style="width: 95.6%">
 							</td>
 						</tr>
 						<tr class="update_writer">

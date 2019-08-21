@@ -66,7 +66,7 @@
 								href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
 						</ul>
 						<div class="call_cont">
-							<h3>${boardTitle}글수정</h3>
+							<img alt="" src="${pageContext.request.contextPath}/resources/images/qa.png" class="titleimg"><h3>${boardTitle}글수정</h3>
 							<div class="call_wrap">
 								<form action="./${board}Update" method="post"
 									enctype="multipart/form-data" id="frm">
