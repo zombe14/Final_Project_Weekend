@@ -92,9 +92,9 @@
   	      						<!-- 검색창 -->
 				<form action="./${board}List" class="search_form">
 					<select name="kind" class="search_select">
-						<option value="0">전체</option>
-						<option value="1">제목</option>
-						<option value="2">내용</option>
+						<option value="1">전체</option>
+						<option value="2">제목</option>
+						<option value="3">내용</option>
 					</select> 
 					<input type="text" placeholder="" name="search" class="search_input">
 					<button id="searchButton">검색</button>

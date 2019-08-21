@@ -154,13 +154,13 @@
 		(select rownum R, F.* from
 		(select * from festi where
 		<choose>
-			<when test="kind = 1">
+			<when test="kind == 1">
 				title
 			</when>
-			<when test="kind = 2">
+			<when test="kind == 2">
 				contents
 			</when>
-			<when test="kind = 3">
+			<when test="kind == 3">
 				writer
 			</when>
 			<otherwise>
