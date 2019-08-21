@@ -75,9 +75,13 @@
 	</update>
 
 	<delete id="setDelete" parameterType="String">
-		DELETE FESTI WHERE NUM =
-		#{num}
+		DELETE FESTI WHERE NUM = #{num}
 	</delete>
+	
+	<update id="setHitUpdate" parameterType="String">
+		update festi set hit = hit+1 where num = #{num}
+	</update>
+	
 	<!-- 상혁 -->
 	<select id="getAllList" parameterType="PageMaker" resultMap="festiResult">
 		SELECT * FROM 
@@ -101,6 +105,13 @@
 		ORDER BY NUM DESC) F) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
+	
+	<!-- 평점 평균 -->
+	<select id="getPointAvg" parameterType="PageMaker" resultType="java.lang.Double">
+		select round(sum(nvl(after.point,1))/count(after.anum),1) from after inner join festi using(num) where festi.category = #{category} and num = #{num}
+	</select>
+	
+	
 	<!-- 상혁시작 -->
 	
 	<!-- 2레벨 -->
@@ -113,7 +124,7 @@
 	<select id="getWeekRecoList" parameterType="pageMaker" resultType="FestiDTO">
 		select * from
 		(select rownum R, F.* from
-		(select num, title, local, region
+		(select num, writer,title, local, region
 		from festi full join files using(num)
 		where category = 0
 		order by num desc) F)
@@ -172,7 +183,7 @@
 	</insert>
 	<!-- 글 수정 -->
 	<update id="setUserRecoUpdate" parameterType="FestiDTO">
-		update festi set title = #{title}, contents = #{contents}, where num = #{num}
+		update festi set title = #{title}, contents = #{contents} where num = #{num}
 	</update>
 	<!-- 글 삭제 -->
 	<delete id="setUserRecoDelete" parameterType="String">
