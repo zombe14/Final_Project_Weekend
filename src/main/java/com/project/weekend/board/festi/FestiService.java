@@ -187,19 +187,12 @@ public class FestiService {
 	public int getNum() throws Exception{
 		return festiDAO.getNum();
 	}
-	
-	
 	// 상혁
 	// 관리자 용;
 	// 종류별 게시글 가져오기;
 	// w추천, 유저추천, 공연, 축제, 대학로;
-	public List<FestiDTO> getBoardList(HttpSession session, PageMaker pageMaker) throws Exception{
-		 int totalCount = festiDAO.getCount(pageMaker.getCategory()) ;
-		pageMaker.makeRow();
-		List<FestiDTO> list = festiDAO.getBoardList(pageMaker, session);
-		pageMaker.makePage(totalCount);
-		return list;
-	}
+	
+	// 마이 페이지 용;
 	// 내글 불러오기
 	public List<FestiDTO> getListMy(PageMaker pageMaker) throws Exception{
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
@@ -208,12 +201,13 @@ public class FestiService {
 		pageMaker.makePage(totalCount);
 		return list;
 	}
+	//// 외부 board;
 	// w 추천;
 	// 리스트;
 	public List<FestiDTO> getWeekRecoList(HttpSession session, PageMaker pageMaker) throws Exception{
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makeRow();
-		List<FestiDTO> list = festiDAO.getWeekRecoList(pageMaker);
+		List<FestiDTO> list = festiDAO.getWeekRecoList(session, pageMaker);
 		pageMaker.makePage(totalCount);
 		return list;
 	}
@@ -288,8 +282,6 @@ public class FestiService {
 		}
 		return list;
 	}
-
-	
 	// 난슬
 	/*
 	public List<AfterDTO> getPointAvg(PageMaker pageMaker) throws Exception{
@@ -309,7 +301,4 @@ public class FestiService {
 		return avglist;
 	}
 	*/
-	
-	
-	
 }

@@ -35,9 +35,9 @@ public class WeekRecoController{
 	
 	// 리스트 출력;
 	@RequestMapping(value = "WeekRecoList", method = RequestMethod.GET)
-	public ModelAndView getList(PageMaker pageMaker) throws Exception{
+	public ModelAndView getList(HttpSession session, PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<FestiDTO> list = festiService.getWeekRecoList(pageMaker);
+		List<FestiDTO> list = festiService.getWeekRecoList(session, pageMaker);
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/WeekRecoList");

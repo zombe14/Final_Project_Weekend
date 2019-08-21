@@ -111,13 +111,13 @@ public class AdminController {
 		mv.setViewName("admin/aBoardList");
 		return mv;
 	}
-	// w추천, 유저추천, 공연, 축제, 대학로;
 	//////////////festi table; //////////////
+	// w추천, 유저추천, 공연, 축제, 대학로;
 	// w 추천 리스트;
 	@RequestMapping(value = "aWeekRecoList", method = RequestMethod.GET)
 	public ModelAndView adminWeekRecoList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<FestiDTO> list = festiService.getWeekRecoList(pageMaker, session);
+		List<FestiDTO> list = festiService.getWeekRecoList(session, pageMaker);
 		mv.addObject("title", "w 추천");
 		mv.addObject("board", "WeekReco");
 		mv.addObject("list", list);
