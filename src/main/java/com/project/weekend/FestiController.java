@@ -61,6 +61,7 @@ public class FestiController{
 	@RequestMapping(value = "festiWrite", method = RequestMethod.POST)
 	public ModelAndView setWrite(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{ //, List<DatesDTO> datesDTOs
 		ModelAndView mv = new ModelAndView();
+		System.out.println("ddd");
 		String path = "board/boardTile";
 		int res = festiService.setWrite(festiDTO, filelist, session);
 		GoogleCalendarDTO googleCalendarDTO = new GoogleCalendarDTO();
