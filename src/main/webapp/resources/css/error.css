@@ -1,0 +1,50 @@
+#wrap{
+    background-color: #f5f6f7;
+    min-height: 100%;   
+}
+
+.error_logo{
+	text-align: center;
+    padding-top: 100px;
+}
+
+.error_logo img{
+	width: 100px;
+}
+
+.error_title{
+	text-align: center;
+	margin-top: 20px;
+}
+
+.error_title strong{
+	font-size: 30px;
+}
+
+.error_p{
+	margin-top: 20px;
+}
+
+.error_p b{
+	color: #00d344;
+}
+
+a{
+	text-decoration: none;
+}
+
+.btn{
+	text-align: center;
+	margin: 0 auto;
+	width: 460px;
+    border-top: 1px solid #999;
+	padding-top: 30px;
+}
+.home_btn{
+    padding: 10px 20px;
+	background-color: #00d344;
+	color: white;
+	font-size: 15px;
+	border: 1px solid white;
+    border-radius: 2px;
+}

@@ -17,6 +17,15 @@ a.on:visited{background-color: #757575; color:white;}
     font-size: 25px;
 }
 
+.rank_title strong{
+	margin-left: 10px;
+}
+
+.rank_title img{
+	width: 25px;
+	margin-top: -5px;
+}
+
 .rank_info{
     border-bottom: 2px solid #ddd;
     margin: 15px 0 20px;

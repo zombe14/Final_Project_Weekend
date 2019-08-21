@@ -235,7 +235,7 @@
 							<br>
 						<!-- 주변 맛집 -->
 						<div id="resta" class="festi_h4">
-							<img alt="" src="${pageContext.request.contextPath}/resources/images/location.png"><h4>주변 식당</h4>
+							<img alt="" src="${pageContext.request.contextPath}/resources/images/cook.png"><h4>주변 식당</h4>
 							<div class="map_wrap">
 						   		 <div id="map2" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
 								<!-- 리스트 -->
@@ -257,7 +257,7 @@
 					<br>
 					<!-- 주변 숙소 -->
 					<div id="hotel" class="festi_h4">
-						<img alt="" src="${pageContext.request.contextPath}/resources/images/location.png"><h4>주변 숙소</h4>
+						<img alt="" src="${pageContext.request.contextPath}/resources/images/hotel.png"><h4>주변 숙소</h4>
 						<div class="map_wrap">
 						    <div id="map3" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
 							<!-- 리스트 -->
