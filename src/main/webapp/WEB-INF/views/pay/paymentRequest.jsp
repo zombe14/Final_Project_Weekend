@@ -6,34 +6,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JSP 기본 폼</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/home.css">
-<link rel="shortcut icon" type="image/x-icon"
-	href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 <script type="text/javascript">
-	$(function() {
 		var url = '${url}';
-		var win = window.open(null, "", "width=450,height=700");
-		win.document.write('<iframe width="100%", height="100%" src="' + url
-				+ '" frameborder="0" allowfullscreen></iframe>');
-	});
+		location.href = url;
 </script>
 </head>
 <body>
-	<div id="wrap">
-		<div id="header">
-			<c:import url="../inc/header.jsp"></c:import>
-		</div>
-		<div id="container">
-			<div class="conta">
-				<h1>Payment Request Loding...</h1>
-	<input type="text" id="partner_order_id" value="${order}">
-			</div>
-		</div>
-		<div id="footer">
-			<c:import url="../inc/footer.jsp"></c:import>
-		</div>
-	</div>
 </body>
 </html>

@@ -148,7 +148,7 @@
 					<div class="detail_info_right">
 						<!-- <input type="text" name="date"  size="12" /> -->
 						<div id="date1"></div>
-						<c:if test="${dto.category eq 3}">
+						
 						<dl class="doline_x">
 							<dt>예매가능 회차</dt>
 							<dd>
@@ -157,9 +157,11 @@
 							</dd>
 						</dl>
 						
+						<!-- 선택한 날짜, 시간, 좌석, 가격 + 매수선택, 총가격  -->
 						<div id="selected">
 							
 						</div>
+						
 						
 						<div class="reserve_button"><a id="reserve">예매하기</a></div>
 						<form action="../pay/orderRequest" method="post" id="payFrm">
@@ -170,6 +172,8 @@
 							<input type="text" name="total_amount" id="to">
 							<input type="text" name="show_times" id="sh">
 						</form>
+				
+					
 						
 						<!-- 날짜 옵션에 필요한거 -->
 						<div>
@@ -177,7 +181,8 @@
 								<a class="optiondates" title="${o.reg_date}"></a>
 							</c:forEach>
 						</div>
-						</c:if>
+						
+						
 						<c:if test="${dto.writer eq member.nickname}">
 						<div class="admin_button">
 							<a href="./${board}Update?num=${dto.num}&writer=${dto.writer}">수정</a> 
@@ -356,6 +361,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript">
 	
+
 	/* 옵션 날짜 넣기    - 카테고리 3만*/
 	if('${dto.category}' == '3'){
 		var disabledDays = [];
@@ -382,7 +388,7 @@
 						reg_date:reg_date
 					},
 					success:function(data){
-						var timesHtml = '<option hidden="true">시간을 선택해주세요</option>';
+						var timesHtml = '<option hidden="true" id="non">시간을 선택해주세요</option>';
 						for(var i = 0;i<data.length;i++){
 							time = data[i].time;
 							show_times += '-'+time;
@@ -449,14 +455,29 @@
 	}
 	
 	$('#payFrm').hide();
+	
+	if('${dto.category}' != '3'){
+		$('#reserve').hide();
+	}
+	
 	$('#reserve').click(function() {
-		var qu = $('#amount').val();
-		$('#qu').val(qu);
-		var to = $('#total').html();
-		$('#to').val(to);
-		var sh = show_times;
-		$('#sh').val(sh);
-		$('#payFrm').submit();
+	
+		if('${member.grade}' > 0){
+			if($('.festi_select').val() == '시간을 선택해주세요'){
+				alert('시간을 선택해주세요');
+			} else {
+				var qu = $('#amount').val();
+				$('#qu').val(qu);
+				var to = $('#total').html();
+				$('#to').val(to);
+				var sh = show_times;
+				$('#sh').val(sh);
+				$('#payFrm').submit();
+			}
+		} else {
+			alert('로그인이 필요한 서비스입니다.');
+		}
+	
 	});
 
 	/* 각 행 선택 시 select 페이지 이동 */
