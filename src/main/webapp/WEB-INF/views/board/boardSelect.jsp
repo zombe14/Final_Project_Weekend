@@ -47,7 +47,7 @@
 				</ul>
 				<div class="call_cont">
 					<div class="board_h3">
-						<h3>${boardTitle} 게시판</h3>
+						<img alt="" src="${pageContext.request.contextPath}/resources/images/reco.png" class="titleimg"><h3>${boardTitle} 게시판</h3>
 					</div>
 					<div class="call_wrap">
 						<div class="tableDiv">

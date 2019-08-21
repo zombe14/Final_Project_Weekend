@@ -46,7 +46,7 @@
 				<div class="boardwrite">
 						<button id="boardWrite">${boardTitle} 글쓰기</button>
 				</div>
-				<h3>${boardTitle} 게시판</h3>
+				<img alt="" src="${pageContext.request.contextPath}/resources/images/qa.png" class="titleimg"><h3>${boardTitle} 게시판</h3>
 				</div>
 				
 				<%-- </c:if> --%>
@@ -173,7 +173,9 @@
 		
 		function password(pw,num) {
 			/* 비밀글이거나   ( 작성자 본인일때 조건 추가하기) */
-			if(pw != "" ){
+			if(pw == "" || '${member.grade}' == 3){
+				location.href = "./${board}Select?num="+num;
+			} else {
 				var input = prompt('비밀번호를입력해주세요');
 				if(input != null){
 					if(pw == input){
@@ -183,8 +185,6 @@
 						password(pw,num);
 					}
 				}				
-			} else {
-				location.href = "./${board}Select?num="+num;
 			}
 		} 
 		

@@ -19,8 +19,9 @@ public class WriteInterceptor extends HandlerInterceptorAdapter {
 		Object grade = session.getAttribute("grade");
 		boolean result=false;
 		if(obj!=null) {
-			if(grade.equals(2)||grade.equals(3)) {
-				result=true;
+
+			if(grade.equals(2) || grade.equals(3)) {
+		result=true;
 			}else {
 				response.sendRedirect("../");
 			}

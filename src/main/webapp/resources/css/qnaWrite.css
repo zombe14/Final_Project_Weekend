@@ -11,6 +11,12 @@
 	background: #f5f6f7;
 	}
 	
+.titleimg{
+	width: 25px;
+    margin-right: 10px;
+	float: left;
+}
+	
 .pencil{
 	width: 20px;
 	margin-right: 10px;

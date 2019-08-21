@@ -75,12 +75,12 @@ public class QnaService {
 	// 원본글
 	public int setDelete(String ref, HttpSession session) throws Exception {
 		int res = 0;
-		System.out.println("ser : "+ref);
+
 		List<String> nums = qnaDAO.getSelectRef(ref);
-		System.out.println(nums.size());
+
 	
 		for(String n : nums) {
-			System.out.println(n);
+		
 			List<FileDTO> list = fileDAO.getList(n);
 			if (list != null) {
 				for (FileDTO fileDTO : list) {

@@ -27,9 +27,9 @@
       	<div class="conta">
   	      	<div class="fwrite_wrap">
   	      		<div class="fwrite_title">
-  	      			<h3>${board}글수정</h3>
+  	      			<img alt="" src="${pageContext.request.contextPath}/resources/images/festi1.png" class="titleimg"><h3>${board}글수정</h3>
   	      		</div>
-      		 <form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
+      		 <form action="./festi}Update" method="post" enctype="multipart/form-data" id="frm">
       		 	<table class="table table-bordered">
       		 	<tbody>
 					<tr>
