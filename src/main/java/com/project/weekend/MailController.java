@@ -30,17 +30,12 @@ public class MailController {
 	private MailService mailService;
 	@Inject
 	private MemberService memberService;
-	@RequestMapping(value = "/mailSending",method = RequestMethod.POST)
+	@RequestMapping(value = "mailSending",method = RequestMethod.POST)
 	@ResponseBody
-	public int mailSending(HttpServletRequest request,HttpSession session, MemberDTO memberDTO){
+	public int mailSending(HttpServletRequest request,HttpSession session, MemberDTO memberDTO, String email)throws Exception{
         int ran = new Random().nextInt(100000) + 10000; // 10000 ~ 99999
         int result = 0;
-        try {
-			memberDTO = memberService.getSelectEmail(memberDTO);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+        memberDTO = memberService.getSelectEmail(memberDTO);
         if(memberDTO==null) {
         String joinCode = String.valueOf(ran);
         session.setAttribute("joinCode", joinCode);
