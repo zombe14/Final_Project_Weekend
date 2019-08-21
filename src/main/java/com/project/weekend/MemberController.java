@@ -131,10 +131,10 @@ public class MemberController {
 			if(result==1) {	
 				if(memberDTO != null) {
 					if(memberDTO.getCount()>5) {
-						message = "로그인 횟수 제한";	
+						message = "로그인 횟수 제한에 걸렸습니다. 아이디찾기로 인증바랍니다.";	
 						mv.setViewName("common/messageMove");
 						mv.addObject("message", message);
-						mv.addObject("path", "../");
+						mv.addObject("path", "./memberLogin");
 					}else {
 						session.setAttribute("member", memberDTO);
 						session.setAttribute("memberNickname", memberDTO.getNickname());
