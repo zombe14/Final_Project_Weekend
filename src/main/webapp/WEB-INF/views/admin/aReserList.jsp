@@ -32,14 +32,22 @@
 							<td>WRITER</td>
 							<td>DATE</td>
 							<td>HIT</td>
+							<td>NUM</td>
+							<td>TITLE</td>
+							<td>WRITER</td>
+							<td>DATE</td>
+							<td>HIT</td>
 						</tr>
 						<c:forEach items="${list}" var="dto">
 							<tr>
-								<td>${dto.num}</td>
-								<td>${dto.title}</td>
-								<td>${dto.writer}</td>
-								<td>${dto.reg_date}</td>
-								<td>${dto.hit}</td>
+								<td>${dto.partner_order_id}</td>
+								<td>${dto.partner_user_id}</td>
+								<td>${dto.item_name}</td>
+								<td>${dto.item_num}</td>
+								<td>${dto.quantity}</td>
+								<td>${dto.total_amount}</td>
+								<td>${dto.tid}</td>
+								<td>${dto.pg_token}</td>
 							</tr>
 						</c:forEach>
 					</table>

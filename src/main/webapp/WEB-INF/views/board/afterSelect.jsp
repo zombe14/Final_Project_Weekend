@@ -88,7 +88,7 @@
 						<input type="hidden" id="num" name="num" value="${dto.anum}">
 						<strong><span>댓글(</span><span id="cCnt">${cCnt}</span>)</strong>
 						<div class="comments_name">				
-							<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
+							<input type="text" name="writer" id="writer" value="${member.nickname}" readonly="readonly" style="border: 0;background-color:transparent;">
 						</div>
 						<div style="display: inline-block;">
 							<textarea rows="3" cols="120" id="commentsContents" style="resize: none;"></textarea>
@@ -109,6 +109,7 @@
    </div>
 </div>
 <a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
+	
 	<!-- script -->
 	<script type="text/javascript">
 	 getCommentsList();
@@ -117,30 +118,34 @@
 		var writer = $('#writer').val();
 		var contents = $('#commentsContents').val();
 		var num = '${dto.anum}';
-		if(contents == ''){
-			alert('내용을 입력해주세요');
-		} else {
-			$.ajax({
-				type:'POST',
-				url:'./commentsWrite',
-				data:{
-					writer:writer,
-					contents:contents,
-					num:num
-				},
-				success:function(data){
-	
-					if(data == '1'){
-						getCommentsList();
-						$('#commentsContents').val('');
-					} else {
-						alert('다시 작성해주세요');
+		if('${member.nickname}' == ''){
+			alert('로그인이 필요한 서비스입니다.');
+		}else {
+			if(contents == ''){
+				alert('내용을 입력해주세요');
+			} else {
+				$.ajax({
+					type:'POST',
+					url:'./commentsWrite',
+					data:{
+						writer:writer,
+						contents:contents,
+						num:num
+					},
+					success:function(data){
+		
+						if(data == '1'){
+							getCommentsList();
+							$('#commentsContents').val('');
+						} else {
+							alert('다시 작성해주세요');
+						}
+					},
+					error:function(data){
+						console.log(data);
 					}
-				},
-				error:function(data){
-					console.log(data);
-				}
-			});
+				});
+			}
 		}
 	});
 	

@@ -182,7 +182,7 @@
 							</c:forEach>
 						</div>
 
-						<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
+						<c:if test="${dto.writer eq member.nickname}">
 
 
 						<div class="admin_button">
@@ -277,12 +277,14 @@
 				<!-- 지도 끝 -->
 			
 			<div id="div3" class="festi_wrap2">
+				<c:if test="${member.grade gt 0}">
 				<div class="festi_title">
 					<strong>질문하기</strong>
 					<c:if test="${member ne null }">
 					<a href="../festiQna/fqnaWrite?num=${dto.num}">질문하기</a>
 					</c:if>
 				</div>
+				</c:if>
 				<div>
 				<!--  질문 -->
 					<table class="table">
@@ -322,12 +324,14 @@
 					</div>
 					</div>
 					<div id="div4" class="festi_wrap2">
+						<c:if test="${member.grade gt 0}">
 						<div class="festi_title">
 							<strong>관람후기</strong>
 							<c:if test="${member ne null }">
 							<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
 							</c:if>
 						</div>
+						</c:if>
 						<div>
 				
 							<%-- <c:if test="${member.grade > 1}"> --%> 

@@ -35,7 +35,7 @@ public class UserRecoController{
 	@RequestMapping(value = "UserRecoList", method = RequestMethod.GET)
 	public ModelAndView getList(PageMaker pageMaker, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<FestiDTO> list = festiService.getUserRecoList(pageMaker, session);
+		List<FestiDTO> list = festiService.getUserRecoList(session, pageMaker);
 		mv.addObject("list", list);
 		mv.addObject("pager", pageMaker);
 		mv.setViewName("board/UserRecoList");

@@ -6,18 +6,18 @@
 			<c:forEach items="${clist}" var="c">
 				 <div id = "${c.cnum}" class="commentsDiv">
 					<div>
-				    	${c.writer} | ${c.reg_date} | ${c.cnum}<br>
+				    	<strong>${c.writer} | ${c.reg_date}</strong><br>
 				    	${c.contents}
 			    	</div>
 			    	<div>
-				    	<%-- <c:if test="${dto.writer eq member.nickname}"> --%>
+				    	<c:if test="${c.writer eq member.nickname}">
 				    		<a class="update" title = "${c.cnum}">수정</a>
 				    		<a class="delete" title = "${c.cnum}">삭제</a>
-				    	<%-- </c:if> --%>
-				    		<a class="reCom" title = "${c.cnum}" name = "${c.ref}">댓글달기</a>
+				    	</c:if> 
+				    		<%-- <a class="reCom" title = "${c.cnum}" name = "${c.ref}">댓글달기</a>
 				    		<div id="${c.ref}ReComDiv" class="reComDiv">
 					    	
-							</div>
+							</div> --%>
 			    	</div>
 			     </div>
 			   	 <div id="${c.cnum}Update" class="updateDiv">

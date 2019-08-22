@@ -28,6 +28,7 @@ import com.project.weekend.board.notice.NoticeDTO;
 import com.project.weekend.file.FileDAO;
 import com.project.weekend.file.FileDTO;
 import com.project.weekend.file.FileService;
+import com.project.weekend.member.MemberDTO;
 import com.project.weekend.util.FileSaver;
 import com.project.weekend.util.PageMaker;
 
@@ -132,38 +133,22 @@ public class FestiService {
 		return festiDTO;
 	}
 	
-	public int setUpdate(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+	public int setUpdate(FestiDTO festiDTO, MultipartFile filelist, HttpSession session) throws Exception{
 		int res = 0;
 
-		int fnum = fileDAO.getList(festiDTO.getNum()).get(0).getFnum();
-		System.out.println("fnum : "+fnum);
-		String realPath = session.getServletContext().getRealPath("/resources/images/board");
-		System.out.println(filelist.get(0).getOriginalFilename().length());
-		if(filelist.get(0).getOriginalFilename().length()>0) {
+		
+		if(filelist.getOriginalFilename().length()>0) {
+			String realPath =session.getServletContext().getRealPath("/resources/images/board");
+			System.out.println(filelist.getOriginalFilename());
+			int fnum = festiDAO.getSelect(festiDTO.getNum()).getFileDTOs().get(0).getFnum();
+			System.out.println(fnum);
+			fileDAO.setDelete(fnum);
 			FileDTO fileDTO = new FileDTO();
 			fileDTO.setNum(festiDTO.getNum());
-			fileDTO.setOname(filelist.get(0).getOriginalFilename());
-			String fname = fileSaver.saveFile(realPath, filelist.get(0));
+			fileDTO.setOname(filelist.getOriginalFilename());
+			String fname = fileSaver.saveFile(realPath, filelist);
 			fileDTO.setFname(fname);
 			res = fileDAO.setWrite(fileDTO);
-			/*
-			 * fileDAO.setDelete(fnum);
-			 * 
-			 * FileDTO fileDTO = new FileDTO(); fileDTO.setNum(festiDTO.getNum());
-			 * fileDTO.setOname(filelist.get(0).getOriginalFilename()); String fname =
-			 * festiDTO.getFileDTOs().get(0).getFname();
-			 * 
-			 * System.out.println("fnam : "+fname);
-			 * 
-			 * fileDTO.setFname(fname);
-			 * 
-			 * System.out.println("fname2 : "+fileDTO.getFnum());
-			 * 
-			 * fileDAO.setDelete(fnum); res = fileDAO.setWrite(fileDTO);
-			 * 
-			 * System.out.println("res : "+res);
-			 */
-			System.out.println(res);
 		}
 		
 		res = festiDAO.setUpdate(festiDTO);
@@ -186,31 +171,54 @@ public class FestiService {
 	public int getNum() throws Exception{
 		return festiDAO.getNum();
 	}
-	
-	
 	// 상혁
-	// 관리자 모드;
-	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
-		pageMaker.makeRow();
-		List<FestiDTO> list = festiDAO.getAllList(pageMaker);
+	////////////////// 관리자 용;
+	// 종류별 게시글 가져오기;
+	// w추천, 유저추천, 공연, 축제, 대학로;
+	// w 추천 리스트(아래 w추천 board 사용);
+	// w 추천 삭제(아래 w추천 board 사용);
+	// 유저 추천 리스트(아래 유저 추천 board 사용);
+	// 유저 추천 삭제(아래 유저 추천 board 사용);
+	// 공연 리스트;
+	public List<FestiDTO> getCate1List(PageMaker pageMaker, HttpSession session) throws Exception{
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getCate1List(session, pageMaker);
 		pageMaker.makePage(totalCount);
 		return list;
 	}
+	// 축제 리스트;
+	public List<FestiDTO> getCate2List(PageMaker pageMaker, HttpSession session) throws Exception{
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getCate2List(session, pageMaker);
+		pageMaker.makePage(totalCount);
+		return list;
+	}
+	// 대학로 리스트;
+	public List<FestiDTO> getCate3List(PageMaker pageMaker, HttpSession session) throws Exception{
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getCate3List(session, pageMaker);
+		pageMaker.makePage(totalCount);
+		return list;
+	}
+	///////////////// 마이 페이지 용;
 	// 내글 불러오기
 	public List<FestiDTO> getListMy(PageMaker pageMaker) throws Exception{
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makeRow();
 		List<FestiDTO> list = festiDAO.getListMy(pageMaker);
-		int totalCount = festiDAO.getCount(pageMaker.getCategory());
 		pageMaker.makePage(totalCount);
 		return list;
 	}
+	//// 외부 board;
 	// w 추천;
 	// 리스트;
-	public List<FestiDTO> getWeekRecoList(PageMaker pageMaker) throws Exception{
-		pageMaker.makeRow();
-		List<FestiDTO> list = festiDAO.getWeekRecoList(pageMaker);
+	public List<FestiDTO> getWeekRecoList(HttpSession session, PageMaker pageMaker) throws Exception{
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getWeekRecoList(session, pageMaker);
 		pageMaker.makePage(totalCount);
 		return list;
 	}
@@ -239,10 +247,10 @@ public class FestiService {
 	}
 	// 유저 추천;
 	// 리스트;
-	public List<FestiDTO> getUserRecoList(PageMaker pageMaker, HttpSession session) throws Exception{
-		pageMaker.makeRow();
-		List<FestiDTO> list = festiDAO.getUserRecoList(pageMaker, session);
+	public List<FestiDTO> getUserRecoList(HttpSession session, PageMaker pageMaker) throws Exception{
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getUserRecoList(session, pageMaker);
 		pageMaker.makePage(totalCount);
 		return list;
 	}
@@ -285,7 +293,37 @@ public class FestiService {
 		}
 		return list;
 	}
-
+	
+	//원식 홈 랭크 리스트
+	public List<FestiDTO> getHomeRankList() throws Exception{
+		List<FestiDTO> list = festiDAO.getHomeRankList();
+		for(FestiDTO f : list) {
+			String num = f.getNum();
+			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);
+			f.setFileDTOs(fileList);
+		}
+			
+		return list;
+	}
+	public List<FestiDTO> getHomeRankList2() throws Exception{
+		List<FestiDTO> list = festiDAO.getHomeRankList2();
+		for(FestiDTO f : list) {
+			String num = f.getNum();
+			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);
+			f.setFileDTOs(fileList);
+		}
+		return list;
+	}
+	//원식 홈 베스트 리스트
+	public List<FestiDTO> getBestList(PageMaker pageMaker) throws Exception{
+		List<FestiDTO> list = festiDAO.getBestList(pageMaker);
+		for(FestiDTO f : list) {
+			String num = f.getNum();
+			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);
+			f.setFileDTOs(fileList);
+		}
+		return list;
+	}
 	
 	// 난슬
 	/*
@@ -306,7 +344,4 @@ public class FestiService {
 		return avglist;
 	}
 	*/
-	
-	
-	
 }

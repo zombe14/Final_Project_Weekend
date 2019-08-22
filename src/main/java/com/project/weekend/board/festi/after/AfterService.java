@@ -171,8 +171,11 @@ public class AfterService {
 		return list;
 	}
 	// 상혁
-	public List<AfterDTO> getAfterList() throws Exception{
+	public List<AfterDTO> getAfterList(PageMaker pageMaker, HttpSession session) throws Exception{
+		int totalCount = afterDAO.getCount(pageMaker);
 		List<AfterDTO> list = afterDAO.getAfterList();
+		pageMaker.makeRow();
+		pageMaker.makePage(totalCount);
 		return list;
 	}
 	
