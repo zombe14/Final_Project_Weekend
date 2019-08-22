@@ -14,6 +14,139 @@ html, body{
 
 .search_logo{
 	text-align: center;
+    padding: 50px;
 }
 
+.search_inner{
+	
+}
 
+.strongimg{
+    width: 18px;
+    margin-right: 7px;
+}
+
+.titleimg{
+	width: 25px;
+}
+.sctxt{
+	height: 30px;
+    width: 100px;
+}
+
+.sctxt1{
+	height: 30px;
+	width: 385px;
+    margin-left: 4px;
+    margin-bottom: 10px;
+}
+
+input{
+	outline: none;
+	padding-left: 7px;
+}
+
+#titleimg{
+	margin: 4px 10px 0px 4px;
+	float: left;
+}
+
+#titleimg1{
+	margin: 4px 10px 0px 4px;
+	float: left;
+}
+
+.search_title strong{
+    font-size: 20px;
+}
+
+.search_title{
+    border-bottom: 1px solid #767676;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#changePw{
+	width: 276px;
+    height: 30px;
+    margin-top: 15px;
+}
+
+#checkPw{
+    height: 30px;
+    width: 276px;
+    margin-top: 5px;
+}
+
+input[type=text]:focus{
+	border: 2px solid #00d344;
+}
+
+.es{
+	float: right;
+}
+
+.eSelect{
+	height: 36px;
+	cursor: pointer;
+}
+
+.sc_form{
+	margin-bottom: 20px;
+    height: 140px;
+}
+
+#emailCheckNumber{
+	height: 33px;
+	margin: 15px 0px 0px 39px;
+    padding-left: 7px;
+}
+
+.emailCheck{
+	height: 36px;
+    width: 110px;
+	float: right;
+	margin-top: 10px;
+    border: 1px solid white;
+    background: #00d344;
+    color: white;
+    cursor: pointer;
+}
+
+.finalCheck{
+	width: 60px;
+    /* height: 39px; */
+    border: 1px solid white;
+    background: #00d344;
+    color: white;
+    /* margin-top: 7px; */
+    padding: 9px 10px 12px;
+    cursor: pointer;
+}
+
+#finalCheck{
+	width: 60px;
+    /* height: 39px; */
+    border: 1px solid white;
+    background: #00d344;
+    color: white;
+    /* margin-top: 7px; */
+    padding: 9px 10px 12px;
+    cursor: pointer;
+}
+
+.close_btn:hover{
+	background-color: #00d344;
+	border: 1px solid white;
+	color: white;
+}
+
+.close_btn{
+	background-color: white;
+    color: black;
+    padding: 4px 15px;
+    float: right;
+    border: 1px solid #adadad;
+    cursor: pointer;
+    border-radius: 10px;
+}
