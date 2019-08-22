@@ -33,22 +33,26 @@ $(document).ready(function(){
 /* 축제 랭크 */
 $(document).ready(function(){
 	
-	var img11 = $('#img11').val();
 	
 	$('.rankingItem1').mouseover(function(){
+		var img11 = $('#fname1').val();
 		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem2').mouseover(function(){
-		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/${rank2[1].fileDTOs[0].fname}');
+		var img11 = $('#fname2').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem3').mouseover(function(){
-		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/${rank2[2].fileDTOs[0].fname}');
+		var img11 = $('#fname3').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem4').mouseover(function(){
-		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/${rank2[3].fileDTOs[0].fname}');
+		var img11 = $('#fname4').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem5').mouseover(function(){
-		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/${rank2[4].fileDTOs[0].fname}');
+		var img11 = $('#fname5').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 });
 
