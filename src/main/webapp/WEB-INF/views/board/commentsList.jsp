@@ -134,6 +134,6 @@ $('.delete').click(function() {
 
  
 </script>
-
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 </body>
 </html>

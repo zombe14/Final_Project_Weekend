@@ -186,7 +186,7 @@
       <c:import url="../inc/footer.jsp"></c:import>
       </div>
    </div>
-   
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 <!-- 지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 	
 <!-- 썸머노트 -->
