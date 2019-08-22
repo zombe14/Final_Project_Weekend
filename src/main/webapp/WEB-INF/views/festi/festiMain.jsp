@@ -77,7 +77,7 @@
 		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=울산';
 	});
 	$('#map').on('click','#daum-maps-shape-11',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=대구';
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=대전';
 	});
 	$('#map').on('click','#daum-maps-shape-12',function(){
 		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=광주';
