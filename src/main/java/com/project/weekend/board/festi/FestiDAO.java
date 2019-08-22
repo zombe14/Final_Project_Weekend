@@ -1,4 +1,4 @@
-﻿package com.project.weekend.board.festi;
+package com.project.weekend.board.festi;
 
 import java.util.List;
 
@@ -132,6 +132,17 @@ public class FestiDAO{
 		return SqlSession.selectList(NAMESPACE+"getRankList", pageMaker);
 	}
 	// 상혁 끝;
+	// 원식 홈 랭크;
+	public List<FestiDTO> getHomeRankList() throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getHomeRankList");
+	}
+	public List<FestiDTO> getHomeRankList2() throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getHomeRankList2");
+	}
+	// 원식 홈 베스트;
+	public List<FestiDTO> getBestList(PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getBestList", pageMaker);
+	}
 
 }
 

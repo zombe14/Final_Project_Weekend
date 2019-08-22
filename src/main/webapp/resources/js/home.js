@@ -32,20 +32,23 @@ $(document).ready(function(){
 
 /* 축제 랭크 */
 $(document).ready(function(){
+	
+	var img11 = $('#img11').val();
+	
 	$('.rankingItem1').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/대박워터파크.jpg');
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem2').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/옐로우리버비치.jpg');
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/${rank2[1].fileDTOs[0].fname}');
 	});
 	$('.rankingItem3').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/그리스보물전.jpg');
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/${rank2[2].fileDTOs[0].fname}');
 	});
 	$('.rankingItem4').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/이집트미술여행.jpg');
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/${rank2[3].fileDTOs[0].fname}');
 	});
 	$('.rankingItem5').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/대한통운.jpg');
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/${rank2[4].fileDTOs[0].fname}');
 	});
 });
 
