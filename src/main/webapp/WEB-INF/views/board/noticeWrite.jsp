@@ -45,7 +45,7 @@
 					<li class="cmenu8"><a href="${pageContext.request.contextPath}/callcenter/ticketguide">티켓판매안내</a></li>
 				</ul>
 				<div class="call_cont">
-					<h3>${boardTitle} 글쓰기</h3>
+					<img alt="" src="${pageContext.request.contextPath}/resources/images/reco.png" class="titleimg"><h3>${boardTitle} 글쓰기</h3>
 					<div class="call_wrap">
 				<form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
 					<table class="table table-bordered">
@@ -99,7 +99,7 @@
 			<c:import url="../inc/footer.jsp"></c:import>
 		</div>
 	</div>
-
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	<!-- 지도 -->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script

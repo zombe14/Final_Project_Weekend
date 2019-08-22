@@ -53,7 +53,7 @@
 								<a id="replyBtn" class="qnaSelect_btn2">답변달기</a>
 							</c:if>
 						</c:if>
-						<h3>${boardTitle} 게시판</h3>
+						<img alt="" src="${pageContext.request.contextPath}/resources/images/qa.png" class="titleimg"><h3>${boardTitle} 게시판</h3>
 					</div>
 					<div class="call_wrap">
 						<div class="tableDiv">
@@ -128,7 +128,7 @@
       <c:import url="../inc/footer.jsp"></c:import>
    </div>
 </div>
-	
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	<!-- script -->
 	<script type="text/javascript">
 	/* 글 삭제 */

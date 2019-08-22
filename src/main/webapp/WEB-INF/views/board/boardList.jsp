@@ -47,7 +47,7 @@
 						<button id="boardWrite" value="${board}">${boardTitle} 글쓰기</button>
 					</c:if>
 				</div>
-				<h3>${boardTitle} 게시판</h3>
+				<img alt="" src="${pageContext.request.contextPath}/resources/images/reco.png" class="titleimg"><h3>${boardTitle} 게시판</h3>
 				</div>
 				
 				<%-- </c:if> --%>
@@ -148,7 +148,7 @@
 			<c:import url="../inc/footer.jsp"></c:import>
 		</div>
 	</div>
-
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	<!-- ------script---------- -->
 	<script type="text/javascript">
 		/* 각 행 선택 시 select 페이지 이동 */

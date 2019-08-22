@@ -27,9 +27,9 @@
       	<div class="conta">
   	      	<div class="fwrite_wrap">
   	      		<div class="fwrite_title">
-  	      			<h3>${board}글수정</h3>
+  	      			<img alt="" src="${pageContext.request.contextPath}/resources/images/festi1.png" class="titleimg"><h3>${board}글수정</h3>
   	      		</div>
-      		 <form action="./${board}Update" method="post" enctype="multipart/form-data" id="frm">
+      		 <form action="./festiUpdate" method="post" enctype="multipart/form-data" id="frm">
       		 	<table class="table table-bordered">
       		 	<tbody>
 					<tr>
@@ -81,11 +81,11 @@
 					</tr>
 					<tr>
 						<td class="td1"><label for="price">가격</label></td>
-						<td><input type="number" name="price" value="0"><span>&nbsp; &nbsp;원</span></td>
+						<td><input type="number" name="price" value="${dto.price}"><span>&nbsp; &nbsp;원</span></td>
 					</tr>
 					<tr class="daehakDiv">
 						<td class="td1"><label for="total">좌석 </label></td>
-						<td><input type="number" name="total" value="0"><span>&nbsp; &nbsp;석</span></td>
+						<td><input type="number" name="total" value="${dto.total}"><span>&nbsp; &nbsp;석</span></td>
 					</tr>
 					<tr>
 						<td class="td1"><label for="local">지역<span class="r">*</span></label></td>
@@ -111,22 +111,22 @@
 									<span style="color: red">※  jpg, png, gif, jpeg 확장자만 업로드 가능합니다.</span>
 								</div>
 								<!-- 이미지 미리보기 -->
+							
 								<div id="preview">
-									<img id="preview-img" src="#">
+									<img id="preview-img" src="${pageContext.request.contextPath}/resources/images/board/${dto.fileDTOs[0].fname}">
 								</div>
 							</div>
 						</td>
 					</tr>
-					<tr>
+					<%-- <tr>
 						<td class="td1"><label for="files">첨부파일</label></td>
 						<td>
 							<a id="addFiles"><img alt="" src="${pageContext.request.contextPath}/resources/images/cloud-computing.png">파일추가</a>
 							<div id="files">
 								<input type="file" class="filelist" name="filelist" style="display: inline-block">
-								<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>
 							</div>
 						</td>
-					</tr>
+					</tr> --%>
 					<c:if test="${member.grade eq 3}">
 					<tr>
 						<td class="td1"><label for="top">상단 등록</label></td>
@@ -137,6 +137,7 @@
 					</c:if>
 				</tbody>
 				</table>
+				<input type="hidden" name="num" value="${dto.num}">
 				</form> 
 				
 				<div id="datesOptionDiv"> <!-- 카테고리 3 -->				
@@ -185,7 +186,7 @@
       <c:import url="../inc/footer.jsp"></c:import>
       </div>
    </div>
-   
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 <!-- 지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 	
 <!-- 썸머노트 -->
@@ -310,7 +311,7 @@ $('#top').click(function(){
 
 
 //썸네일
-	$("#preview").hide();
+	//$("#preview").hide();
 	function readURL(input) {
 		 
 	    if (input.files && input.files[0]) {

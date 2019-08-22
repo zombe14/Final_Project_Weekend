@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>${boardTitle} Write</title>
+<title> 유저추천 글쓰기 </title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/festiWrite.css">
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
@@ -22,14 +22,14 @@
       	<div class="conta">
   	      	<div class="fwrite_wrap">
   	      		<div class="fwrite_title">
-  	      			<h3>${board}글쓰기</h3>
+  	      			<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png" class="titleimg"><h3> 유저추천 글쓰기 </h3>
   	      		</div>
       		 <form action="./${board}Write" method="post" enctype="multipart/form-data" id="frm">
       		 	<table class="table table-bordered">
       		 	<tbody>
 					<tr>
 						<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
-						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="title" id="title" style="width: 96%"></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="title" id="title" style="width: 95.6%"></td>
 					</tr>
 					<tr>
 						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
@@ -63,6 +63,7 @@
     	<c:import url="../inc/footer.jsp"></c:import>
 	</div>
 </div>
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 
 <!-- 썸머노트 -->
 	<script src="../resources/js/summernote.js"></script>

@@ -76,5 +76,4 @@
         <location>/WEB-INF/views/error/errorPage.jsp</location>
     </error-page> -->
 
-
 </web-app>

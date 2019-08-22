@@ -107,8 +107,18 @@ public class GoogleCalendarService {
 	// 일정 수정
 	public void calendarEventModify(GoogleCalendarDTO calDTO) throws Exception {        
 		Calendar service = GoogleCalendarService.getCalendarService();
+		calDTO.setEid(calendarDAO.selectEid(calDTO.getBoard()));
 		Event event = service.events().get("euecreof8ipii55sr38dqagcao@group.calendar.google.com", calDTO.getEid()).execute();
-		event.setSummary(calDTO.getSummary()).setDescription(calDTO.getDescription());
+		service.events().get(calDTO.getCid(), calDTO.getEid()).execute();
+		//시작일
+		DateTime startDateTime = new DateTime(calDTO.getStartDateTime());
+		EventDateTime start = new EventDateTime().setDateTime(startDateTime).setTimeZone("Asia/Seoul");
+		event.setStart(start);
+		//종료일
+		DateTime endDateTime = new DateTime(calDTO.getEndDateTime());
+		EventDateTime end = new EventDateTime().setDateTime(endDateTime).setTimeZone("Asia/Seoul");
+		event.setEnd(end);
+        event.setSummary(calDTO.getSummary()).setDescription(calDTO.getDescription()).setEnd(end).setStart(start);
 		service.events().update("euecreof8ipii55sr38dqagcao@group.calendar.google.com", event.getId(), event).execute();
 		calendarDAO.updateCalendar(calDTO);
 	}

@@ -13,19 +13,19 @@ $(document).ready(function() {
 
 /* 티켓 오픈 */
 $(document).ready(function(){
-	$('.tm1').mouseover(function(){
+	$('.tm5').mouseover(function(){
 		$('.first1 img').attr('src','./resources/images/home/청춘페스티벌.gif');
 	});
-	$('.tm2').mouseover(function(){
+	$('.tm4').mouseover(function(){
 		$('.first1 img').attr('src','./resources/images/home/워라벨왕산비치.jpg');
 	});
 	$('.tm3').mouseover(function(){
 		$('.first1 img').attr('src','./resources/images/home/아시아뮤직페스티벌.jpg');
 	});
-	$('.tm4').mouseover(function(){
+	$('.tm2').mouseover(function(){
 		$('.first1 img').attr('src','./resources/images/home/냉이축제.jpg');
 	});
-	$('.tm5').mouseover(function(){
+	$('.tm1').mouseover(function(){
 		$('.first1 img').attr('src','./resources/images/home/신촌물총축제.jpg');
 	});
 });

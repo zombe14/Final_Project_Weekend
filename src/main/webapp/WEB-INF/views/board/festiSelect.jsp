@@ -109,8 +109,8 @@
 				<!-- 축제 핵심 내용 -->
 				<div class="festi_wrap">
 					<div class="bx_title">
-					<strong>${dto.title}</strong>
-					<a href="./${board}List?category=${dto.category}"><img alt="리스트 아이콘" src="../resources/images/festi/list.png"> </a>
+					<img alt="" src="${pageContext.request.contextPath}/resources/images/festi1.png" class="titleimg2"><strong>${dto.title}</strong>
+					<a href="./${board}List?category=${dto.category}"><img alt="리스트 아이콘" src="../resources/images/festi/list.png" class="img2"> </a>
 					</div>
 					<div class="detail_info">
 						<div class="bx_img">
@@ -127,12 +127,12 @@
 								<dt class="bit">총 좌석</dt>
 								<dd class="bid">${dto.total} 좌석</dd>
 							</dl>
-							
 							<div class="btc_file">
+							<%-- 
 							<em>파일 다운로드 : </em>
 							<c:forEach items="${dto.fileDTOs}" var="f">
 								<input type="button" title="${f.fname}" class="down" value="${f.oname}"> 
-							</c:forEach>
+							</c:forEach> --%>
 								<!-- ajax 파일 다운로드 -->
 							<div style="display:none;">
 								<form action="../ajax/fileDownload" method="post" id="downForm">
@@ -181,8 +181,6 @@
 								<a class="optiondates" title="${o.reg_date}"></a>
 							</c:forEach>
 						</div>
-
-						
 
 						<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
 
@@ -359,7 +357,7 @@
       <c:import url="../inc/footer.jsp"></c:import>
    </div>
 </div>
-	
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	<!-- script -->
 	<!-- 지도 -->
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services"></script> -->
