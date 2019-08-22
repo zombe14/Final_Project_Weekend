@@ -133,23 +133,74 @@
 								<select class="form-control" name="kind">
 									<c:choose>
 										<c:when test="${board eq 'User'}">
-											<option value="0">아이디</option>
-											<option value="1">이름</option>
-											<option value="2">등급</option>
+											<option value="0">전체</option>
+											<option value="1">아이디</option>
+											<option value="2">이름</option>
+											<option value="3">등급</option>
 										</c:when>
 										<c:when test="${board eq 'Notice'}">
+											<option value="0">전체</option>
 											<option value="1">제목</option>
 											<option value="2">내용</option>
 										</c:when>
-										<c:when test="${board eq 'Festi'}">
-											<option value="0">제목</option>
-											<option value="1">내용</option>
-											<option value="2">지역</option>
+										<c:when test="${board eq 'WeekReco'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">닉네임</option>
+										</c:when>
+										<c:when test="${board eq 'AfterCate1'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+										</c:when>
+										<c:when test="${board eq 'AfterCate2'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+										</c:when>
+										<c:when test="${board eq 'AfterCate3'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+										</c:when>
+										<c:when test="${board eq 'Cate1'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">작성자</option>
+											<option value="4">지역</option>
+										</c:when>
+										<c:when test="${board eq 'Cate2'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">작성자</option>
+											<option value="4">지역</option>
+										</c:when>
+										<c:when test="${board eq 'Cate3'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">작성자</option>
+										</c:when>
+										<c:when test="${board eq 'UserReco'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">닉네임</option>
+											<option value="4">지역</option>
+										</c:when>
+										<c:when test="${board eq 'Qna'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">닉네임</option>
 										</c:when>
 										<c:otherwise>
 											<option value="0">제목</option>
-											<option value="1">닉네임</option>
-											<option value="2">내용</option>
+											<option value="1">내용</option>
+											<option value="2">닉네임</option>
 										</c:otherwise>
 									</c:choose>
 								</select>
@@ -207,29 +258,51 @@
 										</tr>
 									</c:forEach>
 								</c:when>
-								<c:when test="Reser">
+								<c:when test="${board eq 'Resuer'}">
 									<tr>
-										<td>번호</td>
-										<td>지역</td>
-										<td>공연 이름</td>
-										<td>시작시간</td>
-										<td>수량</td>
-										<td>구매일</td>
-										<td>주문자</td>
 										<td>주문번호</td>
-										<td>취소 시키기</td>
+										<td>공연번호</td>
+										<td>공연명</td>
+										<td>공연시간</td>
+										<td>티켓가격</td>
+										<td>예매수량</td>
+										<td>결제가능금액</td>
+										<td>결제금액</td>
+										<td>현재상태</td>
+										<td>결제일</td>
+										<td>취소</td>
+									</tr>
+										<c:forEach items="${list}" var="dto">
+										<tr>
+											<td>${dto.tid}</td>
+											<td>${dto.partner_order_id}</td>
+											<td>${dto.partner_user_id}</td>
+											<td>${dto.pg_token}</td>
+											<td>${dto.total_amount}</td>
+											<td>${dto.cancle_available_amount}</td>
+											<td>${dto.state}</td>
+											<td>${dto.pay_date}</td>
+											<td><input class="dddBtn" type="button" value="취소"></td>
+										</tr>
+										</c:forEach>
+								</c:when>
+								<c:when test="${board eq 'WeekReco'}">
+									<tr>
+										<td>글 번호</td>
+										<td>제목</td>
+										<td>글쓴이(닉네임)</td>
+										<td>게시일</td>
+										<td>조회수</td>
+										<td>기능</td>
 									</tr>
 									<c:forEach items="${list}" var="dto">
 										<tr>
 											<td>${dto.num}</td>
-											<td>${dto.state}</td>
-											<td>${dto.item_name}</td>
-											<td>${dto.show_time}</td>
-											<td>${dto.amount}</td>
-											<td>${dto.buy_date}</td>
-											<td>${dto.partner_user_id}</td>
-											<td>${dto.partner_order_id}</td>
-											<td><input class="dddBtn" type="button" value="취소"></td>
+											<td>${dto.title}</td>
+											<td>${dto.writer}</td>
+											<td>${dto.reg_date}</td>
+											<td>${dto.hit}</td>
+											<td><input type="button" value="삭제" class="ddBtn"id="${dto.num}" />
 										</tr>
 									</c:forEach>
 								</c:when>

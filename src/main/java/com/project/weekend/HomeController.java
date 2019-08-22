@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.BoardDTO;
+import com.project.weekend.board.festi.FestiDAO;
 import com.project.weekend.board.festi.FestiDTO;
 import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.board.open.OpenService;
@@ -32,11 +33,13 @@ public class HomeController {
 	public ModelAndView home(PageMaker pageMaker, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<BoardDTO> open = opensService.getList(pageMaker, session);
-		List<FestiDTO> rank= festiService.getRankList(pageMaker);
-		
-		
+		List<FestiDTO> rank1= festiService.getHomeRankList();
+		List<FestiDTO> rank2= festiService.getHomeRankList2();
+		List<FestiDTO> best = festiService.getBestList(pageMaker);
 		mv.addObject("open", open);
-		mv.addObject("rank", rank);
+		mv.addObject("rank1", rank1);
+		mv.addObject("rank2", rank2);
+		mv.addObject("best", best);
 		mv.setViewName("home");
 		
 		return mv;

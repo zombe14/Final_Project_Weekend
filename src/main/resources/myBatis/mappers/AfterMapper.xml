@@ -28,13 +28,13 @@
 	<select id="getCount" resultType="Integer" parameterType="PageMaker">
 		SELECT COUNT(ANUM) FROM AFTER WHERE 
 		<choose>
-			<when test="kind = 1">
+			<when test="kind == 1">
 				TITLE
 			</when>
-			<when test="kind = 2">
+			<when test="kind == 2">
 				CONTENTS
 			</when>
-			<when test="kind = 3">
+			<when test="kind == 3">
 				WRITER
 			</when>
 			<otherwise>
@@ -48,13 +48,13 @@
 		<select id="getCountAll" resultType="Integer" parameterType="PageMaker">
 		SELECT COUNT(ANUM) FROM AFTER WHERE 
 		<choose>
-			<when test="kind = 1">
+			<when test="kind == 1">
 				TITLE
 			</when>
-			<when test="kind = 2">
+			<when test="kind == 2">
 				CONTENTS
 			</when>
-			<when test="kind = 3">
+			<when test="kind == 3">
 				WRITER
 			</when>
 			<otherwise>
@@ -70,13 +70,13 @@
 		(SELECT ROWNUM R, A.* FROM 
 		(SELECT * FROM AFTER WHERE 
 		<choose>
-			<when test="kind = 1">
+			<when test="kind == 1">
 				TITLE
 			</when>
-			<when test="kind = 2">
+			<when test="kind == 2">
 				CONTENTS
 			</when>
-			<when test="kind = 3">
+			<when test="kind == 3">
 				WRITER
 			</when>
 			<otherwise>
@@ -94,13 +94,13 @@
 		(SELECT ROWNUM R, A.* FROM 
 		(SELECT * FROM AFTER WHERE 
 		<choose>
-			<when test="kind = 1">
+			<when test="kind == 1">
 				TITLE
 			</when>
-			<when test="kind = 2">
+			<when test="kind == 2">
 				CONTENTS
 			</when>
-			<when test="kind = 3">
+			<when test="kind == 3">
 				WRITER
 			</when>
 			<otherwise>
@@ -117,6 +117,13 @@
 	
 	<!-- 후기 리스트 -->
 	<select id="getAfterList" parameterType="PageMaker" resultMap="afterResult">
+		
+	
+	
+	
+	
+	
+	
 		select a.*, f.title from after a join festi f on f.category = 1 where 
 		<choose>
 			<when test="1">

@@ -1,4 +1,4 @@
-﻿package com.project.weekend.board.festi;
+package com.project.weekend.board.festi;
 
 import java.util.List;
 
@@ -64,8 +64,20 @@ public class FestiDAO{
 	
 	// 상혁;
 	// 관리자용;
-	public List<FestiDTO> getAllList(PageMaker pageMaker) throws Exception{
-		return SqlSession.selectList(NAMESPACE+"getAllList", pageMaker);
+	// 종류별 게시글 가져오기;
+	// w추천, 유저추천, 공연, 축제, 대학로;
+	// w 추천, 유저 추천은 아래에서 메서드 사용;
+	// 공연 리스트;
+	public List<FestiDTO> getCate1List(HttpSession session, PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getCate1List", pageMaker);
+	}
+	// 축제 리스트;
+	public List<FestiDTO> getCate2List(HttpSession session, PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getCate2List", pageMaker);
+	}
+	// 대학로 리스트;
+	public List<FestiDTO> getCate3List(HttpSession session, PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getCate3List", pageMaker);
 	}
 	// 내가 쓴 글 가져오기;
 	// 2레벨;
@@ -74,7 +86,7 @@ public class FestiDAO{
 	}
 	// w추천;
 	// 리스트;
-	public List<FestiDTO> getWeekRecoList(PageMaker pageMaker) throws Exception{
+	public List<FestiDTO> getWeekRecoList(HttpSession session, PageMaker pageMaker) throws Exception{
 		return SqlSession.selectList(NAMESPACE+"getWeekRecoList", pageMaker);
 	}
 	// 글선택;
@@ -95,7 +107,7 @@ public class FestiDAO{
 	}
 	// 유저 추천;
 	// 리스트;
-	public List<FestiDTO> getUserRecoList(PageMaker pageMaker, HttpSession session) throws Exception{
+	public List<FestiDTO> getUserRecoList(HttpSession session, PageMaker pageMaker) throws Exception{
 		return SqlSession.selectList(NAMESPACE+"getUserRecoList", pageMaker);
 	}
 	// 글선택;
@@ -120,6 +132,17 @@ public class FestiDAO{
 		return SqlSession.selectList(NAMESPACE+"getRankList", pageMaker);
 	}
 	// 상혁 끝;
+	// 원식 홈 랭크;
+	public List<FestiDTO> getHomeRankList() throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getHomeRankList");
+	}
+	public List<FestiDTO> getHomeRankList2() throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getHomeRankList2");
+	}
+	// 원식 홈 베스트;
+	public List<FestiDTO> getBestList(PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getBestList", pageMaker);
+	}
 
 }
 

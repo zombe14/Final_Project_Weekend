@@ -83,36 +83,90 @@
 	</update>
 	
 	<!-- 상혁 -->
-	<select id="getAllList" parameterType="PageMaker" resultMap="festiResult">
-		SELECT * FROM 
-		(SELECT ROWNUM R, F.* FROM 
-		(SELECT NUM, TITLE, STARTDATE, ENDDATE, LOCAL FROM FESTI WHERE
+	<!-- 관리자 페이지 -->
+	<!-- 종류별 게시글 가져오기 -->
+	<!-- festi table -->
+	<!-- w추천, 유저추천, 공연, 축제, 대학로 -->
+	<!-- w 추천, 유저추천은 아래에서 사용함 -->
+	<!-- 공연 리스트 -->
+	<select id="getCate1List" resultMap="festiResult" parameterType="FestiDTO">
+		select * from
+		(select rownum R, F.* from
+		(select * from festi where
 		<choose>
-			<when test="kind = 1">
-				TITLE
+			<when test="kind == 1">
+				title like '%'||#{search}||'%'
 			</when>
-			<when test="kind = 2">
-				CONTENTS
+			<when test="kind == 2">
+				contents like '%'||#{search}||'%'
 			</when>
-			<when test="kind = 3">
-				LOCAL
+			<when test="kind == 3">
+				writer like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 4">
+				region like '%'||#{search}||'%'
 			</when>
 			<otherwise>
-				TITLE
+				title || writer || contents || region like '%'||#{search}||'%'
 			</otherwise>
 		</choose>
-		LIKE '%'||#{search}||'%'
-		ORDER BY NUM DESC) F) 
-		WHERE R BETWEEN #{startRow} AND #{lastRow}
+		and category = 1
+		order by num desc) F)
+		where R between #{startRow} and #{lastRow}
 	</select>
-	
+	<!-- 축제 리스트 -->
+	<select id="getCate2List" resultMap="festiResult" parameterType="FestiDTO">
+		select * from
+		(select rownum R, F.* from
+		(select * from festi where
+		<choose>
+			<when test="kind == 1">
+				title like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 2">
+				contents like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 3">
+				writer like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 4">
+				region like '%'||#{search}||'%'
+			</when>
+			<otherwise>
+				title || writer || contents || region like '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+		and category = 2
+		order by num desc) F)
+		where R between #{startRow} and #{lastRow}
+	</select>
+	<!-- 대학로 리스트 -->
+	<select id="getCate3List" resultMap="festiResult" parameterType="FestiDTO">
+		select * from
+		(select rownum R, F.* from
+		(select * from festi where
+		<choose>
+			<when test="kind == 1">
+				title like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 2">
+				contents like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 3">
+				writer like '%'||#{search}||'%'
+			</when>
+			<otherwise>
+				title || writer || contents like '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+		and category = 3
+		order by num desc) F)
+		where R between #{startRow} and #{lastRow}
+	</select>
 	<!-- 평점 평균 -->
 	<select id="getPointAvg" parameterType="PageMaker" resultType="java.lang.Double">
 		select round(sum(nvl(after.point,1))/count(after.anum),1) from after inner join festi using(num) where festi.category = #{category} and num = #{num}
 	</select>
-	
-	
-	<!-- 상혁시작 -->
 	
 	<!-- 2레벨 -->
 	<!-- 내가 쓴 글 가져오기 -->
@@ -127,19 +181,18 @@
 		(select * from festi where
 		<choose>
 			<when test="kind == 1">
-				title
+				title like '%'||#{search}||'%'
 			</when>
 			<when test="kind == 2">
-				contents
+				contents like '%'||#{search}||'%'
 			</when>
 			<when test="kind == 3">
-				writer
+				writer like '%'||#{search}||'%'
 			</when>
 			<otherwise>
-				title
+				title || writer || contents like '%'||#{search}||'%'
 			</otherwise>
 		</choose>
-		like '%'||#{search}||'%'
 		and category = 0
 		order by num desc) F)
 		where R between #{startRow} and #{lastRow}
@@ -169,19 +222,21 @@
 		(select * from festi where
 		<choose>
 			<when test="kind == 1">
-				title
+				title like '%'||#{search}||'%'
 			</when>
 			<when test="kind == 2">
-				contents
+				contents like '%'||#{search}||'%'
 			</when>
 			<when test="kind == 3">
-				writer
+				writer like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 4">
+				region like '%'||#{search}||'%'
 			</when>
 			<otherwise>
-				title
+				title || writer || contents || region like '%'||#{search}||'%'
 			</otherwise>
 		</choose>
-		like '%'||#{search}||'%'
 		and category = 4
 		order by num desc) F)
 		where R between #{startRow} and #{lastRow}
@@ -214,6 +269,16 @@
 		order by hit desc) F)
 	</select>
 	<!-- 상혁 끝 -->
-
+	<!-- 원식 홈 랭크 리스트 -->
+	<select id="getHomeRankList" resultMap="festiResult">
+		select * from festi full join files using(num) where category = 1 and rownum Between 1 and 5 order by hit desc
+	</select>
+	<select id="getHomeRankList2" resultMap="festiResult">
+		select * from festi full join files using(num) where category = 2 and rownum Between 1 and 5 order by hit desc
+	</select>
+	<!-- 원식 홈 베스트 리스트 -->
+	<select id="getBestList" resultMap="festiResult" parameterType="FestiDTO">
+		select * from festi where (category=1 or category=2 or category=3) and (rownum Between 1 and 12) order by hit desc
+	</select>
 	
 </mapper>

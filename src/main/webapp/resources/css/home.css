@@ -359,6 +359,10 @@ ul{
 	white-space: nowrap;
 }
 
+.num1, .num2, .num3{
+	color:#41b40a;
+}
+
 .rank_header{
 	height: 50px;
 	overflow: hidden;

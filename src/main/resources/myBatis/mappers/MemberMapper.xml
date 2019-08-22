@@ -26,13 +26,13 @@
 			(SELECT ROWNUM R, M.* FROM 
 			(SELECT * FROM MEMBER WHERE 
 			<choose>
-				<when test="kind == 0">
+				<when test="kind == 1">
 					ID LIKE '%'||#{search}||'%'
 				</when>
-				<when test="kind == 1">
+				<when test="kind == 2">
 					NAME LIKE '%'||#{search}||'%'
 				</when>
-				<when test="kind == 2">
+				<when test="kind == 3">
 					GRADE LIKE '%'||#{search}||'%'
 				</when>
 				<otherwise>
