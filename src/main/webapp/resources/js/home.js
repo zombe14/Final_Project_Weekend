@@ -60,19 +60,24 @@ $(document).ready(function(){
 /* 공연 랭크 */
 $(document).ready(function(){
 	$('.ranking1').mouseover(function(){
-		$('.first3 img').attr('src','./resources/images/Rrank/블루레인.jpg');
+		var img12 = $('#fname1').val();
+		$('.first3 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img12);
 	});
 	$('.ranking2').mouseover(function(){
-		$('.first3 img').attr('src','./resources/images/Rrank/10cm.jpg');
+		var img12 = $('#fname2').val();
+		$('.first3 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img12);
 	});
 	$('.ranking3').mouseover(function(){
-		$('.first3 img').attr('src','./resources/images/Rrank/테레즈.jpg');
+		var img12 = $('#fname3').val();
+		$('.first3 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img12);
 	});
 	$('.ranking4').mouseover(function(){
-		$('.first3 img').attr('src','./resources/images/Rrank/정글라이프.jpg');
+		var img12 = $('#fname4').val();
+		$('.first3 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img12);
 	});
 	$('.ranking5').mouseover(function(){
-		$('.first3 img').attr('src','./resources/images/Rrank/푸에르자.jpg');
+		var img12 = $('#fname5').val();
+		$('.first3 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img12);
 	});
 });
 
