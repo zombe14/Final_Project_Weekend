@@ -46,55 +46,55 @@
 	$('#map').on('click','#daum-maps-shape-0',function(){
 		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=제주';
 	});
-	$('#map').on('click','#daum-maps-shape-3',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=전남';
-	});
-	$('#map').on('click','#daum-maps-shape-12',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=광주';
-	});
-	$('#map').on('click','#daum-maps-shape-4',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=전북';
-	});
 	$('#map').on('click','#daum-maps-shape-1',function(){
 		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=경남';
-	});
-	$('#map').on('click','#daum-maps-shape-16',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=부산';
-	});
-	$('#map').on('click','#daum-maps-shape-10',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=울산';
-	});
-	$('#map').on('click','#daum-maps-shape-15',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=대구';
 	});
 	$('#map').on('click','#daum-maps-shape-2',function(){
 		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=경북';
 	});
-	$('#map').on('click','#daum-maps-shape-6',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=충북';
+	$('#map').on('click','#daum-maps-shape-3',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=전남';
 	});
-	$('#map').on('click','#daum-maps-shape-9',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=세종';
-	});
-	$('#map').on('click','#daum-maps-shape-11',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=대전';
+	$('#map').on('click','#daum-maps-shape-4',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=전북';
 	});
 	$('#map').on('click','#daum-maps-shape-5',function(){
 		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=충남';
 	});
-	$('#map').on('click','#daum-maps-shape-14',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=인천';
-	});
-	$('#map').on('click','#daum-maps-shape-17',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=서울';
-	});
-	$('#map').on('click','#daum-maps-shape-8',function(){
-		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=경기';
+	$('#map').on('click','#daum-maps-shape-6',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=충북';
 	});
 	$('#map').on('click','#daum-maps-shape-7',function(){
 		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=강원';
 	});
+	$('#map').on('click','#daum-maps-shape-8',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=경기';
+	});
+	$('#map').on('click','#daum-maps-shape-9',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=세종';
+	});
+	$('#map').on('click','#daum-maps-shape-10',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=울산';
+	});
+	$('#map').on('click','#daum-maps-shape-11',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=대구';
+	});
+	$('#map').on('click','#daum-maps-shape-12',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=광주';
+	});
+	$('#map').on('click','#daum-maps-shape-13',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=인천';
+	});
 	
+	$('#map').on('click','#daum-maps-shape-14',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=대구';
+	});
+	$('#map').on('click','#daum-maps-shape-15',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=부산';
+	});
+	$('#map').on('click','#daum-maps-shape-16',function(){
+		location.href = '${pageContext.request.contextPath}/festi/festiList?category=2&region=서울';
+	});
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = { 
     		center: new kakao.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표

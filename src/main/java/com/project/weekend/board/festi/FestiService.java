@@ -135,11 +135,11 @@ public class FestiService {
 	public int setUpdate(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
 		int res = 0;
 
-		int fnum = fileDAO.getList(festiDTO.getNum()).get(0).getFnum();
-		System.out.println("fnum : "+fnum);
-		String realPath = session.getServletContext().getRealPath("/resources/images/board");
-		System.out.println(filelist.get(0).getOriginalFilename().length());
+		
 		if(filelist.get(0).getOriginalFilename().length()>0) {
+			String realPath = session.getServletContext().getRealPath("/resources/images/board");
+			int fnum = fileDAO.getList(festiDTO.getNum()).get(0).getFnum();
+			System.out.println("fnum : "+fnum);
 			FileDTO fileDTO = new FileDTO();
 			fileDTO.setNum(festiDTO.getNum());
 			fileDTO.setOname(filelist.get(0).getOriginalFilename());

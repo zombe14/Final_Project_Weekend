@@ -89,4 +89,9 @@
 	<bean class="com.project.weekend.board.open.OpenDAO" id="openDAO" />
 	<bean class="com.project.weekend.board.open.OpenService" id="openService" />
 	
+	<!-- calendar -->
+	<bean class="com.project.weekend.calendar.GoogleCalendarDTO" id="googleCalendarDTO"/>
+	<bean class="com.project.weekend.calendar.GoogleCalendarDAO" id="googleCalendarDAO"/>
+	<bean class="com.project.weekend.calendar.GoogleCalendarService" id="googleCalendarService"/>
+	
 </beans>

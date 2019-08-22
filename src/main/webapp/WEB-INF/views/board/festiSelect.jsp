@@ -182,7 +182,7 @@
 							</c:forEach>
 						</div>
 
-						<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
+						<c:if test="${dto.writer eq member.nickname}">
 
 
 						<div class="admin_button">
