@@ -258,31 +258,33 @@
 										</tr>
 									</c:forEach>
 								</c:when>
-								<c:when test="Reser">
+								<c:when test="${board eq 'Resuer'}">
 									<tr>
-										<td>번호</td>
-										<td>지역</td>
-										<td>공연 이름</td>
-										<td>시작시간</td>
-										<td>수량</td>
-										<td>구매일</td>
-										<td>주문자</td>
 										<td>주문번호</td>
-										<td>취소 시키기</td>
+										<td>공연번호</td>
+										<td>공연명</td>
+										<td>공연시간</td>
+										<td>티켓가격</td>
+										<td>예매수량</td>
+										<td>결제가능금액</td>
+										<td>결제금액</td>
+										<td>현재상태</td>
+										<td>결제일</td>
+										<td>취소</td>
 									</tr>
-									<c:forEach items="${list}" var="dto">
+										<c:forEach items="${list}" var="dto">
 										<tr>
-											<td>${dto.num}</td>
-											<td>${dto.state}</td>
-											<td>${dto.item_name}</td>
-											<td>${dto.show_time}</td>
-											<td>${dto.amount}</td>
-											<td>${dto.buy_date}</td>
-											<td>${dto.partner_user_id}</td>
+											<td>${dto.tid}</td>
 											<td>${dto.partner_order_id}</td>
+											<td>${dto.partner_user_id}</td>
+											<td>${dto.pg_token}</td>
+											<td>${dto.total_amount}</td>
+											<td>${dto.cancle_available_amount}</td>
+											<td>${dto.state}</td>
+											<td>${dto.pay_date}</td>
 											<td><input class="dddBtn" type="button" value="취소"></td>
 										</tr>
-									</c:forEach>
+										</c:forEach>
 								</c:when>
 								<c:when test="${board eq 'WeekReco'}">
 									<tr>

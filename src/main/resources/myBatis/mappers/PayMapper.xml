@@ -29,15 +29,16 @@
 	</update>
 	
 	<!-- 상혁 -->
-	<select id="selectAllList" parameterType="PageMaker" resultType="PayVO">
-		SELECT * FROM
-		(SELECT ROWNUM R, A.* FROM 
-		(SELECT * FROM payment 
-		ORDER BY pay_date DESC) A)
-		WHERE R BETWEEN #{startRow} AND #{lastRow}
-	</select>
-	
+	<!-- 페이징 처리를 위한 -->
 	<select id="getCount" resultType="Integer" parameterType="Integer">
 		select count(*) from payment 
+	</select>
+	<!-- 리스트 출력 -->
+	<select id="selectAdminList" parameterType="PageMaker" resultType="PayVO">
+		SELECT * FROM
+		(SELECT ROWNUM R, S.* FROM
+		(SELECT * FROM show_order FULL JOIN payment USING(partner_order_id)
+		order by pay_date desc)S)
+		WHERE R between #{startRow} and #{lastRow}
 	</select>
 </mapper>

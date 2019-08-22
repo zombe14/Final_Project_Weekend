@@ -40,7 +40,7 @@ public class PayDAO {
 	public int getCount() throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getCount");
 	}
-	public List<PayVO> selectAllList(HttpSession session, PageMaker pageMaker) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"selecAlltList", pageMaker);
+	public List<PayVO> selectAdminList(HttpSession session, PageMaker pageMaker) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"selectAdminList", pageMaker);
 	}
 }

@@ -253,7 +253,7 @@ public class AdminController {
 	@RequestMapping(value = "aReserList", method = RequestMethod.GET)
 	public ModelAndView adminReserList(HttpSession session, PageMaker pageMaker) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<PayVO> list = payService.selectAllList(session, pageMaker);
+		List<PayVO> list = payService.selectAdminList(session, pageMaker);
 		mv.addObject("title", "결제내역");
 		mv.addObject("board", "Reser");
 		mv.addObject("list", list);

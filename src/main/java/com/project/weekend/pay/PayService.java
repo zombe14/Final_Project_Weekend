@@ -159,10 +159,10 @@ public class PayService implements ResponseErrorHandler{
 		
 	}
 	// 상혁
-	public List<PayVO> selectAllList(HttpSession session ,PageMaker pageMaker) throws Exception{
+	public List<PayVO> selectAdminList(HttpSession session ,PageMaker pageMaker) throws Exception{
 		int totalCount = payDAO.getCount();
 		pageMaker.makeRow();
-		List<PayVO> list = payDAO.selectAllList(session, pageMaker);
+		List<PayVO> list = payDAO.selectAdminList(session, pageMaker);
 		pageMaker.makePage(totalCount);
 		return list;
 	}
