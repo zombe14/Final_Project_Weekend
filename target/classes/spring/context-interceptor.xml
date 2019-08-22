@@ -92,5 +92,36 @@
 			</interceptor>
 		</interceptors>
 		
+	<beans:bean id="festiQnafqnaWriteInterceptor" class="com.project.weekend.interceptor.FestiQnafqnaWriteInterceptor"/>
+		<interceptors>
+			<interceptor>
+				<mapping path="/festiQna/fqnaWrite"/>
+				<mapping path="/after/afterWrite"/>
+				<beans:ref bean="festiQnafqnaWriteInterceptor"/>
+			</interceptor>
+		</interceptors>
+	<beans:bean id="festiQnafqnaUpdateInterceptor" class="com.project.weekend.interceptor.FestiQnafqnaUpdateInterceptor"/>
+		<interceptors>
+			<interceptor>
+				<mapping path="/festiQna/fqnaUpdate"/>
+				<mapping path="/after/afterUpdate"/>
+				<beans:ref bean="festiQnafqnaUpdateInterceptor"/>
+			</interceptor>
+		</interceptors>	
+	
+	<beans:bean id="festiQnafqnaDeleteInterceptor" class="com.project.weekend.interceptor.FestiQnafqnaDeleteInterceptor"/>
+		<interceptors>
+			<interceptor>
+				<mapping path="/festiQna/fqnaDelete"/>
+				<mapping path="/festiQna/fqnaReplyDelete"/>
+				<mapping path="/after/afterDelete"/>
+				<beans:ref bean="festiQnafqnaDeleteInterceptor"/>
+			</interceptor>
+		</interceptors>	
+		
+		
+		
+		
+		
 	<context:component-scan base-package="com.project.weekend" />
 </beans:beans>

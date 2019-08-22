@@ -280,7 +280,9 @@
 				<c:if test="${member.grade gt 0}">
 				<div class="festi_title">
 					<strong>질문하기</strong>
+					<c:if test="${member ne null }">
 					<a href="../festiQna/fqnaWrite?num=${dto.num}">질문하기</a>
+					</c:if>
 				</div>
 				</c:if>
 				<div>
@@ -325,7 +327,9 @@
 						<c:if test="${member.grade gt 0}">
 						<div class="festi_title">
 							<strong>관람후기</strong>
+							<c:if test="${member ne null }">
 							<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
+							</c:if>
 						</div>
 						</c:if>
 						<div>

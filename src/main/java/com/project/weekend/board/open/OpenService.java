@@ -132,5 +132,5 @@ public class OpenService implements BoardService {
 	public List<BoardDTO> getNewList() throws Exception{
 		return openDAO.getNewList();
 	}
-	
+
 }
