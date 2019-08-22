@@ -124,11 +124,25 @@
 	<select id="getWeekRecoList" parameterType="pageMaker" resultType="FestiDTO">
 		select * from
 		(select rownum R, F.* from
-		(select num, writer,title, local, region
-		from festi full join files using(num)
-		where category = 0
+		(select * from festi where
+		<choose>
+			<when test="kind == 1">
+				title
+			</when>
+			<when test="kind == 2">
+				contents
+			</when>
+			<when test="kind == 3">
+				writer
+			</when>
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%'
+		and category = 0
 		order by num desc) F)
-		where r between #{startRow} and #{lastRow}
+		where R between #{startRow} and #{lastRow}
 	</select>
 	<!-- 글선택 -->
 	<select id="getWeekRecoSelect" resultMap="festiResult" parameterType="String">
@@ -154,13 +168,13 @@
 		(select rownum R, F.* from
 		(select * from festi where
 		<choose>
-			<when test="kind = 1">
+			<when test="kind == 1">
 				title
 			</when>
-			<when test="kind = 2">
+			<when test="kind == 2">
 				contents
 			</when>
-			<when test="kind = 3">
+			<when test="kind == 3">
 				writer
 			</when>
 			<otherwise>

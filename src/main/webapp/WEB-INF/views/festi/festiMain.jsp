@@ -40,7 +40,7 @@
 		<c:import url="../inc/footer.jsp"></c:import>
 	</div>
 </div>
-<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="../resources/images/home/위로.png"></a>
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bc046e4f4893e653801de407847c4b15"></script>
 <script>
 	$('#map').on('click','#daum-maps-shape-0',function(){

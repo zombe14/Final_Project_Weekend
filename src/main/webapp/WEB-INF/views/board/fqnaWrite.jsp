@@ -38,7 +38,7 @@
 						<td class="td1"><label for="title">제목<span class="r">*</span></label></td>
 						<c:if test="${board eq 'fqna'}">
 						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png">
-							<input type="text" name="title" id="title" style="width: 95.8%"></td>							
+							<input type="text" name="title" id="title" style="width: 95.6%"></td>							
 						</c:if>
 						<c:if test="${board eq 'fqnaReply'}">
 							<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png">
@@ -114,7 +114,7 @@
 			<c:import url="../inc/footer.jsp"></c:import>
 		</div>
 	</div>
-
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	<!-- 썸머노트 -->
 	<script src="../resources/js/summernote.js"></script>
 	<!-- script -->

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title> W추천 </title>
+<title> W추천 게시판 </title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/weekRecoList.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/boardList.css">
@@ -23,7 +23,7 @@
       		<div class="conta">
   	      		<div class="week_wrap">
   	      			<div class="week_title">
-  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png"><strong> W 추천 </strong>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png"><strong> W 추천 게시판 </strong>
   	      			</div>
   	      			<div class="week_box">
   	      				<ul>
@@ -88,7 +88,7 @@
 					</c:if>
 				</div>
   	      						<!-- 검색창 -->
-				<form action="./${board}List" class="search_form">
+				<form action="./WeekRecoList" class="search_form">
 					<select name="kind" class="search_select">
 						<option value="0">전체</option>
 						<option value="1">제목</option>
@@ -109,6 +109,8 @@
     		<c:import url="../inc/footer.jsp"></c:import>
 		</div>
 	</div>
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
+
 <script type="text/javascript">
 
 		/* 테이블의 num 앞에 구분 문자 안보이게 */

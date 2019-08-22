@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>[${boardTitle}]${dto.title}</title>
+<title> 유저추천 게시판 </title>
 <c:import url="../temp/boot.jsp"></c:import>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/home.css">
@@ -27,7 +27,7 @@
 			<div class="conta">
 				<div class="fqna_wrap">
 					<div class="fqna_title">
-  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png" class="titleimg"><h3> 유저추천 글 내용 </h3>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png" class="titleimg"><h3> 유저추천 게시판 </h3>
   	      			</div>
 				<div class="tableDiv">
 						<table class="table" style="width: 100%">
@@ -67,7 +67,7 @@
 				</div>
 				<div id="commentsWriteDiv">
 					<form action="./${board}commentsWrite" method="post" id="commentsFrm">
-						<input type="hidden" id="num" name="num" value="${dto.anum}">
+						<input type="hidden" id="num" name="num" value="${dto.anum }">
 						<strong><span>댓글(</span><span id="cCnt">${cCnt}</span>)</strong>
 						<div class="comments_name">				
 							<input type="text" name="writer" id="writer" value="${member.nickname}memberNick" readonly="readonly" style="border: 0;background-color:transparent;">
@@ -100,7 +100,7 @@
       <c:import url="../inc/footer.jsp"></c:import>
    </div>
 </div>
-	
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	<!-- script -->
 	<script type="text/javascript">
 	/* 글 삭제 */
@@ -130,8 +130,8 @@
 	$('#commentsWrite').click(function() {
 		var writer = $('#writer').val();
 		var contents = $('#commentsContents').val();
-		var num = '${dto.anum}';
-		if(contents == ''){
+		var num = '';
+		if(contents == 'dto.anum'){
 			alert('내용을 입력해주세요');
 		} else {
 			$.ajax({
@@ -157,6 +157,21 @@
 			});
 		}
 	});
+	
+	function getCommentsList(){
+		$.ajax({
+			type:'GET',
+			url:'./commentsList',
+			data:{
+				num:'${dto.anum}'
+			},
+			success:function(data){
+				data = data.trim();    	
+				$('#commentsList').html(data);
+					
+			}
+		});
+	}
 	
 </script>
 </body>
