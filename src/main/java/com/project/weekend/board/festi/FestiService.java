@@ -253,20 +253,18 @@ public class FestiService {
 	}
 	
 	//원식 홈 랭크 리스트
-	public List<FestiDTO> getHomeRankList(PageMaker pageMaker) throws Exception{
-		List<FestiDTO> list = festiDAO.getHomeRankList(pageMaker);
+	public List<FestiDTO> getHomeRankList() throws Exception{
+		List<FestiDTO> list = festiDAO.getHomeRankList();
 		for(FestiDTO f : list) {
 			String num = f.getNum();
 			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);
 			f.setFileDTOs(fileList);
 		}
-		
-		
-		
+			
 		return list;
 	}
-	public List<FestiDTO> getHomeRankList2(PageMaker pageMaker) throws Exception{
-		List<FestiDTO> list = festiDAO.getHomeRankList2(pageMaker);
+	public List<FestiDTO> getHomeRankList2() throws Exception{
+		List<FestiDTO> list = festiDAO.getHomeRankList2();
 		for(FestiDTO f : list) {
 			String num = f.getNum();
 			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);

@@ -121,11 +121,11 @@ public class FestiDAO{
 	}
 	// 상혁 끝;
 	// 원식 홈 랭크;
-	public List<FestiDTO> getHomeRankList(PageMaker pageMaker) throws Exception{
-		return SqlSession.selectList(NAMESPACE+"getHomeRankList", pageMaker);
+	public List<FestiDTO> getHomeRankList() throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getHomeRankList");
 	}
-	public List<FestiDTO> getHomeRankList2(PageMaker pageMaker) throws Exception{
-		return SqlSession.selectList(NAMESPACE+"getHomeRankList2", pageMaker);
+	public List<FestiDTO> getHomeRankList2() throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getHomeRankList2");
 	}
 	// 원식 홈 베스트;
 	public List<FestiDTO> getBestList(PageMaker pageMaker) throws Exception{

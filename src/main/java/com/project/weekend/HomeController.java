@@ -33,8 +33,8 @@ public class HomeController {
 	public ModelAndView home(PageMaker pageMaker, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<BoardDTO> open = opensService.getList(pageMaker, session);
-		List<FestiDTO> rank1= festiService.getHomeRankList(pageMaker);
-		List<FestiDTO> rank2= festiService.getHomeRankList2(pageMaker);
+		List<FestiDTO> rank1= festiService.getHomeRankList();
+		List<FestiDTO> rank2= festiService.getHomeRankList2();
 		List<FestiDTO> best = festiService.getBestList(pageMaker);
 		mv.addObject("open", open);
 		mv.addObject("rank1", rank1);

@@ -10,13 +10,16 @@
 		</div>
 		<div class="rank_cont">
 		<ul>
-			<li class="first first2"><a href="#" ><img alt="" src="${pageContext.request.contextPath}/resources/images/board/" width="180" height="218"></a></li>
+			<li class="first first2"><a href="#" ><img alt="" src="${pageContext.request.contextPath}/resources/images/board/${rank2[0].fileDTOs[0].fname}" width="180" height="218"></a></li>
 						<c:forEach items="${rank2 }" var="rank2" varStatus="status">
-							<li class="rankingItem${status.count }"><a href="#">
+							<li class="rankingItem${status.count }"><a href="${pageContext.request.contextPath}/festi/festiSelect?num=${rank2.num}">
 										<span class="num${status.count }">${status.count }</span>
 							${rank2.title }
 							</a></li>
+							
 						</c:forEach>
+							<input type="hidden" id="img11" value="${rank2[0].fileDTOs[0].fname}">
+						
 		</ul>
 		
 		<!-- <ul>
@@ -63,7 +66,7 @@
 		</div>
 		<div class="rank_cont">
 			<ul>
-			<li class="first first3"><a href="#" ><img alt="" src="./resources/images/Rrank/블루레인.jpg" width="180" height="218"></a></li>
+			<li class="first first3"><a href="#" ><img alt="" src="${pageContext.request.contextPath}/resources/images/board/${rank1[0].fileDTOs[0].fname}" width="180" height="218"></a></li>
 					<c:forEach items="${rank1 }" var="rank1" varStatus="status">
 						<li class="ranking${status.count }"><a href="${pageContext.request.contextPath}/board/festiSelect?num=${rank1.num}">
 						<c:choose>
