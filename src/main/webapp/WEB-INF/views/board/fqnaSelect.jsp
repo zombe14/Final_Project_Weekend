@@ -28,7 +28,7 @@
 				<div class="fqna_wrap">
 					<div class="fqna_title">
 						<!-- 답변 달기 -->
-						<c:if test="${dto.answer eq 0 and member.grade eq 3}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
+						<c:if test="${dto.answer eq 0 and member.grade gt 1}">
 							<a id="replyBtn" class="fqnaSelect_btn2">답변달기</a>
 						</c:if>
   	      				<h3> 질문하기 </h3>
