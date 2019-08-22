@@ -11,7 +11,7 @@
 			<li>
 				<a href="${pageContext.request.contextPath}/festi/festiSelect?num=${best.num}">
 				<p>
-					<img src="${pageContext.request.contextPath}/resources/images/board/${best.fileDTOs[0].fname}">
+					<img src="${pageContext.request.contextPath}/resources/images/board/${best.fileDTOs[status.index].fname}">
 				</p>
 				<div class="list_info">
 					<h4>${best.title }</h4>

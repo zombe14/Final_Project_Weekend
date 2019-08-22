@@ -28,7 +28,7 @@
 				<div class="fqna_wrap">
 					<div class="fqna_title">
 						<!-- 답변 달기 -->
-						<c:if test="${dto.answer eq 0 and member.grade gt 1}">
+						<c:if test="${dto.answer eq 0 and member.grade eq 3}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
 							<a id="replyBtn" class="fqnaSelect_btn2">답변달기</a>
 						</c:if>
   	      				<h3> 질문하기 </h3>
@@ -76,9 +76,10 @@
 				</div>			
 				
 				<a id="list" title="${board}" class="${dto.num} fqnaSelect_btn">목록</a>
-				<c:if test="${dto.writer eq member.nickname}">
-				<a id="update" class="${board} fqnaSelect_btn">수정</a> 
-				<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
+				
+				<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
+					<a id="update" class="${board} fqnaSelect_btn">수정</a> 
+					<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
 				</c:if>
 				
 				<!-- 원글일때 -->
@@ -113,7 +114,7 @@
 		} 
 		/* 답글일때 */
 		else{
-			var check = confirm('삭제하시겠습니까?');
+			var check = confirm('삭제하시겠습니까?');		
 			if(check){
 				$('#deleteReplyFrm').submit();
 			}

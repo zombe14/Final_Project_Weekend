@@ -75,7 +75,8 @@ public class FestiQnaService {
 	public int setDelete(String ref, HttpSession session) throws Exception {
 		int res = 0;
 		List<String> nums = festiQnaDAO.getSelectRef(ref);
-			
+
+	
 		for(String n : nums) {
 			List<FileDTO> list = fileDAO.getList(n);
 			if (list != null) {
@@ -85,7 +86,6 @@ public class FestiQnaService {
 			}
 		}
 		res = festiQnaDAO.setDelete(ref);
-		res = festiQnaDAO.setDeleteAll(ref);
 		
 		return res;
 	}
