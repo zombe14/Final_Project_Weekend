@@ -168,7 +168,7 @@ public class FestiController{
 	}
 	//update-process
 	@RequestMapping(value = "festiUpdate", method = RequestMethod.POST)
-	public ModelAndView setUpdate(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+	public ModelAndView setUpdate(FestiDTO festiDTO, MultipartFile filelist, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int res = festiService.setUpdate(festiDTO, filelist, session);
 		GoogleCalendarDTO googleCalendarDTO = new GoogleCalendarDTO();

@@ -27,4 +27,18 @@
 	<update id="cancel" parameterType="String">
 		update payment set Cancel_available_amount  = 0, state = 0 where partner_order_id = #{partner_order_id}
 	</update>
+	
+	<!-- 상혁 -->
+	<!-- 페이징 처리를 위한 -->
+	<select id="getCount" resultType="Integer" parameterType="Integer">
+		select count(*) from payment 
+	</select>
+	<!-- 리스트 출력 -->
+	<select id="selectAdminList" parameterType="PageMaker" resultType="PayVO">
+		SELECT * FROM
+		(SELECT ROWNUM R, S.* FROM
+		(SELECT * FROM show_order FULL JOIN payment USING(partner_order_id)
+		order by pay_date desc)S)
+		WHERE R between #{startRow} and #{lastRow}
+	</select>
 </mapper>

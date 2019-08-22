@@ -7,188 +7,24 @@
 	</div>
 	<div class="best_cont">
 		<ul class="best_list">
+			<c:forEach items="${best }" var="best" varStatus="status">
 			<li>
-				<a href="#">
+				<a href="${pageContext.request.contextPath}/festi/festiSelect?num=${best.num}">
 				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
+					<img src="${pageContext.request.contextPath}/resources/images/board/${best.fileDTOs[status.index].fname}">
 				</p>
 				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
+					<h4>${best.title }</h4>
 					<dl>
 						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
+						<dd>${best.startDate} ~	${best.endDate}</dd>
 						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
+						<dd>${best.local}</dd>
 					</dl>
 				</div>
 				</a>
 			</li>
-			<li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li><li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li><li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li><li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li><li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li><li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li><li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li><li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li><li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li><li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li><li>
-				<a href="#">
-				<p>
-					<img src="./resources/images/home/워라벨왕산비치.jpg">
-				</p>
-				<div class="list_info">
-					<h4>2019 워라벨 왕산비치 썸머 페스티벌</h4>
-					<dl>
-						<dt>기간</dt>
-						<dd>2019.08.24 ~ 2019.09.20</dd>
-						<dt>장소</dt>
-						<dd>쌍용해수욕장</dd>
-					</dl>
-				</div>
-				</a>
-			</li>
+			</c:forEach>
 		</ul>
 	</div>
 </div>

@@ -52,7 +52,7 @@
 				CONTENTS LIKE '%'||#{search}||'%'
 			</when>
 			<otherwise>
-				CONTENTS LIKE '%'||#{search}||'%'
+				TITLE||CONTENTS LIKE '%'||#{search}||'%'
 			</otherwise>
 		</choose>
 		ORDER BY REG_DATE DESC) N)

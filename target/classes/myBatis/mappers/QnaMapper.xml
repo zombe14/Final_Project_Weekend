@@ -37,20 +37,19 @@
 		(SELECT NUM, TITLE, WRITER, REG_DATE, HIT, REF, STEP, DEPTH, PW, answer
 		FROM QNA WHERE
 		<choose>
-			<when test="kind = 1">
-				TITLE
+			<when test="kind == 1">
+				TITLE LIKE '%'||#{search}||'%'
 			</when>
-			<when test="kind = 2">
-				CONTENTS
+			<when test="kind == 2">
+				CONTENTS LIKE '%'||#{search}||'%'
 			</when>
-			<when test="kind = 3">
-				WRITER
+			<when test="kind == 3">
+				WRITER LIKE '%'||#{search}||'%'
 			</when>
 			<otherwise>
-				WRITER
+				TITLE || CONTENTS || WRITER LIKE '%'||#{search}||'%'
 			</otherwise>
 		</choose>
-		LIKE '%'||#{search}||'%'
 		ORDER BY  (SUBSTR(ref, 2)*1) DESC, STEP ASC) Q) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>

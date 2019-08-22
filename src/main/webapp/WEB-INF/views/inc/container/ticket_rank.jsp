@@ -5,11 +5,25 @@
 	<div class="rank_left">
 		<div class="rank_header">
 			<strong class="ranktitle">축제 랭킹</strong> 
-			<a href="#" class="title"><img src="./resources/images/home/plus.png" 
+			<a href="${pageContext.request.contextPath}/rank/rank_festi?category=2" class="title"><img src="./resources/images/home/plus.png" 
 			style="width: 20px; height: auto"></a>
 		</div>
 		<div class="rank_cont">
 		<ul>
+			<li class="first first2"><a href="#" ><img alt="" src="${pageContext.request.contextPath}/resources/images/board/${rank2[0].fileDTOs[0].fname}" width="180" height="218"></a></li>
+						<c:forEach items="${rank2 }" var="rank2" varStatus="status">
+							<li class="rankingItem${status.count }"><a href="${pageContext.request.contextPath}/festi/festiSelect?num=${rank2.num}">
+										<span class="num${status.count }">${status.count }</span>
+							${rank2.title }
+							<input type="hidden" class="img11" id="fname${status.count}" value="${rank2.fileDTOs[0].fname}">
+							</a></li>
+							
+						</c:forEach>
+								
+						
+		</ul>
+		
+		<!-- <ul>
 			<li class="first first2"><a href="#" ><img alt="" src="./resources/images/home/대박워터파크.jpg" width="180" height="218"></a></li>
 			<li class="rankingItem1">
 				<a href="#" >
@@ -41,18 +55,37 @@
 					2019 CJ대한통운 슈퍼레이스 챔피언십 Round.5
 				</a>
 			</li>
-		</ul>
+		</ul> -->
 	</div>
 </div>
 
 <div class="rank_right">
 		<div class="rank_header">
 			<strong class="ranktitle">공연 랭킹</strong> 
-			<a href="#" class="title"><img src="./resources/images/home/plus.png" 
+			<a href="${pageContext.request.contextPath}/rank/rank_festi?category=1" class="title"><img src="./resources/images/home/plus.png" 
 			style="width: 20px; height: auto"></a>
 		</div>
 		<div class="rank_cont">
-		<ul>
+			<ul>
+			<li class="first first3"><a href="#" ><img alt="" src="${pageContext.request.contextPath}/resources/images/board/${rank1[0].fileDTOs[0].fname}" width="180" height="218"></a></li>
+					<c:forEach items="${rank1 }" var="rank1" varStatus="status">
+						<li class="ranking${status.count }"><a href="${pageContext.request.contextPath}/board/festiSelect?num=${rank1.num}">
+						<c:choose>
+							<c:when test="${status.count<4} ">
+								<span class="num${status.count }" style="color:#41b40a;">${status.count }</span>
+							</c:when>
+							<c:otherwise>
+								<span class="num${status.count }">${status.count }</span>
+							</c:otherwise>
+						</c:choose>
+							${rank1.title }
+						</a></li>
+					</c:forEach>
+
+		</ul>
+		
+		
+		<!-- <ul>
 			<li class="first first3"><a href="#" ><img alt="" src="./resources/images/Rrank/블루레인.jpg" width="180" height="218"></a></li>
 			<li class="ranking1">
 				<a href="#" >
@@ -84,7 +117,7 @@
 					2019 푸에르자 부르타 웨이라 인 서울
 				</a>
 			</li>
-		</ul>
+		</ul> -->
 	</div>
 </div>
 

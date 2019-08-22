@@ -13,40 +13,48 @@ $(document).ready(function() {
 
 /* 티켓 오픈 */
 $(document).ready(function(){
-	$('.tm1').mouseover(function(){
+	$('.tm5').mouseover(function(){
 		$('.first1 img').attr('src','./resources/images/home/청춘페스티벌.gif');
 	});
-	$('.tm2').mouseover(function(){
+	$('.tm4').mouseover(function(){
 		$('.first1 img').attr('src','./resources/images/home/워라벨왕산비치.jpg');
 	});
 	$('.tm3').mouseover(function(){
 		$('.first1 img').attr('src','./resources/images/home/아시아뮤직페스티벌.jpg');
 	});
-	$('.tm4').mouseover(function(){
+	$('.tm2').mouseover(function(){
 		$('.first1 img').attr('src','./resources/images/home/냉이축제.jpg');
 	});
-	$('.tm5').mouseover(function(){
+	$('.tm1').mouseover(function(){
 		$('.first1 img').attr('src','./resources/images/home/신촌물총축제.jpg');
 	});
 });
 
 /* 축제 랭크 */
 $(document).ready(function(){
+	
+	
 	$('.rankingItem1').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/대박워터파크.jpg');
+		var img11 = $('#fname1').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem2').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/옐로우리버비치.jpg');
+		var img11 = $('#fname2').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem3').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/그리스보물전.jpg');
+		var img11 = $('#fname3').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem4').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/이집트미술여행.jpg');
+		var img11 = $('#fname4').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem5').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/대한통운.jpg');
+		var img11 = $('#fname5').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
+
 });
 
 /* 공연 랭크 */

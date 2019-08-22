@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -15,34 +17,27 @@ public class QnaPwInterceptor extends HandlerInterceptorAdapter {
 	private QnaDAO qnaDAO;
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		/*
-		boolean res = false;
+		boolean result = false;
 		HttpSession session = request.getSession();
-		QnaService qnaService = new QnaService();
-		Object member = session.getAttribute("member");
+		Object obj = session.getAttribute("member");
 		String num = request.getParameter("num");
 		String pw = request.getParameter("pw");
 		QnaDTO qnaDTO = qnaDAO.getSelect(num);
-		System.out.println(qnaDTO.getPw());
 		System.out.println(pw);
-		if(member == null) {
-			response.sendRedirect("../member/memberLogin");
-		} else {
-			if(qnaDTO.getPw()==null) {
-				res = true;
-			}else {
-				if(qnaDTO.getPw().equals(pw)) {
-					res= true;
+		if(obj!=null) {
+			if(pw!=null) {
+				if(pw.equals(qnaDTO.getPw())) {
+					result=true;
 				}else {
-					response.sendRedirect("../qna/qnaList");
+					response.sendRedirect("./qnaList");
 				}
+			}else {
+				result=true;
 			}
+		}else {
+			response.sendRedirect("../member/memberLogin");
 		}
-		return res;
-		*/
-		return true;
+		
+		return result;
 	}
-	
-	
-
 }

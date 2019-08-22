@@ -1,46 +1,49 @@
 package com.project.weekend;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.weekend.board.BoardDTO;
+import com.project.weekend.board.festi.FestiDAO;
+import com.project.weekend.board.festi.FestiDTO;
+import com.project.weekend.board.festi.FestiService;
 import com.project.weekend.board.open.OpenService;
+import com.project.weekend.util.PageMaker;
+
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
+
+	@Inject
+	private OpenService opensService;
+	@Inject
+	private FestiService festiService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		//logger.info("Welcome home! The client locale is {}.", locale);
+	public ModelAndView home(PageMaker pageMaker, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<BoardDTO> open = opensService.getList(pageMaker, session);
+		List<FestiDTO> rank1= festiService.getHomeRankList();
+		List<FestiDTO> rank2= festiService.getHomeRankList2();
+		List<FestiDTO> best = festiService.getBestList(pageMaker);
+		mv.addObject("open", open);
+		mv.addObject("rank1", rank1);
+		mv.addObject("rank2", rank2);
+		mv.addObject("best", best);
+		mv.setViewName("home");
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
+		return mv;
 	}
+	
 	
 }

@@ -28,7 +28,7 @@
 				<ul>
 					<li class="mqmenu"><a href="./aUserList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage1.png"><br>유저 관리</a></li>
 					<li class="mqmenu"><a href="./aNoticeList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage5.png"><br>게시글 관리</a></li>
-					<li class="mqmenu"><a href="./aEnjoyList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage2.png"><br>공연 관리</a></li>
+					<li class="mqmenu"><a href="./aCate1List"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage2.png"><br>공연 관리</a></li>
 					<li class="mqmenu"><a href="./aReserList"><img src="${pageContext.request.contextPath}/resources/images/mypage/mypage4.png"><br>티켓 관리</a></li>
 				</ul>
 			</div>

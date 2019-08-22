@@ -28,7 +28,7 @@
 				<div class="fqna_wrap">
 					<div class="fqna_title">
 						<!-- 답변 달기 -->
-						<c:if test="${dto.answer eq 0}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
+						<c:if test="${dto.answer eq 0 and member.grade eq 3}"> <!-- and member.grade == 3  : qna 뒤에 추가하기 -->
 							<a id="replyBtn" class="fqnaSelect_btn2">답변달기</a>
 						</c:if>
   	      				<h3> 질문하기 </h3>
@@ -76,17 +76,21 @@
 				</div>			
 				
 				<a id="list" title="${board}" class="${dto.num} fqnaSelect_btn">목록</a>
-				<a id="update" class="${board} fqnaSelect_btn">수정</a> 
-				<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
-
+				
+				<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
+					<a id="update" class="${board} fqnaSelect_btn">수정</a> 
+					<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
+				</c:if>
 				
 				<!-- 원글일때 -->
 				<form action="./fqnaDelete" id="deleteOriginFrm" method="post">
 					<input type="hidden" name="ref" value="${dto.ref}">
+					<input type="hidden" name="writer" value="${dto.writer}">
 				</form>
 				<!-- 답글일때 -->
 				<form action="./fqnaReplyDelete" id="deleteReplyFrm" method="post">
 					<input type="hidden" name="qnum" value="${dto.qnum}">
+					<input type="hidden" name="writer" value="${dto.writer}">
 				</form>
 			</div>
 		</div>
@@ -95,7 +99,7 @@
       <c:import url="../inc/footer.jsp"></c:import>
    </div>
 </div>
-	
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	<!-- script -->
 	<script type="text/javascript">
 	/* 글 삭제 */
@@ -123,7 +127,7 @@
 		var board = $(this).attr('class');
 		var num = 0;
 		
-			location.href = "./${board}Update?qnum=${dto.qnum}";
+			location.href = "./${board}Update?qnum=${dto.qnum}&writer=${dto.writer}";
 		
 		
 	});

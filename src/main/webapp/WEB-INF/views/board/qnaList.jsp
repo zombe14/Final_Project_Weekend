@@ -148,7 +148,7 @@
 			<c:import url="../inc/footer.jsp"></c:import>
 		</div>
 	</div>
-
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	<!-- ------script---------- -->
 	<script type="text/javascript">
 	
@@ -178,12 +178,12 @@
 			} else {
 				var input = prompt('비밀번호를입력해주세요');
 				if(input != null){
-					if(pw == input){
-						location.href = "./${board}Select?num="+num+"&pw="+pw;
+					 if(pw == input){
+						location.href = "./${board}Select?num="+num;
 					} else {
 						alert('비밀번호가 틀렸습니다.');
 						password(pw,num);
-					}
+					} 
 				}				
 			}
 		} 

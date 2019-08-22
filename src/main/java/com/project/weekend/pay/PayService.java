@@ -5,6 +5,7 @@ import java.net.URI;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -18,6 +19,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
+
+import com.project.weekend.util.PageMaker;
 
 @Service
 public class PayService implements ResponseErrorHandler{
@@ -154,5 +157,13 @@ public class PayService implements ResponseErrorHandler{
 	public void handleError(ClientHttpResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		
+	}
+	// 상혁
+	public List<PayVO> selectAdminList(HttpSession session ,PageMaker pageMaker) throws Exception{
+		int totalCount = payDAO.getCount();
+		pageMaker.makeRow();
+		List<PayVO> list = payDAO.selectAdminList(session, pageMaker);
+		pageMaker.makePage(totalCount);
+		return list;
 	}
 }

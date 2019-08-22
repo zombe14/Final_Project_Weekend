@@ -102,7 +102,7 @@
 				</div>			
 				
 				<a id="list" class="qnaSelect_btn" href="./qnaList">목록</a>
-				
+				<c:if test="${dto.writer eq member.nickname}">
 				<c:if test="${dto.step eq 0}">
 					<a id="update" class="${board} qnaSelect_btn" href="./qnaUpdate?num=${dto.num}">수정</a>
 				</c:if>
@@ -110,7 +110,7 @@
 					<a id="update" class="${board} qnaSelect_btn" href="./qnaReplyUpdate?num=${dto.num}">수정</a>
 				</c:if> 
 				<a id="delete" class="${board} qnaSelect_btn">삭제</a>
-
+				</c:if>
 				<!-- 원글일때 -->
 				<form action="./qnaDelete" id="deleteOriginFrm" method="post">
 					<input type="hidden" name="ref" value="${dto.ref}">
@@ -128,7 +128,7 @@
       <c:import url="../inc/footer.jsp"></c:import>
    </div>
 </div>
-	
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	<!-- script -->
 	<script type="text/javascript">
 	/* 글 삭제 */

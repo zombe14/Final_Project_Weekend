@@ -47,7 +47,7 @@
 					<tr>
 						<td class="td1"><label for="category">카테고리<span class="r">*</span></label></td>
 						<td>
-								<input type="radio" name="category" class="category" id="show" checked="checked" value="1">
+								<input type="radio" name="category" class="category" id="show" value="1">
 								<label for="show">공연</label>
 								<input type="radio" name="category" class="category" id="festival" value="2">
 								<label for="festival">축제</label>						
@@ -58,7 +58,7 @@
 					<tr id="ageDiv">
 						<td class="td1"><label for="age">연령제한<span class="r">*</span></label></td>
 						<td>
-							<input type="radio" name="ageSel" class="age" id="all" value="1" checked="checked"> 
+							<input type="radio" name="ageSel" class="age" id="all" value="1"> 
 							<label for="all">전연령</label>
 							<input type="radio" name="ageSel" class="age" id="teen" value="2">
 							<label for="teen">청소년 이상</label>
@@ -96,7 +96,7 @@
 							<br>
 							<img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/location.png">								
 							<input type="text" name="local" id="local" readonly="readonly"  style="width: 73%;" value="${dto.local}">
-							<input type="checkbox" id="localConfirm">
+							<input type="checkbox" id="localConfirm" checked="checked">
 							<label for="localConfirm" class="localConfirm">이 주소가 맞습니다.</label>
 							<input type="hidden" name="region" id="region" value="${dto.region}">
 							<div id="map" style="width:100%;height:500px;margin-top:10px;display:none"></div>
@@ -127,14 +127,7 @@
 							</div>
 						</td>
 					</tr> --%>
-					<c:if test="${member.grade eq 3}">
-					<tr>
-						<td class="td1"><label for="top">상단 등록</label></td>
-						<td><input type="checkbox" id="top" name="top" value="0">
-						<label for="top">등록</label>
-						</td>
-					</tr>
-					</c:if>
+					
 				</tbody>
 				</table>
 				<input type="hidden" name="num" value="${dto.num}">
@@ -186,131 +179,150 @@
       <c:import url="../inc/footer.jsp"></c:import>
       </div>
    </div>
-   
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 <!-- 지도 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 	
 <!-- 썸머노트 -->
 <script src="../resources/js/summernote.js"></script>
 <!-- script -->
 <script type="text/javascript">
-
-$('.daehakDiv').hide();
-
-if('${dto.category}' == '3'){
-	$('#datesOptionDiv').show();
-} else {
-	$('#datesOptionDiv').hide();
-}
-
-$('.category').click(function() {
-	if($(this).val() != 3){
-		$('#datesOptionDiv').hide();
-	} else {
+	
+	var category = '${dto.category}';
+	$('.category').each(function(){
+		if($(this).val() == category){
+			$(this).attr('checked','checked');
+		}
+	});
+	
+	var age = '${dto.age}';
+	$('.age').each(function(){
+		if($(this).val() == age){
+			$(this).attr('checked','checked');
+		}
+	});
+	
+	$('#local1').click(function(){
+		$('#local').val('');
+		$('#localConfirm').removeAttr('checked');
+	}) 
+	
+	$('.daehakDiv').hide();
+	
+	if('${dto.category}' == '3'){
 		$('#datesOptionDiv').show();
-		$('#optionsDiv').empty();
+	} else {
+		$('#datesOptionDiv').hide();
 	}
-});
-
-getOptionsList();
-$('#writeOption').click(function(){
-	var num = $('#num').val();
-	var reg_date = $('#dates').val();
-	var time = $('#time').val();
-	var seat = $('#seat').val();
-	var price = $('#price').val();
-	$.ajax({
-		url:'./optionWrite',
-		type:'POST',
-		data:{
-			num:num,
-			reg_date:reg_date,
-			time:time,
-			seat:seat,
-			price:price
-		},
-		success:function(data){
-			if(data == '1'){
-				getOptionsList();
-				$('#dates').val('');
-				$('#time').val('');
-				$('#seat').val('');
-				$('#price').val('');
-			} else {
-				alert('실패');
+	
+	$('.category').click(function() {
+		if($(this).val() != 3){
+			$('#datesOptionDiv').hide();
+		} else {
+			$('#datesOptionDiv').show();
+			$('#optionsDiv').empty();
+		}
+	});
+	
+	getOptionsList();
+	$('#writeOption').click(function(){
+		var num = $('#num').val();
+		var reg_date = $('#dates').val();
+		var time = $('#time').val();
+		var seat = $('#seat').val();
+		var price = $('#price').val();
+		$.ajax({
+			url:'./optionWrite',
+			type:'POST',
+			data:{
+				num:num,
+				reg_date:reg_date,
+				time:time,
+				seat:seat,
+				price:price
+			},
+			success:function(data){
+				if(data == '1'){
+					getOptionsList();
+					$('#dates').val('');
+					$('#time').val('');
+					$('#seat').val('');
+					$('#price').val('');
+				} else {
+					alert('실패');
+				}
+			},
+			error:function(e){
+				console.log(e);
 			}
-		},
-		error:function(e){
-			console.log(e);
+		});
+	});
+	
+	function getOptionsList(){
+		jQuery.ajaxSettings.traditional = true;
+		$.ajaxSettings.traditional = true;
+		var num = "${dto.num}";
+		$.ajax({
+			type:'GET',
+			url:'./optionList',
+			data:{
+				num:num
+			},
+			success:function(data){
+				console.log(data);
+				data = data.trim();    	
+				$('#optionsDiv').html(data);	
+			},
+			error:function(e){
+				console.log(e);
+			}
+		});
+	}
+	
+	
+	
+	/* 첨부 파일 관리 */
+	// 개수 제한. 최대 5개까지.
+	var limit = 1;
+	// 파일 추가
+	$('#addFiles').click(function() {
+		var addFiles = '<div>'
+							+'<input type="file" class="filelist" name="filelist" style="display: inline-block"> '
+							+'<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>'
+						+'</div>';
+		if(limit<5){
+			$('#files').append(addFiles);
+			limit++
+		} else {
+			alert("최대 5개까지 첨부가능합니다.");
 		}
 	});
-});
-
-function getOptionsList(){
-	jQuery.ajaxSettings.traditional = true;
-	$.ajaxSettings.traditional = true;
-	var num = "${dto.num}";
-	$.ajax({
-		type:'GET',
-		url:'./optionList',
-		data:{
-			num:num
-		},
-		success:function(data){
-			console.log(data);
-			data = data.trim();    	
-			$('#optionsDiv').html(data);	
-		},
-		error:function(e){
-			console.log(e);
+	
+	// 정적인 input 파일 제거
+	$('.deleteFile').click(function() {
+		$(this).parent().remove();
+		limit--
+	});
+	
+	// 동적으로 그려진 input file 제거
+	$('#files').on('click','.deleteFile',function(){
+		$(this).parent().remove();
+		limit--
+	});
+	
+	
+	//상단 배치 체크박스에 값 주기 ( 1: 등록하기 / 0: 등록안함)
+	$('#top').click(function(){
+		if($(this).is(':checked')){
+			$(this).val(1);
+		} else {
+			$(this).val(0);
 		}
 	});
-}
-
-
-
-/* 첨부 파일 관리 */
-// 개수 제한. 최대 5개까지.
-var limit = 1;
-// 파일 추가
-$('#addFiles').click(function() {
-	var addFiles = '<div>'
-						+'<input type="file" class="filelist" name="filelist" style="display: inline-block"> '
-						+'<span class="glyphicon glyphicon-remove deleteFile" style="display: inline-block"></span>'
-					+'</div>';
-	if(limit<5){
-		$('#files').append(addFiles);
-		limit++
-	} else {
-		alert("최대 5개까지 첨부가능합니다.");
-	}
-});
-
-// 정적인 input 파일 제거
-$('.deleteFile').click(function() {
-	$(this).parent().remove();
-	limit--
-});
-
-// 동적으로 그려진 input file 제거
-$('#files').on('click','.deleteFile',function(){
-	$(this).parent().remove();
-	limit--
-});
-
-
-//상단 배치 체크박스에 값 주기 ( 1: 등록하기 / 0: 등록안함)
-$('#top').click(function(){
-	if($(this).is(':checked')){
-		$(this).val(1);
-	} else {
-		$(this).val(0);
-	}
-});
-
-/* 첨부 파일 관리 끝 */
-
-
-//썸네일
+	
+	/* 첨부 파일 관리 끝 */
+	
+	
+	//썸네일
 	//$("#preview").hide();
 	function readURL(input) {
 		 
