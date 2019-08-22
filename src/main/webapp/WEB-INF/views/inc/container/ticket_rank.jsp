@@ -10,24 +10,17 @@
 		</div>
 		<div class="rank_cont">
 		<ul>
-			<li class="first first2"><a href="#" ><img alt="" src="" width="180" height="218"></a></li>
-				<c:choose>
-					<c:when test="${param.category eq 1}">
-						<c:forEach items="${rank }" var="rank" varStatus="status">
-							<li class="rankingItem${status.count }"><a href="${pageContext.request.contextPath}/board/festiSelect?num=${rank.num}">
-								<c:choose>
-									<c:when test="${status.count < 4} ">
-										<span class="num${status.count }" style="color:#41b40a;">${status.count }</span>
-									</c:when>
-									<c:otherwise>
+			<li class="first first2"><a href="#" ><img alt="" src="${pageContext.request.contextPath}/resources/images/board/${rank2[0].fileDTOs[0].fname}" width="180" height="218"></a></li>
+						<c:forEach items="${rank2 }" var="rank2" varStatus="status">
+							<li class="rankingItem${status.count }"><a href="${pageContext.request.contextPath}/festi/festiSelect?num=${rank2.num}">
 										<span class="num${status.count }">${status.count }</span>
-									</c:otherwise>
-								</c:choose>
-							${rank.title }
+							${rank2.title }
+							<input type="hidden" class="img11" id="fname${status.count}" value="${rank2.fileDTOs[0].fname}">
 							</a></li>
+							
 						</c:forEach>
-					</c:when>
-				</c:choose>
+								
+						
 		</ul>
 		
 		<!-- <ul>
@@ -74,24 +67,15 @@
 		</div>
 		<div class="rank_cont">
 			<ul>
-			<li class="first first3"><a href="#" ><img alt="" src="./resources/images/Rrank/블루레인.jpg" width="180" height="218"></a></li>
-				<c:choose>
-					<c:when test="${param.category eq 2 }">
-						<c:forEach items="${rank }" var="rank" varStatus="status">
-							<li class="ranking${status.count }"><a href="${pageContext.request.contextPath}/board/festiSelect?num=${rank.num}">
-								<c:choose>
-									<c:when test="${status.count >= 4} ">
-										<span class="num${status.count }" style="color:#41b40a;">${status.count }</span>
-									</c:when>
-									<c:otherwise>
-										<span class="num${status.count }">${status.count }</span>
-									</c:otherwise>
-								</c:choose>
-							${rank.title }
-							</a></li>
-						</c:forEach>
-					</c:when>
-				</c:choose>
+			<li class="first first3"><a href="#" ><img alt="" src="${pageContext.request.contextPath}/resources/images/board/${rank1[0].fileDTOs[0].fname}" width="180" height="218"></a></li>
+					<c:forEach items="${rank1 }" var="rank1" varStatus="status">
+						<li class="ranking${status.count }"><a href="${pageContext.request.contextPath}/festi/festiSelect?num=${rank1.num}">
+								<span class="num${status.count }">${status.count }</span>
+							${rank1.title }
+							<input type="hidden" class="img12" id="fname${status.count}" value="${rank1.fileDTOs[0].fname}">
+						</a></li>
+					</c:forEach>
+
 		</ul>
 		
 		

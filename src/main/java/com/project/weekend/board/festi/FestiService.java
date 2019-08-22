@@ -293,6 +293,38 @@ public class FestiService {
 		}
 		return list;
 	}
+	
+	//원식 홈 랭크 리스트
+	public List<FestiDTO> getHomeRankList() throws Exception{
+		List<FestiDTO> list = festiDAO.getHomeRankList();
+		for(FestiDTO f : list) {
+			String num = f.getNum();
+			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);
+			f.setFileDTOs(fileList);
+		}
+			
+		return list;
+	}
+	public List<FestiDTO> getHomeRankList2() throws Exception{
+		List<FestiDTO> list = festiDAO.getHomeRankList2();
+		for(FestiDTO f : list) {
+			String num = f.getNum();
+			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);
+			f.setFileDTOs(fileList);
+		}
+		return list;
+	}
+	//원식 홈 베스트 리스트
+	public List<FestiDTO> getBestList(PageMaker pageMaker) throws Exception{
+		List<FestiDTO> list = festiDAO.getBestList(pageMaker);
+		for(FestiDTO f : list) {
+			String num = f.getNum();
+			ArrayList<FileDTO> fileList = (ArrayList<FileDTO>)fileDAO.getList(num);
+			f.setFileDTOs(fileList);
+		}
+		return list;
+	}
+	
 	// 난슬
 	/*
 	public List<AfterDTO> getPointAvg(PageMaker pageMaker) throws Exception{

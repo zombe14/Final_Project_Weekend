@@ -32,39 +32,52 @@ $(document).ready(function(){
 
 /* 축제 랭크 */
 $(document).ready(function(){
+	
+	
 	$('.rankingItem1').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/대박워터파크.jpg');
+		var img11 = $('#fname1').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem2').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/옐로우리버비치.jpg');
+		var img11 = $('#fname2').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem3').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/그리스보물전.jpg');
+		var img11 = $('#fname3').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem4').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/이집트미술여행.jpg');
+		var img11 = $('#fname4').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
 	$('.rankingItem5').mouseover(function(){
-		$('.first2 img').attr('src','./resources/images/home/대한통운.jpg');
+		var img11 = $('#fname5').val();
+		$('.first2 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img11);
 	});
+
 });
 
 /* 공연 랭크 */
 $(document).ready(function(){
 	$('.ranking1').mouseover(function(){
-		$('.first3 img').attr('src','./resources/images/Rrank/블루레인.jpg');
+		var img12 = $('#fname1').val();
+		$('.first3 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img12);
 	});
 	$('.ranking2').mouseover(function(){
-		$('.first3 img').attr('src','./resources/images/Rrank/10cm.jpg');
+		var img12 = $('#fname2').val();
+		$('.first3 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img12);
 	});
 	$('.ranking3').mouseover(function(){
-		$('.first3 img').attr('src','./resources/images/Rrank/테레즈.jpg');
+		var img12 = $('#fname3').val();
+		$('.first3 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img12);
 	});
 	$('.ranking4').mouseover(function(){
-		$('.first3 img').attr('src','./resources/images/Rrank/정글라이프.jpg');
+		var img12 = $('#fname4').val();
+		$('.first3 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img12);
 	});
 	$('.ranking5').mouseover(function(){
-		$('.first3 img').attr('src','./resources/images/Rrank/푸에르자.jpg');
+		var img12 = $('#fname5').val();
+		$('.first3 img').attr('src','${pageContext.request.contextPath}/resources/images/board/'+img12);
 	});
 });
 
