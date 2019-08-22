@@ -112,6 +112,7 @@ public class QnaController {
 	@RequestMapping(value = "qnaSelect", method = RequestMethod.GET)
 	public ModelAndView getSelect(String num, HttpSession session,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		num = num.substring(num.lastIndexOf(",")+1);
 		QnaDTO qnaDTO = qnaService.getSelect(num, session, request, response);
 		String path = "board/qnaSelect";
 		mv.addObject("dto", qnaDTO);
@@ -120,6 +121,10 @@ public class QnaController {
 		mv.setViewName(path);
 		return mv;
 	}
+
+
+	
+	
 
 	// 원본글
 	@RequestMapping(value = "qnaDelete", method = RequestMethod.POST)

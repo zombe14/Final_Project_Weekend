@@ -76,17 +76,21 @@
 				</div>			
 				
 				<a id="list" title="${board}" class="${dto.num} fqnaSelect_btn">목록</a>
-				<a id="update" class="${board} fqnaSelect_btn">수정</a> 
-				<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
-
+				
+				<c:if test="${dto.writer eq member.nickname or member.grade eq 3}">
+					<a id="update" class="${board} fqnaSelect_btn">수정</a> 
+					<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
+				</c:if>
 				
 				<!-- 원글일때 -->
 				<form action="./fqnaDelete" id="deleteOriginFrm" method="post">
 					<input type="hidden" name="ref" value="${dto.ref}">
+					<input type="hidden" name="writer" value="${dto.writer}">
 				</form>
 				<!-- 답글일때 -->
 				<form action="./fqnaReplyDelete" id="deleteReplyFrm" method="post">
 					<input type="hidden" name="qnum" value="${dto.qnum}">
+					<input type="hidden" name="writer" value="${dto.writer}">
 				</form>
 			</div>
 		</div>
@@ -123,7 +127,7 @@
 		var board = $(this).attr('class');
 		var num = 0;
 		
-			location.href = "./${board}Update?qnum=${dto.qnum}";
+			location.href = "./${board}Update?qnum=${dto.qnum}&writer=${dto.writer}";
 		
 		
 	});

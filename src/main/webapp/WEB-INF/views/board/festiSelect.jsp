@@ -279,7 +279,9 @@
 			<div id="div3" class="festi_wrap2">
 				<div class="festi_title">
 					<strong>질문하기</strong>
+					<c:if test="${member ne null }">
 					<a href="../festiQna/fqnaWrite?num=${dto.num}">질문하기</a>
+					</c:if>
 				</div>
 				<div>
 				<!--  질문 -->
@@ -322,7 +324,9 @@
 					<div id="div4" class="festi_wrap2">
 						<div class="festi_title">
 							<strong>관람후기</strong>
+							<c:if test="${member ne null }">
 							<a href="../after/afterWrite?num=${dto.num}">후기 작성</a>
+							</c:if>
 						</div>
 						<div>
 				

@@ -34,7 +34,7 @@
 					</tr>
       		 		<tr>
 						<td class="td1"><label for="writer">작성자<span class="r">*</span></label></td>
-						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}memberNick" readonly="readonly" id="writer" style="width: 40%"></td>
+						<td><img class="pencil" alt="" src="${pageContext.request.contextPath}/resources/images/pencil.png"><input type="text" name="writer" value="${member.nickname}" readonly="readonly" id="writer" style="width: 40%"></td>
 					</tr>
 					<tr>
 						<td class="td1"><label for="contents">내용<span class="r">*</span></label></td>
