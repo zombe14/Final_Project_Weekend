@@ -66,8 +66,18 @@ public class FestiDAO{
 	// 관리자용;
 	// 종류별 게시글 가져오기;
 	// w추천, 유저추천, 공연, 축제, 대학로;
-	public List<FestiDTO> getBoardList(PageMaker pageMaker, HttpSession session){
-		return SqlSession.selectList(NAMESPACE+"getBoardList", pageMaker);
+	// w 추천, 유저 추천은 아래에서 메서드 사용;
+	// 공연 리스트;
+	public List<FestiDTO> getCate1List(HttpSession session, PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getCate1List", pageMaker);
+	}
+	// 축제 리스트;
+	public List<FestiDTO> getCate2List(HttpSession session, PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getCate2List", pageMaker);
+	}
+	// 대학로 리스트;
+	public List<FestiDTO> getCate3List(HttpSession session, PageMaker pageMaker) throws Exception{
+		return SqlSession.selectList(NAMESPACE+"getCate3List", pageMaker);
 	}
 	// 내가 쓴 글 가져오기;
 	// 2레벨;
@@ -97,7 +107,7 @@ public class FestiDAO{
 	}
 	// 유저 추천;
 	// 리스트;
-	public List<FestiDTO> getUserRecoList(PageMaker pageMaker, HttpSession session) throws Exception{
+	public List<FestiDTO> getUserRecoList(HttpSession session, PageMaker pageMaker) throws Exception{
 		return SqlSession.selectList(NAMESPACE+"getUserRecoList", pageMaker);
 	}
 	// 글선택;

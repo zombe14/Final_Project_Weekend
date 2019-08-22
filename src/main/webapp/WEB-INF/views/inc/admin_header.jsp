@@ -15,7 +15,7 @@
       <ul class="nav navbar-nav" class="active">
 		<li id="navbar-page" class="navp"><a href="${pageContext.request.contextPath}/admin/aUserList"><i class="fa fa-home fa-fw"></i>유저 관리</a></li>
 		<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/admin/aNoticeList"><i class="fa fa-home fa-fw"></i>게시글 관리</a></li>
-		<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/admin/aFestiList"><i class="fa fa-home fa-fw"></i>공연 관리</a></li>
+		<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/admin/aCate1List"><i class="fa fa-home fa-fw"></i>공연 관리</a></li>
 		<li id="navbar-page" class="navp navp1"><a href="${pageContext.request.contextPath}/admin/aReserList"><i class="fa fa-home fa-fw"></i>티켓 관리</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

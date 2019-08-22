@@ -133,23 +133,74 @@
 								<select class="form-control" name="kind">
 									<c:choose>
 										<c:when test="${board eq 'User'}">
-											<option value="0">아이디</option>
-											<option value="1">이름</option>
-											<option value="2">등급</option>
+											<option value="0">전체</option>
+											<option value="1">아이디</option>
+											<option value="2">이름</option>
+											<option value="3">등급</option>
 										</c:when>
 										<c:when test="${board eq 'Notice'}">
+											<option value="0">전체</option>
 											<option value="1">제목</option>
 											<option value="2">내용</option>
 										</c:when>
-										<c:when test="${board eq 'Festi'}">
-											<option value="0">제목</option>
-											<option value="1">내용</option>
-											<option value="2">지역</option>
+										<c:when test="${board eq 'WeekReco'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">닉네임</option>
+										</c:when>
+										<c:when test="${board eq 'AfterCate1'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+										</c:when>
+										<c:when test="${board eq 'AfterCate2'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+										</c:when>
+										<c:when test="${board eq 'AfterCate3'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+										</c:when>
+										<c:when test="${board eq 'Cate1'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">작성자</option>
+											<option value="4">지역</option>
+										</c:when>
+										<c:when test="${board eq 'Cate2'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">작성자</option>
+											<option value="4">지역</option>
+										</c:when>
+										<c:when test="${board eq 'Cate3'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">작성자</option>
+										</c:when>
+										<c:when test="${board eq 'UserReco'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">닉네임</option>
+											<option value="4">지역</option>
+										</c:when>
+										<c:when test="${board eq 'Qna'}">
+											<option value="0">전체</option>
+											<option value="1">제목</option>
+											<option value="2">내용</option>
+											<option value="3">닉네임</option>
 										</c:when>
 										<c:otherwise>
 											<option value="0">제목</option>
-											<option value="1">닉네임</option>
-											<option value="2">내용</option>
+											<option value="1">내용</option>
+											<option value="2">닉네임</option>
 										</c:otherwise>
 									</c:choose>
 								</select>
@@ -230,6 +281,26 @@
 											<td>${dto.partner_user_id}</td>
 											<td>${dto.partner_order_id}</td>
 											<td><input class="dddBtn" type="button" value="취소"></td>
+										</tr>
+									</c:forEach>
+								</c:when>
+								<c:when test="${board eq 'WeekReco'}">
+									<tr>
+										<td>글 번호</td>
+										<td>제목</td>
+										<td>글쓴이(닉네임)</td>
+										<td>게시일</td>
+										<td>조회수</td>
+										<td>기능</td>
+									</tr>
+									<c:forEach items="${list}" var="dto">
+										<tr>
+											<td>${dto.num}</td>
+											<td>${dto.title}</td>
+											<td>${dto.writer}</td>
+											<td>${dto.reg_date}</td>
+											<td>${dto.hit}</td>
+											<td><input type="button" value="삭제" class="ddBtn"id="${dto.num}" />
 										</tr>
 									</c:forEach>
 								</c:when>

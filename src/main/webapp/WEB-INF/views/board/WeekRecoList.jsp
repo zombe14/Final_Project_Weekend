@@ -88,7 +88,7 @@
 					</c:if>
 				</div>
   	      						<!-- 검색창 -->
-				<form action="./${board}List" class="search_form">
+				<form action="./WeekRecoList" class="search_form">
 					<select name="kind" class="search_select">
 						<option value="0">전체</option>
 						<option value="1">제목</option>

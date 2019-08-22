@@ -3,9 +3,12 @@ package com.project.weekend.pay;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import com.project.weekend.util.PageMaker;
 
 @Repository
 public class PayDAO {
@@ -32,5 +35,12 @@ public class PayDAO {
 	}
 	public int paymentCancel(String partner_order_id) throws Exception{
 		return sqlSession.update(NAMESPACE+"cancel", partner_order_id);
+	}
+	// 상혁
+	public int getCount() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCount");
+	}
+	public List<PayVO> selectAllList(HttpSession session, PageMaker pageMaker) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"selecAlltList", pageMaker);
 	}
 }

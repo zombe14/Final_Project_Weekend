@@ -188,11 +188,38 @@ public class FestiService {
 		return festiDAO.getNum();
 	}
 	// 상혁
-	// 관리자 용;
+	////////////////// 관리자 용;
 	// 종류별 게시글 가져오기;
 	// w추천, 유저추천, 공연, 축제, 대학로;
-	
-	// 마이 페이지 용;
+	// w 추천 리스트(아래 w추천 board 사용);
+	// w 추천 삭제(아래 w추천 board 사용);
+	// 유저 추천 리스트(아래 유저 추천 board 사용);
+	// 유저 추천 삭제(아래 유저 추천 board 사용);
+	// 공연 리스트;
+	public List<FestiDTO> getCate1List(PageMaker pageMaker, HttpSession session) throws Exception{
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getCate1List(session, pageMaker);
+		pageMaker.makePage(totalCount);
+		return list;
+	}
+	// 축제 리스트;
+	public List<FestiDTO> getCate2List(PageMaker pageMaker, HttpSession session) throws Exception{
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getCate2List(session, pageMaker);
+		pageMaker.makePage(totalCount);
+		return list;
+	}
+	// 대학로 리스트;
+	public List<FestiDTO> getCate3List(PageMaker pageMaker, HttpSession session) throws Exception{
+		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getCate3List(session, pageMaker);
+		pageMaker.makePage(totalCount);
+		return list;
+	}
+	///////////////// 마이 페이지 용;
 	// 내글 불러오기
 	public List<FestiDTO> getListMy(PageMaker pageMaker) throws Exception{
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
@@ -236,10 +263,10 @@ public class FestiService {
 	}
 	// 유저 추천;
 	// 리스트;
-	public List<FestiDTO> getUserRecoList(PageMaker pageMaker, HttpSession session) throws Exception{
-		pageMaker.makeRow();
-		List<FestiDTO> list = festiDAO.getUserRecoList(pageMaker, session);
+	public List<FestiDTO> getUserRecoList(HttpSession session, PageMaker pageMaker) throws Exception{
 		int totalCount = festiDAO.getCount(pageMaker.getCategory());
+		pageMaker.makeRow();
+		List<FestiDTO> list = festiDAO.getUserRecoList(session, pageMaker);
 		pageMaker.makePage(totalCount);
 		return list;
 	}
