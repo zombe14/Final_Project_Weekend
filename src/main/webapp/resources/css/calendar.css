@@ -4,7 +4,7 @@ html, body{
 
 .logo{
 	float: left;
-	margin-top: 15px;
+	margin-top: 5px;
 }
 
 #container{
@@ -20,6 +20,6 @@ html, body{
 .calendar_wrap{
 	padding: 50px;
 	background: white;
-	margin-top: 110px;
+	margin-top: 80px;
 }
 }
