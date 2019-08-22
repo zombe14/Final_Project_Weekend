@@ -66,7 +66,6 @@
   	      				<thead class="table_head">
 							<th class="td10">순위</th>
 							<th class="td60">공연명</th>
-							<th class="td10">평점</th>
 							<th class="td10">공연기간</th>
 							<th class="td10">장소</th>
 						</thead>
@@ -74,10 +73,9 @@
 							<tr class="select">
 								<td class="td10"><p class="color_green">${status.count}</p></td>
 								<td class="td30">
-										<img alt="" src="${pageContext.request.contextPath}/resources/images/board/${list.fileDTOs[status.index].fname}">
+										<img alt="" src="${pageContext.request.contextPath}/resources/images/board/${list.fileDTOs[0].fname}">
 									<div class="rank_tt">${list.title}</div>
 								</td>
-								<td class="td10">아직 구현안됨</td>
 								<td class="td10">${list.startDate} ~	${list.endDate}</td>
 								<td class="td20">${list.local}</td>
 							</tr>
