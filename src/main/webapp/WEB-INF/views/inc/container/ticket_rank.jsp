@@ -15,10 +15,11 @@
 							<li class="rankingItem${status.count }"><a href="${pageContext.request.contextPath}/festi/festiSelect?num=${rank2.num}">
 										<span class="num${status.count }">${status.count }</span>
 							${rank2.title }
+							<input type="hidden" class="img11" id="fname${status.count}" value="${rank2.fileDTOs[0].fname}">
 							</a></li>
 							
 						</c:forEach>
-							<%-- <input type="hidden" id="img11" value="${rank2[0].fileDTOs[0].fname}"> --%>
+								
 						
 		</ul>
 		
