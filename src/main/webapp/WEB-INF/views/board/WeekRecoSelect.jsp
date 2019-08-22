@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>[${boardTitle}]${dto.title}</title>
+<title> W 추천 게시판 </title>
 <c:import url="../temp/boot.jsp"></c:import>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/home.css">
@@ -27,7 +27,7 @@
 			<div class="conta">
 				<div class="fqna_wrap">
 					<div class="fqna_title">
-  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png" class="titleimg"><h3> W 추천 글쓰기 </h3>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png" class="titleimg"><h3> W 추천 게시판 </h3>
   	      			</div>
 				<div class="tableDiv">
 						<table class="table" style="width: 100%">
@@ -77,6 +77,7 @@
       <c:import url="../inc/footer.jsp"></c:import>
    </div>
 </div>
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	
 	<!-- script -->
 	<script type="text/javascript">

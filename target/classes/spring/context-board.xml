@@ -28,6 +28,7 @@
 	
 	<bean class="com.project.weekend.board.qna.QnaCLInterceptor" id="qnaCLInterceptor"/>	<!-- 작성, 리스트 : 1, 2, 3 -->
 	<bean class="com.project.weekend.board.qna.QnaReplyInterceptor" id="qnaReplyInterceptor"/>	<!-- 답변 작성, 수정, 삭제 : 3 -->
+	<bean class="com.project.weekend.board.qna.QnaUpdateInterceptor" id="qnaUpdateInterceptor"/>
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/qna/qnaWrite"/>
@@ -39,6 +40,11 @@
 			<mvc:mapping path="/qna/qnaReplyDelete"/>
 			<mvc:mapping path="/qna/qnaReplyUpdate"/>
 			<ref bean="qnaReplyInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/qna/qnaUpdate"/>
+			<mvc:mapping path="/qna/qnaDelete"/>
+			<ref bean="qnaUpdateInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
@@ -88,5 +94,10 @@
 	<bean class="com.project.weekend.board.open.OpenDTO" id="openDTO" />
 	<bean class="com.project.weekend.board.open.OpenDAO" id="openDAO" />
 	<bean class="com.project.weekend.board.open.OpenService" id="openService" />
+	
+	<!-- calendar -->
+	<bean class="com.project.weekend.calendar.GoogleCalendarDTO" id="googleCalendarDTO"/>
+	<bean class="com.project.weekend.calendar.GoogleCalendarDAO" id="googleCalendarDAO"/>
+	<bean class="com.project.weekend.calendar.GoogleCalendarService" id="googleCalendarService"/>
 	
 </beans>

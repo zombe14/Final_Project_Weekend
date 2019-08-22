@@ -133,38 +133,22 @@ public class FestiService {
 		return festiDTO;
 	}
 	
-	public int setUpdate(FestiDTO festiDTO, List<MultipartFile> filelist, HttpSession session) throws Exception{
+	public int setUpdate(FestiDTO festiDTO, MultipartFile filelist, HttpSession session) throws Exception{
 		int res = 0;
 
-		int fnum = fileDAO.getList(festiDTO.getNum()).get(0).getFnum();
-		System.out.println("fnum : "+fnum);
-		String realPath = session.getServletContext().getRealPath("/resources/images/board");
-		System.out.println(filelist.get(0).getOriginalFilename().length());
-		if(filelist.get(0).getOriginalFilename().length()>0) {
+		
+		if(filelist.getOriginalFilename().length()>0) {
+			String realPath =session.getServletContext().getRealPath("/resources/images/board");
+			System.out.println(filelist.getOriginalFilename());
+			int fnum = festiDAO.getSelect(festiDTO.getNum()).getFileDTOs().get(0).getFnum();
+			System.out.println(fnum);
+			fileDAO.setDelete(fnum);
 			FileDTO fileDTO = new FileDTO();
 			fileDTO.setNum(festiDTO.getNum());
-			fileDTO.setOname(filelist.get(0).getOriginalFilename());
-			String fname = fileSaver.saveFile(realPath, filelist.get(0));
+			fileDTO.setOname(filelist.getOriginalFilename());
+			String fname = fileSaver.saveFile(realPath, filelist);
 			fileDTO.setFname(fname);
 			res = fileDAO.setWrite(fileDTO);
-			/*
-			 * fileDAO.setDelete(fnum);
-			 * 
-			 * FileDTO fileDTO = new FileDTO(); fileDTO.setNum(festiDTO.getNum());
-			 * fileDTO.setOname(filelist.get(0).getOriginalFilename()); String fname =
-			 * festiDTO.getFileDTOs().get(0).getFname();
-			 * 
-			 * System.out.println("fnam : "+fname);
-			 * 
-			 * fileDTO.setFname(fname);
-			 * 
-			 * System.out.println("fname2 : "+fileDTO.getFnum());
-			 * 
-			 * fileDAO.setDelete(fnum); res = fileDAO.setWrite(fileDTO);
-			 * 
-			 * System.out.println("res : "+res);
-			 */
-			System.out.println(res);
 		}
 		
 		res = festiDAO.setUpdate(festiDTO);

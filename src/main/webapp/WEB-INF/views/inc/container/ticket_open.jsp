@@ -10,11 +10,22 @@
 		</div>
 		<div class="ticket_cont">
 		<ul>
+			<li class="first first1"><a href="#" ><img alt="" src="${pageContext.request.contextPath}/resources/images/home/신촌물총축제.jpg" width="180" height="218"></a></li>
+			<c:forEach items="${open}" var="open" varStatus="status">
+				<li class="tm${status.count }"><a href="${pageContext.request.contextPath}/open/openSelect?num=${open.num}">
+					<b><font color="#41b40a">[09/01(월) 10시]</font></b>
+					${open.title}
+				</a> </li>
+			</c:forEach>
+		</ul>
+		
+		
+		<%-- <ul>
 			<li class="first first1"><a href="#" ><img alt="" src="./resources/images/home/청춘페스티벌.gif" width="180" height="218"></a></li>
 			<li class="tm1">
 				<a href="#" >
 					<b><font color="#41b40a">[09/01(월) 10시]</font></b>
-					2019 이번생은 글렀어요 청춘페스티벌
+					${open.title}
 				</a>
 			</li>
 			<li class="tm2">
@@ -44,7 +55,7 @@
 					2019 서울 신촌 물총축제
 				</a>
 			</li>
-		</ul>
+		</ul> --%>
 		</div>
 	</div>
 	<div class="ticket_right">
