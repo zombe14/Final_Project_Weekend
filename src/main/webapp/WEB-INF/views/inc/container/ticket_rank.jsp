@@ -18,7 +18,7 @@
 							</a></li>
 							
 						</c:forEach>
-							<input type="hidden" id="img11" value="${rank2[0].fileDTOs[0].fname}">
+							<%-- <input type="hidden" id="img11" value="${rank2[0].fileDTOs[0].fname}"> --%>
 						
 		</ul>
 		
