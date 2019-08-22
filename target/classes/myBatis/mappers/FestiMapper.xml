@@ -214,6 +214,16 @@
 		order by hit desc) F)
 	</select>
 	<!-- 상혁 끝 -->
-
+	<!-- 원식 홈 랭크 리스트 -->
+	<select id="getHomeRankList" resultMap="festiResult" parameterType="FestiDTO">
+		select * from festi where category = 1 and rownum Between 1 and 5 order by hit desc
+	</select>
+	<select id="getHomeRankList2" resultMap="festiResult" parameterType="FestiDTO">
+		select * from festi where category = 2 and rownum Between 1 and 5 order by hit desc
+	</select>
+	<!-- 원식 홈 베스트 리스트 -->
+	<select id="getBestList" resultMap="festiResult" parameterType="FestiDTO">
+		select * from festi where (category=1 or category=2 or category=3) and (rownum Between 1 and 12) order by hit desc
+	</select>
 	
 </mapper>
