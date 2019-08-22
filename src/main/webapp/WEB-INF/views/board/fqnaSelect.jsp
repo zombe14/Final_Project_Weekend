@@ -76,8 +76,10 @@
 				</div>			
 				
 				<a id="list" title="${board}" class="${dto.num} fqnaSelect_btn">목록</a>
+				<c:if test="${dto.writer eq member.nickname}">
 				<a id="update" class="${board} fqnaSelect_btn">수정</a> 
 				<a id="delete" class="${board} fqnaSelect_btn">삭제</a>
+				</c:if>
 
 				
 				<!-- 원글일때 -->
@@ -110,7 +112,7 @@
 		} 
 		/* 답글일때 */
 		else{
-			var check = confirm('삭제하시겠습니까?');		
+			var check = confirm('삭제하시겠습니까?');
 			if(check){
 				$('#deleteReplyFrm').submit();
 			}

@@ -81,6 +81,7 @@ public class FestiQnaController {
 		ModelAndView mv = new ModelAndView();
 		String num = festiQnaService.getSelect(ref).getNum();
 		int res = festiQnaService.setDelete(ref, session);
+
 		String path = "redirect:../festi/festiSelect?num="+num;
 		mv.addObject("board", board);
 		mv.addObject("boardTitle", boardTitle);
@@ -89,13 +90,14 @@ public class FestiQnaController {
 	}
 
 	
-	
+	//답글
 	@RequestMapping(value = "fqnaReplyDelete", method = RequestMethod.POST)
 	public ModelAndView setReplyDelete(String qnum, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String num = festiQnaService.getSelect(qnum).getNum();
 		int res = festiQnaService.setReplyDelete(qnum, session);
 		String path = "redirect:../festi/festiSelect?num="+num;
+		System.out.println(res);
 		if(res>0) {
 			
 		}
