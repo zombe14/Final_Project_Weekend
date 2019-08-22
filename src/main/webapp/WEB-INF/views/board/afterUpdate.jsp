@@ -96,7 +96,7 @@
       <c:import url="../inc/footer.jsp"></c:import>
       </div>
    </div>
-   
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 
 <!-- 썸머노트 -->
 <script src="../resources/js/summernote.js"></script>

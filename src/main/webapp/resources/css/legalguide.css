@@ -19,7 +19,7 @@
 	position: relative;
 }
 
-.p_reative em{
+.p_reative b{
     color: #40b409;
 }
 
@@ -68,7 +68,7 @@
     font-size: 20px;
 }
 
-.guide_dsc em{
+.guide_dsc b{
     font-weight: bold;
     color: #40b409;
 }

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title> 유저추천 </title>
+<title> 유저추천 게시판 </title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/home.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/userRecoList.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/boardList.css">
@@ -23,7 +23,7 @@
       		<div class="conta">
   	      		<div class="user_wrap">
   	      			<div class="user_title">
-  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png"><strong> 유저추천 </strong>
+  	      				<img alt="" src="${pageContext.request.contextPath}/resources/images/chat.png"><strong> 유저추천 게시판 </strong>
   	      			</div>
   	      			<div class="user_box">
   	      				<ul>
@@ -111,6 +111,8 @@
     		<c:import url="../inc/footer.jsp"></c:import>
 		</div>
 	</div>
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
+	
 <script type="text/javascript">
 		/* 테이블의 num 앞에 구분 문자 안보이게 */
 		$('.selectRow').each(function() {

@@ -357,7 +357,7 @@
       <c:import url="../inc/footer.jsp"></c:import>
    </div>
 </div>
-	
+<a href="javascript:window.scrollTo(0,0);" id="back_to_top"><img src="${pageContext.request.contextPath}/resources/images/home/위로.png"></a>
 	<!-- script -->
 	<!-- 지도 -->
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0490863a01534a71d43148be8c27866&libraries=services"></script> -->
