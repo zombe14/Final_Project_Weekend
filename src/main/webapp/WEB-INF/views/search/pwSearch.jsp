@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/search.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title> 패스워드 찾기</title>
 </head>
 <body>
 <script type="text/javascript">
@@ -127,34 +129,51 @@
 		})
 	})
 </script>
-	<form>
-		<input type="text" id = "changePwId" placeholder="아이디를  입력.">
-		<input type="text" class="form-control" title="이메일 아이디" placeholder="회원가입당시 이메일 주소" id="emailId" name="emailId" maxlength="50">
-			<span class="from-control" id = "add">@</span>
-		<input type="text" class="form-control" title="이메일 주소" id="emailAddress" name="emailAddress">
-			<select class = "form-control" id = "emailSelect" class="eSelect">
-				<option value = "">선택해주세요</option>
-				<option value = "naver.com">naver.com</option>
-				<option value = "hanmail.net">hanmail.net</option>
-				<option value = "gmail.com">gmail.com</option>
-				<option value = "nate.com">nate.com</option>
-				<option value = "hotmail.com">hotmail.com</option>
-				<option value = "dreamwiz.com">dreamwiz.com</option>
-				<option value = "freechal.com">freechal.com</option>
-				<option value = "hanmir.com">hanmir.com</option>
-				<option value = "korea.com">korea.com</option>
-				<option value = "paran.com">paran.com</option>
-				<option value = "etc"> 직접입력</option>
-			</select>
-		<button type="button" id="emailCheck" class="emailCheck">인증번호 보내기</button>
-		<input type="text" id ="emailCheckNumber" title="인증번호 입력" name="emailCheckNumber" placeholder="인증번호를 입력해 주세요.">
-		<button type="button" id="finalCheck">확인</button>
-		<input type="password" id = "changePw" placeholder="변경할 비밀번호를 입력.">
-		<div id="result_emailNo" class="result_font" style="color: red"></div>
-		<div id="result_emailOk" class="result_font" style="color: green"></div>
-		<input type="password" id = "checkPw" placeholder="비밀번호를 다시 한번 입력.">
-		<button type="button" id = "pwInsert">확인</button>
-	</form>
-	<button type="button" id="closeWindow">닫기</button>
+<div class="container">
+	<div class="search_wrap">
+			<div class="search_logo">
+				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
+			</div>
+			<div class="search_inner">
+				<div class="search_title">
+					<img alt="" src="${pageContext.request.contextPath}/resources/images/profile.png" class="strongimg"><strong>패스워드 찾기</strong>
+				</div>
+			<form class="sc_form">
+				<input type="text" id = "changePwId" class="sctxt1" placeholder="아이디를  입력해주세요.">
+				<div id="titleimg">
+					<img alt="" src="${pageContext.request.contextPath}/resources/images/envelope.png" class="titleimg">
+				</div>
+				<input type="text" class="form-control sctxt" title="이메일 아이디" placeholder="" id="emailId" name="emailId" maxlength="50">
+					<span class="from-control" id = "add">@</span>
+				<input type="text" class="form-control sctxt" title="이메일 주소" id="emailAddress" name="emailAddress">
+				<div class="es">
+				<select class = "form-control eSelect" id = "emailSelect">
+					<option value = "">선택해주세요</option>
+					<option value = "naver.com">naver.com</option>
+					<option value = "hanmail.net">hanmail.net</option>
+					<option value = "gmail.com">gmail.com</option>
+					<option value = "nate.com">nate.com</option>
+					<option value = "hotmail.com">hotmail.com</option>
+					<option value = "dreamwiz.com">dreamwiz.com</option>
+					<option value = "freechal.com">freechal.com</option>
+					<option value = "hanmir.com">hanmir.com</option>
+					<option value = "korea.com">korea.com</option>
+					<option value = "paran.com">paran.com</option>
+					<option value = "etc"> 직접입력</option>
+				</select>
+				</div>
+				<button type="button" id="emailCheck" class="emailCheck">이메일 전송</button>
+				<input type="text" id ="emailCheckNumber" title="인증번호 입력" name="emailCheckNumber" placeholder="인증번호를 입력해 주세요.">
+				<button type="button" id="finalCheck">확인</button>
+				<input type="password" id = "changePw" placeholder="변경할 비밀번호를 입력.">
+				<input type="password" id = "checkPw" placeholder="비밀번호를 다시 한번 입력.">
+				<button type="button" id = "pwInsert" class="finalCheck">확인</button>
+					<div id="result_emailNo" class="result_font" style="color: red"></div>
+					<div id="result_emailOk" class="result_font" style="color: green"></div>
+				</form>
+				<a type="button" id="closeWindow" class="close_btn">닫기</a>
+				</div>
+			</div>
+		</div>
 </body>
 </html>
