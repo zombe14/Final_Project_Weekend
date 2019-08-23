@@ -189,8 +189,6 @@ $(function() {
 						$("#phoneCheck").val('');
 						alert("이미 가입된 폰번호입니다");
 					}else{
-						$('#hp2').attr('readonly', true);
-						$('#hp3').attr('readonly', true);
 						$("#phoneCheck").val('0');
 					}
 				}
@@ -217,8 +215,6 @@ $(function() {
 						$("#phoneCheck").val('');
 						alert("이미 가입된 폰번호입니다");
 					}else{
-						$('#hp2').attr('readonly', true);
-						$('#hp3').attr('readonly', true);
 						$("#phoneCheck").val('0');
 					}
 				}
@@ -245,8 +241,6 @@ $(function() {
 						$("#phoneCheck").val('');
 						alert("이미 가입된 폰번호입니다");
 					}else{
-						$('#hp2').attr('readonly', true);
-						$('#hp3').attr('readonly', true);
 						$("#phoneCheck").val('0');
 					}
 				}
