@@ -113,4 +113,7 @@ public class MemberDAO {
 	public MemberDTO getSelectkakao(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getSelectkakao", memberDTO);
 	}
+	public MemberDTO getphone(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getphone", memberDTO);
+	}
 }

@@ -52,7 +52,18 @@ public class MemberController {
 		}
 		return result;
 	}
-	
+	@RequestMapping(value = "getphone", method = RequestMethod.POST)
+	@ResponseBody
+	public int getphone(MemberDTO memberDTO)throws Exception{
+		memberDTO = memberService.getphone(memberDTO);
+		int result=0;
+		if(memberDTO==null) {
+
+		}else {
+			result=1;
+		}
+		return result;
+	}
 	@RequestMapping(value = "getId", method = RequestMethod.POST)
 	@ResponseBody
 	public int getId(MemberDTO memberDTO)throws Exception{

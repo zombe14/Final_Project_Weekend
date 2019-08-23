@@ -169,6 +169,91 @@ $(function() {
 		}
 		
 	});
+	$("#num_select").blur(function() {
+		var a = $('#num_select').val();
+		var b = $('#hp2').val();
+		var c = $('#hp3').val();
+		var phone = a+b+c;
+		$('#phone').val(phone);
+		if(a==''||b==''||c==''){
+			$("#phoneCheck").val('');
+		}else{
+			$.ajax({
+				data:{
+					phone : phone
+				},
+				type: "POST",
+				url: "../member/getphone",
+				success:function(data){
+					if(data==1){
+						$("#phoneCheck").val('');
+						alert("이미 가입된 폰번호입니다");
+					}else{
+						$('#hp2').attr('readonly', true);
+						$('#hp3').attr('readonly', true);
+						$("#phoneCheck").val('0');
+					}
+				}
+			});
+		}
+	});
+	$("#hp2").blur(function() {
+		var a = $('#num_select').val();
+		var b = $('#hp2').val();
+		var c = $('#hp3').val();
+		var phone = a+b+c;
+		$('#phone').val(phone);
+		if(a==''||b==''||c==''){
+			$("#phoneCheck").val('');
+		}else{
+			$.ajax({
+				data:{
+					phone : phone
+				},
+				type: "POST",
+				url: "../member/getphone",
+				success:function(data){
+					if(data==1){
+						$("#phoneCheck").val('');
+						alert("이미 가입된 폰번호입니다");
+					}else{
+						$('#hp2').attr('readonly', true);
+						$('#hp3').attr('readonly', true);
+						$("#phoneCheck").val('0');
+					}
+				}
+			});
+		}
+	});
+	$("#hp3").blur(function() {
+		var a = $('#num_select').val();
+		var b = $('#hp2').val();
+		var c = $('#hp3').val();
+		var phone = a+b+c;
+		$('#phone').val(phone);
+		if(a==''||b==''||c==''){
+			$("#phoneCheck").val('');
+		}else{
+			$.ajax({
+				data:{
+					phone : phone
+				},
+				type: "POST",
+				url: "../member/getphone",
+				success:function(data){
+					if(data==1){
+						$("#phoneCheck").val('');
+						alert("이미 가입된 폰번호입니다");
+					}else{
+						$('#hp2').attr('readonly', true);
+						$('#hp3').attr('readonly', true);
+						$("#phoneCheck").val('0');
+					}
+				}
+			});
+		}
+	});
+	
 	
 	$('#pw').blur(function() {
 		var pw = document.getElementById("pw").value;
@@ -233,7 +318,7 @@ $(function() {
 		if(nickname.length==0){
 			$("#nicknameCheck").val('');
 		}else{
-			$("#nicknameCheck").val('0');
+
 		}
 	});
 	
@@ -264,17 +349,19 @@ $(function() {
 		}else{
 			d=false;
 		}
+		var pc = $("#phoneCheck").val();
 		var finalpw = false;
 		if(emailCheck=='0'){
 		if(pw==pwCheck){
 			finalpw = true;
-			if(pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw&&jumin=='0'&&d){
-				alert("완료");
+			if(pc=='0'==pww=='0'&&pwwcheck=='0'&&memNamecheck=='0'&&nicknameCheck=='0'&&finalpw&&jumin=='0'&&d){
 				$("#frm").submit();
 			}else if(nicknameCheck!='0'){
 				alert("활동명을 입력하세요");
 			}else if(jumin!='0'){	
 				alert("주민번호를 확인해주세요");
+			}else if(pc!='0'){
+				alert("후대폰 번호를 다시 입력하세요");
 			}else{
 				alert("비밀번호나 이름을 확인해주세요");
 			}
@@ -328,12 +415,12 @@ $(function() {
 				success:function(data){
 					if(data==1){
 						alert("이미 존재하는 활동명입니다");
-						$("#result_nicknameCheck").val('');
+						$("#nicknameCheck").val('');
 					}else{
 						alert("사용가능한 활동명 입니다");
 						$('#nickname').attr('readonly', true);
 						$("#nicknameCheckbt").attr('type', 'hidden');
-						$("#result_nicknameCheck").val('0');
+						$("#nicknameCheck").val('0');
 					}
 				}
 				

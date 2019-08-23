@@ -148,6 +148,9 @@ public class MemberService {
 	public MemberDTO getjumin(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getjumin(memberDTO);
 	}
+	public MemberDTO getphone(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getphone(memberDTO);
+	}
 	
 	//탈퇴
 		public void kakaoDelete(MemberDTO memberDTO)throws Exception{

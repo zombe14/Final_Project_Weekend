@@ -146,4 +146,7 @@
 	<select id="getjumin" resultType="MemberDTO" parameterType="MemberDTO">
 		select * from member where jumin=#{jumin}
 	</select>
+	<select id="getphone" resultType="MemberDTO" parameterType="MemberDTO">
+		select * from member where phone=#{phone}
+	</select>
 </mapper>
