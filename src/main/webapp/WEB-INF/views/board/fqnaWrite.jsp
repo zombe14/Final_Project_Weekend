@@ -73,6 +73,7 @@
 							</div>
 						</td>
 					</tr>
+					<div style="display: none;">
 					<c:if test="${board eq 'fqna'}">
 					<tr>
 						<td class="td1">
@@ -100,7 +101,8 @@
 							<input type="password" name="pw" id="pw" >
 						</td>
 					</tr>
-					</c:if>		
+					</c:if>
+					</div>
 							<input type="hidden" name="num" value="${origin.num}">
 					
 					</tbody>

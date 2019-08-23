@@ -81,7 +81,8 @@
 						</div>
 						</td>
 					</tr>
-					<c:if test="${board eq 'fqna'}">
+					<div style="display: none;">
+					 <c:if test="${board eq 'fqna'}">
 					<tr>
 						<td class="td1">
 							<label for="pw">비밀번호</label>
@@ -109,7 +110,7 @@
 						</td>
 					</tr>
 					</c:if>
-			
+			 		</div>
 					<input type="hidden" name="qnum" value="${dto.qnum}">
 					</tbody>
 					</table>

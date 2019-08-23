@@ -74,7 +74,7 @@
 					</form>
 				</div>			
 
-				<form action="./${board}Delete" id="deleteFrm" method="post">
+				<form action="./afterDelete" id="deleteFrm" method="post">
 						<input type="hidden" class="anum" id = "${dto.anum}" name="anum" value="${dto.anum}">
 				</form>
 				<!-- ------------------------------------------ 댓글 ------------------------------------------ -->
