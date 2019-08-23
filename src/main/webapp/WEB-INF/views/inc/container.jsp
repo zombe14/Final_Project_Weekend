@@ -56,11 +56,11 @@
 </div>
 <div class="main_right" id="wingright">
 	<ul class="push">
-		<!-- <li><a href="#"><img alt="포스터  작게" src="./resources/images/home/wing/임시날씨.JPG" width="98" height="125"></a></li> -->
 		<li class="weathericon"><a href="http://weather.amcharts.com/"><img alt="" src="" id="weather" width="40" height="50"></a></li>
 		<li><input type="text" class="a" value="" readOnly></li>
 		<li><input type="text" class="b" value="" readOnly></li>
-		<li onclick="window.open('${pageContext.request.contextPath}/calendar/calendar','달력','width=1000, height=820, scrollbars=yes')"><a href="#"><img alt="포스터  작게" src="./resources/images/home/wing/8월달력.jpeg" width="98" height="125"></a></li>
+		<li onclick="window.open('${pageContext.request.contextPath}/calendar/calendar','달력','width=1000, height=820, scrollbars=yes')">
+		<a href="#"><img alt="포스터  작게" src="./resources/images/home/wing/8월달력.jpeg" width="98" height="125"></a></li>
 	</ul>
 </div>
 </div>
