@@ -6,7 +6,7 @@
                     <li style="background-image:url(//tketlink.dn.toastoven.net/markup_resources/2019071801/web/img/company/main_img.jpg)">
                         <strong>주말 뭐해</strong>
                         <p class="txt">
-                            고객을 위한 최고의<br>티켓예매 서비스를 제공하기 위해<br>앞장서는 사람들이 모인 곳
+                            문화산업 선진화를 위한<br> 고객에게 최고의 서비스를 제공하기 위해<br>앞장서는 사람들이 모인 곳
                         </p>
                     </li>
                 </ul>
