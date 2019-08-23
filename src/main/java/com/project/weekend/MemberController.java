@@ -94,7 +94,7 @@ public class MemberController {
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
 	public void setWrite(@ModelAttribute MemberDTO memberDTO)throws Exception{
 	}
-	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
+	@RequestMapping(value = "memberJoins", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MemberDTO getId = memberService.getId(memberDTO);

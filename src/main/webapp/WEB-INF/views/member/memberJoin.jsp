@@ -23,7 +23,7 @@
 			<div class="join_logo">
 				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
 			</div>
-	<form action="./memberJoin"  id="frm" method="POST" enctype="multipart/form-data">
+	<form action="./memberJoins"  id="frm" method="POST" enctype="multipart/form-data">
 		<div class="joinWrap">
 			<div class="essentiaDataWrap">
 				<h3 class="conTitle">
