@@ -255,7 +255,6 @@ var optionC = 0;
 					getOptionsList();
 
 					optionC += 1;
-					alert(optionC);
 					$('#dates').val('');
 					$('#time').val('');
 					$('#seat').val('');
