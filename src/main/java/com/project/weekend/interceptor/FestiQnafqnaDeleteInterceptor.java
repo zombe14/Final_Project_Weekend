@@ -14,6 +14,7 @@ public class FestiQnafqnaDeleteInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
+		/*
 		boolean result=false;
 		HttpSession session = request.getSession();
 		String writer = request.getParameter("writer");
@@ -32,7 +33,8 @@ public class FestiQnafqnaDeleteInterceptor extends HandlerInterceptorAdapter {
 		}else {
 			response.sendRedirect("../member/memberLogin");
 		}
-		return result;
+		*/
+		return true;
 	}
 
 	@Override
