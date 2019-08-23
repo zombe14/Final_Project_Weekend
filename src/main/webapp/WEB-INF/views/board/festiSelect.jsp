@@ -426,7 +426,8 @@
 				success:function(data){
 					var selected = '';
 					tPrice = data.price;
-					selected += '<table class="table" style="width:100%;"><tr><td>좌석</td><td>'+data.seat+'석</td></tr><tr><td>가격</td><td id="price" value="'+data.price+'">'+data.price+'원</td></tr>'
+					selected += '<table class="table" style="width:100%;"><tr><td>좌석</td><td>'+data.seat+'석</td></tr>'+
+								'<tr><td>가격</td><td id="price" value="'+data.price+'">'+data.price+'원</td></tr>'
 					selected += '<tr><td>매수</td><td><input type="number" value="1" id="amount" min="1" style="width:30%;" onchange="totalPrice()"></td></tr>'
 					selected += '<tr><td>총액</td><td id="total">'+data.price*1+'</td></tr></table>'
 					$('#selected').html(selected);

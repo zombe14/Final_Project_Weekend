@@ -140,7 +140,7 @@
 						<td><label for="time">시작시간</label></td>
 						<td><label for="seat">좌석</label></td>
 						<td><label for="price">가격</label></td>
-						<td><input type="text" name="num" value="${dto.num}" id="num"></td>
+						<td><input type="hidden" name="num" value="${dto.num}" id="num"></td>
 					</tr>
 					<tr>
 						<td><div class="dateDiv">
