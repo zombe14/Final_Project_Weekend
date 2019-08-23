@@ -139,7 +139,7 @@ public class MemberController {
 			}else {
 			memberDTO = memberService.getSelect(memberDTO);
 			message="아이디나 비밀번호를 확인해 주십시오";
-			if(result==1) {	
+			if(result==1) {
 				if(memberDTO != null) {
 					if(memberDTO.getCount()>5) {
 						message = "로그인 횟수 제한에 걸렸습니다. 아이디찾기로 인증바랍니다.";	
