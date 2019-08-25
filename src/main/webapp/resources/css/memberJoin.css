@@ -258,7 +258,7 @@ select {
 }
 #emailCheck{
     border: 1px solid white;
-    padding: 10px 12px;
+    padding: 10px 11px;
     background: #00d344;
     color: white;	
     font-size: 14px;
@@ -268,9 +268,7 @@ select {
 }
 #emailCodeCheck{
     border: 1px solid white;
-    padding: 10px 20px;
-    background: #00d344;
-    color: white;	
+    padding: 10px 12px;
     font-size: 14px;
     margin: 0 5px;
 }
@@ -280,6 +278,14 @@ select {
     padding: 10px 20px;
     background: #00d344;
     color: white;	
+    font-size: 14px;
+    margin: 0 5px;
+}
+#emailCodeCheckbt{
+    border: 1px solid white;
+    padding: 12px 6px;
+    background: #00d344;
+    color: white;
     font-size: 14px;
     margin: 0 5px;
 }

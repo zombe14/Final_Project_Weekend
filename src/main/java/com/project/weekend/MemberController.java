@@ -52,7 +52,18 @@ public class MemberController {
 		}
 		return result;
 	}
-	
+	@RequestMapping(value = "getphone", method = RequestMethod.POST)
+	@ResponseBody
+	public int getphone(MemberDTO memberDTO)throws Exception{
+		memberDTO = memberService.getphone(memberDTO);
+		int result=0;
+		if(memberDTO==null) {
+
+		}else {
+			result=1;
+		}
+		return result;
+	}
 	@RequestMapping(value = "getId", method = RequestMethod.POST)
 	@ResponseBody
 	public int getId(MemberDTO memberDTO)throws Exception{
@@ -83,7 +94,7 @@ public class MemberController {
 	@RequestMapping(value = "memberJoin", method = RequestMethod.GET)
 	public void setWrite(@ModelAttribute MemberDTO memberDTO)throws Exception{
 	}
-	@RequestMapping(value = "memberJoin", method = RequestMethod.POST)
+	@RequestMapping(value = "memberJoins", method = RequestMethod.POST)
 	public ModelAndView setWrite(MemberDTO memberDTO, MultipartFile photo, HttpSession session,BindingResult bindingResult)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MemberDTO getId = memberService.getId(memberDTO);
@@ -128,7 +139,7 @@ public class MemberController {
 			}else {
 			memberDTO = memberService.getSelect(memberDTO);
 			message="아이디나 비밀번호를 확인해 주십시오";
-			if(result==1) {	
+			if(result==1) {
 				if(memberDTO != null) {
 					if(memberDTO.getCount()>5) {
 						message = "로그인 횟수 제한에 걸렸습니다. 아이디찾기로 인증바랍니다.";	

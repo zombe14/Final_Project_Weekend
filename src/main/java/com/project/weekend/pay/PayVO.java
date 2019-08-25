@@ -12,9 +12,9 @@ public class PayVO {
 	private String tid;
 	private String pg_token;
 	private int state;
-	private String approval_url = "http://localhost/weekend/pay/paymentSuccess";
-	private String cancel_url = "http://localhost/weekend/pay/paymentCancel";
-	private String fail_url = "http://localhost/weekend/pay/paymentFail";
+	private String approval_url = "http://211.238.142.25/weekend/pay/paymentSuccess";
+	private String cancel_url = "http://211.238.142.25/weekend/pay/paymentCancel";
+	private String fail_url = "http://211.238.142.25/weekend/pay/paymentFail";
 	private String show_times;
 	private String cancel_available_amount;
 	

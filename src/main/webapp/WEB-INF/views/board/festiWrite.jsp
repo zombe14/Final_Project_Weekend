@@ -233,7 +233,7 @@ $('.category').click(function() {
 	}
 });
 
-	
+var optionC = 0;
 	$('#writeOption').click(function(){
 		var num = $('#num').val();
 		var reg_date = $('#dates').val();
@@ -253,6 +253,8 @@ $('.category').click(function() {
 			success:function(data){
 				if(data == '1'){
 					getOptionsList();
+
+					optionC += 1;
 					$('#dates').val('');
 					$('#time').val('');
 					$('#seat').val('');
@@ -267,6 +269,7 @@ $('.category').click(function() {
 		});
 	});
 	
+
 	function getOptionsList(){
 		jQuery.ajaxSettings.traditional = true;
 		$.ajaxSettings.traditional = true;
@@ -280,7 +283,8 @@ $('.category').click(function() {
 			success:function(data){
 				console.log(data);
 				data = data.trim();    	
-				$('#optionsDiv').html(data);	
+				$('#optionsDiv').html(data);
+				
 			},
 			error:function(e){
 				console.log(e);
@@ -288,53 +292,6 @@ $('.category').click(function() {
 		});
 	}
 	
-	
-	//$(this).last().val()
-/* 	var min='';
-	var max='';
-	var endDate;
-	var startDate;
-	$('#datesOption').on('change','.dates',function(){
-		var dates = [];
-		var datesCompare = [];
-		
-		$('.dates').each(function(){
-			dates.push($(this).val());
-		})
-		for(var i = 0; i<dates.length;i++){
-			var dates2 = [];
-			dates2 = dates[i].split('-');
-			dates2 = new Date(dates2[0], dates2[1]-1, dates2[2]);
-			datesCompare.push(dates2);
-		}
-	
-		var tmp1='';
-		var tmp2 = '';
-	
-		if(datesCompare.length>1){
-			for(var i = 0;i<datesCompare.length;i++){
-				if(datesCompare[i]>max){
-					max = datesCompare[i];
-					endDate = dates[i];
-				} 
-				
-				if(datesCompare[i]<min){
-					min = datesCompare[i];
-					startDate = dates[i];
-				}
-
-			}
-		} else {
-			startDate = dates[0];
-			endDate = dates[0];
-			max = datesCompare[0];
-			min = datesCompare[0];
-		}
-		$('#endDate').val(endDate);
-		$('#startDate').val(startDate);
-		
-	});
- */
 	
 
 /* 첨부 파일 관리 */
@@ -495,21 +452,28 @@ $('#top').click(function(){
 	
 	/* 가격상세 */
 	
+	
+	
 
 	 $('#write').click(function() {
-		$('#frm').submit();
-		$('#datesOptionFrm').submit();
-		/* var title = $('#title').val() != '';
+		var title = $('#title').val() != '';
 		var writer = $('#writer').val() != '';
 		var contents = $('#contents').val() != '';
 		var category = $('#category').val() != '';
 		var age = $('#age').val() != '';
 		var local = $('#local').val()!== '' && $('#localConfirm').is(':checked');
-		if(title && writer && contents && category && age && local){
-			$('#frm').submit();
+		var thumb = $('#preview-img').attr('src');		
+		if(title && writer && contents && category && age && local && thumb != '#'){
+			if(category == 3 && optionC>0){
+				$('#frm').submit();
+				$('#datesOptionFrm').submit();
+			} else {
+				$('#frm').submit();
+				$('#datesOptionFrm').submit();
+			}
 		} else {
 			alert('필수(*)를 모두 입력해주세요');
-		} */
+		}
 	});
 </script>
 </body>

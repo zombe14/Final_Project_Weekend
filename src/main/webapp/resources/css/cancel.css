@@ -12,8 +12,12 @@ dt{
 	margin-top: 10px;
 }
 
-.cancel_wrap li{
+.call_cont li{
     padding-left: 21px;
     line-height: 22px;
     text-indent: -11px;	
+}
+
+.aaa{
+	margin-top: 10px;
 }

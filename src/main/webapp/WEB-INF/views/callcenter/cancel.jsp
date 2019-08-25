@@ -47,7 +47,7 @@
 					<h3>환불 안내</h3>
 					<div class="cancel_wrap">
 					<strong>[예매 취소 마감 시간]</strong><br>
-					<p>
+					<p class="aaa">
 					구단/기획사 정책에 따라 특정 상품의 예매/취소 마감시간이 다를 수 있습니다. (예매 시 확인 가능)
 					</p>
 					<div class="info_memlist_block">

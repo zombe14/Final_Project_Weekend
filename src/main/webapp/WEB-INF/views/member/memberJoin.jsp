@@ -8,10 +8,10 @@
 <meta charset="utf-8">
   <c:import url="../temp/boot.jsp"></c:import>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/memberJoin.css?ver=2">
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css">
      <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/logo/logo.png" />
-  <script type="text/javascript" src="../resources/js/member/memberJoin.js?ver=7"></script>
+  <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>
 <title>Weekend - 회원가입</title>
 
 </head>
@@ -23,7 +23,7 @@
 			<div class="join_logo">
 				<a href="${pageContext.request.contextPath}/."><img alt="" src="${pageContext.request.contextPath}/resources/images/logo/logo111.png"></a>
 			</div>
-	<form action="./memberJoin"  id="frm" method="POST" enctype="multipart/form-data">
+	<form action="./memberJoins"  id="frm" method="POST" enctype="multipart/form-data">
 		<div class="joinWrap">
 			<div class="essentiaDataWrap">
 				<h3 class="conTitle">
@@ -166,7 +166,8 @@
 										<span class="hypen">-</span>
 										<input type="text" class="iText" id="hp3" name="hp3" title="뒷번호4자리" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" style="IME-MODE:disabled;"> </div>
 								 		<input type="hidden" name="hp" value="">
-								<input type="hidden" id="phone" name="phone" title="phone"> 
+								<input type="hidden" id="phone" name="phone" title="phone">
+								<div id="phoneCheck"></div>
 								</td>
 								
 							</tr>

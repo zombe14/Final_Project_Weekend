@@ -80,7 +80,7 @@ public class WeekRecoController{
 	public ModelAndView setUpdate(String num) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		FestiDTO festiDTO = festiService.getWeekRecoSelect(num);
-		mv.addObject("board", festiDTO);
+		mv.addObject("list", festiDTO);
 		mv.setViewName("board/WeekRecoUpdate");
 		return mv;
 	}
@@ -88,9 +88,10 @@ public class WeekRecoController{
 	@RequestMapping(value = "WeekRecoUpdate", method = RequestMethod.POST)
 	public ModelAndView setUpdate(FestiDTO festiDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String path = "redirect:./WeekRecoSelect?num="+festiDTO.getNum();
 		int result = festiService.setWeekRecoUpdate(festiDTO);
 		mv.addObject("result", result);
-		mv.setViewName("./common/message");
+		mv.setViewName(path);
 		return mv;
 	} 
 	// 글삭제;

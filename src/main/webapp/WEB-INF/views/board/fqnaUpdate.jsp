@@ -81,8 +81,9 @@
 						</div>
 						</td>
 					</tr>
-					<c:if test="${board eq 'fqna'}">
-					<tr>
+			
+					 <c:if test="${board eq 'fqna'}">
+					<tr class="hide">
 						<td class="td1">
 							<label for="pw">비밀번호</label>
 						</td>
@@ -96,7 +97,7 @@
 					</tr>
 					</c:if>
 					<c:if test="${board eq 'fqnaReply'}">
-					<tr>
+					<tr class="hide">
 						<td class="td1">
 							<label for="pw">비밀번호</label>
 						</td>
@@ -109,7 +110,7 @@
 						</td>
 					</tr>
 					</c:if>
-			
+			 		
 					<input type="hidden" name="qnum" value="${dto.qnum}">
 					</tbody>
 					</table>
@@ -127,6 +128,9 @@
 	<script src="../resources/js/summernote.js"></script>
 	<!-- script -->
 	<script type="text/javascript">
+	
+	$('.hide').hide();
+	
 	/* 첨부 파일 관리 */
 	// 개수 제한. 최대 5개까지.
 	var limit = 1;
